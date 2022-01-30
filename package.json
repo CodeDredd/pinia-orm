@@ -65,5 +65,6 @@
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
     ]
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }
