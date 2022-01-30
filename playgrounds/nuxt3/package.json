@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "@pinia-orm/playground-nuxt3",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "@pinia/nuxt": "^0.1.8",
+    "@pinia-orm/nuxt": "^1.0.0",
+    "nuxt3": "latest",
+    "pinia": "^2.0.11",
+    "pinia-orm": "^0.8.0"
+  }
+}

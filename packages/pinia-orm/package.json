@@ -1,0 +1,67 @@
+{
+  "name": "pinia-orm",
+  "version": "0.8.0",
+  "description": "The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store.",
+  "keywords": [
+    "vue",
+    "pinia",
+    "pinia-plugin",
+    "pinia-orm",
+    "orm"
+  ],
+  "repository": "https://github.com/storm-tail/pinia-orm.git",
+  "license": "MIT",
+  "author": "Gregor Becker",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "coverage": "vue-demi-switch 3 && vitest --run --coverage",
+    "size": "size-limit",
+    "lint": "eslint --ext .ts",
+    "lint:fix": "eslint --fix --ext .ts",
+    "test:ui": "vue-demi-switch 3 && vitest --ui",
+    "test:watch": "vue-demi-switch 3 && vitest --watch",
+    "test:2": "vue-demi-switch 2 vue2 && vitest --run",
+    "test:3": "vue-demi-switch 3 && vitest --run",
+    "test": "pnpm run test:2 && pnpm run test:3"
+  },
+  "peerDependencies": {
+    "pinia": "^2.0.11"
+  },
+  "dependencies": {
+    "@types/uuid": "^8.3.3",
+    "normalizr": "^3.6.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@prazdevs/eslint-config-typescript": "^3.0.1",
+    "@size-limit/preset-small-lib": "^7.0.5",
+    "@vitest/ui": "^0.2.4",
+    "@vue/composition-api": "^1.4.5",
+    "c8": "^7.11.0",
+    "core-js": "^3.19.1",
+    "eslint": "8.7.0",
+    "happy-dom": "^2.30.1",
+    "pinia": "^2.0.10",
+    "size-limit": "^7.0.5",
+    "tsup": "^5.11.11",
+    "typescript": "^4.5.5",
+    "vite": "^2.7.13",
+    "vitest": "^0.2.4",
+    "vue": "^3.2.26",
+    "vue-demi": "^0.12.1",
+    "vue2": "npm:vue@2"
+  },
+  "size-limit": [{
+    "path": "dist/index.js",
+    "limit": "20 kB"
+  }],
+  "volta": {
+    "node": "16.13.1"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "include": ["src/global.d.ts", "src/**/*.ts", "__tests__/**/*.ts"],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es2017",
+    "types": ["@types/uuid"]
+  },
+  "exclude": [
+    "**/dist",
+    "**/node_modules",
+  ]
+}

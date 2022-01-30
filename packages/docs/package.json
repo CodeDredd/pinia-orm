@@ -1,0 +1,18 @@
+{
+  "name": "@pinia-orm/docs",
+  "version": "1.0.0",
+  "description": "Docs for pinia-orm",
+  "author": "Gregor Becker",
+  "repository": "storm-tail/pinia-orm",
+  "scripts": {
+    "dev": "nuxt",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "docus": "^2.1.0"
+  },
+  "devDependencies": {
+    "vue-plausible": "^1.3.1"
+  }
+}
