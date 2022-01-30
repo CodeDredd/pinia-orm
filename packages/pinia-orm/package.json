@@ -1,6 +1,6 @@
 {
   "name": "pinia-orm",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store.",
   "keywords": [
     "vue",
@@ -20,6 +20,7 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --dts --format cjs,esm",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l pinia-orm -r 1",
     "coverage": "vue-demi-switch 3 && vitest --run --coverage",
     "size": "size-limit",
     "lint": "eslint --ext .ts",
@@ -57,10 +58,12 @@
     "vue-demi": "^0.12.1",
     "vue2": "npm:vue@2"
   },
-  "size-limit": [{
-    "path": "dist/index.js",
-    "limit": "20 kB"
-  }],
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "20 kB"
+    }
+  ],
   "volta": {
     "node": "16.13.1"
   }

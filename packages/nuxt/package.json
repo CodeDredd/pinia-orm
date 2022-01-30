@@ -1,6 +1,6 @@
 {
   "name": "@pinia-orm/nuxt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "prepack": "nuxt-module-build",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia/nuxt -r 1",
     "play": "nuxi dev playground",
     "play:build": "nuxi build playground",
     "prepare": "nuxt-module-build --stub && nuxi prepare playground"
@@ -24,7 +25,7 @@
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "@pinia/nuxt": "^0.1.8",
     "pinia": "^2.0.11",
-    "pinia-orm": "^0.8.0"
+    "pinia-orm": "~0.8.2"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
