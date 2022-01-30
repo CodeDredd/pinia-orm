@@ -23,10 +23,12 @@
     "play:build": "nuxi build playground",
     "prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
+  "peerDependencies": {
+    "pinia": "^2.0.11"
+  },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "@pinia/nuxt": "^0.1.8",
-    "pinia": "^2.0.11",
     "pinia-orm": "~0.8.4"
   },
   "devDependencies": {
