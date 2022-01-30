@@ -1,6 +1,6 @@
 {
   "name": "@pinia-orm/nuxt",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -27,7 +27,7 @@
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "@pinia/nuxt": "^0.1.8",
     "pinia": "^2.0.11",
-    "pinia-orm": "~0.8.3"
+    "pinia-orm": "~0.8.4"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
