@@ -1,20 +1,21 @@
-# `@pinia/nuxt`
+# `@pinia-orm/nuxt`
 
 > Nuxt 2 & 3 module
 
 ## Installation
 
 ```sh
-npm i @pinia/nuxt
+npm i @pinia-orm/nuxt
 ```
 
 ## Usage
 
-Add to `buildModules` in `nuxt.config.js`:
+Add to `modules` in `nuxt.config.js`:
 
 ```js
 export default {
   buildModules: [['@pinia/nuxt', { disableVuex: true }]],
+  modules: ['@pinia-orm/nuxt'],
 }
 ```
 
