@@ -19,4 +19,3 @@ There is only one little difference between vuex-orm and pinia-orm usage. You ne
   // Getting all users
   const users = useRepo.all()
   ```
-
