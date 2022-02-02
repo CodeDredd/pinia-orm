@@ -66,5 +66,5 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@1.22.1"
 }

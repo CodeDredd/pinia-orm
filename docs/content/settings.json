@@ -1,0 +1,10 @@
+{
+  "title": "Pinia ORM",
+  "url": "https://pinia-orm.codedredd.de",
+  "logo": {
+    "light": "/icon.png",
+    "dark": "/icon.png"
+  },
+  "github": "codedredd/pinia-orm",
+  "twitter": "gregor_becker"
+}
