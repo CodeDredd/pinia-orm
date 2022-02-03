@@ -34,7 +34,7 @@
 [npm-version-href]: https://npmjs.com/package/@pinia-orm/nuxt
 [npm-downloads-src]: https://img.shields.io/npm/dm/@pinia-orm/nuxt.svg
 [npm-downloads-href]: https://npmjs.com/package/@pinia-orm/nuxt
-[github-actions-ci-src]: https://github.com/codedredd/pinia-orm/workflows/ci/badge.svg
-[github-actions-ci-href]: https://github.com/codedredd/pinia-orm/actions?query=workflow%3Aci
+[github-actions-ci-src]: https://github.com/Codedredd/pinia-orm/workflows/build/badge.svg
+[github-actions-ci-href]: https://github.com/codedredd/pinia-orm/actions?query=workflow%3Abuild
 [license-src]: https://img.shields.io/npm/l/@pinia-orm/nuxt.svg
 [license-href]: https://npmjs.com/package/@pinia-orm/nuxt
