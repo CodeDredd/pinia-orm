@@ -16,6 +16,6 @@ There is only one little difference between vuex-orm and pinia-orm usage. You ne
   import { useRepo } from 'pinia-orm'
 
   const userRepo = useRepo(User)
-  // Getting all users
-  const users = useRepo.all()
+  // Getting all users with their todos as relation
+  const users = userRepo.with('todos').get()
   ```
