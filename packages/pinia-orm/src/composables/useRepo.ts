@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore, Pinia, StoreDefinition } from 'pinia'
 import { Model } from '../model/Model'
 import { Repository } from '../repository/Repository'
 import { Database } from '../database/Database'
@@ -7,15 +7,21 @@ import { useStoreActions } from './useStoreActions'
 
 export function useRepo<M extends Model>(
   model: Constructor<M>,
+  storeGenerator?: (id: string) => StoreDefinition,
   connection?: string
 ): Repository<M>
 
 export function useRepo<R extends Repository>(
   repository: Constructor<R>,
+  storeGenerator?: (id: string) => StoreDefinition,
   connection?: string
 ): R
 
-export function useRepo(modelOrRepository: any, connection?: string) {
+export function useRepo(
+  modelOrRepository: any,
+  storeGenerator?: (id: string) => StoreDefinition,
+  connection?: string
+) {
   let database: Database
   // const store = defineStore(connection || 'database', {
   //   state: () => ({ entities: {} }),
@@ -37,11 +43,9 @@ export function useRepo(modelOrRepository: any, connection?: string) {
     ? new modelOrRepository(database).initialize()
     : new Repository(database).initialize(modelOrRepository)
 
-  const store = defineStore(repository.getModel().$entity(), {
-    state: () => ({ data: {} }),
-    actions: useStoreActions(),
-  })
-  repository.database.setStore(store)
+  if (storeGenerator) {
+    repository.database.setStore(storeGenerator)
+  }
 
   try {
     database.register(repository.getModel())

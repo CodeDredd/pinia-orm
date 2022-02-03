@@ -1,6 +1,5 @@
-import { Store, PiniaPlugin, StoreDefinition } from 'pinia'
+import { Store, PiniaPlugin, StoreDefinition, Pinia } from 'pinia'
 import { Database } from '../database/Database'
-import { Repository } from '../repository/Repository'
 import { plugins, components } from '../plugin/Plugin'
 
 export interface InstallOptions {
@@ -44,7 +43,7 @@ function mixin(store: Store<any>): void {
  * Create a new database and connect to the store.
  */
 function createDatabase(
-  store: StoreDefinition<any>,
+  store: (id: string) => StoreDefinition,
   options: FilledInstallOptions
 ): Database {
   const database = new Database()

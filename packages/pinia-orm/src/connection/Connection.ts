@@ -1,8 +1,10 @@
 import { Element, Elements } from '../data/Data'
 import { Database } from '../database/Database'
 import { Model } from '../model/Model'
-import { defineStore } from 'pinia'
+import { createPinia, defineStore, getActivePinia, setActivePinia } from 'pinia'
 import { useStoreActions } from '../composables/useStoreActions'
+import { getCurrentInstance, isVue3 } from 'vue-demi'
+import { useDataStore } from '../composables/useDataStore'
 
 export interface ConnectionNamespace {
   connection: string
@@ -32,10 +34,10 @@ export class Connection {
    * Commit a namespaced store mutation.
    */
   protected commit(name: string, payload?: any): void {
-    const newStore = defineStore(this.model.$entity(), {
-      state: () => ({ data: {} }),
-      actions: useStoreActions(),
-    })
+    const newStore =
+      typeof this.database.store === 'function'
+        ? this.database.store(this.model.$entity())
+        : useDataStore(this.model.$entity())
     const store = newStore()
     if (name && typeof store[name] === 'function') {
       store[name](payload)
@@ -47,10 +49,10 @@ export class Connection {
    */
   get(): Elements {
     // const connection = this.database.connection
-    const newStore = defineStore(this.model.$entity(), {
-      state: () => ({ data: {} }),
-      actions: useStoreActions(),
-    })
+    const newStore =
+      typeof this.database.store === 'function'
+        ? this.database.store(this.model.$entity())
+        : useDataStore(this.model.$entity())
     const store = newStore()
 
     return store.$state.data

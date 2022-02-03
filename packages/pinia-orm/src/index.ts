@@ -4,6 +4,7 @@ import './types/pinia-orm'
 export * from './data/Data'
 export * from './composables/useRepo'
 export * from './composables/useStoreActions'
+export * from './composables/useDataStore'
 export * from './store/Store'
 export * from './database/Database'
 export * from './schema/Schema'
@@ -51,6 +52,7 @@ export * from './plugin/Plugin'
 import { install } from './store/Store'
 import { useRepo } from './composables/useRepo'
 import { useStoreActions } from './composables/useStoreActions'
+import { useDataStore } from './composables/useDataStore'
 import { use } from './plugin/Plugin'
 import { mapRepos } from './helpers/Helpers'
 import { Database } from './database/Database'
@@ -79,6 +81,7 @@ import { Connection } from './connection/Connection'
 export default {
   useRepo,
   useStoreActions,
+  useDataStore,
   install,
   use,
   mapRepos,

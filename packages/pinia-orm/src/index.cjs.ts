@@ -3,6 +3,7 @@ import './polyfills/Polyfills'
 import { install } from './store/Store'
 import { useRepo } from './composables/useRepo'
 import { useStoreActions } from './composables/useStoreActions'
+import { useDataStore } from './composables/useDataStore'
 import { use } from './plugin/Plugin'
 import { mapRepos } from './helpers/Helpers'
 import { Database } from './database/Database'
@@ -41,6 +42,7 @@ import { Connection } from './connection/Connection'
 export default {
   useRepo,
   useStoreActions,
+  useDataStore,
   install,
   use,
   mapRepos,

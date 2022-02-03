@@ -11,7 +11,7 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "es2017",
-    "types": ["@types/uuid"]
+    "types": ["@types/uuid", "@types/node"]
   },
   "exclude": [
     "**/dist",
