@@ -1,10 +1,12 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "playgrounds/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "playgrounds/*"
+    ]
+  },
   "scripts": {
     "release": "node scripts/release.mjs",
     "size": "lerna run size",
@@ -65,6 +67,5 @@
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
     ]
-  },
-  "packageManager": "yarn@1.22.1"
+  }
 }

@@ -288,12 +288,8 @@ async function publishPackage(pkg) {
     await runIfNotDry(
       'yarn',
       [
+        'npm',
         'publish',
-        '--new-version',
-        pkg.version,
-        '--no-commit-hooks',
-        '--no-git-tag-version',
-        ...(optionTag ? ['--tag', optionTag] : []),
         '--access',
         'public',
       ],
