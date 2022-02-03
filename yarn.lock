@@ -3506,9 +3506,11 @@ __metadata:
     "@nuxt/module-builder": latest
     "@nuxtjs/eslint-config-typescript": latest
     "@pinia/nuxt": ^0.1.8
+    "@types/prettier": ^2
     eslint: latest
     nuxt3: latest
-    pinia-orm: ~0.8.4
+    pinia-orm: ~0.9.0
+    prettier: ^2.5.1
   peerDependencies:
     pinia: ^2.0.11
   languageName: unknown
@@ -4279,7 +4281,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:^2.1.5":
+"@types/prettier@npm:^2, @types/prettier@npm:^2.1.5":
   version: 2.4.3
   resolution: "@types/prettier@npm:2.4.3"
   checksum: b240434daabac54700c862b0bb52a83fec396e0e9c847447119ba41fd8404d79aadfa174e6306fb094b29efadac586344b7606c3a71c286b71755ab2579d54df
@@ -16409,12 +16411,26 @@ nuxt3@latest:
   languageName: node
   linkType: hard
 
-"pinia-orm@^0.8.4, pinia-orm@workspace:packages/pinia-orm, pinia-orm@~0.8.4":
+"pinia-orm@npm:^0.8.4":
+  version: 0.8.4
+  resolution: "pinia-orm@npm:0.8.4"
+  dependencies:
+    "@types/uuid": ^8.3.3
+    normalizr: ^3.6.1
+    uuid: ^8.3.2
+  peerDependencies:
+    pinia: ^2.0.11
+  checksum: 5f5f79397217e237b1e84fcc8c31dc8ab16833c5234f0f7b4daa22c0d9159b8b6b4b6e3aae2f79032a729c524ce46cf24839c236ffb1fb25c5fb69acbd6df0ce
+  languageName: node
+  linkType: hard
+
+"pinia-orm@workspace:packages/pinia-orm, pinia-orm@~0.9.0":
   version: 0.0.0-use.local
   resolution: "pinia-orm@workspace:packages/pinia-orm"
   dependencies:
     "@prazdevs/eslint-config-typescript": ^3.0.1
     "@size-limit/preset-small-lib": ^7.0.5
+    "@types/prettier": ^2
     "@types/uuid": ^8.3.3
     "@vitest/ui": ^0.2.4
     "@vue/composition-api": ^1.4.5
@@ -16424,6 +16440,7 @@ nuxt3@latest:
     happy-dom: ^2.30.1
     normalizr: ^3.6.1
     pinia: ^2.0.10
+    prettier: ^2.5.1
     size-limit: ^7.0.5
     tsup: ^5.11.11
     typescript: ^4.5.5

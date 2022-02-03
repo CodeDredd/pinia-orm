@@ -34,7 +34,9 @@
   "devDependencies": {
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
+    "@types/prettier": "^2",
     "eslint": "latest",
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "prettier": "^2.5.1"
   }
 }
