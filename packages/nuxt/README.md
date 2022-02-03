@@ -1,26 +1,40 @@
-# `@pinia-orm/nuxt`
+<p align="center">
+  <a href="https://github.com/storm-tail/pinia-orm" target="_blank" rel="noopener noreferrer">
+    <img width="180" src="https://pinia-orm.codedredd.de/logo_pinia_orm.png" alt="Pinia ORM logo">
+  </a>
+</p>
 
-> Nuxt 2 & 3 module
+# @pinia-orm/nuxt
 
-## Installation
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
+[![License][license-src]][license-href]
 
-```sh
-npm i @pinia-orm/nuxt
-```
+> Intuitive, type safe and flexible ORM for Pinia based on [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
 
-## Usage
+- [✨ &nbsp;Release Notes](https://pinia-orm.codedredd.de/releases)
+- [📖 &nbsp;Documentation](https://pinia-orm.codedredd.de)
 
-Add to `modules` in `nuxt.config.js`:
+## Help me keep working on this project 💚
 
-```js
-export default {
-  buildModules: [['@pinia/nuxt', { disableVuex: true }]],
-  modules: ['@pinia-orm/nuxt'],
-}
-```
+- [Become a Sponsor on GitHub](https://github.com/sponsors/codedredd)
+- [One-time donation via PayPal](https://paypal.me/dredd1984)
 
-Note you also need `@nuxtjs/composition-api` if you are using Nuxt 2 without Bridge. [Refer to docs for more](https://pinia.vuejs.org/ssr/nuxt.html).
+<!--sponsors start-->
+
+
+<!--sponsors end-->
 
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+[npm-version-src]: https://img.shields.io/npm/v/@pinia-orm/nuxt/latest.svg
+[npm-version-href]: https://npmjs.com/package/@pinia-orm/nuxt
+[npm-downloads-src]: https://img.shields.io/npm/dm/@pinia-orm/nuxt.svg
+[npm-downloads-href]: https://npmjs.com/package/@pinia-orm/nuxt
+[github-actions-ci-src]: https://github.com/codedredd/pinia-orm/workflows/ci/badge.svg
+[github-actions-ci-href]: https://github.com/codedredd/pinia-orm/actions?query=workflow%3Aci
+[license-src]: https://img.shields.io/npm/l/@pinia-orm/nuxt.svg
+[license-href]: https://npmjs.com/package/@pinia-orm/nuxt
