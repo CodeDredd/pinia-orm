@@ -66,14 +66,14 @@ Add `pinia-orm` dependency to your project:
   <code-block label="Yarn" active>
 
   ```bash
-  yarn add @pinia-orm/nuxt
+  yarn add pinia-orm @pinia-orm/nuxt
   ```
 
   </code-block>
   <code-block label="NPM">
 
   ```bash
-  npm i --save @pinia-orm/nuxt
+  npm i --save pinia-orm @pinia-orm/nuxt
   ```
 
   </code-block>
