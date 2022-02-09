@@ -8,6 +8,9 @@ on:
     branches:
       - master
 
+env:
+  NPM_AUTH_TOKEN: {{secrets.NPM_AUTH_TOKEN}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
