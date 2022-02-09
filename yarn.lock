@@ -3448,7 +3448,7 @@ __metadata:
     "@nuxt/typescript-build": ^2.1.0
     "@nuxtjs/eslint-config-typescript": ^8.0.0
     "@nuxtjs/eslint-module": ^3.0.2
-    "@pinia-orm/nuxt": ^1.0.6
+    "@pinia-orm/nuxt": ^1.0.7
     "@pinia/nuxt": ^0.1.8
     core-js: ^3.19.3
     eslint: ^8.4.1
@@ -3458,7 +3458,7 @@ __metadata:
     nuxt: ^2.15.8
     nuxt-windicss: ^2
     pinia: ^2.0.11
-    pinia-orm: ^0.8.4
+    pinia-orm: ^0.9.0
     prettier: ^2.5.1
     vue: ^2.6.14
     vue-server-renderer: ^2.6.14
@@ -3488,7 +3488,7 @@ __metadata:
     nuxt: ^2.15.8
     nuxt-windicss: ^2.2.4
     pinia: ^2.0.11
-    pinia-orm: ^0.8.4
+    pinia-orm: ^0.9.0
     postcss: ^8.4.6
     prettier: ^2.5.1
     vue: ^2.6.14
@@ -3498,7 +3498,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pinia-orm/nuxt@^1.0.6, @pinia-orm/nuxt@workspace:packages/nuxt":
+"@pinia-orm/nuxt@^1.0.6, @pinia-orm/nuxt@^1.0.7, @pinia-orm/nuxt@workspace:packages/nuxt":
   version: 0.0.0-use.local
   resolution: "@pinia-orm/nuxt@workspace:packages/nuxt"
   dependencies:
@@ -3520,11 +3520,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pinia-orm/playground-nuxt3@workspace:playgrounds/nuxt3"
   dependencies:
-    "@pinia-orm/nuxt": ^1.0.6
+    "@pinia-orm/nuxt": ^1.0.7
     "@pinia/nuxt": ^0.1.8
     nuxt3: latest
     pinia: ^2.0.11
-    pinia-orm: ^0.8.4
+    pinia-orm: ^0.9.0
   languageName: unknown
   linkType: soft
 
@@ -16411,20 +16411,7 @@ nuxt3@latest:
   languageName: node
   linkType: hard
 
-"pinia-orm@npm:^0.8.4":
-  version: 0.8.4
-  resolution: "pinia-orm@npm:0.8.4"
-  dependencies:
-    "@types/uuid": ^8.3.3
-    normalizr: ^3.6.1
-    uuid: ^8.3.2
-  peerDependencies:
-    pinia: ^2.0.11
-  checksum: 5f5f79397217e237b1e84fcc8c31dc8ab16833c5234f0f7b4daa22c0d9159b8b6b4b6e3aae2f79032a729c524ce46cf24839c236ffb1fb25c5fb69acbd6df0ce
-  languageName: node
-  linkType: hard
-
-"pinia-orm@workspace:packages/pinia-orm, pinia-orm@~0.9.0":
+"pinia-orm@^0.9.0, pinia-orm@workspace:packages/pinia-orm, pinia-orm@~0.9.0":
   version: 0.0.0-use.local
   resolution: "pinia-orm@workspace:packages/pinia-orm"
   dependencies:

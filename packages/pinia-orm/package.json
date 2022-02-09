@@ -12,16 +12,27 @@
   "repository": "https://github.com/storm-tail/pinia-orm.git",
   "license": "MIT",
   "author": "Gregor Becker",
-  "main": "dist/index.js",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "jsdelivr": "dist/index.global.js",
+  "unpkg": "dist/index.global.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "browser": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
   "files": [
     "dist",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "build": "tsup src/index.ts --dts --format esm,cjs,iife",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l pinia-orm -r 1",
     "coverage": "vue-demi-switch 3 && vitest --run --coverage",
     "size": "size-limit",

@@ -1,5 +1,4 @@
 import './polyfills/Polyfills'
-import './types/pinia-orm'
 
 export * from './data/Data'
 export * from './composables/useRepo'
@@ -40,7 +39,6 @@ export { MorphTo as MorphToAttr } from './model/attributes/relations/MorphTo'
 export { MorphMany as MorphManyAttr } from './model/attributes/relations/MorphMany'
 export * from './modules/RootState'
 export * from './modules/State'
-export * from './modules/Mutations'
 export * from './repository/Repository'
 export * from './interpreter/Interpreter'
 export * from './query/Query'

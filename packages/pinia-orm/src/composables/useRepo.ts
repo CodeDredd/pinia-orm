@@ -1,9 +1,8 @@
-import { defineStore, Pinia, StoreDefinition } from 'pinia'
+import { StoreDefinition } from 'pinia'
 import { Model } from '../model/Model'
 import { Repository } from '../repository/Repository'
 import { Database } from '../database/Database'
 import { Constructor } from '../types'
-import { useStoreActions } from './useStoreActions'
 
 export function useRepo<M extends Model>(
   model: Constructor<M>,
@@ -23,28 +22,14 @@ export function useRepo(
   connection?: string
 ) {
   let database: Database
-  // const store = defineStore(connection || 'database', {
-  //   state: () => ({ entities: {} }),
-  // })
-
-  // if (connection) {
-  // if (!(connection in store.$databases)) {
-  //   database = createDatabase(store, { namespace: connection })
-  //   database.start()
-  // } else {
-  //   database = store.$databases[connection]
-  // }
-  // } else {
   database = new Database().setConnection(connection || 'database')
-  // .setStore(store)
-  // }
 
   const repository = modelOrRepository._isRepository
     ? new modelOrRepository(database).initialize()
     : new Repository(database).initialize(modelOrRepository)
 
   if (storeGenerator) {
-    repository.database.setStore(storeGenerator)
+    repository.database.setStoreGenerator(storeGenerator)
   }
 
   try {
@@ -52,10 +37,4 @@ export function useRepo(
   } catch (e) {}
 
   return repository
-
-  // return defineStore(model.$entity(), {
-  //   state: () => {
-  //     return model.$fields()
-  //   },
-  // })
 }

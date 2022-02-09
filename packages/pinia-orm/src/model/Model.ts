@@ -26,7 +26,7 @@ export interface ModelOptions {
 }
 
 export class Model {
-  [s: string | number]: any
+  [s: keyof ModelFields]: any
   /**
    * The name of the model.
    */

@@ -35,10 +35,10 @@ export class Connection {
    */
   protected commit(name: string, payload?: any): void {
     const newStore =
-      typeof this.database.store === 'function'
-        ? this.database.store(this.model.$entity())
+      typeof this.database.storeGenerator === 'function'
+        ? this.database.storeGenerator(this.model.$entity())
         : useDataStore(this.model.$entity())
-    const store = newStore()
+    const store = newStore(this.database.store)
     if (name && typeof store[name] === 'function') {
       store[name](payload)
     }
@@ -50,8 +50,8 @@ export class Connection {
   get(): Elements {
     // const connection = this.database.connection
     const newStore =
-      typeof this.database.store === 'function'
-        ? this.database.store(this.model.$entity())
+      typeof this.database.storeGenerator === 'function'
+        ? this.database.storeGenerator(this.model.$entity())
         : useDataStore(this.model.$entity())
     const store = newStore()
 

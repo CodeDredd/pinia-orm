@@ -18,7 +18,6 @@ import { Repository } from '../repository/Repository'
 import { Interpreter } from '../interpreter/Interpreter'
 import { Query } from '../query/Query'
 import { Connection } from '../connection/Connection'
-import { mutations, Mutations } from '../modules/Mutations'
 
 export interface VuexORMPlugin {
   install(
@@ -53,7 +52,6 @@ export interface VuexORMPluginComponents {
   Interpreter: typeof Interpreter
   Query: typeof Query
   Connection: typeof Connection
-  mutations: Mutations<any>
 }
 
 /**
@@ -86,7 +84,6 @@ export const components: VuexORMPluginComponents = {
   Interpreter,
   Query,
   Connection,
-  mutations,
 }
 
 /**

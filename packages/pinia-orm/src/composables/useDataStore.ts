@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
 import { useStoreActions } from './useStoreActions'
 
-export const useDataStore = (id: string) =>
-  defineStore(id, {
+export function useDataStore(id: string) {
+  return defineStore(id, {
     state: () => ({ data: {} }),
     actions: useStoreActions(),
   })
+}
