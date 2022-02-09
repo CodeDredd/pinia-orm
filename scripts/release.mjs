@@ -321,7 +321,7 @@ async function getChangedPackages() {
     ['describe', '--tags', '--abbrev=0'],
     { stdio: 'pipe' }
   )
-  const folders = await globby(join(__dirname, '../packages/*'), {
+  const folders = await globby(join(__dirname, '../{packages,playgrounds}/*'), {
     onlyFiles: false,
   })
 
