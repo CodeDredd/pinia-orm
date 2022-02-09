@@ -1,3 +1,9 @@
+## [0.9.1](https://github.com/storm-tail/pinia-orm/compare/pinia-orm@0.9.0...pinia-orm@0.9.1) (2022-02-09)
+
+### Bug Fixes
+
+- **pinia-orm:** clean up & update module build for better import ([c301807](https://github.com/storm-tail/pinia-orm/commit/c301807e468dd2fa4c3052a32905896caf669eb3))
+
 # [0.9.0](https://github.com/storm-tail/pinia-orm/compare/pinia-orm@0.8.4...pinia-orm@0.9.0) (2022-02-03)
 
 ### Bug Fixes
