@@ -11,7 +11,7 @@ const { pinia } = useNuxtApp()
 //
 // console.log(User)
 const userRepo = useRepo(User)
-const users = await userRepo.save([{
+const users = userRepo.save([{
   id: 1,
   email: 'test@test.de',
   name: 'test',

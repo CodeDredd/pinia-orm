@@ -3512,7 +3512,9 @@ __metadata:
     pinia-orm: ~0.9.0
     prettier: ^2.5.1
   peerDependencies:
+    "@pinia/nuxt": ^0.1.8
     pinia: ^2.0.11
+    pinia-orm: ^0.9.0
   languageName: unknown
   linkType: soft
 
