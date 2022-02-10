@@ -38,8 +38,8 @@ Add `pinia-orm` dependency to your project:
   ```js
   import { createPinia } from 'pinia'
   import PiniaORM from 'pinia-orm'
-  
-  const pinia = createPinia(PiniaORM.install())
+
+  const pinia = createPinia().use(PiniaORM.install())
   ```
 
   </code-block>
@@ -50,7 +50,7 @@ Add `pinia-orm` dependency to your project:
   import PiniaORM from 'pinia-orm'
 
   Vue.use(PiniaVuePlugin)
-  const pinia = createPinia(PiniaORM.install())
+  const pinia = createPinia().use(PiniaORM.install())
   ```
 
   </code-block>
@@ -86,7 +86,7 @@ Add `pinia-orm` dependency to your project:
 
   ```ts{}[nuxt.config.ts]
   import { defineNuxtConfig } from 'nuxt3'
-  
+
   export default defineNuxtConfig({
     buildModules: ['@pinia/nuxt'],
     modules: ['@pinia-orm/nuxt'],
@@ -102,7 +102,7 @@ Add `pinia-orm` dependency to your project:
   </code-block>
   <code-block label="Nuxt2">
 
-  ```js{}[nuxt.config.js]  
+  ```js{}[nuxt.config.js]
   export default {
     buildModules: [
     '@nuxtjs/composition-api/module',
