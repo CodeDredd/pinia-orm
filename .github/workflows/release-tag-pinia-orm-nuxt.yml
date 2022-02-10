@@ -1,9 +1,9 @@
 on:
   push:
     tags:
-      - 'pinia-orm@*' # Push events to matching v*, i.e. v1.0, v20.15.10#
+      - '@pinia-orm/nuxt@*' # Push events to matching v*, i.e. v1.0, v20.15.10#
 
-name: Create Release Pinia ORM
+name: Create Release Pinia ORM Nuxt
 
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           body: |
-            Please refer to [CHANGELOG.md](https://github.com/codedredd/pinia-orm/blob/master/packages/pinia-orm/CHANGELOG.md) for details.
+            Please refer to [CHANGELOG.md](https://github.com/codedredd/pinia-orm/blob/master/packages/nuxt/CHANGELOG.md) for details.
