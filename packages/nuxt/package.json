@@ -3,6 +3,14 @@
   "version": "1.0.8",
   "license": "MIT",
   "type": "module",
+  "keywords": [
+    "vue",
+    "pinia",
+    "pinia-plugin",
+    "pinia-orm",
+    "orm",
+    "nuxt"
+  ],
   "exports": {
     ".": {
       "import": "./dist/module.mjs",
