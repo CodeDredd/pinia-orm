@@ -5,7 +5,7 @@ position: 1
 category: Getting started
 ---
 
-Check the [Vuex ORM Next Documentation](https://nuxtjs.org/api/configuration-modules#the-modules-property) for more information right now about repository functions.
+Check the [Vuex ORM Next Documentation](https://next.vuex-orm.org/) for more information right now about repository functions.
 
 ## Concept
 
