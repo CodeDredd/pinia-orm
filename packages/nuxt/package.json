@@ -1,8 +1,14 @@
 {
   "name": "@pinia-orm/nuxt",
+  "description": "Nuxt module for pinia-orm",
   "version": "1.0.8",
   "license": "MIT",
   "type": "module",
+  "author": {
+    "name": "Gregor Becker",
+    "email": "gregor@codedredd.de"
+  },
+  "funding": "https://github.com/sponsors/codedredd",
   "keywords": [
     "vue",
     "pinia",
@@ -49,5 +55,13 @@
     "nuxt3": "latest",
     "pinia-orm": "~0.9.0",
     "prettier": "^2.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeDredd/pinia-orm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeDredd/pinia-orm/issues"
+  },
+  "homepage": "https://github.com/CodeDredd/pinia-orm/tree/v2/packages/nuxt#readme"
 }

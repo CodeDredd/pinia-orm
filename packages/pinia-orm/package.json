@@ -9,9 +9,12 @@
     "pinia-orm",
     "orm"
   ],
-  "repository": "https://github.com/storm-tail/pinia-orm.git",
   "license": "MIT",
-  "author": "Gregor Becker",
+  "author": {
+    "name": "Gregor Becker",
+    "email": "gregor@codedredd.de"
+  },
+  "funding": "https://github.com/sponsors/codedredd",
   "type": "module",
   "main": "dist/index.cjs",
   "jsdelivr": "dist/index.global.js",
@@ -81,5 +84,13 @@
   ],
   "volta": {
     "node": "16.13.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeDredd/pinia-orm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeDredd/pinia-orm/issues"
+  },
+  "homepage": "https://github.com/CodeDredd/pinia-orm#readme"
 }
