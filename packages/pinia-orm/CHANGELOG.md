@@ -1,3 +1,5 @@
+## [0.9.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.9.1...pinia-orm@0.9.2) (2022-02-14)
+
 ## [0.9.1](https://github.com/storm-tail/pinia-orm/compare/pinia-orm@0.9.0...pinia-orm@0.9.1) (2022-02-09)
 
 ### Bug Fixes
