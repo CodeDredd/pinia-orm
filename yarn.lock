@@ -3509,12 +3509,12 @@ __metadata:
     "@types/prettier": ^2
     eslint: latest
     nuxt3: latest
-    pinia-orm: ~0.9.0
+    pinia-orm: ~0.9.2
     prettier: ^2.5.1
   peerDependencies:
     "@pinia/nuxt": ^0.1.8
     pinia: ^2.0.11
-    pinia-orm: ^0.9.0
+    pinia-orm: ~0.9.2
   languageName: unknown
   linkType: soft
 
@@ -16413,7 +16413,7 @@ nuxt3@latest:
   languageName: node
   linkType: hard
 
-"pinia-orm@^0.9.0, pinia-orm@workspace:packages/pinia-orm, pinia-orm@~0.9.0":
+"pinia-orm@^0.9.0, pinia-orm@workspace:packages/pinia-orm, pinia-orm@~0.9.2":
   version: 0.0.0-use.local
   resolution: "pinia-orm@workspace:packages/pinia-orm"
   dependencies:
