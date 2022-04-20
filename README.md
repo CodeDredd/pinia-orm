@@ -22,7 +22,27 @@
 - [One-time donation via PayPal](https://paypal.me/dredd1984)
 
 <!--sponsors start-->
+<h3 align="center">Platinum Sponsors</h3>
+<p align="center">
+</p>
 
+<h4 align="center">Gold Sponsors</h4>
+<p align="center">
+</p>
+
+<h4 align="center">Silver Sponsors</h4>
+<p align="center">
+</p>
+
+<h4 align="center">Bronze Sponsors</h4>
+<p align="center">
+    <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source srcset="https://avatars.githubusercontent.com/u/83905274?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Sven Hue" />
+      <img src="https://avatars.githubusercontent.com/u/83905274?v=4" height="26px" alt="Sven Hue" />
+    </picture>
+  </a>
+</p>
 
 <!--sponsors end-->
 
