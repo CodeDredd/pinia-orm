@@ -27,7 +27,10 @@ const users = userRepo.save([{
   ]
 }])
 onMounted(() => {
+  console.log('ToDos')
   console.log(userRepo.with('todos').get())
+  userRepo.flush();
+  console.log(userRepo.all());
 })
 
 // console.log(users)

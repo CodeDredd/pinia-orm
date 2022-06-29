@@ -40,5 +40,8 @@ export function useStoreActions(): StoreActions<any> {
 
       this.data = data
     },
+    flush(): void {
+      this.data = []
+    },
   }
 }
