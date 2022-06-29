@@ -36,6 +36,16 @@
 
 <h4 align="center">Bronze Sponsors</h4>
 <p align="center">
+    <a href="https://github.com/tintin10q" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source srcset="https://avatars.githubusercontent.com/u/24190849?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="tintin10q" />
+      <img src="https://avatars.githubusercontent.com/u/24190849?v=4" height="26px" alt="tintin10q" />
+    </picture>
+  </a>
+</p>
+
+<h4 align="center">One time payment</h4>
+<p align="center">
     <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
     <picture>
       <source srcset="https://avatars.githubusercontent.com/u/83905274?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Sven Hue" />
