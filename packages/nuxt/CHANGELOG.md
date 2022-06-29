@@ -1,3 +1,9 @@
+## [1.0.10](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.9...@pinia-orm/nuxt@1.0.10) (2022-06-29)
+
+### Bug Fixes
+
+- **#12:** flush is not working ([c71e2c8](https://github.com/CodeDredd/pinia-orm/commit/c71e2c8bd9b75fccee8db13cf0433e3173356e2b)), closes [#12](https://github.com/CodeDredd/pinia-orm/issues/12)
+
 ## [1.0.9](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.8...@pinia-orm/nuxt@1.0.9) (2022-02-14)
 
 ## [1.0.8](https://github.com/codedredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.7...@pinia-orm/nuxt@1.0.8) (2022-02-09)
