@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 import PiniaOrm from '../../nuxt'
 
 export default defineNuxtConfig({
