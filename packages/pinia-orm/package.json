@@ -15,7 +15,6 @@
     "email": "gregor@codedredd.de"
   },
   "funding": "https://github.com/sponsors/codedredd",
-  "type": "module",
   "main": "dist/index.cjs",
   "jsdelivr": "dist/index.global.js",
   "unpkg": "dist/index.global.js",
@@ -23,7 +22,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
+      "require": "./dist/index.js",
       "import": "./dist/index.mjs",
       "browser": "./dist/index.mjs"
     },
@@ -35,7 +34,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs,iife",
+    "build": "rimraf dist && tsup src/index.ts --dts --format cjs,esm,iife",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l pinia-orm -r 1",
     "coverage": "vue-demi-switch 3 && vitest --run --coverage",
     "size": "size-limit",
@@ -47,12 +46,10 @@
     "test:3": "vue-demi-switch 3 && vitest --run",
     "test": "pnpm run test:2 && pnpm run test:3"
   },
-  "peerDependencies": {
-    "pinia": "^2.0.11"
-  },
   "dependencies": {
     "@types/uuid": "^8.3.3",
     "normalizr": "^3.6.1",
+    "pinia": "^2.0.14",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -65,10 +62,11 @@
     "core-js": "^3.19.1",
     "eslint": "8.7.0",
     "happy-dom": "^2.30.1",
-    "pinia": "^2.0.10",
+    "pinia": "^2.0.14",
     "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
     "size-limit": "^7.0.5",
-    "tsup": "^5.11.11",
+    "tsup": "^6.1.2",
     "typescript": "^4.5.5",
     "vite": "^2.7.13",
     "vitest": "^0.2.4",
