@@ -12,9 +12,9 @@ jobs:
   on_quality_checks:
     name: Generate & Upload
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 18 ]
+#    strategy:
+#      matrix:
+#        node-version: [ 18 ]
 
     steps:
       - name: Checkout
@@ -22,14 +22,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache yarn modules
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-
+#      - name: Cache yarn modules
+#        uses: actions/cache@v2
+#        id: yarn-cache
+#        with:
+#          path: node_modules
+#          key: ${{ runner.os }}-${{ hashFiles('**/yarn-lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-
 
       - name: Install dependencies
         uses: borales/actions-yarn@v3.0.0
