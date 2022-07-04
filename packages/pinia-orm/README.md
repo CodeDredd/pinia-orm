@@ -1,14 +1,19 @@
 <p align="center">
   <a href="https://github.com/storm-tail/pinia-orm" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://pinia-orm.codedredd.de/logo_pinia_orm.png" alt="Pinia ORM logo">
+    <img width="120" src="https://pinia-orm.codedredd.de/logo_pinia_orm.png" alt="Pinia ORM logo">
   </a>
 </p>
 
-# pinia-orm
+<p align="center">
+  <i>Artwork from <a href="https://pinia.vuejs.org/">Pinia</a></i>
+</p>
+
+<h1 align="center">pinia-orm</h1>
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
+[![Coverage][code-coverage-src]][code-coverage-href]
 [![License][license-src]][license-href]
 
 > Intuitive, type safe and flexible ORM for Pinia based on [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
@@ -28,10 +33,12 @@
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/pinia-orm/latest.svg
+[code-coverage-src]: https://img.shields.io/codecov/c/github/CodeDredd/pinia-orm?logo=Codecov&logoColor=white&token=BYLAJJOOLS
+[code-coverage-href]: https://app.codecov.io/gh/CodeDredd/pinia-orm
 [npm-version-href]: https://npmjs.com/package/pinia-orm
 [npm-downloads-src]: https://img.shields.io/npm/dm/pinia-orm.svg
 [npm-downloads-href]: https://npmjs.com/package/pinia-orm
-[github-actions-ci-src]: https://github.com/codedredd/pinia-orm/actions/workflows/build.yml/badge.svg
-[github-actions-ci-href]: https://github.com/codedredd/pinia-orm/actions?query=workflow%3Abuild
+[github-actions-ci-src]: https://github.com/codedredd/pinia-orm/actions/workflows/ci.yml/badge.svg
+[github-actions-ci-href]: https://github.com/codedredd/pinia-orm/actions?query=workflow%3Aci
 [license-src]: https://img.shields.io/npm/l/pinia-orm.svg
 [license-href]: https://npmjs.com/package/pinia-orm
