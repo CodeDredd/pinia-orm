@@ -1,6 +1,12 @@
-name: Upload quality checks
+name: Testing & Coverage
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - master
 
 jobs:
   on_quality_checks:
