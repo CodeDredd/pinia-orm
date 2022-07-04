@@ -12,6 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
 
@@ -31,6 +39,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
 
@@ -40,7 +56,7 @@ jobs:
           node-version: 16
           cache: 'pnpm'
 
-      - run: pnpm install
+      - run: pnpm i
 
       - name: Run eslint
         run: pnpm run test:coverage
