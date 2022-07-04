@@ -1,4 +1,4 @@
-import { Pinia, StoreDefinition } from 'pinia'
+import { Pinia, Store, StoreDefinition } from 'pinia'
 import { schema as Normalizr } from 'normalizr'
 import { Schema, Schemas } from '../schema/Schema'
 import { Model } from '../model/Model'
@@ -10,7 +10,7 @@ export class Database {
    */
   storeGenerator!: (id: string) => StoreDefinition
 
-  store: Pinia | null | undefined = undefined
+  store: Pinia | Store | null | undefined = undefined
 
   /**
    * The name of Vuex Module namespace. Vuex ORM will create Vuex Modules from
@@ -43,7 +43,7 @@ export class Database {
     return this
   }
 
-  setStore(store: Pinia): this {
+  setStore(store: Pinia | Store): this {
     this.store = store
 
     return this

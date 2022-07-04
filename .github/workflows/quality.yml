@@ -1,0 +1,44 @@
+name: Upload quality checks
+
+on: workflow_dispatch
+
+jobs:
+  on_quality_checks:
+    name: Upload quality checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache yarn modules
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+
+      - name: Generate coverage
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: test:coverage
+
+      - name: Publish coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

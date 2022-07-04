@@ -21,12 +21,12 @@ export class Events<T> {
   /**
    * The registry for listeners.
    */
-  protected listeners: { [K in keyof T]?: EventListener<T, K>[] }
+  listeners: { [K in keyof T]?: EventListener<T, K>[] }
 
   /**
    * The registry for subscribers.
    */
-  protected subscribers: EventSubscriber<T>[]
+  subscribers: EventSubscriber<T>[]
 
   /**
    * Creates an Events instance.
@@ -125,7 +125,7 @@ export class Events<T> {
   /**
    * Remove all listeners for a given event.
    */
-  protected removeAllListeners<K extends keyof T>(event: K): void {
+  removeAllListeners<K extends keyof T>(event: K): void {
     event && this.listeners[event] && delete this.listeners[event]
   }
 }

@@ -1,20 +1,20 @@
-import { defineConfig } from 'vite'
+import path from 'path'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-  define: {
-    __VUE_OPTIONS_API__: 'true',
-    __VUE_PROD_DEVTOOLS__: 'false',
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   test: {
     environment: 'happy-dom',
     setupFiles: ['./tests/setup.ts'],
-    silent: true,
+    // silent: true,
     coverage: {
       reporter: ['lcov', 'text'],
-      include: ['src/index.ts'],
-    },
-    deps: {
-      inline: ['vue2', '@vue/composition-api', 'vue-demi', 'pinia'],
+      include: ['src/**/*.ts'],
+      exclude: ['src/index.ts', 'src/index.cjs.ts'],
     },
   },
 })

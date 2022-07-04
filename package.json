@@ -17,7 +17,7 @@
     "lint": "prettier -c --parser typescript \"packages/*/{src,__tests__,e2e}/**/*.[jt]s?(x)\"",
     "lint:fix": "yarn run lint --write",
     "test": "yarn run test:types && yarn run test:jest && lerna run packages/pinia-orm/test && yarn run build && yarn run build:dts && yarn test:dts",
-    "test:jest": "jest --coverage",
+    "test:coverage": "lerna run coverage --scope pinia-orm",
     "test:types": "tsc --build ./tsconfig.json",
     "test:dts": "lerna run test:dts",
     "docs:api": "lerna run docs:api --scope @pinia/docs"

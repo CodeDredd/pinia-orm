@@ -5,13 +5,17 @@
     "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "moduleResolution": "Node",
+    "experimentalDecorators": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
     "target": "es2017",
-    "types": ["@types/uuid", "@types/node"]
+    "types": ["@types/uuid", "@types/node", "vitest/globals"],
+    "paths": {
+      "@/*": ["./src/*", "./dist/*"]
+    }
   },
   "exclude": [
     "**/dist",

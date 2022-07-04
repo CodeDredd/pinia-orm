@@ -4035,7 +4035,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:*, @types/chai@npm:^4.3.0":
+"@types/chai@npm:*, @types/chai@npm:^4.3.1":
   version: 4.3.1
   resolution: "@types/chai@npm:4.3.1"
   checksum: 2ee246b76c469cd620a7a1876a73bc597074361b67d547b4bd96a0c1adb43597ede2d8589ab626192e14349d83cbb646cc11e2c179eeeb43ff11596de94d82c4
@@ -4776,12 +4776,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/ui@npm:^0.2.4":
-  version: 0.2.8
-  resolution: "@vitest/ui@npm:0.2.8"
+"@vitest/ui@npm:^0.16.0":
+  version: 0.16.0
+  resolution: "@vitest/ui@npm:0.16.0"
   dependencies:
     sirv: ^2.0.2
-  checksum: bd77626cacb4f6d957b759734cf5a3797c8f7b21eeaddb8616c54cfeb1eed57c4f428f4577a230a8c63931c10ecb33f73f0082cab99cc3398d7c080cdad35fe7
+  checksum: 1080b74d9f9bd24ef84a4087853f628ca5bdea4e88362a661f7a628db20dd48ad74b30cd25cc64205731bc6127563ef35fd480ffaaa52026e68696cc8b11b48c
   languageName: node
   linkType: hard
 
@@ -16474,7 +16474,7 @@ __metadata:
     "@size-limit/preset-small-lib": ^7.0.5
     "@types/prettier": ^2
     "@types/uuid": ^8.3.3
-    "@vitest/ui": ^0.2.4
+    "@vitest/ui": ^0.16.0
     "@vue/composition-api": ^1.4.5
     c8: ^7.11.0
     core-js: ^3.19.1
@@ -16488,11 +16488,11 @@ __metadata:
     tsup: ^6.1.2
     typescript: ^4.5.5
     uuid: ^8.3.2
-    vite: ^2.7.13
-    vitest: ^0.2.4
-    vue: ^3.2.26
-    vue-demi: ^0.12.1
-    vue2: "npm:vue@2"
+    vite: ^2.9.13
+    vitest: ^0.17.0
+    vue: ^3.2.37
+    vue-demi: ^0.13.1
+    vue2: "npm:vue@^2.6.14"
   languageName: unknown
   linkType: soft
 
@@ -18583,7 +18583,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.10.1, resolve@npm:^1.14.2, resolve@npm:^1.17.0, resolve@npm:^1.19.0, resolve@npm:^1.2.0, resolve@npm:^1.20.0, resolve@npm:^1.22.0":
+"resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.10.1, resolve@npm:^1.14.2, resolve@npm:^1.17.0, resolve@npm:^1.19.0, resolve@npm:^1.2.0, resolve@npm:^1.20.0, resolve@npm:^1.22.0, resolve@npm:^1.22.1":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
   dependencies:
@@ -18596,7 +18596,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.2.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.2.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
   version: 1.22.1
   resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
   dependencies:
@@ -20511,17 +20511,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinypool@npm:^0.1.1":
-  version: 0.1.3
-  resolution: "tinypool@npm:0.1.3"
-  checksum: 13ac687a23c03b02c2bf0b9711a3bb191d2c37941775a001b9617aac541c11ba144fb08de74f3f9723ec2649410f5d4fa7f0398fedd462b39fe3b30d19615ad8
+"tinypool@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "tinypool@npm:0.2.1"
+  checksum: 677a4386df8986924e8361f84a1f14484add77883de5bd6acd5e55cedd892cb9cf81c76e11fa7480113198485d13c9a8fd0c7b4b474b440797adbf93ba1a36eb
   languageName: node
   linkType: hard
 
-"tinyspy@npm:^0.2.10":
-  version: 0.2.10
-  resolution: "tinyspy@npm:0.2.10"
-  checksum: 7c4d89f603f5e12b335f5a97811b11712a6cc44565c2d1c1d76ccf6a0cb9c2b0ca8b7eb84f6cdabd0a49149fb9dababaefadab43bec6d8252dfc797a205f48bd
+"tinyspy@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "tinyspy@npm:0.3.3"
+  checksum: 1beb8f04c100d9ac769ff85266594f07d6f08f41cfb95c4bef9da3e59988b42e8d4e66c2ec455d3ecad80027347920e87d7a7098c5a2a28637f9fee25e11a8f1
   languageName: node
   linkType: hard
 
@@ -21700,7 +21700,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:>=2.7.13, vite@npm:^2.7.13, vite@npm:^2.9.12, vite@npm:^2.9.9":
+"vite@npm:^2.9.12 || ^3.0.0-0":
+  version: 3.0.0-beta.5
+  resolution: "vite@npm:3.0.0-beta.5"
+  dependencies:
+    esbuild: ^0.14.47
+    fsevents: ~2.3.2
+    postcss: ^8.4.14
+    resolve: ^1.22.1
+    rollup: ^2.75.6
+  peerDependencies:
+    less: "*"
+    sass: "*"
+    stylus: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    less:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: 93a19bae089007236813e2ee95f9fdf342b8abc76a3c39ef2fd08f2bdbe2801bfb3473c7c1812253aad04fd2bda198b5e77bf24b4fb525d72b0003ee15fb4d42
+  languageName: node
+  linkType: hard
+
+"vite@npm:^2.9.12, vite@npm:^2.9.13, vite@npm:^2.9.9":
   version: 2.9.13
   resolution: "vite@npm:2.9.13"
   dependencies:
@@ -21729,23 +21761,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^0.2.4":
-  version: 0.2.8
-  resolution: "vitest@npm:0.2.8"
+"vitest@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "vitest@npm:0.17.0"
   dependencies:
-    "@types/chai": ^4.3.0
+    "@types/chai": ^4.3.1
     "@types/chai-subset": ^1.3.3
+    "@types/node": "*"
     chai: ^4.3.6
+    debug: ^4.3.4
     local-pkg: ^0.4.1
-    tinypool: ^0.1.1
-    tinyspy: ^0.2.10
-    vite: ">=2.7.13"
+    tinypool: ^0.2.1
+    tinyspy: ^0.3.3
+    vite: ^2.9.12 || ^3.0.0-0
   peerDependencies:
+    "@edge-runtime/vm": "*"
     "@vitest/ui": "*"
     c8: "*"
     happy-dom: "*"
     jsdom: "*"
   peerDependenciesMeta:
+    "@edge-runtime/vm":
+      optional: true
     "@vitest/ui":
       optional: true
     c8:
@@ -21756,7 +21793,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: d39d26d2057dd50058d641bd660df13726a1bc80423f9d15c3c1fe96670ea368787b2dcc63ed492362bd205e9f44e1ca25edff14f59986eca615ebadbf72a9e0
+  checksum: 1f664f82551f876a2b2b30deba0f9d6d8f7e4d70cbe96debca1a810d1c8a5b68b8a446495d37c14e5e9e21d7bde13e96a6eef7c8e7c77c502e0058f59be192b4
   languageName: node
   linkType: hard
 
@@ -21857,7 +21894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-demi@npm:*":
+"vue-demi@npm:*, vue-demi@npm:^0.13.1":
   version: 0.13.1
   resolution: "vue-demi@npm:0.13.1"
   peerDependencies:
@@ -21870,22 +21907,6 @@ __metadata:
     vue-demi-fix: bin/vue-demi-fix.js
     vue-demi-switch: bin/vue-demi-switch.js
   checksum: d26b0602587f4dbd81f975f8f2de39910239805f0f2d72cafed0c7349c512f5363daf57e2761ba6a7ac66331a4cfa3dc857d6f7f62c57adbae85752d270118c8
-  languageName: node
-  linkType: hard
-
-"vue-demi@npm:^0.12.1":
-  version: 0.12.5
-  resolution: "vue-demi@npm:0.12.5"
-  peerDependencies:
-    "@vue/composition-api": ^1.0.0-rc.1
-    vue: ^3.0.0-0 || ^2.6.0
-  peerDependenciesMeta:
-    "@vue/composition-api":
-      optional: true
-  bin:
-    vue-demi-fix: bin/vue-demi-fix.js
-    vue-demi-switch: bin/vue-demi-switch.js
-  checksum: 40a0470caea8312e0d4df2541f141c36c768dfc7f2f7d41f0f28ba29df11d3119e2f09b94c815f13b7c7f3f45dbc247b0e9e0c02a1800e2823e241c1d771e39b
   languageName: node
   linkType: hard
 
@@ -22011,14 +22032,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue2@npm:vue@2, vue@npm:^2.6.12, vue@npm:^2.6.14":
+"vue2@npm:vue@^2.6.14, vue@npm:^2.6.12, vue@npm:^2.6.14":
   version: 2.6.14
   resolution: "vue@npm:2.6.14"
   checksum: 23524a1bdca094d62cb3491a46317eed75184b5d61d28fa846ea5d2b241c1cc7084fc67ee259d47a50a6d0bbc33ecaceb7bb52bff81312fe7da07263f3419942
   languageName: node
   linkType: hard
 
-"vue@npm:^3.2.26, vue@npm:^3.2.37":
+"vue@npm:^3.2.37":
   version: 3.2.37
   resolution: "vue@npm:3.2.37"
   dependencies:
