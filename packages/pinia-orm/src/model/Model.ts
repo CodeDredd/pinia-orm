@@ -1,3 +1,4 @@
+import { DefineStoreOptions } from 'pinia'
 import { isNullish, isArray, assert } from '../support/Utils'
 import { Element, Item, Collection } from '../data/Data'
 import { Attribute } from './attributes/Attribute'
@@ -49,6 +50,8 @@ export class Model {
    * property when registering models to the database.
    */
   protected static registries: ModelRegistries = {}
+
+  protected static piniaOptions: any = {}
 
   /**
    * The array of booted models.
@@ -293,6 +296,13 @@ export class Model {
    */
   $entity(): string {
     return this.$self().entity
+  }
+
+  /**
+   * Get the pinia options for this model.
+   */
+  $piniaOptions(): Record<string, any> {
+    return this.$self().piniaOptions
   }
 
   /**
