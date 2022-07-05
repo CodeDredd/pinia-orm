@@ -181,8 +181,8 @@ async function main() {
 
   step('\nGenerating changelogs...')
   for (const pkg of pkgWithVersions) {
-    await runIfNotDry(`yarn`, ['changelog'], { cwd: pkg.path })
-    await runIfNotDry(`yarn`, ['prettier', '--write', 'CHANGELOG.md'], {
+    await runIfNotDry(`pnpm`, ['changelog'], { cwd: pkg.path })
+    await runIfNotDry(`pnpm`, ['prettier', '--write', 'CHANGELOG.md'], {
       cwd: pkg.path,
     })
     await fs.copyFile(
@@ -203,8 +203,8 @@ async function main() {
 
   step('\nBuilding all packages...')
   if (!skipBuild && !isDryRun) {
-    await run('yarn', ['build'])
-    await run('yarn', ['build:dts'])
+    await run('pnpm', ['build'])
+    await run('pnpm', ['build:dts'])
   } else {
     console.log(`(skipped)`)
   }
@@ -286,9 +286,8 @@ async function publishPackage(pkg) {
 
   try {
     await runIfNotDry(
-      'yarn',
+      'pnpm',
       [
-        'npm',
         'publish',
         '--access',
         'public',

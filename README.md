@@ -49,7 +49,7 @@
   </a>
 </p>
 
-<h4 align="center">One time payment</h4>
+<h4 align="center">Lovely Sponsors</h4>
 <p align="center">
     <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
     <picture>
