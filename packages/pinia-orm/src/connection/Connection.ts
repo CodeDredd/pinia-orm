@@ -37,7 +37,7 @@ export class Connection {
     const newStore =
       typeof this.database.storeGenerator === 'function'
         ? this.database.storeGenerator(this.model.$entity())
-        : useDataStore(this.model.$entity())
+        : useDataStore(this.model.$entity(), this.model.$piniaOptions())
     const store = newStore(this.database.store)
     if (name && typeof store[name] === 'function') {
       store[name](payload)
@@ -52,7 +52,7 @@ export class Connection {
     const newStore =
       typeof this.database.storeGenerator === 'function'
         ? this.database.storeGenerator(this.model.$entity())
-        : useDataStore(this.model.$entity())
+        : useDataStore(this.model.$entity(), this.model.$piniaOptions())
     const store = newStore()
 
     return store.$state.data

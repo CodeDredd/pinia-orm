@@ -8,6 +8,7 @@ import {
   assertState,
   fillState,
 } from '../../helpers'
+import { getActivePinia, setActivePinia } from 'pinia'
 
 describe('feature/repository/save', () => {
   class User extends Model {
@@ -16,6 +17,10 @@ describe('feature/repository/save', () => {
     @Num(0) id!: number
     @Str('') name!: string
     @Num(0) age!: number
+
+    static piniaOptions = {
+      persist: true,
+    }
   }
 
   it('does nothing when passing in an empty array', () => {
@@ -26,8 +31,12 @@ describe('feature/repository/save', () => {
     assertState({})
   })
 
-  it('saves a model to the store', () => {
+  it('saves a model to the store and check pinia options', () => {
     const userRepo = useRepo(User)
+    const pinia = getActivePinia()?.use(({ options }) => {
+      expect(options).toHaveProperty('persist', true)
+    })
+    setActivePinia(pinia)
 
     userRepo.save({ id: 1, name: 'John Doe', age: 30 })
 
