@@ -1,40 +1,14 @@
 <template>
-  <div>
-    Nuxt module playground!
-  </div>
+  <button @click="todo.save({text:'Fix TS support', name:'TS Todo'})">Add todo</button>
+  <button @click="todo.flush()">Clear Todos</button>
+  <span>{{all_todo_text}}</span>
 </template>
 
 <script setup lang="ts">
-import User from "./models/User"
 import { useRepo } from 'pinia-orm'
-const { pinia } = useNuxtApp()
-//
-// console.log(User)
-const userRepo = useRepo(User)
-const users = userRepo.save([{
-  id: 1,
-  email: 'test@test.de',
-  name: 'test',
-  todos: [
-    {
-      id: 1,
-      title: 'Hoho'
-    },
-    {
-      id: 2,
-      title: 'Blub'
-    }
-  ]
-}])
-onMounted(() => {
-  console.log('ToDos')
-  console.log(userRepo.with('todos').get())
-  userRepo.flush();
-  console.log(userRepo.all());
-})
+import Todo from "./models/ToDo";
 
-// console.log(users)
-
-// console.log('pinia', pinia.state.value)
+const todo = useRepo(Todo);
+const all_todo_text = computed(() => todo.all().map((t: Todo) => t.text));
 
 </script>

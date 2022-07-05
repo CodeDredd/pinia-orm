@@ -1,16 +1,21 @@
-import { Model } from 'pinia-orm'
+import { Model, Uid, Str } from 'pinia-orm'
 
-export default class ToDo extends Model {
-  static entity = 'todos'
+export default class Todo extends Model {
+  static entity = 'Todo'
 
-  static fields() {
-    return {
-      id: this.uid(),
-      title: this.string(''),
-      user_id: this.attr(null).nullable(),
-    }
-  }
+  // static fields() {
+  //   return {
+  //     id: this.uid(),
+  //     text: this.string(""),
+  //     name: this.string(""),
+  //   };
+  // }
+  //
+  // id!: string;
+  // text!: number;
+  // name!: number;
 
-  id!: number
-  title!: string
+  @Uid() id!: string
+  @Str('Todo Text') text!: string
+  @Str('Todo Name') name!: string
 }

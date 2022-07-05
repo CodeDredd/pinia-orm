@@ -38,8 +38,6 @@
     "execa": "^6.0.0",
     "expect": "^27.4.2",
     "globby": "^12.0.2",
-    "jest": "^27.4.4",
-    "jest-mock-warn": "^1.1.0",
     "lerna": "^4.0.0",
     "lint-staged": "^12.1.2",
     "lodash.kebabcase": "^4.1.1",
