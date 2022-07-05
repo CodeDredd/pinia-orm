@@ -1,7 +1,7 @@
 {
   "name": "@pinia-orm/nuxt",
   "description": "Nuxt module for pinia-orm",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "license": "MIT",
   "type": "module",
   "author": {
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.4",
-    "pinia-orm": "~0.9.3"
+    "pinia-orm": "~0.10.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
@@ -56,7 +56,9 @@
     "prettier": "^2.5.1",
     "std-env": "^3.1.1"
   },
-  "overrides": { "ufo": "^0.8.4" },
+  "overrides": {
+    "ufo": "^0.8.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodeDredd/pinia-orm.git"
@@ -66,7 +68,9 @@
   },
   "homepage": "https://github.com/CodeDredd/pinia-orm/tree/v2/packages/nuxt#readme",
   "pnpm": {
-    "overrides": { "ufo": "^0.8.4" },
+    "overrides": {
+      "ufo": "^0.8.4"
+    },
     "peerDependencyRules": {
       "allowedVersions": {
         "vue": "3"
