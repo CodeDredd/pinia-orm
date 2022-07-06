@@ -1,9 +1,6 @@
 import { Element, Elements } from '../data/Data'
 import { Database } from '../database/Database'
 import { Model } from '../model/Model'
-import { createPinia, defineStore, getActivePinia, setActivePinia } from 'pinia'
-import { useStoreActions } from '../composables/useStoreActions'
-import { getCurrentInstance, isVue3 } from 'vue-demi'
 import { useDataStore } from '../composables/useDataStore'
 
 export interface ConnectionNamespace {
