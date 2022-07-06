@@ -31,7 +31,7 @@
     "enquirer": "^2.3.6",
     "execa": "^6.1.0",
     "expect": "^27.5.1",
-    "globby": "^12.2.0",
+    "globby": "^13.1.2",
     "lerna": "^5.1.7",
     "lint-staged": "^12.5.0",
     "lodash.kebabcase": "^4.1.1",
