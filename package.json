@@ -33,7 +33,7 @@
     "expect": "^27.4.2",
     "globby": "^12.2.0",
     "lerna": "^4.0.0",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.5.0",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.6",
     "p-series": "^3.0.0",
