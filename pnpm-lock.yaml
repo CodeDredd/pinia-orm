@@ -90,7 +90,7 @@ importers:
       c8: ^7.11.3
       core-js: ^3.19.1
       eslint: ^8.19.0
-      happy-dom: ^2.30.1
+      happy-dom: ^2.55.0
       normalizr: ^3.6.2
       pinia: ^2.0.14
       prettier: ^2.5.1
@@ -1991,7 +1991,7 @@ packages:
   /@types/concat-stream/1.6.1:
     resolution: {integrity: sha512-eHE4cQPoj6ngxBZMvVf6Hw7Mh4jMW4U9lpGmS5GBPB9RYxlFg+CHaVN7ErNY4W9XfLIEn20b4VDYaIrbq0q4uA==}
     dependencies:
-      '@types/node': 8.10.66
+      '@types/node': 18.0.1
     dev: true
 
   /@types/estree/0.0.39:
@@ -2005,7 +2005,7 @@ packages:
   /@types/form-data/0.0.33:
     resolution: {integrity: sha512-8BSvG1kGm83cyJITQMZSulnl6QV8jqAGreJsc5tPu1Jq0vTSOiY/k24Wx82JRpWwZSqrala6sd5rWi6aNXvqcw==}
     dependencies:
-      '@types/node': 8.10.66
+      '@types/node': 18.0.1
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:
