@@ -21,7 +21,7 @@ importers:
       lodash.kebabcase: ^4.1.1
       minimist: ^1.2.6
       p-series: ^3.0.0
-      pascalcase: ^1.0.0
+      pascalcase: ^2.0.0
       prettier: ^2.7.1
       rimraf: ^3.0.2
       semver: ^7.3.7
@@ -41,7 +41,7 @@ importers:
       lodash.kebabcase: 4.1.1
       minimist: 1.2.6
       p-series: 3.0.0
-      pascalcase: 1.0.0
+      pascalcase: 2.0.0
       prettier: 2.7.1
       rimraf: 3.0.2
       semver: 7.3.7
@@ -7805,9 +7805,11 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /pascalcase/1.0.0:
-    resolution: {integrity: sha512-BSExi0rRnCHReJys6NocaK+cfTXNinAegfWBvr0JD3hiaEG7Nuc7r0CIdOJunXrs8gU/sbHQ9dxVAtiVQisjmg==}
-    engines: {node: '>=8'}
+  /pascalcase/2.0.0:
+    resolution: {integrity: sha512-DHpENy5Qm/FaX+x3iBLoMLG/XHNCTgL+yErm1TwuVaj6u4fiOSkYkf60vGtITk7hrKHOO4uCl9vRrD4hqjNKjg==}
+    engines: {node: '>=14'}
+    dependencies:
+      camelcase: 6.3.0
     dev: true
 
   /path-exists/3.0.0:
