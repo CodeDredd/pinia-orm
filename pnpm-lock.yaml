@@ -13,7 +13,7 @@ importers:
       chalk: ^4.1.2
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
-      execa: ^6.0.0
+      execa: ^6.1.0
       expect: ^27.4.2
       globby: ^12.0.2
       lerna: ^4.0.0
