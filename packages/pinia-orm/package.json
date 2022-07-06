@@ -47,7 +47,7 @@
     "test": "pnpm run test:2 && pnpm run test:3"
   },
   "dependencies": {
-    "normalizr": "^3.6.1",
+    "normalizr": "^3.6.2",
     "pinia": "^2.0.14",
     "uuid": "^8.3.2"
   },
