@@ -1,3 +1,39 @@
 {
-  "extends": ["github>posva/renovate-config"]
+  "extends": [
+    "config:base",
+    ":prHourlyLimit4",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "meteor": {
+    "enabled": false
+  },
+  "rangeStrategy": "bump",
+  "npm": {
+    "commitMessageTopic": "{{prettyDepType}} {{depName}}"
+  },
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchFiles": ["packages/**/package.json"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "lockFileMaintenance": {
+        "enabled": true,
+        "extends": [
+          "schedule:weekly"
+        ]
+      }
+    },
+    {
+      "groupName": "Docs dependencies",
+      "matchFiles": ["docs/package.json"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    }
+  ]
 }
