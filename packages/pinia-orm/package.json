@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
-    "@size-limit/preset-small-lib": "^7.0.5",
+    "@size-limit/preset-small-lib": "^7.0.8",
     "@types/prettier": "^2",
     "@types/uuid": "^8.3.3",
     "@vitest/ui": "^0.16.0",
