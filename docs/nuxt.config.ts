@@ -1,16 +1,41 @@
-import theme from '@nuxt/content-theme-docs'
+import { defineNuxtConfig } from 'nuxt'
 
-export default theme({
-  loading: { color: '#5A0FC8' },
-  // buildModules: ['nuxt-ackee'],
-  // ackee: {
-  //   server: 'https://ackee.nuxtjs.com',
-  //   domainId: 'a2998bc2-56dd-47fa-9d94-9781411bd1f9',
-  //   detailed: true
-  // },
-  pwa: {
-    manifest: {
-      name: 'Nuxt PWA',
+export default defineNuxtConfig({
+  extends: ['./node_modules/@docus/docs-theme'],
+  github: {
+    owner: 'CodeDredd',
+    repo: 'pinia-orm',
+    branch: 'master',
+  },
+  theme: {},
+  modules: ['@nuxthq/admin', '@docus/github', 'vue-plausible'],
+  plausible: {
+    domain: 'pinia-orm.codedredd.de',
+  },
+  tailwindcss: {
+    config: {
+      important: true,
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              200: '#a5f3fc',
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              700: '#0e7490',
+              800: '#155e75',
+              900: '#164e63',
+            },
+          },
+        },
+      },
     },
+  },
+  colorMode: {
+    preference: 'dark',
   },
 })

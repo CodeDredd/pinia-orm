@@ -1,4 +1,19 @@
 node_modules
+*.iml
+.idea
+*.log*
 .nuxt
+.vscode
+.DS_Store
+coverage
 dist
-static/sw.js
+sw.*
+.env
+.output
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
