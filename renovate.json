@@ -11,12 +11,12 @@
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
+  "automerge": true,
   "packageRules": [
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
       "matchFiles": ["packages/**/package.json"],
-      "automerge": true,
       "matchUpdateTypes": [
         "minor",
         "patch"
@@ -34,8 +34,7 @@
       "matchUpdateTypes": [
         "minor",
         "patch"
-      ],
-      "automerge": true
+      ]
     }
   ]
 }
