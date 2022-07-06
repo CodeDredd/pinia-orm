@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@pinia-orm/nuxt": "^1.0.7",
-    "@pinia/nuxt": "^0.1.8",
+    "@pinia/nuxt": "^0.1.9",
     "nuxt": "^3.0.0-rc.4",
     "pinia": "^2.0.14",
     "pinia-orm": "^0.9.2"
