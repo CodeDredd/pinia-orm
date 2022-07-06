@@ -14,7 +14,7 @@ importers:
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
       execa: ^6.1.0
-      expect: ^27.4.2
+      expect: ^27.5.1
       globby: ^12.2.0
       lerna: ^4.0.0
       lint-staged: ^12.5.0
@@ -579,7 +579,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 16.11.43
+      '@types/node': 18.0.1
       '@types/yargs': 16.0.4
       chalk: 4.1.2
     dev: true
