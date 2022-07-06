@@ -63,7 +63,7 @@
     "eslint": "^8.19.0",
     "happy-dom": "^2.30.1",
     "pinia": "^2.0.14",
-    "prettier": "^2.5.1",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "size-limit": "^7.0.8",
     "std-env": "^3.1.1",
