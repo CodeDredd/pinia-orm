@@ -104,7 +104,7 @@ importers:
       vitest: ^0.17.0
       vue: ^3.2.37
       vue-demi: ^0.13.2
-      vue2: npm:vue@^2.6.14
+      vue2: npm:vue@^2.7.3
     dependencies:
       normalizr: 3.6.2
       pinia: 2.0.14_doa2iczdmf7fngilxryautdh3i
@@ -130,7 +130,7 @@ importers:
       vitest: 0.17.0_cgskfejta2s5l3rr7z6ct3ae3m
       vue: 3.2.37
       vue-demi: 0.13.2_3nmzzoefrdru4lagmst3ha3a3q
-      vue2: /vue/2.7.1
+      vue2: /vue/2.7.3
 
 packages:
 
@@ -2343,8 +2343,8 @@ packages:
       '@vue/compiler-core': 3.2.37
       '@vue/shared': 3.2.37
 
-  /@vue/compiler-sfc/2.7.1:
-    resolution: {integrity: sha512-YQRE2uYhlvyFgHmKAqySCdLm7O37XZc+yG9dujwD3h8em+rD1qGOthxc0H3XcijOy50gj/pYHgBO6C3MjV+oug==}
+  /@vue/compiler-sfc/2.7.3:
+    resolution: {integrity: sha512-/9SO6KeR1ljo+j4Tdkl9zsFG2yY4NQ9p3GKdPVCU99bmkNkTW8g9Tq8SMEvhOfo+RhBC0PdDAOmibl+N37f5YA==}
     dependencies:
       '@babel/parser': 7.18.6
       postcss: 8.4.14
@@ -10511,10 +10511,10 @@ packages:
       vue: 3.2.37
     dev: true
 
-  /vue/2.7.1:
-    resolution: {integrity: sha512-X1YkFddhbTAU2FPK0gBZ/vDOcOMA8ZT4uHoFVor1bUb7BpVGdEswS286YGtODsf/Ghfr1LM1sBMFAY8XT+dVhA==}
+  /vue/2.7.3:
+    resolution: {integrity: sha512-7MTirXG7LYJi3r2jeYy7EiXIhEE85uP3kBwSxqwDsvIfy/l7+qR4U6ajw8ji1KoP+wYYg7ZY28TBTf3P3Fa4Nw==}
     dependencies:
-      '@vue/compiler-sfc': 2.7.1
+      '@vue/compiler-sfc': 2.7.3
       csstype: 3.1.0
     dev: true
 
