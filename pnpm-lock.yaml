@@ -84,7 +84,7 @@ importers:
       '@antfu/eslint-config': ^0.25.2
       '@size-limit/preset-small-lib': ^7.0.8
       '@types/prettier': ^2
-      '@types/uuid': ^8.3.3
+      '@types/uuid': ^8.3.4
       '@vitest/ui': ^0.16.0
       '@vue/composition-api': ^1.7.0
       c8: ^7.11.3
