@@ -11,12 +11,13 @@
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
+  "ignorePaths": ["**/playgrounds/**"],
   "automerge": true,
   "packageRules": [
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "matchFiles": ["packages/**/package.json"],
+      "matchFiles": ["packages/pinia-orm/package.json", "packages/nuxt/package.json"],
       "matchUpdateTypes": [
         "minor",
         "patch"
