@@ -10,7 +10,7 @@ importers:
     specifiers:
       '@types/lodash.kebabcase': ^4.1.7
       '@types/node': ^16.11.43
-      chalk: ^4.1.2
+      chalk: ^5.0.1
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
       execa: ^6.1.0
@@ -30,7 +30,7 @@ importers:
     devDependencies:
       '@types/lodash.kebabcase': 4.1.7
       '@types/node': 16.11.43
-      chalk: 4.1.2
+      chalk: 5.0.1
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
       execa: 6.1.0
