@@ -18,6 +18,7 @@
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
       "matchFiles": ["packages/pinia-orm/package.json", "packages/nuxt/package.json"],
+      "excludePackageNames": ["vue2"],
       "matchUpdateTypes": [
         "minor",
         "patch"
