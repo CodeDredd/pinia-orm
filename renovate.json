@@ -34,6 +34,7 @@
     {
       "groupName": "Docs dependencies",
       "matchFiles": ["docs/package.json"],
+      "excludePackageNames": ["@vercel/nft"],
       "matchUpdateTypes": [
         "minor",
         "patch"

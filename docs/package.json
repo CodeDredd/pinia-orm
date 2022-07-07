@@ -2,7 +2,11 @@
   "name": "@pinia-orm/docs",
   "version": "1.0.0",
   "description": "Docs for pinia-orm",
-  "author": "Gregor Becker",
+  "license": "MIT",
+  "author": {
+    "name": "Gregor Becker",
+    "email": "gregor@codedredd.de"
+  },
   "repository": "storm-tail/pinia-orm",
   "scripts": {
     "dev": "nuxi dev",
@@ -17,6 +21,6 @@
     "vue-plausible": "^1.3.1"
   },
   "resolutions": {
-    "@vercel/nft": "0.20.1"
+    "@vercel/nft": "0.19.1"
   }
 }
