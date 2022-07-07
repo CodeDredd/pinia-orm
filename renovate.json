@@ -11,6 +11,7 @@
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
+  "ignoreDeps": ["vue2"],
   "ignorePaths": ["**/playgrounds/**"],
   "automerge": true,
   "packageRules": [
