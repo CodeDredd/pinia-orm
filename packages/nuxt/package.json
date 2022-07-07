@@ -62,7 +62,7 @@
     "vue": "^3.2.37"
   },
   "overrides": {
-    "ufo": "^0.8.4"
+    "ufo": "^0.8.5"
   },
   "repository": {
     "type": "git",
