@@ -9,7 +9,7 @@ describe('feature/relations/nested/nested_revive', () => {
     @Attr() id!: number
 
     @HasMany(() => Post, 'userId')
-    posts!: Post[]
+      posts!: Post[]
   }
 
   class Comment extends Model {
@@ -20,7 +20,7 @@ describe('feature/relations/nested/nested_revive', () => {
     @Attr() userId!: number
 
     @BelongsTo(() => User, 'userId')
-    author!: User | null
+      author!: User | null
   }
 
   class Post extends Model {
@@ -30,10 +30,10 @@ describe('feature/relations/nested/nested_revive', () => {
     @Attr() userId!: number | null
 
     @BelongsTo(() => User, 'userId')
-    author!: User | null
+      author!: User | null
 
     @HasMany(() => Comment, 'postId')
-    comments!: Comment[]
+      comments!: Comment[]
   }
 
   it('can revive a complex nested schema', () => {
@@ -47,7 +47,7 @@ describe('feature/relations/nested/nested_revive', () => {
       { id: 1, userId: 2 },
       { id: 2, userId: 2 },
       { id: 3, userId: 1 },
-      { id: 4, userId: 1 }
+      { id: 4, userId: 1 },
     ])
 
     commentsRepo.save([
@@ -55,7 +55,7 @@ describe('feature/relations/nested/nested_revive', () => {
       { id: 2, postId: 1, userId: 2 },
       { id: 3, postId: 2, userId: 3 },
       { id: 4, postId: 4, userId: 3 },
-      { id: 5, postId: 2, userId: 1 }
+      { id: 5, postId: 2, userId: 1 },
     ])
 
     const schema = [
@@ -64,23 +64,23 @@ describe('feature/relations/nested/nested_revive', () => {
         posts: [
           {
             id: 4,
-            comments: [{ id: 2 }]
+            comments: [{ id: 2 }],
           },
           {
             id: 3,
             comments: [
               {
                 id: 1,
-                author: { id: 4 }
-              }
-            ]
-          }
-        ]
+                author: { id: 4 },
+              },
+            ],
+          },
+        ],
       },
       {
         id: 1,
-        posts: [{ id: 1 }, { id: 2 }]
-      }
+        posts: [{ id: 1 }, { id: 2 }],
+      },
     ]
 
     const users = usersRepo.revive(schema)

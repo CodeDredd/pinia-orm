@@ -7,5 +7,5 @@ export default class User extends Model {
   @Attr() id!: number
 
   @HasOne(() => Phone, 'userId')
-  phone!: Phone | null
+    phone!: Phone | null
 }

@@ -19,7 +19,7 @@ describe('feature/relations/has_many_save', () => {
     @Str('') name!: string
 
     @HasMany(() => Post, 'userId')
-    posts!: Post[]
+      posts!: Post[]
   }
 
   it('saves a model to the store with "has many" relation', () => {
@@ -33,18 +33,18 @@ describe('feature/relations/has_many_save', () => {
       name: 'John Doe',
       posts: [
         { id: 1, userId: 1, title: 100 },
-        { id: 2, userId: 1, title: 200 }
-      ]
+        { id: 2, userId: 1, title: 200 },
+      ],
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       posts: {
         1: { id: 1, userId: 1, title: '100' },
-        2: { id: 2, userId: 1, title: '200' }
-      }
+        2: { id: 2, userId: 1, title: '200' },
+      },
     })
   })
 
@@ -56,18 +56,18 @@ describe('feature/relations/has_many_save', () => {
       name: 'John Doe',
       posts: [
         { id: 1, title: 'Title 01' },
-        { id: 2, title: 'Title 02' }
-      ]
+        { id: 2, title: 'Title 02' },
+      ],
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },
-        2: { id: 2, userId: 1, title: 'Title 02' }
-      }
+        2: { id: 2, userId: 1, title: 'Title 02' },
+      },
     })
   })
 
@@ -76,13 +76,13 @@ describe('feature/relations/has_many_save', () => {
 
     usersRepo.save({
       id: 1,
-      name: 'John Doe'
+      name: 'John Doe',
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 })

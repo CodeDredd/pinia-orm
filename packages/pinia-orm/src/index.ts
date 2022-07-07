@@ -104,5 +104,5 @@ export default {
   Repository,
   Interpreter,
   Query,
-  Connection
+  Connection,
 }

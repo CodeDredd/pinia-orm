@@ -18,12 +18,12 @@ describe('feature/repository/retrieves_revive', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     const schema = {
-      id: 2
+      id: 2,
     }
 
     const user = userRepo.revive(schema)!
@@ -39,8 +39,8 @@ describe('feature/repository/retrieves_revive', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     // Test missing id in the store.
@@ -54,8 +54,8 @@ describe('feature/repository/retrieves_revive', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     const schema = [{ id: 3 }, { id: 1 }]

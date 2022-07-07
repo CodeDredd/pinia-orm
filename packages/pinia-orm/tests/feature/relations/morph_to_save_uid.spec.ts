@@ -24,7 +24,7 @@ describe('feature/relations/morph_to_save_uid', () => {
       @Attr() imageableId!: number
       @Attr() imageableType!: string
       @MorphTo(() => [User], 'imageableId', 'imageableType')
-      imageable!: User | null
+        imageable!: User | null
     }
 
     mockUid(['uid1'])
@@ -35,7 +35,7 @@ describe('feature/relations/morph_to_save_uid', () => {
       url: '/profile.jpg',
       imageableId: 1,
       imageableType: 'users',
-      imageable: { id: 1, name: 'John Doe' }
+      imageable: { id: 1, name: 'John Doe' },
     })
 
     assertState({
@@ -45,9 +45,9 @@ describe('feature/relations/morph_to_save_uid', () => {
           id: 'uid1',
           url: '/profile.jpg',
           imageableId: 1,
-          imageableType: 'users'
-        }
-      }
+          imageableType: 'users',
+        },
+      },
     })
   })
 
@@ -67,7 +67,7 @@ describe('feature/relations/morph_to_save_uid', () => {
       @Attr() imageableId!: string
       @Attr() imageableType!: string
       @MorphTo(() => [User], 'imageableId', 'imageableType')
-      imageable!: User | null
+        imageable!: User | null
     }
 
     mockUid(['uid1', 'uid2'])
@@ -77,7 +77,7 @@ describe('feature/relations/morph_to_save_uid', () => {
     imagesRepo.save({
       url: '/profile.jpg',
       imageableType: 'users',
-      imageable: { name: 'John Doe' }
+      imageable: { name: 'John Doe' },
     })
 
     assertState({
@@ -87,9 +87,9 @@ describe('feature/relations/morph_to_save_uid', () => {
           id: 'uid1',
           url: '/profile.jpg',
           imageableId: 'uid2',
-          imageableType: 'users'
-        }
-      }
+          imageableType: 'users',
+        },
+      },
     })
   })
 })

@@ -18,8 +18,8 @@ describe('feature/repository/fresh', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 
@@ -28,14 +28,14 @@ describe('feature/repository/fresh', () => {
 
     userRepo.fresh([
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' }
+      { id: 2, name: 'Jane Doe' },
     ])
 
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
@@ -45,20 +45,20 @@ describe('feature/repository/fresh', () => {
     fillState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
 
     userRepo.fresh([
       { id: 3, name: 'Johnny Doe' },
-      { id: 4, name: 'David Doe' }
+      { id: 4, name: 'David Doe' },
     ])
 
     assertState({
       users: {
         3: { id: 3, name: 'Johnny Doe' },
-        4: { id: 4, name: 'David Doe' }
-      }
+        4: { id: 4, name: 'David Doe' },
+      },
     })
   })
 })

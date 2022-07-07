@@ -83,7 +83,7 @@ export const components: VuexORMPluginComponents = {
   Repository,
   Interpreter,
   Query,
-  Connection
+  Connection,
 }
 
 /**

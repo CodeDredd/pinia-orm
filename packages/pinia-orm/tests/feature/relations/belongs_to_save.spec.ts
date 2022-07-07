@@ -19,7 +19,7 @@ describe('feature/relations/belongs_to_save', () => {
     @Str('') title!: string
 
     @BelongsTo(() => User, 'userId')
-    author!: User | null
+      author!: User | null
   }
 
   it('inserts a record to the store with "belongs to" relation', () => {
@@ -29,16 +29,16 @@ describe('feature/relations/belongs_to_save', () => {
       id: 1,
       userId: 1,
       title: 'Title 01',
-      author: { id: 1, name: 'John Doe' }
+      author: { id: 1, name: 'John Doe' },
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' }
-      }
+        1: { id: 1, userId: 1, title: 'Title 01' },
+      },
     })
   })
 
@@ -48,16 +48,16 @@ describe('feature/relations/belongs_to_save', () => {
     postsRepo.save({
       id: 1,
       title: 'Title 01',
-      author: { id: 1, name: 'John Doe' }
+      author: { id: 1, name: 'John Doe' },
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' }
-      }
+        1: { id: 1, userId: 1, title: 'Title 01' },
+      },
     })
   })
 
@@ -66,13 +66,13 @@ describe('feature/relations/belongs_to_save', () => {
 
     postsRepo.save({
       id: 1,
-      title: 'Title 01'
+      title: 'Title 01',
     })
 
     assertState({
       posts: {
-        1: { id: 1, userId: null, title: 'Title 01' }
-      }
+        1: { id: 1, userId: null, title: 'Title 01' },
+      },
     })
   })
 
@@ -82,13 +82,13 @@ describe('feature/relations/belongs_to_save', () => {
     postsRepo.save({
       id: 1,
       title: 'Title 01',
-      author: null
+      author: null,
     })
 
     assertState({
       posts: {
-        1: { id: 1, userId: null, title: 'Title 01' }
-      }
+        1: { id: 1, userId: null, title: 'Title 01' },
+      },
     })
   })
 })

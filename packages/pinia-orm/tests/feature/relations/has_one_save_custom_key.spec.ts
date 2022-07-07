@@ -26,7 +26,7 @@ describe('feature/relations/has_one_save_custom_key', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+        phone!: Phone | null
     }
 
     const usersRepo = useRepo(User)
@@ -36,17 +36,17 @@ describe('feature/relations/has_one_save_custom_key', () => {
       name: 'John Doe',
       phone: {
         id: 1,
-        number: '123-4567-8912'
-      }
+        number: '123-4567-8912',
+      },
     })
 
     assertState({
       users: {
-        1: { userId: 1, name: 'John Doe' }
+        1: { userId: 1, name: 'John Doe' },
       },
       phones: {
-        1: { id: 1, userId: 1, number: '123-4567-8912' }
-      }
+        1: { id: 1, userId: 1, number: '123-4567-8912' },
+      },
     })
   })
 
@@ -59,7 +59,7 @@ describe('feature/relations/has_one_save_custom_key', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId', 'userId')
-      phone!: Phone | null
+        phone!: Phone | null
     }
 
     class Phone extends Model {
@@ -78,17 +78,17 @@ describe('feature/relations/has_one_save_custom_key', () => {
       name: 'John Doe',
       phone: {
         id: 1,
-        number: '123-4567-8912'
-      }
+        number: '123-4567-8912',
+      },
     })
 
     assertState({
       users: {
-        1: { id: 1, userId: 2, name: 'John Doe' }
+        1: { id: 1, userId: 2, name: 'John Doe' },
       },
       phones: {
-        1: { id: 1, userId: 2, number: '123-4567-8912' }
-      }
+        1: { id: 1, userId: 2, number: '123-4567-8912' },
+      },
     })
   })
 })

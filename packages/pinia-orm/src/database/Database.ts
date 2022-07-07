@@ -91,7 +91,7 @@ export class Database {
       const attr = fields[name]
 
       if (attr instanceof Relation) {
-        attr.getRelateds().forEach(m => {
+        attr.getRelateds().forEach((m) => {
           this.register(m)
         })
       }

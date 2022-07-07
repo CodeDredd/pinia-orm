@@ -83,14 +83,14 @@ export class Model {
 
     const registry = {
       ...this.fields(),
-      ...this.registries[this.entity]
+      ...this.registries[this.entity],
     }
 
     for (const key in registry) {
       const attribute = registry[key]
 
-      this.schemas[this.entity][key] =
-        typeof attribute === 'function' ? attribute() : attribute
+      this.schemas[this.entity][key]
+        = typeof attribute === 'function' ? attribute() : attribute
     }
   }
 
@@ -100,9 +100,10 @@ export class Model {
   static setRegistry<M extends typeof Model>(
     this: M,
     key: string,
-    attribute: () => Attribute
+    attribute: () => Attribute,
   ): M {
-    if (!this.registries[this.entity]) this.registries[this.entity] = {}
+    if (!this.registries[this.entity])
+      this.registries[this.entity] = {}
 
     this.registries[this.entity][key] = attribute
 
@@ -180,7 +181,7 @@ export class Model {
   static hasOne(
     related: typeof Model,
     foreignKey: string,
-    localKey?: string
+    localKey?: string,
   ): HasOne {
     const model = this.newRawInstance()
 
@@ -195,7 +196,7 @@ export class Model {
   static belongsTo(
     related: typeof Model,
     foreignKey: string,
-    ownerKey?: string
+    ownerKey?: string,
   ): BelongsTo {
     const instance = related.newRawInstance()
 
@@ -210,7 +211,7 @@ export class Model {
   static hasMany(
     related: typeof Model,
     foreignKey: string,
-    localKey?: string
+    localKey?: string,
   ): HasMany {
     const model = this.newRawInstance()
 
@@ -225,7 +226,7 @@ export class Model {
   static hasManyBy(
     related: typeof Model,
     foreignKey: string,
-    ownerKey?: string
+    ownerKey?: string,
   ): HasManyBy {
     const instance = related.newRawInstance()
 
@@ -241,7 +242,7 @@ export class Model {
     related: typeof Model,
     id: string,
     type: string,
-    localKey?: string
+    localKey?: string,
   ): MorphOne {
     const model = this.newRawInstance()
 
@@ -257,7 +258,7 @@ export class Model {
     related: typeof Model[],
     id: string,
     type: string,
-    ownerKey = ''
+    ownerKey = '',
   ): MorphTo {
     const instance = this.newRawInstance()
     const relatedModels = related.map(model => model.newRawInstance())
@@ -272,7 +273,7 @@ export class Model {
     related: typeof Model,
     id: string,
     type: string,
-    localKey?: string
+    localKey?: string,
   ): MorphMany {
     const model = this.newRawInstance()
 
@@ -357,7 +358,8 @@ export class Model {
       const attr = fields[key]
       const value = attributes[key]
 
-      if (attr instanceof Relation && !fillRelation) continue
+      if (attr instanceof Relation && !fillRelation)
+        continue
 
       this.$fillField(key, attr, value)
     }
@@ -370,15 +372,16 @@ export class Model {
    */
   protected $fillField(key: string, attr: Attribute, value: any): void {
     if (value !== undefined) {
-      this[key] =
-        attr instanceof MorphTo
+      this[key]
+        = attr instanceof MorphTo
           ? attr.make(value, this[attr.getType()])
           : attr.make(value)
 
       return
     }
 
-    if (this[key] === undefined) this[key] = attr.make()
+    if (this[key] === undefined)
+      this[key] = attr.make()
   }
 
   /**
@@ -395,7 +398,8 @@ export class Model {
   $getKey(record?: Element): string | number | (string | number)[] | null {
     record = record ?? this
 
-    if (this.$hasCompositeKey()) return this.$getCompositeKey(record)
+    if (this.$hasCompositeKey())
+      return this.$getCompositeKey(record)
 
     const id = record[this.$getKeyName() as string]
 
@@ -415,7 +419,7 @@ export class Model {
   protected $getCompositeKey(record: Element): (string | number)[] | null {
     let ids = [] as (string | number)[] | null
 
-    ;(this.$getKeyName() as string[]).every(key => {
+    ;(this.$getKeyName() as string[]).every((key) => {
       const id = record[key]
 
       if (isNullish(id)) {
@@ -423,7 +427,7 @@ export class Model {
         return false
       }
 
-      ;(ids as (string | number)[]).push(id)
+      (ids as (string | number)[]).push(id)
       return true
     })
 
@@ -441,7 +445,7 @@ export class Model {
     assert(id !== null, [
       'The record is missing the primary key. If you want to persist record',
       'without the primary key, please define the primary key field with the',
-      '`uid` attribute.'
+      '`uid` attribute.',
     ])
 
     return this.$stringifyId(id)
@@ -463,7 +467,7 @@ export class Model {
     // an error here.
     assert(!this.$hasCompositeKey(), [
       'Please provide the local key for the relationship. The model with the',
-      "composite key can't infer its local key."
+      'composite key can\'t infer its local key.',
     ])
 
     return this.$getKeyName() as string
@@ -476,7 +480,7 @@ export class Model {
     const relation = this.$fields()[name]
 
     assert(relation instanceof Relation, [
-      `Relationship [${name}] on model [${this.$entity()}] not found.`
+      `Relationship [${name}] on model [${this.$entity()}] not found.`,
     ])
 
     return relation
@@ -517,7 +521,8 @@ export class Model {
         continue
       }
 
-      if (withRelation) record[key] = this.serializeRelation(value)
+      if (withRelation)
+        record[key] = this.serializeRelation(value)
     }
 
     return record
@@ -527,11 +532,14 @@ export class Model {
    * Serialize the given value.
    */
   protected serializeValue(value: any): any {
-    if (value === null) return null
+    if (value === null)
+      return null
 
-    if (isArray(value)) return this.serializeArray(value)
+    if (isArray(value))
+      return this.serializeArray(value)
 
-    if (typeof value === 'object') return this.serializeObject(value)
+    if (typeof value === 'object')
+      return this.serializeObject(value)
 
     return value
   }
@@ -562,9 +570,11 @@ export class Model {
   protected serializeRelation(relation: Item): Element | null
   protected serializeRelation(relation: Collection): Element[]
   protected serializeRelation(relation: any): any {
-    if (relation === undefined) return undefined
+    if (relation === undefined)
+      return undefined
 
-    if (relation === null) return null
+    if (relation === null)
+      return null
 
     return isArray(relation)
       ? relation.map(model => model.$toJson())
@@ -611,7 +621,8 @@ export class Model {
       const attr = attrs[key]
       const value = record[key]
 
-      if (!(attr instanceof Relation)) sanitizedRecord[key] = attr.make(value)
+      if (!(attr instanceof Relation))
+        sanitizedRecord[key] = attr.make(value)
     }
 
     return sanitizedRecord

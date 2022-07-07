@@ -18,8 +18,8 @@ describe('feature/repository/retrieves_all', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     const users = userRepo.all()
@@ -27,7 +27,7 @@ describe('feature/repository/retrieves_all', () => {
     const expected = [
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ]
 
     expect(users).toHaveLength(3)

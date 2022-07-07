@@ -62,7 +62,7 @@ export class Events<T> {
    */
   once<K extends keyof T>(
     event: K,
-    callback: EventListener<T, K>
+    callback: EventListener<T, K>,
   ): EventListener<T, K> {
     const fn = (...args: EventArgs<T[K]>) => {
       this.off(event, fn)
@@ -81,7 +81,8 @@ export class Events<T> {
   off<K extends keyof T>(event: K, callback: EventListener<T, K>): void {
     const stack = this.listeners[event]
 
-    if (!stack) return
+    if (!stack)
+      return
 
     const i = stack.indexOf(callback)
 
@@ -111,7 +112,8 @@ export class Events<T> {
   emit<K extends keyof T>(event: K, ...args: EventArgs<T[K]>): void {
     const stack = this.listeners[event]
 
-    if (stack) stack.slice().forEach(listener => listener(...args))
+    if (stack)
+      stack.slice().forEach(listener => listener(...args))
 
     this.subscribers.slice().forEach(sub => sub({ event, args }))
   }

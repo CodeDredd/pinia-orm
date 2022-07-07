@@ -9,7 +9,7 @@ describe('unit/model/Model_Attrs_UID', () => {
       static entity = 'users'
 
       @Uid()
-      id!: string
+        id!: string
     }
 
     mockUid(['uid1'])

@@ -20,7 +20,7 @@ describe('feature/relations/morph_one_save', () => {
     @Str('') name!: string
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-    image!: Image | null
+      image!: Image | null
   }
 
   it('inserts a record to the store with "morph one" relation', () => {
@@ -33,22 +33,22 @@ describe('feature/relations/morph_one_save', () => {
         id: 1,
         url: '/profile.jpg',
         imageableId: 1,
-        imageableType: 'users'
-      }
+        imageableType: 'users',
+      },
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       images: {
         1: {
           id: 1,
           url: '/profile.jpg',
           imageableId: 1,
-          imageableType: 'users'
-        }
-      }
+          imageableType: 'users',
+        },
+      },
     })
   })
 
@@ -61,22 +61,22 @@ describe('feature/relations/morph_one_save', () => {
       image: {
         id: 1,
         url: '/profile.jpg',
-        imageableType: 'users'
-      }
+        imageableType: 'users',
+      },
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       images: {
         1: {
           id: 1,
           url: '/profile.jpg',
           imageableId: 1,
-          imageableType: 'users'
-        }
-      }
+          imageableType: 'users',
+        },
+      },
     })
   })
 
@@ -85,13 +85,13 @@ describe('feature/relations/morph_one_save', () => {
 
     usersRepo.save({
       id: 1,
-      name: 'John Doe'
+      name: 'John Doe',
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 
@@ -101,13 +101,13 @@ describe('feature/relations/morph_one_save', () => {
     usersRepo.save({
       id: 1,
       name: 'John Doe',
-      image: null
+      image: null,
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 })

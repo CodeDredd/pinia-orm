@@ -8,7 +8,7 @@ describe('unit/model/Model_Attrs_Boolean', () => {
       static entity = 'users'
 
       @Bool(true)
-      bool!: number
+        bool!: number
     }
 
     expect(new User({}).bool).toBe(true)
@@ -26,7 +26,7 @@ describe('unit/model/Model_Attrs_Boolean', () => {
       static entity = 'users'
 
       @Bool(null, { nullable: true })
-      bool!: boolean | null
+        bool!: boolean | null
     }
 
     expect(new User({}).bool).toBe(null)

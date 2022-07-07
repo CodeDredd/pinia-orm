@@ -45,7 +45,7 @@ describe('unit/repository/Repository', () => {
 
     const user = userRepo.make({
       id: 1,
-      name: 'Jane Doe'
+      name: 'Jane Doe',
     })
 
     expect(user).toBeInstanceOf(User)

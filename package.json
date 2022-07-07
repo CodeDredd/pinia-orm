@@ -16,7 +16,7 @@
     "play": "lerna run play",
     "build:dts": "lerna run build:dts --parallel",
     "format": "prettier -c --parser typescript \"packages/*/{src,__tests__,e2e}/**/*.[jt]s?(x)\"",
-    "format:fix": "pnpm run lint --write",
+    "format:fix": "pnpm run format --write",
     "lint": "lerna run lint --ignore @pina-orm/playground*",
     "lint:fix": "lerna run lint:fix --ignore @pina-orm/playground*",
     "test": "lerna run packages/pinia-orm/test",
@@ -55,7 +55,6 @@
     }
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {

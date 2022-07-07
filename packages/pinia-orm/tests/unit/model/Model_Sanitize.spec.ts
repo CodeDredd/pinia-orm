@@ -15,7 +15,7 @@ describe('unit/model/Model_Sanitize', () => {
     @Num(0) age!: number
 
     @HasMany(() => Post, 'postId')
-    posts!: Post[]
+      posts!: Post[]
   }
 
   it('sanitizes the given record', () => {
@@ -27,12 +27,12 @@ describe('unit/model/Model_Sanitize', () => {
       id: 1,
       unknownField: 1,
       age: '10',
-      posts: [1, 3]
+      posts: [1, 3],
     })
 
     const expected = {
       id: 1,
-      age: 10
+      age: 10,
     }
 
     expect(data).toEqual(expected)
@@ -48,7 +48,7 @@ describe('unit/model/Model_Sanitize', () => {
     const expected = {
       id: 1,
       name: 'Unknown',
-      age: 0
+      age: 0,
     }
 
     expect(data).toEqual(expected)

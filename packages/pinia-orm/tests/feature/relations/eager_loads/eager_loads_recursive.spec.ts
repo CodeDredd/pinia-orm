@@ -11,7 +11,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     @Str('') name!: string
 
     @HasOne(() => Phone, 'userId')
-    phone!: Phone
+      phone!: Phone
   }
 
   class Phone extends Model {
@@ -22,7 +22,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     @Str('') number!: string
 
     @BelongsTo(() => User, 'userId')
-    user!: User
+      user!: User
   }
 
   it('eager loads all relations recursively', () => {
@@ -39,7 +39,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     expect(user.phone.user.phone.user).toBeInstanceOf(User)
     assertModel(user.phone.user.phone.user, {
       id: 1,
-      name: 'John Doe'
+      name: 'John Doe',
     })
   })
 
@@ -55,7 +55,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     expect(user.phone.user).toBeInstanceOf(User)
     assertModel(user.phone.user, {
       id: 1,
-      name: 'John Doe'
+      name: 'John Doe',
     })
   })
 })

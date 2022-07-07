@@ -20,7 +20,8 @@ export function useStoreActions(): StoreActions<any> {
       const data: Elements = {}
 
       for (const id in this.data) {
-        if (!ids.includes(id)) data[id] = this.data[id]
+        if (!ids.includes(id))
+          data[id] = this.data[id]
       }
 
       this.data = data
@@ -32,13 +33,14 @@ export function useStoreActions(): StoreActions<any> {
       const data: Elements = {}
 
       for (const id in this.data) {
-        if (!ids.includes(id)) data[id] = this.data[id]
+        if (!ids.includes(id))
+          data[id] = this.data[id]
       }
 
       this.data = data
     },
     flush(): void {
       this.data = {}
-    }
+    },
   }
 }

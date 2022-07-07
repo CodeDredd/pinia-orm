@@ -13,11 +13,14 @@ export class String extends Type {
    * Make the value for the attribute.
    */
   make(value: any): string | null {
-    if (value === undefined) return this.value
+    if (value === undefined)
+      return this.value
 
-    if (typeof value === 'string') return value
+    if (typeof value === 'string')
+      return value
 
-    if (value === null && this.isNullable) return value
+    if (value === null && this.isNullable)
+      return value
 
     return `${value}`
   }

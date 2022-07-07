@@ -56,12 +56,12 @@ export function size(collection: any[] | object): number {
 export function orderBy<T>(
   collection: T[],
   iteratees: (((record: T) => any) | string)[],
-  directions: string[]
+  directions: string[],
 ): T[] {
   let index = -1
 
-  const result = collection.map<SortableArray<T>>(value => {
-    const criteria = iteratees.map(iteratee => {
+  const result = collection.map<SortableArray<T>>((value) => {
+    const criteria = iteratees.map((iteratee) => {
       return typeof iteratee === 'function' ? iteratee(value) : value[iteratee]
     })
 
@@ -81,7 +81,7 @@ export function orderBy<T>(
  */
 function baseSortBy<T>(
   array: SortableArray<T>[],
-  comparer: (a: SortableArray<T>, B: SortableArray<T>) => number
+  comparer: (a: SortableArray<T>, B: SortableArray<T>) => number,
 ): T[] {
   let length = array.length
 
@@ -105,7 +105,7 @@ function baseSortBy<T>(
 function compareMultiple<T>(
   object: SortableArray<T>,
   other: SortableArray<T>,
-  directions: string[]
+  directions: string[],
 ): number {
   let index = -1
 
@@ -144,10 +144,10 @@ function compareAscending(value: any, other: any): number {
     }
 
     if (
-      (!othIsNull && value > other) ||
-      (valIsNull && othIsDefined) ||
-      !valIsDefined ||
-      !valIsReflexive
+      (!othIsNull && value > other)
+      || (valIsNull && othIsDefined)
+      || !valIsDefined
+      || !valIsReflexive
     )
       return 1
 
@@ -163,12 +163,13 @@ function compareAscending(value: any, other: any): number {
  */
 export function groupBy<T>(
   collection: T[],
-  iteratee: (record: T) => string
+  iteratee: (record: T) => string,
 ): { [key: string]: T[] } {
   return collection.reduce((records, record) => {
     const key = iteratee(record)
 
-    if (records[key] === undefined) records[key] = []
+    if (records[key] === undefined)
+      records[key] = []
 
     records[key].push(record)
 
@@ -205,7 +206,8 @@ export function cloneDeep<T extends object>(target: T): T {
  */
 export function assert(
   condition: boolean,
-  message: string[]
+  message: string[],
 ): asserts condition {
-  if (!condition) throw new Error(['[Vuex ORM]'].concat(message).join(' '))
+  if (!condition)
+    throw new Error(['[Vuex ORM]'].concat(message).join(' '))
 }

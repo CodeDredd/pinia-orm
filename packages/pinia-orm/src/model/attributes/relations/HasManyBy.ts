@@ -28,7 +28,7 @@ export class HasManyBy extends Relation {
     parent: Model,
     child: Model,
     foreignKey: string,
-    ownerKey: string
+    ownerKey: string,
   ) {
     super(parent, child)
     this.foreignKey = foreignKey
@@ -62,9 +62,11 @@ export class HasManyBy extends Relation {
     // when child items have uid attribute as its primary key, and it's missing
     // when inserting records. Those ids will be generated later and will be
     // looped again. At that time, we can attach the correct owner key value.
-    if (child[this.ownerKey] === undefined) return
+    if (child[this.ownerKey] === undefined)
+      return
 
-    if (!record[this.foreignKey]) record[this.foreignKey] = []
+    if (!record[this.foreignKey])
+      record[this.foreignKey] = []
 
     this.attachIfMissing(record[this.foreignKey], child[this.ownerKey])
   }
@@ -75,9 +77,10 @@ export class HasManyBy extends Relation {
    */
   protected attachIfMissing(
     foreignKey: (string | number)[],
-    ownerKey: string | number
+    ownerKey: string | number,
   ): void {
-    if (!foreignKey.includes(ownerKey)) foreignKey.push(ownerKey)
+    if (!foreignKey.includes(ownerKey))
+      foreignKey.push(ownerKey)
   }
 
   /**
@@ -102,10 +105,10 @@ export class HasManyBy extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach(model => {
+    models.forEach((model) => {
       const relatedModels = this.getRelatedModels(
         dictionary,
-        model[this.foreignKey]
+        model[this.foreignKey],
       )
 
       model.$setRelation(relation, relatedModels)
@@ -128,7 +131,7 @@ export class HasManyBy extends Relation {
    */
   protected getRelatedModels(
     dictionary: Record<string, Model>,
-    keys: (string | number)[]
+    keys: (string | number)[],
   ): Model[] {
     return keys.reduce<Model[]>((items, key) => {
       const item = dictionary[key]

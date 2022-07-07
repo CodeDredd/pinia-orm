@@ -19,7 +19,7 @@ describe('feature/relations/has_many_by_retrieve', () => {
     @Str('') name!: string
 
     @HasManyBy(() => Node, 'nodeIds')
-    nodes!: Node[]
+      nodes!: Node[]
   }
 
   it('can eager load has many by relation', () => {
@@ -28,7 +28,7 @@ describe('feature/relations/has_many_by_retrieve', () => {
 
     nodesRepo.save([
       { id: 1, name: 'Node 01' },
-      { id: 2, name: 'Node 02' }
+      { id: 2, name: 'Node 02' },
     ])
     clusterRepo.save({ id: 1, nodeIds: [1, 2], name: 'Cluster 01' })
 
@@ -42,8 +42,8 @@ describe('feature/relations/has_many_by_retrieve', () => {
       name: 'Cluster 01',
       nodes: [
         { id: 1, name: 'Node 01' },
-        { id: 2, name: 'Node 02' }
-      ]
+        { id: 2, name: 'Node 02' },
+      ],
     })
   })
 
@@ -59,7 +59,7 @@ describe('feature/relations/has_many_by_retrieve', () => {
       id: 1,
       nodeIds: [1, 2],
       name: 'Cluster 01',
-      nodes: []
+      nodes: [],
     })
   })
 })

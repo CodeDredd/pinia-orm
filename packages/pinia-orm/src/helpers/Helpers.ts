@@ -4,12 +4,12 @@ import type { Repository } from '../repository/Repository'
 
 export type ModelOrRepository<
   M extends typeof Model,
-  R extends typeof Repository
+  R extends typeof Repository,
 > = M | R
 
 export type ModelsOrRepositories<
   M extends typeof Model = any,
-  R extends typeof Repository = any
+  R extends typeof Repository = any,
 > = Record<string, ModelOrRepository<M, R>>
 
 export type MappedRepositories<MR extends ModelsOrRepositories> = {
@@ -22,12 +22,12 @@ export type MappedRepositories<MR extends ModelsOrRepositories> = {
  * Map given models or repositories to the Vue Component.
  */
 export function mapRepos<MR extends ModelsOrRepositories>(
-  modelsOrRepositories: MR
+  modelsOrRepositories: MR,
 ): MappedRepositories<MR> {
   const repositories = {} as MappedRepositories<MR>
 
   for (const name in modelsOrRepositories) {
-    ;(repositories as any)[name] = function () {
+    (repositories as any)[name] = function () {
       return useRepo(modelsOrRepositories[name])
     }
   }

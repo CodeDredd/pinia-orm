@@ -18,7 +18,7 @@ describe('performance/save_has_many_relation', () => {
     @Str('') name!: string
 
     @HasMany(() => Post, 'userId')
-    posts!: Post[]
+      posts!: Post[]
   }
 
   it('saves data with has many relation within decent time', () => {
@@ -30,7 +30,7 @@ describe('performance/save_has_many_relation', () => {
       users.push({
         id: i,
         name: `Username ${i}`,
-        posts: [{ id: i, title: `Title ${i}` }]
+        posts: [{ id: i, title: `Title ${i}` }],
       })
     }
 

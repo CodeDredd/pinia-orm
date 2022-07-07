@@ -34,7 +34,8 @@ export class Schema {
 
     const entity = `${model.$entity()}${parent.$entity()}`
 
-    if (this.schemas[entity]) return this.schemas[entity]
+    if (this.schemas[entity])
+      return this.schemas[entity]
 
     const schema = this.newEntity(model, parent)
 
@@ -101,7 +102,7 @@ export class Schema {
    */
   private idAttribute(
     model: Model,
-    parent: Model
+    parent: Model,
   ): Normalizr.StrategyFunction<string> {
     // We'll first check if the model contains any uid attributes. If so, we
     // generate the uids during the normalization process, so we'll keep that
@@ -143,10 +144,11 @@ export class Schema {
 
     const attributes = {} as Record<string, Uid>
 
-    keys.forEach(k => {
+    keys.forEach((k) => {
       const attr = fields[k]
 
-      if (attr instanceof Uid) attributes[k] = attr
+      if (attr instanceof Uid)
+        attributes[k] = attr
     })
 
     return attributes
@@ -162,7 +164,8 @@ export class Schema {
     for (const key in fields) {
       const field = fields[key]
 
-      if (field instanceof Relation) definition[key] = field.define(this)
+      if (field instanceof Relation)
+        definition[key] = field.define(this)
     }
 
     return definition

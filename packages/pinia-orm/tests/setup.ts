@@ -5,7 +5,7 @@ import { Vue2, createApp, install, isVue2 } from 'vue-demi'
 import PiniaOrm, { Model } from '../src'
 
 vi.mock('uuid', () => ({
-  v1: vi.fn()
+  v1: vi.fn(),
 }))
 
 beforeAll(() => {

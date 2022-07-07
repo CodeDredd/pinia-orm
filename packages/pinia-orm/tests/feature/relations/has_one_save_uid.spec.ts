@@ -24,7 +24,7 @@ describe('feature/relations/has_one_save_uid', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+        phone!: Phone | null
     }
 
     mockUid(['uid1'])
@@ -35,17 +35,17 @@ describe('feature/relations/has_one_save_uid', () => {
       name: 'John Doe',
       phone: {
         id: 1,
-        number: '123-4567-8912'
-      }
+        number: '123-4567-8912',
+      },
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' }
+        uid1: { id: 'uid1', name: 'John Doe' },
       },
       phones: {
-        1: { id: 1, userId: 'uid1', number: '123-4567-8912' }
-      }
+        1: { id: 1, userId: 'uid1', number: '123-4567-8912' },
+      },
     })
   })
 
@@ -65,7 +65,7 @@ describe('feature/relations/has_one_save_uid', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+        phone!: Phone | null
     }
 
     mockUid(['uid1', 'uid2'])
@@ -75,17 +75,17 @@ describe('feature/relations/has_one_save_uid', () => {
     usersRepo.save({
       name: 'John Doe',
       phone: {
-        number: '123-4567-8912'
-      }
+        number: '123-4567-8912',
+      },
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' }
+        uid1: { id: 'uid1', name: 'John Doe' },
       },
       phones: {
-        uid2: { id: 'uid2', userId: 'uid1', number: '123-4567-8912' }
-      }
+        uid2: { id: 'uid2', userId: 'uid1', number: '123-4567-8912' },
+      },
     })
   })
 
@@ -106,7 +106,7 @@ describe('feature/relations/has_one_save_uid', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+        phone!: Phone | null
     }
 
     mockUid(['uid1', 'uid2'])
@@ -116,17 +116,17 @@ describe('feature/relations/has_one_save_uid', () => {
     usersRepo.save({
       name: 'John Doe',
       phone: {
-        number: '123-4567-8912'
-      }
+        number: '123-4567-8912',
+      },
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' }
+        uid1: { id: 'uid1', name: 'John Doe' },
       },
       phones: {
-        uid1: { userId: 'uid1', number: '123-4567-8912' }
-      }
+        uid1: { userId: 'uid1', number: '123-4567-8912' },
+      },
     })
   })
 })

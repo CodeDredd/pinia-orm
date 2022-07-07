@@ -19,7 +19,7 @@ export function useRepo<R extends Repository>(
 export function useRepo(
   ModelOrRepository: any,
   storeGenerator?: (id: string) => StoreDefinition,
-  connection?: string
+  connection?: string,
 ) {
   const database = new Database().setConnection(connection || 'database')
 
@@ -27,11 +27,13 @@ export function useRepo(
     ? new ModelOrRepository(database).initialize()
     : new Repository(database).initialize(ModelOrRepository)
 
-  if (storeGenerator) repository.database.setStoreGenerator(storeGenerator)
+  if (storeGenerator)
+    repository.database.setStoreGenerator(storeGenerator)
 
   try {
     database.register(repository.getModel())
-  } catch (e) {}
+  }
+  catch (e) {}
 
   return repository
 }

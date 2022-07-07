@@ -29,7 +29,7 @@ export class MorphOne extends Relation {
     related: Model,
     morphId: string,
     morphType: string,
-    localKey: string
+    localKey: string,
   ) {
     super(parent, related)
     this.morphId = morphId
@@ -74,7 +74,7 @@ export class MorphOne extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach(model => {
+    models.forEach((model) => {
       const key = model[this.localKey]
 
       dictionary[key]

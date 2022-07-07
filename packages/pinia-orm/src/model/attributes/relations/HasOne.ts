@@ -24,7 +24,7 @@ export class HasOne extends Relation {
     parent: Model,
     related: Model,
     foreignKey: string,
-    localKey: string
+    localKey: string,
   ) {
     super(parent, related)
     this.foreignKey = foreignKey
@@ -65,7 +65,7 @@ export class HasOne extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach(model => {
+    models.forEach((model) => {
       const key = model[this.localKey]
 
       dictionary[key]
@@ -78,7 +78,7 @@ export class HasOne extends Relation {
    * Build model dictionary keyed by the relation's foreign key.
    */
   protected buildDictionary(results: Collection): Dictionary {
-    return this.mapToDictionary(results, result => {
+    return this.mapToDictionary(results, (result) => {
       return [result[this.foreignKey], result]
     })
   }

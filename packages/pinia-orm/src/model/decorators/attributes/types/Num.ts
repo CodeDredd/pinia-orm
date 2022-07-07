@@ -5,7 +5,7 @@ import type { PropertyDecorator, TypeOptions } from '../../Contracts'
  */
 export function Num(
   value: number | null,
-  options: TypeOptions = {}
+  options: TypeOptions = {},
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
@@ -13,7 +13,8 @@ export function Num(
     self.setRegistry(propertyKey, () => {
       const attr = self.number(value)
 
-      if (options.nullable) attr.nullable()
+      if (options.nullable)
+        attr.nullable()
 
       return attr
     })

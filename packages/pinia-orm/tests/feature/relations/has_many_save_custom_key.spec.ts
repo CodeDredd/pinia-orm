@@ -26,7 +26,7 @@ describe('feature/relations/has_many_save_custom_key', () => {
       @Str('') name!: string
 
       @HasMany(() => Post, 'userId')
-      posts!: Post[]
+        posts!: Post[]
     }
 
     const usersRepo = useRepo(User)
@@ -36,18 +36,18 @@ describe('feature/relations/has_many_save_custom_key', () => {
       name: 'John Doe',
       posts: [
         { id: 1, title: 'Title 01' },
-        { id: 2, title: 'Title 02' }
-      ]
+        { id: 2, title: 'Title 02' },
+      ],
     })
 
     assertState({
       users: {
-        1: { userId: 1, name: 'John Doe' }
+        1: { userId: 1, name: 'John Doe' },
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },
-        2: { id: 2, userId: 1, title: 'Title 02' }
-      }
+        2: { id: 2, userId: 1, title: 'Title 02' },
+      },
     })
   })
 
@@ -60,7 +60,7 @@ describe('feature/relations/has_many_save_custom_key', () => {
       @Str('') name!: string
 
       @HasMany(() => Post, 'userId', 'userId')
-      posts!: Post[]
+        posts!: Post[]
     }
 
     class Post extends Model {
@@ -79,18 +79,18 @@ describe('feature/relations/has_many_save_custom_key', () => {
       name: 'John Doe',
       posts: [
         { id: 1, title: 'Title 01' },
-        { id: 2, title: 'Title 02' }
-      ]
+        { id: 2, title: 'Title 02' },
+      ],
     })
 
     assertState({
       users: {
-        1: { id: 1, userId: 2, name: 'John Doe' }
+        1: { id: 1, userId: 2, name: 'John Doe' },
       },
       posts: {
         1: { id: 1, userId: 2, title: 'Title 01' },
-        2: { id: 2, userId: 2, title: 'Title 02' }
-      }
+        2: { id: 2, userId: 2, title: 'Title 02' },
+      },
     })
   })
 })

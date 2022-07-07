@@ -25,7 +25,8 @@ export function fillState(entities: Entities): void {
   const state: any = {}
 
   for (const entity in entities) {
-    if (!state[entity]) state[entity] = { data: {} }
+    if (!state[entity])
+      state[entity] = { data: {} }
 
     state[entity].data = entities[entity]
   }
@@ -40,14 +41,14 @@ export function assertState(entities: Entities): void {
 
 export function assertModel<M extends Model>(
   model: M,
-  record: Element | any
+  record: Element | any,
 ): void {
   expect(model.$toJson()).toEqual(record)
 }
 
 export function assertModels<M extends Model>(
   models: Collection<M>,
-  record: Element[] | any[]
+  record: Element[] | any[],
 ): void {
   models.forEach((model, index) => {
     expect(model.$toJson()).toEqual(record[index])
@@ -56,9 +57,9 @@ export function assertModels<M extends Model>(
 
 export function assertInstanceOf(
   collection: Collection<any>,
-  model: typeof Model
+  model: typeof Model,
 ): void {
-  collection.forEach(item => {
+  collection.forEach((item) => {
     expect(item).toBeInstanceOf(model)
   })
 }

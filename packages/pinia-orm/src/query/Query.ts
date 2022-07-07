@@ -4,7 +4,7 @@ import {
   isArray,
   isEmpty,
   isFunction,
-  orderBy
+  orderBy,
 } from '../support/Utils'
 import type { Collection, Element, Elements, Item } from '../data/Data'
 import type { Database } from '../database/Database'
@@ -21,7 +21,7 @@ import type {
   OrderDirection,
   Where,
   WherePrimaryClosure,
-  WhereSecondaryClosure
+  WhereSecondaryClosure,
 } from './Options'
 
 export interface CollectionPromises {
@@ -122,7 +122,7 @@ export class Query<M extends Model = Model> {
    */
   where(
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): this {
     this.wheres.push({ field, value, boolean: 'and' })
 
@@ -150,7 +150,7 @@ export class Query<M extends Model = Model> {
    */
   orWhere(
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): this {
     this.wheres.push({ field, value, boolean: 'or' })
 
@@ -209,7 +209,7 @@ export class Query<M extends Model = Model> {
    * Set to eager load all relationships recursively.
    */
   withAllRecursive(depth = 3): Query<M> {
-    this.withAll(query => {
+    this.withAll((query) => {
       depth > 0 && query.withAllRecursive(depth - 1)
     })
 
@@ -243,7 +243,8 @@ export class Query<M extends Model = Model> {
   get(): Collection<M> {
     const models = this.select()
 
-    if (!isEmpty(models)) this.eagerLoadRelations(models)
+    if (!isEmpty(models))
+      this.eagerLoadRelations(models)
 
     return models
   }
@@ -288,7 +289,8 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered where clause.
    */
   protected filterWhere(models: Collection<M>): Collection<M> {
-    if (isEmpty(this.wheres)) return models
+    if (isEmpty(this.wheres))
+      return models
 
     const comparator = this.getWhereComparator()
 
@@ -301,7 +303,7 @@ export class Query<M extends Model = Model> {
   protected getWhereComparator(): (model: any) => boolean {
     const { and, or } = groupBy(this.wheres, where => where.boolean)
 
-    return model => {
+    return (model) => {
       const results: boolean[] = []
 
       and && results.push(and.every(w => this.whereComparator(model, w)))
@@ -315,11 +317,14 @@ export class Query<M extends Model = Model> {
    * The function to compare where clause to the given model.
    */
   protected whereComparator(model: M, where: Where): boolean {
-    if (isFunction(where.field)) return where.field(model)
+    if (isFunction(where.field))
+      return where.field(model)
 
-    if (isArray(where.value)) return where.value.includes(model[where.field])
+    if (isArray(where.value))
+      return where.value.includes(model[where.field])
 
-    if (isFunction(where.value)) return where.value(model[where.field])
+    if (isFunction(where.value))
+      return where.value(model[where.field])
 
     return model[where.field] === where.value
   }
@@ -328,7 +333,8 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered order conditions.
    */
   protected filterOrder(models: Collection<M>): Collection<M> {
-    if (this.orders.length === 0) return models
+    if (this.orders.length === 0)
+      return models
 
     const fields = this.orders.map(order => order.field)
     const directions = this.orders.map(order => order.direction)
@@ -366,7 +372,7 @@ export class Query<M extends Model = Model> {
   protected eagerLoadRelation(
     models: Collection<M>,
     name: string,
-    constraints: EagerLoadConstraint
+    constraints: EagerLoadConstraint,
   ): void {
     // First we will "back up" the existing where conditions on the query so we can
     // add our eager constraints. Then we will merge the wheres that were on the
@@ -410,7 +416,8 @@ export class Query<M extends Model = Model> {
 
     const item = this.newConnection().find(id)
 
-    if (!item) return null
+    if (!item)
+      return null
 
     const model = this.hydrate(item)
 
@@ -441,11 +448,13 @@ export class Query<M extends Model = Model> {
     for (const key in schema) {
       const attr = fields[key]
 
-      if (!(attr instanceof Relation)) continue
+      if (!(attr instanceof Relation))
+        continue
 
       const relatedSchema = schema[key]
 
-      if (!relatedSchema) return
+      if (!relatedSchema)
+        return
 
       // Inverse polymorphic relations have the same parent and child model
       // so we need to query using the type stored in the parent model.
@@ -545,9 +554,10 @@ export class Query<M extends Model = Model> {
   update(record: Element): Collection<M> {
     const models = this.get()
 
-    if (isEmpty(models)) return []
+    if (isEmpty(models))
+      return []
 
-    const newModels = models.map(model => {
+    const newModels = models.map((model) => {
       return this.hydrate({ ...model.$getAttributes(), ...record })
     })
 
@@ -563,8 +573,8 @@ export class Query<M extends Model = Model> {
   destroy(id: string | number): Item<M>
   destroy(ids: any): any {
     assert(!this.model.$hasCompositeKey(), [
-      "You can't use the `destroy` method on a model with a composite key.",
-      'Please use `delete` method instead.'
+      'You can\'t use the `destroy` method on a model with a composite key.',
+      'Please use `delete` method instead.',
     ])
 
     return isArray(ids) ? this.destroyMany(ids) : this.destroyOne(ids)
@@ -573,7 +583,8 @@ export class Query<M extends Model = Model> {
   protected destroyOne(id: string | number): Item<M> {
     const model = this.find(id)
 
-    if (!model) return null
+    if (!model)
+      return null
 
     this.newConnection().destroy([model.$getIndexId()])
 
@@ -583,7 +594,8 @@ export class Query<M extends Model = Model> {
   protected destroyMany(ids: (string | number)[]): Collection<M> {
     const models = this.find(ids)
 
-    if (isEmpty(models)) return []
+    if (isEmpty(models))
+      return []
 
     this.newConnection().destroy(this.getIndexIdsFromCollection(models))
 
@@ -596,7 +608,8 @@ export class Query<M extends Model = Model> {
   delete(): M[] {
     const models = this.get()
 
-    if (isEmpty(models)) return []
+    if (isEmpty(models))
+      return []
 
     const ids = this.getIndexIdsFromCollection(models)
 

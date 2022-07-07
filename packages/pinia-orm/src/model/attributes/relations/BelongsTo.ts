@@ -28,7 +28,7 @@ export class BelongsTo extends Relation {
     parent: Model,
     child: Model,
     foreignKey: string,
-    ownerKey: string
+    ownerKey: string,
   ) {
     super(parent, child)
     this.foreignKey = foreignKey
@@ -73,7 +73,8 @@ export class BelongsTo extends Relation {
    */
   protected getEagerModelKeys(models: Collection): (string | number)[] {
     return models.reduce<(string | number)[]>((keys, model) => {
-      if (model[this.foreignKey] !== null) keys.push(model[this.foreignKey])
+      if (model[this.foreignKey] !== null)
+        keys.push(model[this.foreignKey])
 
       return keys
     }, [])
@@ -85,7 +86,7 @@ export class BelongsTo extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach(model => {
+    models.forEach((model) => {
       const key = model[this.foreignKey]
 
       dictionary[key]

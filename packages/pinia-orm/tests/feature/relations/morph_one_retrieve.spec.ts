@@ -20,7 +20,7 @@ describe('feature/relations/morph_one_retrieve', () => {
     @Str('') name!: string
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-    image!: Image | null
+      image!: Image | null
   }
 
   class Post extends Model {
@@ -29,35 +29,35 @@ describe('feature/relations/morph_one_retrieve', () => {
     @Num(0) id!: number
     @Str('') title!: string
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-    image!: Image | null
+      image!: Image | null
   }
 
   const ENTITIES = {
     users: [{ id: 1, name: 'John Doe' }],
     posts: [
       { id: 1, title: 'Hello, world!' },
-      { id: 2, title: 'Hello, world! Again!' }
+      { id: 2, title: 'Hello, world! Again!' },
     ],
     images: [
       {
         id: 1,
         url: '/profile.jpg',
         imageableId: 1,
-        imageableType: 'users'
+        imageableType: 'users',
       },
       {
         id: 2,
         url: '/post.jpg',
         imageableId: 1,
-        imageableType: 'posts'
+        imageableType: 'posts',
       },
       {
         id: 3,
         url: '/post2.jpg',
         imageableId: 2,
-        imageableType: 'posts'
-      }
-    ]
+        imageableType: 'posts',
+      },
+    ],
   }
 
   describe('when there are images', () => {
@@ -81,8 +81,8 @@ describe('feature/relations/morph_one_retrieve', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: 1,
-          imageableType: 'users'
-        }
+          imageableType: 'users',
+        },
       })
     })
 
@@ -106,8 +106,8 @@ describe('feature/relations/morph_one_retrieve', () => {
           id: 2,
           url: '/post.jpg',
           imageableId: 1,
-          imageableType: 'posts'
-        }
+          imageableType: 'posts',
+        },
       })
     })
   })
@@ -124,7 +124,7 @@ describe('feature/relations/morph_one_retrieve', () => {
       assertModel(user, {
         id: 1,
         name: 'John Doe',
-        image: null
+        image: null,
       })
     })
   })

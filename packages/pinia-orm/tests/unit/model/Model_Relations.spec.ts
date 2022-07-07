@@ -9,7 +9,7 @@ import {
   Model,
   MorphOne,
   MorphTo,
-  useRepo
+  useRepo,
 } from '../../../src'
 
 describe('unit/model/Model_Relations', () => {
@@ -47,19 +47,19 @@ describe('unit/model/Model_Relations', () => {
     @Attr() nameIds!: number[]
 
     @HasOne(() => Phone, 'userId')
-    phone!: Phone | null
+      phone!: Phone | null
 
     @BelongsTo(() => Country, 'countryId')
-    country!: Country | null
+      country!: Country | null
 
     @HasMany(() => Post, 'userId')
-    posts!: Post[]
+      posts!: Post[]
 
     @HasManyBy(() => Name, 'nameIds')
-    names!: Name[]
+      names!: Name[]
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-    image!: Image | null
+      image!: Image | null
   }
 
   class Image extends Model {
@@ -70,7 +70,7 @@ describe('unit/model/Model_Relations', () => {
     @Attr() imageableType!: string
 
     @MorphTo(() => [User], 'imageableId', 'imageableType')
-    imageable!: User | null
+      imageable!: User | null
   }
 
   it('fills "has one" relation', () => {
@@ -79,8 +79,8 @@ describe('unit/model/Model_Relations', () => {
     const user = userRepo.make({
       id: 1,
       phone: {
-        id: 2
-      }
+        id: 2,
+      },
     })
 
     expect(user.phone).toBeInstanceOf(Phone)
@@ -93,8 +93,8 @@ describe('unit/model/Model_Relations', () => {
     const user = userRepo.make({
       id: 1,
       country: {
-        id: 2
-      }
+        id: 2,
+      },
     })
 
     expect(user.country).toBeInstanceOf(Country)
@@ -106,7 +106,7 @@ describe('unit/model/Model_Relations', () => {
 
     const user = userRepo.make({
       id: 1,
-      posts: [{ id: 2 }, { id: 3 }]
+      posts: [{ id: 2 }, { id: 3 }],
     })
 
     expect(user.posts[0]).toBeInstanceOf(Post)
@@ -120,7 +120,7 @@ describe('unit/model/Model_Relations', () => {
 
     const user = userRepo.make({
       id: 1,
-      names: [{ id: 2 }, { id: 3 }]
+      names: [{ id: 2 }, { id: 3 }],
     })
 
     expect(user.names[0]).toBeInstanceOf(Name)
@@ -137,8 +137,8 @@ describe('unit/model/Model_Relations', () => {
       image: {
         id: 2,
         imageableId: 1,
-        imageableType: 'users'
-      }
+        imageableType: 'users',
+      },
     })
 
     expect(user.image!).toBeInstanceOf(Image)
@@ -153,8 +153,8 @@ describe('unit/model/Model_Relations', () => {
       imageableId: 2,
       imageableType: 'users',
       imageable: {
-        id: 2
-      }
+        id: 2,
+      },
     })
 
     expect(image.imageable!).toBeInstanceOf(User)

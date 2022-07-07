@@ -7,13 +7,13 @@ import type { PropertyDecorator } from '../../Contracts'
 export function HasManyBy(
   related: () => typeof Model,
   foreignKey: string,
-  ownerKey?: string
+  ownerKey?: string,
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
     self.setRegistry(propertyKey, () =>
-      self.hasManyBy(related(), foreignKey, ownerKey)
+      self.hasManyBy(related(), foreignKey, ownerKey),
     )
   }
 }

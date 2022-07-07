@@ -73,12 +73,13 @@ export abstract class Relation extends Attribute {
    */
   protected mapToDictionary(
     models: Collection,
-    callback: (model: Model) => [string, Model]
+    callback: (model: Model) => [string, Model],
   ): Dictionary {
     return models.reduce<Dictionary>((dictionary, model) => {
       const [key, value] = callback(model)
 
-      if (!dictionary[key]) dictionary[key] = []
+      if (!dictionary[key])
+        dictionary[key] = []
 
       dictionary[key].push(value)
 

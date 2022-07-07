@@ -8,5 +8,5 @@ export default class Phone extends Model {
   @Attr() userId!: number | null
 
   @BelongsTo(() => User, 'userId')
-  author!: User | null
+    author!: User | null
 }

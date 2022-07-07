@@ -21,9 +21,9 @@ describe('feature/helpers/helpers', () => {
     const app = createApp({
       computed: {
         ...mapRepos({
-          userRepo: User
-        })
-      }
+          userRepo: User,
+        }),
+      },
     })
 
     const pinia = createPinia()
@@ -40,9 +40,9 @@ describe('feature/helpers/helpers', () => {
     const app = createApp({
       computed: {
         ...mapRepos({
-          userRepo: UserRepository
-        })
-      }
+          userRepo: UserRepository,
+        }),
+      },
     })
 
     const pinia = createPinia()
@@ -58,9 +58,9 @@ describe('feature/helpers/helpers', () => {
     const app = createApp({
       computed: {
         ...mapRepos({
-          userRepo: User
-        })
-      }
+          userRepo: User,
+        }),
+      },
     })
 
     const pinia = createPinia()

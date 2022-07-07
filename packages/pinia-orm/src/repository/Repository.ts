@@ -10,7 +10,7 @@ import type {
   OrderBy,
   OrderDirection,
   WherePrimaryClosure,
-  WhereSecondaryClosure
+  WhereSecondaryClosure,
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
 
@@ -80,7 +80,7 @@ export class Repository<M extends Model = Model> {
   getModel(): M {
     assert(!!this.model, [
       'The model is not registered. Please define the model to be used at',
-      '`use` property of the repository class.'
+      '`use` property of the repository class.',
     ])
 
     return this.model
@@ -107,7 +107,7 @@ export class Repository<M extends Model = Model> {
    */
   where(
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): Query<M> {
     return this.query().where(field, value)
   }
@@ -117,7 +117,7 @@ export class Repository<M extends Model = Model> {
    */
   orWhere(
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): Query<M> {
     return this.query().orWhere(field, value)
   }
@@ -197,7 +197,7 @@ export class Repository<M extends Model = Model> {
    */
   make(attributes?: Element): M {
     return this.getModel().$newInstance(attributes, {
-      relations: true
+      relations: true,
     })
   }
 

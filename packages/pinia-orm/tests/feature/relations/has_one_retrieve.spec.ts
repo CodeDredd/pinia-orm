@@ -19,7 +19,7 @@ describe('feature/relations/has_one_retrieve', () => {
     @Str('') name!: string
 
     @HasOne(() => Phone, 'userId')
-    phone!: Phone | null
+      phone!: Phone | null
   }
 
   it('can eager load has one relation', () => {
@@ -39,8 +39,8 @@ describe('feature/relations/has_one_retrieve', () => {
       phone: {
         id: 1,
         userId: 1,
-        number: '123-4567-8912'
-      }
+        number: '123-4567-8912',
+      },
     })
   })
 
@@ -55,7 +55,7 @@ describe('feature/relations/has_one_retrieve', () => {
     assertModel(user, {
       id: 1,
       name: 'John Doe',
-      phone: null
+      phone: null,
     })
   })
 })

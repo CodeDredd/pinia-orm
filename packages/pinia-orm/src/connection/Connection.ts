@@ -31,12 +31,13 @@ export class Connection {
    * Commit a namespaced store mutation.
    */
   protected commit(name: string, payload?: any): void {
-    const newStore =
-      typeof this.database.storeGenerator === 'function'
+    const newStore
+      = typeof this.database.storeGenerator === 'function'
         ? this.database.storeGenerator(this.model.$entity())
         : useDataStore(this.model.$entity(), this.model.$piniaOptions())
     const store = newStore(this.database.store)
-    if (name && typeof store[name] === 'function') store[name](payload)
+    if (name && typeof store[name] === 'function')
+      store[name](payload)
   }
 
   /**
@@ -44,8 +45,8 @@ export class Connection {
    */
   get(): Elements {
     // const connection = this.database.connection
-    const newStore =
-      typeof this.database.storeGenerator === 'function'
+    const newStore
+      = typeof this.database.storeGenerator === 'function'
         ? this.database.storeGenerator(this.model.$entity())
         : useDataStore(this.model.$entity(), this.model.$piniaOptions())
     const store = newStore()

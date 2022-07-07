@@ -23,7 +23,7 @@ describe('unit/events/Events', () => {
   it('can ignore empty event names', () => {
     const events = new Events<TEvents>()
 
-    ;[0, '', null, undefined].forEach(e => {
+    ;[0, '', null, undefined].forEach((e) => {
       events.on(e as any, () => {})
     })
 
@@ -33,7 +33,7 @@ describe('unit/events/Events', () => {
   it('can ignore non-function handlers', () => {
     const events = new Events<TEvents>()
 
-    ;[0, '', null, undefined].forEach(e => {
+    ;[0, '', null, undefined].forEach((e) => {
       const cb = events.on('test', e as any)
       cb()
     })
