@@ -28,7 +28,7 @@
     "@babel/eslint-parser": "^7.18.2",
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/eslint-config-typescript": "^8.0.0",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@nuxtjs/eslint-module": "^3.1.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
