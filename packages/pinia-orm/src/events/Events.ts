@@ -42,10 +42,8 @@ export class Events<T> {
    * @returns A function that, when called, will unregister the handler.
    */
   on<K extends keyof T>(event: K, callback: EventListener<T, K>): () => void {
-    if (!event || !isFunction(callback)) {
+    if (!event || !isFunction(callback))
       return () => {} // Non-blocking noop.
-    }
-
     ;(this.listeners[event] = this.listeners[event]! || []).push(callback)
 
     return () => {
@@ -83,9 +81,7 @@ export class Events<T> {
   off<K extends keyof T>(event: K, callback: EventListener<T, K>): void {
     const stack = this.listeners[event]
 
-    if (!stack) {
-      return
-    }
+    if (!stack) return
 
     const i = stack.indexOf(callback)
 
@@ -115,11 +111,9 @@ export class Events<T> {
   emit<K extends keyof T>(event: K, ...args: EventArgs<T[K]>): void {
     const stack = this.listeners[event]
 
-    if (stack) {
-      stack.slice().forEach((listener) => listener(...args))
-    }
+    if (stack) stack.slice().forEach(listener => listener(...args))
 
-    this.subscribers.slice().forEach((sub) => sub({ event, args }))
+    this.subscribers.slice().forEach(sub => sub({ event, args }))
   }
 
   /**

@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr } from '../../../src'
+import { Attr, Model } from '../../../src'
 
 describe('unit/model/Model_Serialization', () => {
   class User extends Model {
@@ -15,13 +15,13 @@ describe('unit/model/Model_Serialization', () => {
     const user = new User({
       id: 1,
       arr: [1, 2, 3],
-      obj: { key: 'value' },
+      obj: { key: 'value' }
     })
 
     const expected = {
       id: 1,
       arr: [1, 2, 3],
-      obj: { key: 'value' },
+      obj: { key: 'value' }
     }
 
     expect(user.$toJson()).toEqual(expected)

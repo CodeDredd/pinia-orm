@@ -1,7 +1,8 @@
-import { Pinia, StoreDefinition } from 'pinia'
-import { schema as Normalizr } from 'normalizr'
-import { Schema, Schemas } from '../schema/Schema'
-import { Model } from '../model/Model'
+import type { Pinia, StoreDefinition } from 'pinia'
+import type { schema as Normalizr } from 'normalizr'
+import type { Schemas } from '../schema/Schema'
+import { Schema } from '../schema/Schema'
+import type { Model } from '../model/Model'
 import { Relation } from '../model/attributes/relations/Relation'
 
 export class Database {
@@ -32,7 +33,7 @@ export class Database {
    * Whether the database has already been installed to Vuex or not.
    * The model registration procedure depends on this flag.
    */
-  started: boolean = false
+  started = false
 
   /**
    * Set the store.
@@ -90,7 +91,7 @@ export class Database {
       const attr = fields[name]
 
       if (attr instanceof Relation) {
-        attr.getRelateds().forEach((m) => {
+        attr.getRelateds().forEach(m => {
           this.register(m)
         })
       }

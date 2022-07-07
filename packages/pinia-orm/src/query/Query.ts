@@ -1,27 +1,27 @@
 import {
-  isArray,
-  isFunction,
-  isEmpty,
-  orderBy,
-  groupBy,
   assert,
+  groupBy,
+  isArray,
+  isEmpty,
+  isFunction,
+  orderBy
 } from '../support/Utils'
-import { Element, Elements, Item, Collection } from '../data/Data'
-import { Database } from '../database/Database'
+import type { Collection, Element, Elements, Item } from '../data/Data'
+import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
-import { Model } from '../model/Model'
+import type { Model } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { Connection } from '../connection/Connection'
-import {
-  Where,
-  WherePrimaryClosure,
-  WhereSecondaryClosure,
+import type {
+  EagerLoad,
+  EagerLoadConstraint,
   Order,
   OrderBy,
   OrderDirection,
-  EagerLoad,
-  EagerLoadConstraint,
+  Where,
+  WherePrimaryClosure,
+  WhereSecondaryClosure
 } from './Options'
 
 export interface CollectionPromises {
@@ -58,7 +58,7 @@ export class Query<M extends Model = Model> {
   /**
    * The number of records to skip.
    */
-  protected skip: number = 0
+  protected skip = 0
 
   /**
    * The relationships that should be eager loaded.
@@ -199,9 +199,8 @@ export class Query<M extends Model = Model> {
   withAll(callback: EagerLoadConstraint = () => {}): Query<M> {
     const fields = this.model.$fields()
 
-    for (const name in fields) {
+    for (const name in fields)
       fields[name] instanceof Relation && this.with(name, callback)
-    }
 
     return this
   }
@@ -209,8 +208,8 @@ export class Query<M extends Model = Model> {
   /**
    * Set to eager load all relationships recursively.
    */
-  withAllRecursive(depth: number = 3): Query<M> {
-    this.withAll((query) => {
+  withAllRecursive(depth = 3): Query<M> {
+    this.withAll(query => {
       depth > 0 && query.withAllRecursive(depth - 1)
     })
 
@@ -233,9 +232,7 @@ export class Query<M extends Model = Model> {
 
     const collection = [] as Collection<M>
 
-    for (const id in records) {
-      collection.push(this.hydrate(records[id]))
-    }
+    for (const id in records) collection.push(this.hydrate(records[id]))
 
     return collection
   }
@@ -246,9 +243,7 @@ export class Query<M extends Model = Model> {
   get(): Collection<M> {
     const models = this.select()
 
-    if (!isEmpty(models)) {
-      this.eagerLoadRelations(models)
-    }
+    if (!isEmpty(models)) this.eagerLoadRelations(models)
 
     return models
   }
@@ -293,28 +288,26 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered where clause.
    */
   protected filterWhere(models: Collection<M>): Collection<M> {
-    if (isEmpty(this.wheres)) {
-      return models
-    }
+    if (isEmpty(this.wheres)) return models
 
     const comparator = this.getWhereComparator()
 
-    return models.filter((model) => comparator(model))
+    return models.filter(model => comparator(model))
   }
 
   /**
    * Get comparator for the where clause.
    */
   protected getWhereComparator(): (model: any) => boolean {
-    const { and, or } = groupBy(this.wheres, (where) => where.boolean)
+    const { and, or } = groupBy(this.wheres, where => where.boolean)
 
-    return (model) => {
+    return model => {
       const results: boolean[] = []
 
-      and && results.push(and.every((w) => this.whereComparator(model, w)))
-      or && results.push(or.some((w) => this.whereComparator(model, w)))
+      and && results.push(and.every(w => this.whereComparator(model, w)))
+      or && results.push(or.some(w => this.whereComparator(model, w)))
 
-      return results.indexOf(true) !== -1
+      return results.includes(true)
     }
   }
 
@@ -322,17 +315,11 @@ export class Query<M extends Model = Model> {
    * The function to compare where clause to the given model.
    */
   protected whereComparator(model: M, where: Where): boolean {
-    if (isFunction(where.field)) {
-      return where.field(model)
-    }
+    if (isFunction(where.field)) return where.field(model)
 
-    if (isArray(where.value)) {
-      return where.value.includes(model[where.field])
-    }
+    if (isArray(where.value)) return where.value.includes(model[where.field])
 
-    if (isFunction(where.value)) {
-      return where.value(model[where.field])
-    }
+    if (isFunction(where.value)) return where.value(model[where.field])
 
     return model[where.field] === where.value
   }
@@ -341,12 +328,10 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered order conditions.
    */
   protected filterOrder(models: Collection<M>): Collection<M> {
-    if (this.orders.length === 0) {
-      return models
-    }
+    if (this.orders.length === 0) return models
 
-    const fields = this.orders.map((order) => order.field)
-    const directions = this.orders.map((order) => order.direction)
+    const fields = this.orders.map(order => order.field)
+    const directions = this.orders.map(order => order.direction)
 
     return orderBy(models, fields, directions)
   }
@@ -371,9 +356,8 @@ export class Query<M extends Model = Model> {
    * Eager load the relationships for the models.
    */
   protected eagerLoadRelations(models: Collection<M>): void {
-    for (const name in this.eagerLoad) {
+    for (const name in this.eagerLoad)
       this.eagerLoadRelation(models, name, this.eagerLoad[name])
-    }
   }
 
   /**
@@ -426,9 +410,7 @@ export class Query<M extends Model = Model> {
 
     const item = this.newConnection().find(id)
 
-    if (!item) {
-      return null
-    }
+    if (!item) return null
 
     const model = this.hydrate(item)
 
@@ -459,28 +441,24 @@ export class Query<M extends Model = Model> {
     for (const key in schema) {
       const attr = fields[key]
 
-      if (!(attr instanceof Relation)) {
-        continue
-      }
+      if (!(attr instanceof Relation)) continue
 
       const relatedSchema = schema[key]
 
-      if (!relatedSchema) {
-        return
-      }
+      if (!relatedSchema) return
 
       // Inverse polymorphic relations have the same parent and child model
       // so we need to query using the type stored in the parent model.
       if (attr instanceof MorphTo) {
         const relatedType = model[attr.getType()]
 
-        // @ts-ignore
+        // @ts-expect-error Don't know why its necessary yet
         model[key] = this.newQuery(relatedType).reviveOne(relatedSchema)
 
         continue
       }
 
-      // @ts-ignore
+      // @ts-expect-error Don't know why its necessary yet
       model[key] = isArray(relatedSchema)
         ? this.newQueryForRelation(attr).reviveMany(relatedSchema)
         : this.newQueryForRelation(attr).reviveOne(relatedSchema)
@@ -567,11 +545,9 @@ export class Query<M extends Model = Model> {
   update(record: Element): Collection<M> {
     const models = this.get()
 
-    if (isEmpty(models)) {
-      return []
-    }
+    if (isEmpty(models)) return []
 
-    const newModels = models.map((model) => {
+    const newModels = models.map(model => {
       return this.hydrate({ ...model.$getAttributes(), ...record })
     })
 
@@ -588,7 +564,7 @@ export class Query<M extends Model = Model> {
   destroy(ids: any): any {
     assert(!this.model.$hasCompositeKey(), [
       "You can't use the `destroy` method on a model with a composite key.",
-      'Please use `delete` method instead.',
+      'Please use `delete` method instead.'
     ])
 
     return isArray(ids) ? this.destroyMany(ids) : this.destroyOne(ids)
@@ -597,9 +573,7 @@ export class Query<M extends Model = Model> {
   protected destroyOne(id: string | number): Item<M> {
     const model = this.find(id)
 
-    if (!model) {
-      return null
-    }
+    if (!model) return null
 
     this.newConnection().destroy([model.$getIndexId()])
 
@@ -609,9 +583,7 @@ export class Query<M extends Model = Model> {
   protected destroyMany(ids: (string | number)[]): Collection<M> {
     const models = this.find(ids)
 
-    if (isEmpty(models)) {
-      return []
-    }
+    if (isEmpty(models)) return []
 
     this.newConnection().destroy(this.getIndexIdsFromCollection(models))
 
@@ -624,9 +596,7 @@ export class Query<M extends Model = Model> {
   delete(): M[] {
     const models = this.get()
 
-    if (isEmpty(models)) {
-      return []
-    }
+    if (isEmpty(models)) return []
 
     const ids = this.getIndexIdsFromCollection(models)
 
@@ -650,7 +620,7 @@ export class Query<M extends Model = Model> {
    * Get an array of index ids from the given collection.
    */
   protected getIndexIdsFromCollection(models: Collection<M>): string[] {
-    return models.map((model) => model.$getIndexId())
+    return models.map(model => model.$getIndexId())
   }
 
   /**
@@ -660,7 +630,7 @@ export class Query<M extends Model = Model> {
   protected hydrate(records: Element[]): Collection<M>
   protected hydrate(records: Element | Element[]): M | Collection<M> {
     return isArray(records)
-      ? records.map((record) => this.hydrate(record))
+      ? records.map(record => this.hydrate(record))
       : this.model.$newInstance(records, { relations: false })
   }
 

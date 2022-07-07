@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest'
 
-import { Model, Num, Str, HasMany, useRepo } from '../../src'
+import { HasMany, Model, Num, Str, useRepo } from '../../src'
 
 describe('performance/save_has_many_relation', () => {
   class Post extends Model {
@@ -30,7 +30,7 @@ describe('performance/save_has_many_relation', () => {
       users.push({
         id: i,
         name: `Username ${i}`,
-        posts: [{ id: i, title: `Title ${i}` }],
+        posts: [{ id: i, title: `Title ${i}` }]
       })
     }
 

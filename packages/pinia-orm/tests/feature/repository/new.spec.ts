@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Uid, Str, Num, Bool, Attr, useRepo } from '../../../src'
+import { Attr, Bool, Model, Num, Str, Uid, useRepo } from '../../../src'
 import { assertState, mockUid } from '../../helpers'
 
 describe('feature/repository/new', () => {
@@ -22,8 +22,8 @@ describe('feature/repository/new', () => {
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe', age: 21, active: true },
-      },
+        uid1: { id: 'uid1', name: 'John Doe', age: 21, active: true }
+      }
     })
   })
 

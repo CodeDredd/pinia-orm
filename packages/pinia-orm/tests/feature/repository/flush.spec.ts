@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest'
 
-import { Model, Attr, Str, useRepo } from '../../../src'
+import { Attr, Model, Str, useRepo } from '../../../src'
 import { assertInstanceOf, assertState, fillState } from '../../helpers'
 
 describe('feature/repository/flush', () => {
@@ -18,14 +18,14 @@ describe('feature/repository/flush', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
+        3: { id: 3, name: 'Johnny Doe' }
+      }
     })
 
     const users = userRepo.flush()
 
     assertState({
-      users: {},
+      users: {}
     })
 
     assertInstanceOf(users, User)

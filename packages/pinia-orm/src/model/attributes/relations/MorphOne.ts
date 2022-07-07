@@ -1,8 +1,8 @@
-import { Schema as NormalizrSchema } from 'normalizr'
-import { Schema } from '../../../schema/Schema'
-import { Element, Collection } from '../../../data/Data'
-import { Query } from '../../../query/Query'
-import { Model } from '../../Model'
+import type { Schema as NormalizrSchema } from 'normalizr'
+import type { Schema } from '../../../schema/Schema'
+import type { Collection, Element } from '../../../data/Data'
+import type { Query } from '../../../query/Query'
+import type { Model } from '../../Model'
 import { Relation } from './Relation'
 
 export class MorphOne extends Relation {
@@ -74,7 +74,7 @@ export class MorphOne extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach((model) => {
+    models.forEach(model => {
       const key = model[this.localKey]
 
       dictionary[key]

@@ -8,6 +8,6 @@ export function useDataStore(
   return defineStore(id, {
     state: () => ({ data: {} }),
     actions: useStoreActions(),
-    ...options,
+    ...options
   })
 }

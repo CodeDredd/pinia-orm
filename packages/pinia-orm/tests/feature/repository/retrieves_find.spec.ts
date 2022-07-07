@@ -1,11 +1,11 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, useRepo } from '../../../src'
+import { Attr, Model, Str, useRepo } from '../../../src'
 import {
   assertInstanceOf,
   assertModel,
   assertModels,
-  fillState,
+  fillState
 } from '../../helpers'
 
 describe('feature/repository/retrieves_find', () => {
@@ -23,8 +23,8 @@ describe('feature/repository/retrieves_find', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
+        3: { id: 3, name: 'Johnny Doe' }
+      }
     })
 
     const user = userRepo.find(2)!
@@ -40,8 +40,8 @@ describe('feature/repository/retrieves_find', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
+        3: { id: 3, name: 'Johnny Doe' }
+      }
     })
 
     const user = userRepo.find(4)
@@ -56,8 +56,8 @@ describe('feature/repository/retrieves_find', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
+        3: { id: 3, name: 'Johnny Doe' }
+      }
     })
 
     const users = userRepo.find([1, 3])
@@ -66,7 +66,7 @@ describe('feature/repository/retrieves_find', () => {
     assertInstanceOf(users, User)
     assertModels(users, [
       { id: 1, name: 'John Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
   })
 })

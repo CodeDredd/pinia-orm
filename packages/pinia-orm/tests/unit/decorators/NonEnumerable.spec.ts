@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { NonEnumerable } from '../../../src'
 
@@ -18,6 +18,7 @@ describe('unit/decorators/NonEnumerable', () => {
   it('should describe as an innumerable property', () => {
     const cls = new StdClass()
 
+    // eslint-disable-next-line no-prototype-builtins
     expect(cls.propertyIsEnumerable('hidden')).toBe(false)
   })
 

@@ -1,6 +1,6 @@
-import { Element, Elements } from '../data/Data'
-import { Database } from '../database/Database'
-import { Model } from '../model/Model'
+import type { Element, Elements } from '../data/Data'
+import type { Database } from '../database/Database'
+import type { Model } from '../model/Model'
 import { useDataStore } from '../composables/useDataStore'
 
 export interface ConnectionNamespace {
@@ -36,9 +36,7 @@ export class Connection {
         ? this.database.storeGenerator(this.model.$entity())
         : useDataStore(this.model.$entity(), this.model.$piniaOptions())
     const store = newStore(this.database.store)
-    if (name && typeof store[name] === 'function') {
-      store[name](payload)
-    }
+    if (name && typeof store[name] === 'function') store[name](payload)
   }
 
   /**
@@ -112,9 +110,7 @@ export class Connection {
 
     const data = this.get()
 
-    for (const id in data) {
-      deleted.push(id)
-    }
+    for (const id in data) deleted.push(id)
 
     this.commit('flush')
 

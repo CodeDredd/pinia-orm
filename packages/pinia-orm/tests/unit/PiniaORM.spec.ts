@@ -1,9 +1,9 @@
 import { getActivePinia } from 'pinia'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('unit/PiniaORM', () => {
   it.skip('installs Vuex ORM to the store', () => {
-    // @ts-ignore
+    // @ts-expect-error I don't know
     const store = getActivePinia().state.value
     expect(store.$database.started).toBe(true)
   })

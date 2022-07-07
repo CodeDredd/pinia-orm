@@ -10,7 +10,7 @@ importers:
     specifiers:
       '@types/lodash.kebabcase': ^4.1.7
       '@types/node': ^16.11.43
-      chalk: ^5.0.1
+      chalk: ^4.1.2
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
       execa: ^6.1.0
@@ -30,7 +30,7 @@ importers:
     devDependencies:
       '@types/lodash.kebabcase': 4.1.7
       '@types/node': 16.11.43
-      chalk: 5.0.1
+      chalk: 4.1.2
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
       execa: 6.1.0
@@ -55,7 +55,7 @@ importers:
       '@nuxtjs/eslint-config-typescript': latest
       '@pinia/nuxt': ^0.1.9
       '@types/prettier': ^2
-      eslint: latest
+      eslint: ^8.19.0
       nuxt: ^3.0.0-rc.4
       pinia: ^2.0.14
       pinia-orm: ~0.10.0

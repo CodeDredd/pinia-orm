@@ -1,9 +1,10 @@
-import { Schema as NormalizrSchema } from 'normalizr'
-import { Schema } from '../../../schema/Schema'
-import { Element, Collection } from '../../../data/Data'
-import { Query } from '../../../query/Query'
-import { Model } from '../../Model'
-import { Relation, Dictionary } from './Relation'
+import type { Schema as NormalizrSchema } from 'normalizr'
+import type { Schema } from '../../../schema/Schema'
+import type { Collection, Element } from '../../../data/Data'
+import type { Query } from '../../../query/Query'
+import type { Model } from '../../Model'
+import type { Dictionary } from './Relation'
+import { Relation } from './Relation'
 
 export class HasOne extends Relation {
   /**
@@ -64,7 +65,7 @@ export class HasOne extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach((model) => {
+    models.forEach(model => {
       const key = model[this.localKey]
 
       dictionary[key]
@@ -77,7 +78,7 @@ export class HasOne extends Relation {
    * Build model dictionary keyed by the relation's foreign key.
    */
   protected buildDictionary(results: Collection): Dictionary {
-    return this.mapToDictionary(results, (result) => {
+    return this.mapToDictionary(results, result => {
       return [result[this.foreignKey], result]
     })
   }

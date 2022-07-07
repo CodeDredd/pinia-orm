@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, HasManyBy, useRepo } from '../../../src'
+import { Attr, HasManyBy, Model, Str, useRepo } from '../../../src'
 import { assertInstanceOf, assertModel } from '../../helpers'
 
 describe('feature/relations/has_many_by_retrieve', () => {
@@ -28,7 +28,7 @@ describe('feature/relations/has_many_by_retrieve', () => {
 
     nodesRepo.save([
       { id: 1, name: 'Node 01' },
-      { id: 2, name: 'Node 02' },
+      { id: 2, name: 'Node 02' }
     ])
     clusterRepo.save({ id: 1, nodeIds: [1, 2], name: 'Cluster 01' })
 
@@ -42,8 +42,8 @@ describe('feature/relations/has_many_by_retrieve', () => {
       name: 'Cluster 01',
       nodes: [
         { id: 1, name: 'Node 01' },
-        { id: 2, name: 'Node 02' },
-      ],
+        { id: 2, name: 'Node 02' }
+      ]
     })
   })
 
@@ -59,7 +59,7 @@ describe('feature/relations/has_many_by_retrieve', () => {
       id: 1,
       nodeIds: [1, 2],
       name: 'Cluster 01',
-      nodes: [],
+      nodes: []
     })
   })
 })

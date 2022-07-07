@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { cloneDeep } from '../../../src/support/Utils'
 
@@ -11,10 +11,10 @@ describe('unit/support/Utils_Clone_Deep', () => {
           id: 1,
           deep: [
             { id: 1, deeper: { id: 2 } },
-            { id: 2, deeper: { id: 3 } },
-          ],
-        },
-      ],
+            { id: 2, deeper: { id: 3 } }
+          ]
+        }
+      ]
     }
 
     const clone = cloneDeep(data)

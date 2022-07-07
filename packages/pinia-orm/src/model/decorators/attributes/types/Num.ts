@@ -1,4 +1,4 @@
-import { PropertyDecorator, TypeOptions } from '../../Contracts'
+import type { PropertyDecorator, TypeOptions } from '../../Contracts'
 
 /**
  * Create a Number attribute property decorator.
@@ -13,9 +13,7 @@ export function Num(
     self.setRegistry(propertyKey, () => {
       const attr = self.number(value)
 
-      if (options.nullable) {
-        attr.nullable()
-      }
+      if (options.nullable) attr.nullable()
 
       return attr
     })

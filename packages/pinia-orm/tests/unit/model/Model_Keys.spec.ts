@@ -1,6 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Model, Attr } from '../../../src'
+import { Attr, Model } from '../../../src'
 
 describe('unit/model/Model_Keys', () => {
   beforeEach(() => {

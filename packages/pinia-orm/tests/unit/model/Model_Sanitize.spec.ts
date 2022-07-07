@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Str, Num, HasMany, useRepo } from '../../../src'
+import { HasMany, Model, Num, Str, useRepo } from '../../../src'
 
 describe('unit/model/Model_Sanitize', () => {
   class Post extends Model {
@@ -27,12 +27,12 @@ describe('unit/model/Model_Sanitize', () => {
       id: 1,
       unknownField: 1,
       age: '10',
-      posts: [1, 3],
+      posts: [1, 3]
     })
 
     const expected = {
       id: 1,
-      age: 10,
+      age: 10
     }
 
     expect(data).toEqual(expected)
@@ -48,7 +48,7 @@ describe('unit/model/Model_Sanitize', () => {
     const expected = {
       id: 1,
       name: 'Unknown',
-      age: 0,
+      age: 0
     }
 
     expect(data).toEqual(expected)

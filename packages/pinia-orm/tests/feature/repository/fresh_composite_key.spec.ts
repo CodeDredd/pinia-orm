@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, useRepo } from '../../../src'
+import { Attr, Model, Str, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
 describe('feature/repository/fresh_composite_key', () => {
@@ -19,14 +19,14 @@ describe('feature/repository/fresh_composite_key', () => {
 
     userRepo.fresh([
       { idA: 1, idB: 2, name: 'John Doe' },
-      { idA: 2, idB: 1, name: 'Jane Doe' },
+      { idA: 2, idB: 1, name: 'Jane Doe' }
     ])
 
     assertState({
       users: {
         '[1,2]': { idA: 1, idB: 2, name: 'John Doe' },
-        '[2,1]': { idA: 2, idB: 1, name: 'Jane Doe' },
-      },
+        '[2,1]': { idA: 2, idB: 1, name: 'Jane Doe' }
+      }
     })
   })
 

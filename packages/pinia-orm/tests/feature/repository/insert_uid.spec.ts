@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest'
 
-import { Model, Uid, Str, useRepo } from '../../../src'
+import { Model, Str, Uid, useRepo } from '../../../src'
 import { assertState, mockUid } from '../../helpers'
 
 describe('feature/repository/insert_uid', () => {
@@ -21,8 +21,8 @@ describe('feature/repository/insert_uid', () => {
     assertState({
       users: {
         uid1: { id: 'uid1', name: 'John Doe' },
-        uid2: { id: 'uid2', name: 'Jane Doe' },
-      },
+        uid2: { id: 'uid2', name: 'Jane Doe' }
+      }
     })
   })
 })

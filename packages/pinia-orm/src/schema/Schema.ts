@@ -1,8 +1,9 @@
-import { schema as Normalizr, Schema as NormalizrSchema } from 'normalizr'
-import { isNullish, isArray } from '../support/Utils'
+import type { Schema as NormalizrSchema } from 'normalizr'
+import { schema as Normalizr } from 'normalizr'
+import { isArray, isNullish } from '../support/Utils'
 import { Uid } from '../model/attributes/types/Uid'
 import { Relation } from '../model/attributes/relations/Relation'
-import { Model } from '../model/Model'
+import type { Model } from '../model/Model'
 
 export type Schemas = Record<string, Normalizr.Entity>
 
@@ -33,9 +34,7 @@ export class Schema {
 
     const entity = `${model.$entity()}${parent.$entity()}`
 
-    if (this.schemas[entity]) {
-      return this.schemas[entity]
-    }
+    if (this.schemas[entity]) return this.schemas[entity]
 
     const schema = this.newEntity(model, parent)
 
@@ -114,16 +113,14 @@ export class Schema {
       // If the `key` is not `null`, that means this record is a nested
       // relationship of the parent model. In this case, we'll attach any
       // missing foreign keys to the record first.
-      if (key !== null) {
-        ;(parent.$fields()[key] as Relation).attach(parentRecord, record)
-      }
+      if (key !== null)
+        (parent.$fields()[key] as Relation).attach(parentRecord, record)
 
       // Next, we'll generate any missing primary key fields defined as
       // uid field.
       for (const key in uidFields) {
-        if (isNullish(record[key])) {
+        if (isNullish(record[key]))
           record[key] = uidFields[key].make(record[key])
-        }
       }
 
       // Finally, obtain the index id, attach it to the current record at the
@@ -146,12 +143,10 @@ export class Schema {
 
     const attributes = {} as Record<string, Uid>
 
-    keys.forEach((k) => {
+    keys.forEach(k => {
       const attr = fields[k]
 
-      if (attr instanceof Uid) {
-        attributes[k] = attr
-      }
+      if (attr instanceof Uid) attributes[k] = attr
     })
 
     return attributes
@@ -167,9 +162,7 @@ export class Schema {
     for (const key in fields) {
       const field = fields[key]
 
-      if (field instanceof Relation) {
-        definition[key] = field.define(this)
-      }
+      if (field instanceof Relation) definition[key] = field.define(this)
     }
 
     return definition

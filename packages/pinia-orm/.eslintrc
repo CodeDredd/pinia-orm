@@ -1,3 +1,10 @@
 {
-  "extends": "@antfu"
+  "extends": "@antfu",
+  "rules": {
+    "no-self-compare": "off",
+    "no-console": [
+      "warn",
+      { "allow": ["clear", "info", "error", "dir", "trace", "log", "time", "timeEnd"] }
+    ]
+  }
 }

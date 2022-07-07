@@ -1,14 +1,14 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Str, Num, useRepo } from '../../../src'
+import { getActivePinia, setActivePinia } from 'pinia'
+import { Model, Num, Str, useRepo } from '../../../src'
 import {
   assertInstanceOf,
   assertModel,
   assertModels,
   assertState,
-  fillState,
+  fillState
 } from '../../helpers'
-import { getActivePinia, setActivePinia } from 'pinia'
 
 describe('feature/repository/save', () => {
   class User extends Model {
@@ -19,7 +19,7 @@ describe('feature/repository/save', () => {
     @Num(0) age!: number
 
     static piniaOptions = {
-      persist: true,
+      persist: true
     }
   }
 
@@ -42,8 +42,8 @@ describe('feature/repository/save', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 },
-      },
+        1: { id: 1, name: 'John Doe', age: 30 }
+      }
     })
   })
 
@@ -52,14 +52,14 @@ describe('feature/repository/save', () => {
 
     userRepo.save([
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'Jane Doe', age: 20 },
+      { id: 2, name: 'Jane Doe', age: 20 }
     ])
 
     assertState({
       users: {
         1: { id: 1, name: 'John Doe', age: 30 },
-        2: { id: 2, name: 'Jane Doe', age: 20 },
-      },
+        2: { id: 2, name: 'Jane Doe', age: 20 }
+      }
     })
   })
 
@@ -68,16 +68,16 @@ describe('feature/repository/save', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 },
-      },
+        1: { id: 1, name: 'John Doe', age: 30 }
+      }
     })
 
     userRepo.save({ id: 1, age: 20 })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 20 },
-      },
+        1: { id: 1, name: 'John Doe', age: 20 }
+      }
     })
   })
 
@@ -86,20 +86,20 @@ describe('feature/repository/save', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 },
-      },
+        1: { id: 1, name: 'John Doe', age: 30 }
+      }
     })
 
     userRepo.save([
       { id: 1, age: 20 },
-      { id: 2, name: 'Jane Doe', age: 10 },
+      { id: 2, name: 'Jane Doe', age: 10 }
     ])
 
     assertState({
       users: {
         1: { id: 1, name: 'John Doe', age: 20 },
-        2: { id: 2, name: 'Jane Doe', age: 10 },
-      },
+        2: { id: 2, name: 'Jane Doe', age: 10 }
+      }
     })
   })
 
@@ -117,13 +117,13 @@ describe('feature/repository/save', () => {
 
     const users = userRepo.save([
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'Jane Doe', age: 20 },
+      { id: 2, name: 'Jane Doe', age: 20 }
     ])
 
     assertInstanceOf(users, User)
     assertModels(users, [
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'Jane Doe', age: 20 },
+      { id: 2, name: 'Jane Doe', age: 20 }
     ])
   })
 })

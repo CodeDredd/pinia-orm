@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, BelongsTo, useRepo } from '../../../src'
+import { Attr, BelongsTo, Model, Str, useRepo } from '../../../src'
 
 describe('feature/relations/belongs_to_retrieve', () => {
   class User extends Model {
@@ -36,7 +36,7 @@ describe('feature/relations/belongs_to_retrieve', () => {
       id: 1,
       userId: 1,
       title: 'Title 01',
-      author: { id: 1, name: 'John Doe' },
+      author: { id: 1, name: 'John Doe' }
     })
   })
 
@@ -52,7 +52,7 @@ describe('feature/relations/belongs_to_retrieve', () => {
       id: 1,
       userId: 1,
       title: 'Title 01',
-      author: null,
+      author: null
     })
   })
 
@@ -70,7 +70,7 @@ describe('feature/relations/belongs_to_retrieve', () => {
       id: 1,
       userId: null,
       title: 'Title 01',
-      author: null,
+      author: null
     })
   })
 })

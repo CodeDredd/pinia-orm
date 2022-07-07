@@ -1,8 +1,8 @@
-import { Schema as NormalizrSchema } from 'normalizr'
-import { Schema } from '../../../schema/Schema'
-import { Element, Collection } from '../../../data/Data'
-import { Query } from '../../../query/Query'
-import { Model } from '../../Model'
+import type { Schema as NormalizrSchema } from 'normalizr'
+import type { Schema } from '../../../schema/Schema'
+import type { Collection, Element } from '../../../data/Data'
+import type { Query } from '../../../query/Query'
+import type { Model } from '../../Model'
 import { Relation } from './Relation'
 
 export class BelongsTo extends Relation {
@@ -73,9 +73,7 @@ export class BelongsTo extends Relation {
    */
   protected getEagerModelKeys(models: Collection): (string | number)[] {
     return models.reduce<(string | number)[]>((keys, model) => {
-      if (model[this.foreignKey] !== null) {
-        keys.push(model[this.foreignKey])
-      }
+      if (model[this.foreignKey] !== null) keys.push(model[this.foreignKey])
 
       return keys
     }, [])
@@ -87,7 +85,7 @@ export class BelongsTo extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach((model) => {
+    models.forEach(model => {
       const key = model[this.foreignKey]
 
       dictionary[key]

@@ -1,11 +1,11 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeAll, beforeEach, vi } from 'vitest'
-import { createApp, install, isVue2, Vue2 } from 'vue-demi'
+import { Vue2, createApp, install, isVue2 } from 'vue-demi'
 
 import PiniaOrm, { Model } from '../src'
 
 vi.mock('uuid', () => ({
-  v1: vi.fn(),
+  v1: vi.fn()
 }))
 
 beforeAll(() => {

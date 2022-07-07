@@ -1,6 +1,6 @@
 import { useRepo } from '../../src'
-import { Model } from '../model/Model'
-import { Repository } from '../repository/Repository'
+import type { Model } from '../model/Model'
+import type { Repository } from '../repository/Repository'
 
 export type ModelOrRepository<
   M extends typeof Model,
@@ -26,7 +26,6 @@ export function mapRepos<MR extends ModelsOrRepositories>(
 ): MappedRepositories<MR> {
   const repositories = {} as MappedRepositories<MR>
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const name in modelsOrRepositories) {
     ;(repositories as any)[name] = function () {
       return useRepo(modelsOrRepositories[name])

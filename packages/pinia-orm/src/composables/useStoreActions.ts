@@ -1,6 +1,6 @@
-import { StoreActions } from 'pinia'
+import type { StoreActions } from 'pinia'
 
-import { Elements } from '../data/Data'
+import type { Elements } from '../data/Data'
 
 export function useStoreActions(): StoreActions<any> {
   return {
@@ -39,6 +39,6 @@ export function useStoreActions(): StoreActions<any> {
     },
     flush(): void {
       this.data = {}
-    },
+    }
   }
 }

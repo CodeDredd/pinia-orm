@@ -60,8 +60,8 @@ export function orderBy<T>(
 ): T[] {
   let index = -1
 
-  const result = collection.map<SortableArray<T>>((value) => {
-    const criteria = iteratees.map((iteratee) => {
+  const result = collection.map<SortableArray<T>>(value => {
+    const criteria = iteratees.map(iteratee => {
       return typeof iteratee === 'function' ? iteratee(value) : value[iteratee]
     })
 
@@ -89,9 +89,7 @@ function baseSortBy<T>(
 
   const newArray: T[] = []
 
-  while (length--) {
-    newArray[length] = array[length].value
-  }
+  while (length--) newArray[length] = array[length].value
 
   return newArray
 }
@@ -150,9 +148,8 @@ function compareAscending(value: any, other: any): number {
       (valIsNull && othIsDefined) ||
       !valIsDefined ||
       !valIsReflexive
-    ) {
+    )
       return 1
-    }
 
     return -1
   }
@@ -171,9 +168,7 @@ export function groupBy<T>(
   return collection.reduce((records, record) => {
     const key = iteratee(record)
 
-    if (records[key] === undefined) {
-      records[key] = []
-    }
+    if (records[key] === undefined) records[key] = []
 
     records[key].push(record)
 
@@ -187,7 +182,7 @@ export function groupBy<T>(
 export function cloneDeep<T extends object>(target: T): T {
   if (isArray(target)) {
     const cp = [] as any[]
-    ;(target as any[]).forEach((v) => cp.push(v))
+    ;(target as any[]).forEach(v => cp.push(v))
 
     return cp.map((n: any) => cloneDeep<any>(n)) as any
   }
@@ -197,7 +192,7 @@ export function cloneDeep<T extends object>(target: T): T {
       [key: string]: any
     }
 
-    Object.keys(cp).forEach((k) => (cp[k] = cloneDeep<any>(cp[k])))
+    Object.keys(cp).forEach(k => (cp[k] = cloneDeep<any>(cp[k])))
 
     return cp as T
   }
@@ -212,7 +207,5 @@ export function assert(
   condition: boolean,
   message: string[]
 ): asserts condition {
-  if (!condition) {
-    throw new Error(['[Vuex ORM]'].concat(message).join(' '))
-  }
+  if (!condition) throw new Error(['[Vuex ORM]'].concat(message).join(' '))
 }

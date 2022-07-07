@@ -1,4 +1,4 @@
-import { PropertyDecorator, TypeOptions } from '../../Contracts'
+import type { PropertyDecorator, TypeOptions } from '../../Contracts'
 
 /**
  * Create a Boolean attribute property decorator.
@@ -13,9 +13,7 @@ export function Bool(
     self.setRegistry(propertyKey, () => {
       const attr = self.boolean(value)
 
-      if (options.nullable) {
-        attr.nullable()
-      }
+      if (options.nullable) attr.nullable()
 
       return attr
     })

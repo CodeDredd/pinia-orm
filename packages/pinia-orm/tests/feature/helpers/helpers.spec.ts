@@ -1,9 +1,10 @@
 import { createPinia, setActivePinia } from 'pinia'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { createApp } from 'vue-demi'
 
-import PiniaOrm, { Model, Attr, Str, Repository, mapRepos } from '../../../src'
+import PiniaOrm, { Attr, Model, Repository, Str, mapRepos } from '../../../src'
 
+/* eslint vue/one-component-per-file:0 */
 describe('feature/helpers/helpers', () => {
   class User extends Model {
     static entity = 'users'
@@ -20,9 +21,9 @@ describe('feature/helpers/helpers', () => {
     const app = createApp({
       computed: {
         ...mapRepos({
-          userRepo: User,
-        }),
-      },
+          userRepo: User
+        })
+      }
     })
 
     const pinia = createPinia()
@@ -39,9 +40,9 @@ describe('feature/helpers/helpers', () => {
     const app = createApp({
       computed: {
         ...mapRepos({
-          userRepo: UserRepository,
-        }),
-      },
+          userRepo: UserRepository
+        })
+      }
     })
 
     const pinia = createPinia()
@@ -57,9 +58,9 @@ describe('feature/helpers/helpers', () => {
     const app = createApp({
       computed: {
         ...mapRepos({
-          userRepo: User,
-        }),
-      },
+          userRepo: User
+        })
+      }
     })
 
     const pinia = createPinia()

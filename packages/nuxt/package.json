@@ -35,6 +35,8 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/nuxt -r 1",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --fix --ext .ts",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "peerDependencies": {
@@ -50,7 +52,7 @@
     "@nuxtjs/eslint-config-typescript": "latest",
     "@pinia/nuxt": "^0.1.9",
     "@types/prettier": "^2",
-    "eslint": "latest",
+    "eslint": "^8.19.0",
     "nuxt": "^3.0.0-rc.4",
     "pinia": "^2.0.14",
     "pinia-orm": "~0.9.2",

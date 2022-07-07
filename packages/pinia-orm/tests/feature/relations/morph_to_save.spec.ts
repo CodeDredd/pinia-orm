@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest'
 
-import { Model, Str, MorphTo, useRepo, Num, Attr } from '../../../src'
+import { Attr, Model, MorphTo, Num, Str, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
 describe('feature/relations/morph_to_save', () => {
@@ -30,7 +30,7 @@ describe('feature/relations/morph_to_save', () => {
       url: '/profile.jpg',
       imageableId: 1,
       imageableType: 'users',
-      imageable: { id: 2, name: 'John Doe' },
+      imageable: { id: 2, name: 'John Doe' }
     })
 
     assertState({
@@ -40,9 +40,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: 2,
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 
@@ -53,7 +53,7 @@ describe('feature/relations/morph_to_save', () => {
       id: 1,
       url: '/profile.jpg',
       imageableType: 'users',
-      imageable: { id: 2, name: 'John Doe' },
+      imageable: { id: 2, name: 'John Doe' }
     })
 
     assertState({
@@ -63,9 +63,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: 2,
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 
@@ -74,7 +74,7 @@ describe('feature/relations/morph_to_save', () => {
 
     imagesRepo.save({
       id: 1,
-      url: '/profile.jpg',
+      url: '/profile.jpg'
     })
 
     assertState({
@@ -83,9 +83,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: null,
-          imageableType: null,
-        },
-      },
+          imageableType: null
+        }
+      }
     })
   })
 
@@ -95,7 +95,7 @@ describe('feature/relations/morph_to_save', () => {
     imagesRepo.save({
       id: 1,
       url: '/profile.jpg',
-      imageable: null,
+      imageable: null
     })
 
     assertState({
@@ -104,9 +104,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: null,
-          imageableType: null,
-        },
-      },
+          imageableType: null
+        }
+      }
     })
   })
 })

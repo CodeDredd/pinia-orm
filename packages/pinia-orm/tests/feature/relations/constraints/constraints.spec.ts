@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, HasOne, useRepo } from '../../../../src'
+import { Attr, HasOne, Model, Str, useRepo } from '../../../../src'
 
 describe('feature/relations/constraints/constraints', () => {
   class Type extends Model {
@@ -39,17 +39,17 @@ describe('feature/relations/constraints/constraints', () => {
     usersRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'John Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     phonesRepo.save([
       { id: 1, userId: 1, number: '123' },
       { id: 2, userId: 2, number: '345' },
-      { id: 3, userId: 3, number: '789' },
+      { id: 3, userId: 3, number: '789' }
     ])
 
     const users = usersRepo
-      .with('phone', (query) => {
+      .with('phone', query => {
         query.where('number', '345')
       })
       .get()
@@ -67,21 +67,21 @@ describe('feature/relations/constraints/constraints', () => {
     usersRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'John Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     phonesRepo.save([
       { id: 1, userId: 1, number: '123' },
       { id: 2, userId: 2, number: '345' },
-      { id: 3, userId: 3, number: '789' },
+      { id: 3, userId: 3, number: '789' }
     ])
     typesRepo.save([
       { id: 1, phoneId: 1, name: 'iPhone' },
-      { id: 2, phoneId: 2, name: 'Android' },
+      { id: 2, phoneId: 2, name: 'Android' }
     ])
 
     const users = usersRepo
-      .with('phone', (query) => {
+      .with('phone', query => {
         query.with('type')
       })
       .get()

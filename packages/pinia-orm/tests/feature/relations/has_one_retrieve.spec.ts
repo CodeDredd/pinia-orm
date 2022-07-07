@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, HasOne, useRepo } from '../../../src'
+import { Attr, HasOne, Model, Str, useRepo } from '../../../src'
 import { assertModel } from '../../helpers'
 
 describe('feature/relations/has_one_retrieve', () => {
@@ -39,8 +39,8 @@ describe('feature/relations/has_one_retrieve', () => {
       phone: {
         id: 1,
         userId: 1,
-        number: '123-4567-8912',
-      },
+        number: '123-4567-8912'
+      }
     })
   })
 
@@ -55,7 +55,7 @@ describe('feature/relations/has_one_retrieve', () => {
     assertModel(user, {
       id: 1,
       name: 'John Doe',
-      phone: null,
+      phone: null
     })
   })
 })

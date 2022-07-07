@@ -1,4 +1,4 @@
-import { Model } from '../model/Model'
+import type { Model } from '../model/Model'
 
 export type Element = Record<string, any>
 

@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, HasMany, BelongsTo, useRepo } from '../../../../src'
+import { Attr, BelongsTo, HasMany, Model, Str, useRepo } from '../../../../src'
 import { assertInstanceOf, assertModel } from '../../../helpers'
 
 describe('feature/relations/eager_loads_all', () => {
@@ -53,7 +53,7 @@ describe('feature/relations/eager_loads_all', () => {
       userId: 1,
       title: 'Title 01',
       author: { id: 1, name: 'John Doe' },
-      comments: [{ id: 1, postId: 1, content: 'Content 01' }],
+      comments: [{ id: 1, postId: 1, content: 'Content 01' }]
     })
   })
 })

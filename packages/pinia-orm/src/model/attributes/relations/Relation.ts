@@ -1,8 +1,8 @@
-import { Schema as NormalizrSchema } from 'normalizr'
-import { Schema } from '../../../schema/Schema'
-import { Element, Collection } from '../../../data/Data'
-import { Query } from '../../../query/Query'
-import { Model } from '../../Model'
+import type { Schema as NormalizrSchema } from 'normalizr'
+import type { Schema } from '../../../schema/Schema'
+import type { Collection, Element } from '../../../data/Data'
+import type { Query } from '../../../query/Query'
+import type { Model } from '../../Model'
 import { Attribute } from '../Attribute'
 
 export interface Dictionary {
@@ -65,7 +65,7 @@ export abstract class Relation extends Attribute {
    * Get all of the primary keys for an array of models.
    */
   protected getKeys(models: Collection, key: string): (string | number)[] {
-    return models.map((model) => model[key])
+    return models.map(model => model[key])
   }
 
   /**
@@ -78,9 +78,7 @@ export abstract class Relation extends Attribute {
     return models.reduce<Dictionary>((dictionary, model) => {
       const [key, value] = callback(model)
 
-      if (!dictionary[key]) {
-        dictionary[key] = []
-      }
+      if (!dictionary[key]) dictionary[key] = []
 
       dictionary[key].push(value)
 

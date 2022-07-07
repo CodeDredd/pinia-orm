@@ -1,9 +1,9 @@
-import { Schema as NormalizrSchema } from 'normalizr'
+import type { Schema as NormalizrSchema } from 'normalizr'
 import { assert } from '../../../support/Utils'
-import { Schema } from '../../../schema/Schema'
-import { Element, Collection } from '../../../data/Data'
-import { Query } from '../../../query/Query'
-import { Model } from '../../Model'
+import type { Schema } from '../../../schema/Schema'
+import type { Collection, Element } from '../../../data/Data'
+import type { Query } from '../../../query/Query'
+import type { Model } from '../../Model'
 import { Relation } from './Relation'
 
 interface DictionaryByEntities {
@@ -104,17 +104,13 @@ export class MorphTo extends Relation {
    * Attach the relational key to the given record. Since morph-to relationship
    * doesn't have any foreign key, it would do nothing.
    */
-  attach(_record: Element, _child: Element): void {
-    return
-  }
+  attach(_record: Element, _child: Element): void {}
 
   /**
    * Add eager constraints. Since we do not know the related model ahead of time,
    * we cannot add any eager constraints.
    */
-  addEagerConstraints(_query: Query, _models: Collection): void {
-    return
-  }
+  addEagerConstraints(_query: Query, _models: Collection): void {}
 
   /**
    * Find and attach related children to their respective parents.
@@ -123,7 +119,7 @@ export class MorphTo extends Relation {
     // Create dictionary that contains relationships.
     const dictionary = this.buildDictionary(query, models)
 
-    models.forEach((model) => {
+    models.forEach(model => {
       const type = model[this.morphType]
       const id = model[this.morphId]
 
@@ -137,9 +133,7 @@ export class MorphTo extends Relation {
    * Make a related model.
    */
   make(element?: Element, type?: string): Model | null {
-    if (!element || !type) {
-      return null
-    }
+    if (!element || !type) return null
 
     return this.relatedTypes[type].$newInstance(element)
   }
@@ -162,7 +156,7 @@ export class MorphTo extends Relation {
       // that corresponds with the type.
       assert(!!model, [
         `Trying to load "morph to" relation of \`${entity}\``,
-        'but the model could not be found.',
+        'but the model could not be found.'
       ])
 
       const ownerKey = (this.ownerKey || model.$getKeyName()) as string
@@ -196,9 +190,7 @@ export class MorphTo extends Relation {
       const id = model[this.morphId]
 
       if (id !== null && this.relatedTypes[type] !== undefined) {
-        if (!keys[type]) {
-          keys[type] = []
-        }
+        if (!keys[type]) keys[type] = []
 
         keys[type].push(id)
       }

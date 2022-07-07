@@ -1,8 +1,9 @@
-import { normalize, schema as Normalizr } from 'normalizr'
+import type { schema as Normalizr } from 'normalizr'
+import { normalize } from 'normalizr'
 import { isArray } from '../support/Utils'
-import { Element, NormalizedData } from '../data/Data'
-import { Model } from '../model/Model'
-import { Database } from '../database/Database'
+import type { Element, NormalizedData } from '../data/Data'
+import type { Model } from '../model/Model'
+import type { Database } from '../database/Database'
 
 export class Interpreter {
   /**

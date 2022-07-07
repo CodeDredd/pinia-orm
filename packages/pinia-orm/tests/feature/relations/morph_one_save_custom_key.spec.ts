@@ -1,6 +1,6 @@
-import { describe, it, beforeEach } from 'vitest'
+import { beforeEach, describe, it } from 'vitest'
 
-import { Model, Num, Str, MorphOne, useRepo } from '../../../src'
+import { Model, MorphOne, Num, Str, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
 describe('feature/relations/morph_one_save_custom_key', () => {
@@ -38,22 +38,22 @@ describe('feature/relations/morph_one_save_custom_key', () => {
       image: {
         id: 1,
         url: '/profile.jpg',
-        imageableType: 'users',
-      },
+        imageableType: 'users'
+      }
     })
 
     assertState({
       users: {
-        1: { userId: '1', name: 'John Doe' },
+        1: { userId: '1', name: 'John Doe' }
       },
       images: {
         1: {
           id: 1,
           url: '/profile.jpg',
           imageableId: '1',
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 
@@ -87,22 +87,22 @@ describe('feature/relations/morph_one_save_custom_key', () => {
       image: {
         id: 1,
         url: '/profile.jpg',
-        imageableType: 'users',
-      },
+        imageableType: 'users'
+      }
     })
 
     assertState({
       users: {
-        1: { id: 1, userId: '2', name: 'John Doe' },
+        1: { id: 1, userId: '2', name: 'John Doe' }
       },
       images: {
         1: {
           id: 1,
           url: '/profile.jpg',
           imageableId: '2',
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 })

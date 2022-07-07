@@ -1,7 +1,6 @@
-import { DefineStoreOptions } from 'pinia'
-import { isNullish, isArray, assert } from '../support/Utils'
-import { Element, Item, Collection } from '../data/Data'
-import { Attribute } from './attributes/Attribute'
+import { assert, isArray, isNullish } from '../support/Utils'
+import type { Collection, Element, Item } from '../data/Data'
+import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
 import { Number as Num } from './attributes/types/Number'
@@ -84,7 +83,7 @@ export class Model {
 
     const registry = {
       ...this.fields(),
-      ...this.registries[this.entity],
+      ...this.registries[this.entity]
     }
 
     for (const key in registry) {
@@ -103,9 +102,7 @@ export class Model {
     key: string,
     attribute: () => Attribute
   ): M {
-    if (!this.registries[this.entity]) {
-      this.registries[this.entity] = {}
-    }
+    if (!this.registries[this.entity]) this.registries[this.entity] = {}
 
     this.registries[this.entity][key] = attribute
 
@@ -260,10 +257,10 @@ export class Model {
     related: typeof Model[],
     id: string,
     type: string,
-    ownerKey: string = ''
+    ownerKey = ''
   ): MorphTo {
     const instance = this.newRawInstance()
-    const relatedModels = related.map((model) => model.newRawInstance())
+    const relatedModels = related.map(model => model.newRawInstance())
 
     return new MorphTo(instance, relatedModels, id, type, ownerKey)
   }
@@ -325,10 +322,9 @@ export class Model {
    * during hydration through Query operations.
    */
   $newInstance(attributes?: Element, options?: ModelOptions): this {
-    const self = this.$self()
-    const model = new self(attributes, options) as this
+    const Self = this.$self()
 
-    return model
+    return new Self(attributes, options) as this
   }
 
   /**
@@ -361,9 +357,7 @@ export class Model {
       const attr = fields[key]
       const value = attributes[key]
 
-      if (attr instanceof Relation && !fillRelation) {
-        continue
-      }
+      if (attr instanceof Relation && !fillRelation) continue
 
       this.$fillField(key, attr, value)
     }
@@ -384,9 +378,7 @@ export class Model {
       return
     }
 
-    if (this[key] === undefined) {
-      this[key] = attr.make()
-    }
+    if (this[key] === undefined) this[key] = attr.make()
   }
 
   /**
@@ -403,9 +395,7 @@ export class Model {
   $getKey(record?: Element): string | number | (string | number)[] | null {
     record = record ?? this
 
-    if (this.$hasCompositeKey()) {
-      return this.$getCompositeKey(record)
-    }
+    if (this.$hasCompositeKey()) return this.$getCompositeKey(record)
 
     const id = record[this.$getKeyName() as string]
 
@@ -425,7 +415,7 @@ export class Model {
   protected $getCompositeKey(record: Element): (string | number)[] | null {
     let ids = [] as (string | number)[] | null
 
-    ;(this.$getKeyName() as string[]).every((key) => {
+    ;(this.$getKeyName() as string[]).every(key => {
       const id = record[key]
 
       if (isNullish(id)) {
@@ -451,7 +441,7 @@ export class Model {
     assert(id !== null, [
       'The record is missing the primary key. If you want to persist record',
       'without the primary key, please define the primary key field with the',
-      '`uid` attribute.',
+      '`uid` attribute.'
     ])
 
     return this.$stringifyId(id)
@@ -473,7 +463,7 @@ export class Model {
     // an error here.
     assert(!this.$hasCompositeKey(), [
       'Please provide the local key for the relationship. The model with the',
-      "composite key can't infer its local key.",
+      "composite key can't infer its local key."
     ])
 
     return this.$getKeyName() as string
@@ -486,7 +476,7 @@ export class Model {
     const relation = this.$fields()[name]
 
     assert(relation instanceof Relation, [
-      `Relationship [${name}] on model [${this.$entity()}] not found.`,
+      `Relationship [${name}] on model [${this.$entity()}] not found.`
     ])
 
     return relation
@@ -527,9 +517,7 @@ export class Model {
         continue
       }
 
-      if (withRelation) {
-        record[key] = this.serializeRelation(value)
-      }
+      if (withRelation) record[key] = this.serializeRelation(value)
     }
 
     return record
@@ -539,17 +527,11 @@ export class Model {
    * Serialize the given value.
    */
   protected serializeValue(value: any): any {
-    if (value === null) {
-      return null
-    }
+    if (value === null) return null
 
-    if (isArray(value)) {
-      return this.serializeArray(value)
-    }
+    if (isArray(value)) return this.serializeArray(value)
 
-    if (typeof value === 'object') {
-      return this.serializeObject(value)
-    }
+    if (typeof value === 'object') return this.serializeObject(value)
 
     return value
   }
@@ -558,7 +540,7 @@ export class Model {
    * Serialize the given array to JSON.
    */
   protected serializeArray(value: any[]): any[] {
-    return value.map((v) => this.serializeValue(v))
+    return value.map(v => this.serializeValue(v))
   }
 
   /**
@@ -569,9 +551,7 @@ export class Model {
   }): object {
     const obj: { [index: string]: number | string } = {}
 
-    for (const key in value) {
-      obj[key] = this.serializeValue(value[key])
-    }
+    for (const key in value) obj[key] = this.serializeValue(value[key])
 
     return obj
   }
@@ -582,16 +562,12 @@ export class Model {
   protected serializeRelation(relation: Item): Element | null
   protected serializeRelation(relation: Collection): Element[]
   protected serializeRelation(relation: any): any {
-    if (relation === undefined) {
-      return undefined
-    }
+    if (relation === undefined) return undefined
 
-    if (relation === null) {
-      return null
-    }
+    if (relation === null) return null
 
     return isArray(relation)
-      ? relation.map((model) => model.$toJson())
+      ? relation.map(model => model.$toJson())
       : relation.$toJson()
   }
 
@@ -615,9 +591,8 @@ export class Model {
       const attr = attrs[key]
       const value = record[key]
 
-      if (attr !== undefined && !(attr instanceof Relation)) {
+      if (attr !== undefined && !(attr instanceof Relation))
         sanitizedRecord[key] = attr.make(value)
-      }
     }
 
     return sanitizedRecord
@@ -636,9 +611,7 @@ export class Model {
       const attr = attrs[key]
       const value = record[key]
 
-      if (!(attr instanceof Relation)) {
-        sanitizedRecord[key] = attr.make(value)
-      }
+      if (!(attr instanceof Relation)) sanitizedRecord[key] = attr.make(value)
     }
 
     return sanitizedRecord

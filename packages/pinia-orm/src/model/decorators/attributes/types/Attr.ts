@@ -1,4 +1,4 @@
-import { PropertyDecorator } from '../../Contracts'
+import type { PropertyDecorator } from '../../Contracts'
 
 /**
  * Create an Attr attribute property decorator.

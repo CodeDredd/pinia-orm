@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest'
 
-import { Model, Attr, Str, HasMany, useRepo } from '../../../../src'
+import { Attr, HasMany, Model, Str, useRepo } from '../../../../src'
 import { assertModels } from '../../../helpers'
 
 describe('feature/relations/lazy_loads/lazy_eager_load', () => {
@@ -29,7 +29,7 @@ describe('feature/relations/lazy_loads/lazy_eager_load', () => {
     usersRepo.save({ id: 1, name: 'John Doe' })
     postsRepo.save([
       { id: 1, userId: 1, title: 'Title 01' },
-      { id: 2, userId: 1, title: 'Title 02' },
+      { id: 2, userId: 1, title: 'Title 02' }
     ])
 
     const users = usersRepo.all()
@@ -44,9 +44,9 @@ describe('feature/relations/lazy_loads/lazy_eager_load', () => {
         name: 'John Doe',
         posts: [
           { id: 1, userId: 1, title: 'Title 01' },
-          { id: 2, userId: 1, title: 'Title 02' },
-        ],
-      },
+          { id: 2, userId: 1, title: 'Title 02' }
+        ]
+      }
     ])
   })
 })

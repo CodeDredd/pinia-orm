@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, BelongsTo, HasMany, useRepo } from '../../../../src'
+import { Attr, BelongsTo, HasMany, Model, useRepo } from '../../../../src'
 
 describe('feature/relations/nested/nested_revive', () => {
   class User extends Model {
@@ -9,7 +9,6 @@ describe('feature/relations/nested/nested_revive', () => {
     @Attr() id!: number
 
     @HasMany(() => Post, 'userId')
-    // eslint-disable-next-line no-use-before-define
     posts!: Post[]
   }
 
@@ -48,7 +47,7 @@ describe('feature/relations/nested/nested_revive', () => {
       { id: 1, userId: 2 },
       { id: 2, userId: 2 },
       { id: 3, userId: 1 },
-      { id: 4, userId: 1 },
+      { id: 4, userId: 1 }
     ])
 
     commentsRepo.save([
@@ -56,7 +55,7 @@ describe('feature/relations/nested/nested_revive', () => {
       { id: 2, postId: 1, userId: 2 },
       { id: 3, postId: 2, userId: 3 },
       { id: 4, postId: 4, userId: 3 },
-      { id: 5, postId: 2, userId: 1 },
+      { id: 5, postId: 2, userId: 1 }
     ])
 
     const schema = [
@@ -65,23 +64,23 @@ describe('feature/relations/nested/nested_revive', () => {
         posts: [
           {
             id: 4,
-            comments: [{ id: 2 }],
+            comments: [{ id: 2 }]
           },
           {
             id: 3,
             comments: [
               {
                 id: 1,
-                author: { id: 4 },
-              },
-            ],
-          },
-        ],
+                author: { id: 4 }
+              }
+            ]
+          }
+        ]
       },
       {
         id: 1,
-        posts: [{ id: 1 }, { id: 2 }],
-      },
+        posts: [{ id: 1 }, { id: 2 }]
+      }
     ]
 
     const users = usersRepo.revive(schema)

@@ -1,4 +1,4 @@
-import { Store } from 'pinia'
+import type { Store } from 'pinia'
 import { Database } from '../database/Database'
 import { Model } from '../model/Model'
 import { Attribute } from '../model/attributes/Attribute'
@@ -83,7 +83,7 @@ export const components: VuexORMPluginComponents = {
   Repository,
   Interpreter,
   Query,
-  Connection,
+  Connection
 }
 
 /**

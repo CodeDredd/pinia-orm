@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   // See https://github.com/nuxt/framework/issues/2371
   nitro: {
     externals: {
-      inline: ['uuid'],
-    },
-  },
+      inline: ['uuid']
+    }
+  }
 })

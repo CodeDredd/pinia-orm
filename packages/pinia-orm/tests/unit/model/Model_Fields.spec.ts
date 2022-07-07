@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Model } from '../../../src'
 
@@ -12,7 +12,7 @@ describe('unit/model/Model_Fields', () => {
           id: this.attr(null),
           str: this.string(''),
           num: this.number(0),
-          bool: this.boolean(false),
+          bool: this.boolean(false)
         }
       }
 
@@ -25,7 +25,7 @@ describe('unit/model/Model_Fields', () => {
     const user = new User({
       str: 'string',
       num: 1,
-      bool: true,
+      bool: true
     })
 
     expect(user.id).toBe(null)

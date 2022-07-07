@@ -1,8 +1,8 @@
-import { StoreDefinition } from 'pinia'
-import { Model } from '../model/Model'
+import type { StoreDefinition } from 'pinia'
+import type { Model } from '../model/Model'
 import { Repository } from '../repository/Repository'
 import { Database } from '../database/Database'
-import { Constructor } from '../types'
+import type { Constructor } from '../types'
 
 export function useRepo<M extends Model>(
   model: Constructor<M>,
@@ -17,20 +17,17 @@ export function useRepo<R extends Repository>(
 ): R
 
 export function useRepo(
-  modelOrRepository: any,
+  ModelOrRepository: any,
   storeGenerator?: (id: string) => StoreDefinition,
   connection?: string
 ) {
-  let database: Database
-  database = new Database().setConnection(connection || 'database')
+  const database = new Database().setConnection(connection || 'database')
 
-  const repository = modelOrRepository._isRepository
-    ? new modelOrRepository(database).initialize()
-    : new Repository(database).initialize(modelOrRepository)
+  const repository = ModelOrRepository._isRepository
+    ? new ModelOrRepository(database).initialize()
+    : new Repository(database).initialize(ModelOrRepository)
 
-  if (storeGenerator) {
-    repository.database.setStoreGenerator(storeGenerator)
-  }
+  if (storeGenerator) repository.database.setStoreGenerator(storeGenerator)
 
   try {
     database.register(repository.getModel())

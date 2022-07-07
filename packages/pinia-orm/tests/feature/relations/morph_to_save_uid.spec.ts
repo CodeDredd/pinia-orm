@@ -1,6 +1,6 @@
-import { describe, it, beforeEach } from 'vitest'
+import { beforeEach, describe, it } from 'vitest'
 
-import { Model, Num, Str, MorphTo, useRepo, Uid, Attr } from '../../../src'
+import { Attr, Model, MorphTo, Num, Str, Uid, useRepo } from '../../../src'
 import { assertState, mockUid } from '../../helpers'
 
 describe('feature/relations/morph_to_save_uid', () => {
@@ -35,7 +35,7 @@ describe('feature/relations/morph_to_save_uid', () => {
       url: '/profile.jpg',
       imageableId: 1,
       imageableType: 'users',
-      imageable: { id: 1, name: 'John Doe' },
+      imageable: { id: 1, name: 'John Doe' }
     })
 
     assertState({
@@ -45,9 +45,9 @@ describe('feature/relations/morph_to_save_uid', () => {
           id: 'uid1',
           url: '/profile.jpg',
           imageableId: 1,
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 
@@ -77,7 +77,7 @@ describe('feature/relations/morph_to_save_uid', () => {
     imagesRepo.save({
       url: '/profile.jpg',
       imageableType: 'users',
-      imageable: { name: 'John Doe' },
+      imageable: { name: 'John Doe' }
     })
 
     assertState({
@@ -87,9 +87,9 @@ describe('feature/relations/morph_to_save_uid', () => {
           id: 'uid1',
           url: '/profile.jpg',
           imageableId: 'uid2',
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 })

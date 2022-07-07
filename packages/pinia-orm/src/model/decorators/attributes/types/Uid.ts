@@ -1,4 +1,4 @@
-import { PropertyDecorator } from '../../Contracts'
+import type { PropertyDecorator } from '../../Contracts'
 
 /**
  * Create a Uid attribute property decorator.

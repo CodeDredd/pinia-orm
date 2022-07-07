@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest'
 
-import { Model, Attr, Str, useRepo } from '../../../src'
+import { Attr, Model, Str, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
 describe('feature/repository/insert', () => {
@@ -18,8 +18,8 @@ describe('feature/repository/insert', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
-      },
+        1: { id: 1, name: 'John Doe' }
+      }
     })
   })
 
@@ -28,14 +28,14 @@ describe('feature/repository/insert', () => {
 
     userRepo.insert([
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' },
+      { id: 2, name: 'Jane Doe' }
     ])
 
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' },
-      },
+        2: { id: 2, name: 'Jane Doe' }
+      }
     })
   })
 

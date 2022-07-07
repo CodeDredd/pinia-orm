@@ -1,4 +1,4 @@
-import { Query } from './Query'
+import type { Query } from './Query'
 
 export interface Where {
   field: WherePrimaryClosure | string

@@ -9,18 +9,18 @@ export interface ModuleOptions {
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'pinia-orm',
-    configKey: 'piniaOrm',
+    configKey: 'piniaOrm'
   },
   defaults: {
-    addPlugin: true,
+    addPlugin: true
   },
   setup(options, nuxt) {
     if (options.addPlugin) {
       const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
       nuxt.options.build.transpile.push(runtimeDir)
       addPlugin(resolve(runtimeDir, isNuxt3() ? 'plugin' : 'nuxt2-plugin'), {
-        append: true,
+        append: true
       })
     }
-  },
+  }
 })

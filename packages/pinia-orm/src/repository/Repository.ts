@@ -1,19 +1,18 @@
-import { Constructor } from '../types'
+import type { Constructor } from '../types'
 import { assert } from '../support/Utils'
-import { Element, Item, Collection } from '../data/Data'
-import { Database } from '../database/Database'
-import { Model } from '../model/Model'
-import { ModelConstructor } from '../model/ModelConstructor'
+import type { Collection, Element, Item } from '../data/Data'
+import type { Database } from '../database/Database'
+import type { Model } from '../model/Model'
+import type { ModelConstructor } from '../model/ModelConstructor'
 import { Query } from '../query/Query'
-import {
-  WherePrimaryClosure,
-  WhereSecondaryClosure,
-  OrderDirection,
-  OrderBy,
+import type {
   EagerLoadConstraint,
+  OrderBy,
+  OrderDirection,
+  WherePrimaryClosure,
+  WhereSecondaryClosure
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
-import { defineStore } from 'pinia'
 
 export class Repository<M extends Model = Model> {
   /**
@@ -21,7 +20,7 @@ export class Repository<M extends Model = Model> {
    * used when retrieving repository instance from `store.$repo()` method to
    * determine whether the passed in class is either a repository or a model.
    */
-  static _isRepository: boolean = true
+  static _isRepository = true
 
   /**
    * The database instance.
@@ -81,7 +80,7 @@ export class Repository<M extends Model = Model> {
   getModel(): M {
     assert(!!this.model, [
       'The model is not registered. Please define the model to be used at',
-      '`use` property of the repository class.',
+      '`use` property of the repository class.'
     ])
 
     return this.model
@@ -198,7 +197,7 @@ export class Repository<M extends Model = Model> {
    */
   make(attributes?: Element): M {
     return this.getModel().$newInstance(attributes, {
-      relations: true,
+      relations: true
     })
   }
 

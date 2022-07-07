@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr } from '../../../src'
+import { Attr, Model } from '../../../src'
 
 describe('unit/model/Model', () => {
   class User extends Model {
@@ -9,7 +9,7 @@ describe('unit/model/Model', () => {
     @Attr() id!: number
 
     static piniaOptions = {
-      persist: true,
+      persist: true
     }
   }
 

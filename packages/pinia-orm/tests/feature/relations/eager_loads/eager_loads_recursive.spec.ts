@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, HasOne, BelongsTo, useRepo } from '../../../../src'
+import { Attr, BelongsTo, HasOne, Model, Str, useRepo } from '../../../../src'
 import { assertModel } from '../../../helpers'
 
 describe('feature/relations/eager_loads_recursive', () => {
@@ -11,7 +11,6 @@ describe('feature/relations/eager_loads_recursive', () => {
     @Str('') name!: string
 
     @HasOne(() => Phone, 'userId')
-    // eslint-disable-next-line no-use-before-define
     phone!: Phone
   }
 
@@ -40,7 +39,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     expect(user.phone.user.phone.user).toBeInstanceOf(User)
     assertModel(user.phone.user.phone.user, {
       id: 1,
-      name: 'John Doe',
+      name: 'John Doe'
     })
   })
 
@@ -56,7 +55,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     expect(user.phone.user).toBeInstanceOf(User)
     assertModel(user.phone.user, {
       id: 1,
-      name: 'John Doe',
+      name: 'John Doe'
     })
   })
 })

@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Attr, Str, Num, useRepo } from '../../../src'
+import { Attr, Model, Num, Str, useRepo } from '../../../src'
 import { assertState, fillState } from '../../helpers'
 
 describe('feature/repository/update', () => {
@@ -19,8 +19,8 @@ describe('feature/repository/update', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 },
-      },
+        3: { id: 3, name: 'Johnny Doe', age: 20 }
+      }
     })
 
     userRepo.where('name', 'Jane Doe').update({ age: 50 })
@@ -29,8 +29,8 @@ describe('feature/repository/update', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },
         2: { id: 2, name: 'Jane Doe', age: 50 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 },
-      },
+        3: { id: 3, name: 'Johnny Doe', age: 20 }
+      }
     })
   })
 
@@ -41,8 +41,8 @@ describe('feature/repository/update', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 },
-      },
+        3: { id: 3, name: 'Johnny Doe', age: 20 }
+      }
     })
 
     userRepo.where('name', 'Jane Doe').orWhere('age', 20).update({ age: 50 })
@@ -51,8 +51,8 @@ describe('feature/repository/update', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },
         2: { id: 2, name: 'Jane Doe', age: 50 },
-        3: { id: 3, name: 'Johnny Doe', age: 50 },
-      },
+        3: { id: 3, name: 'Johnny Doe', age: 50 }
+      }
     })
   })
 
@@ -63,8 +63,8 @@ describe('feature/repository/update', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 },
-      },
+        3: { id: 3, name: 'Johnny Doe', age: 20 }
+      }
     })
 
     const users = userRepo.where('name', 'No match').update({ age: 50 })
@@ -75,8 +75,8 @@ describe('feature/repository/update', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 },
-      },
+        3: { id: 3, name: 'Johnny Doe', age: 20 }
+      }
     })
   })
 })

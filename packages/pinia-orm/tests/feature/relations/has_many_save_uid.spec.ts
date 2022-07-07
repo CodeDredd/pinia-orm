@@ -1,6 +1,6 @@
-import { describe, it, beforeEach } from 'vitest'
+import { beforeEach, describe, it } from 'vitest'
 
-import { Model, Attr, Str, HasMany, useRepo, Uid } from '../../../src'
+import { Attr, HasMany, Model, Str, Uid, useRepo } from '../../../src'
 import { assertState, mockUid } from '../../helpers'
 
 describe('feature/relations/has_many_insert_uid', () => {
@@ -35,18 +35,18 @@ describe('feature/relations/has_many_insert_uid', () => {
       name: 'John Doe',
       posts: [
         { id: 1, title: 'Title 01' },
-        { id: 2, title: 'Title 02' },
-      ],
+        { id: 2, title: 'Title 02' }
+      ]
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' },
+        uid1: { id: 'uid1', name: 'John Doe' }
       },
       posts: {
         1: { id: 1, userId: 'uid1', title: 'Title 01' },
-        2: { id: 2, userId: 'uid1', title: 'Title 02' },
-      },
+        2: { id: 2, userId: 'uid1', title: 'Title 02' }
+      }
     })
   })
 
@@ -77,18 +77,18 @@ describe('feature/relations/has_many_insert_uid', () => {
       name: 'John Doe',
       posts: [
         { id: 1, title: 'Title 01' },
-        { id: 2, title: 'Title 02' },
-      ],
+        { id: 2, title: 'Title 02' }
+      ]
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' },
+        uid1: { id: 'uid1', name: 'John Doe' }
       },
       posts: {
         1: { id: 1, userId: 'uid1', title: 'Title 01' },
-        2: { id: 2, userId: 'uid1', title: 'Title 02' },
-      },
+        2: { id: 2, userId: 'uid1', title: 'Title 02' }
+      }
     })
   })
 })

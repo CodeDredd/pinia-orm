@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { Model, Bool } from '../../../src'
+import { Bool, Model } from '../../../src'
 
 describe('unit/model/Model_Attrs_Boolean', () => {
   it('casts the value to `Boolean` when instantiating the model', () => {

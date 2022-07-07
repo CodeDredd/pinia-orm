@@ -1,5 +1,34 @@
 import './polyfills/Polyfills'
 
+import { install } from './store/Store'
+import { useRepo } from './composables/useRepo'
+import { useStoreActions } from './composables/useStoreActions'
+import { useDataStore } from './composables/useDataStore'
+import { use } from './plugin/Plugin'
+import { mapRepos } from './helpers/Helpers'
+import { Database } from './database/Database'
+import { Schema } from './schema/Schema'
+import { Model } from './model/Model'
+import { Attribute } from './model/attributes/Attribute'
+import { Type } from './model/attributes/types/Type'
+import { Attr as AttrAttr } from './model/attributes/types/Attr'
+import { String as StringAttr } from './model/attributes/types/String'
+import { Number as NumberAttr } from './model/attributes/types/Number'
+import { Boolean as BooleanAttr } from './model/attributes/types/Boolean'
+import { Uid as UidAttr } from './model/attributes/types/Uid'
+import { Relation } from './model/attributes/relations/Relation'
+import { HasOne as HasOneAttr } from './model/attributes/relations/HasOne'
+import { BelongsTo as BelongsToAttr } from './model/attributes/relations/BelongsTo'
+import { HasMany as HasManyAttr } from './model/attributes/relations/HasMany'
+import { HasManyBy as HasManyByAttr } from './model/attributes/relations/HasManyBy'
+import { MorphOne as MorphOneAttr } from './model/attributes/relations/MorphOne'
+import { MorphTo as MorphToAttr } from './model/attributes/relations/MorphTo'
+import { MorphMany as MorphManyAttr } from './model/attributes/relations/MorphMany'
+import { Repository } from './repository/Repository'
+import { Interpreter } from './interpreter/Interpreter'
+import { Query } from './query/Query'
+import { Connection } from './connection/Connection'
+
 export * from './data/Data'
 export * from './composables/useRepo'
 export * from './composables/useStoreActions'
@@ -47,35 +76,6 @@ export * from './connection/Connection'
 export * from './helpers/Helpers'
 export * from './plugin/Plugin'
 
-import { install } from './store/Store'
-import { useRepo } from './composables/useRepo'
-import { useStoreActions } from './composables/useStoreActions'
-import { useDataStore } from './composables/useDataStore'
-import { use } from './plugin/Plugin'
-import { mapRepos } from './helpers/Helpers'
-import { Database } from './database/Database'
-import { Schema } from './schema/Schema'
-import { Model } from './model/Model'
-import { Attribute } from './model/attributes/Attribute'
-import { Type } from './model/attributes/types/Type'
-import { Attr as AttrAttr } from './model/attributes/types/Attr'
-import { String as StringAttr } from './model/attributes/types/String'
-import { Number as NumberAttr } from './model/attributes/types/Number'
-import { Boolean as BooleanAttr } from './model/attributes/types/Boolean'
-import { Uid as UidAttr } from './model/attributes/types/Uid'
-import { Relation } from './model/attributes/relations/Relation'
-import { HasOne as HasOneAttr } from './model/attributes/relations/HasOne'
-import { BelongsTo as BelongsToAttr } from './model/attributes/relations/BelongsTo'
-import { HasMany as HasManyAttr } from './model/attributes/relations/HasMany'
-import { HasManyBy as HasManyByAttr } from './model/attributes/relations/HasManyBy'
-import { MorphOne as MorphOneAttr } from './model/attributes/relations/MorphOne'
-import { MorphTo as MorphToAttr } from './model/attributes/relations/MorphTo'
-import { MorphMany as MorphManyAttr } from './model/attributes/relations/MorphMany'
-import { Repository } from './repository/Repository'
-import { Interpreter } from './interpreter/Interpreter'
-import { Query } from './query/Query'
-import { Connection } from './connection/Connection'
-
 export default {
   useRepo,
   useStoreActions,
@@ -104,5 +104,5 @@ export default {
   Repository,
   Interpreter,
   Query,
-  Connection,
+  Connection
 }

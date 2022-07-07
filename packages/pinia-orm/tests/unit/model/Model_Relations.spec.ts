@@ -1,15 +1,15 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import {
-  Model,
   Attr,
-  HasOne,
   BelongsTo,
   HasMany,
   HasManyBy,
+  HasOne,
+  Model,
   MorphOne,
   MorphTo,
-  useRepo,
+  useRepo
 } from '../../../src'
 
 describe('unit/model/Model_Relations', () => {
@@ -59,7 +59,6 @@ describe('unit/model/Model_Relations', () => {
     names!: Name[]
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-    // eslint-disable-next-line no-use-before-define
     image!: Image | null
   }
 
@@ -80,8 +79,8 @@ describe('unit/model/Model_Relations', () => {
     const user = userRepo.make({
       id: 1,
       phone: {
-        id: 2,
-      },
+        id: 2
+      }
     })
 
     expect(user.phone).toBeInstanceOf(Phone)
@@ -94,8 +93,8 @@ describe('unit/model/Model_Relations', () => {
     const user = userRepo.make({
       id: 1,
       country: {
-        id: 2,
-      },
+        id: 2
+      }
     })
 
     expect(user.country).toBeInstanceOf(Country)
@@ -107,7 +106,7 @@ describe('unit/model/Model_Relations', () => {
 
     const user = userRepo.make({
       id: 1,
-      posts: [{ id: 2 }, { id: 3 }],
+      posts: [{ id: 2 }, { id: 3 }]
     })
 
     expect(user.posts[0]).toBeInstanceOf(Post)
@@ -121,7 +120,7 @@ describe('unit/model/Model_Relations', () => {
 
     const user = userRepo.make({
       id: 1,
-      names: [{ id: 2 }, { id: 3 }],
+      names: [{ id: 2 }, { id: 3 }]
     })
 
     expect(user.names[0]).toBeInstanceOf(Name)
@@ -138,8 +137,8 @@ describe('unit/model/Model_Relations', () => {
       image: {
         id: 2,
         imageableId: 1,
-        imageableType: 'users',
-      },
+        imageableType: 'users'
+      }
     })
 
     expect(user.image!).toBeInstanceOf(Image)
@@ -154,8 +153,8 @@ describe('unit/model/Model_Relations', () => {
       imageableId: 2,
       imageableType: 'users',
       imageable: {
-        id: 2,
-      },
+        id: 2
+      }
     })
 
     expect(image.imageable!).toBeInstanceOf(User)

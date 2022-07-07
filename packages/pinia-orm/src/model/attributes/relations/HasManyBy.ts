@@ -1,8 +1,8 @@
-import { Schema as NormalizrSchema } from 'normalizr'
-import { Schema } from '../../../schema/Schema'
-import { Element, Collection } from '../../../data/Data'
-import { Query } from '../../../query/Query'
-import { Model } from '../../Model'
+import type { Schema as NormalizrSchema } from 'normalizr'
+import type { Schema } from '../../../schema/Schema'
+import type { Collection, Element } from '../../../data/Data'
+import type { Query } from '../../../query/Query'
+import type { Model } from '../../Model'
 import { Relation } from './Relation'
 
 export class HasManyBy extends Relation {
@@ -62,13 +62,9 @@ export class HasManyBy extends Relation {
     // when child items have uid attribute as its primary key, and it's missing
     // when inserting records. Those ids will be generated later and will be
     // looped again. At that time, we can attach the correct owner key value.
-    if (child[this.ownerKey] === undefined) {
-      return
-    }
+    if (child[this.ownerKey] === undefined) return
 
-    if (!record[this.foreignKey]) {
-      record[this.foreignKey] = []
-    }
+    if (!record[this.foreignKey]) record[this.foreignKey] = []
 
     this.attachIfMissing(record[this.foreignKey], child[this.ownerKey])
   }
@@ -81,9 +77,7 @@ export class HasManyBy extends Relation {
     foreignKey: (string | number)[],
     ownerKey: string | number
   ): void {
-    if (foreignKey.indexOf(ownerKey) === -1) {
-      foreignKey.push(ownerKey)
-    }
+    if (!foreignKey.includes(ownerKey)) foreignKey.push(ownerKey)
   }
 
   /**
@@ -108,7 +102,7 @@ export class HasManyBy extends Relation {
   match(relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get())
 
-    models.forEach((model) => {
+    models.forEach(model => {
       const relatedModels = this.getRelatedModels(
         dictionary,
         model[this.foreignKey]
@@ -150,7 +144,7 @@ export class HasManyBy extends Relation {
    */
   make(elements?: Element[]): Model[] {
     return elements
-      ? elements.map((element) => this.child.$newInstance(element))
+      ? elements.map(element => this.child.$newInstance(element))
       : []
   }
 }
