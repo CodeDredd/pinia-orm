@@ -12,6 +12,10 @@ export default defineNuxtConfig({
   plausible: {
     domain: 'pinia-orm.codedredd.de',
   },
+  toc: {
+    depth: 3,
+    searchDepth: 3
+  },
   tailwindcss: {
     config: {
       important: true,
