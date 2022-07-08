@@ -42,7 +42,7 @@ jobs:
 
       - run: pnpm i
 
-      - name: Run eslint
+      - name: Run test coverage
         run: pnpm run test:coverage
 
       - name: Publish coverage
@@ -68,3 +68,23 @@ jobs:
 
       - name: Run eslint
         run: pnpm run lint
+
+  size:
+    runs-on: ubuntu-latest
+    env:
+      CI_JOB_NUMBER: 1
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node version to 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - run: pnpm install
+        -
+      - run: pnpm run size

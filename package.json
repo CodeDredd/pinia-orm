@@ -10,7 +10,7 @@
   },
   "scripts": {
     "release": "node scripts/release.mjs",
-    "size": "lerna run size --ignore @pina-orm/playground*",
+    "size": "lerna run size --scope pinia-orm",
     "build": "lerna run build --ignore @pina-orm/playground*",
     "docs:build": "lerna run docs:build --scope @pinia/docs",
     "play": "lerna run play",
