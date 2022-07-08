@@ -1,6 +1,6 @@
-import { createPinia, setActivePinia } from 'pinia'
+import { PiniaVuePlugin, createPinia } from 'pinia'
+import Vue from 'vue2'
 import { describe, expect, it } from 'vitest'
-import { createApp } from 'vue-demi'
 
 import PiniaOrm, { Attr, Model, Repository, Str, mapRepos } from '../../../src'
 
@@ -13,31 +13,33 @@ describe('feature/helpers/helpers', () => {
     @Str('') name!: string
   }
 
+  Vue.use(PiniaVuePlugin)
+
   class UserRepository extends Repository<User> {
     use = User
   }
 
-  it.skip('can map repositories from models in Vue components', () => {
-    const app = createApp({
-      computed: {
-        ...mapRepos({
-          userRepo: User,
-        }),
-      },
-    })
-
+  it('can map repositories from models in Vue components', () => {
     const pinia = createPinia()
     pinia.use(PiniaOrm.install())
-    app.use(pinia)
-    setActivePinia(pinia)
 
-    console.log(app)
-    expect(app.userRepo).toBeInstanceOf(Repository)
-    expect(app.userRepo.getModel()).toBeInstanceOf(User)
+    const vm = new Vue({
+      pinia,
+      computed: mapRepos({
+        userRepo: User,
+      }),
+    })
+
+    expect(vm.userRepo).toBeInstanceOf(Repository)
+    expect(vm.userRepo.getModel()).toBeInstanceOf(User)
   })
 
-  it.skip('can map repositories from abstract repositories in Vue components', async () => {
-    const app = createApp({
+  it('can map repositories from abstract repositories in Vue components', async () => {
+    const pinia = createPinia()
+    pinia.use(PiniaOrm.install())
+
+    const vm = new Vue({
+      pinia,
       computed: {
         ...mapRepos({
           userRepo: UserRepository,
@@ -45,17 +47,16 @@ describe('feature/helpers/helpers', () => {
       },
     })
 
-    const pinia = createPinia()
-    pinia.use(PiniaOrm.install())
-    app.use(pinia)
-    setActivePinia(pinia)
-
-    expect(app.userRepo).toBeInstanceOf(Repository)
-    expect(app.userRepo.getModel()).toBeInstanceOf(User)
+    expect(vm.userRepo).toBeInstanceOf(Repository)
+    expect(vm.userRepo.getModel()).toBeInstanceOf(User)
   })
 
-  it.skip('can map repositories in Vue components using spread syntax', async () => {
-    const app = createApp({
+  it('can map repositories in Vue components using spread syntax', async () => {
+    const pinia = createPinia()
+    pinia.use(PiniaOrm.install())
+
+    const vm = new Vue({
+      pinia,
       computed: {
         ...mapRepos({
           userRepo: User,
@@ -63,12 +64,7 @@ describe('feature/helpers/helpers', () => {
       },
     })
 
-    const pinia = createPinia()
-    pinia.use(PiniaOrm.install())
-    app.use(pinia)
-    setActivePinia(pinia)
-
-    expect(app.userRepo).toBeInstanceOf(Repository)
-    expect(app.userRepo.getModel()).toBeInstanceOf(User)
+    expect(vm.userRepo).toBeInstanceOf(Repository)
+    expect(vm.userRepo.getModel()).toBeInstanceOf(User)
   })
 })

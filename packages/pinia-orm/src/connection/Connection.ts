@@ -3,11 +3,6 @@ import type { Database } from '../database/Database'
 import type { Model } from '../model/Model'
 import { useDataStore } from '../composables/useDataStore'
 
-export interface ConnectionNamespace {
-  connection: string
-  entity: string
-}
-
 export class Connection {
   /**
    * The database instance.
@@ -31,11 +26,8 @@ export class Connection {
    * Commit a namespaced store mutation.
    */
   protected commit(name: string, payload?: any): void {
-    const newStore
-      = typeof this.database.storeGenerator === 'function'
-        ? this.database.storeGenerator(this.model.$entity())
-        : useDataStore(this.model.$entity(), this.model.$piniaOptions())
-    const store = newStore(this.database.store)
+    const newStore = useDataStore(this.model.$entity(), this.model.$piniaOptions())
+    const store = newStore()
     if (name && typeof store[name] === 'function')
       store[name](payload)
   }
@@ -45,10 +37,7 @@ export class Connection {
    */
   get(): Elements {
     // const connection = this.database.connection
-    const newStore
-      = typeof this.database.storeGenerator === 'function'
-        ? this.database.storeGenerator(this.model.$entity())
-        : useDataStore(this.model.$entity(), this.model.$piniaOptions())
+    const newStore = useDataStore(this.model.$entity(), this.model.$piniaOptions())
     const store = newStore()
 
     return store.$state.data

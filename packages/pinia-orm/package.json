@@ -62,7 +62,6 @@
     "core-js": "^3.19.1",
     "eslint": "^8.19.0",
     "happy-dom": "^6.0.2",
-    "pinia": "^2.0.14",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "size-limit": "^7.0.8",

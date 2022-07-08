@@ -1,5 +1,9 @@
-import type { PiniaPlugin, Store } from 'pinia'
+import type { PiniaPlugin, Store, StoreDefinition } from 'pinia'
 import { components, plugins } from '../plugin/Plugin'
+
+export interface StoreGenerator {
+  (id: string): StoreDefinition
+}
 
 // export interface InstallOptions {
 //   namespace?: string
@@ -8,7 +12,7 @@ import { components, plugins } from '../plugin/Plugin'
 // type FilledInstallOptions = Required<InstallOptions>
 
 /**
- * Install Vuex ORM to the store.
+ * Install Pinia ORM to the store.
  */
 export function install(): PiniaPlugin {
   return (store) => {
@@ -26,7 +30,7 @@ export function install(): PiniaPlugin {
 // }
 
 /**
- * Mixin Vuex ORM feature to the store.
+ * Mixin Pinia ORM feature to the store.
  */
 function mixin(store: Store<any>): void {
   installPlugins(store)

@@ -1,18 +1,7 @@
-import type { Pinia, StoreDefinition } from 'pinia'
-import type { schema as Normalizr } from 'normalizr'
-import type { Schemas } from '../schema/Schema'
-import { Schema } from '../schema/Schema'
 import type { Model } from '../model/Model'
 import { Relation } from '../model/attributes/relations/Relation'
 
 export class Database {
-  /**
-   * The Pinia instance.
-   */
-  storeGenerator!: (id: string) => StoreDefinition
-
-  store: Pinia | null | undefined = undefined
-
   /**
    * The name of Vuex Module namespace. Vuex ORM will create Vuex Modules from
    * the registered models, and modules, and define them under this namespace.
@@ -25,39 +14,10 @@ export class Database {
   models: Record<string, Model> = {}
 
   /**
-   * The schema definition for the registered models.
-   */
-  schemas: Schemas = {}
-
-  /**
-   * Whether the database has already been installed to Vuex or not.
+   * Whether the database has already been installed to Pinia or not.
    * The model registration procedure depends on this flag.
    */
   started = false
-
-  /**
-   * Set the store.
-   */
-  setStoreGenerator(store: (id: string) => StoreDefinition): this {
-    this.storeGenerator = store
-
-    return this
-  }
-
-  setStore(store: Pinia): this {
-    this.store = store
-
-    return this
-  }
-
-  /**
-   * Set the connection.
-   */
-  setConnection(connection: string): this {
-    this.connection = connection
-
-    return this
-  }
 
   /**
    * Initialize the database before a user can start using it.
@@ -74,8 +34,6 @@ export class Database {
 
     if (!this.models[entity]) {
       this.models[entity] = model
-
-      this.createSchema(model)
 
       this.registerRelatedModels(model)
     }
@@ -103,19 +61,5 @@ export class Database {
    */
   getModel<M extends Model>(name: string): M {
     return this.models[name] as M
-  }
-
-  /**
-   * Get schema by the specified entity name.
-   */
-  getSchema(name: string): Normalizr.Entity {
-    return this.schemas[name]
-  }
-
-  /**
-   * Create schema from the given model.
-   */
-  private createSchema<M extends Model>(model: M): Normalizr.Entity {
-    return (this.schemas[model.$entity()] = new Schema(model).one())
   }
 }

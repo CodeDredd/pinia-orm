@@ -107,7 +107,7 @@ export class Query<M extends Model = Model> {
    * Create a new interpreter instance.
    */
   protected newInterpreter(): Interpreter {
-    return new Interpreter(this.database, this.model)
+    return new Interpreter(this.model)
   }
 
   /**

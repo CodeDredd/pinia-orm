@@ -209,5 +209,5 @@ export function assert(
   message: string[],
 ): asserts condition {
   if (!condition)
-    throw new Error(['[Vuex ORM]'].concat(message).join(' '))
+    throw new Error(['[Pinia ORM]'].concat(message).join(' '))
 }

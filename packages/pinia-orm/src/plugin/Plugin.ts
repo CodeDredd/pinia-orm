@@ -19,20 +19,20 @@ import { Interpreter } from '../interpreter/Interpreter'
 import { Query } from '../query/Query'
 import { Connection } from '../connection/Connection'
 
-export interface VuexORMPlugin {
+export interface PiniaORMPlugin {
   install(
     store: Store<any>,
-    components: VuexORMPluginComponents,
+    components: PiniaORMPluginComponents,
     options: any
   ): void
 }
 
-export interface VuexORMPluginRegistry {
-  func: VuexORMPlugin
+export interface PiniaORMPluginRegistry {
+  func: PiniaORMPlugin
   options: any
 }
 
-export interface VuexORMPluginComponents {
+export interface PiniaORMPluginComponents {
   Database: typeof Database
   Model: typeof Model
   Attribute: typeof Attribute
@@ -55,16 +55,16 @@ export interface VuexORMPluginComponents {
 }
 
 /**
- * The plugin registry. All plugins registered through `VuexORM.use` method
- * is going to be stored here and then executed during the Vuex ORM
+ * The plugin registry. All plugins registered through `PiniaORM.use` method
+ * is going to be stored here and then executed during the Pinia ORM
  * installation process.
  */
-export const plugins: VuexORMPluginRegistry[] = []
+export const plugins: PiniaORMPluginRegistry[] = []
 
 /**
  * The components to be passed to the plugin `install` method.
  */
-export const components: VuexORMPluginComponents = {
+export const components: PiniaORMPluginComponents = {
   Database,
   Model,
   Attribute,
@@ -87,8 +87,8 @@ export const components: VuexORMPluginComponents = {
 }
 
 /**
- * Plugin additional feature to the Vuex ORM.
+ * Plugin additional feature to the Pinia ORM.
  */
-export function use(plugin: VuexORMPlugin, options?: any): void {
+export function use(plugin: PiniaORMPlugin, options?: any): void {
   plugins.push({ func: plugin, options })
 }

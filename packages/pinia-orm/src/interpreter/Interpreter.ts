@@ -3,14 +3,9 @@ import { normalize } from 'normalizr'
 import { isArray } from '../support/Utils'
 import type { Element, NormalizedData } from '../data/Data'
 import type { Model } from '../model/Model'
-import type { Database } from '../database/Database'
+import { Schema } from '@/schema/Schema'
 
 export class Interpreter {
-  /**
-   * The database instance.
-   */
-  database: Database
-
   /**
    * The model object.
    */
@@ -19,8 +14,7 @@ export class Interpreter {
   /**
    * Create a new Interpreter instance.
    */
-  constructor(database: Database, model: Model) {
-    this.database = database
+  constructor(model: Model) {
     this.model = model
   }
 
@@ -48,6 +42,6 @@ export class Interpreter {
    * Get the schema from the database.
    */
   private getSchema(): Normalizr.Entity {
-    return this.database.getSchema(this.model.$entity())
+    return new Schema(this.model).one()
   }
 }
