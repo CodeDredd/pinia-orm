@@ -85,6 +85,6 @@ jobs:
           node-version: 16
           cache: 'pnpm'
 
-      - run: pnpm install
+      - run: pnpm install --shamefully-hoist
       - run: pnpm run build
       - run: pnpm run size
