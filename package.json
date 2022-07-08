@@ -11,7 +11,8 @@
   "scripts": {
     "release": "node scripts/release.mjs",
     "size": "lerna run size --scope pinia-orm",
-    "build": "lerna run build --ignore @pina-orm/playground-* --ignore @pina-orm/playground-nuxt3",
+    "build": "lerna run build --ignore @pina-orm/playground-*",
+    "build:pinia-orm": "lerna run build --scope pinia-orm",
     "play": "lerna run play",
     "build:dts": "lerna run build:dts --parallel",
     "format": "prettier -c --parser typescript \"packages/*/{src,__tests__,e2e}/**/*.[jt]s?(x)\"",
