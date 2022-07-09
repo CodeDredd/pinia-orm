@@ -88,7 +88,7 @@ importers:
       '@vitest/ui': ^0.18.0
       '@vue/composition-api': ^1.7.0
       c8: ^7.11.3
-      core-js: ^3.19.1
+      core-js: ^3.23.4
       eslint: ^8.19.0
       happy-dom: ^6.0.2
       normalizr: ^3.6.2
@@ -117,7 +117,7 @@ importers:
       '@vitest/ui': 0.18.0
       '@vue/composition-api': 1.7.0_vue@3.2.37
       c8: 7.11.3
-      core-js: 3.23.3
+      core-js: 3.23.4
       eslint: 8.19.0
       happy-dom: 6.0.2
       prettier: 2.7.1
@@ -3645,8 +3645,8 @@ packages:
     resolution: {integrity: sha512-RyZrFi6PNpBFbIaQjXDlFIhFVqV42QeKSZX1yQIl6ihImq6vcHNGMtqQ/QzY3RMPuYSkvsRwtnt5M9NeYxKt0g==}
     dev: true
 
-  /core-js/3.23.3:
-    resolution: {integrity: sha512-oAKwkj9xcWNBAvGbT//WiCdOMpb9XQG92/Fe3ABFM/R16BsHgePG00mFOgKf7IsCtfj8tA1kHtf/VwErhriz5Q==}
+  /core-js/3.23.4:
+    resolution: {integrity: sha512-vjsKqRc1RyAJC3Ye2kYqgfdThb3zYnx9CrqoCcjMOENMtQPC7ZViBvlDxwYU/2z2NI/IPuiXw5mT4hWhddqjzQ==}
     requiresBuild: true
     dev: true
 
