@@ -1,3 +1,9 @@
+## [1.0.13](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.12...@pinia-orm/nuxt@1.0.13) (2022-07-11)
+
+### Features
+
+- **pinia-orm:** add belongsToMany relation function ([#79](https://github.com/CodeDredd/pinia-orm/issues/79)) ([8c1b91e](https://github.com/CodeDredd/pinia-orm/commit/8c1b91e9a3f7114580363c8f976c20014894d92f))
+
 ## [1.0.12](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.11...@pinia-orm/nuxt@1.0.12) (2022-07-11)
 
 ### Bug Fixes

@@ -1,3 +1,9 @@
+# [0.12.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.11.0...pinia-orm@0.12.0) (2022-07-11)
+
+### Features
+
+- **pinia-orm:** add belongsToMany relation function ([#79](https://github.com/CodeDredd/pinia-orm/issues/79)) ([8c1b91e](https://github.com/CodeDredd/pinia-orm/commit/8c1b91e9a3f7114580363c8f976c20014894d92f))
+
 # [0.11.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.10.0...pinia-orm@0.11.0) (2022-07-11)
 
 ### Bug Fixes
