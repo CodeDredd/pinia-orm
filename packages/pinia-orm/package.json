@@ -15,7 +15,7 @@
     "email": "gregor@codedredd.de"
   },
   "funding": "https://github.com/sponsors/codedredd",
-  "main": "dist/index.cjs",
+  "main": "dist/index.js",
   "jsdelivr": "dist/index.global.js",
   "unpkg": "dist/index.global.js",
   "module": "dist/index.mjs",
@@ -34,7 +34,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rimraf dist && tsup src/index.ts --dts --format cjs,esm,iife",
+    "build": "tsup src/index.ts --dts --clean --format cjs,esm,iife",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l pinia-orm -r 1",
     "coverage": "vue-demi-switch 3 && vitest --run --coverage",
     "size": "size-limit",

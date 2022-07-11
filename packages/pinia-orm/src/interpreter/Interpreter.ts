@@ -3,7 +3,7 @@ import { normalize } from 'normalizr'
 import { isArray } from '../support/Utils'
 import type { Element, NormalizedData } from '../data/Data'
 import type { Model } from '../model/Model'
-import { Schema } from '@/schema/Schema'
+import { Schema } from '../schema/Schema'
 
 export class Interpreter {
   /**

@@ -19,7 +19,7 @@
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
     "pinia": "^2.0.14",
-    "pinia-orm": "^0.9.2",
+    "pinia-orm": "^0.10.0",
     "vue": "^2.7.3",
     "vue-server-renderer": "^2.7.3",
     "vue-template-compiler": "^2.7.3",
@@ -39,8 +39,5 @@
     "nuxt-windicss": "^2.4.2",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1"
-  },
-  "installConfig": {
-    "hoistingLimits": "dependencies"
   }
 }

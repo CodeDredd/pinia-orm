@@ -4,14 +4,13 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
-import { useRepo, useDataStore } from 'pinia-orm'
+import { useRepo } from 'pinia-orm'
 import User from '~/models/User'
-import { useORMStore } from '~/stores/useORMStore'
 
 export default defineComponent({
   name: 'IndexPage',
   setup() {
-    const userRepo = useRepo(User, useORMStore)
+    const userRepo = useRepo(User)
     userRepo.save([
       {
         id: 1,

@@ -41,11 +41,11 @@
   },
   "peerDependencies": {
     "@pinia/nuxt": "^0.1.9",
-    "pinia": "^2.0.14"
+    "pinia": "^2.0.14",
+    "pinia-orm": "~0.10.0"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.4",
-    "pinia-orm": "~0.10.0"
+    "@nuxt/kit": "^3.0.0-rc.4"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
