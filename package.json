@@ -18,7 +18,7 @@
     "format:fix": "pnpm run format --write",
     "lint": "lerna run lint --ignore @pina-orm/playground-* --ignore @pina-orm/playground-nuxt3",
     "lint:fix": "lerna run lint:fix --ignore @pina-orm/playground-* --ignore @pina-orm/playground-nuxt3",
-    "test": "lerna run packages/pinia-orm/test",
+    "test": "lerna run test --scope pinia-orm",
     "test:coverage": "lerna run coverage --scope pinia-orm",
     "test:types": "tsc --build ./tsconfig.json",
     "test:dts": "lerna run test:dts",

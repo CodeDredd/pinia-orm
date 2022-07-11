@@ -41,7 +41,6 @@
   },
   "peerDependencies": {
     "@pinia/nuxt": "^0.2.0",
-    "pinia": "^2.0.15",
     "pinia-orm": "~0.11.0"
   },
   "dependencies": {

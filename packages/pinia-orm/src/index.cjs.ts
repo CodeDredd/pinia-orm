@@ -16,6 +16,7 @@ import { Bool } from './model/decorators/attributes/types/Bool'
 import { Uid } from './model/decorators/attributes/types/Uid'
 import { HasOne } from './model/decorators/attributes/relations/HasOne'
 import { BelongsTo } from './model/decorators/attributes/relations/BelongsTo'
+import { BelongsToMany } from './model/decorators/attributes/relations/BelongsToMany'
 import { HasMany } from './model/decorators/attributes/relations/HasMany'
 import { HasManyBy } from './model/decorators/attributes/relations/HasManyBy'
 import { MorphOne } from './model/decorators/attributes/relations/MorphOne'
@@ -30,6 +31,7 @@ import { Uid as UidAttr } from './model/attributes/types/Uid'
 import { Relation } from './model/attributes/relations/Relation'
 import { HasOne as HasOneAttr } from './model/attributes/relations/HasOne'
 import { BelongsTo as BelongsToAttr } from './model/attributes/relations/BelongsTo'
+import { BelongsToMany as BelongsToManyAttr } from './model/attributes/relations/BelongsToMany'
 import { HasMany as HasManyAttr } from './model/attributes/relations/HasMany'
 import { HasManyBy as HasManyByAttr } from './model/attributes/relations/HasManyBy'
 import { MorphOne as MorphOneAttr } from './model/attributes/relations/MorphOne'
@@ -56,6 +58,7 @@ export default {
   Uid,
   HasOne,
   BelongsTo,
+  BelongsToMany,
   HasMany,
   HasManyBy,
   MorphOne,
@@ -70,6 +73,7 @@ export default {
   Relation,
   HasOneAttr,
   BelongsToAttr,
+  BelongsToManyAttr,
   HasManyAttr,
   HasManyByAttr,
   MorphOneAttr,

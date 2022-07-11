@@ -19,6 +19,7 @@ import { Uid as UidAttr } from './model/attributes/types/Uid'
 import { Relation } from './model/attributes/relations/Relation'
 import { HasOne as HasOneAttr } from './model/attributes/relations/HasOne'
 import { BelongsTo as BelongsToAttr } from './model/attributes/relations/BelongsTo'
+import { BelongsToMany as BelongsToManyAttr } from './model/attributes/relations/BelongsToMany'
 import { HasMany as HasManyAttr } from './model/attributes/relations/HasMany'
 import { HasManyBy as HasManyByAttr } from './model/attributes/relations/HasManyBy'
 import { MorphOne as MorphOneAttr } from './model/attributes/relations/MorphOne'
@@ -44,6 +45,7 @@ export * from './model/decorators/attributes/types/Bool'
 export * from './model/decorators/attributes/types/Uid'
 export * from './model/decorators/attributes/relations/HasOne'
 export * from './model/decorators/attributes/relations/BelongsTo'
+export * from './model/decorators/attributes/relations/BelongsToMany'
 export * from './model/decorators/attributes/relations/HasMany'
 export * from './model/decorators/attributes/relations/HasManyBy'
 export * from './model/decorators/attributes/relations/MorphOne'
@@ -61,6 +63,7 @@ export { Uid as UidAttr } from './model/attributes/types/Uid'
 export * from './model/attributes/relations/Relation'
 export { HasOne as HasOneAttr } from './model/attributes/relations/HasOne'
 export { BelongsTo as BelongsToAttr } from './model/attributes/relations/BelongsTo'
+export { BelongsToMany as BelongsToManyAttr } from './model/attributes/relations/BelongsToMany'
 export { HasMany as HasManyAttr } from './model/attributes/relations/HasMany'
 export { HasManyBy as HasManyByAttr } from './model/attributes/relations/HasManyBy'
 export { MorphOne as MorphOneAttr } from './model/attributes/relations/MorphOne'
@@ -96,6 +99,7 @@ export default {
   Relation,
   HasOneAttr,
   BelongsToAttr,
+  BelongsToManyAttr,
   HasManyAttr,
   HasManyByAttr,
   MorphOneAttr,
