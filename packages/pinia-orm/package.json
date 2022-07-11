@@ -46,9 +46,11 @@
     "test:3": "vue-demi-switch 3 && vitest --run",
     "test": "pnpm run test:2 && pnpm run test:3"
   },
+  "peerDependencies": {
+    "pinia": "^2.0.14"
+  },
   "dependencies": {
     "normalizr": "^3.6.2",
-    "pinia": "^2.0.14",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -77,7 +79,7 @@
   "size-limit": [
     {
       "path": "dist/index.js",
-      "limit": "220 kB"
+      "limit": "20 kB"
     }
   ],
   "volta": {
