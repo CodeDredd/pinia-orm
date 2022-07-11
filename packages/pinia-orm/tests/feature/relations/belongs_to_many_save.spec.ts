@@ -1,18 +1,15 @@
 import { describe, it } from 'vitest'
 
-import { Model, Num, useRepo } from '../../../src'
+import { Attr, BelongsToMany, Model, Num, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
 describe('feature/relations/belongs_to_many_save', () => {
   class User extends Model {
     static entity = 'users'
 
-    static fields() {
-      return {
-        id: this.attr(null),
-        permissions: this.belongsToMany(Role, RoleUser, 'user_id', 'role_id'),
-      }
-    }
+    @Num(0) id!: number
+    @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
+      permissions!: Role
   }
 
   class Role extends Model {
@@ -26,13 +23,9 @@ describe('feature/relations/belongs_to_many_save', () => {
 
     static primaryKey = ['role_id', 'user_id']
 
-    static fields() {
-      return {
-        role_id: this.attr(null),
-        user_id: this.attr(null),
-        level: this.attr(null),
-      }
-    }
+    @Attr(null) role_id!: number | null
+    @Attr(null) user_id!: number | null
+    @Attr(null) level!: number | null
   }
 
   it('saves a model to the store with "belongs to many" relation', () => {
