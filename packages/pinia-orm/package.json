@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "normalizr": "^3.6.2",
-    "pinia": "^2.0.14",
+    "pinia": "^2.0.15",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
