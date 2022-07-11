@@ -1,3 +1,9 @@
+## [1.0.12](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.11...@pinia-orm/nuxt@1.0.12) (2022-07-11)
+
+### Bug Fixes
+
+- **#77:** current build not working for nuxt2 ([0b77360](https://github.com/CodeDredd/pinia-orm/commit/0b77360889929be31982415bf867d103162ac32b)), closes [#77](https://github.com/CodeDredd/pinia-orm/issues/77)
+
 ## [1.0.11](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.10...@pinia-orm/nuxt@1.0.11) (2022-07-05)
 
 ## [1.0.10](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.9...@pinia-orm/nuxt@1.0.10) (2022-06-29)

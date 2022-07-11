@@ -1,3 +1,17 @@
+# [0.11.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.10.0...pinia-orm@0.11.0) (2022-07-11)
+
+### Bug Fixes
+
+- **#77:** current build not working for nuxt2 ([0b77360](https://github.com/CodeDredd/pinia-orm/commit/0b77360889929be31982415bf867d103162ac32b)), closes [#77](https://github.com/CodeDredd/pinia-orm/issues/77)
+
+### Code Refactoring
+
+- **pinia-orm:** Code clean up ([7b7f198](https://github.com/CodeDredd/pinia-orm/commit/7b7f198a914d41b915e2684a66369205e4c1bf58))
+
+### BREAKING CHANGES
+
+- **pinia-orm:** removed the options to pass a piniaStore or connetion to `useRepo`
+
 # [0.10.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.9.3...pinia-orm@0.10.0) (2022-07-05)
 
 ### Features
