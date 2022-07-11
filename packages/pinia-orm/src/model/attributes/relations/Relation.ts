@@ -77,7 +77,6 @@ export abstract class Relation extends Attribute {
   ): Dictionary {
     return models.reduce<Dictionary>((dictionary, model) => {
       const [key, value] = callback(model)
-
       if (!dictionary[key])
         dictionary[key] = []
 

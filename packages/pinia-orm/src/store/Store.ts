@@ -1,9 +1,5 @@
-import type { PiniaPlugin, Store, StoreDefinition } from 'pinia'
+import type { PiniaPlugin, Store } from 'pinia'
 import { components, plugins } from '../plugin/Plugin'
-
-export interface StoreGenerator {
-  (id: string): StoreDefinition
-}
 
 // export interface InstallOptions {
 //   namespace?: string
