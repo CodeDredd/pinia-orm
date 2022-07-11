@@ -44,7 +44,7 @@
     "test:watch": "vue-demi-switch 3 && vitest --watch",
     "test:2": "vue-demi-switch 2 vue2 && vitest --run",
     "test:3": "vue-demi-switch 3 && vitest --run",
-    "test": "pnpm run test:2 && pnpm run test:3"
+    "test": "pnpm run test:3"
   },
   "peerDependencies": {
     "pinia": "^2.0.14"
