@@ -84,9 +84,6 @@ export class BelongsToMany extends Relation {
    */
   protected buildDictionary(results: Collection): Dictionary {
     return this.mapToDictionary(results, (result) => {
-      if (!result.pivot)
-        console.error('Pinia ORM - Pivot not found')
-
       return [result.pivot[this.foreignPivotKey], result]
     })
   }
@@ -112,7 +109,6 @@ export class BelongsToMany extends Relation {
       const key = model[this.relatedKey]
       const pivot = query.newQuery(this.pivot.$entity())
         .where(this.relatedPivotKey, key)
-        // .where(this.relatedPivotKey, this.model.$getLocalKey())
         .first()
       model.$setRelation('pivot', pivot)
     })
