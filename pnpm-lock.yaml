@@ -103,7 +103,7 @@ importers:
       vite: ^2.9.14
       vitest: ^0.18.0
       vue: ^3.2.37
-      vue-demi: ^0.13.2
+      vue-demi: ^0.13.4
       vue2: npm:vue@^2.7.3
     dependencies:
       normalizr: 3.6.2
@@ -129,7 +129,7 @@ importers:
       vite: 2.9.14
       vitest: 0.18.0_2v7ykypeqndj5hklitmx3v35ei
       vue: 3.2.37
-      vue-demi: 0.13.2_3nmzzoefrdru4lagmst3ha3a3q
+      vue-demi: 0.13.4_3nmzzoefrdru4lagmst3ha3a3q
       vue2: /vue/2.7.3
 
 packages:
@@ -8119,7 +8119,7 @@ packages:
       '@vue/devtools-api': 6.2.0
       typescript: 4.7.4
       vue: 3.2.37
-      vue-demi: 0.13.2_3nmzzoefrdru4lagmst3ha3a3q
+      vue-demi: 0.13.4_3nmzzoefrdru4lagmst3ha3a3q
     dev: true
 
   /pinia/2.0.15_j6bzmzd4ujpabbp5objtwxyjp4:
@@ -10565,22 +10565,6 @@ packages:
       bundle-runner: 0.0.1
     dev: true
 
-  /vue-demi/0.13.2_3nmzzoefrdru4lagmst3ha3a3q:
-    resolution: {integrity: sha512-41ukrclEbMddAyP7PvxMSYqnOSzPV6r7GNnyTSKSCNTaz19GehxmTiXyP9kwHSUv2+Dr6hHqiUiF7L1VAw2KdQ==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0 || 3
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      '@vue/composition-api': 1.7.0_vue@3.2.37
-      vue: 3.2.37
-    dev: true
-
   /vue-demi/0.13.2_vue@3.2.37:
     resolution: {integrity: sha512-41ukrclEbMddAyP7PvxMSYqnOSzPV6r7GNnyTSKSCNTaz19GehxmTiXyP9kwHSUv2+Dr6hHqiUiF7L1VAw2KdQ==}
     engines: {node: '>=12'}
@@ -10593,6 +10577,22 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
+      vue: 3.2.37
+    dev: true
+
+  /vue-demi/0.13.4_3nmzzoefrdru4lagmst3ha3a3q:
+    resolution: {integrity: sha512-KP4lq9uSz0KZbaqCllRhnxMV3mYRsRWJfdsAhZyt5bV5O1RTpoeDptBRV9NOa/JgOpfaA9ane88VF7OjWNK/DA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0 || 3
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@vue/composition-api': 1.7.0_vue@3.2.37
       vue: 3.2.37
     dev: true
 
