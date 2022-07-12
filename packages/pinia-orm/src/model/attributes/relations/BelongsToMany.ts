@@ -80,15 +80,6 @@ export class BelongsToMany extends Relation {
   }
 
   /**
-   * Build model dictionary keyed by the relation's foreign key.
-   */
-  protected buildDictionary(results: Collection): Dictionary {
-    return this.mapToDictionary(results, (result) => {
-      return [result.pivot[this.foreignPivotKey], result]
-    })
-  }
-
-  /**
    * Convert given value to the appropriate value for the attribute.
    */
   make(elements?: Element[]): Model[] {
@@ -105,23 +96,31 @@ export class BelongsToMany extends Relation {
    */
   match(relation: string, models: Collection, query: Query): void {
     const relatedModels = query.get()
-    relatedModels.forEach((model) => {
-      const key = model[this.relatedKey]
-      const pivot = query.newQuery(this.pivot.$entity())
-        .where(this.relatedPivotKey, key)
-        .first()
-      model.$setRelation('pivot', pivot)
+    models.forEach((parentModel) => {
+      const relationResults: Model[] = []
+      relatedModels.forEach((relatedModel) => {
+        const key = relatedModel[this.relatedKey]
+        const pivot = query.newQuery(this.pivot.$entity())
+          .where(this.relatedPivotKey, key)
+          .where(this.foreignPivotKey, parentModel[this.parentKey])
+          .first()
+        relatedModel.$setRelation('pivot', pivot)
+        if (pivot)
+          relationResults.push(relatedModel)
+        // console.log('match', pivot, relatedModel, key, parentModel, relatedModels)
+      })
+      parentModel.$setRelation(relation, relationResults)
     })
 
-    const dictionary = this.buildDictionary(relatedModels)
+    // const dictionary = this.buildDictionary(models, query)
 
-    models.forEach((model) => {
-      const key = model[this.relatedKey]
-
-      dictionary[key]
-        ? model.$setRelation(relation, dictionary[key])
-        : model.$setRelation(relation, [])
-    })
+    // models.forEach((model) => {
+    //   const key = model[this.relatedKey]
+    //
+    //   dictionary[key]
+    //     ? model.$setRelation(relation, dictionary[key])
+    //     : model.$setRelation(relation, [])
+    // })
   }
 
   /**

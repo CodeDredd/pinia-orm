@@ -36,7 +36,9 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', permissions: [] },
+        1: { id: 1 },
+        2: { id: 2 },
+        3: { id: 3 },
       },
       roles: {
         1: { id: 1 },
@@ -44,19 +46,24 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
+        '[1,2]': { role_id: 1, user_id: 2, level: 2 },
         '[2,1]': { role_id: 2, user_id: 1, level: null },
       },
     })
 
-    const user = userRepo.with('roles').first()
+    const user = userRepo.with('roles').find(1)
+    const user2 = userRepo.with('roles').find(2)
 
     expect(user).toBeInstanceOf(User)
     assertInstanceOf(user.roles, Role)
 
     expect(user?.roles.length).toBe(2)
+    expect(user?.roles[0].pivot.level).toBe(1)
+    expect(user2?.roles.length).toBe(1)
+    expect(user2?.roles[0].pivot.level).toBe(2)
 
-    const userWithoutRoles = userRepo.with('roles').find(2)
-    expect(userWithoutRoles).toBe(null)
+    const userWithoutRoles = userRepo.with('roles').find(3)
+    expect(userWithoutRoles.roles.length).toBe(0)
   })
 
   it('can eager load missing relation as empty array', () => {
@@ -74,7 +81,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     })
   })
 
-  it('can revive "has many" relations', () => {
+  it('can revive "belongs to many" relations', () => {
     const usersRepo = useRepo(User)
 
     fillState({

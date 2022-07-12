@@ -51,7 +51,6 @@
   },
   "dependencies": {
     "normalizr": "^3.6.2",
-    "pinia": "^2.0.15",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -81,6 +80,7 @@
   "size-limit": [
     {
       "path": "dist/index.js",
+      "webpack": false,
       "limit": "20 kB"
     }
   ],

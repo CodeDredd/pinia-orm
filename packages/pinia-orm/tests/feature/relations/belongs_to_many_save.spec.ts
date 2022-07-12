@@ -9,7 +9,7 @@ describe('feature/relations/belongs_to_many_save', () => {
 
     @Num(0) id!: number
     @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-      permissions!: Role
+      roles!: Role
   }
 
   class Role extends Model {
@@ -34,11 +34,11 @@ describe('feature/relations/belongs_to_many_save', () => {
     userRepo.save([
       {
         id: 1,
-        permissions: [{ id: 1, pivot: { level: 1 } }, { id: 2 }],
+        roles: [{ id: 1, pivot: { level: 1 } }, { id: 2 }],
       },
       {
         id: 2,
-        permissions: [{ id: 2 }],
+        roles: [{ id: 1, pivot: { level: 2 } }],
       },
     ])
 
@@ -54,7 +54,7 @@ describe('feature/relations/belongs_to_many_save', () => {
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
         '[2,1]': { role_id: 2, user_id: 1, level: null },
-        '[2,2]': { role_id: 2, user_id: 2, level: null },
+        '[1,2]': { role_id: 1, user_id: 2, level: 2 },
       },
     })
   })
