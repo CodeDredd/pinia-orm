@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { Attr, Model, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
-describe('unit/model/Model_Sanitize', () => {
+describe('unit/model/Model_Mutators', () => {
   it('should mutate data if mutators are present', () => {
     class User extends Model {
       static entity = 'users'
