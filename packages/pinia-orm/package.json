@@ -46,7 +46,7 @@
     "test": "pnpm run test:3"
   },
   "peerDependencies": {
-    "pinia": "^2.0.15"
+    "pinia": "^2.0.16"
   },
   "dependencies": {
     "normalizr": "^3.6.2",
@@ -63,7 +63,7 @@
     "core-js": "^3.23.4",
     "eslint": "^8.19.0",
     "happy-dom": "^6.0.3",
-    "pinia": "^2.0.15",
+    "pinia": "^2.0.16",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "size-limit": "^7.0.8",
