@@ -3,7 +3,6 @@ import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
 import type { Model } from '../../Model'
-import type { Dictionary } from './Relation'
 import { Relation } from './Relation'
 
 export class BelongsToMany extends Relation {

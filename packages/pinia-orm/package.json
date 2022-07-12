@@ -80,7 +80,6 @@
   "size-limit": [
     {
       "path": "dist/index.js",
-      "webpack": false,
       "limit": "20 kB"
     }
   ],
