@@ -25,8 +25,7 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs",
       "browser": "./dist/index.mjs"
-    },
-    "./*": "./*"
+    }
   },
   "files": [
     "dist",
