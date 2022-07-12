@@ -1,6 +1,7 @@
 {
   "include": ["src/global.d.ts", "src/**/*.ts", "__tests__/**/*.ts"],
   "compilerOptions": {
+    "suppressImplicitAnyIndexErrors": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "module": "ESNext",
