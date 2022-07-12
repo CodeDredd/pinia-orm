@@ -81,8 +81,7 @@ describe('unit/model/Model_Sanitize', () => {
       static mutators() {
         return {
           name: {
-            get: (value: any) => value.toUpperCase(),
-            set: (value: any) => value.toLowerCase(),
+            set: (value: any) => value.toUpperCase(),
           },
         }
       }
