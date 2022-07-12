@@ -1,3 +1,17 @@
+## [0.12.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.12.0...pinia-orm@0.12.1) (2022-07-12)
+
+### Bug Fixes
+
+- **pinia-orm:** belongsToMany not working correctly ([bc3e20a](https://github.com/CodeDredd/pinia-orm/commit/bc3e20ada9176cc87ed35911456d039230e51f4a))
+
+### chore
+
+- **pinia-orm:** Reduce build size by 33% ([bcd2f58](https://github.com/CodeDredd/pinia-orm/commit/bcd2f5815714fcd2abc9227a22a2e6cec9753a7f))
+
+### BREAKING CHANGES
+
+- **pinia-orm:** Dropping IE 11 support by removing last polyfill. Since pinia is also using "includes" i am dropping it. If needed please open a ticket to discuss
+
 # [0.12.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.11.0...pinia-orm@0.12.0) (2022-07-11)
 
 ### Features
