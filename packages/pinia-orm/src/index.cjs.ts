@@ -1,5 +1,3 @@
-import './polyfills/Polyfills'
-
 import { install } from './store/Store'
 import { useRepo } from './composables/useRepo'
 import { useStoreActions } from './composables/useStoreActions'
