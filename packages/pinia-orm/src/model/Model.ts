@@ -1,5 +1,6 @@
 import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
+import type { Mutators } from '../types'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -24,6 +25,7 @@ export type ModelRegistry = Record<string, () => Attribute>
 export interface ModelOptions {
   fill?: boolean
   relations?: boolean
+  mutator?: 'set' | 'get' | 'none'
 }
 
 export class Model {
@@ -314,6 +316,13 @@ export class Model {
   }
 
   /**
+   * Mutators to mutate matching fields when instantiating the model.
+   */
+  static mutators(): Mutators {
+    return {}
+  }
+
+  /**
    * Get the constructor for this model.
    */
   $self(): typeof Model {
@@ -384,13 +393,26 @@ export class Model {
   $fill(attributes: Element = {}, options: ModelOptions = {}): this {
     const fields = this.$fields()
     const fillRelation = options.relations ?? true
+    const useMutator = options.mutator ?? 'get'
 
     for (const key in fields) {
       const attr = fields[key]
-      const value = attributes[key]
+      let value = attributes[key]
 
       if (attr instanceof Relation && !fillRelation)
         continue
+
+      if (useMutator !== 'none') {
+        const mutator = this.$getMutators()[key]
+        if (mutator && useMutator === 'get') {
+          value = typeof mutator === 'function'
+            ? mutator(value)
+            : typeof mutator.get === 'function' ? mutator.get(value) : value
+        }
+
+        if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
+          value = mutator.set(value)
+      }
 
       this.$fillField(key, attr, value)
     }
@@ -524,6 +546,13 @@ export class Model {
     this[relation] = model
 
     return this
+  }
+
+  /**
+   * Get the mutators of the model
+   */
+  $getMutators(): Mutators {
+    return this.$self().mutators()
   }
 
   /**

@@ -13,10 +13,7 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "es2017",
-    "types": ["@types/uuid", "@types/node", "vitest/globals"],
-    "paths": {
-      "@/*": ["./src/*", "./dist/*"]
-    }
+    "types": ["@types/uuid", "@types/node", "vitest/globals"]
   },
   "exclude": [
     "**/dist",
