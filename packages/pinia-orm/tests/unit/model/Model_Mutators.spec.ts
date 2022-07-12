@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { Attr, Model, useRepo } from '../../../src'
-import {assertState} from "../../helpers";
+import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Sanitize', () => {
   it('should mutate data if mutators are present', () => {
@@ -81,7 +81,8 @@ describe('unit/model/Model_Sanitize', () => {
       static mutators() {
         return {
           name: {
-            set: (value: any) => value.toUpperCase(),
+            get: (value: any) => value.toUpperCase(),
+            set: (value: any) => value.toLowerCase(),
           },
         }
       }
