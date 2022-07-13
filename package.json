@@ -31,7 +31,7 @@
     "conventional-changelog-cli": "^2.2.2",
     "enquirer": "^2.3.6",
     "execa": "^6.1.0",
-    "expect": "^28.1.1",
+    "expect": "^28.1.3",
     "globby": "^13.1.2",
     "lerna": "^5.1.8",
     "lint-staged": "^13.0.3",
