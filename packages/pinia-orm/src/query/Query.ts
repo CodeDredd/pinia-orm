@@ -10,7 +10,7 @@ import type { Collection, Element, Elements, Item } from '../data/Data'
 import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
-import type { Model } from '../model/Model'
+import type { Model, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { Connection } from '../connection/Connection'
 import type {
@@ -515,8 +515,8 @@ export class Query<M extends Model = Model> {
       const existing = currentData[id]
 
       newData[id] = existing
-        ? this.hydrate({ ...existing, ...record }).$getAttributes()
-        : this.hydrate(record).$getAttributes()
+        ? this.hydrate({ ...existing, ...record }, { mutator: 'set' }).$getAttributes()
+        : this.hydrate(record, { mutator: 'set' }).$getAttributes()
     }
 
     this.newConnection().save(newData)
@@ -639,12 +639,12 @@ export class Query<M extends Model = Model> {
   /**
    * Instantiate new models with the given record.
    */
-  protected hydrate(record: Element): M
-  protected hydrate(records: Element[]): Collection<M>
-  protected hydrate(records: Element | Element[]): M | Collection<M> {
+  protected hydrate(record: Element, options?: ModelOptions): M
+  protected hydrate(records: Element[], options?: ModelOptions): Collection<M>
+  protected hydrate(records: Element | Element[], options?: ModelOptions): M | Collection<M> {
     return isArray(records)
-      ? records.map(record => this.hydrate(record))
-      : this.model.$newInstance(records, { relations: false })
+      ? records.map(record => this.hydrate(record), options)
+      : this.model.$newInstance(records, { relations: false, ...(options || {}) })
   }
 
   /**

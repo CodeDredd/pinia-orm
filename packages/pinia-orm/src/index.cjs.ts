@@ -7,6 +7,7 @@ import { mapRepos } from './helpers/Helpers'
 import { Database } from './database/Database'
 import { Schema } from './schema/Schema'
 import { Model } from './model/Model'
+import { Mutate } from './model/decorators/Mutate'
 import { Attr } from './model/decorators/attributes/types/Attr'
 import { Str } from './model/decorators/attributes/types/Str'
 import { Num } from './model/decorators/attributes/types/Num'
@@ -49,6 +50,7 @@ export default {
   Database,
   Schema,
   Model,
+  Mutate,
   Attr,
   Str,
   Num,

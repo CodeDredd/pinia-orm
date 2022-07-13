@@ -1,5 +1,6 @@
 import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
+import type { MutatorFunctions, Mutators } from '../types'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -24,6 +25,7 @@ export type ModelRegistry = Record<string, () => Attribute>
 export interface ModelOptions {
   fill?: boolean
   relations?: boolean
+  mutator?: 'set' | 'get' | 'none'
 }
 
 export class Model {
@@ -51,7 +53,17 @@ export class Model {
    */
   protected static registries: ModelRegistries = {}
 
+  /**
+   * The pinia options for the model. It can contain options which will passed
+   * to the 'defineStore' function of pinia.
+   */
   protected static piniaOptions: any = {}
+
+  /**
+   * The mutators for the model. It contains all mutators
+   * to the 'defineStore' function of pinia.
+   */
+  protected static fieldMutators: Mutators = {}
 
   /**
    * The array of booted models.
@@ -112,11 +124,25 @@ export class Model {
   }
 
   /**
+   * Set an mutator for a field
+   */
+  static setMutator<M extends typeof Model>(
+    this: M,
+    key: string,
+    mutator: MutatorFunctions<any>,
+  ): M {
+    this.fieldMutators[key] = mutator
+
+    return this
+  }
+
+  /**
    * Clear the list of booted models so they can be re-booted.
    */
   static clearBootedModels(): void {
     this.booted = {}
     this.schemas = {}
+    this.fieldMutators = {}
   }
 
   /**
@@ -314,6 +340,13 @@ export class Model {
   }
 
   /**
+   * Mutators to mutate matching fields when instantiating the model.
+   */
+  static mutators(): Mutators {
+    return {}
+  }
+
+  /**
    * Get the constructor for this model.
    */
   $self(): typeof Model {
@@ -384,13 +417,30 @@ export class Model {
   $fill(attributes: Element = {}, options: ModelOptions = {}): this {
     const fields = this.$fields()
     const fillRelation = options.relations ?? true
+    const useMutator = options.mutator ?? 'get'
+    const mutators: Mutators = {
+      ...this.$getMutators(),
+      ...this.$self().fieldMutators,
+    }
 
     for (const key in fields) {
       const attr = fields[key]
-      const value = attributes[key]
+      let value = attributes[key]
 
       if (attr instanceof Relation && !fillRelation)
         continue
+
+      if (useMutator !== 'none') {
+        const mutator = mutators[key]
+        if (mutator && useMutator === 'get') {
+          value = typeof mutator === 'function'
+            ? mutator(value)
+            : typeof mutator.get === 'function' ? mutator.get(value) : value
+        }
+
+        if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
+          value = mutator.set(value)
+      }
 
       this.$fillField(key, attr, value)
     }
@@ -524,6 +574,13 @@ export class Model {
     this[relation] = model
 
     return this
+  }
+
+  /**
+   * Get the mutators of the model
+   */
+  $getMutators(): Mutators {
+    return this.$self().mutators()
   }
 
   /**
