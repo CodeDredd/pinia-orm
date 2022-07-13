@@ -1,5 +1,5 @@
 import { getActivePinia } from 'pinia'
-import { v1 as uuid } from 'uuid'
+import { nanoid } from 'nanoid/non-secure'
 import type { Mock } from 'vitest'
 import { expect } from 'vitest'
 
@@ -65,5 +65,5 @@ export function assertInstanceOf(
 }
 
 export function mockUid(ids: any[]): void {
-  ids.forEach(id => (uuid as Mock).mockImplementationOnce(() => id))
+  ids.forEach(id => (nanoid as Mock).mockImplementationOnce(() => id))
 }

@@ -13,7 +13,7 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "es2017",
-    "types": ["@types/uuid", "@types/node", "vitest/globals"]
+    "types": ["nanoid", "@types/node", "vitest/globals"]
   },
   "exclude": [
     "**/dist",

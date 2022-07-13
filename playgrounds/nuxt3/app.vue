@@ -14,11 +14,9 @@ onBeforeMount(() => {
       name: 'test',
       todos: [
         {
-          id: 1,
           title: 'Hoho',
         },
         {
-          id: 2,
           title: 'Blub',
         },
       ],

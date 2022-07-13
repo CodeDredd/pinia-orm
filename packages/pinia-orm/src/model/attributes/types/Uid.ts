@@ -1,4 +1,4 @@
-import { v1 as uuid } from 'uuid'
+import { nanoid } from 'nanoid/non-secure'
 import { Type } from './Type'
 
 export class Uid extends Type {
@@ -6,6 +6,6 @@ export class Uid extends Type {
    * Make the value for the attribute.
    */
   make(value: any): string {
-    return value ?? uuid()
+    return value ?? nanoid()
   }
 }

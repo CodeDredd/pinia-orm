@@ -49,14 +49,13 @@
     "pinia": "^2.0.16"
   },
   "dependencies": {
-    "normalizr": "^3.6.2",
-    "uuid": "^8.3.2"
+    "nanoid": "^4.0.0",
+    "normalizr": "^3.6.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
     "@size-limit/preset-small-lib": "^7.0.8",
     "@types/prettier": "^2",
-    "@types/uuid": "^8.3.4",
     "@vitest/ui": "^0.18.0",
     "@vue/composition-api": "^1.7.0",
     "c8": "^7.11.3",
