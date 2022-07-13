@@ -83,7 +83,6 @@ importers:
     specifiers:
       '@antfu/eslint-config': ^0.25.2
       '@size-limit/preset-small-lib': ^7.0.8
-      '@types/nanoid': ^3.0.0
       '@types/prettier': ^2
       '@vitest/ui': ^0.18.0
       '@vue/composition-api': ^1.7.0
@@ -111,7 +110,6 @@ importers:
     devDependencies:
       '@antfu/eslint-config': 0.25.2_4x5o4skxv6sl53vpwefgt23khm
       '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
-      '@types/nanoid': 3.0.0
       '@types/prettier': 2.6.3
       '@vitest/ui': 0.18.0
       '@vue/composition-api': 1.7.0_vue@3.2.37
@@ -2230,13 +2228,6 @@ packages:
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
-    dev: true
-
-  /@types/nanoid/3.0.0:
-    resolution: {integrity: sha512-UXitWSmXCwhDmAKe7D3hNQtQaHeHt5L8LO1CB8GF8jlYVzOv5cBWDNqiJ+oPEWrWei3i3dkZtHY/bUtd0R/uOQ==}
-    deprecated: This is a stub types definition. nanoid provides its own type definitions, so you do not need this installed.
-    dependencies:
-      nanoid: 4.0.0
     dev: true
 
   /@types/node/10.17.60:
@@ -7171,6 +7162,7 @@ packages:
     resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
+    dev: false
 
   /nanospinner/1.1.0:
     resolution: {integrity: sha512-yFvNYMig4AthKYfHFl1sLj7B2nkHL4lzdig4osvl9/LdGbXwrdFRoqBS98gsEsOakr0yH+r5NZ/1Y9gdVB8trA==}
