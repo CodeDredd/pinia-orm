@@ -53,7 +53,7 @@ importers:
       '@nuxt/kit': ^3.0.0-rc.4
       '@nuxt/module-builder': latest
       '@nuxtjs/eslint-config-typescript': latest
-      '@pinia/nuxt': ^0.2.1
+      '@pinia/nuxt': ^0.3.0
       '@types/prettier': ^2
       eslint: ^8.19.0
       nuxt: ^3.0.0-rc.4
@@ -68,7 +68,7 @@ importers:
     devDependencies:
       '@nuxt/module-builder': 0.1.7
       '@nuxtjs/eslint-config-typescript': 10.0.0_4x5o4skxv6sl53vpwefgt23khm
-      '@pinia/nuxt': 0.2.1_pinia@2.0.16+vue@3.2.37
+      '@pinia/nuxt': 0.3.0_j6bzmzd4ujpabbp5objtwxyjp4
       '@types/prettier': 2.6.3
       eslint: 8.19.0
       nuxt: 3.0.0-rc.4
@@ -1951,16 +1951,20 @@ packages:
       '@octokit/openapi-types': 12.6.1
     dev: true
 
-  /@pinia/nuxt/0.2.1_pinia@2.0.16+vue@3.2.37:
-    resolution: {integrity: sha512-XPsuClG2ag/zSdSDqU8FRkTxwWKVZTYD6TVTzjMon3l9QZKC9YvW+jdZWasQilLCnU+jWpmhx41YpfIoPSwMbg==}
-    peerDependencies:
-      pinia: '>=2.0.16'
+  /@pinia/nuxt/0.3.0_j6bzmzd4ujpabbp5objtwxyjp4:
+    resolution: {integrity: sha512-x/T8GAfpLAF/a5I06frgl7Aj+X9Ld3fvBhQ6xtinHsXivbrUSL1UNJof8JKEAZBwKX33CoCyeGWbXfOtpyODug==}
     dependencies:
+      '@nuxt/kit': 3.0.0-rc.4
       pinia: 2.0.16_j6bzmzd4ujpabbp5objtwxyjp4
-      vue-demi: 0.13.4_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
+      - esbuild
+      - rollup
+      - supports-color
+      - typescript
+      - vite
       - vue
+      - webpack
     dev: true
 
   /@polka/url/1.0.0-next.21:
