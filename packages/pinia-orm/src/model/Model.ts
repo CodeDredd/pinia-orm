@@ -1,6 +1,6 @@
 import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
-import type { Mutators } from '../types'
+import type { MutatorFunctions, Mutators } from '../types'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -53,7 +53,17 @@ export class Model {
    */
   protected static registries: ModelRegistries = {}
 
+  /**
+   * The pinia options for the model. It can contain options which will passed
+   * to the 'defineStore' function of pinia.
+   */
   protected static piniaOptions: any = {}
+
+  /**
+   * The mutators for the model. It contains all mutators
+   * to the 'defineStore' function of pinia.
+   */
+  protected static fieldMutators: Mutators = {}
 
   /**
    * The array of booted models.
@@ -114,11 +124,25 @@ export class Model {
   }
 
   /**
+   * Set an mutator for a field
+   */
+  static setMutator<M extends typeof Model>(
+    this: M,
+    key: string,
+    mutator: MutatorFunctions<any>,
+  ): M {
+    this.fieldMutators[key] = mutator
+
+    return this
+  }
+
+  /**
    * Clear the list of booted models so they can be re-booted.
    */
   static clearBootedModels(): void {
     this.booted = {}
     this.schemas = {}
+    this.fieldMutators = {}
   }
 
   /**
@@ -394,6 +418,11 @@ export class Model {
     const fields = this.$fields()
     const fillRelation = options.relations ?? true
     const useMutator = options.mutator ?? 'get'
+    const mutators: Mutators = {
+      ...this.$getMutators(),
+      ...this.$self().fieldMutators,
+    }
+    console.log('mutate', mutators, this.$self().fieldMutators)
 
     for (const key in fields) {
       const attr = fields[key]
@@ -403,7 +432,7 @@ export class Model {
         continue
 
       if (useMutator !== 'none') {
-        const mutator = this.$getMutators()[key]
+        const mutator = mutators[key]
         if (mutator && useMutator === 'get') {
           value = typeof mutator === 'function'
             ? mutator(value)

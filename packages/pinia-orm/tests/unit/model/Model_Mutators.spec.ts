@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model, useRepo } from '../../../src'
+import { Attr, Model, Mutate, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Mutators', () => {
@@ -17,6 +17,18 @@ describe('unit/model/Model_Mutators', () => {
           },
         }
       }
+    }
+
+    expect(new User({ name: 'john doe' }).name).toBe('JOHN DOE')
+  })
+
+  it('should mutate data if mutators are present with decorator', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Mutate((value: any) => value.toUpperCase())
+      @Attr('')
+        name!: string
     }
 
     expect(new User({ name: 'john doe' }).name).toBe('JOHN DOE')
