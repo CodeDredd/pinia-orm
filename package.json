@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^16.11.43",
+    "@types/node": "^16.11.44",
     "chalk": "^4.1.2",
     "conventional-changelog-cli": "^2.2.2",
     "enquirer": "^2.3.6",
