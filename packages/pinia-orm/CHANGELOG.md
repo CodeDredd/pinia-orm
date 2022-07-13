@@ -1,3 +1,9 @@
+# [0.13.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.12.1...pinia-orm@0.13.0) (2022-07-13)
+
+### Features
+
+- **pinia-orm:** add mutators ([#84](https://github.com/CodeDredd/pinia-orm/issues/84)) ([5757f97](https://github.com/CodeDredd/pinia-orm/commit/5757f97e974e9fcca0be773b56931001bbd46005))
+
 ## [0.12.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.12.0...pinia-orm@0.12.1) (2022-07-12)
 
 ### Bug Fixes
