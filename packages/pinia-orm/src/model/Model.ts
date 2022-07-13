@@ -422,7 +422,6 @@ export class Model {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
-    console.log('mutate', mutators, this.$self().fieldMutators)
 
     for (const key in fields) {
       const attr = fields[key]

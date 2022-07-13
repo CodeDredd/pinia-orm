@@ -7,10 +7,6 @@ import type { PropertyDecorator } from './Contracts'
 export function Mutate(get?: Mutator<any>, set?: Mutator<any>): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
-    console.log('mutate', propertyKey, target)
-    self.setMutator(propertyKey, {
-      get,
-      set,
-    })
+    self.setMutator(propertyKey, { get, set })
   }
 }
