@@ -513,13 +513,19 @@ export class Query<M extends Model = Model> {
     for (const id in elements) {
       const record = elements[id]
       const existing = currentData[id]
+      const model = existing
+        ? this.hydrate({ ...existing, ...record }, { mutator: 'set' })
+        : this.hydrate(record, { mutator: 'set' })
 
-      newData[id] = existing
-        ? this.hydrate({ ...existing, ...record }, { mutator: 'set' }).$getAttributes()
-        : this.hydrate(record, { mutator: 'set' }).$getAttributes()
+      const isSaving = model.$self().saving(model)
+      const isUpdatingOrCreating = existing ? model.$self().updating(model) : model.$self().creating(model)
+      if (isSaving === false || isUpdatingOrCreating === false)
+        continue
+
+      newData[id] = model.$getAttributes()
     }
-
-    this.newConnection().save(newData)
+    if (Object.keys(newData).length > 0)
+      this.newConnection().save(newData)
   }
 
   /**
