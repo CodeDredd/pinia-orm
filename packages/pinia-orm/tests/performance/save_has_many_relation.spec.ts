@@ -21,7 +21,7 @@ describe('performance/save_has_many_relation', () => {
       posts!: Post[]
   }
 
-  it.skip('saves data with has many relation within decent time', () => {
+  it('saves data with has many relation within decent time', () => {
     const userRepo = useRepo(User)
 
     const users = []

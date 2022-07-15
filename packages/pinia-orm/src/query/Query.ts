@@ -509,6 +509,7 @@ export class Query<M extends Model = Model> {
   saveElements(elements: Elements): void {
     const newData = {} as Elements
     const currentData = this.data()
+    const afterSavingHooks = []
 
     for (const id in elements) {
       const record = elements[id]
@@ -522,10 +523,14 @@ export class Query<M extends Model = Model> {
       if (isSaving === false || isUpdatingOrCreating === false)
         continue
 
+      afterSavingHooks.push(() => model.$self().saved(model))
+      afterSavingHooks.push(() => existing ? model.$self().updated(model) : model.$self().created(model))
       newData[id] = model.$getAttributes()
     }
-    if (Object.keys(newData).length > 0)
+    if (Object.keys(newData).length > 0) {
       this.newConnection().save(newData)
+      afterSavingHooks.forEach(hook => hook())
+    }
   }
 
   /**

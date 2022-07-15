@@ -28,8 +28,12 @@ export interface ModelOptions {
   mutator?: 'set' | 'get' | 'none'
 }
 
-export interface Hook<M extends Model = Model> {
+export interface BeforeHook<M extends Model = Model> {
   (model: M): void | boolean
+}
+
+export interface AfterHook<M extends Model = Model> {
+  (model: M): void
 }
 
 export class Model {
@@ -346,17 +350,32 @@ export class Model {
   /**
    * Lifecycle hook for before saving
    */
-  static saving = <M extends Model = Model>(model: M): void | boolean | M => model
+  static saving: BeforeHook = () => {}
 
   /**
-   * Lifecycle hook for before saving
+   * Lifecycle hook for before updating
    */
-  static updating = <M extends Model = Model>(model: M): void | boolean | M => model
+  static updating: BeforeHook = () => {}
 
   /**
-   * Lifecycle hook for before saving
+   * Lifecycle hook for before creating
    */
-  static creating = <M extends Model = Model>(model: M): void | boolean | M => model
+  static creating: BeforeHook = () => {}
+
+  /**
+   * Lifecycle hook for before saved
+   */
+  static saved: AfterHook = () => {}
+
+  /**
+   * Lifecycle hook for before updated
+   */
+  static updated: AfterHook = () => {}
+
+  /**
+   * Lifecycle hook for before created
+   */
+  static created: AfterHook = () => {}
 
   /**
    * Mutators to mutate matching fields when instantiating the model.
