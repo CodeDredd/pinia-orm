@@ -102,7 +102,7 @@ importers:
       vite: ^3.0.0
       vitest: ^0.18.0
       vue: ^3.2.37
-      vue-demi: ^0.13.4
+      vue-demi: ^0.13.5
       vue2: npm:vue@^2.7.3
     dependencies:
       nanoid: 4.0.0
@@ -127,7 +127,7 @@ importers:
       vite: 3.0.0
       vitest: 0.18.0_2v7ykypeqndj5hklitmx3v35ei
       vue: 3.2.37
-      vue-demi: 0.13.4_3nmzzoefrdru4lagmst3ha3a3q
+      vue-demi: 0.13.5_3nmzzoefrdru4lagmst3ha3a3q
       vue2: /vue/2.7.3
 
 packages:
@@ -8344,7 +8344,7 @@ packages:
       '@vue/devtools-api': 6.2.0
       typescript: 4.7.4
       vue: 3.2.37
-      vue-demi: 0.13.4_3nmzzoefrdru4lagmst3ha3a3q
+      vue-demi: 0.13.5_3nmzzoefrdru4lagmst3ha3a3q
     dev: true
 
   /pinia/2.0.16_j6bzmzd4ujpabbp5objtwxyjp4:
@@ -8362,7 +8362,7 @@ packages:
       '@vue/devtools-api': 6.2.0
       typescript: 4.7.4
       vue: 3.2.37
-      vue-demi: 0.13.4_vue@3.2.37
+      vue-demi: 0.13.5_vue@3.2.37
     dev: true
 
   /pirates/4.0.5:
@@ -10804,8 +10804,8 @@ packages:
       bundle-runner: 0.0.1
     dev: true
 
-  /vue-demi/0.13.4_3nmzzoefrdru4lagmst3ha3a3q:
-    resolution: {integrity: sha512-KP4lq9uSz0KZbaqCllRhnxMV3mYRsRWJfdsAhZyt5bV5O1RTpoeDptBRV9NOa/JgOpfaA9ane88VF7OjWNK/DA==}
+  /vue-demi/0.13.5_3nmzzoefrdru4lagmst3ha3a3q:
+    resolution: {integrity: sha512-tO3K2bML3AwiHmVHeKCq6HLef2st4zBXIV5aEkoJl6HZ+gJWxWv2O8wLH8qrA3SX3lDoTDHNghLX1xZg83MXvw==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
@@ -10820,8 +10820,8 @@ packages:
       vue: 3.2.37
     dev: true
 
-  /vue-demi/0.13.4_vue@3.2.37:
-    resolution: {integrity: sha512-KP4lq9uSz0KZbaqCllRhnxMV3mYRsRWJfdsAhZyt5bV5O1RTpoeDptBRV9NOa/JgOpfaA9ane88VF7OjWNK/DA==}
+  /vue-demi/0.13.5_vue@3.2.37:
+    resolution: {integrity: sha512-tO3K2bML3AwiHmVHeKCq6HLef2st4zBXIV5aEkoJl6HZ+gJWxWv2O8wLH8qrA3SX3lDoTDHNghLX1xZg83MXvw==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
