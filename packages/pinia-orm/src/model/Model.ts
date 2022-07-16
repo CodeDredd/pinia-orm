@@ -363,19 +363,29 @@ export class Model {
   static creating: BeforeHook = () => {}
 
   /**
-   * Lifecycle hook for before saved
+   * Lifecycle hook for before deleting
+   */
+  static deleting: BeforeHook = () => {}
+
+  /**
+   * Lifecycle hook for after saved
    */
   static saved: AfterHook = () => {}
 
   /**
-   * Lifecycle hook for before updated
+   * Lifecycle hook for after updated
    */
   static updated: AfterHook = () => {}
 
   /**
-   * Lifecycle hook for before created
+   * Lifecycle hook for after created
    */
   static created: AfterHook = () => {}
+
+  /**
+   * Lifecycle hook for after deleted
+   */
+  static deleted: AfterHook = () => {}
 
   /**
    * Mutators to mutate matching fields when instantiating the model.

@@ -10,7 +10,7 @@ import type { Collection, Element, Elements, Item } from '../data/Data'
 import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
-import type { Model, ModelOptions } from '../model/Model'
+import type { AfterHook, Model, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { Connection } from '../connection/Connection'
 import type {
@@ -597,7 +597,11 @@ export class Query<M extends Model = Model> {
     if (!model)
       return null
 
-    this.newConnection().destroy([model.$getIndexId()])
+    const [afterHooks, removeIds] = this.dispatchDeleteHooks(model)
+    if (!removeIds.includes(model.$getIndexId())) {
+      this.newConnection().destroy([model.$getIndexId()])
+      afterHooks.forEach(hook => hook())
+    }
 
     return model
   }
@@ -608,7 +612,14 @@ export class Query<M extends Model = Model> {
     if (isEmpty(models))
       return []
 
-    this.newConnection().destroy(this.getIndexIdsFromCollection(models))
+    const [afterHooks, removeIds] = this.dispatchDeleteHooks(models)
+    const checkedIds = this.getIndexIdsFromCollection(models).filter(id => !removeIds.includes(id))
+
+    if (isEmpty(checkedIds))
+      return []
+
+    this.newConnection().destroy(checkedIds)
+    afterHooks.forEach(hook => hook())
 
     return models
   }
@@ -622,9 +633,14 @@ export class Query<M extends Model = Model> {
     if (isEmpty(models))
       return []
 
-    const ids = this.getIndexIdsFromCollection(models)
+    const [afterHooks, removeIds] = this.dispatchDeleteHooks(models)
+    const ids = this.getIndexIdsFromCollection(models).filter(id => !removeIds.includes(id))
+
+    if (isEmpty(ids))
+      return []
 
     this.newConnection().delete(ids)
+    afterHooks.forEach(hook => hook())
 
     return models
   }
@@ -638,6 +654,21 @@ export class Query<M extends Model = Model> {
     this.newConnection().flush()
 
     return models
+  }
+
+  protected dispatchDeleteHooks(models: M | Collection<M>): [{ (): void }[], string[]] {
+    const afterHooks: { (): void }[] = []
+    const notDeletableIds: string[] = []
+    models = isArray(models) ? models : [models]
+    models.forEach((currentModel) => {
+      const isDeleting = currentModel.$self().deleting(currentModel)
+      if (isDeleting === false)
+        notDeletableIds.push(currentModel.$getIndexId())
+      else
+        afterHooks.push(() => currentModel.$self().deleted(currentModel))
+    })
+
+    return [afterHooks, notDeletableIds]
   }
 
   /**
