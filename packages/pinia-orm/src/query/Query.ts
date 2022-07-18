@@ -509,17 +509,28 @@ export class Query<M extends Model = Model> {
   saveElements(elements: Elements): void {
     const newData = {} as Elements
     const currentData = this.data()
+    const afterSavingHooks = []
 
     for (const id in elements) {
       const record = elements[id]
       const existing = currentData[id]
+      const model = existing
+        ? this.hydrate({ ...existing, ...record }, { mutator: 'set' })
+        : this.hydrate(record, { mutator: 'set' })
 
-      newData[id] = existing
-        ? this.hydrate({ ...existing, ...record }, { mutator: 'set' }).$getAttributes()
-        : this.hydrate(record, { mutator: 'set' }).$getAttributes()
+      const isSaving = model.$self().saving(model)
+      const isUpdatingOrCreating = existing ? model.$self().updating(model) : model.$self().creating(model)
+      if (isSaving === false || isUpdatingOrCreating === false)
+        continue
+
+      afterSavingHooks.push(() => model.$self().saved(model))
+      afterSavingHooks.push(() => existing ? model.$self().updated(model) : model.$self().created(model))
+      newData[id] = model.$getAttributes()
     }
-
-    this.newConnection().save(newData)
+    if (Object.keys(newData).length > 0) {
+      this.newConnection().save(newData)
+      afterSavingHooks.forEach(hook => hook())
+    }
   }
 
   /**
@@ -586,7 +597,11 @@ export class Query<M extends Model = Model> {
     if (!model)
       return null
 
-    this.newConnection().destroy([model.$getIndexId()])
+    const [afterHooks, removeIds] = this.dispatchDeleteHooks(model)
+    if (!removeIds.includes(model.$getIndexId())) {
+      this.newConnection().destroy([model.$getIndexId()])
+      afterHooks.forEach(hook => hook())
+    }
 
     return model
   }
@@ -597,7 +612,14 @@ export class Query<M extends Model = Model> {
     if (isEmpty(models))
       return []
 
-    this.newConnection().destroy(this.getIndexIdsFromCollection(models))
+    const [afterHooks, removeIds] = this.dispatchDeleteHooks(models)
+    const checkedIds = this.getIndexIdsFromCollection(models).filter(id => !removeIds.includes(id))
+
+    if (isEmpty(checkedIds))
+      return []
+
+    this.newConnection().destroy(checkedIds)
+    afterHooks.forEach(hook => hook())
 
     return models
   }
@@ -611,9 +633,14 @@ export class Query<M extends Model = Model> {
     if (isEmpty(models))
       return []
 
-    const ids = this.getIndexIdsFromCollection(models)
+    const [afterHooks, removeIds] = this.dispatchDeleteHooks(models)
+    const ids = this.getIndexIdsFromCollection(models).filter(id => !removeIds.includes(id))
+
+    if (isEmpty(ids))
+      return []
 
     this.newConnection().delete(ids)
+    afterHooks.forEach(hook => hook())
 
     return models
   }
@@ -627,6 +654,21 @@ export class Query<M extends Model = Model> {
     this.newConnection().flush()
 
     return models
+  }
+
+  protected dispatchDeleteHooks(models: M | Collection<M>): [{ (): void }[], string[]] {
+    const afterHooks: { (): void }[] = []
+    const notDeletableIds: string[] = []
+    models = isArray(models) ? models : [models]
+    models.forEach((currentModel) => {
+      const isDeleting = currentModel.$self().deleting(currentModel)
+      if (isDeleting === false)
+        notDeletableIds.push(currentModel.$getIndexId())
+      else
+        afterHooks.push(() => currentModel.$self().deleted(currentModel))
+    })
+
+    return [afterHooks, notDeletableIds]
   }
 
   /**

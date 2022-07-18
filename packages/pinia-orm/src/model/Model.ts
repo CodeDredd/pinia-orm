@@ -28,6 +28,14 @@ export interface ModelOptions {
   mutator?: 'set' | 'get' | 'none'
 }
 
+export interface BeforeHook<M extends Model = Model> {
+  (model: M): void | boolean
+}
+
+export interface AfterHook<M extends Model = Model> {
+  (model: M): void
+}
+
 export class Model {
   [s: keyof ModelFields]: any
   /**
@@ -338,6 +346,46 @@ export class Model {
 
     return new MorphMany(model, related.newRawInstance(), id, type, localKey)
   }
+
+  /**
+   * Lifecycle hook for before saving
+   */
+  static saving: BeforeHook = () => {}
+
+  /**
+   * Lifecycle hook for before updating
+   */
+  static updating: BeforeHook = () => {}
+
+  /**
+   * Lifecycle hook for before creating
+   */
+  static creating: BeforeHook = () => {}
+
+  /**
+   * Lifecycle hook for before deleting
+   */
+  static deleting: BeforeHook = () => {}
+
+  /**
+   * Lifecycle hook for after saved
+   */
+  static saved: AfterHook = () => {}
+
+  /**
+   * Lifecycle hook for after updated
+   */
+  static updated: AfterHook = () => {}
+
+  /**
+   * Lifecycle hook for after created
+   */
+  static created: AfterHook = () => {}
+
+  /**
+   * Lifecycle hook for after deleted
+   */
+  static deleted: AfterHook = () => {}
 
   /**
    * Mutators to mutate matching fields when instantiating the model.

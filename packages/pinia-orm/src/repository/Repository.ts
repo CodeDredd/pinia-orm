@@ -1,3 +1,4 @@
+import type { Store } from 'pinia'
 import type { Constructor } from '../types'
 import { assert } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
@@ -13,6 +14,7 @@ import type {
   WhereSecondaryClosure,
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
+import { useDataStore } from '../composables/useDataStore'
 
 export class Repository<M extends Model = Model> {
   /**
@@ -84,6 +86,14 @@ export class Repository<M extends Model = Model> {
     ])
 
     return this.model
+  }
+
+  /**
+   * Return the pinia store used with this model
+   */
+  piniaStore(): Store {
+    const store = useDataStore(this.model.$entity(), this.model.$piniaOptions())
+    return store()
   }
 
   /**

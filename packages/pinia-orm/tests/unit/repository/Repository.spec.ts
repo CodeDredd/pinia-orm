@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { Attr, Model, Repository, Str, useRepo } from '../../../src'
 import { assertModel } from '../../helpers'
@@ -25,19 +25,6 @@ describe('unit/repository/Repository', () => {
 
     expect(user).toBeInstanceOf(User)
     assertModel(user, { id: null, name: 'John Doe' })
-  })
-
-  it('creates a new model instance in a new database', () => {
-    const connection = 'test_namespace'
-    const userRepo = useRepo(User, undefined, connection)
-    const user = userRepo.make()
-
-    expect(user).toBeInstanceOf(User)
-    assertModel(user, { id: null, name: 'John Doe' })
-
-    // Fetches the same atabase on 2nd call.
-    const user2 = userRepo.make()
-    assertModel(user2, { id: null, name: 'John Doe' })
   })
 
   it('creates a new model instance with default values', () => {
@@ -70,5 +57,44 @@ describe('unit/repository/Repository', () => {
     const postRepo = userRepo.repo(PostRepository)
 
     expect(postRepo.getModel()).toBeInstanceOf(Post)
+  })
+
+  it('can access the pinia store', () => {
+    const logger = vi.spyOn(console, 'log')
+
+    const userRepo = useRepo(User)
+    userRepo.piniaStore().$onAction(({
+      name, // name of the action
+      // store, // store instance, same as `someStore`
+      args, // array of parameters passed to the action
+      after, // hook after the action returns or resolves
+      onError, // hook if the action throws or rejects
+    }) => {
+      // a shared variable for this specific action call
+      const startTime = Date.now()
+      // this will trigger before an action on `store` is executed
+      console.log(`Start "${name}" with params [${args.join(', ')}].`)
+
+      // this will trigger if the action succeeds and after it has fully run.
+      // it waits for any returned promised
+      after((result) => {
+        console.log(
+          `Finished "${name}" after ${
+            Date.now() - startTime
+          }ms.\nResult: ${result}.`,
+        )
+      })
+
+      // this will trigger if the action throws or returns a promise that rejects
+      onError((error) => {
+        console.warn(
+          `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`,
+        )
+      })
+    })
+
+    userRepo.save({ id: 1, name: 'John Doe' })
+
+    expect(logger).toBeCalled()
   })
 })
