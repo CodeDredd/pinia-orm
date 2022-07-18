@@ -1,3 +1,10 @@
+# [0.14.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.13.0...pinia-orm@0.14.0) (2022-07-18)
+
+### Features
+
+- **pinia-orm:** add life-cycle-hooks ([#91](https://github.com/CodeDredd/pinia-orm/issues/91)) ([ca67576](https://github.com/CodeDredd/pinia-orm/commit/ca675768c662416cf053ad932ba4715f56275553))
+- **pinia-orm:** Improve size & performance ([f6ceab5](https://github.com/CodeDredd/pinia-orm/commit/f6ceab5b0d8e9b9eea6eef7a8682adb42dd47040))
+
 # [0.13.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.12.1...pinia-orm@0.13.0) (2022-07-13)
 
 ### Features
