@@ -36,7 +36,6 @@ export class Connection {
    * Get all existing records.
    */
   get(): Elements {
-    // const connection = this.database.connection
     const newStore = useDataStore(this.model.$entity(), this.model.$piniaOptions())
     const store = newStore()
 

@@ -10,7 +10,7 @@ import type { Collection, Element, Elements, Item } from '../data/Data'
 import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
-import type { AfterHook, Model, ModelOptions } from '../model/Model'
+import type { Model, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { Connection } from '../connection/Connection'
 import type {

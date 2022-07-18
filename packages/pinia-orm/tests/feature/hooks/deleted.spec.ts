@@ -61,7 +61,7 @@ describe('feature/hooks/deleted', () => {
       },
     })
 
-    useRepo(User).destroy([1,2])
+    useRepo(User).destroy([1, 2])
 
     expect(deletedMethod).toHaveBeenCalledTimes(2)
 
@@ -102,5 +102,4 @@ describe('feature/hooks/deleted', () => {
       },
     })
   })
-
 })
