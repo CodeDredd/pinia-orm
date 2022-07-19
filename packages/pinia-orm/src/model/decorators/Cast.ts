@@ -7,6 +7,6 @@ import type { PropertyDecorator } from './Contracts'
 export function Cast(to: string | (() => typeof CastAttribute)): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
-    self.setCast(propertyKey, to)
+    self.setCast(propertyKey, typeof to === 'string' ? to : to())
   }
 }

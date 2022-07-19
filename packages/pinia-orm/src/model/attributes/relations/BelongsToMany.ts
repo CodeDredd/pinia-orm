@@ -90,9 +90,6 @@ export class BelongsToMany extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  /**
-   * Match the eagerly loaded results to their parents.
-   */
   match(relation: string, models: Collection, query: Query): void {
     const relatedModels = query.get()
     models.forEach((parentModel) => {
@@ -106,20 +103,9 @@ export class BelongsToMany extends Relation {
         relatedModel.$setRelation('pivot', pivot)
         if (pivot)
           relationResults.push(relatedModel)
-        // console.log('match', pivot, relatedModel, key, parentModel, relatedModels)
       })
       parentModel.$setRelation(relation, relationResults)
     })
-
-    // const dictionary = this.buildDictionary(models, query)
-
-    // models.forEach((model) => {
-    //   const key = model[this.relatedKey]
-    //
-    //   dictionary[key]
-    //     ? model.$setRelation(relation, dictionary[key])
-    //     : model.$setRelation(relation, [])
-    // })
   }
 
   /**

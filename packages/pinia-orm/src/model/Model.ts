@@ -153,7 +153,7 @@ export class Model {
   static setCast<M extends typeof Model>(
     this: M,
     key: string,
-    to: string | (() => typeof CastAttribute),
+    to: string | typeof CastAttribute,
   ): M {
     this.fieldCasts[key] = to
 
@@ -504,7 +504,7 @@ export class Model {
         continue
 
       const mutator = mutators?.[key]
-      const cast = convertCast(fields, casts?.[key])
+      const cast = convertCast(fields, casts[key])
       if (mutator && useMutator === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)
