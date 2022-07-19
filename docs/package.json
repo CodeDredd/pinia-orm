@@ -21,6 +21,6 @@
     "vue-plausible": "^1.3.2"
   },
   "resolutions": {
-    "@vercel/nft": "0.19.1"
+    "@vercel/nft": "0.21.0"
   }
 }
