@@ -16,12 +16,12 @@ export class String extends Type {
     if (value === undefined)
       return this.value
 
-    if (typeof value === 'string')
-      return value
+    if (value === null)
+      return this.isNullable ? value : `${value}`
 
-    if (value === null && this.isNullable)
-      return value
+    if (typeof value !== 'string')
+      this.throwWarning('string', value)
 
-    return `${value}`
+    return value
   }
 }

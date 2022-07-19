@@ -32,8 +32,8 @@ describe('feature/relations/has_many_save', () => {
       id: 1,
       name: 'John Doe',
       posts: [
-        { id: 1, userId: 1, title: 100 },
-        { id: 2, userId: 1, title: 200 },
+        { id: 1, userId: 1, title: '100' },
+        { id: 2, userId: 1, title: '200' },
       ],
     })
 

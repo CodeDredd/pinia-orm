@@ -14,7 +14,7 @@ describe('feature/relations/morph_one_save_custom_key', () => {
 
       @Num(0) id!: number
       @Str('') url!: string
-      @Str('') imageableId!: number
+      @Num(0) imageableId!: number
       @Str('') imageableType!: string
     }
 
@@ -23,7 +23,7 @@ describe('feature/relations/morph_one_save_custom_key', () => {
 
       static primaryKey = 'userId'
 
-      @Str('') userId!: string
+      @Num(0) userId!: number
       @Str('') name!: string
 
       @MorphOne(() => Image, 'imageableId', 'imageableType')
@@ -44,13 +44,13 @@ describe('feature/relations/morph_one_save_custom_key', () => {
 
     assertState({
       users: {
-        1: { userId: '1', name: 'John Doe' },
+        1: { userId: 1, name: 'John Doe' },
       },
       images: {
         1: {
           id: 1,
           url: '/profile.jpg',
-          imageableId: '1',
+          imageableId: 1,
           imageableType: 'users',
         },
       },
@@ -63,7 +63,7 @@ describe('feature/relations/morph_one_save_custom_key', () => {
 
       @Num(0) id!: number
       @Str('') url!: string
-      @Str('') imageableId!: string
+      @Num(0) imageableId!: number
       @Str('') imageableType!: string
     }
 
@@ -71,7 +71,7 @@ describe('feature/relations/morph_one_save_custom_key', () => {
       static entity = 'users'
 
       @Num(0) id!: number
-      @Str('') userId!: string
+      @Num(0) userId!: number
       @Str('') name!: string
 
       @MorphOne(() => Image, 'imageableId', 'imageableType', 'userId')
@@ -93,13 +93,13 @@ describe('feature/relations/morph_one_save_custom_key', () => {
 
     assertState({
       users: {
-        1: { id: 1, userId: '2', name: 'John Doe' },
+        1: { id: 1, userId: 2, name: 'John Doe' },
       },
       images: {
         1: {
           id: 1,
           url: '/profile.jpg',
-          imageableId: '2',
+          imageableId: 2,
           imageableType: 'users',
         },
       },

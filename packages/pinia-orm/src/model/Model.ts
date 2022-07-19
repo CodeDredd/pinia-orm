@@ -16,6 +16,8 @@ import { HasManyBy } from './attributes/relations/HasManyBy'
 import { MorphOne } from './attributes/relations/MorphOne'
 import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
+import { StringCast } from './casts/StringCast'
+import {CastAttribute, Casts} from "./casts/CastAttribute";
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -72,6 +74,8 @@ export class Model {
    * to the 'defineStore' function of pinia.
    */
   protected static fieldMutators: Mutators = {}
+
+  protected static fieldCasts = {}
 
   /**
    * The array of booted models.
@@ -145,12 +149,26 @@ export class Model {
   }
 
   /**
+   * Set a cast for a field
+   */
+  static setCast<M extends typeof Model>(
+    this: M,
+    key: string,
+    to: string | (() => typeof CastAttribute),
+  ): M {
+    this.fieldCasts[key] = to
+
+    return this
+  }
+
+  /**
    * Clear the list of booted models so they can be re-booted.
    */
   static clearBootedModels(): void {
     this.booted = {}
     this.schemas = {}
     this.fieldMutators = {}
+    this.fieldCasts = {}
   }
 
   /**
@@ -394,6 +412,10 @@ export class Model {
     return {}
   }
 
+  static casts() {
+    return {}
+  }
+
   /**
    * Get the constructor for this model.
    */
@@ -451,6 +473,16 @@ export class Model {
     }
   }
 
+  protected $convertCast(attributes: ModelFields, caster: string) {
+    switch (caster) {
+      case 'string': return new StringCast(attributes)
+      default: return {
+        get: (value: any) => value,
+        set: (value: any) => value,
+      }
+    }
+  }
+
   /**
    * Build the schema by evaluating fields and registry.
    */
@@ -470,6 +502,10 @@ export class Model {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
+    const casts = {
+      ...this.$getCasts(),
+      ...this.$self().fieldCasts,
+    }
 
     for (const key in fields) {
       const attr = fields[key]
@@ -478,17 +514,22 @@ export class Model {
       if (attr instanceof Relation && !fillRelation)
         continue
 
-      if (useMutator !== 'none') {
-        const mutator = mutators[key]
-        if (mutator && useMutator === 'get') {
-          value = typeof mutator === 'function'
-            ? mutator(value)
-            : typeof mutator.get === 'function' ? mutator.get(value) : value
-        }
-
-        if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
-          value = mutator.set(value)
+      const mutator = mutators?.[key]
+      const cast = this.$convertCast(fields, casts?.[key])
+      if (mutator && useMutator === 'get') {
+        value = typeof mutator === 'function'
+          ? mutator(value)
+          : typeof mutator.get === 'function' ? mutator.get(value) : value
       }
+
+      if (cast && useMutator === 'get')
+        value = cast.get(value)
+
+      if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
+        value = mutator.set(value)
+
+      if (cast && useMutator === 'set')
+        value = cast.set(value)
 
       this.$fillField(key, attr, value)
     }
@@ -629,6 +670,13 @@ export class Model {
    */
   $getMutators(): Mutators {
     return this.$self().mutators()
+  }
+
+  /**
+   * Get the casts of the model
+   */
+  $getCasts() {
+    return this.$self().casts()
   }
 
   /**
