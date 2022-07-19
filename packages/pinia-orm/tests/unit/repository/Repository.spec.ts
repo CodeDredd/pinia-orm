@@ -87,6 +87,7 @@ describe('unit/repository/Repository', () => {
 
       // this will trigger if the action throws or returns a promise that rejects
       onError((error) => {
+        // eslint-disable-next-line no-console
         console.warn(
           `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`,
         )

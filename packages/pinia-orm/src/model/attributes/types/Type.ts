@@ -33,6 +33,7 @@ export abstract class Type extends Attribute {
    * Throw warning for wrong type
    */
   protected throwWarning(type: string, value: any) {
+    // eslint-disable-next-line no-console
     console.warn(['[Pinia ORM]'].concat([`${this.model.$entity()}:`, value, 'is not a', type]).join(' '))
   }
 }

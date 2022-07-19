@@ -17,7 +17,7 @@ import { MorphOne } from './attributes/relations/MorphOne'
 import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
 import { StringCast } from './casts/StringCast'
-import {CastAttribute, Casts} from "./casts/CastAttribute";
+import type { CastAttribute } from './casts/CastAttribute'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
