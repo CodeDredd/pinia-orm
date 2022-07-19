@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { Attr, Cast, Model, Str, useRepo } from '../../../src'
 import { assertState } from '../../helpers'
 
-describe('unit/model/Model_Casts', () => {
+describe('unit/model/Model_Casts_String', () => {
   beforeEach(() => {
     Model.clearRegistries()
   })

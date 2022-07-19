@@ -13,15 +13,6 @@ export class String extends Type {
    * Make the value for the attribute.
    */
   make(value: any): string | null {
-    if (value === undefined)
-      return this.value
-
-    if (value === null)
-      return this.isNullable ? value : `${value}`
-
-    if (typeof value !== 'string')
-      this.throwWarning('string', value)
-
-    return value
+    return this.makeReturn<string | null>('string', value, `${value}`)
   }
 }

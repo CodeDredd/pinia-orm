@@ -1,4 +1,4 @@
-import { assert, isArray, isNullish } from '../support/Utils'
+import { assert, convertCast, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { Attribute } from './attributes/Attribute'
@@ -16,7 +16,6 @@ import { HasManyBy } from './attributes/relations/HasManyBy'
 import { MorphOne } from './attributes/relations/MorphOne'
 import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
-import { StringCast } from './casts/StringCast'
 import type { CastAttribute } from './casts/CastAttribute'
 
 export type ModelFields = Record<string, Attribute>
@@ -473,16 +472,6 @@ export class Model {
     }
   }
 
-  protected $convertCast(attributes: ModelFields, caster: string) {
-    switch (caster) {
-      case 'string': return new StringCast(attributes)
-      default: return {
-        get: (value: any) => value,
-        set: (value: any) => value,
-      }
-    }
-  }
-
   /**
    * Build the schema by evaluating fields and registry.
    */
@@ -515,7 +504,7 @@ export class Model {
         continue
 
       const mutator = mutators?.[key]
-      const cast = this.$convertCast(fields, casts?.[key])
+      const cast = convertCast(fields, casts?.[key])
       if (mutator && useMutator === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)

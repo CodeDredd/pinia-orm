@@ -26,7 +26,7 @@ describe('unit/model/Model_Sanitize', () => {
     const data = user.$sanitize({
       id: 1,
       unknownField: 1,
-      age: '10',
+      age: 10,
       posts: [1, 3],
     })
 

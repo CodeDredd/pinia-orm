@@ -13,9 +13,9 @@ describe('unit/model/Model_Attrs_Number', () => {
 
     expect(new User({}).num).toBe(0)
     expect(new User({ num: 1 }).num).toBe(1)
-    expect(new User({ num: '2' }).num).toBe(2)
-    expect(new User({ num: true }).num).toBe(1)
-    expect(new User({ num: false }).num).toBe(0)
+    expect(new User({ num: '2' }).num).toBe('2')
+    expect(new User({ num: true }).num).toBe(true)
+    expect(new User({ num: false }).num).toBe(false)
     expect(new User({ num: null }).num).toBe(0)
   })
 
@@ -29,9 +29,9 @@ describe('unit/model/Model_Attrs_Number', () => {
 
     expect(new User({}).num).toBe(null)
     expect(new User({ num: 1 }).num).toBe(1)
-    expect(new User({ num: '2' }).num).toBe(2)
-    expect(new User({ num: true }).num).toBe(1)
-    expect(new User({ num: false }).num).toBe(0)
+    expect(new User({ num: '2' }).num).toBe('2')
+    expect(new User({ num: true }).num).toBe(true)
+    expect(new User({ num: false }).num).toBe(false)
     expect(new User({ num: null }).num).toBe(null)
   })
 })
