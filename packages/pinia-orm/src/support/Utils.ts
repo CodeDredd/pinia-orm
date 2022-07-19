@@ -1,8 +1,8 @@
-import {StringCast} from "../model/casts/StringCast";
-import {ModelFields} from "../model/Model";
-import {BooleanCast} from "../model/casts/BooleanCast";
-import {NumberCast} from "../model/casts/NumberCast";
-import {ArrayCast} from "../model/casts/ArrayCast";
+import { StringCast } from '../model/casts/StringCast'
+import type { ModelFields } from '../model/Model'
+import { BooleanCast } from '../model/casts/BooleanCast'
+import { NumberCast } from '../model/casts/NumberCast'
+import { ArrayCast } from '../model/casts/ArrayCast'
 
 interface SortableArray<T> {
   criteria: any[]
