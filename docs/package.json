@@ -7,7 +7,7 @@
     "name": "Gregor Becker",
     "email": "gregor@codedredd.de"
   },
-  "repository": "storm-tail/pinia-orm",
+  "repository": "CodeDredd/pinia-orm",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
