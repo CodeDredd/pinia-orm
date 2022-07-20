@@ -1,3 +1,9 @@
+# [1.0.0-alpha.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.14.0...pinia-orm@1.0.0-alpha.1) (2022-07-20)
+
+### Bug Fixes
+
+- **pinia-orm:** Change compile target to fix loader errors with Nullish Coalescing operator ([0c810f8](https://github.com/CodeDredd/pinia-orm/commit/0c810f8be5daea3193ca6f0fa19e056ae33f5d10))
+
 # [0.14.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.13.0...pinia-orm@0.14.0) (2022-07-18)
 
 ### Features
