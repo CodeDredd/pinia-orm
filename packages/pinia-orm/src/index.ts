@@ -70,8 +70,6 @@ export { HasManyBy as HasManyByAttr } from './model/attributes/relations/HasMany
 export { MorphOne as MorphOneAttr } from './model/attributes/relations/MorphOne'
 export { MorphTo as MorphToAttr } from './model/attributes/relations/MorphTo'
 export { MorphMany as MorphManyAttr } from './model/attributes/relations/MorphMany'
-export * from './modules/RootState'
-export * from './modules/State'
 export * from './repository/Repository'
 export * from './interpreter/Interpreter'
 export * from './query/Query'

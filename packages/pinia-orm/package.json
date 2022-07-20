@@ -78,7 +78,7 @@
   "size-limit": [
     {
       "path": "dist/index.js",
-      "limit": "20 kB"
+      "limit": "12 kB"
     }
   ],
   "volta": {
