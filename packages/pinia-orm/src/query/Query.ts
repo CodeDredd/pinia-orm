@@ -12,7 +12,7 @@ import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
 import type { Model, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
-import { Connection } from '../connection/Connection'
+import { useDataStore } from '../composables/useDataStore'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -23,11 +23,6 @@ import type {
   WherePrimaryClosure,
   WhereSecondaryClosure,
 } from './Options'
-
-export interface CollectionPromises {
-  indexes: string[]
-  promises: Promise<Collection<Model>>[]
-}
 
 export class Query<M extends Model = Model> {
   /**
@@ -111,10 +106,15 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Create a new connection instance.
+   * Commit a store action and get the data
    */
-  protected newConnection(): Connection {
-    return new Connection(this.database, this.model)
+  protected commit(name: string, payload?: any): Elements {
+    const newStore = useDataStore(this.model.$entity(), this.model.$piniaOptions())
+    const store = newStore()
+    if (name && typeof store[name] === 'function')
+      store[name](payload)
+
+    return store.$state.data
   }
 
   /**
@@ -220,7 +220,7 @@ export class Query<M extends Model = Model> {
    * Get raw elements from the store.
    */
   protected data(): Elements {
-    return this.newConnection().get()
+    return this.commit('get')
   }
 
   /**
@@ -228,7 +228,7 @@ export class Query<M extends Model = Model> {
    * method will not process any query chain. It'll always retrieve all models.
    */
   all(): Collection<M> {
-    const records = this.newConnection().get()
+    const records = this.commit('get')
 
     const collection = [] as Collection<M>
 
@@ -414,7 +414,7 @@ export class Query<M extends Model = Model> {
   reviveOne(schema: Element): Item<M> {
     const id = this.model.$getIndexId(schema)
 
-    const item = this.newConnection().find(id)
+    const item = this.commit('get')[id] ?? null
 
     if (!item)
       return null
@@ -480,7 +480,7 @@ export class Query<M extends Model = Model> {
   new(): M {
     const model = this.hydrate({})
 
-    this.newConnection().insert(this.compile(model))
+    this.commit('insert', this.compile(model))
 
     return model
   }
@@ -528,7 +528,7 @@ export class Query<M extends Model = Model> {
       newData[id] = model.$getAttributes()
     }
     if (Object.keys(newData).length > 0) {
-      this.newConnection().save(newData)
+      this.commit('save', newData)
       afterSavingHooks.forEach(hook => hook())
     }
   }
@@ -541,7 +541,7 @@ export class Query<M extends Model = Model> {
   insert(records: Element | Element[]): M | Collection<M> {
     const models = this.hydrate(records)
 
-    this.newConnection().insert(this.compile(models))
+    this.commit('insert', this.compile(models))
 
     return models
   }
@@ -554,7 +554,7 @@ export class Query<M extends Model = Model> {
   fresh(records: Element | Element[]): M | Collection<M> {
     const models = this.hydrate(records)
 
-    this.newConnection().fresh(this.compile(models))
+    this.commit('fresh', this.compile(models))
 
     return models
   }
@@ -572,7 +572,7 @@ export class Query<M extends Model = Model> {
       return this.hydrate({ ...model.$getAttributes(), ...record })
     })
 
-    this.newConnection().update(this.compile(newModels))
+    this.commit('update', this.compile(newModels))
 
     return newModels
   }
@@ -599,7 +599,7 @@ export class Query<M extends Model = Model> {
 
     const [afterHooks, removeIds] = this.dispatchDeleteHooks(model)
     if (!removeIds.includes(model.$getIndexId())) {
-      this.newConnection().destroy([model.$getIndexId()])
+      this.commit('destroy', [model.$getIndexId()])
       afterHooks.forEach(hook => hook())
     }
 
@@ -618,7 +618,7 @@ export class Query<M extends Model = Model> {
     if (isEmpty(checkedIds))
       return []
 
-    this.newConnection().destroy(checkedIds)
+    this.commit('destroy', checkedIds)
     afterHooks.forEach(hook => hook())
 
     return models
@@ -639,7 +639,7 @@ export class Query<M extends Model = Model> {
     if (isEmpty(ids))
       return []
 
-    this.newConnection().delete(ids)
+    this.commit('delete', ids)
     afterHooks.forEach(hook => hook())
 
     return models
@@ -651,7 +651,7 @@ export class Query<M extends Model = Model> {
   flush(): Collection<M> {
     const models = this.get()
 
-    this.newConnection().flush()
+    this.commit('flush')
 
     return models
   }

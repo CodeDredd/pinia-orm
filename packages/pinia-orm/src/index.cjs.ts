@@ -40,7 +40,6 @@ import { MorphMany as MorphManyAttr } from './model/attributes/relations/MorphMa
 import { Repository } from './repository/Repository'
 import { Interpreter } from './interpreter/Interpreter'
 import { Query } from './query/Query'
-import { Connection } from './connection/Connection'
 
 export default {
   useRepo,
@@ -85,5 +84,4 @@ export default {
   Repository,
   Interpreter,
   Query,
-  Connection,
 }

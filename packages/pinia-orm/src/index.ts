@@ -27,7 +27,6 @@ import { MorphMany as MorphManyAttr } from './model/attributes/relations/MorphMa
 import { Repository } from './repository/Repository'
 import { Interpreter } from './interpreter/Interpreter'
 import { Query } from './query/Query'
-import { Connection } from './connection/Connection'
 
 export * from './data/Data'
 export * from './composables/useRepo'
@@ -77,7 +76,6 @@ export * from './repository/Repository'
 export * from './interpreter/Interpreter'
 export * from './query/Query'
 export * from './query/Options'
-export * from './connection/Connection'
 export * from './helpers/Helpers'
 export * from './plugin/Plugin'
 
@@ -111,5 +109,4 @@ export default {
   Repository,
   Interpreter,
   Query,
-  Connection,
 }

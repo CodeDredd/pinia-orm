@@ -3,12 +3,6 @@ import { Relation } from '../model/attributes/relations/Relation'
 
 export class Database {
   /**
-   * The name of Vuex Module namespace. Vuex ORM will create Vuex Modules from
-   * the registered models, and modules, and define them under this namespace.
-   */
-  connection!: string
-
-  /**
    * The list of registered models.
    */
   models: Record<string, Model> = {}

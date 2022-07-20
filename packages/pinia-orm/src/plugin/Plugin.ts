@@ -17,7 +17,6 @@ import { MorphOne } from '../model/attributes/relations/MorphOne'
 import { Repository } from '../repository/Repository'
 import { Interpreter } from '../interpreter/Interpreter'
 import { Query } from '../query/Query'
-import { Connection } from '../connection/Connection'
 
 export interface PiniaORMPlugin {
   install(
@@ -51,7 +50,6 @@ export interface PiniaORMPluginComponents {
   Repository: typeof Repository
   Interpreter: typeof Interpreter
   Query: typeof Query
-  Connection: typeof Connection
 }
 
 /**
@@ -83,7 +81,6 @@ export const components: PiniaORMPluginComponents = {
   Repository,
   Interpreter,
   Query,
-  Connection,
 }
 
 /**
