@@ -1,8 +1,15 @@
 # [1.0.0-alpha.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.14.0...pinia-orm@1.0.0-alpha.1) (2022-07-20)
+### Features
+
+- **pinia-orm:** Add casts for attributes & strict types ([#101](https://github.com/CodeDredd/pinia-orm/pull/101)) ([200f7d0](https://github.com/CodeDredd/pinia-orm/commit/200f7d0d1edba0915612a2c0b25e918c58f0ed20))
 
 ### Bug Fixes
 
 - **pinia-orm:** Change compile target to fix loader errors with Nullish Coalescing operator ([0c810f8](https://github.com/CodeDredd/pinia-orm/commit/0c810f8be5daea3193ca6f0fa19e056ae33f5d10))
+
+### BREAKING CHANGES
+
+- **pinia-orm:** No more auto casting. if still want to have the same behaviour you have to use `casts`
 
 # [0.14.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.13.0...pinia-orm@0.14.0) (2022-07-18)
 
