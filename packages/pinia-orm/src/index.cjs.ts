@@ -8,6 +8,7 @@ import { Database } from './database/Database'
 import { Schema } from './schema/Schema'
 import { Model } from './model/Model'
 import { Mutate } from './model/decorators/Mutate'
+import { Cast } from './model/decorators/Cast'
 import { Attr } from './model/decorators/attributes/types/Attr'
 import { Str } from './model/decorators/attributes/types/Str'
 import { Num } from './model/decorators/attributes/types/Num'
@@ -21,6 +22,7 @@ import { HasManyBy } from './model/decorators/attributes/relations/HasManyBy'
 import { MorphOne } from './model/decorators/attributes/relations/MorphOne'
 import { MorphMany } from './model/decorators/attributes/relations/MorphMany'
 import { Attribute } from './model/attributes/Attribute'
+import { CastAttribute } from './model/casts/CastAttribute'
 import { Type } from './model/attributes/types/Type'
 import { Attr as AttrAttr } from './model/attributes/types/Attr'
 import { String as StringAttr } from './model/attributes/types/String'
@@ -51,6 +53,7 @@ export default {
   Schema,
   Model,
   Mutate,
+  Cast,
   Attr,
   Str,
   Num,
@@ -64,6 +67,7 @@ export default {
   MorphOne,
   MorphMany,
   Attribute,
+  CastAttribute,
   Type,
   AttrAttr,
   StringAttr,

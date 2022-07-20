@@ -12,11 +12,11 @@ describe('unit/model/Model_Attrs_Boolean', () => {
     }
 
     expect(new User({}).bool).toBe(true)
-    expect(new User({ bool: '' }).bool).toBe(false)
-    expect(new User({ bool: 'string' }).bool).toBe(true)
-    expect(new User({ bool: '0' }).bool).toBe(false)
-    expect(new User({ bool: 0 }).bool).toBe(false)
-    expect(new User({ bool: 1 }).bool).toBe(true)
+    expect(new User({ bool: '' }).bool).toBe('')
+    expect(new User({ bool: 'string' }).bool).toBe('string')
+    expect(new User({ bool: '0' }).bool).toBe('0')
+    expect(new User({ bool: 0 }).bool).toBe(0)
+    expect(new User({ bool: 1 }).bool).toBe(1)
     expect(new User({ bool: true }).bool).toBe(true)
     expect(new User({ bool: null }).bool).toBe(false)
   })
@@ -30,11 +30,11 @@ describe('unit/model/Model_Attrs_Boolean', () => {
     }
 
     expect(new User({}).bool).toBe(null)
-    expect(new User({ bool: '' }).bool).toBe(false)
-    expect(new User({ bool: 'string' }).bool).toBe(true)
-    expect(new User({ bool: '0' }).bool).toBe(false)
-    expect(new User({ bool: 0 }).bool).toBe(false)
-    expect(new User({ bool: 1 }).bool).toBe(true)
+    expect(new User({ bool: '' }).bool).toBe('')
+    expect(new User({ bool: 'string' }).bool).toBe('string')
+    expect(new User({ bool: '0' }).bool).toBe('0')
+    expect(new User({ bool: 0 }).bool).toBe(0)
+    expect(new User({ bool: 1 }).bool).toBe(1)
     expect(new User({ bool: true }).bool).toBe(true)
     expect(new User({ bool: null }).bool).toBe(null)
   })

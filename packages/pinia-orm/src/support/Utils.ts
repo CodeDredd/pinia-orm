@@ -1,3 +1,10 @@
+import { StringCast } from '../model/casts/StringCast'
+import type { ModelFields } from '../model/Model'
+import { BooleanCast } from '../model/casts/BooleanCast'
+import { NumberCast } from '../model/casts/NumberCast'
+import { ArrayCast } from '../model/casts/ArrayCast'
+import { CastAttribute } from '../model/casts/CastAttribute'
+
 interface SortableArray<T> {
   criteria: any[]
   index: number
@@ -175,6 +182,19 @@ export function groupBy<T>(
 
     return records
   }, {})
+}
+
+export function convertCast(attributes: ModelFields, caster: string | typeof CastAttribute) {
+  if (typeof caster !== 'string' && caster)
+    return caster.newRawInstance(attributes)
+
+  switch (caster) {
+    case 'string': return new StringCast(attributes)
+    case 'boolean': return new BooleanCast(attributes)
+    case 'number': return new NumberCast(attributes)
+    case 'array': return new ArrayCast(attributes)
+    default: return new CastAttribute(attributes)
+  }
 }
 
 /**

@@ -8,6 +8,7 @@ import { Database } from './database/Database'
 import { Schema } from './schema/Schema'
 import { Model } from './model/Model'
 import { Attribute } from './model/attributes/Attribute'
+import { CastAttribute } from './model/casts/CastAttribute'
 import { Type } from './model/attributes/types/Type'
 import { Attr as AttrAttr } from './model/attributes/types/Attr'
 import { String as StringAttr } from './model/attributes/types/String'
@@ -50,9 +51,11 @@ export * from './model/decorators/attributes/relations/MorphOne'
 export * from './model/decorators/attributes/relations/MorphTo'
 export * from './model/decorators/attributes/relations/MorphMany'
 export * from './model/decorators/Contracts'
+export * from './model/decorators/Cast'
 export * from './model/decorators/Mutate'
 export * from './model/decorators/NonEnumerable'
 export * from './model/attributes/Attribute'
+export * from './model/casts/CastAttribute'
 export * from './model/attributes/types/Type'
 export { Attr as AttrAttr } from './model/attributes/types/Attr'
 export { String as StringAttr } from './model/attributes/types/String'
@@ -89,6 +92,7 @@ export default {
   Schema,
   Model,
   Attribute,
+  CastAttribute,
   Type,
   AttrAttr,
   StringAttr,

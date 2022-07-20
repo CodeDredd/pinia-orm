@@ -28,4 +28,25 @@ export abstract class Type extends Attribute {
 
     return this
   }
+
+  protected makeReturn<T>(type: string, value: any, nullableValue = value): T {
+    if (value === undefined)
+      return this.value
+
+    if (value === null)
+      return this.isNullable ? value : nullableValue
+
+    if (typeof value !== type)
+      this.throwWarning(type, value)
+
+    return value
+  }
+
+  /**
+   * Throw warning for wrong type
+   */
+  protected throwWarning(type: string, value: any) {
+    // eslint-disable-next-line no-console
+    console.warn(['[Pinia ORM]'].concat([`${this.model.$entity()}:`, value, 'is not a', type]).join(' '))
+  }
 }

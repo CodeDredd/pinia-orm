@@ -3,6 +3,7 @@ export interface Constructor<T> {
 }
 
 export type Mutator<T> = (value: T) => T
+export type Casting<T> = (value: T) => T
 
 export interface MutatorFunctions<T> {
   get?: Mutator<T>
