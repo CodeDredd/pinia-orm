@@ -35,6 +35,8 @@ describe('unit/model/Model_Casts_Boolean', () => {
     expect(new User({ isPublished: true }).isPublished).toBe(true)
     expect(new User({ isPublished: 0 }).isPublished).toBe(false)
     expect(new User({ isPublished: null }).isPublished).toBe(false)
+    expect(new User({ isPublished: '' }).isPublished).toBe(false)
+    expect(new User({ isPublished: {} }).isPublished).toBe(false)
     expect(new User().isPublished).toBe(true)
   })
 

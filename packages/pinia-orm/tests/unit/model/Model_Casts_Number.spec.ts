@@ -38,7 +38,7 @@ describe('unit/model/Model_Casts_Number', () => {
     expect(new User().count).toBe(0)
   })
 
-  it('accepts `null` when the `nullable` option is set', () => {
+  it('accepts null when the nullable option is set', () => {
     class User extends Model {
       static entity = 'users'
 
@@ -50,7 +50,7 @@ describe('unit/model/Model_Casts_Number', () => {
     expect(new User().count).toBe(null)
     expect(new User({ count: 'value' }).count).toBe(NaN)
     expect(new User({ count: 1 }).count).toBe(1)
-    expect(new User({ count: 2 }).count).toBe(2)
+    expect(new User({ count: true }).count).toBe(1)
     expect(new User({ count: '333' }).count).toBe(333)
   })
 
