@@ -158,18 +158,73 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Set where constraint based on relationship existence.
+   * Add a "where has" clause to the query.
+   */
+  whereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): this {
+    this.where(this.getFieldWhereForRelations(relation, callback, operator, count))
+
+    return this
+  }
+
+  /**
+   * Add an "or where has" clause to the query.
+   */
+  orWhereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): this {
+    this.orWhere(this.getFieldWhereForRelations(relation, callback, operator, count))
+
+    return this
+  }
+
+  /**
+   * Add a "has" clause to the query.
    */
   has(relation: string, operator?: string | number, count?: number): this {
-    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation).get().filter(
-      model => compareWithOperator(
-        model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
-        typeof operator === 'number' ? operator : count ?? 1,
-        typeof operator === 'number' || count === undefined ? '>=' : operator,
-      ),
-    ).map(model => model.$getIndexId())
-    const field: WherePrimaryClosure = model => modelIdsByRelation.includes(model.$getIndexId())
-    this.where(field)
+    this.where(this.getFieldWhereForRelations(relation, () => {}, operator, count))
+
+    return this
+  }
+
+  /**
+   * Add an "or has" clause to the query.
+   */
+  orHas(relation: string, operator?: string | number, count?: number): this {
+    this.orWhere(this.getFieldWhereForRelations(relation, () => {}, operator, count))
+
+    return this
+  }
+
+  /**
+   * Add a "doesn't have" clause to the query.
+   */
+  doesntHave(relation: string): this {
+    this.where(this.getFieldWhereForRelations(relation, () => {}, '=', 0))
+
+    return this
+  }
+
+  /**
+   * Add a "doesn't have" clause to the query.
+   */
+  orDoesntHave(relation: string): this {
+    this.orWhere(this.getFieldWhereForRelations(relation, () => {}, '=', 0))
+
+    return this
+  }
+
+  /**
+   * Add a "where doesn't have" clause to the query.
+   */
+  whereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): this {
+    this.where(this.getFieldWhereForRelations(relation, callback, '=', 0))
+
+    return this
+  }
+
+  /**
+   * Add an "or where doesn't have" clause to the query.
+   */
+  orWhereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): this {
+    this.orWhere(this.getFieldWhereForRelations(relation, callback, '=', 0))
 
     return this
   }
@@ -231,6 +286,20 @@ export class Query<M extends Model = Model> {
     })
 
     return this
+  }
+
+  /**
+   * Get where closure for relations
+   */
+  protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure {
+    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get().filter(
+      model => compareWithOperator(
+        model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
+        typeof operator === 'number' ? operator : count ?? 1,
+        typeof operator === 'number' || count === undefined ? '>=' : operator,
+      ),
+    ).map(model => model.$getIndexId())
+    return model => modelIdsByRelation.includes(model.$getIndexId())
   }
 
   /**
