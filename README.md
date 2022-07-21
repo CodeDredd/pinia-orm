@@ -21,6 +21,16 @@
 - [✨ &nbsp;Release Notes](https://pinia-orm.codedredd.de/community/changelog)
 - [📖 &nbsp;Documentation](https://pinia-orm.codedredd.de)
 
+## Vite Integration
+
+Make sure to disable `useDefineForClassFields` in `tsconfig.json` when using `vite >= 2.5.0`. See [this issue](https://github.com/vitejs/vite/issues/4636) for more details.
+
+```json
+...
+"useDefineForClassFields": false,
+...
+```
+
 ## Help me keep working on this project 💚
 
 - [Become a Sponsor on GitHub](https://github.com/sponsors/codedredd)
