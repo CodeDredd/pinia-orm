@@ -1,10 +1,10 @@
 import {
-  assert,
+  assert, compareWithOperator,
   groupBy,
   isArray,
   isEmpty,
   isFunction,
-  orderBy,
+  orderBy, throwError,
 } from '../support/Utils'
 import type { Collection, Element, Elements, Item } from '../data/Data'
 import type { Database } from '../database/Database'
@@ -153,6 +153,23 @@ export class Query<M extends Model = Model> {
     value?: WhereSecondaryClosure | any,
   ): this {
     this.wheres.push({ field, value, boolean: 'or' })
+
+    return this
+  }
+
+  /**
+   * Set where constraint based on relationship existence.
+   */
+  has(relation: string, operator?: string | number, count?: number): this {
+    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation).get().filter(
+      model => compareWithOperator(
+        model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
+        typeof operator === 'number' ? operator : count ?? 1,
+        typeof operator === 'number' || count === undefined ? '>=' : operator,
+      ),
+    ).map(model => model.$getIndexId())
+    const field: WherePrimaryClosure = model => modelIdsByRelation.includes(model.$getIndexId())
+    this.where(field)
 
     return this
   }

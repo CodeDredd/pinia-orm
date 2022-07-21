@@ -12,6 +12,21 @@ interface SortableArray<T> {
 }
 
 /**
+ * Compare two values with custom string operator
+ */
+export function compareWithOperator(leftValue: any, rightValue: any, operator?: string): boolean {
+  switch (operator) {
+    case '>': return leftValue > rightValue
+    case '>=': return leftValue >= rightValue
+    case '<': return leftValue < rightValue
+    case '<=': return leftValue <= rightValue
+    case '=': return leftValue === rightValue
+    case '!=': return leftValue !== rightValue
+    default: return leftValue === rightValue
+  }
+}
+
+/**
  * Check if the given value is the type of null.
  */
 export function isNull(value: any): value is null {
@@ -200,10 +215,19 @@ export function convertCast(attributes: ModelFields, caster: string | typeof Cas
 /**
  * Asserts that the condition is truthy, throwing immediately if not.
  */
+export function throwError(
+  message: string[],
+): void {
+  throw new Error(['[Pinia ORM]'].concat(message).join(' '))
+}
+
+/**
+ * Asserts that the condition is truthy, throwing immediately if not.
+ */
 export function assert(
   condition: boolean,
   message: string[],
 ): asserts condition {
   if (!condition)
-    throw new Error(['[Pinia ORM]'].concat(message).join(' '))
+    throwError(message)
 }

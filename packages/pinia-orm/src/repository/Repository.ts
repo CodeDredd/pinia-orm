@@ -133,6 +133,13 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Add a "has" clause to the query.
+   */
+  has(relation: string, operator?: string | number, count?: number): Query<M> {
+    return this.query().has(relation, operator, count)
+  }
+
+  /**
    * Add an "order by" clause to the query.
    */
   orderBy(field: OrderBy, direction?: OrderDirection): Query<M> {
