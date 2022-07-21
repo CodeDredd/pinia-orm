@@ -51,6 +51,7 @@ describe('unit/model/Model_Casts_Number', () => {
     expect(new User({ count: 'value' }).count).toBe(NaN)
     expect(new User({ count: 1 }).count).toBe(1)
     expect(new User({ count: true }).count).toBe(1)
+    expect(new User({ count: {} }).count).toBe(0)
     expect(new User({ count: '333' }).count).toBe(333)
   })
 
