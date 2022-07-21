@@ -1,4 +1,11 @@
+# [1.0.0-alpha.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-alpha.1...pinia-orm@1.0.0-alpha.2) (2022-07-21)
+
+### Features
+
+- **pinia-orm:** add query method "has" ([87bff1e](https://github.com/CodeDredd/pinia-orm/commit/87bff1e3bae6fb7fcc16047fdc58e44312a1fab2))
+
 # [1.0.0-alpha.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@0.14.0...pinia-orm@1.0.0-alpha.1) (2022-07-20)
+
 ### Features
 
 - **pinia-orm:** Add casts for attributes & strict types ([#101](https://github.com/CodeDredd/pinia-orm/pull/101)) ([200f7d0](https://github.com/CodeDredd/pinia-orm/commit/200f7d0d1edba0915612a2c0b25e918c58f0ed20))
