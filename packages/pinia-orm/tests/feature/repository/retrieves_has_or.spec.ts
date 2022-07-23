@@ -1,9 +1,9 @@
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Attr, HasMany, Model, Num, Str, useRepo } from '../../../src'
 import { assertInstanceOf, assertModels, fillState } from '../../helpers'
 
-describe('feature/repository/retrieves_has', () => {
+describe('feature/repository/retrieves_has_or', () => {
   class Post extends Model {
     static entity = 'posts'
 
@@ -22,7 +22,7 @@ describe('feature/repository/retrieves_has', () => {
       posts!: Post[]
   }
 
-  it('can filter the query by the has clause', () => {
+  it('can filter by "or has" clause', () => {
     const userRepo = useRepo(User)
 
     fillState({
@@ -38,62 +38,7 @@ describe('feature/repository/retrieves_has', () => {
       },
     })
 
-    const users = userRepo.has('posts').get()
-
-    const expected = [
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' },
-    ]
-
-    expect(users).toHaveLength(2)
-    assertInstanceOf(users, User)
-    assertModels(users, expected)
-  })
-
-  it('can filter by has clause with number', () => {
-    const userRepo = useRepo(User)
-
-    fillState({
-      users: {
-        1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
-      posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' },
-        2: { id: 2, userId: 1, title: 'Title 02' },
-        3: { id: 3, userId: 2, title: 'Title 03' },
-      },
-    })
-
-    const users = userRepo.has('posts', 2).get()
-
-    const expected = [
-      { id: 1, name: 'John Doe' },
-    ]
-
-    expect(users).toHaveLength(1)
-    assertInstanceOf(users, User)
-    assertModels(users, expected)
-  })
-
-  it('can filter by "has" clause with operator and number', () => {
-    const userRepo = useRepo(User)
-
-    fillState({
-      users: {
-        1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
-      posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' },
-        2: { id: 2, userId: 1, title: 'Title 02' },
-        3: { id: 3, userId: 2, title: 'Title 03' },
-      },
-    })
-
-    const users = userRepo.has('posts', '<', 2).get()
+    const users = userRepo.orHas('posts', '=', 1).where('name', 'Johnny Doe').get()
 
     const expected = [
       { id: 2, name: 'Jane Doe' },
@@ -105,7 +50,7 @@ describe('feature/repository/retrieves_has', () => {
     assertModels(users, expected)
   })
 
-  it('can filter by "doesnt have" clause', () => {
+  it('can filter by "or doesnt have" clause', () => {
     const userRepo = useRepo(User)
 
     fillState({
@@ -121,18 +66,19 @@ describe('feature/repository/retrieves_has', () => {
       },
     })
 
-    const users = userRepo.doesntHave('posts').get()
+    const users = userRepo.orDoesntHave('posts').where('name', 'Jane Doe').get()
 
     const expected = [
+      { id: 2, name: 'Jane Doe' },
       { id: 3, name: 'Johnny Doe' },
     ]
 
-    expect(users).toHaveLength(1)
+    expect(users).toHaveLength(2)
     assertInstanceOf(users, User)
     assertModels(users, expected)
   })
 
-  it('can filter by "where has" clauses with closure', () => {
+  it('can filter by "or where has" clauses with closure', () => {
     const userRepo = useRepo(User)
 
     fillState({
@@ -148,20 +94,24 @@ describe('feature/repository/retrieves_has', () => {
       },
     })
 
-    const users = userRepo.whereHas('posts', (query) => {
-      query.where('title', 'Title 03')
-    }, '=', 1).get()
+    const users = userRepo
+      .orWhereHas('posts', (query) => {
+        query.where('title', 'Title 03')
+      }, '=', 1)
+      .where('name', 'Johnny Doe')
+      .get()
 
     const expected = [
       { id: 2, name: 'Jane Doe' },
+      { id: 3, name: 'Johnny Doe' },
     ]
 
-    expect(users).toHaveLength(1)
+    expect(users).toHaveLength(2)
     assertInstanceOf(users, User)
     assertModels(users, expected)
   })
 
-  it('can filter by "where has" clauses with closure', () => {
+  it('can filter by "or where doesnt have has" clause with closure', () => {
     const userRepo = useRepo(User)
 
     fillState({
@@ -177,9 +127,12 @@ describe('feature/repository/retrieves_has', () => {
       },
     })
 
-    const users = userRepo.whereDoesntHave('posts', (query) => {
-      query.where('title', 'Title 03')
-    }).get()
+    const users = userRepo
+      .orWhereDoesntHave('posts', (query) => {
+        query.where('title', 'Title 03')
+      })
+      .where('name', 'Johnny Doe')
+      .get()
 
     const expected = [
       { id: 2, name: 'Jane Doe' },
@@ -189,28 +142,5 @@ describe('feature/repository/retrieves_has', () => {
     expect(users).toHaveLength(2)
     assertInstanceOf(users, User)
     assertModels(users, expected)
-  })
-
-  it.skip('can throw an error if a wrong relation is queried', () => {
-    const userRepo = useRepo(User)
-
-    const hasMeethod = vi.spyOn(userRepo, 'has')
-
-    fillState({
-      users: {
-        1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
-      posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' },
-        2: { id: 2, userId: 1, title: 'Title 02' },
-        3: { id: 3, userId: 2, title: 'Title 03' },
-      },
-    })
-
-    userRepo.has('postss', '<', 2).get()
-
-    expect(hasMeethod).toThrowError('[Pinia ORM] Relationship [postss] on model [users] not found.')
   })
 })

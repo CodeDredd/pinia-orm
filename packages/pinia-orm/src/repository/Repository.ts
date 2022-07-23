@@ -133,10 +133,59 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Add a "where has" clause to the query.
+   */
+  whereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): Query<M> {
+    return this.query().whereHas(relation, callback, operator, count)
+  }
+
+  /**
+   * Add an "or where has" clause to the query.
+   */
+  orWhereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): Query<M> {
+    return this.query().orWhereHas(relation, callback, operator, count)
+  }
+
+  /**
    * Add a "has" clause to the query.
    */
   has(relation: string, operator?: string | number, count?: number): Query<M> {
     return this.query().has(relation, operator, count)
+  }
+
+  /**
+   * Add an "or has" clause to the query.
+   */
+  orHas(relation: string, operator?: string | number, count?: number): Query<M> {
+    return this.query().orHas(relation, operator, count)
+  }
+
+  /**
+   * Add a "doesn't have" clause to the query.
+   */
+  doesntHave(relation: string): Query<M> {
+    return this.query().doesntHave(relation)
+  }
+
+  /**
+   * Add a "doesn't have" clause to the query.
+   */
+  orDoesntHave(relation: string): Query<M> {
+    return this.query().orDoesntHave(relation)
+  }
+
+  /**
+   * Add a "where doesn't have" clause to the query.
+   */
+  whereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): Query<M> {
+    return this.query().whereDoesntHave(relation, callback)
+  }
+
+  /**
+   * Add an "or where doesn't have" clause to the query.
+   */
+  orWhereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): Query<M> {
+    return this.query().orWhereDoesntHave(relation, callback)
   }
 
   /**
