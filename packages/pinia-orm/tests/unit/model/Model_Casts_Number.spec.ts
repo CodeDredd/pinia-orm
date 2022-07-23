@@ -33,6 +33,7 @@ describe('unit/model/Model_Casts_Number', () => {
     }
 
     expect(new User({ count: true }).count).toBe(1)
+    expect(new User({ count: false }).count).toBe(0)
     expect(new User({ count: 1 }).count).toBe(1)
     expect(new User({ count: '1.43' }).count).toBe(1.43)
     expect(new User().count).toBe(0)

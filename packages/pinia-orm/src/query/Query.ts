@@ -292,13 +292,14 @@ export class Query<M extends Model = Model> {
    * Get where closure for relations
    */
   protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure {
-    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get().filter(
-      model => compareWithOperator(
+    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get()
+      .filter(model => compareWithOperator(
         model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
         typeof operator === 'number' ? operator : count ?? 1,
         typeof operator === 'number' || count === undefined ? '>=' : operator,
-      ),
-    ).map(model => model.$getIndexId())
+      ))
+      .map(model => model.$getIndexId())
+
     return model => modelIdsByRelation.includes(model.$getIndexId())
   }
 
@@ -701,9 +702,6 @@ export class Query<M extends Model = Model> {
     const [afterHooks, removeIds] = this.dispatchDeleteHooks(models)
     const checkedIds = this.getIndexIdsFromCollection(models).filter(id => !removeIds.includes(id))
 
-    if (isEmpty(checkedIds))
-      return []
-
     this.commit('destroy', checkedIds)
     afterHooks.forEach(hook => hook())
 
@@ -721,9 +719,6 @@ export class Query<M extends Model = Model> {
 
     const [afterHooks, removeIds] = this.dispatchDeleteHooks(models)
     const ids = this.getIndexIdsFromCollection(models).filter(id => !removeIds.includes(id))
-
-    if (isEmpty(ids))
-      return []
 
     this.commit('delete', ids)
     afterHooks.forEach(hook => hook())
