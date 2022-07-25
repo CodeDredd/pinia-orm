@@ -53,7 +53,6 @@ export class Repository<M extends Model = Model> {
     // If there's a model passed in, just use that and return immediately.
     if (model) {
       this.model = model.newRawInstance()
-      // this.database.setStore(defineStore(this.model.$entity(), {}))
       return this
     }
 
@@ -63,11 +62,8 @@ export class Repository<M extends Model = Model> {
     // property and instantiate that.
     if (this.use) {
       this.model = this.use.newRawInstance() as M
-      // this.database.setStore(defineStore(this.model.$entity(), {}))
       return this
     }
-
-    // this.database.setStore(defineStore(this.model.$entity(), {}))
 
     // Else just return for now. If the user tries to call methods that require
     // a model, the error will be thrown at that time.
