@@ -48,7 +48,7 @@ export default defineNuxtConfig({
     prerender: {
       routes: [
         '/',
-        '/blog/announcing-v2'
+        // '/blog/announcing-v2'
       ]
     }
   },
