@@ -1,6 +1,6 @@
 ---
-title: 'number()'
-description: 'Define a number type'
+title: 'string()'
+description: 'Define a string type'
 ---
 
 ## Usage
@@ -13,7 +13,8 @@ class User extends Model {
 
   static fields () {
     return {
-      id: this.number(0)
+      id: this.number(0),
+      name: this.string('')
     }
   }
 }
@@ -22,17 +23,18 @@ class User extends Model {
 ## With Decorator
 
 ````ts[User.ts]
-import { Model, Num } from 'pinia-orm'
+import { Model, Num, Str } from 'pinia-orm'
 
 class User extends Model {
   static entity = 'users'
   
   @Num(0) id!: number
+  @Str('') name!: string
 }
 ````
 
 ## Typescript Declarations
 
 ````ts
-function number(value: number): Number
+function string(value: string | null): String
 ````
