@@ -1,6 +1,6 @@
 ---
 title: 'hasOne()'
-description: 'Makes a has one relation of the property'
+description: 'Makes a "has one" relation of the property'
 ---
 
 ## Usage

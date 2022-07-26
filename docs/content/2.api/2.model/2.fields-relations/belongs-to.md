@@ -1,6 +1,6 @@
 ---
 title: 'belongsTo()'
-description: 'Define a belongs to relation'
+description: 'Makes a "belong to" relation of the property'
 ---
 
 ## Usage

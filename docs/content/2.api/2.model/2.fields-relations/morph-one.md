@@ -1,6 +1,6 @@
 ---
 title: 'morphOne()'
-description: 'Makes a `morph one` relation of the property'
+description: 'Makes a "morph one" relation of the property'
 ---
 
 ## Usage

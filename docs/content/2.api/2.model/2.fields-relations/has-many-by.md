@@ -1,6 +1,6 @@
 ---
 title: 'hasManyBy()'
-description: 'Makes a `has many by` relation of the property'
+description: 'Makes a "has many by" relation of the property'
 ---
 
 ## Usage

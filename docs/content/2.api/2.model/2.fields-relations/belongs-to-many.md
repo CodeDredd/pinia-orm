@@ -1,6 +1,6 @@
 ---
 title: 'belongsToMany()'
-description: 'Define a belongs to many relation'
+description: 'Makes a "belongs to many" relation of the property'
 ---
 
 ## Usage

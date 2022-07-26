@@ -1,6 +1,6 @@
 ---
 title: 'morphMany()'
-description: 'Makes a `morph many` relation of the property'
+description: 'Makes a "morph many" relation of the property'
 ---
 
 ## Usage
