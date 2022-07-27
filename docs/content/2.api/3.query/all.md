@@ -3,7 +3,7 @@ title: 'all()'
 description: 'Get all models from the store.'
 ---
 
-::alert{type='error'}
+::alert{type='warning'}
 The difference with the `get` is that this
 method will not process any query chain. It'll always retrieve all models.
 ::
