@@ -16,7 +16,7 @@ import { HasManyBy } from './attributes/relations/HasManyBy'
 import { MorphOne } from './attributes/relations/MorphOne'
 import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
-import type { CastAttribute } from './casts/CastAttribute'
+import type { CastAttribute, Casts } from './casts/CastAttribute'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -411,7 +411,10 @@ export class Model {
     return {}
   }
 
-  static casts() {
+  /**
+   * Casts to cast matching fields when instantiating the model.
+   */
+  static casts(): Casts {
     return {}
   }
 

@@ -18,7 +18,7 @@
 
 > Intuitive, type safe and flexible ORM for Pinia based on [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
 
-- [✨ &nbsp;Release Notes](https://pinia-orm.codedredd.de/community/changelog)
+- [✨ &nbsp;Release Notes](https://pinia-orm.codedredd.de/changelog)
 - [📖 &nbsp;Documentation](https://pinia-orm.codedredd.de)
 
 ## Vite Integration
