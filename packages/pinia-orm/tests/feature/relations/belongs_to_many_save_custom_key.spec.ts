@@ -63,6 +63,83 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     })
   })
 
+  it('inserts nested "belongs to many" relation correctly', () => {
+    class Contact extends Model {
+      static entity = 'contacts'
+
+      static fields() {
+        return {
+          id: this.uid(),
+          userId: this.attr(null),
+          user: this.belongsTo(User, 'userId'),
+        }
+      }
+    }
+
+    class User extends Model {
+      static entity = 'users'
+
+      static fields() {
+        return {
+          id: this.uid(),
+          groups: this.belongsToMany(Group, GroupUser, 'userId', 'groupId'),
+          prename: this.string('naame'),
+        }
+      }
+    }
+
+    class Group extends Model {
+      static entity = 'groups'
+
+      static fields() {
+        return {
+          id: this.uid(),
+          name: this.string('group'),
+        }
+      }
+    }
+
+    class GroupUser extends Model {
+      static entity = 'group_user'
+      static primaryKey = ['groupId', 'userId']
+
+      static fields() {
+        return {
+          groupId: this.attr(null), // Docs say this.attr(null) which throws an error
+          userId: this.attr(null),
+        }
+      }
+    }
+
+    useRepo(Contact).save({
+      id: 1,
+      user: {
+        id: 1,
+        prename: 'blub',
+        groups: [{
+          id: 1,
+          name: 'hoho',
+        }],
+      },
+    })
+
+    assertState({
+      contacts: {
+        1: { id: 1, userId: 1 },
+      },
+      users: {
+        1: { id: 1, prename: 'blub' },
+      },
+      groups: {
+        1: { id: 1, name: 'hoho' },
+      },
+      group_user: {
+        '[1,1]': { groupId: 1, userId: 1 },
+      },
+    })
+
+  })
+
   it('inserts "belongs to many" relation with custom local key', () => {
     class User extends Model {
       static entity = 'users'
