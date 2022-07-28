@@ -109,7 +109,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit(name: string, payload?: any): Elements {
-    const newStore = useDataStore(this.model.$entity(), this.model.$piniaOptions())
+    const newStore = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions())
     const store = newStore()
     if (name && typeof store[name] === 'function')
       store[name](payload)
@@ -328,6 +328,9 @@ export class Query<M extends Model = Model> {
    * Retrieve models by processing whole query chain.
    */
   get(): Collection<M> {
+    if (this.model.$baseEntity() && this.model.$entity() !== this.model.$baseEntity())
+      this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make())
+
     const models = this.select()
 
     if (!isEmpty(models))
@@ -767,7 +770,7 @@ export class Query<M extends Model = Model> {
   protected hydrate(records: Element | Element[], options?: ModelOptions): M | Collection<M> {
     return isArray(records)
       ? records.map(record => this.hydrate(record), options)
-      : this.model.$newInstance(records, { relations: false, ...(options || {}) })
+      : this.checkAndGetSTI(records, { relations: false, ...(options || {}) })
   }
 
   /**
@@ -781,5 +784,19 @@ export class Query<M extends Model = Model> {
       records[model.$getIndexId()] = model.$getAttributes()
       return records
     }, {})
+  }
+
+  /**
+   * Instantiate new models by type if set.
+   */
+  protected checkAndGetSTI(record: Element, options?: ModelOptions): M {
+    const typeValue = record[this.model.$typeKey()]
+    if (typeValue) {
+      const modelByType = this.model.$types()[typeValue]
+      if (modelByType !== undefined)
+        return modelByType.newRawInstance().$newInstance(record, { relations: false, ...(options || {}) }) as M
+    }
+
+    return this.model.$newInstance(record, { relations: false, ...(options || {}) })
   }
 }

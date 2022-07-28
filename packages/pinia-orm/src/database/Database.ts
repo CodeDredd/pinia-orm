@@ -8,19 +8,6 @@ export class Database {
   models: Record<string, Model> = {}
 
   /**
-   * Whether the database has already been installed to Pinia or not.
-   * The model registration procedure depends on this flag.
-   */
-  started = false
-
-  /**
-   * Initialize the database before a user can start using it.
-   */
-  start(): void {
-    this.started = true
-  }
-
-  /**
    * Register the given model.
    */
   register<M extends Model>(model: M): void {
