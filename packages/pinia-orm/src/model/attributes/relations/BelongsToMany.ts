@@ -68,14 +68,17 @@ export class BelongsToMany extends Relation {
    * Define the normalizr schema for the relationship.
    */
   define(schema: Schema): NormalizrSchema {
-    return schema.many(this.related)
+    return schema.many(this.related, this.parent)
   }
 
   /**
    * Attach the parent type and id to the given relation.
    */
   attach(record: Element, child: Element): void {
-    child.pivot = { user_id: record[this.parentKey], role_id: child[this.relatedKey], ...(child.pivot ? child.pivot : {}) }
+    const pivot = child.pivot ?? {}
+    pivot[this.foreignPivotKey] = record[this.parentKey]
+    pivot[this.relatedPivotKey] = child[this.relatedKey]
+    child.pivot = pivot
   }
 
   /**
