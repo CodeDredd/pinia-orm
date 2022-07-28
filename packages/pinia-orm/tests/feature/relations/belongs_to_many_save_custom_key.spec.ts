@@ -137,7 +137,6 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
         '[1,1]': { groupId: 1, userId: 1 },
       },
     })
-
   })
 
   it('inserts "belongs to many" relation with custom local key', () => {
