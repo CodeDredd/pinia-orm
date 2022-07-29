@@ -16,12 +16,16 @@ export function useRepo(
 ) {
   const database = new Database()
 
-  const repository = ModelOrRepository._isRepository
+  const repository: Repository = ModelOrRepository._isRepository
     ? new ModelOrRepository(database).initialize()
     : new Repository(database).initialize(ModelOrRepository)
 
   try {
-    database.register(repository.getModel())
+    const typeModels = Object.values(repository.getModel().$types())
+    if (typeModels.length > 0)
+      typeModels.forEach(typeModel => database.register(typeModel.newRawInstance()))
+    else
+      database.register(repository.getModel())
   }
   catch (e) {}
 

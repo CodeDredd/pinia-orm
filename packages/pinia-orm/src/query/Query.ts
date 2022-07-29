@@ -6,11 +6,11 @@ import {
   isFunction,
   orderBy, throwError,
 } from '../support/Utils'
-import type { Collection, Element, Elements, Item } from '../data/Data'
+import type { Collection, Element, Elements, Item, NormalizedData } from '../data/Data'
 import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
-import type { Model, ModelOptions } from '../model/Model'
+import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
 import type {
@@ -269,7 +269,11 @@ export class Query<M extends Model = Model> {
    * Set to eager load all top-level relationships. Constraint is set for all relationships.
    */
   withAll(callback: EagerLoadConstraint = () => {}): Query<M> {
-    const fields = this.model.$fields()
+    let fields: ModelFields = this.model.$fields()
+    const typeModels = Object.values(this.model.$types())
+    typeModels.forEach((typeModel) => {
+      fields = { ...fields, ...typeModel.fields() }
+    })
 
     for (const name in fields)
       fields[name] instanceof Relation && this.with(name, callback)
@@ -581,7 +585,31 @@ export class Query<M extends Model = Model> {
   save(records: Element[]): M[]
   save(record: Element): M
   save(records: Element | Element[]): M | M[] {
-    const [data, entities] = this.newInterpreter().process(records)
+    let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
+    if (Object.values(this.model.$types()).length > 0) {
+      const recordsByTypes = {}
+      const defaultType = this.model.$fields()[this.model.$typeKey()].make()
+      if (isArray(records)) {
+        records.forEach((record) => {
+          const recordType = this.model.$types()[record[this.model.$typeKey()]] === undefined ? defaultType : record[this.model.$typeKey()]
+          if (!recordsByTypes[recordType])
+            recordsByTypes[recordType] = []
+          recordsByTypes[recordType].push(record)
+        })
+      }
+      else {
+        recordsByTypes[records[this.model.$typeKey()]] = [records]
+      }
+      for (const entry in recordsByTypes) {
+        const typeModel = this.model.$types()[entry]
+        if (typeModel.entity === this.model.$entity())
+          processedData = this.newInterpreter().process(recordsByTypes[entry])
+        else
+          this.newQueryWithConstraints(typeModel.entity).save(recordsByTypes[entry])
+      }
+    }
+
+    const [data, entities] = processedData
 
     for (const entity in entities) {
       const query = this.newQuery(entity)
@@ -790,13 +818,8 @@ export class Query<M extends Model = Model> {
    * Instantiate new models by type if set.
    */
   protected checkAndGetSTI(record: Element, options?: ModelOptions): M {
-    const typeValue = record[this.model.$typeKey()]
-    if (typeValue) {
-      const modelByType = this.model.$types()[typeValue]
-      if (modelByType !== undefined)
-        return modelByType.newRawInstance().$newInstance(record, { relations: false, ...(options || {}) }) as M
-    }
-
-    return this.model.$newInstance(record, { relations: false, ...(options || {}) })
+    const modelByType = this.model.$types()[record[this.model.$typeKey()]]
+    return (modelByType ? modelByType.newRawInstance() as M : this.model)
+      .$newInstance(record, { relations: false, ...(options || {}) })
   }
 }

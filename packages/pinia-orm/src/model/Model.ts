@@ -681,7 +681,12 @@ export class Model {
    * Get the relation instance for the given relation name.
    */
   $getRelation(name: string): Relation {
-    const relation = this.$fields()[name]
+    let relation = this.$fields()[name]
+    const typeModels = Object.values(this.$types())
+    typeModels.forEach((typeModel) => {
+      if (relation === undefined)
+        relation = typeModel.fields()[name]
+    })
 
     assert(relation instanceof Relation, [
       `Relationship [${name}] on model [${this.$entity()}] not found.`,
@@ -694,7 +699,8 @@ export class Model {
    * Set the given relationship on the model.
    */
   $setRelation(relation: string, model: Model | Model[] | null): this {
-    this[relation] = model
+    if (this.$fields()[relation])
+      this[relation] = model
 
     return this
   }
