@@ -332,7 +332,7 @@ export class Query<M extends Model = Model> {
    * Retrieve models by processing whole query chain.
    */
   get(): Collection<M> {
-    if (this.model.$baseEntity() && this.model.$entity() !== this.model.$baseEntity())
+    if (this.model.$entity() !== this.model.$baseEntity())
       this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make())
 
     const models = this.select()
@@ -588,10 +588,9 @@ export class Query<M extends Model = Model> {
     let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
     if (Object.values(this.model.$types()).length > 0) {
       const recordsByTypes = {}
-      const defaultType = this.model.$fields()[this.model.$typeKey()].make()
       if (isArray(records)) {
         records.forEach((record) => {
-          const recordType = this.model.$types()[record[this.model.$typeKey()]] === undefined ? defaultType : record[this.model.$typeKey()]
+          const recordType = record[this.model.$typeKey()]
           if (!recordsByTypes[recordType])
             recordsByTypes[recordType] = []
           recordsByTypes[recordType].push(record)
@@ -644,6 +643,8 @@ export class Query<M extends Model = Model> {
       afterSavingHooks.push(() => model.$self().saved(model))
       afterSavingHooks.push(() => existing ? model.$self().updated(model) : model.$self().created(model))
       newData[id] = model.$getAttributes()
+      if (Object.values(model.$types()).length > 0 && !newData[id][model.$typeKey()])
+        newData[id][model.$typeKey()] = record[model.$typeKey()]
     }
     if (Object.keys(newData).length > 0) {
       this.commit('save', newData)
@@ -819,6 +820,7 @@ export class Query<M extends Model = Model> {
    */
   protected checkAndGetSTI(record: Element, options?: ModelOptions): M {
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
+
     return (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}) })
   }

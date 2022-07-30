@@ -252,4 +252,56 @@ describe('unit/model/Model_STI', () => {
     expect(useRepo(AnonymousPost).withAll().find(2)).ownProperty('author')
     expect(useRepo(User).all().length).toBe(3)
   })
+
+  it('saves without key as property', () => {
+    class Person extends Model {
+      static entity = 'person'
+
+      static types() {
+        return {
+          PERSON: Person,
+          ADULT: Adult,
+        }
+      }
+
+      static fields() {
+        return {
+          id: this.attr(null),
+          name: this.attr(''),
+        }
+      }
+    }
+
+    class Adult extends Person {
+      static entity = 'adult'
+
+      static baseEntity = 'person'
+
+      static fields() {
+        return {
+          ...super.fields(),
+          job: this.attr(''),
+        }
+      }
+    }
+
+    const personRepo = useRepo(Person)
+
+    personRepo.save([
+      { type: 'PERSON', id: 1, name: 'John Doe' },
+      { type: 'ADULT', id: 2, name: 'Jane Doe', job: 'Software Engineer' },
+    ])
+
+    assertState({
+      person: {
+        1: { id: 1, type: 'PERSON', name: 'John Doe' },
+        2: { id: 2, type: 'ADULT', name: 'Jane Doe', job: 'Software Engineer' },
+      },
+    })
+    const persons = useRepo(Person).all()
+    expect(persons[0]).toBeInstanceOf(Person)
+    expect(persons[0]).not.toHaveProperty('type')
+    expect(persons[1]).toBeInstanceOf(Adult)
+    expect(persons[1]).not.toHaveProperty('type')
+  })
 })
