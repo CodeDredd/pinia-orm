@@ -586,21 +586,22 @@ export class Query<M extends Model = Model> {
   save(record: Element): M
   save(records: Element | Element[]): M | M[] {
     let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
-    if (Object.values(this.model.$types()).length > 0) {
+    const modelTypes = this.model.$types()
+
+    if (Object.values(modelTypes).length > 0) {
+      const modelTypesKeys = Object.keys(modelTypes)
       const recordsByTypes = {}
-      if (isArray(records)) {
-        records.forEach((record) => {
-          const recordType = record[this.model.$typeKey()]
-          if (!recordsByTypes[recordType])
-            recordsByTypes[recordType] = []
-          recordsByTypes[recordType].push(record)
-        })
-      }
-      else {
-        recordsByTypes[records[this.model.$typeKey()]] = [records]
-      }
+      records = isArray(records) ? records : [records]
+
+      records.forEach((record: Element) => {
+        const recordType = modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) ? record[this.model.$typeKey()] : modelTypesKeys[0]
+        if (!recordsByTypes[recordType])
+          recordsByTypes[recordType] = []
+        recordsByTypes[recordType].push(record)
+      })
+
       for (const entry in recordsByTypes) {
-        const typeModel = this.model.$types()[entry]
+        const typeModel = modelTypes[entry]
         if (typeModel.entity === this.model.$entity())
           processedData = this.newInterpreter().process(recordsByTypes[entry])
         else
