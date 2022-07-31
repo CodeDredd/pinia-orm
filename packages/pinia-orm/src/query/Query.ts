@@ -6,11 +6,11 @@ import {
   isFunction,
   orderBy, throwError,
 } from '../support/Utils'
-import type { Collection, Element, Elements, Item } from '../data/Data'
+import type { Collection, Element, Elements, Item, NormalizedData } from '../data/Data'
 import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
-import type { Model, ModelOptions } from '../model/Model'
+import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
 import type {
@@ -109,7 +109,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit(name: string, payload?: any): Elements {
-    const newStore = useDataStore(this.model.$entity(), this.model.$piniaOptions())
+    const newStore = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions())
     const store = newStore()
     if (name && typeof store[name] === 'function')
       store[name](payload)
@@ -269,7 +269,11 @@ export class Query<M extends Model = Model> {
    * Set to eager load all top-level relationships. Constraint is set for all relationships.
    */
   withAll(callback: EagerLoadConstraint = () => {}): this {
-    const fields = this.model.$fields()
+    let fields: ModelFields = this.model.$fields()
+    const typeModels = Object.values(this.model.$types())
+    typeModels.forEach((typeModel) => {
+      fields = { ...fields, ...typeModel.fields() }
+    })
 
     for (const name in fields)
       fields[name] instanceof Relation && this.with(name, callback)
@@ -328,6 +332,9 @@ export class Query<M extends Model = Model> {
    * Retrieve models by processing whole query chain.
    */
   get(): Collection<M> {
+    if (this.model.$entity() !== this.model.$baseEntity())
+      this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make())
+
     const models = this.select()
 
     if (!isEmpty(models))
@@ -578,7 +585,31 @@ export class Query<M extends Model = Model> {
   save(records: Element[]): M[]
   save(record: Element): M
   save(records: Element | Element[]): M | M[] {
-    const [data, entities] = this.newInterpreter().process(records)
+    let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
+    const modelTypes = this.model.$types()
+
+    if (Object.values(modelTypes).length > 0) {
+      const modelTypesKeys = Object.keys(modelTypes)
+      const recordsByTypes = {}
+      records = isArray(records) ? records : [records]
+
+      records.forEach((record: Element) => {
+        const recordType = modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) ? record[this.model.$typeKey()] : modelTypesKeys[0]
+        if (!recordsByTypes[recordType])
+          recordsByTypes[recordType] = []
+        recordsByTypes[recordType].push(record)
+      })
+
+      for (const entry in recordsByTypes) {
+        const typeModel = modelTypes[entry]
+        if (typeModel.entity === this.model.$entity())
+          processedData = this.newInterpreter().process(recordsByTypes[entry])
+        else
+          this.newQueryWithConstraints(typeModel.entity).save(recordsByTypes[entry])
+      }
+    }
+
+    const [data, entities] = processedData
 
     for (const entity in entities) {
       const query = this.newQuery(entity)
@@ -613,6 +644,8 @@ export class Query<M extends Model = Model> {
       afterSavingHooks.push(() => model.$self().saved(model))
       afterSavingHooks.push(() => existing ? model.$self().updated(model) : model.$self().created(model))
       newData[id] = model.$getAttributes()
+      if (Object.values(model.$types()).length > 0 && !newData[id][model.$typeKey()])
+        newData[id][model.$typeKey()] = record[model.$typeKey()]
     }
     if (Object.keys(newData).length > 0) {
       this.commit('save', newData)
@@ -767,7 +800,7 @@ export class Query<M extends Model = Model> {
   protected hydrate(records: Element | Element[], options?: ModelOptions): M | Collection<M> {
     return isArray(records)
       ? records.map(record => this.hydrate(record), options)
-      : this.model.$newInstance(records, { relations: false, ...(options || {}) })
+      : this.checkAndGetSTI(records, { relations: false, ...(options || {}) })
   }
 
   /**
@@ -781,5 +814,15 @@ export class Query<M extends Model = Model> {
       records[model.$getIndexId()] = model.$getAttributes()
       return records
     }, {})
+  }
+
+  /**
+   * Instantiate new models by type if set.
+   */
+  protected checkAndGetSTI(record: Element, options?: ModelOptions): M {
+    const modelByType = this.model.$types()[record[this.model.$typeKey()]]
+
+    return (modelByType ? modelByType.newRawInstance() as M : this.model)
+      .$newInstance(record, { relations: false, ...(options || {}) })
   }
 }
