@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
-    "@size-limit/preset-small-lib": "^7.0.8",
+    "@size-limit/preset-small-lib": "^8.0.0",
     "@types/prettier": "^2",
     "@vitest/ui": "^0.20.2",
     "@vue/composition-api": "^1.7.0",
