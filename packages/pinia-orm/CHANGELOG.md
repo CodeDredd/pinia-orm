@@ -1,3 +1,13 @@
+# [1.0.0-rc.4](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.3...pinia-orm@1.0.0-rc.4) (2022-07-31)
+
+### Bug Fixes
+
+- **pinia-orm:** A few Query methods should have return type this instead of Query<M> ([#131](https://github.com/CodeDredd/pinia-orm/issues/131)) ([6eb0e87](https://github.com/CodeDredd/pinia-orm/commit/6eb0e878862c708b6a01da0f53211dac31cc6a1b))
+
+### Features
+
+- **pinia-orm:** Add single table inheritance support ([#117](https://github.com/CodeDredd/pinia-orm/issues/117)) ([36a00aa](https://github.com/CodeDredd/pinia-orm/commit/36a00aa50eb4737af909a5180479a9813826994b)), closes [vuex-orm/#519](https://github.com/CodeDredd/pinia-orm/issues/519)
+
 # [1.0.0-rc.3](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.2...pinia-orm@1.0.0-rc.3) (2022-07-28)
 
 ### Bug Fixes
