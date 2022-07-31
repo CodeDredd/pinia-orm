@@ -1,3 +1,9 @@
+# [1.0.0-rc.3](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.2...pinia-orm@1.0.0-rc.3) (2022-07-28)
+
+### Bug Fixes
+
+- **pinia-orm:** belongsToMany was behaving incorrectly nested ([#118](https://github.com/CodeDredd/pinia-orm/issues/118)) ([5394b1d](https://github.com/CodeDredd/pinia-orm/commit/5394b1da9268a388d45a298d231cfbe4de64c6de))
+
 # [1.0.0-rc.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.1...pinia-orm@1.0.0-rc.2) (2022-07-27)
 
 # [1.0.0-rc.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-alpha.2...pinia-orm@1.0.0-rc.1) (2022-07-23)
