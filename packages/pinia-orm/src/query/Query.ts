@@ -232,7 +232,7 @@ export class Query<M extends Model = Model> {
   /**
    * Add an "order by" clause to the query.
    */
-  orderBy(field: OrderBy, direction: OrderDirection = 'asc'): Query<M> {
+  orderBy(field: OrderBy, direction: OrderDirection = 'asc'): this {
     this.orders.push({ field, direction })
 
     return this
@@ -259,7 +259,7 @@ export class Query<M extends Model = Model> {
   /**
    * Set the relationships that should be eager loaded.
    */
-  with(name: string, callback: EagerLoadConstraint = () => {}): Query<M> {
+  with(name: string, callback: EagerLoadConstraint = () => {}): this {
     this.eagerLoad[name] = callback
 
     return this
@@ -268,7 +268,7 @@ export class Query<M extends Model = Model> {
   /**
    * Set to eager load all top-level relationships. Constraint is set for all relationships.
    */
-  withAll(callback: EagerLoadConstraint = () => {}): Query<M> {
+  withAll(callback: EagerLoadConstraint = () => {}): this {
     const fields = this.model.$fields()
 
     for (const name in fields)
@@ -280,7 +280,7 @@ export class Query<M extends Model = Model> {
   /**
    * Set to eager load all relationships recursively.
    */
-  withAllRecursive(depth = 3): Query<M> {
+  withAllRecursive(depth = 3): this {
     this.withAll((query) => {
       depth > 0 && query.withAllRecursive(depth - 1)
     })
