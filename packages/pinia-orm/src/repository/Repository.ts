@@ -1,6 +1,6 @@
 import type { Store } from 'pinia'
 import type { Constructor } from '../types'
-import { assert } from '../support/Utils'
+import { assert, isArray } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { Database } from '../database/Database'
 import type { Model } from '../model/Model'
@@ -257,8 +257,16 @@ export class Repository<M extends Model = Model> {
    * store. It's pretty much the alternative to `new Model()`, but it injects
    * the store instance to support model instance methods in SSR environment.
    */
-  make(attributes?: Element): M {
-    return this.getModel().$newInstance(attributes, {
+  make(records: Element[]): M[]
+  make(record?: Element): M
+  make(records?: Element | Element[]): M | M[] {
+    if (isArray(records)) {
+      return records.map(record => this.getModel().$newInstance(record, {
+        relations: true,
+      }))
+    }
+
+    return this.getModel().$newInstance(records, {
       relations: true,
     })
   }

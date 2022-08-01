@@ -27,5 +27,5 @@ useRepo(User).orderBy(user => user.name[2]).get()
 ## Typescript Declarations
 
 ````ts
-function orderBy(field: OrderBy, direction: OrderDirection = 'asc'): Query<M>
+function orderBy(field: OrderBy, direction: OrderDirection = 'asc'): Query
 ````

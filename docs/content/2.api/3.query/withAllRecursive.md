@@ -19,5 +19,5 @@ const usersWithRelations = userRepo.withAllRecursive(2).get() // User[] with all
 ## Typescript Declarations
 
 ````ts
-function withAllRecursive(depth = 3): Query<M>
+function withAllRecursive(depth = 3): Query
 ````
