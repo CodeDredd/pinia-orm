@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
 import { Attr, Model, Repository, Str, useRepo } from '../../../src'
-import {assertInstanceOf, assertModel, assertModels} from '../../helpers'
+import { assertInstanceOf, assertModel, assertModels } from '../../helpers'
 
 describe('unit/repository/Repository', () => {
   class User extends Model {
