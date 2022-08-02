@@ -311,16 +311,34 @@ const initialPackages = [
     url: 'https://unpkg.com/@vueuse/core@5.0.1/index.esm.js',
   },
   {
+    name: '@vue/devtools-api',
+    source: 'unpkg',
+    description: 'Interact with the Vue devtools from the page',
+    url: 'https://unpkg.com/@vue/devtools-api@6.2.1/lib/esm/index.js',
+  },
+  {
     name: 'pinia',
     source: 'unpkg',
     description: 'Pinia',
-    url: 'https://unpkg.com/pinia@2.0.17/dist/pinia.iife.js',
+    url: 'https://unpkg.com/pinia@2.0.17/dist/pinia.mjs',
+  },
+  {
+    name: 'normalizr',
+    source: 'unpkg',
+    description: 'normalizr',
+    url: 'https://unpkg.com/normalizr@3.6.2/dist/normalizr.es.js',
+  },
+  {
+    name: 'nanoid/non-secure',
+    source: 'unpkg',
+    description: 'Nanoid',
+    url: 'https://unpkg.com/nanoid@4.0.0/non-secure/index.js',
   },
   {
     name: 'pinia-orm',
     source: 'unpkg',
     description: 'Pinia ORM',
-    url: 'https://unpkg.com/pinia-orm@1.0.0-rc.4/dist/index.global.js',
+    url: 'https://unpkg.com/pinia-orm@1.0.0-rc.4/dist/index.mjs',
   },
 ]
 
