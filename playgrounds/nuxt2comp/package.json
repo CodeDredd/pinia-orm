@@ -14,12 +14,12 @@
   },
   "dependencies": {
     "@nuxtjs/composition-api": "^0.32.0",
-    "@pinia-orm/nuxt": "^1.0.6",
+    "@pinia-orm/nuxt": "^1.0.17",
     "@pinia/nuxt": "^0.1.9",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
     "pinia": "^2.0.14",
-    "pinia-orm": "^0.10.0",
+    "pinia-orm": "^1.0.0-rc.4",
     "vue": "^2.7.3",
     "vue-server-renderer": "^2.7.3",
     "vue-template-compiler": "^2.7.3",
@@ -38,6 +38,10 @@
     "eslint-plugin-vue": "^9.2.0",
     "nuxt-windicss": "^2.4.2",
     "postcss": "^8.4.14",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "vue-template-babel-compiler": "^2.0.0"
+  },
+  "resolutions": {
+    "nanoid": "3.3.4"
   }
 }
