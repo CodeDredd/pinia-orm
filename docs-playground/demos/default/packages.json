@@ -16,5 +16,17 @@
     "source": "unpkg",
     "description": "Collection of essential Vue Composition Utilities",
     "url": "https://unpkg.com/@vueuse/core/dist/index.esm.js"
+  },
+  {
+    "name": "pinia",
+    "source": "unpkg",
+    "description": "Pinia",
+    "url": "https://unpkg.com/pinia/dist/pinia.iife.js"
+  },
+  {
+    "name": "pinia-orm",
+    "source": "unpkg",
+    "description": "Pinia ORM",
+    "url": "https://unpkg.com/pinia-orm/dist/index.global.js"
   }
 ]

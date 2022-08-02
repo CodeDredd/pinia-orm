@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { defineProps, defineEmit, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useMonaco } from '~/logic/useMonaco'
 
-const emit = defineEmit<(e: 'change', content: string) => void>()
+const emit = defineEmits<(e: 'change', content: string) => void>()
 const props = defineProps<{ language: string; value: string }>()
 
 const target = ref()

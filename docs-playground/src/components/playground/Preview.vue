@@ -159,13 +159,18 @@ async function updatePreview() {
       ...modules,
       isDark.value ? 'document.querySelector("html").classList.add("dark")' : 'document.querySelector("html").classList.remove("dark")',
       `
-      import { createApp as _createApp } from "vue"
+      import { createApp as _createApp, createPinia as _createPinia, setActivePinia as _setActivePinia, PiniaORM } from "vue"
+
       if (window.__app__) {
         window.__app__.unmount()
         document.getElementById('app').innerHTML = ''
       }
       document.getElementById('__sfc-styles').innerHTML = window.__css__
       const app = window.__app__ = _createApp(__modules__["${MAIN_FILE}"].default)
+      const pinia = _createPinia()
+      app.use(pinia)
+      pinia.use(PiniaORM.install())
+      _setActivePinia(pinia)
       app.config.errorHandler = e => console.error(e)
       app.mount('#app')`.trim(),
     ])

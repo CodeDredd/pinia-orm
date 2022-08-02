@@ -114,7 +114,6 @@ export function exportState() {
   }))
 }
 
-
 /**
  * Add a file to the orchestrator
  *
@@ -164,14 +163,14 @@ export function removeAllFiles() {
 
 //   console.log(modules)
 
-//   const packages = (await Promise.all(Object.entries(demos)
-//     .filter(([path]) => path.split('demos/')[1].split('/')[0] === name)
-//     .filter(([path]) => path.includes('.json'))
-//     .map(async([path, imp]) => ([path, (await imp()).default]))))
-//     .find(([path]) => path.includes('packages.json'))
-
-//   if (packages)
-//     orchestrator.packages = packages[1]
+// const packages = (await Promise.all(Object.entries(demos)
+//   .filter(([path]) => path.split('demos/')[1].split('/')[0] === name)
+//   .filter(([path]) => path.includes('.json'))
+//   .map(async([path, imp]) => ([path, (await imp()).default]))))
+//   .find(([path]) => path.includes('packages.json'))
+//
+// if (packages)
+//   orchestrator.packages = packages[1]
 
 //   removeAllFiles()
 
@@ -213,6 +212,22 @@ const appTemplate = `
 const appScript = `
 import { useMouse } from '@vueuse/core'
 import Coordinate from './Coordinate.vue'
+import { useRepo, Model } from 'pinia-orm'
+
+class User extends Model {
+  static entity = 'users'
+
+  static fields() {
+    return {
+      id: this.uid(),
+      name: this.string(''),
+      first_name: this.string('').nullable(),
+      last_name: this.string('').nullable(),
+    }
+  }
+}
+
+const user = ussRepo(User)
 
 const { x, y } = useMouse()
 `
@@ -241,6 +256,41 @@ defineProps({
 })
 `
 
+// User.ts
+const modelUserScript = `
+import { Model } from 'pinia-orm'
+
+export default class User extends Model {
+  static entity = 'users'
+
+  static fields() {
+    return {
+      id: this.uid(),
+      name: this.string(''),
+      first_name: this.string('').nullable(),
+      last_name: this.string('').nullable(),
+    }
+  }
+}
+`
+
+// ToDo.js
+const modelToDoScript = `
+import { Model } from 'pinia-orm'
+
+export default class ToDo extends Model {
+  static entity = 'todos'
+
+  static fields() {
+    return {
+      id: this.uid(),
+      title: this.string(''),
+      userId: this.attr(null).nullable(),
+    }
+  }
+}
+`
+
 const initialPackages = [
   {
     name: 'vue-demi',
@@ -259,6 +309,18 @@ const initialPackages = [
     source: 'unpkg',
     description: 'Collection of essential Vue Composition Utilities',
     url: 'https://unpkg.com/@vueuse/core@5.0.1/index.esm.js',
+  },
+  {
+    name: 'pinia',
+    source: 'unpkg',
+    description: 'Pinia',
+    url: 'https://unpkg.com/pinia@2.0.17/dist/pinia.iife.js',
+  },
+  {
+    name: 'pinia-orm',
+    source: 'unpkg',
+    description: 'Pinia ORM',
+    url: 'https://unpkg.com/pinia-orm@1.0.0-rc.4/dist/index.global.js',
   },
 ]
 
@@ -285,6 +347,8 @@ function loadInitialState() {
     orchestrator.packages = initialPackages
     addFile(new OrchestratorFile('App.vue', appTemplate.trim(), appScript.trim()))
     addFile(new OrchestratorFile('Coordinate.vue', coordinateTemplate.trim(), coordinateScript.trim()))
+    addFile(new OrchestratorFile('User.js', '', modelUserScript.trim()))
+    // addFile(new OrchestratorFile('ToDo.js', '', modelToDoScript.trim()))
     setActiveFile('App.vue')
     shouldUpdateContent.trigger(null)
   }
