@@ -16,5 +16,5 @@ jobs:
         uses: darrenjennings/algolia-docsearch-action@master
         with:
           algolia_application_id: 'CUDIBUZGZJ'
-          algolia_api_key: '2a399a1ca2c1fa45dc7b5e4381952dd8'
+          algolia_api_key: ${{ secrets.ALGOLIA_API}}
           file: 'docs/algolia.config.json'
