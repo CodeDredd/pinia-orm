@@ -13,6 +13,13 @@ export default defineNuxtConfig({
       ]
     }
   },
+  algolia: {
+    apiKey: '2a399a1ca2c1fa45dc7b5e4381952dd8',
+    applicationId: 'CUDIBUZGZJ',
+    docSearch: {
+      indexName: 'pinia-orm',
+    }
+  },
   content: {
     // sources: [
     //   {
@@ -59,7 +66,7 @@ export default defineNuxtConfig({
     branch: 'master',
   },
   theme: {},
-  modules: ['@nuxthq/admin', '@nuxtlabs/github-module'],
+  modules: ['@nuxthq/admin', '@nuxtlabs/github-module', '@nuxtjs/algolia'],
   plausible: {
     domain: 'pinia-orm.codedredd.de',
   },

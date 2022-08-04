@@ -1,0 +1,16 @@
+{
+  "index_name": "pinia_orm_docs",
+  "start_urls": [
+    "https://pinia-orm.codedredd.de/"
+  ],
+  "stop_urls": [],
+  "selectors": {
+    "lvl0": ".doc-content h1",
+    "lvl1": ".doc-content h2",
+    "lvl2": ".doc-content h3",
+    "lvl3": ".doc-content h4",
+    "lvl4": ".doc-content h5",
+    "lvl5": ".doc-content h6",
+    "text": ".doc-content p, .doc-content li"
+  }
+}

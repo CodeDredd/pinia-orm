@@ -1,0 +1,20 @@
+on:
+  push:
+    paths:
+      - docs/**
+
+name: Update algolia indexes for docs
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Run algolia crawler
+        uses: darrenjennings/algolia-docsearch-action@master
+        with:
+          algolia_application_id: 'CUDIBUZGZJ'
+          algolia_api_key: '2a399a1ca2c1fa45dc7b5e4381952dd8'
+          file: 'docs/algolia.config.json'
