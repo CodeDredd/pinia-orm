@@ -21,7 +21,7 @@ describe('feature/helpers/helpers', () => {
 
   it('can map repositories from models in Vue components', () => {
     const pinia = createPinia()
-    pinia.use(createORM)
+    pinia.use(createORM())
 
     const vm = new Vue({
       pinia,
@@ -36,7 +36,7 @@ describe('feature/helpers/helpers', () => {
 
   it('can map repositories from abstract repositories in Vue components', async () => {
     const pinia = createPinia()
-    pinia.use(createORM)
+    pinia.use(createORM())
 
     const vm = new Vue({
       pinia,
@@ -53,7 +53,7 @@ describe('feature/helpers/helpers', () => {
 
   it('can map repositories in Vue components using spread syntax', async () => {
     const pinia = createPinia()
-    pinia.use(createORM)
+    pinia.use(createORM())
 
     const vm = new Vue({
       pinia,
