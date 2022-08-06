@@ -58,7 +58,7 @@ importers:
       eslint: ^8.20.0
       nuxt: ^3.0.0-rc.6
       pinia: ^2.0.17
-      pinia-orm: ~0.9.2
+      pinia-orm: ~1.0.0-rc.4
       prettier: ^2.7.1
       std-env: ^3.1.1
       typescript: ^4.7.4
@@ -73,7 +73,7 @@ importers:
       eslint: 8.20.0
       nuxt: 3.0.0-rc.6
       pinia: 2.0.17_j6bzmzd4ujpabbp5objtwxyjp4
-      pinia-orm: 0.9.3_j6bzmzd4ujpabbp5objtwxyjp4
+      pinia-orm: link:../pinia-orm
       prettier: 2.7.1
       std-env: 3.1.1
       typescript: 4.7.4
@@ -2301,10 +2301,6 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
-    dev: true
-
-  /@types/uuid/8.3.4:
-    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
@@ -7488,6 +7484,7 @@ packages:
 
   /normalizr/3.6.2:
     resolution: {integrity: sha512-30qCybsBaCBciotorvuOZTCGEg2AXrJfADMT2Kk/lvpIAcipHdK0zc33nNtwKzyfQAqIJXAcqET6YgflYUgsoQ==}
+    dev: false
 
   /npm-bundled/1.1.2:
     resolution: {integrity: sha512-x5DHup0SuyQcmL3s7Rx/YQ8sbw/Hzg0rj48eN0dV7hf5cmQq5PXIeioroH3raV1QC1yh3uTYuMThvEQF3iKgGQ==}
@@ -8190,19 +8187,6 @@ packages:
   /pify/5.0.0:
     resolution: {integrity: sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==}
     engines: {node: '>=10'}
-    dev: true
-
-  /pinia-orm/0.9.3_j6bzmzd4ujpabbp5objtwxyjp4:
-    resolution: {integrity: sha512-r6NG/IZK0XvbjSL2nSHep6ynqul9t6krGDb96iMlAcUY3j4OiEpFziUXLqoI3kXcpEDPSKuqxbmpL+SRT+ElzA==}
-    dependencies:
-      '@types/uuid': 8.3.4
-      normalizr: 3.6.2
-      pinia: 2.0.17_j6bzmzd4ujpabbp5objtwxyjp4
-      uuid: 8.3.2
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - typescript
-      - vue
     dev: true
 
   /pinia/2.0.17_doa2iczdmf7fngilxryautdh3i:
