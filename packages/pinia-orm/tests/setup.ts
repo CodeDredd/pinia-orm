@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from 'pinia'
 import { beforeAll, beforeEach, vi } from 'vitest'
 import { Vue2, createApp, install, isVue2 } from 'vue-demi'
 
-import PiniaOrm, { Model } from '../src'
+import { Model, createORM } from '../src'
 
 vi.mock('nanoid/non-secure', () => ({
   nanoid: vi.fn(),
@@ -19,7 +19,7 @@ beforeAll(() => {
 beforeEach(() => {
   const app = createApp({})
   const pinia = createPinia()
-  pinia.use(PiniaOrm.install())
+  pinia.use(createORM)
   app.use(pinia)
   setActivePinia(pinia)
   Model.clearBootedModels()
