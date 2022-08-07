@@ -399,6 +399,11 @@ export class Model {
   static deleting: BeforeHook = () => {}
 
   /**
+   * Lifecycle hook for after getting data
+   */
+  static retrieved: AfterHook = () => {}
+
+  /**
    * Lifecycle hook for after saved
    */
   static saved: AfterHook = () => {}

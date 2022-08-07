@@ -165,7 +165,7 @@ export class MorphTo extends Relation {
       const results = query
         .newQueryWithConstraints(entity)
         .whereIn(ownerKey, keys[entity])
-        .get()
+        .get(false)
 
       dictionary[entity] = results.reduce<Record<string, Model>>(
         (dic, result) => {
