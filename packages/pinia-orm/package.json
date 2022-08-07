@@ -15,25 +15,29 @@
     "email": "gregor@codedredd.de"
   },
   "funding": "https://github.com/sponsors/codedredd",
-  "main": "dist/index.js",
-  "jsdelivr": "dist/index.global.js",
-  "unpkg": "dist/index.global.js",
-  "module": "dist/index.mjs",
+  "jsdelivr": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "browser": "./dist/index.mjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./decorators": {
+      "require": "./dist/decorators.cjs",
+      "import": "./dist/decorators.mjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "files": [
     "dist",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --clean --format cjs,esm,iife",
+    "build": "unbuild",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l pinia-orm -r 1",
     "coverage": "vue-demi-switch 3 && vitest --run --coverage",
     "size": "size-limit",
@@ -62,13 +66,13 @@
     "core-js": "^3.24.1",
     "eslint": "^8.20.0",
     "happy-dom": "^6.0.4",
+    "mkdist": "^0.3.13",
     "pinia": "^2.0.17",
     "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
     "size-limit": "^8.0.0",
     "std-env": "^3.1.1",
-    "tsup": "^6.2.1",
     "typescript": "^4.7.4",
+    "unbuild": "^0.7.6",
     "vite": "^3.0.4",
     "vitest": "^0.20.2",
     "vue": "^3.2.37",
@@ -77,8 +81,12 @@
   },
   "size-limit": [
     {
-      "path": "dist/index.js",
-      "limit": "12 kB"
+      "path": "dist/index.mjs",
+      "limit": "10 kB"
+    },
+    {
+      "path": "dist/decorators.mjs",
+      "limit": "1 kB"
     }
   ],
   "volta": {
