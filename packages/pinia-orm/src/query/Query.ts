@@ -356,14 +356,7 @@ export class Query<M extends Model = Model> {
   find(id: string | number): Item<M>
   find(ids: (string | number)[]): Collection<M>
   find(ids: any): any {
-    return isArray(ids) ? this.findIn(ids) : this.whereId(ids).first()
-  }
-
-  /**
-   * Find multiple models by their primary keys.
-   */
-  findIn(ids: (string | number)[]): Collection<M> {
-    return this.whereId(ids).get()
+    return this.whereId(ids)[isArray(ids) ? 'get' : 'first']()
   }
 
   /**
