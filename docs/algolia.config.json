@@ -16,5 +16,12 @@
     "lvl4": ".docus-content h3 > a",
     "lvl5": ".docus-content h4 > a",
     "text": ".docus-content p, .docus-content li"
-  }
+  },
+  "language": {
+    "selectors": ".exists-probably .language",
+    "defaultValue": ["en", "en-US"]
+  },
+  "indexHeadings": true,
+  "aggregateContent": true,
+  "recordVersion": "v3"
 }
