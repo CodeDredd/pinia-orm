@@ -4,6 +4,6 @@ import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
   // eslint-disable-next-line import/no-named-as-default-member
-  nuxtApp.pinia.use(createORM())
-  setActivePinia(nuxtApp.pinia)
+  nuxtApp.$pinia.use(createORM())
+  setActivePinia(nuxtApp.$pinia)
 })
