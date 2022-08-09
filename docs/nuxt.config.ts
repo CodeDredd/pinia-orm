@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     apiKey: '2a399a1ca2c1fa45dc7b5e4381952dd8',
     applicationId: 'CUDIBUZGZJ',
     docSearch: {
-      indexName: 'pinia_orm_docs',
+      indexName: 'pinia_orm_docs'
     }
   },
   content: {
