@@ -11,7 +11,7 @@
       "global": true,
       "default_value": "Get Started"
     },
-    "lvl2": ".docus-content h1 > a",
+    "lvl2": "header h1",
     "lvl3": ".docus-content h2 > a",
     "lvl4": ".docus-content h3 > a",
     "lvl5": ".docus-content h4 > a",
