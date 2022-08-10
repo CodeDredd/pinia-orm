@@ -5,16 +5,17 @@
   ],
   "stop_urls": [],
   "selectors": {
-    "lvl0": "aside nav li a > span > span",
-    "lvl1": {
-      "selector": "header nav > a",
-      "global": true,
-      "default_value": "Get Started"
+    "lvl0": {
+      "selector": "",
+      "default_value": "Documentation"
     },
-    "lvl2": "header h1",
-    "lvl3": ".docus-content h2 > a",
-    "lvl4": ".docus-content h3 > a",
-    "lvl5": ".docus-content h4 > a",
+    "lvl1": {
+      "selector": ".docus-content h1"
+    },
+    "lvl2": ".docus-content h2",
+    "lvl3": ".docus-content h3",
+    "lvl4": ".docus-content h4",
+    "lvl5": ".docus-content h5",
     "content": ".docus-content p, .docus-content li",
     "language": {
       "selector": ".exists-probably .language",
@@ -25,6 +26,12 @@
   "custom_settings": {
     "attributesForFaceting": [
       "language"
-    ]
+    ],
+    "attributesToRetrieve": [
+      "hierarchy", "content", "anchor", "url"
+    ],
+    "attributesToHighlight": ["hierarchy", "content"],
+    "attributesToSnippet": ["content:10"],
+    "distinct": true
   }
 }
