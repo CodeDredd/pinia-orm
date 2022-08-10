@@ -57,14 +57,14 @@
     "normalizr": "^3.6.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.25.2",
+    "@antfu/eslint-config": "^0.26.0",
     "@size-limit/preset-small-lib": "^8.0.0",
     "@types/prettier": "^2",
-    "@vitest/ui": "^0.20.2",
+    "@vitest/ui": "^0.21.1",
     "@vue/composition-api": "^1.7.0",
     "c8": "^7.12.0",
     "core-js": "^3.24.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
     "happy-dom": "^6.0.4",
     "mkdist": "^0.3.13",
     "pinia": "^2.0.17",
@@ -73,8 +73,8 @@
     "std-env": "^3.1.1",
     "typescript": "^4.7.4",
     "unbuild": "^0.7.6",
-    "vite": "^3.0.4",
-    "vitest": "^0.20.2",
+    "vite": "^3.0.5",
+    "vitest": "^0.21.1",
     "vue": "^3.2.37",
     "vue-demi": "^0.13.6",
     "vue2": "npm:vue@^2.7.3"
