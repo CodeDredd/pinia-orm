@@ -19,15 +19,15 @@
     "language": {
       "selector": ".exists-probably .language",
       "global": true,
-      "defaultValue": ["en"]
+      "default_value": "en"
     }
   },
   "custom_settings": {
     "attributesForFaceting": [
       "language"
-    ]
-  },
-  "indexHeadings": true,
-  "aggregateContent": true,
-  "recordVersion": "v3"
+    ],
+    "indexHeadings": true,
+    "aggregateContent": true,
+    "recordVersion": "v3"
+  }
 }
