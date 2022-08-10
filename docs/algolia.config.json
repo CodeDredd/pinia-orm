@@ -19,7 +19,7 @@
     "language": {
       "selector": ".exists-probably .language",
       "global": true,
-      "default_value": "en"
+      "default_value": ["en"]
     }
   },
   "custom_settings": {
