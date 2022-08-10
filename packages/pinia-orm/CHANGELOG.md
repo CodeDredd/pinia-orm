@@ -1,3 +1,15 @@
+# [1.0.0-rc.5](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.4...pinia-orm@1.0.0-rc.5) (2022-08-10)
+
+### Features
+
+- **pinia-orm:** add `retrieved` life cycle hook ([#145](https://github.com/CodeDredd/pinia-orm/issues/145)) ([7499c93](https://github.com/CodeDredd/pinia-orm/commit/7499c93070388dfccda0af9cd41d59d92fbb06b4))
+- **pinia-orm:** add the possibility to create many models with "make" in repository ([#133](https://github.com/CodeDredd/pinia-orm/issues/133)) ([c7487cd](https://github.com/CodeDredd/pinia-orm/commit/c7487cd64159a7a78e426f5c7863eb33b23ce033))
+
+### BREAKING CHANGES
+
+- **pinia-orm:** Change PiniaORM.install() to createORM() [902f4c2](https://github.com/CodeDredd/pinia-orm/commit/902f4c2e2e3331ed50427f8ef9c4570ad39387d5)
+- **pinia-orm:** Remove findIn since find does the same [#144](https://github.com/CodeDredd/pinia-orm/pull/144)
+
 # [1.0.0-rc.4](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.3...pinia-orm@1.0.0-rc.4) (2022-07-31)
 
 ### Bug Fixes

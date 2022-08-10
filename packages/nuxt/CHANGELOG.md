@@ -1,3 +1,9 @@
+## [1.0.18](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.17...@pinia-orm/nuxt@1.0.18) (2022-08-10)
+
+### Bug Fixes
+
+- **nuxt:** adept changes from `@pinia/nuxt` ([#150](https://github.com/CodeDredd/pinia-orm/issues/150)) ([96c384f](https://github.com/CodeDredd/pinia-orm/commit/96c384f1b662ec6d64147cdf5b22664370c36c2a))
+
 ## [1.0.17](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.16...@pinia-orm/nuxt@1.0.17) (2022-07-27)
 
 ## [1.0.16](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.15...@pinia-orm/nuxt@1.0.16) (2022-07-20)
