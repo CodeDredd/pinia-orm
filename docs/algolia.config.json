@@ -15,7 +15,7 @@
     "lvl3": ".docus-content h2 > a",
     "lvl4": ".docus-content h3 > a",
     "lvl5": ".docus-content h4 > a",
-    "text": ".docus-content p, .docus-content li",
+    "content": ".docus-content p, .docus-content li",
     "language": {
       "selector": ".exists-probably .language",
       "global": true,
