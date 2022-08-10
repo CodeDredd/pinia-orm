@@ -40,7 +40,7 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "peerDependencies": {
-    "@pinia/nuxt": "^0.3.1",
+    "@pinia/nuxt": "^0.4.0",
     "pinia-orm": ">=1.0.0-rc.5"
   },
   "dependencies": {
@@ -49,11 +49,11 @@
   "devDependencies": {
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
-    "@pinia/nuxt": "^0.3.1",
+    "@pinia/nuxt": "^0.4.0",
     "@types/prettier": "^2",
     "eslint": "^8.21.0",
     "nuxt": "^3.0.0-rc.6",
-    "pinia": "^2.0.17",
+    "pinia": "^2.0.18",
     "pinia-orm": "~1.0.0-rc.4",
     "prettier": "^2.7.1",
     "std-env": "^3.1.1",
