@@ -53,7 +53,7 @@
     "normalizr": "^3.6.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.26.0",
+    "@antfu/eslint-config": "^0.26.1",
     "@size-limit/preset-small-lib": "^8.0.0",
     "@types/prettier": "^2",
     "@vitest/ui": "^0.21.1",
