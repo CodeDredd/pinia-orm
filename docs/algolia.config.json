@@ -10,7 +10,7 @@
       "default_value": "Documentation"
     },
     "lvl1": {
-      "selector": ".docus-content h1"
+      "selector": "header h1"
     },
     "lvl2": ".docus-content h2",
     "lvl3": ".docus-content h3",
