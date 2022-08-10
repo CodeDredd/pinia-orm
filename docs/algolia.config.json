@@ -1,0 +1,37 @@
+{
+  "index_name": "pinia_orm_docs",
+  "start_urls": [
+    "https://pinia-orm.codedredd.de/"
+  ],
+  "stop_urls": [],
+  "selectors": {
+    "lvl0": {
+      "selector": "",
+      "default_value": "Documentation"
+    },
+    "lvl1": {
+      "selector": "header h1"
+    },
+    "lvl2": ".docus-content h2",
+    "lvl3": ".docus-content h3",
+    "lvl4": ".docus-content h4",
+    "lvl5": ".docus-content h5",
+    "content": ".docus-content p, .docus-content li",
+    "language": {
+      "selector": ".exists-probably .language",
+      "global": true,
+      "default_value": ["en"]
+    }
+  },
+  "custom_settings": {
+    "attributesForFaceting": [
+      "language"
+    ],
+    "attributesToRetrieve": [
+      "hierarchy", "content", "anchor", "url"
+    ],
+    "attributesToHighlight": ["hierarchy", "content"],
+    "attributesToSnippet": ["content:10"],
+    "distinct": true
+  }
+}
