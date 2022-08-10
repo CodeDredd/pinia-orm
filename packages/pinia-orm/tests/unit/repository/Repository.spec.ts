@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
 import { Attr, Model, Repository, Str, useRepo } from '../../../src'
-import { assertModel } from '../../helpers'
+import { assertInstanceOf, assertModel, assertModels } from '../../helpers'
 
 describe('unit/repository/Repository', () => {
   class User extends Model {
@@ -37,6 +37,33 @@ describe('unit/repository/Repository', () => {
 
     expect(user).toBeInstanceOf(User)
     assertModel(user, { id: 1, name: 'Jane Doe' })
+  })
+
+  it('creates many new model instances with default values', () => {
+    const userRepo = useRepo(User)
+
+    const users = userRepo.make([
+      {
+        id: 1,
+        name: 'Jane Doe',
+      },
+      {
+        id: 2,
+        name: 'John Doe',
+      },
+    ])
+
+    assertInstanceOf(users, User)
+    assertModels(users, [
+      {
+        id: 1,
+        name: 'Jane Doe',
+      },
+      {
+        id: 2,
+        name: 'John Doe',
+      },
+    ])
   })
 
   it('can create a new repository from the model', () => {

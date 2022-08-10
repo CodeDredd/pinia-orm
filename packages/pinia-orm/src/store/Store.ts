@@ -10,7 +10,7 @@ import { components, plugins } from '../plugin/Plugin'
 /**
  * Install Pinia ORM to the store.
  */
-export function install(): PiniaPlugin {
+export function createORM(): PiniaPlugin {
   return (store) => {
     mixin(store.store)
   }
