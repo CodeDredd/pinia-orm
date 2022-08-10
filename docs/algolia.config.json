@@ -18,14 +18,14 @@
     "text": ".docus-content p, .docus-content li",
     "language": {
       "selector": ".exists-probably .language",
+      "global": true,
       "defaultValue": ["en"]
     }
   },
-  "lang": {
-    "selector": "/html/@lang",
-    "type": "xpath",
-    "global": true,
-    "defaultValue": "en"
+  "custom_settings": {
+    "attributesForFaceting": [
+      "language"
+    ]
   },
   "indexHeadings": true,
   "aggregateContent": true,
