@@ -103,7 +103,7 @@ export class HasManyBy extends Relation {
    * Match the eagerly loaded results to their parents.
    */
   match(relation: string, models: Collection, query: Query): void {
-    const dictionary = this.buildDictionary(query.get())
+    const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
       const relatedModels = this.getRelatedModels(

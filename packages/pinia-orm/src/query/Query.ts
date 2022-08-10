@@ -161,72 +161,56 @@ export class Query<M extends Model = Model> {
    * Add a "where has" clause to the query.
    */
   whereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): this {
-    this.where(this.getFieldWhereForRelations(relation, callback, operator, count))
-
-    return this
+    return this.where(this.getFieldWhereForRelations(relation, callback, operator, count))
   }
 
   /**
    * Add an "or where has" clause to the query.
    */
   orWhereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): this {
-    this.orWhere(this.getFieldWhereForRelations(relation, callback, operator, count))
-
-    return this
+    return this.orWhere(this.getFieldWhereForRelations(relation, callback, operator, count))
   }
 
   /**
    * Add a "has" clause to the query.
    */
   has(relation: string, operator?: string | number, count?: number): this {
-    this.where(this.getFieldWhereForRelations(relation, () => {}, operator, count))
-
-    return this
+    return this.where(this.getFieldWhereForRelations(relation, () => {}, operator, count))
   }
 
   /**
    * Add an "or has" clause to the query.
    */
   orHas(relation: string, operator?: string | number, count?: number): this {
-    this.orWhere(this.getFieldWhereForRelations(relation, () => {}, operator, count))
-
-    return this
+    return this.orWhere(this.getFieldWhereForRelations(relation, () => {}, operator, count))
   }
 
   /**
    * Add a "doesn't have" clause to the query.
    */
   doesntHave(relation: string): this {
-    this.where(this.getFieldWhereForRelations(relation, () => {}, '=', 0))
-
-    return this
+    return this.where(this.getFieldWhereForRelations(relation, () => {}, '=', 0))
   }
 
   /**
    * Add a "doesn't have" clause to the query.
    */
   orDoesntHave(relation: string): this {
-    this.orWhere(this.getFieldWhereForRelations(relation, () => {}, '=', 0))
-
-    return this
+    return this.orWhere(this.getFieldWhereForRelations(relation, () => {}, '=', 0))
   }
 
   /**
    * Add a "where doesn't have" clause to the query.
    */
   whereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): this {
-    this.where(this.getFieldWhereForRelations(relation, callback, '=', 0))
-
-    return this
+    return this.where(this.getFieldWhereForRelations(relation, callback, '=', 0))
   }
 
   /**
    * Add an "or where doesn't have" clause to the query.
    */
   orWhereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): this {
-    this.orWhere(this.getFieldWhereForRelations(relation, callback, '=', 0))
-
-    return this
+    return this.orWhere(this.getFieldWhereForRelations(relation, callback, '=', 0))
   }
 
   /**
@@ -285,18 +269,16 @@ export class Query<M extends Model = Model> {
    * Set to eager load all relationships recursively.
    */
   withAllRecursive(depth = 3): this {
-    this.withAll((query) => {
+    return this.withAll((query) => {
       depth > 0 && query.withAllRecursive(depth - 1)
     })
-
-    return this
   }
 
   /**
    * Get where closure for relations
    */
   protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure {
-    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get()
+    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get(false)
       .filter(model => compareWithOperator(
         model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
         typeof operator === 'number' ? operator : count ?? 1,
@@ -331,7 +313,7 @@ export class Query<M extends Model = Model> {
   /**
    * Retrieve models by processing whole query chain.
    */
-  get(): Collection<M> {
+  get(triggerHook = true): Collection<M> {
     if (this.model.$entity() !== this.model.$baseEntity())
       this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make())
 
@@ -339,6 +321,9 @@ export class Query<M extends Model = Model> {
 
     if (!isEmpty(models))
       this.eagerLoadRelations(models)
+
+    if (triggerHook)
+      models.forEach(model => model.$self().retrieved(model))
 
     return models
   }
@@ -356,14 +341,7 @@ export class Query<M extends Model = Model> {
   find(id: string | number): Item<M>
   find(ids: (string | number)[]): Collection<M>
   find(ids: any): any {
-    return isArray(ids) ? this.findIn(ids) : this.whereId(ids).first()
-  }
-
-  /**
-   * Find multiple models by their primary keys.
-   */
-  findIn(ids: (string | number)[]): Collection<M> {
-    return this.whereId(ids).get()
+    return this.whereId(ids)[isArray(ids) ? 'get' : 'first']()
   }
 
   /**
@@ -683,7 +661,7 @@ export class Query<M extends Model = Model> {
    * Update the reocrd matching the query chain.
    */
   update(record: Element): Collection<M> {
-    const models = this.get()
+    const models = this.get(false)
 
     if (isEmpty(models))
       return []
@@ -745,7 +723,7 @@ export class Query<M extends Model = Model> {
    * Delete records resolved by the query chain.
    */
   delete(): M[] {
-    const models = this.get()
+    const models = this.get(false)
 
     if (isEmpty(models))
       return []
@@ -763,7 +741,7 @@ export class Query<M extends Model = Model> {
    * Delete all records in the store.
    */
   flush(): Collection<M> {
-    const models = this.get()
+    const models = this.get(false)
 
     this.commit('flush')
 
