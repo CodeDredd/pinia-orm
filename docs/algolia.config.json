@@ -25,9 +25,6 @@
   "custom_settings": {
     "attributesForFaceting": [
       "language"
-    ],
-    "indexHeadings": true,
-    "aggregateContent": true,
-    "recordVersion": "v3"
+    ]
   }
 }
