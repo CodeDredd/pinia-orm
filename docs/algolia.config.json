@@ -7,7 +7,7 @@
   "selectors": {
     "lvl0": "aside nav li a > span > span",
     "lvl1": {
-      "selectors": "header nav > a",
+      "selector": "header nav > a",
       "global": true,
       "default_value": "Get Started"
     },
@@ -17,7 +17,7 @@
     "lvl5": ".docus-content h4 > a",
     "text": ".docus-content p, .docus-content li",
     "language": {
-      "selectors": ".exists-probably .language",
+      "selector": ".exists-probably .language",
       "defaultValue": ["en"]
     }
   },
