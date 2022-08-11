@@ -35,7 +35,8 @@ export class OrchestratorFile {
   }
 
   get code() {
-    return `
+    if (this.filename.includes('.vue')) {
+      return `
       <script setup>
         ${this.script}
       </script>
@@ -43,6 +44,8 @@ export class OrchestratorFile {
         ${this.template}
       </template>
       `
+    }
+    return `${this.script}`
   }
 }
 
@@ -210,50 +213,29 @@ const appTemplate = `
 </div>
 `
 const appScript = `
-import { useMouse } from '@vueuse/core'
-import Coordinate from './Coordinate.vue'
 import { useRepo, Model } from 'pinia-orm'
+import User from './User.ts'
+import data from './data.js'
 
-class User extends Model {
-  static entity = 'users'
+const userRepo = useRepo(User)
 
-  static fields() {
-    return {
-      id: this.uid(),
-      name: this.string(''),
-      first_name: this.string('').nullable(),
-      last_name: this.string('').nullable(),
+userRepo.save(data.users)
+
+console.log(userRepo.all())
+
+`
+
+const dataScript = `
+export default {
+  users: [
+    {
+      id: 1,
+      name: 'username',
+      preName: 'John',
+      lastName: 'Doe',
     }
-  }
+  ]
 }
-
-const user = ussRepo(User)
-
-const { x, y } = useMouse()
-`
-
-// Coordinate.vue
-const coordinateTemplate = `
-<div
-  font="mono"
-  bg="light-500 dark:dark-500"
-  flex="~ col"
-  text="center"
-  p="2"
-  border="rounded"
->
-  <span text="4xl">{{ value }}</span>
-  <span text="sm dark:light-900 dark:opacity-50" m="t-2">Mouse {{ label }}</span>
-</div>
-`
-
-const coordinateScript = `
-import { defineProps } from 'vue'
-
-defineProps({
-  label: String,
-  value: Number,
-})
 `
 
 // User.ts
@@ -267,8 +249,8 @@ export default class User extends Model {
     return {
       id: this.uid(),
       name: this.string(''),
-      first_name: this.string('').nullable(),
-      last_name: this.string('').nullable(),
+      firstName: this.string('').nullable(),
+      lastName: this.string('').nullable(),
     }
   }
 }
@@ -320,7 +302,7 @@ const initialPackages = [
     name: 'pinia',
     source: 'unpkg',
     description: 'Pinia',
-    url: 'https://unpkg.com/pinia@2.0.17/dist/pinia.mjs',
+    url: 'https://unpkg.com/pinia@2.0.18/dist/pinia.esm-browser.js',
   },
   {
     name: 'normalizr',
@@ -338,7 +320,7 @@ const initialPackages = [
     name: 'pinia-orm',
     source: 'unpkg',
     description: 'Pinia ORM',
-    url: 'https://unpkg.com/pinia-orm@1.0.0-rc.4/dist/index.mjs',
+    url: 'https://unpkg.com/pinia-orm@1.0.0-rc.5/dist/index.mjs',
   },
 ]
 
@@ -364,8 +346,8 @@ function loadInitialState() {
   else {
     orchestrator.packages = initialPackages
     addFile(new OrchestratorFile('App.vue', appTemplate.trim(), appScript.trim()))
-    addFile(new OrchestratorFile('Coordinate.vue', coordinateTemplate.trim(), coordinateScript.trim()))
-    addFile(new OrchestratorFile('User.js', '', modelUserScript.trim()))
+    addFile(new OrchestratorFile('data.js', '', dataScript.trim()))
+    addFile(new OrchestratorFile('User.ts', '', modelUserScript.trim()))
     // addFile(new OrchestratorFile('ToDo.js', '', modelToDoScript.trim()))
     setActiveFile('App.vue')
     shouldUpdateContent.trigger(null)
