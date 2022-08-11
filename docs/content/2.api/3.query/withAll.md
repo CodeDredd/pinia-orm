@@ -22,5 +22,5 @@ const usersWithCommentsOnlyActive = userRepo.withAll((query) => {
 ## Typescript Declarations
 
 ````ts
-function withAll(callback: EagerLoadConstraint = () => {}): Query<M>
+function withAll(callback: EagerLoadConstraint = () => {}): Query
 ````

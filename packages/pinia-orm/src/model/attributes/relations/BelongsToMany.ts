@@ -68,14 +68,17 @@ export class BelongsToMany extends Relation {
    * Define the normalizr schema for the relationship.
    */
   define(schema: Schema): NormalizrSchema {
-    return schema.many(this.related)
+    return schema.many(this.related, this.parent)
   }
 
   /**
    * Attach the parent type and id to the given relation.
    */
   attach(record: Element, child: Element): void {
-    child.pivot = { user_id: record[this.parentKey], role_id: child[this.relatedKey], ...(child.pivot ? child.pivot : {}) }
+    const pivot = child.pivot ?? {}
+    pivot[this.foreignPivotKey] = record[this.parentKey]
+    pivot[this.relatedPivotKey] = child[this.relatedKey]
+    child.pivot = pivot
   }
 
   /**
@@ -91,7 +94,7 @@ export class BelongsToMany extends Relation {
    * Match the eagerly loaded results to their parents.
    */
   match(relation: string, models: Collection, query: Query): void {
-    const relatedModels = query.get()
+    const relatedModels = query.get(false)
     models.forEach((parentModel) => {
       const relationResults: Model[] = []
       relatedModels.forEach((relatedModel) => {
@@ -117,7 +120,7 @@ export class BelongsToMany extends Relation {
     const pivotKeys = query.newQuery(this.pivot.$entity()).where(
       this.foreignPivotKey,
       this.getKeys(collection, this.parentKey),
-    ).get().map((item: Model) => item[this.relatedPivotKey])
+    ).get(false).map((item: Model) => item[this.relatedPivotKey])
 
     query.whereIn(
       this.relatedKey,

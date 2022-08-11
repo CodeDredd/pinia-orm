@@ -37,6 +37,10 @@ export interface AfterHook<M extends Model = Model> {
   (model: M): void
 }
 
+export interface InheritanceTypes {
+  [key: string]: typeof Model
+}
+
 export class Model {
   [s: keyof ModelFields]: any
   /**
@@ -45,9 +49,19 @@ export class Model {
   static entity: string
 
   /**
+   * The reference to the base entity name if the class extends a base entity.
+   */
+  static baseEntity: string
+
+  /**
    * The primary key for the model.
    */
   static primaryKey: string | string[] = 'id'
+
+  /**
+   * The type key for the model.
+   */
+  static typeKey = 'type'
 
   /**
    * The schema for the model. It contains the result of the `fields`
@@ -385,6 +399,11 @@ export class Model {
   static deleting: BeforeHook = () => {}
 
   /**
+   * Lifecycle hook for after getting data
+   */
+  static retrieved: AfterHook = () => {}
+
+  /**
    * Lifecycle hook for after saved
    */
   static saved: AfterHook = () => {}
@@ -419,6 +438,13 @@ export class Model {
   }
 
   /**
+   * Types mapping used to dispatch entities based on their discriminator field
+   */
+  static types(): InheritanceTypes {
+    return {}
+  }
+
+  /**
    * Get the constructor for this model.
    */
   $self(): typeof Model {
@@ -430,6 +456,27 @@ export class Model {
    */
   $entity(): string {
     return this.$self().entity
+  }
+
+  /**
+   * Get the base entity for this model.
+   */
+  $baseEntity(): string {
+    return this.$self().baseEntity ?? this.$entity()
+  }
+
+  /**
+   * Get the type key for this model.
+   */
+  $typeKey(): string {
+    return this.$self().typeKey
+  }
+
+  /**
+   * Get the types for this model.
+   */
+  $types(): InheritanceTypes {
+    return this.$self().types()
   }
 
   /**
@@ -639,7 +686,12 @@ export class Model {
    * Get the relation instance for the given relation name.
    */
   $getRelation(name: string): Relation {
-    const relation = this.$fields()[name]
+    let relation = this.$fields()[name]
+    const typeModels = Object.values(this.$types())
+    typeModels.forEach((typeModel) => {
+      if (relation === undefined)
+        relation = typeModel.fields()[name]
+    })
 
     assert(relation instanceof Relation, [
       `Relationship [${name}] on model [${this.$entity()}] not found.`,
@@ -652,7 +704,8 @@ export class Model {
    * Set the given relationship on the model.
    */
   $setRelation(relation: string, model: Model | Model[] | null): this {
-    this[relation] = model
+    if (this.$fields()[relation])
+      this[relation] = model
 
     return this
   }
