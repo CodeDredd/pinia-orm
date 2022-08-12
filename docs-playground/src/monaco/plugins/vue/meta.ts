@@ -1,4 +1,4 @@
-import { CompletionItemKind, CompletionItem } from 'vscode-html-languageservice'
+import { CompletionItem } from 'vscode-html-languageservice'
 
 export const EventModifiers = {
   stop: 'call event.stopPropagation().',
@@ -17,20 +17,33 @@ export const CustomTags = [
   'slot',
 ]
 
-export const Directives: CompletionItem[] = [
+interface CompletionItemNotStrict extends Omit<CompletionItem, 'label'> {
+  label?: string
+}
+
+export interface CompletionDirective {
+  name: string
+  extra?: CompletionItemNotStrict
+}
+
+export const Directives: CompletionDirective[] = [
   {
-    label: 'v-if',
-    insertText: 'v-if=""',
-    kind: CompletionItemKind.Function,
+    name: 'if',
+    extra: {
+      sortText: '0',
+    },
   },
   {
-    label: 'v-else-if',
-    insertText: 'v-else-if=""',
-    kind: CompletionItemKind.Function,
+    name: 'else-if',
   },
   {
-    label: 'v-else',
-    kind: CompletionItemKind.Function,
+    name: 'v-else',
+    extra: {
+      insertText: undefined,
+    },
+  },
+  {
+    name: 'for',
   },
 ]
 

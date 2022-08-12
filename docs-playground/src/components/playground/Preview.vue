@@ -159,7 +159,9 @@ async function updatePreview() {
       ...modules,
       isDark.value ? 'document.querySelector("html").classList.add("dark")' : 'document.querySelector("html").classList.remove("dark")',
       `
-      import { createApp as _createApp, createPinia as _createPinia, setActivePinia as _setActivePinia, createORM as _createORM } from "vue"
+      import { createApp as _createApp } from "vue"
+      import { createPinia, setActivePinia } from "pinia"
+      import { createORM } from "pinia-orm"
 
       if (window.__app__) {
         window.__app__.unmount()
@@ -167,10 +169,10 @@ async function updatePreview() {
       }
       document.getElementById('__sfc-styles').innerHTML = window.__css__
       const app = window.__app__ = _createApp(__modules__["${MAIN_FILE}"].default)
-      const pinia = _createPinia()
+      const pinia = createPinia()
       app.use(pinia)
-      pinia.use(_createORM())
-      _setActivePinia(pinia)
+      pinia.use(createORM())
+      setActivePinia(pinia)
       app.config.errorHandler = e => console.error(e)
       app.mount('#app')`.trim(),
     ])

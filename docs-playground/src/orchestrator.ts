@@ -208,21 +208,19 @@ const appTemplate = `
   h="screen"
   font="mono"
   >
-  <Coordinate label="X" :value="x" />
-  <Coordinate label="Y" :value="y" />
+  <p v-for="user in users">{{ user }}</p>
 </div>
 `
 const appScript = `
 import { useRepo, Model } from 'pinia-orm'
-import User from './User.ts'
+import User from './User.js'
 import data from './data.js'
 
 const userRepo = useRepo(User)
 
 userRepo.save(data.users)
 
-console.log(userRepo.all())
-
+const users = userRepo.all()
 `
 
 const dataScript = `
@@ -347,8 +345,8 @@ function loadInitialState() {
     orchestrator.packages = initialPackages
     addFile(new OrchestratorFile('App.vue', appTemplate.trim(), appScript.trim()))
     addFile(new OrchestratorFile('data.js', '', dataScript.trim()))
-    addFile(new OrchestratorFile('User.ts', '', modelUserScript.trim()))
-    // addFile(new OrchestratorFile('ToDo.js', '', modelToDoScript.trim()))
+    addFile(new OrchestratorFile('User.js', '', modelUserScript.trim()))
+    addFile(new OrchestratorFile('ToDo.js', '', modelToDoScript.trim()))
     setActiveFile('App.vue')
     shouldUpdateContent.trigger(null)
   }

@@ -46,7 +46,7 @@ const onContentChanged = (source: string, content: string) => {
               </template>
             </Container>
           </Pane>
-          <Pane>
+          <Pane v-if="orchestrator.activeFile?.filename.includes('.vue')">
             <Container title="Template" class="border-1 border-white" no-overflow>
               <template #default>
                 <Editor

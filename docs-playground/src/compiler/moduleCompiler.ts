@@ -32,7 +32,6 @@ function processFile(file: File, seen = new Set<File>()) {
     sourceFilename: file.filename,
     sourceType: 'module',
     plugins: [
-      // enable jsx and flow syntax
       'typescript',
       'decorators-legacy',
     ],

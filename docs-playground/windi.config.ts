@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite-plugin-windicss'
 import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
+import { transform } from 'windicss/helpers'
 
 export default defineConfig({
   darkMode: 'class',
   plugins: [
     typography(),
     require('windicss/plugin/line-clamp'),
+    transform('daisyui'),
   ],
   attributify: true,
   theme: {

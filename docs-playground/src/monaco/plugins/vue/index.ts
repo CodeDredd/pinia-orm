@@ -1,6 +1,6 @@
 import { CompletionItemKind } from 'vscode-html-languageservice'
 import type { HTMLPlugin } from '../types'
-import { Events } from './meta'
+import { Events, Directives } from './meta'
 
 export const vueHTMLPlugin: HTMLPlugin = {
   completions({ document, position }) {
@@ -12,12 +12,12 @@ export const vueHTMLPlugin: HTMLPlugin = {
     if (text.match(/(<\w+\s*)[^>]*$/) !== null) {
       if (!text.match(/\S+(?=\s*=\s*["']?[^"']*$)/) || text.match(/<\w+\s+$/)) {
         return [
-          {
-            label: 'v-if',
-            sortText: '0',
+          ...Directives.map(e => ({
+            label: `v-${e.name}`,
+            insertText: `v-${e.name}=""`,
             kind: CompletionItemKind.Function,
-            insertText: 'v-if=""',
-          },
+            ...e.extra,
+          })),
           ...Events.map(e => ({
             label: `@${e}`,
             insertText: `@${e}=""`,

@@ -28,6 +28,8 @@ declare module 'vue' {
     ListboxButton: typeof import('@headlessui/vue')['ListboxButton']
     ListboxOption: typeof import('@headlessui/vue')['ListboxOption']
     ListboxOptions: typeof import('@headlessui/vue')['ListboxOptions']
+    LogosJavascript: typeof import('virtual:vite-icons/logos/javascript')['default']
+    LogosTypescriptIcon: typeof import('virtual:vite-icons/logos/typescript-icon')['default']
     LogosVue: typeof import('virtual:vite-icons/logos/vue')['default']
     ManuallyInstallPackage: typeof import('./src/components/settings/ManuallyInstallPackage.vue')['default']
     MdiGithub: typeof import('virtual:vite-icons/mdi/github')['default']

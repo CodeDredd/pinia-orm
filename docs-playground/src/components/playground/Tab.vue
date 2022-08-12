@@ -31,7 +31,9 @@ const remove = () => {
     border="r-1 light-900 dark:dark-400"
     @click="setActiveFile(name)"
   >
-    <logos-vue />
+    <logos-vue v-if="name.includes('.vue')" />
+    <logos-typescript-icon v-if="name.includes('.ts')" />
+    <logos-javascript v-if="name.includes('.js')" />
     <div
       :class="{ '!text-green-500': active }"
       text="dark-900 dark:light-900 xs"
