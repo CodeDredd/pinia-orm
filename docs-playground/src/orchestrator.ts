@@ -220,7 +220,7 @@ const userRepo = useRepo(User)
 
 userRepo.save(data.users)
 
-const users = userRepo.all()
+const users = userRepo.with('todos').get()
 `
 
 const dataScript = `
@@ -231,6 +231,14 @@ export default {
       name: 'username',
       preName: 'John',
       lastName: 'Doe',
+      todos: [
+        {
+          title: 'Super',
+        },
+        {
+          title: 'Cool',
+        },
+      ],
     }
   ]
 }
@@ -239,6 +247,7 @@ export default {
 // User.ts
 const modelUserScript = `
 import { Model } from 'pinia-orm'
+import Todo from './Todo.js'
 
 export default class User extends Model {
   static entity = 'users'
@@ -249,6 +258,7 @@ export default class User extends Model {
       name: this.string(''),
       firstName: this.string('').nullable(),
       lastName: this.string('').nullable(),
+      todos: this.hasMany(Todo, 'userId'),
     }
   }
 }
@@ -258,7 +268,7 @@ export default class User extends Model {
 const modelToDoScript = `
 import { Model } from 'pinia-orm'
 
-export default class ToDo extends Model {
+export default class Todo extends Model {
   static entity = 'todos'
 
   static fields() {
@@ -346,7 +356,7 @@ function loadInitialState() {
     addFile(new OrchestratorFile('App.vue', appTemplate.trim(), appScript.trim()))
     addFile(new OrchestratorFile('data.js', '', dataScript.trim()))
     addFile(new OrchestratorFile('User.js', '', modelUserScript.trim()))
-    addFile(new OrchestratorFile('ToDo.js', '', modelToDoScript.trim()))
+    addFile(new OrchestratorFile('Todo.js', '', modelToDoScript.trim()))
     setActiveFile('App.vue')
     shouldUpdateContent.trigger(null)
   }
