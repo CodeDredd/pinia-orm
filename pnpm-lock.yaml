@@ -82,7 +82,7 @@ importers:
   packages/pinia-orm:
     specifiers:
       '@antfu/eslint-config': ^0.26.1
-      '@size-limit/preset-small-lib': ^8.0.0
+      '@size-limit/preset-small-lib': ^8.0.1
       '@types/prettier': ^2
       '@vitest/ui': ^0.21.1
       '@vue/composition-api': ^1.7.0
@@ -95,11 +95,11 @@ importers:
       normalizr: ^3.6.2
       pinia: ^2.0.18
       prettier: ^2.7.1
-      size-limit: ^8.0.0
+      size-limit: ^8.0.1
       std-env: ^3.1.1
       typescript: ^4.7.4
       unbuild: ^0.8.8
-      vite: ^3.0.5
+      vite: ^3.0.6
       vitest: ^0.21.1
       vue: ^3.2.37
       vue-demi: ^0.13.7
@@ -109,7 +109,7 @@ importers:
       normalizr: 3.6.2
     devDependencies:
       '@antfu/eslint-config': 0.26.1_qugx7qdu5zevzvxaiqyxfiwquq
-      '@size-limit/preset-small-lib': 8.0.0_size-limit@8.0.0
+      '@size-limit/preset-small-lib': 8.0.1_size-limit@8.0.1
       '@types/prettier': 2.6.3
       '@vitest/ui': 0.21.1
       '@vue/composition-api': 1.7.0_vue@3.2.37
@@ -120,11 +120,11 @@ importers:
       mkdist: 0.3.13_typescript@4.7.4
       pinia: 2.0.18_doa2iczdmf7fngilxryautdh3i
       prettier: 2.7.1
-      size-limit: 8.0.0
+      size-limit: 8.0.1
       std-env: 3.1.1
       typescript: 4.7.4
       unbuild: 0.8.8
-      vite: 3.0.5
+      vite: 3.0.6
       vitest: 0.21.1_wamces6ckycv64aju4qstbuloa
       vue: 3.2.37
       vue-demi: 0.13.7_3nmzzoefrdru4lagmst3ha3a3q
@@ -2214,35 +2214,35 @@ packages:
     resolution: {integrity: sha512-gHJu8cdYTD5p4UqmQHrxaWrtb/jkH5imLXzuBypWhKzNkW0qfmgz+w1xaJccWVuJta1YYUdlDiPHXRTR4Ku0MQ==}
     dev: true
 
-  /@size-limit/esbuild/8.0.0_size-limit@8.0.0:
-    resolution: {integrity: sha512-du3gGKAzeh8fKEbqG0PcHKyyilpHTC+z/e6r0a82G+9KMCQd2PBHfOrTyN+of8u6EZXkrp0zdwgr84nKLp1nPg==}
+  /@size-limit/esbuild/8.0.1_size-limit@8.0.1:
+    resolution: {integrity: sha512-EnfRweoQc4P91G45sPfzAWMVPibK5SEV6sUWC46DcGlT9xrYeCQYtInbsny1/lSorC/sfJKN84aGm4A+q6SgOw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 8.0.0
+      size-limit: 8.0.1
     dependencies:
-      esbuild: 0.14.51
+      esbuild: 0.15.1
       nanoid: 3.3.4
-      size-limit: 8.0.0
+      size-limit: 8.0.1
     dev: true
 
-  /@size-limit/file/8.0.0_size-limit@8.0.0:
-    resolution: {integrity: sha512-xd4bBk/YyezsMQfpi2V3/blodCuPNVF5UwMd4L9LxBvon0PK4C1+3zBXxZpvN7AcMvPbJ8RUMS+iHpD4KcwaOg==}
+  /@size-limit/file/8.0.1_size-limit@8.0.1:
+    resolution: {integrity: sha512-kwgc5UJQIz5qbRow3atSiW2K7vEIIw4DelT4WLn09cOwcJgWs82Imgz2UqVivHJmCisn/ltPjT4qmxaDfjFflw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 8.0.0
+      size-limit: 8.0.1
     dependencies:
       semver: 7.3.7
-      size-limit: 8.0.0
+      size-limit: 8.0.1
     dev: true
 
-  /@size-limit/preset-small-lib/8.0.0_size-limit@8.0.0:
-    resolution: {integrity: sha512-6Q2fJFuPalvANQIoxYAmQLGk1Rxerw/qtqpEi1dhF9czfWxtYxKwlVQgsE/d0j5eum/N7iJxioDeKZQJjzKPrQ==}
+  /@size-limit/preset-small-lib/8.0.1_size-limit@8.0.1:
+    resolution: {integrity: sha512-EV+UXGZJU9kiT8R4N9dxjRAJ37tzjuP+e2DfpRtv7cx1ErFiB6k//wEhw9nLmJMWWhfvcVEvJYyKm3+i0pbWUQ==}
     peerDependencies:
-      size-limit: 8.0.0
+      size-limit: 8.0.1
     dependencies:
-      '@size-limit/esbuild': 8.0.0_size-limit@8.0.0
-      '@size-limit/file': 8.0.0_size-limit@8.0.0
-      size-limit: 8.0.0
+      '@size-limit/esbuild': 8.0.1_size-limit@8.0.1
+      '@size-limit/file': 8.0.1_size-limit@8.0.1
+      size-limit: 8.0.1
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -9462,14 +9462,6 @@ packages:
       estree-walker: 0.6.1
     dev: true
 
-  /rollup/2.77.0:
-    resolution: {integrity: sha512-vL8xjY4yOQEw79DvyXLijhnhh+R/O9zpF/LEgkCebZFtb6ELeN9H3/2T0r8+mp+fFTBHZ5qGpOpW2ela2zRt3g==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /rollup/2.77.2:
     resolution: {integrity: sha512-m/4YzYgLcpMQbxX3NmAqDvwLATZzxt8bIegO78FZLl+lAgKJBd1DRAOeEiZcKOIOPjxE6ewHWHNgGEalFXuz1g==}
     engines: {node: '>=10.0.0'}
@@ -9667,8 +9659,8 @@ packages:
       totalist: 3.0.0
     dev: true
 
-  /size-limit/8.0.0:
-    resolution: {integrity: sha512-344dzCZZiTz+N0WS801SNG/qd8MCa6dzJhsj8gLQg4JlmddwUdi/Ol0HfliEVL7jgtOz8fNgDeB2+14xwalvVA==}
+  /size-limit/8.0.1:
+    resolution: {integrity: sha512-VHrozqkQTYfcv1OlZIRIL0x6f+xhZ3TT+RTXC5AvKn/yA+3PIWERrKWqHMJPD7G/Vi0SuBtWAn3IvCGx2/UB1g==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     dependencies:
@@ -10912,7 +10904,34 @@ packages:
       esbuild: 0.14.51
       postcss: 8.4.16
       resolve: 1.22.1
-      rollup: 2.77.0
+      rollup: 2.77.3
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vite/3.0.6:
+    resolution: {integrity: sha512-pjfsWIzfUlQME/VAmU6SsjdHkTt6WAHysuqPkHDcjzNu6IGtxDSZ/VfRYOwHaCqX4M3Ivz0kxuSfAPM6gAIX+w==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.14.51
+      postcss: 8.4.16
+      resolve: 1.22.1
+      rollup: 2.77.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -10953,7 +10972,7 @@ packages:
       local-pkg: 0.4.2
       tinypool: 0.2.4
       tinyspy: 1.0.0
-      vite: 3.0.5
+      vite: 3.0.6
     transitivePeerDependencies:
       - less
       - sass
