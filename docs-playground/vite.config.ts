@@ -2,7 +2,8 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
-import ViteComponents, { HeadlessUiResolver } from 'vite-plugin-components'
+import ViteComponents from 'unplugin-vue-components/vite'
+import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 import Icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import { copyVuePlugin } from './plugins/copy-vue'
 
@@ -30,8 +31,8 @@ export default defineConfig({
       },
     }),
     ViteComponents({
-      globalComponentsDeclaration: true,
-      customComponentResolvers: [
+      dts: true,
+      resolvers: [
         ViteIconsResolver({
           componentPrefix: '',
         }),
