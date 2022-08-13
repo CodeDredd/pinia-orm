@@ -31,7 +31,7 @@
     "pinia": "^2.0.18",
     "pinia-orm": "^1.0.0-rc.5",
     "splitpanes": "^3.0.4",
-    "theme-vitesse": "^0.5.0",
+    "theme-vitesse": "^0.5.1",
     "vscode-html-languageservice": "^4.0.3",
     "vue": "^3.2.37",
     "vue-hako": "^0.0.2"
