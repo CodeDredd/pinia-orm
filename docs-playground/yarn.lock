@@ -3222,10 +3222,10 @@ minimist@^1.2.0, minimist@^1.2.6:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
-monaco-editor-core@^0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor-core/-/monaco-editor-core-0.24.0.tgz#c3607a928d7ba70d91807b8f6d8364d98e42e508"
-  integrity sha512-WJAzpNYEaJp8Z7crIAiLCVln1zZdo4cFXCRuhTDN4A3tz6IK2NOXAtTOZ9iLKBTtd6eitZJ2Q1Fx8JN8rN3fWw==
+monaco-editor-core@^0.34.0:
+  version "0.34.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor-core/-/monaco-editor-core-0.34.0.tgz#7c1727d88c3fb70f48cea0e13aac8c05c0b44700"
+  integrity sha512-vyKwADMPe0oNGg+NgxWQCj00IvweeyEGeu0ZiJ14L8HUc5hNvkPAzc8RcSf9lRSpgy4Nc/S63AeqAvARsofObg==
 
 monaco-editor@0.24.0:
   version "0.24.0"
