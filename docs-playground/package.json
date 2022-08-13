@@ -41,7 +41,7 @@
     "@iconify/json": "^1.1.349",
     "@types/file-saver": "^2.0.5",
     "@types/node": "^15.6.1",
-    "@vitejs/plugin-vue": "^1.2.2",
+    "@vitejs/plugin-vue": "^1.10.2",
     "@vue/compiler-sfc": "^3.2.37",
     "eslint": "^7.27.0",
     "typescript": "^4.1.3",
