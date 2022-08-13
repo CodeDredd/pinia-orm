@@ -31,7 +31,7 @@ useEventListener('keydown', (ev) => {
     items="center"
     spcae="y-2"
   >
-    <img src="/logo_pinia_orm.svg" class="w-12" />
+    <a href="https://pinia-orm.codedredd.de" alt="Pinia ORM - Documentation"><img src="/logo_pinia_orm.svg" class="w-12" /></a>
     <span class="flex-1"></span>
     <Button
       icon

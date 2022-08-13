@@ -20,6 +20,7 @@
 
 - [✨ &nbsp;Release Notes](https://pinia-orm.codedredd.de/changelog)
 - [📖 &nbsp;Documentation](https://pinia-orm.codedredd.de)
+- [👾 &nbsp;Playground](https://pinia-orm-play.codedredd.de)
 
 ## Vite Integration
 

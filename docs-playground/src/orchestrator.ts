@@ -208,19 +208,77 @@ const appTemplate = `
   h="screen"
   font="mono"
   >
-  <p v-for="user in users">{{ user }}</p>
+  <div class="min-w-[300px]">
+    <select v-model="userSelect" class="mb-8 block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+      <option :value="null" selected>None</option>
+      <option v-for="user in users" :value="user.id">{{ user.name }}</option>
+    </select>
+    <user-card v-if="userSelect !== null" :user="users.find(user => user.id === userSelect)" @removeTodo="removeTodo" />
+    <div v-else class="min-h-[350px]"></div>
+  </div>
 </div>
 `
+
 const appScript = `
-import { useRepo, Model } from 'pinia-orm'
+import { ref, computed } from 'vue'
+import { useRepo } from 'pinia-orm'
 import User from './User.js'
+import Todo from './Todo.js'
 import data from './data.js'
+import userCard from './userCard.vue'
 
 const userRepo = useRepo(User)
+const todoRepo = useRepo(Todo)
+
+const userSelect = ref(null)
 
 userRepo.save(data.users)
 
-const users = userRepo.with('todos').get()
+const users = computed(() => userRepo.with('todos').get())
+
+const removeTodo = (id) => {
+  todoRepo.destroy(id)
+}
+`
+
+const userCardTemplate = `
+<div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex flex-col items-center pb-10">
+        <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="user.avatarImgUrl" :alt="user.name">
+        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ user.firstName }}</h5>
+        <span class="text-sm text-gray-500 dark:text-gray-400">{{ user.lastName }}</span>
+        <ul class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600 flex items-center" v-for="todo in user.todos">
+                <span class="flex-grow">{{ todo.title }}</span>
+                <button @click="removeTodo(todo.id)" class="inline-block p-[8px] rounded bg-red-400">
+                    <svg class="h-[12px] w-[12px]" viewPort="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="1" y1="11"
+                              x2="11" y2="1"
+                              stroke="black"
+                              stroke-width="2"/>
+                        <line x1="1" y1="1"
+                              x2="11" y2="11"
+                              stroke="black"
+                              stroke-width="2"/>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+`
+const userCardScript = `
+import { useRepo } from 'pinia-orm'
+
+defineProps({
+  user: Object,
+})
+
+const emit = defineEmits(['removeTodo'])
+
+const removeTodo = (id) => {
+  emit('removeTodo', id)
+}
 `
 
 const dataScript = `
@@ -228,15 +286,34 @@ export default {
   users: [
     {
       id: 1,
-      name: 'username',
-      preName: 'John',
-      lastName: 'Doe',
+      name: 'JohnK',
+      avatarImgUrl: 'https://i.pravatar.cc/300?img=57',
+      firstName: 'John',
+      lastName: 'K',
       todos: [
         {
           title: 'Super',
         },
         {
           title: 'Cool',
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: 'JaneD',
+      avatarImgUrl: 'https://i.pravatar.cc/300?img=45',
+      firstName: 'Jane',
+      lastName: 'Doe',
+      todos: [
+        {
+          title: 'Vue 3 is done',
+        },
+        {
+          title: 'Release Nuxt 3',
+        },
+        {
+          title: 'Add stuff',
         },
       ],
     }
@@ -256,6 +333,7 @@ export default class User extends Model {
     return {
       id: this.uid(),
       name: this.string(''),
+      avatarImgUrl: this.string(''),
       firstName: this.string('').nullable(),
       lastName: this.string('').nullable(),
       todos: this.hasMany(Todo, 'userId'),
@@ -354,6 +432,7 @@ function loadInitialState() {
   else {
     orchestrator.packages = initialPackages
     addFile(new OrchestratorFile('App.vue', appTemplate.trim(), appScript.trim()))
+    addFile(new OrchestratorFile('userCard.vue', userCardTemplate.trim(), userCardScript.trim()))
     addFile(new OrchestratorFile('data.js', '', dataScript.trim()))
     addFile(new OrchestratorFile('User.js', '', modelUserScript.trim()))
     addFile(new OrchestratorFile('Todo.js', '', modelToDoScript.trim()))
