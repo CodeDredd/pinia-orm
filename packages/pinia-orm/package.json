@@ -24,6 +24,7 @@
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs"
     },
+    "./*": "./*",
     "./decorators": {
       "require": "./dist/decorators.cjs",
       "import": "./dist/decorators.mjs"
