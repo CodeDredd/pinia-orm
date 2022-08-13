@@ -1194,7 +1194,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/splitpanes@^2.2.0":
+"@types/splitpanes@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@types/splitpanes/-/splitpanes-2.2.1.tgz#7ff67e639b16eecfc3ad403269dff320cf96e866"
   integrity sha512-H5BgO6UdJRzz5ddRzuGvLBiPSPEuuHXb5ET+7avLLrEx1uc7f5Ut5oLMDQsfvGtHBBAFczt1QNYuDf27wHbvDQ==
