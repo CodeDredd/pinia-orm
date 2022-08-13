@@ -1468,7 +1468,7 @@
     "@vueuse/shared" "5.3.0"
     vue-demi "*"
 
-"@vueuse/integrations@^9.0.2":
+"@vueuse/integrations@^9.1.0":
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-9.1.0.tgz#b6fc0000401205834fdda2a03843215eccf97e87"
   integrity sha512-HCVlm/aNllOKLYP4cx/rFFGz4q+QlgkF6N5tS7GRYVk/HGPxKqkUBX865niRfZfo+INvqtgTmpp9o+pYXaZlDg==
