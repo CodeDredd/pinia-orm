@@ -6,7 +6,6 @@ export default defineBuildConfig({
     // bundling
     'src/index',
     'src/decorators',
-    'src/helpers',
   ],
   declaration: true,
   clean: true,
