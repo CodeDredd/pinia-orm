@@ -22,7 +22,8 @@ if (!commitRE.test(msg)) {
       `    ${chalk.green(
         `fix(view): handle keep-alive with aborted navigations (close #28)`
       )}\n\n` +
-      chalk.red(`  See .github/commit-convention.md for more details.\n`)
+      chalk.red(`  See .github/commit-convention.md for more details.\n`) +
+    chalk.red('Your message: ' + msg)
   )
   process.exit(1)
 }
