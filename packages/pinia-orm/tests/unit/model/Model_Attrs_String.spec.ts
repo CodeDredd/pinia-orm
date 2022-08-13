@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Model, Str } from '../../../src'
+import { Model } from '../../../src'
+import { Str } from '../../../src/decorators'
 
 describe('unit/model/Model_Attrs_String', () => {
   it('casts the value to `String` when instantiating the model', () => {

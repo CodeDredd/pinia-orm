@@ -30,6 +30,13 @@
       "import": "./dist/decorators.mjs"
     }
   },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "files": [

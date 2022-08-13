@@ -1,16 +1,14 @@
 import { describe, expect, it } from 'vitest'
-
+import { Model, useRepo } from '../../../src'
 import {
   Attr,
   BelongsTo,
   HasMany,
   HasManyBy,
   HasOne,
-  Model,
   MorphOne,
   MorphTo,
-  useRepo,
-} from '../../../src'
+} from '../../../src/decorators'
 
 describe('unit/model/Model_Relations', () => {
   class Phone extends Model {

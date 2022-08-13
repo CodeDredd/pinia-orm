@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Model, Num } from '../../../src'
+import { Model } from '../../../src'
+import { Num } from '../../../src/decorators'
 
 describe('unit/model/Model_Attrs_Number', () => {
   it('casts the value to `Number` when instantiating the model', () => {

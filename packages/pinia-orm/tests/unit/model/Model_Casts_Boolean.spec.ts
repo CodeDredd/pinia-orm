@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Attr, Bool, Cast, Model, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, Bool, Cast } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Casts_Boolean', () => {

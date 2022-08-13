@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Attr, Cast, CastAttribute, Model } from '../../../src'
+import { CastAttribute, Model } from '../../../src'
+import { Attr, Cast } from '../../../src/decorators'
 
 describe('unit/model/Model_Casts_Custom', () => {
   beforeEach(() => {
