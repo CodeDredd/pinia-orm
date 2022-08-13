@@ -282,7 +282,7 @@ export class Query<M extends Model = Model> {
       .filter(model => compareWithOperator(
         model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
         typeof operator === 'number' ? operator : count ?? 1,
-        typeof operator === 'number' || count === undefined ? '>=' : operator,
+        (typeof operator === 'number' || count === undefined) ? '>=' : operator,
       ))
       .map(model => model.$getIndexId())
 
