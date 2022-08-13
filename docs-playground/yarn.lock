@@ -1007,7 +1007,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@headlessui/vue@^1.2.0":
+"@headlessui/vue@^1.6.7":
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.6.7.tgz#433b86e5f86203606e7ac4851777173a327dd8c4"
   integrity sha512-5sTCBpkUoFE7zhANn/6Z+pf3PUA7MD6BBaTsJcQybq9E4fnNiMM9agOJI9meXbtcawE6Dm8EeB5A8HAJEnZCbQ==
