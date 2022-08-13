@@ -31,7 +31,7 @@ useEventListener('keydown', (ev) => {
     items="center"
     spcae="y-2"
   >
-    <img src="/vueuse.svg" class="w-12" />
+    <img src="/logo_pinia_orm.svg" class="w-12" />
     <span class="flex-1"></span>
     <Button
       icon
@@ -55,7 +55,7 @@ useEventListener('keydown', (ev) => {
     >
       <carbon-settings />
     </Button>
-    <a href="https://github.com/wheatjs/vueuse-playground" target="_blank">
+    <a href="https://github.com/CodeDredd/pinia-orm/tree/master/docs-playground" target="_blank">
       <Button
         icon
         text="base"

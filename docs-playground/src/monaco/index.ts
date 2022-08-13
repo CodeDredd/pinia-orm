@@ -5,6 +5,7 @@ import { createSingletonPromise } from '@antfu/utils'
 
 import vueuseTypes from '@vueuse/core/index.d.ts?raw'
 import vueTypes from '@vue/runtime-core/dist/runtime-core.d.ts?raw'
+import piniaORMTypes from 'pinia-orm/dist/index.d.ts?raw'
 
 import { orchestrator } from '~/orchestrator'
 
@@ -19,7 +20,7 @@ const setup = createSingletonPromise(async() => {
     allowJs: true,
   })
 
-  const registered: string[] = ['vue', '@vueuse/core']
+  const registered: string[] = ['vue', '@vueuse/core', 'pinia-orm']
 
   monaco.languages.typescript.javascriptDefaults.addExtraLib(`
     declare module '@vueuse/core' { ${vueuseTypes} }
@@ -28,6 +29,10 @@ const setup = createSingletonPromise(async() => {
   monaco.languages.typescript.javascriptDefaults.addExtraLib(`
     declare module 'vue' { ${vueTypes} }
   `, 'ts:vue')
+
+  // monaco.languages.typescript.javascriptDefaults.addExtraLib(`
+  //   declare module 'pinia-orm' { ${piniaORMTypes} }
+  // `, 'ts:pinia-orm')
 
   watch(() => orchestrator.packages, () => {
     orchestrator.packages.forEach((pack) => {
