@@ -24,7 +24,7 @@
     "@vueuse/integrations": "^9.1.0",
     "@vueuse/shared": "9.0.2",
     "file-saver": "^2.0.5",
-    "jszip": "^3.6.0",
+    "jszip": "^3.10.1",
     "lz-string": "^1.4.4",
     "monaco-editor": "0.24.0",
     "monaco-editor-core": "^0.24.0",
