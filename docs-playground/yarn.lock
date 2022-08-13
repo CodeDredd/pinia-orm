@@ -4203,7 +4203,7 @@ vite@^3.0.7:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vscode-html-languageservice@^4.0.3:
+vscode-html-languageservice@^4.2.5:
   version "4.2.5"
   resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-4.2.5.tgz#c0cc8ff3d824d16388bbac187e1828749eccf006"
   integrity sha512-dbr10KHabB9EaK8lI0XZW7SqOsTfrNyT3Nuj0GoPi4LjGKUmMiLtsqzfedIzRTzqY+w0FiLdh0/kQrnQ0tLxrw==
