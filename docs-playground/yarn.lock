@@ -1031,7 +1031,7 @@
   resolved "https://registry.yarnpkg.com/@iconify/json-tools/-/json-tools-1.0.10.tgz#d9a7050dbbe8bb29d684d4b3f9446ed2d0bea3cc"
   integrity sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==
 
-"@iconify/json@^1.1.349":
+"@iconify/json@^1.1.461":
   version "1.1.461"
   resolved "https://registry.yarnpkg.com/@iconify/json/-/json-1.1.461.tgz#9e76f2339292e1a89855f93e497439afeb642f11"
   integrity sha512-9Y41Tk9s3LDt4WI20XySNhNX6qTJ/WOBeE3O2iyoV9LJ6gFEDjp0uTPzfRU9NUx7D6VkvQ/htJEuRe9LmyMqUA==
