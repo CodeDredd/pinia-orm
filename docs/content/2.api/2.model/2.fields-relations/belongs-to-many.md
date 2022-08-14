@@ -25,7 +25,8 @@ class User extends Model {
 ## With Decorator
 
 ````ts
-import { Model, Attr, Str, BelongsToMany } from 'pinia-orm'
+import { Model } from 'pinia-orm'
+import { Attr, BelongsToMany, Str } from 'pinia-orm/decorators'
 import Role from './Role'
 import RoleUser from './RoleUser'
 
