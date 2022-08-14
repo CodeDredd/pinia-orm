@@ -1,6 +1,6 @@
 {
   "name": "@pinia-orm/normalizr",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "Normalizes JSON according to schema for Redux and Flux applications",
   "bugs": {
     "url": "https://github.com/CodeDredd/pinia-orm/issues"
@@ -24,8 +24,8 @@
     "README.md"
   ],
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "index.d.ts",
   "exports": {
     ".": {
