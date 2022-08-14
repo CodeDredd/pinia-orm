@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, BelongsTo, HasMany, Model, useRepo } from '../../../../src'
+import { Model, useRepo } from '../../../../src'
+import { Attr, BelongsTo, HasMany } from '../../../../src/decorators'
 
 describe('feature/relations/nested/nested_revive', () => {
   class User extends Model {

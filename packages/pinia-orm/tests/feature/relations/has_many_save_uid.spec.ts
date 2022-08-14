@@ -1,6 +1,7 @@
 import { beforeEach, describe, it } from 'vitest'
 
-import { Attr, HasMany, Model, Str, Uid, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, HasMany, Str, Uid } from '../../../src/decorators'
 import { assertState, mockUid } from '../../helpers'
 
 describe('feature/relations/has_many_insert_uid', () => {

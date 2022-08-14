@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, Num, Str } from '../../../src/decorators'
 import { assertInstanceOf, assertModels, fillState } from '../../helpers'
 
 describe('feature/repository/retrieves_order_by', () => {

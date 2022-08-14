@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model, Repository, Str, useRepo } from '../../../src'
+import { Model, Repository, useRepo } from '../../../src'
+import { Attr, Str } from '../../../src/decorators'
 
 describe('feature/repository_custom/custom_repository', () => {
   it('can define a custom repository', () => {

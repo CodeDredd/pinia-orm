@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, Str } from '../../../src/decorators'
 import { assertInstanceOf, assertState } from '../../helpers'
 
 describe('feature/repository/destroy', () => {

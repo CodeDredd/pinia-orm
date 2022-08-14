@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, BelongsTo, Model, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, BelongsTo, Str } from '../../../src/decorators'
 
 describe('feature/relations/belongs_to_retrieve', () => {
   class User extends Model {

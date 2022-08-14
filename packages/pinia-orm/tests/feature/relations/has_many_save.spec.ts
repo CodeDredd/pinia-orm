@@ -1,6 +1,7 @@
 import { describe, it } from 'vitest'
 
-import { HasMany, Model, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { HasMany, Num, Str } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('feature/relations/has_many_save', () => {

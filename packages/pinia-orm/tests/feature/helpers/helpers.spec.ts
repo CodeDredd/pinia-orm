@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 import { Model, Repository, createORM } from '../../../src'
 import { Attr, Str } from '../../../src/decorators'
-import { mapRepos } from '../../../src/helpers'
+import { mapRepos } from '../../../src/composables/mapRepos'
 
 /* eslint vue/one-component-per-file:0 */
 describe('feature/helpers/helpers', () => {

@@ -1,6 +1,7 @@
 import { describe, it } from 'vitest'
 
-import { Model, Str, Uid, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Str, Uid } from '../../../src/decorators'
 import { assertState, mockUid } from '../../helpers'
 
 describe('feature/uid/fresh_uid', () => {

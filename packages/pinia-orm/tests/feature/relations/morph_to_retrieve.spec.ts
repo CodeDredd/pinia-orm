@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model, MorphTo, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, MorphTo, Num, Str } from '../../../src/decorators'
 import { assertModel } from '../../helpers'
 
 describe('feature/relations/morph_to_retrieve', () => {

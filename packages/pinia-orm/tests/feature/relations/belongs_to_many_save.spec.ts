@@ -1,6 +1,7 @@
 import { describe, it } from 'vitest'
 
-import { Attr, BelongsToMany, Model, Num, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, BelongsToMany, Num } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('feature/relations/belongs_to_many_save', () => {

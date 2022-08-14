@@ -1,7 +1,8 @@
 import { describe, it } from 'vitest'
 import { assertState, fillState } from '../../helpers'
 
-import { Attr, Model, MorphMany, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, MorphMany, Num, Str } from '../../../src/decorators'
 
 describe('feature/relations/morph_many_save', () => {
   class Comment extends Model {

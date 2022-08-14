@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
 import { getActivePinia, setActivePinia } from 'pinia'
-import { Model, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Num, Str } from '../../../src/decorators'
 import {
   assertInstanceOf,
   assertModel,
