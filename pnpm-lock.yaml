@@ -48,6 +48,24 @@ importers:
       typescript: 4.7.4
       yorkie: 2.0.0
 
+  packages/normalizr:
+    specifiers:
+      '@nuxtjs/eslint-config-typescript': ^10.0.0
+      '@size-limit/preset-small-lib': ^8.0.1
+      eslint: ^8.22.0
+      immutable: ^4.1.0
+      size-limit: ^8.0.1
+      typescript: ^4.7.4
+      unbuild: ^0.8.8
+    devDependencies:
+      '@nuxtjs/eslint-config-typescript': 10.0.0_4rv7y5c6xz3vfxwhbrcxxi73bq
+      '@size-limit/preset-small-lib': 8.0.1_size-limit@8.0.1
+      eslint: 8.22.0
+      immutable: 4.1.0
+      size-limit: 8.0.1
+      typescript: 4.7.4
+      unbuild: 0.8.8
+
   packages/nuxt:
     specifiers:
       '@nuxt/kit': ^3.0.0-rc.8
@@ -6330,6 +6348,10 @@ packages:
   /ignore/5.2.0:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
     engines: {node: '>= 4'}
+
+  /immutable/4.1.0:
+    resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
+    dev: true
 
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
