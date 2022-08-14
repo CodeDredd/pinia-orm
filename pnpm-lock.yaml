@@ -100,7 +100,7 @@ importers:
   packages/pinia-orm:
     specifiers:
       '@antfu/eslint-config': ^0.26.1
-      '@pinia-orm/normalizr': ^1.0.0-rc.6
+      '@pinia-orm/normalizr': 1.0.0-rc.5
       '@size-limit/preset-small-lib': ^8.0.1
       '@types/prettier': ^2
       '@vitest/ui': ^0.21.1
@@ -123,7 +123,7 @@ importers:
       vue-demi: ^0.13.7
       vue2: npm:vue@^2.7.3
     dependencies:
-      '@pinia-orm/normalizr': link:../normalizr
+      '@pinia-orm/normalizr': 1.0.0-rc.5
       nanoid: 4.0.0
     devDependencies:
       '@antfu/eslint-config': 0.26.1_4rv7y5c6xz3vfxwhbrcxxi73bq
@@ -2005,6 +2005,10 @@ packages:
       node-addon-api: 3.2.1
       node-gyp-build: 4.5.0
     dev: true
+
+  /@pinia-orm/normalizr/1.0.0-rc.5:
+    resolution: {integrity: sha512-SgG/D1fjx8ETt62FZzWS2El/pztsxLKZbJhUw+ZsFYPPT6LgGpkiRGyefaEUJIR1QOYL/jMtpJKBsrkf9iX5+g==}
+    dev: false
 
   /@pinia/nuxt/0.4.0_j6bzmzd4ujpabbp5objtwxyjp4:
     resolution: {integrity: sha512-gJ0qRJ5KhpFrYVs6qdqTWXPp9DAzbs9u74zJw5hyQO7tRiItRUYQxbWtWjGC3XUw5oO73xYrA8lYa5/GMW0uSg==}
