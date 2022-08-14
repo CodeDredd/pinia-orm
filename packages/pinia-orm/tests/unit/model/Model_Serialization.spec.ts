@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model } from '../../../src'
+import { Model } from '../../../src'
+import { Attr } from '../../../src/decorators'
 
 describe('unit/model/Model_Serialization', () => {
   class User extends Model {

@@ -23,7 +23,8 @@ class User extends Model {
 ## With Decorator
 
 ````ts[User.ts]
-import { Model, Num, Str } from 'pinia-orm'
+import { Model } from 'pinia-orm'
+import { Num, Str } from 'pinia-orm/decorators'
 
 class User extends Model {
   static entity = 'users'

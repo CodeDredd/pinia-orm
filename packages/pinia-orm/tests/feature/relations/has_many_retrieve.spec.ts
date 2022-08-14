@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, HasMany, Model, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, HasMany, Str } from '../../../src/decorators'
 import { assertInstanceOf, assertModel } from '../../helpers'
 
 describe('feature/relations/has_many_retrieve', () => {

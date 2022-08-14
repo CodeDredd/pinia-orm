@@ -1,6 +1,7 @@
 import { describe, it } from 'vitest'
 
-import { Attr, Model, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, Str } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('feature/repository/insert', () => {

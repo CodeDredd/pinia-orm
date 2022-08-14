@@ -1,4 +1,5 @@
-import { Attr, BelongsTo, Model } from '../../../../../src'
+import { Model } from '../../../../../src'
+import { Attr, BelongsTo } from '../../../../../src/decorators'
 import User from './circular_relations_user'
 
 export default class Phone extends Model {

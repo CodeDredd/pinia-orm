@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, HasOne, Model, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, HasOne, Str } from '../../../src/decorators'
 import { assertModel } from '../../helpers'
 
 describe('feature/relations/has_one_retrieve', () => {

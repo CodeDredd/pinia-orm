@@ -1,6 +1,7 @@
 import { describe, it } from 'vitest'
 
-import { Attr, Model, MorphTo, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, MorphTo, Num, Str } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('feature/relations/morph_to_save', () => {

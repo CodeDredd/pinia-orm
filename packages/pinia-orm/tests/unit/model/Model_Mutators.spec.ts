@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model, Mutate, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, Mutate } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Mutators', () => {

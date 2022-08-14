@@ -3,17 +3,18 @@ import { nanoid } from 'nanoid/non-secure'
 import type { Mock } from 'vitest'
 import { expect } from 'vitest'
 
-import type { Collection, Elements, Model, RootState } from '../src'
+import type { Collection, Elements, Model } from '../src'
 
 interface Entities {
   [name: string]: Elements
 }
 
-export function createState(entities: Entities): RootState {
-  const state = {} as RootState
+export function createState(entities: Entities): any {
+  const state = {} as any
 
   for (const entity in entities) {
-    state[entity] = { data: {} }
+    if (!state[entity])
+      state[entity] = { data: {} }
 
     state[entity].data = entities[entity]
   }
@@ -22,17 +23,9 @@ export function createState(entities: Entities): RootState {
 }
 
 export function fillState(entities: Entities): void {
-  const state: any = {}
-
-  for (const entity in entities) {
-    if (!state[entity])
-      state[entity] = { data: {} }
-
-    state[entity].data = entities[entity]
-  }
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
-  getActivePinia().state.value = state
+  getActivePinia().state.value = createState(entities)
 }
 
 export function assertState(entities: Entities): void {

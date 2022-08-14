@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { HasMany, Model, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { HasMany, Num, Str } from '../../../src/decorators'
 
 describe('unit/model/Model_Sanitize', () => {
   class Post extends Model {

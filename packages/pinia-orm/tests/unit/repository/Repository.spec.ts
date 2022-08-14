@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import { Attr, Model, Repository, Str, useRepo } from '../../../src'
+import { Model, Repository, useRepo } from '../../../src'
+import { Attr, Str } from '../../../src/decorators'
 import { assertInstanceOf, assertModel, assertModels } from '../../helpers'
 
 describe('unit/repository/Repository', () => {

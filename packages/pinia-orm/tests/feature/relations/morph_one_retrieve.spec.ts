@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Model, MorphOne, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { MorphOne, Num, Str } from '../../../src/decorators'
 import { assertModel } from '../../helpers'
 
 describe('feature/relations/morph_one_retrieve', () => {
