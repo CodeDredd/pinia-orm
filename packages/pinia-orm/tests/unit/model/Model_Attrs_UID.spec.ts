@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { Model} from '../../../src'
+import { Model } from '../../../src'
 import { Uid } from '../../../src/decorators'
 import { mockUid } from '../../helpers'
 

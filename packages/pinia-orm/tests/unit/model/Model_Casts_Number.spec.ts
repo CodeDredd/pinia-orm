@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
-import { Attr, Num, Cast } from '../../../src/decorators'
+import { Attr, Cast, Num } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Casts_Number', () => {
