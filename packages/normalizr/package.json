@@ -1,0 +1,69 @@
+{
+  "name": "@pinia-orm/normalizr",
+  "version": "1.0.0-rc.5",
+  "description": "Normalizes JSON according to schema for Redux and Flux applications",
+  "bugs": {
+    "url": "https://github.com/CodeDredd/pinia-orm/issues"
+  },
+  "homepage": "https://github.com/CodeDredd/pinia-orm",
+  "repository": {
+    "url": "https://github.com/CodeDredd/pinia-orm.git",
+    "type": "git"
+  },
+  "keywords": [
+    "flux",
+    "redux",
+    "normalize",
+    "api",
+    "json"
+  ],
+  "files": [
+    "dist/",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "unbuild",
+    "size": "size-limit",
+    "flow": "flow",
+    "flow:ci": "flow check",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --fix --ext .js"
+  },
+  "author": "Paul Armstrong",
+  "contributors": [
+    "Dan Abramov",
+    "Gregor Becker"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@size-limit/preset-small-lib": "^8.0.1",
+    "eslint": "^8.22.0",
+    "flow-bin": "^0.136.0",
+    "immutable": "^3.8.1",
+    "lint-staged": "^8.1.7",
+    "size-limit": "^8.0.1",
+    "typescript": "^4.7.4",
+    "unbuild": "^0.8.8"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.mjs",
+      "limit": "2 kB"
+    }
+  ]
+}
