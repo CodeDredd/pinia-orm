@@ -1,5 +1,5 @@
-import type { schema as Normalizr } from 'normalizr'
-import { normalize } from 'normalizr'
+import type { schema as Normalizr } from '@pinia-orm/normalizr'
+import { normalize } from '@pinia-orm/normalizr'
 import { isArray } from '../support/Utils'
 import type { Element, NormalizedData } from '../data/Data'
 import type { Model } from '../model/Model'

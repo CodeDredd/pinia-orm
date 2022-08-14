@@ -1,4 +1,4 @@
-import type { Schema as NormalizrSchema } from 'normalizr'
+import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
 import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'

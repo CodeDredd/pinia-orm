@@ -51,7 +51,7 @@
     "@nuxtjs/eslint-config-typescript": "latest",
     "@pinia/nuxt": "^0.4.0",
     "@types/prettier": "^2",
-    "eslint": "^8.21.0",
+    "eslint": "^8.22.0",
     "nuxt": "^3.0.0-rc.8",
     "pinia": "^2.0.18",
     "pinia-orm": "~1.0.0-rc.4",
