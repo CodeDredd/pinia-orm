@@ -100,7 +100,7 @@ importers:
   packages/pinia-orm:
     specifiers:
       '@antfu/eslint-config': ^0.26.1
-      '@pinia-orm/normalizr': ^1.0.0-rc.5
+      '@pinia-orm/normalizr': ^1.0.0-rc.6
       '@size-limit/preset-small-lib': ^8.0.1
       '@types/prettier': ^2
       '@vitest/ui': ^0.21.1
