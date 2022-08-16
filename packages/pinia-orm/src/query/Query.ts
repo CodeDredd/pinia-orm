@@ -109,7 +109,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit(name: string, payload?: any): Elements {
-    const newStore = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions())
+    const newStore = useDataStore<M>(this.model.$baseEntity(), this.model.$piniaOptions())
     const store = newStore()
     if (name && typeof store[name] === 'function')
       store[name](payload)
