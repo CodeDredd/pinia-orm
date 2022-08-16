@@ -9,6 +9,7 @@ export default defineBuildConfig({
   ],
   declaration: true,
   clean: true,
+  externals: ['@/composables'],
   rollup: {
     emitCJS: true,
   },
