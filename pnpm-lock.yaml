@@ -118,10 +118,10 @@ importers:
       std-env: ^3.1.1
       typescript: ^4.7.4
       unbuild: ^0.8.8
-      vite: ^3.0.7
+      vite: ^3.0.8
       vitest: ^0.22.0
       vue: ^3.2.37
-      vue-demi: ^0.13.7
+      vue-demi: ^0.13.8
       vue2: npm:vue@^2.7.3
     dependencies:
       nanoid: 4.0.0
@@ -144,10 +144,10 @@ importers:
       std-env: 3.1.1
       typescript: 4.7.4
       unbuild: 0.8.8
-      vite: 3.0.7
+      vite: 3.0.8
       vitest: 0.22.0_lowuxb5cha5trdbzkig4obicgq
       vue: 3.2.37
-      vue-demi: 0.13.7_3nmzzoefrdru4lagmst3ha3a3q
+      vue-demi: 0.13.8_3nmzzoefrdru4lagmst3ha3a3q
       vue2: /vue/2.7.3
 
 packages:
@@ -8644,7 +8644,7 @@ packages:
       '@vue/devtools-api': 6.2.1
       typescript: 4.7.4
       vue: 3.2.37
-      vue-demi: 0.13.7_3nmzzoefrdru4lagmst3ha3a3q
+      vue-demi: 0.13.8_3nmzzoefrdru4lagmst3ha3a3q
     dev: true
 
   /pinia/2.0.18_j6bzmzd4ujpabbp5objtwxyjp4:
@@ -8662,7 +8662,7 @@ packages:
       '@vue/devtools-api': 6.2.1
       typescript: 4.7.4
       vue: 3.2.37
-      vue-demi: 0.13.7_vue@3.2.37
+      vue-demi: 0.13.8_vue@3.2.37
     dev: true
 
   /pkg-dir/4.2.0:
@@ -10940,6 +10940,33 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /vite/3.0.8:
+    resolution: {integrity: sha512-AOZ4eN7mrkJiOLuw8IA7piS4IdOQyQCA81GxGsAQvAZzMRi9ZwGB3TOaYsj4uLAWK46T5L4AfQ6InNGlxX30IQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.14.51
+      postcss: 8.4.16
+      resolve: 1.22.1
+      rollup: 2.77.3
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /vitest/0.22.0_lowuxb5cha5trdbzkig4obicgq:
     resolution: {integrity: sha512-BSIro/QOHLaQY08FHwT6THWhqLQ+VPU+N4Rdo4pcP+16XB6oLmNNAXGcSh/MOLUhfUy+mqCwx7AyKmU7Ms5R+g==}
     engines: {node: '>=v14.16.0'}
@@ -10972,7 +10999,7 @@ packages:
       local-pkg: 0.4.2
       tinypool: 0.2.4
       tinyspy: 1.0.0
-      vite: 3.0.7
+      vite: 3.0.8
     transitivePeerDependencies:
       - less
       - sass
@@ -11027,8 +11054,8 @@ packages:
       ufo: 0.8.4
     dev: true
 
-  /vue-demi/0.13.7_3nmzzoefrdru4lagmst3ha3a3q:
-    resolution: {integrity: sha512-hbhlvpx1gFW3TB5HxJ0mNxyA9Jh5iQt409taOs6zkhpvfJ7YzLs1rsLufJmDsjH5PI1cOyfikY1fE/meyHfU5A==}
+  /vue-demi/0.13.8_3nmzzoefrdru4lagmst3ha3a3q:
+    resolution: {integrity: sha512-Vy1zbZhCOdsmvGR6tJhAvO5vhP7eiS8xkbYQSoVa7o6KlIy3W8Rc53ED4qI4qpeRDjv3mLfXSEpYU6Yq4pgXRg==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
@@ -11043,8 +11070,8 @@ packages:
       vue: 3.2.37
     dev: true
 
-  /vue-demi/0.13.7_vue@3.2.37:
-    resolution: {integrity: sha512-hbhlvpx1gFW3TB5HxJ0mNxyA9Jh5iQt409taOs6zkhpvfJ7YzLs1rsLufJmDsjH5PI1cOyfikY1fE/meyHfU5A==}
+  /vue-demi/0.13.8_vue@3.2.37:
+    resolution: {integrity: sha512-Vy1zbZhCOdsmvGR6tJhAvO5vhP7eiS8xkbYQSoVa7o6KlIy3W8Rc53ED4qI4qpeRDjv3mLfXSEpYU6Yq4pgXRg==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
