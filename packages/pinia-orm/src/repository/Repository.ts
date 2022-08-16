@@ -1,4 +1,3 @@
-import type {Store, StoreDefinition} from 'pinia'
 import type { Constructor } from '../types'
 import { assert, isArray } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
