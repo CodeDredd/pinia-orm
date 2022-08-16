@@ -17,4 +17,4 @@ export interface DataStoreState<M extends Model = Model> {
   data: Record<string, M>
 }
 
-export type DataStore = ReturnType<typeof import('../composables')['useDataStore']>
+export type DataStore = ReturnType<typeof import('pinia-orm')['useDataStore']>
