@@ -13,7 +13,13 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ES2020",
-    "types": ["nanoid", "@types/node", "vitest/globals"]
+    "types": ["nanoid", "@types/node", "vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "@": [
+        "./src"
+      ]
+    }
   },
   "exclude": [
     "**/dist",

@@ -1,4 +1,3 @@
-import type { Store } from 'pinia'
 import type { Constructor } from '../types'
 import { assert, isArray } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
@@ -85,11 +84,10 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
-   * Return the pinia store used with this model
+   * Returns the pinia store used with this model
    */
-  piniaStore(): Store {
-    const store = useDataStore(this.model.$entity(), this.model.$piniaOptions())
-    return store()
+  piniaStore() {
+    return useDataStore<M>(this.model.$entity(), this.model.$piniaOptions())()
   }
 
   /**

@@ -1,6 +1,8 @@
+import type { DefineStoreOptionsBase } from 'pinia'
 import { assert, convertCast, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
+import type { DataStore, DataStoreState } from '../composables/useDataStore'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -80,7 +82,7 @@ export class Model {
    * The pinia options for the model. It can contain options which will passed
    * to the 'defineStore' function of pinia.
    */
-  protected static piniaOptions: any = {}
+  protected static piniaOptions: DefineStoreOptionsBase<DataStoreState, DataStore> = {}
 
   /**
    * The mutators for the model. It contains all mutators
@@ -482,7 +484,7 @@ export class Model {
   /**
    * Get the pinia options for this model.
    */
-  $piniaOptions(): Record<string, any> {
+  $piniaOptions(): DefineStoreOptionsBase<DataStoreState, DataStore> {
     return this.$self().piniaOptions
   }
 
