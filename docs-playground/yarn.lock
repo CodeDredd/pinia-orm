@@ -1032,10 +1032,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@iconify/json@^2.1.93":
-  version "2.1.93"
-  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.1.93.tgz#5a534e2cd9d2dd17b77ade1e5419afced25b3c42"
-  integrity sha512-gFmjXeSKI7NXHU8i1mwPJCjpUwignMh2ZIoarC87cp3nHyAyT5R/v2cH/VhAaJGPU3hM+Sl9r/yFYxhwwsU2qA==
+"@iconify/json@^2.1.94":
+  version "2.1.94"
+  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.1.94.tgz#bb53f535cd05b5cc351350f8d8ad08868c07937d"
+  integrity sha512-/AFIlLMrnuZpWubJgmt1//iEhg6ZnDPMs4J3TvOZLcN2PYQFDnILBe2r8c3wZ3wd/OsDN5LSHJv0l9HJTfpEFw==
   dependencies:
     "@iconify/types" "*"
     pathe "^0.3.0"
@@ -4388,10 +4388,10 @@ vite-plugin-windicss@^1.8.7:
     kolorist "^1.5.1"
     windicss "^3.5.6"
 
-vite@^3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.7.tgz#f1e379857e9c5d652126f8b20d371e1365eb700f"
-  integrity sha512-dILhvKba1mbP1wCezVQx/qhEK7/+jVn9ciadEcyKMMhZpsuAi/eWZfJRMkmYlkSFG7Qq9NvJbgFq4XOBxugJsA==
+vite@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.8.tgz#aa095ad8e3e5da46d9ec7e878f262678965d6531"
+  integrity sha512-AOZ4eN7mrkJiOLuw8IA7piS4IdOQyQCA81GxGsAQvAZzMRi9ZwGB3TOaYsj4uLAWK46T5L4AfQ6InNGlxX30IQ==
   dependencies:
     esbuild "^0.14.47"
     postcss "^8.4.16"

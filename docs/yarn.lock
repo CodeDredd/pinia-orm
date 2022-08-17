@@ -451,27 +451,27 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.2.tgz#1bfafe4b7ed0f3e4105837e056e0a89b108ebe36"
   integrity sha512-IkpVW/ehM1hWKln4fCA3NzJU8KwD+kIOvPZA4cqxoJHtE21CCzjyp+Kxbu0i5I4tBNOlXPL9mjwnWlL0VEG4Fg==
 
-"@docsearch/css@3.2.0", "@docsearch/css@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.2.0.tgz#9f0f7ccb315cfe2db4565264569e1cb4b26dc26d"
-  integrity sha512-jnNrO2JVYYhj2pP2FomlHIy6220n6mrLn2t9v2/qc+rM7M/fbIcKMgk9ky4RN+L/maUEmteckzg6/PIYoAAXJg==
+"@docsearch/css@3.2.1", "@docsearch/css@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.2.1.tgz#c05d7818b0e43b42f9efa2d82a11c36606b37b27"
+  integrity sha512-gaP6TxxwQC+K8D6TRx5WULUWKrcbzECOPA2KCVMuI+6C7dNiGUk5yXXzVhc5sld79XKYLnO9DRTI4mjXDYkh+g==
 
-"@docsearch/js@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@docsearch/js/-/js-3.2.0.tgz#461ed26a3a86c41b4399c394fe9fc38a5bc2c7ae"
-  integrity sha512-FEgXW8a+ZKBjSDteFPsKQ7Hlzk6+18A2Y7NffjV+VTsE7P3uTvHPKHKDCeYMnAgXTatRCGHWCfP7YImTSwEFQA==
+"@docsearch/js@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@docsearch/js/-/js-3.2.1.tgz#d6856fb6223c7a47091640264d5144d59806bc30"
+  integrity sha512-H1PekEtSeS0msetR2YGGey2w7jQ2wAKfGODJvQTygSwMgUZ+2DHpzUgeDyEBIXRIfaBcoQneqrzsljM62pm6Xg==
   dependencies:
-    "@docsearch/react" "3.2.0"
+    "@docsearch/react" "3.2.1"
     preact "^10.0.0"
 
-"@docsearch/react@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-3.2.0.tgz#440c91e57cd48b87ff8e7d7fd446620ada9e677a"
-  integrity sha512-ATS3w5JBgQGQF0kHn5iOAPfnCCaoLouZQMmI7oENV//QMFrYbjhUZxBU9lIwAT7Rzybud+Jtb4nG5IEjBk3Ixw==
+"@docsearch/react@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-3.2.1.tgz#112ad88db07367fa6fd933d67d58421d8d8289aa"
+  integrity sha512-EzTQ/y82s14IQC5XVestiK/kFFMe2aagoYFuTAIfIb/e+4FU7kSMKonRtLwsCiLQHmjvNQq+HO+33giJ5YVtaQ==
   dependencies:
     "@algolia/autocomplete-core" "1.7.1"
     "@algolia/autocomplete-preset-algolia" "1.7.1"
-    "@docsearch/css" "3.2.0"
+    "@docsearch/css" "3.2.1"
     algoliasearch "^4.0.0"
 
 "@esbuild/linux-loong64@0.14.54":
