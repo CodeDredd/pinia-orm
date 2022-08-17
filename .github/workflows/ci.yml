@@ -79,7 +79,7 @@ jobs:
       - name: Set node version to 16
         uses: actions/setup-node@v3
         with:
-          node-version: 16.
+          node-version: 16.x
 
       - run: pnpm i
       - run: pnpm run build:pinia-orm
