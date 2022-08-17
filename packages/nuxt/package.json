@@ -31,7 +31,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "pnpm run dev:build && nuxt-module-build",
+    "build": "nuxt-module-build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/nuxt -r 1",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
@@ -59,9 +59,6 @@
     "std-env": "^3.2.1",
     "typescript": "^4.7.4",
     "vue": "^3.2.37"
-  },
-  "overrides": {
-    "ufo": "^0.8.5"
   },
   "repository": {
     "type": "git",
