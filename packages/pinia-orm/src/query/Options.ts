@@ -20,7 +20,14 @@ export interface Order {
   direction: OrderDirection
 }
 
+export interface Group {
+  field: GroupBy
+}
+
 export type OrderBy = string | ((model: any) => any)
+
+export type GroupBy = string
+export type GroupByFields = string[]
 
 export type OrderDirection = 'asc' | 'desc'
 

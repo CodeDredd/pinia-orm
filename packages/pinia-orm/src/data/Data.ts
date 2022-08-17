@@ -13,3 +13,5 @@ export interface NormalizedData {
 export type Item<M extends Model = Model> = M | null
 
 export type Collection<M extends Model = Model> = M[]
+
+export type GroupedCollection<M extends Model = Model> = Record<string, M[]>
