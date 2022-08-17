@@ -7,6 +7,7 @@ import type { ModelConstructor } from '../model/ModelConstructor'
 import { Query } from '../query/Query'
 import type {
   EagerLoadConstraint,
+  GroupByFields,
   OrderBy,
   OrderDirection,
   WherePrimaryClosure,
@@ -180,6 +181,13 @@ export class Repository<M extends Model = Model> {
    */
   orWhereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): Query<M> {
     return this.query().orWhereDoesntHave(relation, callback)
+  }
+
+  /**
+   * Add a "group by" clause to the query.
+   */
+  groupBy(...fields: GroupByFields): Query<M> {
+    return this.query().groupBy(...fields)
   }
 
   /**
