@@ -1,4 +1,5 @@
-import { Model, Uid, Str } from 'pinia-orm'
+import { Model } from 'pinia-orm'
+import { Uid, Str } from 'pinia-orm/decorators'
 
 export default class Todo extends Model {
   static entity = 'Todo'
