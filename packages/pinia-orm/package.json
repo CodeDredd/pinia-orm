@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "nanoid": "^4.0.0",
-    "@pinia-orm/normalizr": "^1.0.0-rc.6"
+    "@pinia-orm/normalizr": "workspace:*"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.1",
