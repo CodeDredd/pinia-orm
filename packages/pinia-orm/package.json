@@ -21,22 +21,21 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs"
     },
-    "./*": "./*",
     "./decorators": {
+      "types": "./dist/decorators.d.ts",
       "require": "./dist/decorators.cjs",
       "import": "./dist/decorators.mjs"
+    },
+    "./casts": {
+      "require": "./dist/casts.cjs",
+      "import": "./dist/casts.mjs"
     }
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*"
-      ]
-    }
-  },
+
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "files": [
@@ -95,6 +94,10 @@
     },
     {
       "path": "dist/decorators.mjs",
+      "limit": "1 kB"
+    },
+    {
+      "path": "dist/casts.mjs",
       "limit": "1 kB"
     }
   ],

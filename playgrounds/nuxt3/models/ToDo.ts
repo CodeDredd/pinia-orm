@@ -1,4 +1,5 @@
 import { Model } from 'pinia-orm'
+import { Attr } from 'pinia-orm/decorators'
 
 export default class ToDo extends Model {
   static entity = 'todos'

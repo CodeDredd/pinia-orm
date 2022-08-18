@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, Cast, Num } from '../../../src/decorators'
+import { NumberCast } from '../../../src/casts'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Casts_Number', () => {
@@ -16,45 +17,45 @@ describe('unit/model/Model_Casts_Number', () => {
 
       static casts() {
         return {
-          count: 'number',
+          count: NumberCast,
         }
       }
     }
 
-    expect(new User({ count: '1' }).count).toBe(1)
+    expect(new User({ count: '1' }, { mutator: 'get' }).count).toBe(1)
   })
 
   it('should cast with decorator', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Cast('number')
+      @Cast(() => NumberCast)
       @Num(0)
         count!: number
     }
 
-    expect(new User({ count: true }).count).toBe(1)
-    expect(new User({ count: false }).count).toBe(0)
-    expect(new User({ count: 1 }).count).toBe(1)
-    expect(new User({ count: '1.43' }).count).toBe(1.43)
-    expect(new User().count).toBe(0)
+    expect(new User({ count: true }, { mutator: 'get' }).count).toBe(1)
+    expect(new User({ count: false }, { mutator: 'get' }).count).toBe(0)
+    expect(new User({ count: 1 }, { mutator: 'get' }).count).toBe(1)
+    expect(new User({ count: '1.43' }, { mutator: 'get' }).count).toBe(1.43)
+    expect(new User({ mutator: 'get' }).count).toBe(0)
   })
 
   it('accepts null when the nullable option is set', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Cast('number')
+      @Cast(() => NumberCast)
       @Num(null, { nullable: true })
         count!: number | null
     }
 
-    expect(new User().count).toBe(null)
-    expect(new User({ count: 'value' }).count).toBe(NaN)
-    expect(new User({ count: 1 }).count).toBe(1)
-    expect(new User({ count: true }).count).toBe(1)
-    expect(new User({ count: {} }).count).toBe(0)
-    expect(new User({ count: '333' }).count).toBe(333)
+    expect(new User({ mutator: 'get' }).count).toBe(null)
+    expect(new User({ count: 'value' }, { mutator: 'get' }).count).toBe(NaN)
+    expect(new User({ count: 1 }, { mutator: 'get' }).count).toBe(1)
+    expect(new User({ count: true }, { mutator: 'get' }).count).toBe(1)
+    expect(new User({ count: {} }, { mutator: 'get' }).count).toBe(0)
+    expect(new User({ count: '333' }, { mutator: 'get' }).count).toBe(333)
   })
 
   it('should cast before saved into store', () => {
@@ -66,7 +67,7 @@ describe('unit/model/Model_Casts_Number', () => {
 
       static casts() {
         return {
-          count: 'number',
+          count: NumberCast,
         }
       }
     }
