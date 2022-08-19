@@ -531,6 +531,13 @@ export class Model {
     this.$self().initializeSchema()
   }
 
+  $casts(): Casts {
+    return {
+      ...this.$getCasts(),
+      ...this.$self().fieldCasts,
+    }
+  }
+
   /**
    * Fill this model by the given attributes. Missing fields will be populated
    * by the attributes default value.
@@ -543,10 +550,6 @@ export class Model {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
-    const casts: Casts = {
-      ...this.$getCasts(),
-      ...this.$self().fieldCasts,
-    }
 
     for (const key in fields) {
       const attr = fields[key]
@@ -556,7 +559,7 @@ export class Model {
         continue
 
       const mutator = mutators?.[key]
-      const cast = casts[key]?.newRawInstance(fields)
+      const cast = this.$casts()[key]?.newRawInstance(fields)
       if (mutator && useMutator === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)

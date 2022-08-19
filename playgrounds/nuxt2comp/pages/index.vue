@@ -29,6 +29,7 @@ export default defineComponent({
       },
     ])
     console.log(userRepo.with('todos').get())
+
   },
 })
 </script>

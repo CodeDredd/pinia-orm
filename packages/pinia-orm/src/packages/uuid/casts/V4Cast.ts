@@ -1,6 +1,6 @@
 import { v4 } from 'uuid'
-import type { ModelFields } from '../../../../src'
-import { CastAttribute } from '../../../../src'
+import type { ModelFields } from '../../../../src/model/Model'
+import { CastAttribute } from '../../../../src/model/casts/CastAttribute'
 
 export class UidCast extends CastAttribute {
   /**

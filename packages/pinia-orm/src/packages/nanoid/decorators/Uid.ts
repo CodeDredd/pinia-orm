@@ -8,6 +8,6 @@ export function Uid(): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
     self.setCast(propertyKey, UidCast)
-    self.setRegistry(propertyKey, () => self.attr(''))
+    self.setRegistry(propertyKey, () => self.uid())
   }
 }

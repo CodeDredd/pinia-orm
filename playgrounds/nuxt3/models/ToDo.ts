@@ -1,20 +1,13 @@
 import { Model } from 'pinia-orm'
-import { Str } from 'pinia-orm/decorators'
-import { Uid } from 'pinia-orm/packages/nanoid/non-secure'
+import { Str, Attr, Cast } from 'pinia-orm/dist/decorators'
+import { Uid } from 'pinia-orm/dist/uuid/v4'
 
 export default class ToDo extends Model {
   static entity = 'todos'
 
-  static fields() {
-    return {
-      id: this.uid(),
-      title: this.string(''),
-      user_id: this.attr(null).nullable(),
-    }
-  }
-
   @Uid() declare id: string
-  @Str('Todo Text') declare text: string
+  @Attr(null) declare user_id: string | number
+  @Str('Todo Text') declare title: string
   @Str('Todo Name') declare  name: string
 
 }

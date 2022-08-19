@@ -1,6 +1,7 @@
 import type { Model } from '../../Model'
 import { generateId } from '../../../support/Utils'
 import { Type } from './Type'
+import type { CastAttribute } from '@/model/casts/CastAttribute'
 
 export class Uid extends Type {
   // This alphabet uses `A-Za-z0-9_-` symbols.
@@ -22,6 +23,10 @@ export class Uid extends Type {
    * Make the value for the attribute.
    */
   make(value: any): string {
+    const uidCast: typeof CastAttribute = this.model.$casts()[this.model.$getKeyName() as string]
+    if (uidCast)
+      return uidCast.newRawInstance(this.model.$fields()).set(value)
+
     return value ?? generateId(this.size, this.urlAlphabet)
   }
 }
