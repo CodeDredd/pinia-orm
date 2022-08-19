@@ -169,7 +169,7 @@ export class Model {
   static setCast<M extends typeof Model>(
     this: M,
     key: string,
-    to: string | typeof CastAttribute,
+    to: typeof CastAttribute,
   ): M {
     this.fieldCasts[key] = to
 
@@ -239,8 +239,8 @@ export class Model {
   /**
    * Create a new Uid attribute instance.
    */
-  static uid(): Uid {
-    return new Uid(this.newRawInstance())
+  static uid(size?: number): Uid {
+    return new Uid(this.newRawInstance(), size)
   }
 
   /**

@@ -17,5 +17,4 @@ export interface DataStoreState<M extends Model = Model> {
   data: Record<string, M>
 }
 
-// @ts-expect-error Registring the module
 export type DataStore = ReturnType<typeof import('@/composables')['useDataStore']>

@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid/non-secure'
-import type { ModelFields } from '../../Model'
-import { CastAttribute } from '../CastAttribute'
+import type { ModelFields } from '../../../../src'
+import { CastAttribute } from '../../../../src'
 
-export class NanoIdNonSecureCast extends CastAttribute {
+export class UidCast extends CastAttribute {
   /**
    * Create a new String attribute instance.
    */

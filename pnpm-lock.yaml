@@ -105,6 +105,7 @@ importers:
       '@pinia-orm/normalizr': workspace:*
       '@size-limit/preset-small-lib': ^8.0.1
       '@types/prettier': ^2
+      '@types/uuid': ^8.3.4
       '@vitest/coverage-c8': ^0.22.0
       '@vitest/ui': ^0.22.0
       '@vue/composition-api': ^1.7.0
@@ -120,6 +121,7 @@ importers:
       std-env: ^3.1.1
       typescript: ^4.7.4
       unbuild: ^0.8.8
+      uuid: ^8.3.2
       vite: ^3.0.8
       vitest: ^0.22.0
       vue: ^3.2.37
@@ -127,11 +129,11 @@ importers:
       vue2: npm:vue@^2.7.3
     dependencies:
       '@pinia-orm/normalizr': link:../normalizr
-      nanoid: 4.0.0
     devDependencies:
       '@antfu/eslint-config': 0.26.1_4rv7y5c6xz3vfxwhbrcxxi73bq
       '@size-limit/preset-small-lib': 8.0.1_size-limit@8.0.1
       '@types/prettier': 2.6.3
+      '@types/uuid': 8.3.4
       '@vitest/coverage-c8': 0.22.0_lowuxb5cha5trdbzkig4obicgq
       '@vitest/ui': 0.22.0
       '@vue/composition-api': 1.7.0_vue@3.2.37
@@ -140,12 +142,14 @@ importers:
       eslint: 8.22.0
       happy-dom: 6.0.4
       mkdist: 0.3.13_typescript@4.7.4
+      nanoid: 4.0.0
       pinia: 2.0.18_doa2iczdmf7fngilxryautdh3i
       prettier: 2.7.1
       size-limit: 8.0.1
       std-env: 3.1.1
       typescript: 4.7.4
       unbuild: 0.8.8
+      uuid: 8.3.2
       vite: 3.0.8
       vitest: 0.22.0_lowuxb5cha5trdbzkig4obicgq
       vue: 3.2.37
@@ -1811,6 +1815,10 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
+    dev: true
+
+  /@types/uuid/8.3.4:
+    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
@@ -6930,6 +6938,7 @@ packages:
     resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
+    dev: true
 
   /nanospinner/1.1.0:
     resolution: {integrity: sha512-yFvNYMig4AthKYfHFl1sLj7B2nkHL4lzdig4osvl9/LdGbXwrdFRoqBS98gsEsOakr0yH+r5NZ/1Y9gdVB8trA==}
