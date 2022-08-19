@@ -57,7 +57,7 @@
     "test": "pnpm run test:3"
   },
   "peerDependencies": {
-    "pinia": "^2.0.19"
+    "pinia": "^2.0.20"
   },
   "dependencies": {
     "@pinia-orm/normalizr": "workspace:*"
@@ -76,7 +76,7 @@
     "happy-dom": "^6.0.4",
     "mkdist": "^0.3.13",
     "nanoid": "^4.0.0",
-    "pinia": "^2.0.19",
+    "pinia": "^2.0.20",
     "prettier": "^2.7.1",
     "size-limit": "^8.0.1",
     "std-env": "^3.2.1",
