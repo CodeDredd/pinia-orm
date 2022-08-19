@@ -6,6 +6,8 @@ export default defineBuildConfig({
     // bundling
     'src/index',
     'src/decorators',
+    'src/casts',
+    { input: 'src/packages/', outDir: 'packages' },
   ],
   declaration: true,
   clean: true,

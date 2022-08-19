@@ -20,7 +20,7 @@ describe('unit/model/Model_Mutators', () => {
       }
     }
 
-    expect(new User({ name: 'john doe' }).name).toBe('JOHN DOE')
+    expect(new User({ name: 'john doe' }, { mutator: 'get' }).name).toBe('JOHN DOE')
   })
 
   it('should mutate data if mutators are present with decorator', () => {
@@ -32,7 +32,7 @@ describe('unit/model/Model_Mutators', () => {
         name!: string
     }
 
-    expect(new User({ name: 'john doe' }).name).toBe('JOHN DOE')
+    expect(new User({ name: 'john doe' }, { mutator: 'get' }).name).toBe('JOHN DOE')
   })
 
   it('should mutate data if mutators with getter are present', () => {
@@ -50,7 +50,7 @@ describe('unit/model/Model_Mutators', () => {
       }
     }
 
-    expect(new User({ name: 'john doe' }).name).toBe('JOHN DOE')
+    expect(new User({ name: 'john doe' }, { mutator: 'get' }).name).toBe('JOHN DOE')
   })
 
   it('should not mutate data in the store with get', () => {

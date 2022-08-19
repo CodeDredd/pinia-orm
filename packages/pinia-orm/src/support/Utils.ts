@@ -1,10 +1,3 @@
-import { StringCast } from '../model/casts/StringCast'
-import type { ModelFields } from '../model/Model'
-import { BooleanCast } from '../model/casts/BooleanCast'
-import { NumberCast } from '../model/casts/NumberCast'
-import { ArrayCast } from '../model/casts/ArrayCast'
-import { CastAttribute } from '../model/casts/CastAttribute'
-
 interface SortableArray<T> {
   criteria: any[]
   index: number
@@ -199,19 +192,6 @@ export function groupBy<T>(
   }, {})
 }
 
-export function convertCast(attributes: ModelFields, caster: string | typeof CastAttribute) {
-  if (typeof caster !== 'string' && caster)
-    return caster.newRawInstance(attributes)
-
-  switch (caster) {
-    case 'string': return new StringCast(attributes)
-    case 'boolean': return new BooleanCast(attributes)
-    case 'number': return new NumberCast(attributes)
-    case 'array': return new ArrayCast(attributes)
-    default: return new CastAttribute(attributes)
-  }
-}
-
 /**
  * Asserts that the condition is truthy, throwing immediately if not.
  */
@@ -230,4 +210,15 @@ export function assert(
 ): asserts condition {
   if (!condition)
     throwError(message)
+}
+
+export function generateId(size: number, urlAlphabet: string) {
+  let id = ''
+  // A compact alternative for `for (var i = 0; i < step; i++)`.
+  let i = size
+  while (i--) {
+    // `| 0` is more compact and faster than `Math.floor()`.
+    id += urlAlphabet[(Math.random() * 64) | 0]
+  }
+  return id
 }

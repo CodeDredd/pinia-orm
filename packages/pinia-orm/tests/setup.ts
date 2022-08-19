@@ -8,6 +8,19 @@ vi.mock('nanoid/non-secure', () => ({
   nanoid: vi.fn(),
 }))
 
+vi.mock('nanoid', () => ({
+  nanoid: vi.fn(),
+}))
+
+vi.mock('nanoid/async', () => ({
+  nanoid: vi.fn(),
+}))
+
+vi.mock('uuid', () => ({
+  v1: vi.fn(),
+  v4: vi.fn(),
+}))
+
 beforeAll(() => {
   if (isVue2) {
     Vue2.config.productionTip = false

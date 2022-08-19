@@ -9,4 +9,4 @@ declare var __VUE_DEVTOOLS_TOAST__: (
   type?: 'normal' | 'error' | 'warn'
 ) => void
 
-declare module '*'
+declare module '@/*'

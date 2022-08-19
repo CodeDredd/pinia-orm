@@ -1,5 +1,5 @@
 import type { DefineStoreOptionsBase } from 'pinia'
-import { assert, convertCast, isArray, isNullish } from '../support/Utils'
+import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { DataStore, DataStoreState } from '../composables/useDataStore'
@@ -100,7 +100,7 @@ export class Model {
   /**
    * Create a new model instance.
    */
-  constructor(attributes?: Element, options: ModelOptions = {}) {
+  constructor(attributes?: Element, options: ModelOptions = { mutator: 'set' }) {
     this.$boot()
 
     const fill = options.fill ?? true
@@ -169,7 +169,7 @@ export class Model {
   static setCast<M extends typeof Model>(
     this: M,
     key: string,
-    to: string | typeof CastAttribute,
+    to: typeof CastAttribute,
   ): M {
     this.fieldCasts[key] = to
 
@@ -239,8 +239,8 @@ export class Model {
   /**
    * Create a new Uid attribute instance.
    */
-  static uid(): Uid {
-    return new Uid(this.newRawInstance())
+  static uid(size?: number): Uid {
+    return new Uid(this.newRawInstance(), size)
   }
 
   /**
@@ -543,7 +543,7 @@ export class Model {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
-    const casts = {
+    const casts: Casts = {
       ...this.$getCasts(),
       ...this.$self().fieldCasts,
     }
@@ -556,7 +556,7 @@ export class Model {
         continue
 
       const mutator = mutators?.[key]
-      const cast = convertCast(fields, casts[key])
+      const cast = casts[key]?.newRawInstance(fields)
       if (mutator && useMutator === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)
