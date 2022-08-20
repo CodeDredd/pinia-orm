@@ -9,7 +9,7 @@ importers:
   .:
     specifiers:
       '@types/lodash.kebabcase': ^4.1.7
-      '@types/node': ^16.11.50
+      '@types/node': ^16.11.51
       chalk: ^4.1.2
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
@@ -29,7 +29,7 @@ importers:
       yorkie: ^2.0.0
     devDependencies:
       '@types/lodash.kebabcase': 4.1.7
-      '@types/node': 16.11.50
+      '@types/node': 16.11.51
       chalk: 4.1.2
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
@@ -2288,8 +2288,8 @@ packages:
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
     dev: true
 
-  /@types/node/16.11.50:
-    resolution: {integrity: sha512-JKSl7y+w1aaEd+2B1Y6HlMvrHUFDDzL7W3faUT9ZsJ0JhT7ijPPVS24XMhHlNVd76M23mogO7ipuqPjdNrPqxQ==}
+  /@types/node/16.11.51:
+    resolution: {integrity: sha512-h6p1A77pHBDdOcI9y6Wfh9iRGa8lMUZMk2ebHJTNTtRwgbQzgemZow6PW7+Xs7Z0r0IQFY1+iRlcNAkRrf53nA==}
     dev: true
 
   /@types/node/18.0.1:
