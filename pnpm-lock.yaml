@@ -8,7 +8,7 @@ importers:
 
   .:
     specifiers:
-      '@lerna-lite/cli': ^1.10.0
+      '@lerna-lite/cli': ^1.11.0
       '@lerna-lite/run': ^1.10.0
       '@types/lodash.kebabcase': ^4.1.7
       '@types/node': ^16.11.51
