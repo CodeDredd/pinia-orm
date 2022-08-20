@@ -1,3 +1,4 @@
+import type { Pinia } from 'pinia'
 import type { Constructor } from '../types'
 import { assert, isArray } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
@@ -34,6 +35,8 @@ export class Repository<M extends Model = Model> {
    */
   protected model!: M
 
+  protected pinia?: Pinia
+
   /**
    * The model object to be used for the custom repository.
    */
@@ -42,8 +45,9 @@ export class Repository<M extends Model = Model> {
   /**
    * Create a new Repository instance.
    */
-  constructor(database: Database) {
+  constructor(database: Database, pinia?: Pinia) {
     this.database = database
+    this.pinia = pinia
   }
 
   /**
@@ -88,7 +92,7 @@ export class Repository<M extends Model = Model> {
    * Returns the pinia store used with this model
    */
   piniaStore() {
-    return useDataStore<M>(this.model.$entity(), this.model.$piniaOptions())()
+    return useDataStore<M>(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
   }
 
   /**
@@ -104,7 +108,7 @@ export class Repository<M extends Model = Model> {
    * Create a new Query instance.
    */
   query(): Query<M> {
-    return new Query(this.database, this.getModel())
+    return new Query(this.database, this.getModel(), this.pinia)
   }
 
   /**

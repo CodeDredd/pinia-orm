@@ -25,7 +25,7 @@ export class Uid extends Type {
   make(value: any): string {
     const uidCast: typeof CastAttribute = this.model.$casts()[this.model.$getKeyName() as string]
     if (uidCast)
-      return uidCast.newRawInstance(this.model.$fields()).set(value)
+      return value ?? uidCast.newRawInstance(this.model.$fields()).set(value)
 
     return value ?? generateId(this.size, this.urlAlphabet)
   }

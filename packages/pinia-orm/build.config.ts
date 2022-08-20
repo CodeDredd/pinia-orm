@@ -23,9 +23,7 @@ export default defineBuildConfig({
   },
   hooks: {
     'build:done': (ctx) => {
-      console.log(ctx.options.outDir)
       ctx.buildEntries.filter(entry => entry.path.includes('.cjs') && !entry.path.includes('shared')).forEach((entry) => {
-        console.log(`${ctx.options.outDir}/${entry.path}`)
         fs.rename(`${ctx.options.outDir}/${entry.path}`, `${ctx.options.outDir}/${entry.path}`.replace('cjs', 'js'), (err) => {
           if (err)
             console.log(`ERROR: ${err}`)

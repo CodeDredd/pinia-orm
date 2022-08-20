@@ -27,7 +27,7 @@ describe('unit/packages/nanoid/uid', () => {
 
       static fields() {
         return {
-          id: this.attr(''),
+          id: this.uid(),
         }
       }
 

@@ -53,7 +53,7 @@ describe('unit/packages/uuid/uid_v4', () => {
 
       static fields() {
         return {
-          id: this.attr(''),
+          id: this.uid(),
         }
       }
 

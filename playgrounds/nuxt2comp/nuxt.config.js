@@ -39,9 +39,9 @@ export default {
   // modules: ['@pinia-orm/nuxt'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    transpile: [
-      'pinia-orm'
-    ]
-  },
+  // build: {
+  //   transpile: [
+  //     'pinia-orm'
+  //   ]
+  // },
 }

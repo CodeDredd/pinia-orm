@@ -3,14 +3,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
 import { useRepo } from 'pinia-orm'
 import User from '~/models/User'
 
 export default defineComponent({
   name: 'IndexPage',
   setup() {
-    const userRepo = useRepo(User)
+    const { $pinia } = useContext()
+    const userRepo = useRepo(User, $pinia)
     userRepo.save([
       {
         id: 1,
@@ -29,7 +30,6 @@ export default defineComponent({
       },
     ])
     console.log(userRepo.with('todos').get())
-
   },
 })
 </script>

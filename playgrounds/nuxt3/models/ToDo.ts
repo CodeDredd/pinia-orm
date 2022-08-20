@@ -1,5 +1,5 @@
 import { Model } from 'pinia-orm'
-import { Str, Attr, Cast } from 'pinia-orm/dist/decorators'
+import { Str, Attr } from 'pinia-orm/dist/decorators'
 import { Uid } from 'pinia-orm/dist/uuid/v4'
 
 export default class ToDo extends Model {
