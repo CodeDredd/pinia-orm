@@ -1126,6 +1126,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@pinia-orm/normalizr@>=1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pinia-orm/normalizr/-/normalizr-1.0.0.tgz#d748b92ef0538bf315dad21aadaaa73bf3c2192e"
+  integrity sha512-g24GJnwHcqBY/dFlTz37DdA5UVbOr9rEFN8AN18o0EBN5dzbI97frJhc5H9jHk63PiI93rFnSNx4JASRaWtWog==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz#04bc0608f4aa4b2e4b1aebf284344d0f68fda283"
@@ -3374,11 +3379,6 @@ nanoid@^3.3.4:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
-nanoid@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.0.tgz#6e144dee117609232c3f415c34b0e550e64999a5"
-  integrity sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==
-
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
@@ -3403,11 +3403,6 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
-
-normalizr@^3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.6.2.tgz#ac1571207dc3008adb46e3f62311c17f11dcf083"
-  integrity sha512-30qCybsBaCBciotorvuOZTCGEg2AXrJfADMT2Kk/lvpIAcipHdK0zc33nNtwKzyfQAqIJXAcqET6YgflYUgsoQ==
 
 npm-run-path@^4.0.1:
   version "4.0.1"
@@ -3616,13 +3611,12 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-pinia-orm@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.0.0-rc.5.tgz#421c0e18db69911bca3389c5bc1e8c64acc1dcc4"
-  integrity sha512-1+Bl03PrWr4hdbFvKlMXr9gOih4Ku4QUOEXTWxs1c4m7iyzduVTS41PaJW98vW8GVHG8grR40UNyY0m1COY2Tg==
+pinia-orm@^1.0.0-rc.6:
+  version "1.0.0-rc.6"
+  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.0.0-rc.6.tgz#65f0847c33f28da16c30c64b4e5fe33555fd84b1"
+  integrity sha512-wVHWUGyv8sSk22pfNDVxaVYl1JRtQcgVg6BV7pcMH6nsN0HrsVD6xIJ2z1zM37ndH4NEgEO6pV5NT3twSwKflg==
   dependencies:
-    nanoid "^4.0.0"
-    normalizr "^3.6.2"
+    "@pinia-orm/normalizr" ">=1.0.0"
 
 pinia@^2.0.20:
   version "2.0.20"
