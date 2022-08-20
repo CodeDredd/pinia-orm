@@ -102,7 +102,7 @@ importers:
   packages/pinia-orm:
     specifiers:
       '@antfu/eslint-config': ^0.26.1
-      '@pinia-orm/normalizr': workspace:*
+      '@pinia-orm/normalizr': '>=1.0.0'
       '@size-limit/preset-small-lib': ^8.0.1
       '@types/prettier': ^2
       '@types/uuid': ^8.3.4
