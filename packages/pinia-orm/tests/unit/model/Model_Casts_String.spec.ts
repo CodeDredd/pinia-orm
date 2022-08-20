@@ -36,16 +36,16 @@ describe('unit/model/Model_Casts_String', () => {
 
     expect(new User({ name: true }, { mutator: 'get' }).name).toBe('true')
     expect(new User({ name: 1 }, { mutator: 'get' }).name).toBe('1')
-    expect(new User({ name: null }, { mutator: 'get' }).name).toBe('null')
+    expect(new User({ name: null }, { mutator: 'get' }).name).toBe(null)
     expect(new User({ mutator: 'get' }).name).toBe('test')
   })
 
-  it('accepts `null` when the `nullable` option is set', () => {
+  it('accepts `null` when the `notNullable` option is set', () => {
     class User extends Model {
       static entity = 'users'
 
       @Cast(() => StringCast)
-      @Str(null, { nullable: true })
+      @Str(null, { notNullable: true })
         str!: string | null
     }
 

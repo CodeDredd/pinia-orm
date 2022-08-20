@@ -41,12 +41,12 @@ describe('unit/model/Model_Casts_Number', () => {
     expect(new User({ mutator: 'get' }).count).toBe(0)
   })
 
-  it('accepts null when the nullable option is set', () => {
+  it('throws warning with null when the notnotNullable option is set', () => {
     class User extends Model {
       static entity = 'users'
 
       @Cast(() => NumberCast)
-      @Num(null, { nullable: true })
+      @Num(null, { notnotNullable: true })
         count!: number | null
     }
 

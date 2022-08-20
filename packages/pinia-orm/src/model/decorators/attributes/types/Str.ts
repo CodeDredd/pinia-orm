@@ -13,8 +13,8 @@ export function Str(
     self.setRegistry(propertyKey, () => {
       const attr = self.string(value)
 
-      if (options.nullable)
-        attr.nullable()
+      if (options.notNullable)
+        attr.notNullable()
 
       return attr
     })

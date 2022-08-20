@@ -13,8 +13,8 @@ export function Num(
     self.setRegistry(propertyKey, () => {
       const attr = self.number(value)
 
-      if (options.nullable)
-        attr.nullable()
+      if (options.notNullable)
+        attr.notNullable()
 
       return attr
     })
