@@ -121,7 +121,7 @@ export class Schema {
       // uid field.
       for (const key in uidFields) {
         if (isNullish(record[key]))
-          record[key] = uidFields[key].make(record[key])
+          record[key] = uidFields[key].setKey(key).make(record[key])
       }
 
       // Finally, obtain the index id, attach it to the current record at the

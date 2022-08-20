@@ -13,6 +13,6 @@ export class String extends Type {
    * Make the value for the attribute.
    */
   make(value: any): string | null {
-    return this.makeReturn<string | null>('string', value, `${value}`)
+    return this.makeReturn<string | null>('string', value)
   }
 }

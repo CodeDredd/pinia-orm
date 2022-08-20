@@ -11,7 +11,7 @@ describe('unit/model/Model_Sanitize', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Num(null, { nullable: true }) id!: number
+    @Num(null, { notNullable: true }) id!: number
     @Str('Unknown') name!: string
     @Num(0) age!: number
 

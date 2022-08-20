@@ -7,10 +7,24 @@ export abstract class Attribute {
   protected model: Model
 
   /**
+   * The field name
+   */
+  protected key: string
+
+  /**
    * Create a new Attribute instance.
    */
   constructor(model: Model) {
     this.model = model
+    this.key = ''
+  }
+
+  /**
+   * Set the key name of the field
+   */
+  setKey(key: string): this {
+    this.key = key
+    return this
   }
 
   /**

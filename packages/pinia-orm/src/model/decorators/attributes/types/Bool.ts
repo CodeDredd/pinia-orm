@@ -13,8 +13,8 @@ export function Bool(
     self.setRegistry(propertyKey, () => {
       const attr = self.boolean(value)
 
-      if (options.nullable)
-        attr.nullable()
+      if (options.notNullable)
+        attr.notNullable()
 
       return attr
     })
