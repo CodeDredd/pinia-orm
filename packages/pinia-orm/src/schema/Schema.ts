@@ -1,5 +1,5 @@
-import type { Schema as NormalizrSchema } from 'normalizr'
-import { schema as Normalizr } from 'normalizr'
+import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
+import { schema as Normalizr } from '@pinia-orm/normalizr'
 import { isArray, isNullish } from '../support/Utils'
 import { Uid } from '../model/attributes/types/Uid'
 import { Relation } from '../model/attributes/relations/Relation'
@@ -121,7 +121,7 @@ export class Schema {
       // uid field.
       for (const key in uidFields) {
         if (isNullish(record[key]))
-          record[key] = uidFields[key].make(record[key])
+          record[key] = uidFields[key].setKey(key).make(record[key])
       }
 
       // Finally, obtain the index id, attach it to the current record at the

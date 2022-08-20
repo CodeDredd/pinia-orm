@@ -13,6 +13,6 @@ export class Boolean extends Type {
    * Make the value for the attribute.
    */
   make(value: any): boolean | null {
-    return this.makeReturn<boolean | null>('boolean', value, false)
+    return this.makeReturn<boolean | null>('boolean', value)
   }
 }

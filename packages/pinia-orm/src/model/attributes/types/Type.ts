@@ -10,7 +10,7 @@ export abstract class Type extends Attribute {
   /**
    * Whether the attribute accepts `null` value or not.
    */
-  protected isNullable = false
+  protected isNullable = true
 
   /**
    * Create a new Type attribute instance.
@@ -23,21 +23,25 @@ export abstract class Type extends Attribute {
   /**
    * Set the nullable option to true.
    */
-  nullable(): this {
-    this.isNullable = true
+  notNullable(): this {
+    this.isNullable = false
 
     return this
   }
 
-  protected makeReturn<T>(type: string, value: any, nullableValue = value): T {
+  protected makeReturn<T>(type: string, value: any): T {
     if (value === undefined)
       return this.value
 
-    if (value === null)
-      return this.isNullable ? value : nullableValue
+    if (value === null) {
+      if (!this.isNullable)
+        this.throwWarning(['is set as non nullable!'])
+
+      return value
+    }
 
     if (typeof value !== type)
-      this.throwWarning(type, value)
+      this.throwWarning([value, 'is not a', type])
 
     return value
   }
@@ -45,8 +49,8 @@ export abstract class Type extends Attribute {
   /**
    * Throw warning for wrong type
    */
-  protected throwWarning(type: string, value: any) {
+  protected throwWarning(message: string[]) {
     // eslint-disable-next-line no-console
-    console.warn(['[Pinia ORM]'].concat([`${this.model.$entity()}:`, value, 'is not a', type]).join(' '))
+    console.warn(['[Pinia ORM]'].concat([`Field ${this.model.$entity()}:${this.key} - `, ...message]).join(' '))
   }
 }

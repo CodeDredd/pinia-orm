@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import { Model, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Num, Str } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('feature/hooks/saving', () => {

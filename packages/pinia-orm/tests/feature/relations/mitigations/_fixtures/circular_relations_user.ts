@@ -1,4 +1,5 @@
-import { Attr, HasOne, Model } from '../../../../../src'
+import { Model } from '../../../../../src'
+import { Attr, HasOne } from '../../../../../src/decorators'
 import Phone from './circular_relations_phone'
 
 export default class User extends Model {

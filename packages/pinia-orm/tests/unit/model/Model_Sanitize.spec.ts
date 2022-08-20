@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { HasMany, Model, Num, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { HasMany, Num, Str } from '../../../src/decorators'
 
 describe('unit/model/Model_Sanitize', () => {
   class Post extends Model {
@@ -10,7 +11,7 @@ describe('unit/model/Model_Sanitize', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Num(null, { nullable: true }) id!: number
+    @Num(null, { notNullable: true }) id!: number
     @Str('Unknown') name!: string
     @Num(0) age!: number
 

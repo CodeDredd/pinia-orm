@@ -1,6 +1,7 @@
 import { beforeEach, describe, it } from 'vitest'
 
-import { Model, MorphOne, Num, Str, Uid, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { MorphOne, Num, Str, Uid } from '../../../src/decorators'
 import { assertState, mockUid } from '../../helpers'
 
 describe('feature/relations/morph_one_save_uid', () => {

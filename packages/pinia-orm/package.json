@@ -18,20 +18,26 @@
   "jsdelivr": "dist/index.mjs",
   "unpkg": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
     "./*": "./*",
     "./decorators": {
-      "require": "./dist/decorators.cjs",
+      "types": "./dist/decorators.d.ts",
+      "require": "./dist/decorators.js",
       "import": "./dist/decorators.mjs"
+    },
+    "./casts": {
+      "types": "./dist/casts.d.ts",
+      "require": "./dist/casts.js",
+      "import": "./dist/casts.mjs"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
   "files": [
     "dist",
     "LICENSE",
@@ -54,13 +60,13 @@
     "pinia": "^2.0.20"
   },
   "dependencies": {
-    "nanoid": "^4.0.0",
-    "normalizr": "^3.6.2"
+    "@pinia-orm/normalizr": "workspace:*"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.1",
     "@size-limit/preset-small-lib": "^8.0.1",
     "@types/prettier": "^2",
+    "@types/uuid": "^8.3.4",
     "@vitest/coverage-c8": "^0.22.1",
     "@vitest/ui": "^0.22.1",
     "@vue/composition-api": "^1.7.0",
@@ -69,12 +75,15 @@
     "eslint": "^8.22.0",
     "happy-dom": "^6.0.4",
     "mkdist": "^0.3.13",
+    "nanoid": "^4.0.0",
     "pinia": "^2.0.20",
     "prettier": "^2.7.1",
     "size-limit": "^8.0.1",
     "std-env": "^3.2.1",
+    "tsup": "^6.2.2",
     "typescript": "^4.7.4",
     "unbuild": "^0.8.9",
+    "uuid": "^8.3.2",
     "vite": "^3.0.9",
     "vitest": "^0.22.1",
     "vue": "^3.2.37",
@@ -88,6 +97,10 @@
     },
     {
       "path": "dist/decorators.mjs",
+      "limit": "1 kB"
+    },
+    {
+      "path": "dist/casts.mjs",
       "limit": "1 kB"
     }
   ],

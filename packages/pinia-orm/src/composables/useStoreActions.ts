@@ -1,22 +1,21 @@
-import type { StoreActions } from 'pinia'
-
 import type { Elements } from '../data/Data'
+import type { DataStore } from './useDataStore'
 
-export function useStoreActions(): StoreActions<any> {
+export function useStoreActions() {
   return {
-    save(records: Elements) {
+    save(this: DataStore, records: Elements) {
       this.data = { ...this.data, ...records }
     },
-    insert(records: Elements) {
+    insert(this: DataStore, records: Elements) {
       this.data = { ...this.data, ...records }
     },
-    update(records: Elements) {
+    update(this: DataStore, records: Elements) {
       this.data = { ...this.data, ...records }
     },
-    fresh(records: Elements) {
+    fresh(this: DataStore, records: Elements) {
       this.data = records
     },
-    destroy(ids: string[]): void {
+    destroy(this: DataStore, ids: string[]): void {
       const data: Elements = {}
 
       for (const id in this.data) {
@@ -29,7 +28,7 @@ export function useStoreActions(): StoreActions<any> {
     /**
      * Commit `delete` change to the store.
      */
-    delete(ids: string[]): void {
+    delete(this: DataStore, ids: string[]): void {
       const data: Elements = {}
 
       for (const id in this.data) {
@@ -39,7 +38,7 @@ export function useStoreActions(): StoreActions<any> {
 
       this.data = data
     },
-    flush(): void {
+    flush(this: DataStore): void {
       this.data = {}
     },
   }

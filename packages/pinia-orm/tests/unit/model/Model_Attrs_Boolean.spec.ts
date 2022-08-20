@@ -1,9 +1,10 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
-import { Bool, Model } from '../../../src'
+import { Model } from '../../../src'
+import { Bool } from '../../../src/decorators'
 
 describe('unit/model/Model_Attrs_Boolean', () => {
-  it('casts the value to `Boolean` when instantiating the model', () => {
+  it('casts not the value to `Boolean` when instantiating the model', () => {
     class User extends Model {
       static entity = 'users'
 
@@ -18,16 +19,18 @@ describe('unit/model/Model_Attrs_Boolean', () => {
     expect(new User({ bool: 0 }).bool).toBe(0)
     expect(new User({ bool: 1 }).bool).toBe(1)
     expect(new User({ bool: true }).bool).toBe(true)
-    expect(new User({ bool: null }).bool).toBe(false)
+    expect(new User({ bool: null }).bool).toBe(null)
   })
 
-  it('accepts `null` when the `nullable` option is set', () => {
+  it('accepts `null` when the `notNullable` option is set', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Bool(null, { nullable: true })
+      @Bool(null, { notNullable: true })
         bool!: boolean | null
     }
+
+    const logger = vi.spyOn(console, 'warn')
 
     expect(new User({}).bool).toBe(null)
     expect(new User({ bool: '' }).bool).toBe('')
@@ -37,5 +40,6 @@ describe('unit/model/Model_Attrs_Boolean', () => {
     expect(new User({ bool: 1 }).bool).toBe(1)
     expect(new User({ bool: true }).bool).toBe(true)
     expect(new User({ bool: null }).bool).toBe(null)
+    expect(logger).toBeCalledTimes(6)
   })
 })

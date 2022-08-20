@@ -2,7 +2,9 @@ import { PiniaVuePlugin, createPinia } from 'pinia'
 import Vue from 'vue2'
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model, Repository, Str, createORM, mapRepos } from '../../../src'
+import { Model, Repository, createORM } from '../../../src'
+import { Attr, Str } from '../../../src/decorators'
+import { mapRepos } from '../../../src/composables/mapRepos'
 
 /* eslint vue/one-component-per-file:0 */
 describe('feature/helpers/helpers', () => {

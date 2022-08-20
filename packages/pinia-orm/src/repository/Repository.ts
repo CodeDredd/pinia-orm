@@ -1,4 +1,4 @@
-import type { Store } from 'pinia'
+import type { Pinia } from 'pinia'
 import type { Constructor } from '../types'
 import { assert, isArray } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
@@ -8,6 +8,7 @@ import type { ModelConstructor } from '../model/ModelConstructor'
 import { Query } from '../query/Query'
 import type {
   EagerLoadConstraint,
+  GroupByFields,
   OrderBy,
   OrderDirection,
   WherePrimaryClosure,
@@ -34,6 +35,8 @@ export class Repository<M extends Model = Model> {
    */
   protected model!: M
 
+  protected pinia?: Pinia
+
   /**
    * The model object to be used for the custom repository.
    */
@@ -42,8 +45,9 @@ export class Repository<M extends Model = Model> {
   /**
    * Create a new Repository instance.
    */
-  constructor(database: Database) {
+  constructor(database: Database, pinia?: Pinia) {
     this.database = database
+    this.pinia = pinia
   }
 
   /**
@@ -85,11 +89,10 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
-   * Return the pinia store used with this model
+   * Returns the pinia store used with this model
    */
-  piniaStore(): Store {
-    const store = useDataStore(this.model.$entity(), this.model.$piniaOptions())
-    return store()
+  piniaStore() {
+    return useDataStore<M>(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
   }
 
   /**
@@ -105,7 +108,7 @@ export class Repository<M extends Model = Model> {
    * Create a new Query instance.
    */
   query(): Query<M> {
-    return new Query(this.database, this.getModel())
+    return new Query(this.database, this.getModel(), this.pinia)
   }
 
   /**
@@ -182,6 +185,13 @@ export class Repository<M extends Model = Model> {
    */
   orWhereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): Query<M> {
     return this.query().orWhereDoesntHave(relation, callback)
+  }
+
+  /**
+   * Add a "group by" clause to the query.
+   */
+  groupBy(...fields: GroupByFields): Query<M> {
+    return this.query().groupBy(...fields)
   }
 
   /**

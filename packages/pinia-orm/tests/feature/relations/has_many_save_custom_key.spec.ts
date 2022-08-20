@@ -1,6 +1,7 @@
 import { beforeEach, describe, it } from 'vitest'
 
-import { Attr, HasMany, Model, Str, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, HasMany, Str } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 
 describe('feature/relations/has_many_save_custom_key', () => {

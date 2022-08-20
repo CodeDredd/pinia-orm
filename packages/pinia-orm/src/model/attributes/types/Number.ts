@@ -13,6 +13,6 @@ export class Number extends Type {
    * Make the value for the attribute.
    */
   make(value: any): number | null {
-    return this.makeReturn<number | null>('number', value, 0)
+    return this.makeReturn<number | null>('number', value)
   }
 }

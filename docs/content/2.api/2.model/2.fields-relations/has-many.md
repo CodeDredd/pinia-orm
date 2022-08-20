@@ -25,7 +25,8 @@ class Post extends Model {
 ## With Decorator
 
 ````ts
-import { Model, Attr, Str, HasMany } from 'pinia-orm'
+import { Model } from 'pinia-orm'
+import { Attr, HasMany, Str } from 'pinia-orm/dist/decorators'
 import Comment from './Comment'
 
 class Post extends Model {

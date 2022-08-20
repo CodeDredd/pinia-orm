@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Attr, Cast, Model, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, Cast } from '../../../src/decorators'
+import { ArrayCast } from '../../../src/casts'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Casts_Array', () => {
@@ -11,16 +13,17 @@ describe('unit/model/Model_Casts_Array', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr('{}') meta!: Record<string, any>
+      @Attr(0) declare id: number
+      @Attr('{}') declare meta: Record<string, any>
 
       static casts() {
         return {
-          meta: 'array',
+          meta: ArrayCast,
         }
       }
     }
 
-    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }).meta).toStrictEqual({
+    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { mutator: 'get' }).meta).toStrictEqual({
       name: 'John',
       age: 30,
       car: null,
@@ -31,12 +34,11 @@ describe('unit/model/Model_Casts_Array', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Cast('array')
-      @Attr('{}')
-        meta!: Record<string, any>
+      @Attr(0) declare id: number
+      @Cast(() => ArrayCast) @Attr('{}') declare meta: Record<string, any>
     }
 
-    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }).meta).toStrictEqual({
+    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { mutator: 'get' }).meta).toStrictEqual({
       name: 'John',
       age: 30,
       car: null,
@@ -48,12 +50,12 @@ describe('unit/model/Model_Casts_Array', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr(0) id!: number
-      @Attr(false) meta!: Record<string, any>
+      @Attr(0) declare id: number
+      @Attr({}) declare meta: Record<string, any>
 
       static casts() {
         return {
-          meta: 'array',
+          meta: ArrayCast,
         }
       }
     }

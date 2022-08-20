@@ -25,7 +25,8 @@ class User extends Model {
 ## With Decorator
 
 ````ts
-import { Model, Attr, Str, MorphMany } from 'pinia-orm'
+import { Model } from 'pinia-orm'
+import { Attr, MorphMany, Str } from 'pinia-orm/dist/decorators'
 import Image from './Image'
 
 class User extends Model {

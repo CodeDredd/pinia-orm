@@ -1,19 +1,24 @@
 import { getActivePinia } from 'pinia'
-import { nanoid } from 'nanoid/non-secure'
+import { nanoid } from 'nanoid'
+import { nanoid as nanoidNS } from 'nanoid/non-secure'
+import { nanoid as nanoidAsync } from 'nanoid/async'
+import { v1, v4 } from 'uuid'
 import type { Mock } from 'vitest'
-import { expect } from 'vitest'
+import { expect, vi } from 'vitest'
 
-import type { Collection, Elements, Model, RootState } from '../src'
+import type { Collection, Elements, Model } from '../src'
+import * as Utils from '../src/support/Utils'
 
 interface Entities {
   [name: string]: Elements
 }
 
-export function createState(entities: Entities): RootState {
-  const state = {} as RootState
+export function createState(entities: Entities): any {
+  const state = {} as any
 
   for (const entity in entities) {
-    state[entity] = { data: {} }
+    if (!state[entity])
+      state[entity] = { data: {} }
 
     state[entity].data = entities[entity]
   }
@@ -22,17 +27,9 @@ export function createState(entities: Entities): RootState {
 }
 
 export function fillState(entities: Entities): void {
-  const state: any = {}
-
-  for (const entity in entities) {
-    if (!state[entity])
-      state[entity] = { data: {} }
-
-    state[entity].data = entities[entity]
-  }
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
-  getActivePinia().state.value = state
+  getActivePinia().state.value = createState(entities)
 }
 
 export function assertState(entities: Entities): void {
@@ -65,5 +62,26 @@ export function assertInstanceOf(
 }
 
 export function mockUid(ids: any[]): void {
+  const spy = vi.spyOn(Utils, 'generateId')
+  ids.forEach(id => spy.mockImplementationOnce(() => id))
+}
+
+export function mockNanoId(ids: any[]): void {
   ids.forEach(id => (nanoid as Mock).mockImplementationOnce(() => id))
+}
+
+export function mockNanoIdNS(ids: any[]): void {
+  ids.forEach(id => (nanoidNS as Mock).mockImplementationOnce(() => id))
+}
+
+export function mockNanoIdAsync(ids: any[]): void {
+  ids.forEach(id => (nanoidAsync as Mock).mockImplementationOnce(() => id))
+}
+
+export function mockUuidV1(ids: any[]): void {
+  ids.forEach(id => (v1 as Mock).mockImplementationOnce(() => id))
+}
+
+export function mockUuidV4(ids: any[]): void {
+  ids.forEach(id => (v4 as Mock).mockImplementationOnce(() => id))
 }

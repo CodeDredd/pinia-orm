@@ -1,7 +1,7 @@
 import type { ModelFields } from '../Model'
 
 export interface Casts {
-  [name: string]: typeof CastAttribute | string
+  [name: string]: typeof CastAttribute
 }
 
 export class CastAttribute {

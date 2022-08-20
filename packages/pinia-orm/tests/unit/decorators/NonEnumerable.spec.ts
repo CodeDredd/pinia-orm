@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { NonEnumerable } from '../../../src'
+import { NonEnumerable } from '../../../src/decorators'
 
 describe('unit/decorators/NonEnumerable', () => {
   class StdClass {

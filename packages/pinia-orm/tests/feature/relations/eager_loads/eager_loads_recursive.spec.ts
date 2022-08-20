@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, BelongsTo, HasOne, Model, Str, useRepo } from '../../../../src'
+import { Model, useRepo } from '../../../../src'
+import { Attr, BelongsTo, HasOne, Str } from '../../../../src/decorators'
 import { assertModel } from '../../../helpers'
 
 describe('feature/relations/eager_loads_recursive', () => {

@@ -65,5 +65,3 @@ Temporary Items
 .build-*
 .env
 .netlify
-
-.npmrc

@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Attr, Bool, Cast, Model, useRepo } from '../../../src'
+import { Model, useRepo } from '../../../src'
+import { Attr, Bool, Cast } from '../../../src/decorators'
+import { BooleanCast } from '../../../src/casts'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Casts_Boolean', () => {
@@ -15,47 +17,47 @@ describe('unit/model/Model_Casts_Boolean', () => {
 
       static casts() {
         return {
-          isPublished: 'boolean',
+          isPublished: BooleanCast,
         }
       }
     }
 
-    expect(new User({ isPublished: 1 }).isPublished).toBe(true)
+    expect(new User({ isPublished: 1 }, { mutator: 'get' }).isPublished).toBe(true)
   })
 
   it('should cast with decorator', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Cast('boolean')
+      @Cast(() => BooleanCast)
       @Bool(true)
         isPublished!: boolean
     }
 
-    expect(new User({ isPublished: true }).isPublished).toBe(true)
-    expect(new User({ isPublished: 0 }).isPublished).toBe(false)
-    expect(new User({ isPublished: '1' }).isPublished).toBe(true)
-    expect(new User({ isPublished: null }).isPublished).toBe(false)
-    expect(new User({ isPublished: '' }).isPublished).toBe(false)
-    expect(new User({ isPublished: 'tt12' }).isPublished).toBe(true)
-    expect(new User({ isPublished: {} }).isPublished).toBe(false)
-    expect(new User().isPublished).toBe(true)
+    expect(new User({ isPublished: true }, { mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: 0 }, { mutator: 'get' }).isPublished).toBe(false)
+    expect(new User({ isPublished: '1' }, { mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: null }, { mutator: 'get' }).isPublished).toBe(null)
+    expect(new User({ isPublished: '' }, { mutator: 'get' }).isPublished).toBe(false)
+    expect(new User({ isPublished: 'tt12' }, { mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: {} }, { mutator: 'get' }).isPublished).toBe(false)
+    expect(new User({ mutator: 'get' }).isPublished).toBe(true)
   })
 
-  it('accepts `null` when the `nullable` option is set', () => {
+  it('accepts "null" when the "notNullable" option is set', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Cast('boolean')
-      @Bool(null, { nullable: true })
+      @Cast(() => BooleanCast)
+      @Bool(null, { notNullable: true })
         isPublished!: boolean | null
     }
 
-    expect(new User().isPublished).toBe(null)
-    expect(new User({ isPublished: 'value' }).isPublished).toBe(true)
-    expect(new User({ isPublished: 1 }).isPublished).toBe(true)
-    expect(new User({ isPublished: true }).isPublished).toBe(true)
-    expect(new User({ isPublished: null }).isPublished).toBe(null)
+    expect(new User({ mutator: 'get' }).isPublished).toBe(null)
+    expect(new User({ isPublished: 'value' }, { mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: 1 }, { mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: true }, { mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: null }, { mutator: 'get' }).isPublished).toBe(null)
   })
 
   it('should cast before saved into store', () => {
@@ -67,7 +69,7 @@ describe('unit/model/Model_Casts_Boolean', () => {
 
       static casts() {
         return {
-          isPublished: 'boolean',
+          isPublished: BooleanCast,
         }
       }
     }

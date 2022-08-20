@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { Attr, Model } from '../../../src'
+import { Model } from '../../../src'
+import { Attr } from '../../../src/decorators'
 
 describe('unit/model/Model', () => {
   class User extends Model {
@@ -15,6 +16,7 @@ describe('unit/model/Model', () => {
 
   it('uses the pinia options in the store', () => {
     const user = new User({ id: 1, name: 'John Doe' })
+    user.$piniaOptions()
 
     expect(user.$piniaOptions()).toEqual({ persist: true })
   })

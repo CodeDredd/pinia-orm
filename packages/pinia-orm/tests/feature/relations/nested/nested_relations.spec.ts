@@ -1,6 +1,7 @@
 import { describe, it } from 'vitest'
 
-import { Attr, BelongsTo, HasMany, Model, Str, useRepo } from '../../../../src'
+import { Model, useRepo } from '../../../../src'
+import { Attr, BelongsTo, HasMany, Str } from '../../../../src/decorators'
 import { assertState } from '../../../helpers'
 
 describe('feature/relations/nested/nested_relations', () => {

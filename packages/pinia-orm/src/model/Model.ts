@@ -1,6 +1,8 @@
-import { assert, convertCast, isArray, isNullish } from '../support/Utils'
+import type { DefineStoreOptionsBase } from 'pinia'
+import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
+import type { DataStore, DataStoreState } from '../composables/useDataStore'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -80,7 +82,7 @@ export class Model {
    * The pinia options for the model. It can contain options which will passed
    * to the 'defineStore' function of pinia.
    */
-  protected static piniaOptions: any = {}
+  protected static piniaOptions: DefineStoreOptionsBase<DataStoreState, DataStore> = {}
 
   /**
    * The mutators for the model. It contains all mutators
@@ -98,7 +100,7 @@ export class Model {
   /**
    * Create a new model instance.
    */
-  constructor(attributes?: Element, options: ModelOptions = {}) {
+  constructor(attributes?: Element, options: ModelOptions = { mutator: 'set' }) {
     this.$boot()
 
     const fill = options.fill ?? true
@@ -167,7 +169,7 @@ export class Model {
   static setCast<M extends typeof Model>(
     this: M,
     key: string,
-    to: string | typeof CastAttribute,
+    to: typeof CastAttribute,
   ): M {
     this.fieldCasts[key] = to
 
@@ -237,8 +239,8 @@ export class Model {
   /**
    * Create a new Uid attribute instance.
    */
-  static uid(): Uid {
-    return new Uid(this.newRawInstance())
+  static uid(size?: number): Uid {
+    return new Uid(this.newRawInstance(), size)
   }
 
   /**
@@ -482,7 +484,7 @@ export class Model {
   /**
    * Get the pinia options for this model.
    */
-  $piniaOptions(): Record<string, any> {
+  $piniaOptions(): DefineStoreOptionsBase<DataStoreState, DataStore> {
     return this.$self().piniaOptions
   }
 
@@ -529,6 +531,13 @@ export class Model {
     this.$self().initializeSchema()
   }
 
+  $casts(): Casts {
+    return {
+      ...this.$getCasts(),
+      ...this.$self().fieldCasts,
+    }
+  }
+
   /**
    * Fill this model by the given attributes. Missing fields will be populated
    * by the attributes default value.
@@ -541,10 +550,6 @@ export class Model {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
-    const casts = {
-      ...this.$getCasts(),
-      ...this.$self().fieldCasts,
-    }
 
     for (const key in fields) {
       const attr = fields[key]
@@ -554,7 +559,7 @@ export class Model {
         continue
 
       const mutator = mutators?.[key]
-      const cast = convertCast(fields, casts[key])
+      const cast = this.$casts()[key]?.newRawInstance(fields)
       if (mutator && useMutator === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)
@@ -564,13 +569,15 @@ export class Model {
       if (cast && useMutator === 'get')
         value = cast.get(value)
 
+      let keyValue = this.$fillField(key, attr, value)
+
       if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
-        value = mutator.set(value)
+        keyValue = mutator.set(keyValue)
 
       if (cast && useMutator === 'set')
-        value = cast.set(value)
+        keyValue = cast.set(keyValue)
 
-      this.$fillField(key, attr, value)
+      this[key] = this[key] ?? keyValue
     }
 
     return this
@@ -579,18 +586,15 @@ export class Model {
   /**
    * Fill the given attribute with a given value specified by the given key.
    */
-  protected $fillField(key: string, attr: Attribute, value: any): void {
+  protected $fillField(key: string, attr: Attribute, value: any): any {
     if (value !== undefined) {
-      this[key]
-        = attr instanceof MorphTo
-          ? attr.make(value, this[attr.getType()])
-          : attr.make(value)
-
-      return
+      return attr instanceof MorphTo
+        ? attr.setKey(key).make(value, this[attr.getType()])
+        : attr.setKey(key).make(value)
     }
 
     if (this[key] === undefined)
-      this[key] = attr.make()
+      return attr.setKey(key).make()
   }
 
   /**

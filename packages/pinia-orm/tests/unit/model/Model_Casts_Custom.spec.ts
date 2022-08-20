@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Attr, Cast, CastAttribute, Model } from '../../../src'
+import { CastAttribute, Model } from '../../../src'
+import { Attr, Cast } from '../../../src/decorators'
 
 describe('unit/model/Model_Casts_Custom', () => {
   beforeEach(() => {
@@ -29,7 +30,7 @@ describe('unit/model/Model_Casts_Custom', () => {
       }
     }
 
-    expect(new User({ name: 'John' }).name).toBe('string John')
+    expect(new User({ name: 'John' }, { mutator: 'get' }).name).toBe('string John')
   })
 
   it('should cast with decorator', () => {
@@ -51,7 +52,7 @@ describe('unit/model/Model_Casts_Custom', () => {
     }
 
     expect(new User({ name: 'John' }).name).toBe('string John')
-    expect(new User().name).toBe('test')
+    expect(new User().name).toBe('string test')
   })
 
   it('should cast with parameter', () => {
@@ -82,7 +83,7 @@ describe('unit/model/Model_Casts_Custom', () => {
       }
     }
 
-    expect(new User({ name: 'John' }).name).toBe('John')
-    expect(new User({ name: 1 }).name).toBe('number 1')
+    expect(new User({ name: 'John' }, { mutator: 'get' }).name).toBe('John')
+    expect(new User({ name: 1 }, { mutator: 'get' }).name).toBe('number 1')
   })
 })

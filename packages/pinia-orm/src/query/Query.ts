@@ -1,3 +1,4 @@
+import type { Pinia } from 'pinia'
 import {
   assert, compareWithOperator,
   groupBy,
@@ -6,7 +7,7 @@ import {
   isFunction,
   orderBy, throwError,
 } from '../support/Utils'
-import type { Collection, Element, Elements, Item, NormalizedData } from '../data/Data'
+import type { Collection, Element, Elements, GroupedCollection, Item, NormalizedData } from '../data/Data'
 import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
 import { MorphTo } from '../model/attributes/relations/MorphTo'
@@ -16,6 +17,8 @@ import { useDataStore } from '../composables/useDataStore'
 import type {
   EagerLoad,
   EagerLoadConstraint,
+  Group,
+  GroupByFields,
   Order,
   OrderBy,
   OrderDirection,
@@ -46,6 +49,11 @@ export class Query<M extends Model = Model> {
   protected orders: Order[] = []
 
   /**
+   * The orderings for the query.
+   */
+  protected groups: Group[] = []
+
+  /**
    * The maximum number of records to return.
    */
   protected take: number | null = null
@@ -60,26 +68,29 @@ export class Query<M extends Model = Model> {
    */
   protected eagerLoad: EagerLoad = {}
 
+  protected pinia?: Pinia
+
   /**
    * Create a new query instance.
    */
-  constructor(database: Database, model: M) {
+  constructor(database: Database, model: M, pinia?: Pinia) {
     this.database = database
     this.model = model
+    this.pinia = pinia
   }
 
   /**
    * Create a new query instance for the given model.
    */
-  newQuery(model: string): Query<Model> {
-    return new Query(this.database, this.database.getModel(model))
+  newQuery(model: string): Query {
+    return new Query(this.database, this.database.getModel(model), this.pinia)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
-  newQueryWithConstraints(model: string): Query<Model> {
-    const newQuery = new Query(this.database, this.database.getModel(model))
+  newQueryWithConstraints(model: string): Query {
+    const newQuery = new Query(this.database, this.database.getModel(model), this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -94,8 +105,8 @@ export class Query<M extends Model = Model> {
   /**
    * Create a new query instance from the given relation.
    */
-  newQueryForRelation(relation: Relation): Query<Model> {
-    return new Query(this.database, relation.getRelated())
+  newQueryForRelation(relation: Relation): Query {
+    return new Query(this.database, relation.getRelated(), this.pinia)
   }
 
   /**
@@ -109,8 +120,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit(name: string, payload?: any): Elements {
-    const newStore = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions())
-    const store = newStore()
+    const store = useDataStore<M>(this.model.$baseEntity(), this.model.$piniaOptions())(this.pinia)
     if (name && typeof store[name] === 'function')
       store[name](payload)
 
@@ -214,6 +224,17 @@ export class Query<M extends Model = Model> {
   }
 
   /**
+   * Add a "group by" clause to the query.
+   */
+  groupBy(...fields: GroupByFields): this {
+    fields.forEach((field) => {
+      this.groups.push({ field })
+    })
+
+    return this
+  }
+
+  /**
    * Add an "order by" clause to the query.
    */
   orderBy(field: OrderBy, direction: OrderDirection = 'asc'): this {
@@ -313,7 +334,8 @@ export class Query<M extends Model = Model> {
   /**
    * Retrieve models by processing whole query chain.
    */
-  get(triggerHook = true): Collection<M> {
+  get<T extends 'group' | 'collection' = 'collection'>(triggerHook?: boolean): T extends 'group' ? GroupedCollection<M> : Collection<M>
+  get(triggerHook = true): Collection<M> | GroupedCollection<M> {
     if (this.model.$entity() !== this.model.$baseEntity())
       this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make())
 
@@ -324,6 +346,9 @@ export class Query<M extends Model = Model> {
 
     if (triggerHook)
       models.forEach(model => model.$self().retrieved(model))
+
+    if (this.groups.length > 0)
+      return this.filterGroup(models)
 
     return models
   }
@@ -412,6 +437,21 @@ export class Query<M extends Model = Model> {
     const directions = this.orders.map(order => order.direction)
 
     return orderBy(models, fields, directions)
+  }
+
+  /**
+   * Filter the given collection by the registered order conditions.
+   */
+  protected filterGroup(models: Collection<M>): Record<string, Collection<M>> {
+    const grouped: Record<string, Collection<M>> = {}
+    const fields = this.groups.map(group => group.field)
+
+    models.forEach((model) => {
+      const key = fields.length === 1 ? model[fields[0]] : `[${fields.map(field => model[field]).toString()}]`
+      grouped[key] = (grouped[key] || []).concat(model)
+    })
+
+    return grouped
   }
 
   /**

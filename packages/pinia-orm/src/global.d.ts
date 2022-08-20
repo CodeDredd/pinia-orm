@@ -8,3 +8,5 @@ declare var __VUE_DEVTOOLS_TOAST__: (
   message: string,
   type?: 'normal' | 'error' | 'warn'
 ) => void
+
+declare module '@/composables'
