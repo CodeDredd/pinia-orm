@@ -1,20 +1,32 @@
----
-name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: feature request
-assignees: ''
-
----
-
-### What problem is this solving
-
-A clear and concise description of what the problem is. Ex. when using the function X we cannot do Y.
-
-### Proposed solution
-
-A clear and concise description of what you want to happen with an API proposal when applicable
-
-### Describe alternatives you've considered
-
-A clear and concise description of any alternative solutions or features you've considered.
+name: "🚀 Feature request"
+description: Suggest a feature that will improve Pinia ORM
+labels: ["pending triage"]
+body:
+- type: markdown
+  attributes:
+  value: |
+  Thank you for taking the time to fill out this feature request!
+- type: textarea
+  id: feature-description
+  attributes:
+  label: Describe the feature
+  description: A clear and concise description of what you think would be a helpful addition to Nuxt, including the possible use cases and alternatives you have considered. If you have a working prototype or module that implements it, please include a link.
+  placeholder: Feature description
+  validations:
+  required: true
+- type: checkboxes
+  id: additional-info
+  attributes:
+  label: Additional information
+  description: Additional information that helps us decide how to proceed.
+  options:
+  - label: Would you be willing to help implement this feature?
+  - label: Could this feature be implemented as a module?
+- type: checkboxes
+  id: required-info
+  attributes:
+  label: Final checks
+  description: Before submitting, please make sure you do the following
+  options:
+  - label: Check existing [discussions](https://github.com/CodeDredd/pinia-orm/discussions) and [issues](https://github.com/CodeDredd/pinia-orm/issues).
+  required: true
