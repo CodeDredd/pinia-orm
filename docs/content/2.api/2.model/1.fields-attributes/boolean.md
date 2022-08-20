@@ -24,7 +24,7 @@ class User extends Model {
 
 ````ts[User.ts]
 import { Model } from 'pinia-orm'
-import { Bool, Num } from 'pinia-orm/decorators'
+import { Bool, Num } from 'pinia-orm/dist/decorators'
 
 class User extends Model {
   static entity = 'users'

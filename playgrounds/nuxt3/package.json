@@ -9,9 +9,13 @@
   },
   "devDependencies": {
     "@pinia-orm/nuxt": "^1.0.18",
-    "@pinia/nuxt": "^0.4.0",
-    "nuxt": "^3.0.0-rc.7",
-    "pinia": "^2.0.18",
+    "@pinia/nuxt": "^0.4.1",
+    "nuxt": "^3.0.0-rc.8",
+    "pinia": "^2.0.20",
     "pinia-orm": "^1.0.0-rc.5"
+  },
+  "dependencies": {
+    "nanoid": "^4.0.0",
+    "uuid": "^8.3.2"
   }
 }

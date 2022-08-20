@@ -1,3 +1,4 @@
+import type { Pinia } from 'pinia'
 import {
   assert, compareWithOperator,
   groupBy,
@@ -67,26 +68,29 @@ export class Query<M extends Model = Model> {
    */
   protected eagerLoad: EagerLoad = {}
 
+  protected pinia?: Pinia
+
   /**
    * Create a new query instance.
    */
-  constructor(database: Database, model: M) {
+  constructor(database: Database, model: M, pinia?: Pinia) {
     this.database = database
     this.model = model
+    this.pinia = pinia
   }
 
   /**
    * Create a new query instance for the given model.
    */
   newQuery(model: string): Query {
-    return new Query(this.database, this.database.getModel(model))
+    return new Query(this.database, this.database.getModel(model), this.pinia)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model))
+    const newQuery = new Query(this.database, this.database.getModel(model), this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -102,7 +106,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation(relation: Relation): Query {
-    return new Query(this.database, relation.getRelated())
+    return new Query(this.database, relation.getRelated(), this.pinia)
   }
 
   /**
@@ -116,8 +120,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit(name: string, payload?: any): Elements {
-    const newStore = useDataStore<M>(this.model.$baseEntity(), this.model.$piniaOptions())
-    const store = newStore()
+    const store = useDataStore<M>(this.model.$baseEntity(), this.model.$piniaOptions())(this.pinia)
     if (name && typeof store[name] === 'function')
       store[name](payload)
 

@@ -26,7 +26,7 @@ class User extends Model {
 
 ````ts
 import { Model } from 'pinia-orm'
-import { Attr, MorphOne, Str } from 'pinia-orm/decorators'
+import { Attr, MorphOne, Str } from 'pinia-orm/dist/decorators'
 import Image from './Image'
 
 class User extends Model {

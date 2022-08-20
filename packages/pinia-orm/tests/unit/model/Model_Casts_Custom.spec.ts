@@ -52,7 +52,7 @@ describe('unit/model/Model_Casts_Custom', () => {
     }
 
     expect(new User({ name: 'John' }).name).toBe('string John')
-    expect(new User().name).toBe('test')
+    expect(new User().name).toBe('string test')
   })
 
   it('should cast with parameter', () => {

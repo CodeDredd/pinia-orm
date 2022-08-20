@@ -26,7 +26,7 @@ class User extends Model {
 
 ````ts
 import { Model } from 'pinia-orm'
-import { Attr, HasOne, Str } from 'pinia-orm/decorators'
+import { Attr, HasOne, Str } from 'pinia-orm/dist/decorators'
 import Phone from './Phone'
 
 class User extends Model {

@@ -531,6 +531,13 @@ export class Model {
     this.$self().initializeSchema()
   }
 
+  $casts(): Casts {
+    return {
+      ...this.$getCasts(),
+      ...this.$self().fieldCasts,
+    }
+  }
+
   /**
    * Fill this model by the given attributes. Missing fields will be populated
    * by the attributes default value.
@@ -543,10 +550,6 @@ export class Model {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
-    const casts: Casts = {
-      ...this.$getCasts(),
-      ...this.$self().fieldCasts,
-    }
 
     for (const key in fields) {
       const attr = fields[key]
@@ -556,7 +559,7 @@ export class Model {
         continue
 
       const mutator = mutators?.[key]
-      const cast = casts[key]?.newRawInstance(fields)
+      const cast = this.$casts()[key]?.newRawInstance(fields)
       if (mutator && useMutator === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)
@@ -566,13 +569,15 @@ export class Model {
       if (cast && useMutator === 'get')
         value = cast.get(value)
 
+      let keyValue = this.$fillField(key, attr, value)
+
       if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
-        value = mutator.set(value)
+        keyValue = mutator.set(keyValue)
 
       if (cast && useMutator === 'set')
-        value = cast.set(value)
+        keyValue = cast.set(keyValue)
 
-      this.$fillField(key, attr, value)
+      this[key] = this[key] ?? keyValue
     }
 
     return this
@@ -581,18 +586,15 @@ export class Model {
   /**
    * Fill the given attribute with a given value specified by the given key.
    */
-  protected $fillField(key: string, attr: Attribute, value: any): void {
+  protected $fillField(key: string, attr: Attribute, value: any): any {
     if (value !== undefined) {
-      this[key]
-        = attr instanceof MorphTo
-          ? attr.make(value, this[attr.getType()])
-          : attr.make(value)
-
-      return
+      return attr instanceof MorphTo
+        ? attr.make(value, this[attr.getType()])
+        : attr.make(value)
     }
 
     if (this[key] === undefined)
-      this[key] = attr.make()
+      return attr.make()
   }
 
   /**

@@ -33,7 +33,7 @@ class Image extends Model {
 
 ````ts
 import { Model } from 'pinia-orm'
-import { Attr, MorphTo, Str } from 'pinia-orm/decorators'
+import { Attr, MorphTo, Str } from 'pinia-orm/dist/decorators'
 import User from './Image'
 import Post from './Post'
 
