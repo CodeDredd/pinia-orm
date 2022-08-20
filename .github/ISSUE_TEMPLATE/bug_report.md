@@ -1,38 +1,46 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
----
-
-**Describe the bug**
-A clear and concise description of what the bug is.
-
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
-
-**Expected behavior**
-A clear and concise description of what you expected to happen.
-
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+name: "\U0001F41E Bug report"
+description: Create a report to help us improve Nuxt
+labels: ["pending triage"]
+body:
+ - type: markdown
+  attributes:
+  value: |
+      Please use a template below to create a minimal reproduction
+      👉 https://stackblitz.com/github/nuxt/starter/tree/v3-stackblitz
+      👉 https://codesandbox.io/s/github/nuxt/starter/tree/v3-codesandbox
+ - type: textarea
+  id: bug-env
+  attributes:
+  label: Environment
+  description: You can use `npx nuxi info` to fill this section
+  placeholder: Environment
+  validations:
+  required: true
+ - type: textarea
+  id: reproduction
+  attributes:
+  label: Reproduction
+  description: Please provide a link to a repo that can reproduce the problem you ran into. A [**minimal reproduction**](https://v3.nuxtjs.org/community/reporting-bugs#create-a-minimal-reproduction) is required unless you are absolutely sure that the issue is obvious and the provided information is enough to understand the problem. If a report is vague (e.g. just a generic error message) and has no reproduction, it will receive a "need reproduction" label. If no reproduction is provided we might close it.
+  placeholder: Reproduction
+  validations:
+  required: true
+ - type: textarea
+  id: bug-description
+  attributes:
+  label: Describe the bug
+  description: A clear and concise description of what the bug is. If you intend to submit a PR for this issue, tell us in the description. Thanks!
+  placeholder: Bug description
+  validations:
+  required: true
+ - type: textarea
+  id: additonal
+  attributes:
+  label: Additional context
+  description: If applicable, add any other context about the problem here`
+ - type: textarea
+  id: logs
+  attributes:
+  label: Logs
+  description: |
+  Optional if provided reproduction. Please try not to insert an image but copy paste the log text.
+  render: shell
