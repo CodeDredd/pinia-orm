@@ -22,7 +22,7 @@ jobs:
 
       - run: pnpm i
 
-      - run: pnpm run build
+      - run: pnpm run build:ci
 
       - name: Run unit tests
         run: pnpm run test
@@ -42,7 +42,7 @@ jobs:
 
       - run: pnpm i
 
-      - run: pnpm run build
+      - run: pnpm run build:ci
 
       - name: Run test coverage
         run: pnpm run test:coverage
@@ -86,5 +86,5 @@ jobs:
           node-version: 16.x
 
       - run: pnpm i
-      - run: pnpm run build
+      - run: pnpm run build:ci
       - run: pnpm run size
