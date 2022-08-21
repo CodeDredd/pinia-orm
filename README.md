@@ -110,13 +110,22 @@ A few notes about the project and possible questions:
 - [x] Documentation
 - [x] Tests
 
+## 💻 Development
+
+- Clone this repository
+- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
+- Install dependencies using `pnpm install`
+- Run interactive tests using `pnpm dev`
+
 ## Special thanks
 
 I wan to thank [Kia King Ishii](https://github.com/kiaking) and their contributors for all their awesome work with vuex-orm
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+Made with ❤️
+
+Published under [MIT License](./LICENCE).
 
 <!-- Badges -->
 
