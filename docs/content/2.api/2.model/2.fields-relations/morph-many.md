@@ -32,9 +32,9 @@ import Image from './Image'
 class User extends Model {
   static entity = 'users'
   
-  @Attr(null) id!: number | null
-  @Str('') name!: string
-  @MorphMany(() => Image, 'imageableId', 'imageableType') images!: Image[]
+  @Attr(null) declare id: number | null
+  @Str('') declare name: string
+  @MorphMany(() => Image, 'imageableId', 'imageableType') declare images: Image[]
 }
 ````
 

@@ -32,9 +32,9 @@ import Phone from './Phone'
 class User extends Model {
   static entity = 'users'
   
-  @Attr(null) id!: number | null
-  @Str('') name!: string
-  @HasOne(() => Phone, 'userId') phone!: Phone
+  @Attr(null) declare id: number | null
+  @Str('') declare name: string
+  @HasOne(() => Phone, 'userId') declare phone: Phone
 }
 ````
 

@@ -29,8 +29,8 @@ import { Attr } from 'pinia-orm/dist/decorators'
 class User extends Model {
   static entity = 'users'
   
-  @Attr(null) id!: number | null
-  @Attr('') name!: string
+  @Attr(null) declare id: number | null
+  @Attr('') declare name: string
 }
 ````
 

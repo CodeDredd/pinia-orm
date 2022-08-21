@@ -29,8 +29,8 @@ import { Num, Str } from 'pinia-orm/dist/decorators'
 class User extends Model {
   static entity = 'users'
   
-  @Num(0) id!: number
-  @Str('') name!: string
+  @Num(0) declare id: number
+  @Str('') declare name: string
 }
 ````
 

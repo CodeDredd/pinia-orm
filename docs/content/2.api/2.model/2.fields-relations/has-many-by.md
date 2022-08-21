@@ -33,10 +33,10 @@ import Comment from './Comment'
 class Post extends Model {
   static entity = 'posts'
   
-  @Attr(null) id!: number | null
-  @Attr([]) postIds!: number[]
-  @Str('') title!: string
-  @HasManyBy(() => Comment, 'postIds') comments!: Comment[]
+  @Attr(null) declare id: number | null
+  @Attr([]) declare postIds: number[]
+  @Str('') declare title: string
+  @HasManyBy(() => Comment, 'postIds') declare comments: Comment[]
 }
 ````
 
