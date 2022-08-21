@@ -5,7 +5,6 @@ export default defineTheme({
   description: 'The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store.',
   layout: 'docs',
   url: 'https://pinia-orm.codedredd.de',
-  debug: false,
   socials: {
     twitter: '@_GregorBecker',
     github: 'codedredd/pinia-orm'

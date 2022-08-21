@@ -33,8 +33,8 @@ import RoleUser from './RoleUser'
 class User extends Model {
   static entity = 'users'
   
-  @Attr(null) id!: number | null
-  @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id') roles!: Role[]
+  @Attr(null) declare id: number | null
+  @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id') declare roles: Role[]
 }
 ````
 

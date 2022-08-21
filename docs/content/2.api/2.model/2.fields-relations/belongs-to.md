@@ -33,10 +33,10 @@ import User from './User'
 class User extends Model {
   static entity = 'users'
   
-  @Attr(null) id!: number | null
-  @Attr(null) userId!: number | null
-  @Str('') number!: string
-  @BelongsTo(() => User, 'userId') user!: User
+  @Attr(null) declare id: number | null
+  @Attr(null) declare userId: number | null
+  @Str('') declare number: string
+  @BelongsTo(() => User, 'userId') declare user: User
 }
 ````
 
