@@ -22,16 +22,6 @@
 - [📖 &nbsp;Documentation](https://pinia-orm.codedredd.de)
 - [👾 &nbsp;Playground](https://pinia-orm-play.codedredd.de)
 
-## Vite Integration
-
-Make sure to disable `useDefineForClassFields` in `tsconfig.json` when using `vite >= 2.5.0`. See [this issue](https://github.com/vitejs/vite/issues/4636) for more details.
-
-```json
-...
-"useDefineForClassFields": false,
-...
-```
-
 ## Migration from vuex-orm
 
 You want to migrate from vuex to pinia and with it vuex-orm to pinia-orm but you don't know yet?
