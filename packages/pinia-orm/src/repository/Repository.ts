@@ -188,6 +188,20 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Make hidden fields visible
+   */
+  makeVisible(fields: string[]): Query<M> {
+    return this.query().makeVisible(fields)
+  }
+
+  /**
+   * Make visible fields hidden
+   */
+  makeHidden(fields: string[]): Query<M> {
+    return this.query().makeHidden(fields)
+  }
+
+  /**
    * Add a "group by" clause to the query.
    */
   groupBy(...fields: GroupByFields): Query<M> {

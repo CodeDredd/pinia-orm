@@ -3,6 +3,7 @@ import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { DataStore, DataStoreState } from '../composables/useDataStore'
+import type { ModelInstallOptions } from '../store/Store'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -26,9 +27,17 @@ export type ModelRegistries = Record<string, ModelRegistry>
 export type ModelRegistry = Record<string, () => Attribute>
 
 export interface ModelOptions {
+  config?: ModelInstallOptions
   fill?: boolean
   relations?: boolean
   mutator?: 'set' | 'get' | 'none'
+  visible?: string[]
+  hidden?: string[]
+  action?: 'save' | 'update' | 'insert'
+}
+
+export interface MetaValues {
+  createdAt: Date
 }
 
 export interface BeforeHook<M extends Model = Model> {
@@ -45,6 +54,8 @@ export interface InheritanceTypes {
 
 export class Model {
   [s: keyof ModelFields]: any
+
+  declare _meta: undefined | MetaValues
   /**
    * The name of the model.
    */
@@ -59,6 +70,27 @@ export class Model {
    * The primary key for the model.
    */
   static primaryKey: string | string[] = 'id'
+
+  /**
+   * The meta key for the model.
+   */
+  static metaKey = '_meta'
+
+  static metaFields = {}
+
+  /**
+   * Hidden properties
+   */
+  static hidden = ['_meta']
+
+  /**
+   * Hidden properties
+   */
+  static visible = ['*']
+
+  static config: ModelInstallOptions
+
+  protected static mergedConfig: ModelInstallOptions
 
   /**
    * The type key for the model.
@@ -85,8 +117,7 @@ export class Model {
   protected static piniaOptions: DefineStoreOptionsBase<DataStoreState, DataStore> = {}
 
   /**
-   * The mutators for the model. It contains all mutators
-   * to the 'defineStore' function of pinia.
+   * The mutators for the model.
    */
   protected static fieldMutators: Mutators = {}
 
@@ -177,6 +208,18 @@ export class Model {
   }
 
   /**
+   * Set a field to hidden
+   */
+  static setHidden<M extends typeof Model>(
+    this: M,
+    key: string,
+  ): M {
+    this.hidden.push(key)
+
+    return this
+  }
+
+  /**
    * Clear the list of booted models so they can be re-booted.
    */
   static clearBootedModels(): void {
@@ -184,6 +227,8 @@ export class Model {
     this.schemas = {}
     this.fieldMutators = {}
     this.fieldCasts = {}
+    this.hidden = []
+    this.visible = ['*']
   }
 
   /**
@@ -461,6 +506,13 @@ export class Model {
   }
 
   /**
+   * Get the model config.
+   */
+  $config(): ModelInstallOptions {
+    return this.$self().config
+  }
+
+  /**
    * Get the base entity for this model.
    */
   $baseEntity(): string {
@@ -500,6 +552,20 @@ export class Model {
    */
   $fields(): ModelFields {
     return this.$self().schemas[this.$entity()]
+  }
+
+  /**
+   * Get the model hidden fields
+   */
+  $hidden(): string[] {
+    return this.$self().hidden
+  }
+
+  /**
+   * Get the model visible fields
+   */
+  $visible(): string[] {
+    return this.$self().visible
   }
 
   /**
@@ -544,6 +610,10 @@ export class Model {
    */
   $fill(attributes: Element = {}, options: ModelOptions = {}): this {
     const fields = this.$fields()
+    const config = {
+      ...options.config,
+      ...this.$config(),
+    }
     const fillRelation = options.relations ?? true
     const useMutator = options.mutator ?? 'get'
     const mutators: Mutators = {
@@ -551,7 +621,18 @@ export class Model {
       ...this.$self().fieldMutators,
     }
 
+    if (config.withMeta && useMutator === 'set') {
+      this.$self().schemas[this.$self().entity][this.$self().metaKey] = this.$self().schemas[this.$self().entity][this.$self().metaKey] ?? this.$self().attr({})
+
+      this[this.$self().metaKey] = {
+        createdAt: new Date().toISOString(),
+      }
+    }
+
     for (const key in fields) {
+      if (useMutator === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options))
+        continue
+
       const attr = fields[key]
       let value = attributes[key]
 
@@ -595,6 +676,15 @@ export class Model {
 
     if (this[key] === undefined)
       return attr.setKey(key).make()
+  }
+
+  protected isFieldVisible(key: string, hidden: string[], visible: string[], options: ModelOptions): boolean {
+    const optionsVisible = options.visible ?? ['*']
+    const optionsHidden = options.hidden ?? []
+    if (((hidden.includes('*') || hidden.includes(key)) && !optionsVisible.includes(key)) || optionsHidden.includes(key))
+      return false
+
+    return ((visible.includes('*') || visible.includes(key)) && !optionsHidden.includes(key)) || optionsVisible.includes(key)
   }
 
   /**
