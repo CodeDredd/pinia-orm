@@ -11,7 +11,7 @@ importers:
       '@lerna-lite/cli': ^1.11.0
       '@lerna-lite/run': ^1.11.0
       '@types/lodash.kebabcase': ^4.1.7
-      '@types/node': ^16.11.53
+      '@types/node': ^16.11.54
       chalk: ^4.1.2
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
@@ -32,7 +32,7 @@ importers:
       '@lerna-lite/cli': 1.11.0
       '@lerna-lite/run': 1.11.0
       '@types/lodash.kebabcase': 4.1.7
-      '@types/node': 16.11.53
+      '@types/node': 16.11.54
       chalk: 4.1.2
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
@@ -1709,8 +1709,8 @@ packages:
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
     dev: true
 
-  /@types/node/16.11.53:
-    resolution: {integrity: sha512-3yJerjVV8GlGSWCjEPal2cDymbQEE/1bhUr1NdW5apDPZo6EjBaqHxR7AC4wKmZ24Hzqcz+tgJyAGe9qcGHw7w==}
+  /@types/node/16.11.54:
+    resolution: {integrity: sha512-ryOpwe15+BtTUxKFfzABjaI/EtXLPBSBEW4B6D5ygWNcORLVKG/1/FC3WwAr5d7t6lCnlVPRsCY0NH680QT+Pg==}
     dev: true
 
   /@types/node/18.0.1:
