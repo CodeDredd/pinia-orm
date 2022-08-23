@@ -30,7 +30,7 @@ export interface ModelOptions {
   config?: ModelInstallOptions
   fill?: boolean
   relations?: boolean
-  mutator?: 'set' | 'get' | 'none'
+  operation?: 'set' | 'get'
   visible?: string[]
   hidden?: string[]
   action?: 'save' | 'update' | 'insert'
@@ -90,8 +90,6 @@ export class Model {
 
   static config: ModelInstallOptions
 
-  protected static mergedConfig: ModelInstallOptions
-
   /**
    * The type key for the model.
    */
@@ -131,7 +129,7 @@ export class Model {
   /**
    * Create a new model instance.
    */
-  constructor(attributes?: Element, options: ModelOptions = { mutator: 'set' }) {
+  constructor(attributes?: Element, options: ModelOptions = { operation: 'set' }) {
     this.$boot()
 
     const fill = options.fill ?? true
@@ -615,13 +613,13 @@ export class Model {
       ...this.$config(),
     }
     const fillRelation = options.relations ?? true
-    const useMutator = options.mutator ?? 'get'
+    const operation = options.operation ?? 'get'
     const mutators: Mutators = {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
 
-    if (config.withMeta && useMutator === 'set') {
+    if (config.withMeta && operation === 'set') {
       this.$self().schemas[this.$self().entity][this.$self().metaKey] = this.$self().schemas[this.$self().entity][this.$self().metaKey] ?? this.$self().attr({})
 
       this[this.$self().metaKey] = {
@@ -630,7 +628,7 @@ export class Model {
     }
 
     for (const key in fields) {
-      if (useMutator === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options))
+      if (operation === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options))
         continue
 
       const attr = fields[key]
@@ -641,21 +639,21 @@ export class Model {
 
       const mutator = mutators?.[key]
       const cast = this.$casts()[key]?.newRawInstance(fields)
-      if (mutator && useMutator === 'get') {
+      if (mutator && operation === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)
           : typeof mutator.get === 'function' ? mutator.get(value) : value
       }
 
-      if (cast && useMutator === 'get')
+      if (cast && operation === 'get')
         value = cast.get(value)
 
       let keyValue = this.$fillField(key, attr, value)
 
-      if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
+      if (mutator && typeof mutator !== 'function' && operation === 'set' && mutator.set)
         keyValue = mutator.set(keyValue)
 
-      if (cast && useMutator === 'set')
+      if (cast && operation === 'set')
         keyValue = cast.set(keyValue)
 
       this[key] = this[key] ?? keyValue

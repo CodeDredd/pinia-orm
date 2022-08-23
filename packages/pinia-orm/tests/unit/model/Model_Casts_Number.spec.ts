@@ -22,7 +22,7 @@ describe('unit/model/Model_Casts_Number', () => {
       }
     }
 
-    expect(new User({ count: '1' }, { mutator: 'get' }).count).toBe(1)
+    expect(new User({ count: '1' }, { operation: 'get' }).count).toBe(1)
   })
 
   it('should cast with decorator', () => {
@@ -34,11 +34,11 @@ describe('unit/model/Model_Casts_Number', () => {
         count!: number
     }
 
-    expect(new User({ count: true }, { mutator: 'get' }).count).toBe(1)
-    expect(new User({ count: false }, { mutator: 'get' }).count).toBe(0)
-    expect(new User({ count: 1 }, { mutator: 'get' }).count).toBe(1)
-    expect(new User({ count: '1.43' }, { mutator: 'get' }).count).toBe(1.43)
-    expect(new User({ mutator: 'get' }).count).toBe(0)
+    expect(new User({ count: true }, { operation: 'get' }).count).toBe(1)
+    expect(new User({ count: false }, { operation: 'get' }).count).toBe(0)
+    expect(new User({ count: 1 }, { operation: 'get' }).count).toBe(1)
+    expect(new User({ count: '1.43' }, { operation: 'get' }).count).toBe(1.43)
+    expect(new User({ operation: 'get' }).count).toBe(0)
   })
 
   it('throws warning with null when the notnotNullable option is set', () => {
@@ -50,12 +50,12 @@ describe('unit/model/Model_Casts_Number', () => {
         count!: number | null
     }
 
-    expect(new User({ mutator: 'get' }).count).toBe(null)
-    expect(new User({ count: 'value' }, { mutator: 'get' }).count).toBe(NaN)
-    expect(new User({ count: 1 }, { mutator: 'get' }).count).toBe(1)
-    expect(new User({ count: true }, { mutator: 'get' }).count).toBe(1)
-    expect(new User({ count: {} }, { mutator: 'get' }).count).toBe(0)
-    expect(new User({ count: '333' }, { mutator: 'get' }).count).toBe(333)
+    expect(new User({ operation: 'get' }).count).toBe(null)
+    expect(new User({ count: 'value' }, { operation: 'get' }).count).toBe(NaN)
+    expect(new User({ count: 1 }, { operation: 'get' }).count).toBe(1)
+    expect(new User({ count: true }, { operation: 'get' }).count).toBe(1)
+    expect(new User({ count: {} }, { operation: 'get' }).count).toBe(0)
+    expect(new User({ count: '333' }, { operation: 'get' }).count).toBe(333)
   })
 
   it('should cast before saved into store', () => {

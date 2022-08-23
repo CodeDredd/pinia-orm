@@ -17,7 +17,7 @@ describe('unit/model/Model_Hidden_Field', () => {
       @Str('') declare name: string
       @Str('') declare username: string
     }
-    const user = new User({ name: 'Test', username: 'John' }, { mutator: 'get' })
+    const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
 
     expect(user.name).toBe('Test')
     expect(user.username).toBe(undefined)
@@ -30,7 +30,7 @@ describe('unit/model/Model_Hidden_Field', () => {
       @Str('') declare name: string
       @Hidden() @Str('') declare username: string
     }
-    const user = new User({ name: 'Test', username: 'John' }, { mutator: 'get' })
+    const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
 
     expect(user.name).toBe('Test')
     expect(user.username).toBe(undefined)
@@ -45,7 +45,7 @@ describe('unit/model/Model_Hidden_Field', () => {
       @Str('') declare name: string
       @Str('') declare username: string
     }
-    const user = new User({ name: 'Test', username: 'John' }, { mutator: 'get' })
+    const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
 
     expect(user.name).toBe(undefined)
     expect(user.username).toBe('John')

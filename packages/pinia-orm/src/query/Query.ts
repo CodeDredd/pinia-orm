@@ -666,8 +666,8 @@ export class Query<M extends Model = Model> {
       const record = elements[id]
       const existing = currentData[id]
       const model = existing
-        ? this.hydrate({ ...existing, ...record }, { mutator: 'set', config: config.model })
-        : this.hydrate(record, { mutator: 'set', action: 'save', config: config.model })
+        ? this.hydrate({ ...existing, ...record }, { operation: 'set', config: config.model })
+        : this.hydrate(record, { operation: 'set', action: 'save', config: config.model })
 
       const isSaving = model.$self().saving(model)
       const isUpdatingOrCreating = existing ? model.$self().updating(model) : model.$self().creating(model)
