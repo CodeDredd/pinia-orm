@@ -1,13 +1,13 @@
 import type { PiniaPlugin, PiniaPluginContext } from 'pinia'
 
-export interface ModelInstallOptions {
+export interface ModelConfigOptions {
   withMeta?: boolean
   hidden?: string[]
   visible?: string[]
 }
 
 export interface InstallOptions {
-  model?: ModelInstallOptions
+  model?: ModelConfigOptions
 }
 
 export type FilledInstallOptions = Required<InstallOptions>
