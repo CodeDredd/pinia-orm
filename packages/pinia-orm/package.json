@@ -87,7 +87,7 @@
     "vite": "^3.0.9",
     "vitest": "^0.22.1",
     "vue": "^3.2.37",
-    "vue-demi": "^0.13.8",
+    "vue-demi": "^0.13.9",
     "vue2": "npm:vue@^2.7.3"
   },
   "size-limit": [
