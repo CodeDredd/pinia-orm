@@ -188,6 +188,13 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Make meta field visible
+   */
+  withMeta(): Query<M> {
+    return this.query().withMeta()
+  }
+
+  /**
    * Make hidden fields visible
    */
   makeVisible(fields: string[]): Query<M> {

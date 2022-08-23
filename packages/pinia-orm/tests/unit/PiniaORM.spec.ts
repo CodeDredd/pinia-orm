@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { createPinia, setActivePinia } from 'pinia'
-import { createApp } from 'vue-demi'
-import { Model, createORM, useRepo } from '../../src'
+import { Model, useRepo } from '../../src'
 import { Attr, Str } from '../../src/decorators'
+import { createPiniaORM } from '../helpers'
 
 describe('unit/PiniaORM', () => {
   class User extends Model {
@@ -13,12 +12,8 @@ describe('unit/PiniaORM', () => {
     @Str('') declare username: string
   }
 
-  it('pass a config so all models have meta', () => {
-    const app = createApp({})
-    const pinia = createPinia()
-    pinia.use(createORM({ model: { withMeta: true } }))
-    app.use(pinia)
-    setActivePinia(pinia)
+  it('pass config "model.withMeta"', () => {
+    createPiniaORM({ model: { withMeta: true } })
 
     const userRepo = useRepo(User)
     userRepo.save({
@@ -27,6 +22,44 @@ describe('unit/PiniaORM', () => {
       username: 'JD',
     })
 
-    expect(userRepo.find(1)?._meta).toHaveProperty('createdAt')
+    expect(userRepo.find(1)?._meta).toBe(undefined)
+    expect(userRepo.withMeta().find(1)?._meta).toHaveProperty('createdAt')
+  })
+
+  it('pass config "model.hidden"', () => {
+    createPiniaORM({ model: { hidden: ['username'] } })
+
+    const userRepo = useRepo(User)
+    userRepo.save({
+      id: 1,
+      name: 'John',
+      username: 'JD',
+    })
+
+    expect(userRepo.find(1)?.username).toBe(undefined)
+    expect(userRepo.find(1)?.name).toBe('John')
+  })
+
+  it('pass config "model.visible"', () => {
+    Model.clearRegistries()
+    class User extends Model {
+      static entity = 'users'
+
+      @Attr(0) declare id: number
+      @Str('') declare name: string
+      @Str('') declare username: string
+    }
+
+    createPiniaORM({ model: { visible: ['name'] } })
+
+    const userRepo = useRepo(User)
+    userRepo.save({
+      id: 1,
+      name: 'John',
+      username: 'JD',
+    })
+
+    expect(userRepo.find(1)?.username).toBe(undefined)
+    expect(userRepo.find(1)?.name).toBe('John')
   })
 })

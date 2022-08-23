@@ -2,6 +2,8 @@ import type { PiniaPlugin, PiniaPluginContext } from 'pinia'
 
 export interface ModelInstallOptions {
   withMeta?: boolean
+  hidden?: string[]
+  visible?: string[]
 }
 
 export interface InstallOptions {
@@ -26,6 +28,8 @@ export function createOptions(options: InstallOptions = {}): FilledInstallOption
   return {
     model: {
       withMeta: options.model?.withMeta ?? false,
+      hidden: options.model?.hidden ?? ['_meta'],
+      visible: options.model?.visible ?? ['*'],
     },
   }
 }

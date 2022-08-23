@@ -132,6 +132,13 @@ export class Query<M extends Model = Model> {
   }
 
   /**
+   * Make meta field visible
+   */
+  withMeta(): this {
+    return this.makeVisible(['_meta'])
+  }
+
+  /**
    * Make hidden fields visible
    */
   makeVisible(fields: string[]): this {
@@ -666,7 +673,7 @@ export class Query<M extends Model = Model> {
       const record = elements[id]
       const existing = currentData[id]
       const model = existing
-        ? this.hydrate({ ...existing, ...record }, { operation: 'set', config: config.model })
+        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update', config: config.model })
         : this.hydrate(record, { operation: 'set', action: 'save', config: config.model })
 
       const isSaving = model.$self().saving(model)
