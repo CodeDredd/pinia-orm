@@ -71,7 +71,7 @@
     "@vitest/ui": "^0.22.1",
     "@vue/composition-api": "^1.7.0",
     "c8": "^7.12.0",
-    "core-js": "^3.24.1",
+    "core-js": "^3.25.0",
     "eslint": "^8.22.0",
     "happy-dom": "^6.0.4",
     "mkdist": "^0.3.13",
@@ -87,7 +87,7 @@
     "vite": "^3.0.9",
     "vitest": "^0.22.1",
     "vue": "^3.2.37",
-    "vue-demi": "^0.13.9",
+    "vue-demi": "^0.13.10",
     "vue2": "npm:vue@^2.7.3"
   },
   "size-limit": [
