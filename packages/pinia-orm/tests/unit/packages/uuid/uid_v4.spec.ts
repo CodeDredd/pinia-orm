@@ -42,8 +42,6 @@ describe('unit/packages/uuid/uid_v4', () => {
 
     useRepo(User).save({ name: 'Test' })
 
-    console.log(useRepo(User).all())
-
     expect(useRepo(User).all().length).toBe(1)
   })
 

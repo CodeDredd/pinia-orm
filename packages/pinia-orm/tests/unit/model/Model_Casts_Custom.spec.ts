@@ -30,7 +30,7 @@ describe('unit/model/Model_Casts_Custom', () => {
       }
     }
 
-    expect(new User({ name: 'John' }, { mutator: 'get' }).name).toBe('string John')
+    expect(new User({ name: 'John' }, { operation: 'get' }).name).toBe('string John')
   })
 
   it('should cast with decorator', () => {
@@ -83,7 +83,7 @@ describe('unit/model/Model_Casts_Custom', () => {
       }
     }
 
-    expect(new User({ name: 'John' }, { mutator: 'get' }).name).toBe('John')
-    expect(new User({ name: 1 }, { mutator: 'get' }).name).toBe('number 1')
+    expect(new User({ name: 'John' }, { operation: 'get' }).name).toBe('John')
+    expect(new User({ name: 1 }, { operation: 'get' }).name).toBe('number 1')
   })
 })

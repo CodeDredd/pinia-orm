@@ -63,6 +63,10 @@ export class Query<M extends Model = Model> {
    */
   protected skip = 0
 
+  protected visible = ['*']
+
+  protected hidden: string[] = []
+
   /**
    * The relationships that should be eager loaded.
    */
@@ -119,12 +123,37 @@ export class Query<M extends Model = Model> {
   /**
    * Commit a store action and get the data
    */
-  protected commit(name: string, payload?: any): Elements {
+  protected commit(name: string, payload?: any) {
     const store = useDataStore<M>(this.model.$baseEntity(), this.model.$piniaOptions())(this.pinia)
     if (name && typeof store[name] === 'function')
       store[name](payload)
 
-    return store.$state.data
+    return store.$state
+  }
+
+  /**
+   * Make meta field visible
+   */
+  withMeta(): this {
+    return this.makeVisible(['_meta'])
+  }
+
+  /**
+   * Make hidden fields visible
+   */
+  makeVisible(fields: string[]): this {
+    this.visible = fields
+
+    return this
+  }
+
+  /**
+   * Make visible fields hidden
+   */
+  makeHidden(fields: string[]): this {
+    this.hidden = fields
+
+    return this
   }
 
   /**
@@ -311,22 +340,15 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Get raw elements from the store.
-   */
-  protected data(): Elements {
-    return this.commit('get')
-  }
-
-  /**
    * Get all models from the store. The difference with the `get` is that this
    * method will not process any query chain. It'll always retrieve all models.
    */
   all(): Collection<M> {
-    const records = this.commit('get')
+    const { data, config } = this.commit('all')
 
     const collection = [] as Collection<M>
 
-    for (const id in records) collection.push(this.hydrate(records[id]))
+    for (const id in data) collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, config: config.model }))
 
     return collection
   }
@@ -526,7 +548,7 @@ export class Query<M extends Model = Model> {
   reviveOne(schema: Element): Item<M> {
     const id = this.model.$getIndexId(schema)
 
-    const item = this.commit('get')[id] ?? null
+    const item = this.commit('get').data[id] ?? null
 
     if (!item)
       return null
@@ -644,15 +666,15 @@ export class Query<M extends Model = Model> {
    */
   saveElements(elements: Elements): void {
     const newData = {} as Elements
-    const currentData = this.data()
+    const { data: currentData, config } = this.commit('all')
     const afterSavingHooks = []
 
     for (const id in elements) {
       const record = elements[id]
       const existing = currentData[id]
       const model = existing
-        ? this.hydrate({ ...existing, ...record }, { mutator: 'set' })
-        : this.hydrate(record, { mutator: 'set' })
+        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update', config: config.model })
+        : this.hydrate(record, { operation: 'set', action: 'save', config: config.model })
 
       const isSaving = model.$self().saving(model)
       const isUpdatingOrCreating = existing ? model.$self().updating(model) : model.$self().creating(model)
@@ -781,11 +803,8 @@ export class Query<M extends Model = Model> {
    * Delete all records in the store.
    */
   flush(): Collection<M> {
-    const models = this.get(false)
-
     this.commit('flush')
-
-    return models
+    return this.get(false)
   }
 
   protected dispatchDeleteHooks(models: M | Collection<M>): [{ (): void }[], string[]] {

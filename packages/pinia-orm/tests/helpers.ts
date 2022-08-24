@@ -1,4 +1,4 @@
-import { getActivePinia } from 'pinia'
+import { createPinia, getActivePinia, setActivePinia } from 'pinia'
 import { nanoid } from 'nanoid'
 import { nanoid as nanoidNS } from 'nanoid/non-secure'
 import { nanoid as nanoidAsync } from 'nanoid/async'
@@ -6,19 +6,29 @@ import { v1, v4 } from 'uuid'
 import type { Mock } from 'vitest'
 import { expect, vi } from 'vitest'
 
-import type { Collection, Elements, Model } from '../src'
+import { createApp } from 'vue-demi'
+import type { Collection, Elements, InstallOptions, Model } from '../src'
 import * as Utils from '../src/support/Utils'
+import { createORM, createOptions } from '../src'
 
 interface Entities {
   [name: string]: Elements
 }
 
-export function createState(entities: Entities): any {
+export function createPiniaORM(options?: InstallOptions) {
+  const app = createApp({})
+  const pinia = createPinia()
+  pinia.use(createORM(options))
+  app.use(pinia)
+  setActivePinia(pinia)
+}
+
+export function createState(entities: Entities, config?: InstallOptions): any {
   const state = {} as any
 
   for (const entity in entities) {
     if (!state[entity])
-      state[entity] = { data: {} }
+      state[entity] = { data: {}, config: createOptions(config) }
 
     state[entity].data = entities[entity]
   }
@@ -32,8 +42,8 @@ export function fillState(entities: Entities): void {
   getActivePinia().state.value = createState(entities)
 }
 
-export function assertState(entities: Entities): void {
-  expect(getActivePinia()?.state.value).toEqual(createState(entities))
+export function assertState(entities: Entities, config?: InstallOptions): void {
+  expect(getActivePinia()?.state.value).toEqual(createState(entities, config))
 }
 
 export function assertModel<M extends Model>(
