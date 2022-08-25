@@ -14,6 +14,7 @@ import { MorphTo } from '../model/attributes/relations/MorphTo'
 import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
+import { useGroupBy } from '../composables/collection/useGroupBy'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -291,6 +292,20 @@ export class Query<M extends Model = Model> {
   }
 
   /**
+   * Get the max value of the specified filed.
+   */
+  max(field: string): number {
+    const numbers = this.get().reduce<number[]>((numbers, item) => {
+      if (typeof item[field] === 'number')
+        numbers.push(item[field])
+
+      return numbers
+    }, [])
+
+    return numbers.length === 0 ? 0 : Math.max(...numbers)
+  }
+
+  /**
    * Set the relationships that should be eager loaded.
    */
   with(name: string, callback: EagerLoadConstraint = () => {}): this {
@@ -465,15 +480,7 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered order conditions.
    */
   protected filterGroup(models: Collection<M>): Record<string, Collection<M>> {
-    const grouped: Record<string, Collection<M>> = {}
-    const fields = this.groups.map(group => group.field)
-
-    models.forEach((model) => {
-      const key = fields.length === 1 ? model[fields[0]] : `[${fields.map(field => model[field]).toString()}]`
-      grouped[key] = (grouped[key] || []).concat(model)
-    })
-
-    return grouped
+    return useGroupBy<M>(models, this.groups.map(group => group.field))
   }
 
   /**
