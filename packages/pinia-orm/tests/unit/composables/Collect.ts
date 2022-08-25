@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, HasOne, Num, Str } from '../../../src/decorators'
-import { collect } from '../../../src/composables/collection/collect'
+import { useCollect } from '../../../src/composables/collection/useCollect'
 
 describe('unit/composables/Collect', () => {
   class User extends Model {
@@ -23,7 +23,7 @@ describe('unit/composables/Collect', () => {
     @Str('') declare title: string
   }
 
-  const userCollection = collect(useRepo(User).make([
+  const userCollection = useCollect(useRepo(User).make([
     { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
     { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
     { id: 3, name: 'David', age: 20 },
@@ -57,6 +57,10 @@ describe('unit/composables/Collect', () => {
 
   it('can pluck by field name', () => {
     expect(userCollection.pluck('age')).toEqual([40, 30, 20])
+  })
+
+  it('can return the keys of the collection', () => {
+    expect(userCollection.keys()).toEqual([1, 2, 3])
   })
 
   it('can pluck by field with dot notation', () => {

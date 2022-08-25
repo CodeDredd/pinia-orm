@@ -14,7 +14,6 @@ import { MorphTo } from '../model/attributes/relations/MorphTo'
 import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
-import { useGroupBy } from '../composables/collection/useGroupBy'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -480,7 +479,15 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered order conditions.
    */
   protected filterGroup(models: Collection<M>): Record<string, Collection<M>> {
-    return useGroupBy<M>(models, this.groups.map(group => group.field))
+    const grouped: Record<string, Collection<M>> = {}
+    const fields = this.groups.map(group => group.field)
+
+    models.forEach((model) => {
+      const key = fields.length === 1 ? model[fields[0]] : `[${fields.map(field => model[field]).toString()}]`
+      grouped[key] = (grouped[key] || []).concat(model)
+    })
+
+    return grouped
   }
 
   /**

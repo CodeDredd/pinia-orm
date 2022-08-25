@@ -6,7 +6,7 @@ import { usePluck } from './usePluck'
 import { useKeys } from './useKeys'
 import { useGroupBy } from './useGroupBy'
 
-export interface Collect<M extends Model = Model> {
+export interface UseCollect<M extends Model = Model> {
   sum: (field: string) => number
   min: (field: string) => number
   max: (field: string) => number
@@ -18,7 +18,7 @@ export interface Collect<M extends Model = Model> {
 /**
  * Return all possible helper functions for the collection
  */
-export function collect<M extends Model = Model>(models: Collection<M>): Collect<M> {
+export function useCollect<M extends Model = Model>(models: Collection<M>): UseCollect<M> {
   return {
     sum: field => useSum(models, field),
     min: field => useMin(models, field),
