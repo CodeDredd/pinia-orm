@@ -1,10 +1,8 @@
-import type { Collection, Model } from '../../../src'
-
 /**
  * Get the sum value of the specified filed.
  */
-export function useGroupBy<M extends Model = Model>(models: Collection<M>, fields: string[] | string): Record<string, Collection<M>> {
-  const grouped: Record<string, Collection<M>> = {}
+export function useGroupBy<T>(models: T[], fields: string[] | string): Record<string, T[]> {
+  const grouped: Record<string, T[]> = {}
   const props = Array.isArray(fields) ? fields : [fields]
 
   models.forEach((model) => {

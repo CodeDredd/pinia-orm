@@ -31,16 +31,28 @@ describe('unit/composables/Collect', () => {
 
   it('can group records using the "groupBy" modifier', () => {
     const expected = {
-      James: [
-        { id: 1, name: 'James', age: 40 },
-        { id: 2, name: 'James', age: 30 },
-      ],
-      David: [
-        { id: 3, name: 'David', age: 20 },
-      ],
+      James: useRepo(User).make([
+        { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
+        { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
+      ]),
+      David: useRepo(User).make([
+        { id: 3, name: 'David', age: 20, post: null },
+      ]),
     }
 
     expect(userCollection.groupBy('name')).toEqual(expected)
+  })
+
+  it('can sort records using the "sortBy" modifier', () => {
+    const expected = useRepo(User).make([
+      { id: 3, name: 'David', age: 20, post: null },
+      { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
+      { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
+    ])
+
+    expect(userCollection.sortBy('name')).toEqual(expected)
+    expect(userCollection.sortBy(model => model.name)).toEqual(expected)
+    expect(userCollection.sortBy([['name', 'asc']])).toEqual(expected)
   })
 
   it('can sum up by field name', () => {
