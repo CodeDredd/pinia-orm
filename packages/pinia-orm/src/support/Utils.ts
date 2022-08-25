@@ -20,17 +20,10 @@ export function compareWithOperator(leftValue: any, rightValue: any, operator?: 
 }
 
 /**
- * Check if the given value is the type of null.
- */
-export function isNull(value: any): value is null {
-  return value === null
-}
-
-/**
  * Check if the given value is the type of undefined or null.
  */
 export function isNullish(value: any): value is undefined | null {
-  return value === undefined || isNull(value)
+  return value === undefined || value === null
 }
 
 /**

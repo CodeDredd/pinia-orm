@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest'
 import { Model, useRepo } from '../../../src'
 import {
   Attr,
-  BelongsTo,
+  BelongsTo, BelongsToMany,
   HasMany,
   HasManyBy,
-  HasOne,
+  HasOne, MorphMany,
   MorphOne,
-  MorphTo,
+  MorphTo, Num, Str,
 } from '../../../src/decorators'
 
 describe('unit/model/Model_Relations', () => {
@@ -22,6 +22,32 @@ describe('unit/model/Model_Relations', () => {
     static entity = 'countries'
 
     @Attr() id!: number
+  }
+
+  class Role extends Model {
+    static entity = 'roles'
+
+    @Num(0) declare id: number
+    declare pivot: RoleUser
+  }
+
+  class RoleUser extends Model {
+    static entity = 'roleUser'
+
+    static primaryKey = ['roleIid', 'userId']
+
+    @Attr(null) declare roleIid: number | null
+    @Attr(null) declare userId: number | null
+    @Attr(null) declare level: number | null
+  }
+
+  class Comment extends Model {
+    static entity = 'comments'
+
+    @Num(0) id!: number
+    @Str('') body!: string
+    @Attr(null) commentableId!: number | null
+    @Attr(null) commentableType!: string | null
   }
 
   class Post extends Model {
@@ -58,6 +84,10 @@ describe('unit/model/Model_Relations', () => {
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
       image!: Image | null
+
+    @BelongsToMany(() => Role, () => RoleUser, 'userId', 'roleId') declare roles: Role[]
+
+    @MorphMany(() => Comment, 'commentableId', 'commentableType') declare comments: Comment[]
   }
 
   class Image extends Model {
@@ -97,6 +127,20 @@ describe('unit/model/Model_Relations', () => {
 
     expect(user.country).toBeInstanceOf(Country)
     expect(user.country!.id).toBe(2)
+  })
+
+  it('fills "belongs to many" relation', () => {
+    const userRepo = useRepo(User)
+
+    const user = userRepo.make({
+      id: 1,
+      roles: [{ id: 2 }, { id: 3 }],
+    })
+
+    expect(user.roles[0]).toBeInstanceOf(Role)
+    expect(user.roles[1]).toBeInstanceOf(Role)
+    expect(user.roles[0].id).toBe(2)
+    expect(user.roles[1].id).toBe(3)
   })
 
   it('fills "has many" relation', () => {
@@ -141,6 +185,22 @@ describe('unit/model/Model_Relations', () => {
 
     expect(user.image!).toBeInstanceOf(Image)
     expect(user.image!.id).toBe(2)
+  })
+
+  it('fills "morph many" relation', () => {
+    const userRepo = useRepo(User)
+
+    const user = userRepo.make({
+      id: 1,
+      comments: [{
+        id: 2,
+        commentableId: 1,
+        commentableType: 'users',
+      }],
+    })
+
+    expect(user.comments[0]).toBeInstanceOf(Comment)
+    expect(user.comments[0].id).toBe(2)
   })
 
   it('fills "morph to" relation', () => {
