@@ -16,7 +16,8 @@ describe('feature/relations/belongs_to_many_save', () => {
   class Role extends Model {
     static entity = 'roles'
 
-    @Num(0) id!: number
+    @Num(0) declare id: number
+    declare pivot: RoleUser
   }
 
   class RoleUser extends Model {

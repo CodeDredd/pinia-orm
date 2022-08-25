@@ -56,7 +56,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     const user2 = userRepo.with('roles').find(2)
 
     expect(user).toBeInstanceOf(User)
-    assertInstanceOf(user.roles, Role)
+    assertInstanceOf(user!.roles, Role)
 
     expect(user?.roles.length).toBe(2)
     expect(user?.roles[0].pivot.level).toBe(1)
@@ -64,7 +64,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     expect(user2?.roles[0].pivot.level).toBe(2)
 
     const userWithoutRoles = userRepo.with('roles').find(3)
-    expect(userWithoutRoles.roles.length).toBe(0)
+    expect(userWithoutRoles?.roles.length).toBe(0)
   })
 
   it('can eager load missing relation as empty array', () => {
