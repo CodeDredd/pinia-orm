@@ -291,20 +291,6 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Get the max value of the specified filed.
-   */
-  max(field: string): number {
-    const numbers = this.get().reduce<number[]>((numbers, item) => {
-      if (typeof item[field] === 'number')
-        numbers.push(item[field])
-
-      return numbers
-    }, [])
-
-    return numbers.length === 0 ? 0 : Math.max(...numbers)
-  }
-
-  /**
    * Set the relationships that should be eager loaded.
    */
   with(name: string, callback: EagerLoadConstraint = () => {}): this {
