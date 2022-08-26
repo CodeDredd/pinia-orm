@@ -1,5 +1,5 @@
 /**
- * Get the sum value of the specified filed.
+ * The useGroupBy method groups the collection's items by a given key.
  */
 export function useGroupBy<T>(models: T[], fields: string[] | string): Record<string, T[]> {
   const grouped: Record<string, T[]> = {}
