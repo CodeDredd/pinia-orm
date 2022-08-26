@@ -215,3 +215,19 @@ export function generateId(size: number, urlAlphabet: string) {
   }
   return id
 }
+
+/**
+ * Get a value based on a dot-notation key.
+ */
+export function getValue(obj: Object, keys: string | string[]): any {
+  keys = (typeof keys === 'string') ? keys.split('.') : keys
+  const key = keys.shift() as string
+  // eslint-disable-next-line no-prototype-builtins
+  if (obj && obj.hasOwnProperty(key) && keys.length === 0)
+    return obj[key]
+  // eslint-disable-next-line no-prototype-builtins
+  else if (!obj || !obj.hasOwnProperty(key))
+    return obj
+  else
+    return getValue(obj[key], keys)
+}

@@ -462,7 +462,7 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Filter the given collection by the registered order conditions.
+   * Filter the given collection by the registered group conditions.
    */
   protected filterGroup(models: Collection<M>): Record<string, Collection<M>> {
     const grouped: Record<string, Collection<M>> = {}
