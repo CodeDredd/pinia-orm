@@ -1,6 +1,6 @@
 ---
 title: 'useGroupBy()'
-description: 'The useGroupBy method groups the collection's items by a given key.'
+description: 'The useGroupBy method groups the collections items by a given key.'
 ---
 
 ## Usage

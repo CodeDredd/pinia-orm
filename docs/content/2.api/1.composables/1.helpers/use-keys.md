@@ -1,6 +1,6 @@
 ---
 title: 'useKeys()'
-description: 'The keys method returns all of the collection's primary keys'
+description: 'The keys method returns all of the collections primary keys'
 ---
 
 ## Usage
