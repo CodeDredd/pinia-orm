@@ -21,11 +21,7 @@ export default defineTheme({
   aside: {
     level: 1,
     filter: [
-      '/v1',
-      '/content-v1',
-      '/fr',
-      '/ja',
-      '/ru'
+      '/v1'
     ]
   },
   header: {
