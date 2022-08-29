@@ -75,10 +75,16 @@ Well maybe this table will help you to decide. This comparison is just about fac
 
 <h4 align="center">Lovely Sponsors</h4>
 <p align="center">
-    <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
+  <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
     <picture>
       <source srcset="https://avatars.githubusercontent.com/u/83905274?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Sven Hue" />
       <img src="https://avatars.githubusercontent.com/u/83905274?v=4" height="26px" alt="Sven Hue" />
+    </picture>
+  </a>
+  <a href="https://github.com/paolodina" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source srcset="https://avatars.githubusercontent.com/u/1157401?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Paolo Dina" />
+      <img src="https://avatars.githubusercontent.com/u/1157401?v=4" height="26px" alt="Paolo Dina" />
     </picture>
   </a>
 </p>
