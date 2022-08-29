@@ -38,5 +38,21 @@ describe('performance/save_has_many_relation', () => {
     console.time('time')
     userRepo.save(users)
     console.timeEnd('time')
+    console.log('Get Speed test for 10k saved items and 5 queries')
+    console.time('get(): with cache')
+    for (let i = 1; i <= 5; i++) {
+      console.time(`time query ${i}`)
+      userRepo.with('posts').get()
+      console.timeEnd(`time query ${i}`)
+    }
+    console.timeEnd('get(): with cache')
+
+    console.time('get(): without cache')
+    for (let i = 1; i <= 5; i++) {
+      console.time(`time query without ${i}`)
+      userRepo.with('posts').useCache(false).get()
+      console.timeEnd(`time query without ${i}`)
+    }
+    console.timeEnd('get(): without cache')
   })
 })

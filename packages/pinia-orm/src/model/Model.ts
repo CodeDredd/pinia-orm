@@ -63,6 +63,11 @@ export class Model {
   static entity: string
 
   /**
+   * Defines caching behaviour
+   */
+  static caching = true
+
+  /**
    * The reference to the base entity name if the class extends a base entity.
    */
   static baseEntity: string
@@ -506,6 +511,13 @@ export class Model {
    */
   $entity(): string {
     return this.$self().entity
+  }
+
+  /**
+   * Get the cache config of this model.
+   */
+  $cache(): boolean {
+    return this.$self().caching
   }
 
   /**

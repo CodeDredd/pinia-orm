@@ -16,6 +16,7 @@ import type {
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
 import { useDataStore } from '../composables/useDataStore'
+import { Cache } from '../query/Cache'
 
 export class Repository<M extends Model = Model> {
   /**
@@ -37,6 +38,8 @@ export class Repository<M extends Model = Model> {
 
   protected pinia?: Pinia
 
+  protected queryCache: Cache
+
   /**
    * The model object to be used for the custom repository.
    */
@@ -48,6 +51,7 @@ export class Repository<M extends Model = Model> {
   constructor(database: Database, pinia?: Pinia) {
     this.database = database
     this.pinia = pinia
+    this.queryCache = new Cache()
   }
 
   /**
@@ -108,7 +112,14 @@ export class Repository<M extends Model = Model> {
    * Create a new Query instance.
    */
   query(): Query<M> {
-    return new Query(this.database, this.getModel(), this.pinia)
+    return new Query(this.database, this.getModel(), this.queryCache, this.pinia)
+  }
+
+  /**
+   * Create a new Query instance.
+   */
+  cache(): Cache {
+    return this.queryCache
   }
 
   /**

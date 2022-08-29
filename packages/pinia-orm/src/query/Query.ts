@@ -14,6 +14,7 @@ import { MorphTo } from '../model/attributes/relations/MorphTo'
 import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
+import type { Cache } from '../query/Cache'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -63,38 +64,55 @@ export class Query<M extends Model = Model> {
    */
   protected skip = 0
 
+  /**
+   * Fields that should be visible.
+   */
   protected visible = ['*']
 
+  /**
+   * Fields that should be hidden.
+   */
   protected hidden: string[] = []
+
+  /**
+   * The cache object.
+   */
+  protected cache: Cache
 
   /**
    * The relationships that should be eager loaded.
    */
   protected eagerLoad: EagerLoad = {}
 
+  /**
+   * The pinia store.
+   */
   protected pinia?: Pinia
+
+  protected fromCache = true
 
   /**
    * Create a new query instance.
    */
-  constructor(database: Database, model: M, pinia?: Pinia) {
+  constructor(database: Database, model: M, cache: Cache, pinia?: Pinia) {
     this.database = database
     this.model = model
     this.pinia = pinia
+    this.cache = cache
   }
 
   /**
    * Create a new query instance for the given model.
    */
   newQuery(model: string): Query {
-    return new Query(this.database, this.database.getModel(model), this.pinia)
+    return new Query(this.database, this.database.getModel(model), this.cache, this.pinia)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.pinia)
+    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -110,7 +128,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation(relation: Relation): Query {
-    return new Query(this.database, relation.getRelated(), this.pinia)
+    return new Query(this.database, relation.getRelated(), this.cache, this.pinia)
   }
 
   /**
@@ -324,6 +342,12 @@ export class Query<M extends Model = Model> {
     })
   }
 
+  useCache(useCache = true): this {
+    this.fromCache = useCache
+
+    return this
+  }
+
   /**
    * Get where closure for relations
    */
@@ -358,6 +382,25 @@ export class Query<M extends Model = Model> {
    */
   get<T extends 'group' | 'collection' = 'collection'>(triggerHook?: boolean): T extends 'group' ? GroupedCollection<M> : Collection<M>
   get(triggerHook = true): Collection<M> | GroupedCollection<M> {
+    return !this.fromCache
+      ? this.internalGet(triggerHook)
+      : this.cache.fetch<Collection<M> | GroupedCollection<M>>({
+        key: this.model.$entity(),
+        params: {
+          where: this.wheres,
+          groups: this.groups,
+          orders: this.orders,
+          eagerLoads: this.eagerLoad,
+          skip: this.skip,
+          take: this.take,
+          hidden: this.hidden,
+          visible: this.visible,
+        },
+        callback: () => this.internalGet(triggerHook),
+      })
+  }
+
+  private internalGet(triggerHook: boolean): Collection<M> | GroupedCollection<M> {
     if (this.model.$entity() !== this.model.$baseEntity())
       this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make())
 
