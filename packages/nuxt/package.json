@@ -44,7 +44,7 @@
     "pinia-orm": ">=1.0.0-rc.6"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.8"
+    "@nuxt/kit": "^3.0.0-rc.9"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
@@ -52,7 +52,7 @@
     "@pinia/nuxt": "^0.4.1",
     "@types/prettier": "^2",
     "eslint": "^8.23.0",
-    "nuxt": "^3.0.0-rc.8",
+    "nuxt": "^3.0.0-rc.9",
     "pinia": "^2.0.21",
     "pinia-orm": "^1.0.0-rc.5",
     "prettier": "^2.7.1",
