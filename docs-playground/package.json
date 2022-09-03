@@ -37,7 +37,7 @@
     "vue-hako": "^0.0.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.26.2",
+    "@antfu/eslint-config": "^0.26.3",
     "@iconify/json": "^2.1.102",
     "@types/file-saver": "^2.0.5",
     "@types/node": "^16.11.56",
