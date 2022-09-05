@@ -22,7 +22,7 @@
     "@vue/shared": "^3.2.38",
     "@vueuse/core": "9.2.0",
     "@vueuse/integrations": "^9.1.1",
-    "@vueuse/shared": "9.1.1",
+    "@vueuse/shared": "9.2.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "lz-string": "^1.4.4",
