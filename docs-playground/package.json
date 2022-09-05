@@ -50,7 +50,7 @@
     "unplugin-icons": "^0.14.9",
     "vite-plugin-pwa": "^0.12.6",
     "vite-plugin-windicss": "^1.8.7",
-    "vue-tsc": "^0.40.6",
+    "vue-tsc": "^0.40.7",
     "windicss": "^3.5.6"
   }
 }
