@@ -23,7 +23,7 @@ export interface IStorageCache {
 // By default data will expire in 5 minutes.
 const DEFAULT_EXPIRATION_SECONDS = 5 * 60
 
-export class Cache implements IStorageCache {
+export class SimpleCache implements IStorageCache {
   constructor(private cache = new Map()) {}
 
   // The fetch method, before calling callback, will check if there is cached data.

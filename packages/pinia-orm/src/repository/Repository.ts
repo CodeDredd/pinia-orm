@@ -16,7 +16,9 @@ import type {
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
 import { useDataStore } from '../composables/useDataStore'
-import { Cache } from '../query/Cache'
+import { cache } from '../data/SharedCache'
+import type { WeakCache } from '../cache/WeakCache'
+import { config } from '../store/Config'
 
 export class Repository<M extends Model = Model> {
   /**
@@ -38,7 +40,7 @@ export class Repository<M extends Model = Model> {
 
   protected pinia?: Pinia
 
-  protected queryCache: Cache
+  queryCache?: WeakCache<string, M[]>
 
   /**
    * The model object to be used for the custom repository.
@@ -51,13 +53,16 @@ export class Repository<M extends Model = Model> {
   constructor(database: Database, pinia?: Pinia) {
     this.database = database
     this.pinia = pinia
-    this.queryCache = new Cache()
   }
 
   /**
    * Initialize the repository by setting the model instance.
    */
   initialize(model?: ModelConstructor<M>): this {
+    if (config.cache)
+      // eslint-disable-next-line new-cap
+      this.queryCache = (config.cache.shared ? cache : new config.cache.provider()) as WeakCache<string, M[]>
+
     // If there's a model passed in, just use that and return immediately.
     if (model) {
       this.model = model.newRawInstance()
@@ -118,7 +123,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Create a new Query instance.
    */
-  cache(): Cache {
+  cache(): WeakCache<string, M[]> | undefined {
     return this.queryCache
   }
 

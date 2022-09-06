@@ -1,4 +1,7 @@
-import type { PiniaPlugin, PiniaPluginContext } from 'pinia'
+import type { PiniaPlugin } from 'pinia'
+import type { WeakCache } from '../cache/WeakCache'
+import type { Model } from '../model/Model'
+import { CONFIG_DEFAULTS, config } from './Config'
 
 export interface ModelConfigOptions {
   withMeta?: boolean
@@ -6,8 +9,14 @@ export interface ModelConfigOptions {
   visible?: string[]
 }
 
+export interface CacheConfigOptions {
+  shared?: boolean
+  provider: typeof WeakCache<string, Model[]>
+}
+
 export interface InstallOptions {
   model?: ModelConfigOptions
+  cache?: CacheConfigOptions | false
 }
 
 export type FilledInstallOptions = Required<InstallOptions>
@@ -16,20 +25,7 @@ export type FilledInstallOptions = Required<InstallOptions>
  * Install Pinia ORM to the store.
  */
 export function createORM(options?: InstallOptions): PiniaPlugin {
-  return (context: PiniaPluginContext) => {
-    context.store.$state.config = createOptions(options)
-  }
-}
-
-/**
- * Create options by merging the given user-provided options.
- */
-export function createOptions(options: InstallOptions = {}): FilledInstallOptions {
-  return {
-    model: {
-      withMeta: options.model?.withMeta ?? false,
-      hidden: options.model?.hidden ?? ['_meta'],
-      visible: options.model?.visible ?? ['*'],
-    },
-  }
+  config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
+  config.cache = options?.cache === false ? options?.cache : { ...CONFIG_DEFAULTS.cache, ...options?.cache }
+  return () => {}
 }

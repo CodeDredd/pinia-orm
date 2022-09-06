@@ -217,6 +217,18 @@ export function generateId(size: number, urlAlphabet: string) {
 }
 
 /**
+ * Get a unique string for an key with object params
+ */
+export function generateKey(key: string, params?: any): string {
+  const keyValues = params ? { key, params } : { key }
+  const stringifiedKey = JSON.stringify(keyValues)
+
+  // This check allows to generate base64 strings depending on the current environment.
+  // If the window object exists, we can assume this code is running in a browser.
+  return typeof process === 'undefined' ? btoa(stringifiedKey) : Buffer.from(stringifiedKey, 'utf8').toString('base64')
+}
+
+/**
  * Get a value based on a dot-notation key.
  */
 export function getValue(obj: Object, keys: string | string[]): any {

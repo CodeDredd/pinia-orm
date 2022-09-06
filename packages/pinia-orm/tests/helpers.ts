@@ -9,7 +9,7 @@ import { expect, vi } from 'vitest'
 import { createApp } from 'vue-demi'
 import type { Collection, Elements, InstallOptions, Model } from '../src'
 import * as Utils from '../src/support/Utils'
-import { createORM, createOptions } from '../src'
+import { createORM } from '../src'
 
 interface Entities {
   [name: string]: Elements
@@ -23,12 +23,12 @@ export function createPiniaORM(options?: InstallOptions) {
   setActivePinia(pinia)
 }
 
-export function createState(entities: Entities, config?: InstallOptions): any {
+export function createState(entities: Entities): any {
   const state = {} as any
 
   for (const entity in entities) {
     if (!state[entity])
-      state[entity] = { data: {}, config: createOptions(config) }
+      state[entity] = { data: {} }
 
     state[entity].data = entities[entity]
   }
@@ -42,8 +42,8 @@ export function fillState(entities: Entities): void {
   getActivePinia().state.value = createState(entities)
 }
 
-export function assertState(entities: Entities, config?: InstallOptions): void {
-  expect(getActivePinia()?.state.value).toEqual(createState(entities, config))
+export function assertState(entities: Entities): void {
+  expect(getActivePinia()?.state.value).toEqual(createState(entities))
 }
 
 export function assertModel<M extends Model>(
