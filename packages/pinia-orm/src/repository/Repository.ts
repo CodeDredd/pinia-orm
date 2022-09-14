@@ -16,7 +16,7 @@ import type {
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
 import { useDataStore } from '../composables/useDataStore'
-import { cache } from '../data/SharedCache'
+import { cache } from '../cache/SharedWeakCache'
 import type { WeakCache } from '../cache/WeakCache'
 import { config } from '../store/Config'
 
@@ -38,8 +38,14 @@ export class Repository<M extends Model = Model> {
    */
   protected model!: M
 
+  /**
+   * The pinia instance
+   */
   protected pinia?: Pinia
 
+  /**
+   * The cache instance
+   */
   queryCache?: WeakCache<string, M[]>
 
   /**
@@ -59,7 +65,7 @@ export class Repository<M extends Model = Model> {
    * Initialize the repository by setting the model instance.
    */
   initialize(model?: ModelConstructor<M>): this {
-    if (config.cache)
+    if (config.cache && config.cache !== true)
       // eslint-disable-next-line new-cap
       this.queryCache = (config.cache.shared ? cache : new config.cache.provider()) as WeakCache<string, M[]>
 
@@ -271,6 +277,13 @@ export class Repository<M extends Model = Model> {
    */
   withAllRecursive(depth?: number): Query<M> {
     return this.query().withAllRecursive(depth)
+  }
+
+  /**
+   * Define to use the cache for a query
+   */
+  useCache(key?: string, params?: Record<string, any>): Query<M> {
+    return this.query().useCache(key, params)
   }
 
   /**

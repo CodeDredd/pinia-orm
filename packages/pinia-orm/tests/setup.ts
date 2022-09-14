@@ -32,7 +32,7 @@ beforeAll(() => {
 beforeEach(() => {
   const app = createApp({})
   const pinia = createPinia()
-  pinia.use(createORM({ cache: false }))
+  pinia.use(createORM())
   app.use(pinia)
   setActivePinia(pinia)
   Model.clearBootedModels()

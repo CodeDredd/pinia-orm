@@ -1,3 +1,5 @@
+import { generateKey } from '../../src/support/Utils'
+
 export interface FetchParams {
   key: string
   params?: any
@@ -36,7 +38,7 @@ export class SimpleCache implements IStorageCache {
     callback,
     expiresInSeconds = DEFAULT_EXPIRATION_SECONDS,
   }: FetchParams): T {
-    const cacheKey = this.generateKey({ key, params })
+    const cacheKey = generateKey(key, params)
     const data = this.get<T>(cacheKey)
     const expiration = this.computeExpirationTime(expiresInSeconds)
 
@@ -53,26 +55,6 @@ export class SimpleCache implements IStorageCache {
 
   private computeExpirationTime(expiresInSeconds: number): number {
     return new Date().getTime() + expiresInSeconds * 1000
-  }
-
-  // This method returns a base64 string containing a combination of a key and parameters
-  // creating a unique identifier for a specific key and specific parameters. This is
-  // useful in case the callback returns different values based on parameters.
-  private generateKey({ key, params }: KeyParams): string {
-    const keyValues = params ? { key, params } : { key }
-    const stringifiedKey = JSON.stringify(keyValues)
-
-    // This check allows to generate base64 strings depending on the current environment.
-    // If the window object exists, we can assume this code is running in a browser.
-    if (typeof process === 'undefined') {
-      return btoa(stringifiedKey)
-    }
-    else {
-      const bufferObj = Buffer.from(stringifiedKey, 'utf8')
-      const base64String = bufferObj.toString('base64')
-
-      return base64String
-    }
   }
 
   // Store the data in memory and attach to the object expiration containing the

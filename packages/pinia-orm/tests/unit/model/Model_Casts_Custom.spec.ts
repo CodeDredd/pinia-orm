@@ -7,6 +7,23 @@ describe('unit/model/Model_Casts_Custom', () => {
   beforeEach(() => {
     Model.clearRegistries()
   })
+
+  it('should cast with default cast class', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Attr('{}') name!: string
+
+      static casts() {
+        return {
+          name: CastAttribute,
+        }
+      }
+    }
+
+    expect(new User({ name: 'John' }).name).toBe('John')
+  })
+
   it('should cast', () => {
     class CustomCast extends CastAttribute {
       get(value?: any): any {

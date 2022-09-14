@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../src'
 import { HasMany, Num, Str } from '../../src/decorators'
@@ -38,27 +38,27 @@ describe('performance/save_has_many_relation', () => {
     console.time('time')
     userRepo.save(users)
     console.timeEnd('time')
-  //   console.log('Get Speed test for 10k saved items and 5 queries')
-  //   console.time('get(): with cache')
-  //   for (let i = 1; i <= 5; i++) {
-  //     console.time(`time query ${i}`)
-  //     userRepo.with('posts').get()
-  //     console.timeEnd(`time query ${i}`)
-  //   }
-  //   console.timeEnd('get(): with cache')
-  //   console.log(userRepo.cache().size)
-  //   console.log(useRepo(User).cache().size)
-  //   console.log(useRepo(Post).cache().size)
-  //
-  //   console.time('get(): without cache')
-  //   for (let i = 1; i <= 5; i++) {
-  //     console.time(`time query without ${i}`)
-  //     userRepo.with('posts').useCache(false).get()
-  //     console.timeEnd(`time query without ${i}`)
-  //   }
-  //   console.timeEnd('get(): without cache')
-  //   console.log(userRepo.cache().size)
-  //   console.log(useRepo(User).cache().size)
-  //   console.log(useRepo(Post).cache().size)
+    console.log('Get Speed test for 10k saved items and 5 queries')
+    console.time('get(): with cache')
+    const timeStart = performance.now()
+    for (let i = 1; i <= 5; i++) {
+      console.time(`time query ${i}`)
+      userRepo.useCache().with('posts').get()
+      console.timeEnd(`time query ${i}`)
+    }
+    const useCacheTime = performance.now()
+    console.timeEnd('get(): with cache')
+    console.time('get(): without cache')
+    for (let i = 1; i <= 5; i++) {
+      console.time(`time query without ${i}`)
+      userRepo.with('posts').get()
+      console.timeEnd(`time query without ${i}`)
+    }
+    const useWtihoutCacheTime = performance.now()
+    console.timeEnd('get(): without cache')
+    console.log(`Time with Cache ${useCacheTime - timeStart}, without: ${useWtihoutCacheTime - useCacheTime}`)
+
+    expect(useCacheTime - timeStart).toBeLessThan(useWtihoutCacheTime - useCacheTime)
+    expect(userRepo.cache()?.size).toBe(1)
   })
 })

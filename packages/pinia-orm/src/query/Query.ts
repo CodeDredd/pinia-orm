@@ -348,6 +348,9 @@ export class Query<M extends Model = Model> {
     })
   }
 
+  /**
+   * Define to use the cache for a query
+   */
   useCache(key?: string, params?: Record<string, any>): this {
     this.fromCache = true
     this.cacheConfig = {
@@ -395,16 +398,18 @@ export class Query<M extends Model = Model> {
     if (!this.fromCache || !this.cache)
       return this.internalGet(triggerHook)
 
-    const key = generateKey(this.model.$entity(), {
-      where: this.wheres,
-      groups: this.groups,
-      orders: this.orders,
-      eagerLoads: this.eagerLoad,
-      skip: this.skip,
-      take: this.take,
-      hidden: this.hidden,
-      visible: this.visible,
-    })
+    const key = this.cacheConfig.key
+      ? this.cacheConfig.key + JSON.stringify(this.cacheConfig.params)
+      : generateKey(this.model.$entity(), {
+        where: this.wheres,
+        groups: this.groups,
+        orders: this.orders,
+        eagerLoads: this.eagerLoad,
+        skip: this.skip,
+        take: this.take,
+        hidden: this.hidden,
+        visible: this.visible,
+      })
     const result = this.cache.get(key)
 
     if (result)

@@ -11,12 +11,12 @@ export interface ModelConfigOptions {
 
 export interface CacheConfigOptions {
   shared?: boolean
-  provider: typeof WeakCache<string, Model[]>
+  provider?: typeof WeakCache<string, Model[]>
 }
 
 export interface InstallOptions {
   model?: ModelConfigOptions
-  cache?: CacheConfigOptions | false
+  cache?: CacheConfigOptions | boolean
 }
 
 export type FilledInstallOptions = Required<InstallOptions>
@@ -26,6 +26,6 @@ export type FilledInstallOptions = Required<InstallOptions>
  */
 export function createORM(options?: InstallOptions): PiniaPlugin {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
-  config.cache = options?.cache === false ? options?.cache : { ...CONFIG_DEFAULTS.cache, ...options?.cache }
+  config.cache = options?.cache === false ? options?.cache : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
   return () => {}
 }
