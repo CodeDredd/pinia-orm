@@ -19,13 +19,16 @@ export interface InstallOptions {
   cache?: CacheConfigOptions | boolean
 }
 
-export type FilledInstallOptions = Required<InstallOptions>
+export interface FilledInstallOptions {
+  model: Required<ModelConfigOptions>
+  cache: Required<CacheConfigOptions | boolean>
+}
 
 /**
  * Install Pinia ORM to the store.
  */
 export function createORM(options?: InstallOptions): PiniaPlugin {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
-  config.cache = options?.cache === false ? options?.cache : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
+  config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
   return () => {}
 }
