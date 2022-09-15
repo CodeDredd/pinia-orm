@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@antfu/utils": "^0.5.2",
-    "@headlessui/vue": "^1.7.1",
+    "@headlessui/vue": "^1.7.2",
     "@types/splitpanes": "^2.2.1",
     "@vue/runtime-core": "^3.2.39",
     "@vue/runtime-dom": "^3.2.39",
