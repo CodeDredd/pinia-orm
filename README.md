@@ -43,7 +43,7 @@ Well maybe this table will help you to decide. This comparison is just about fac
 | Collection Helpers                                                     | ✅    | (✅) can use pinia-orm helpers too                                 | (✅) can use pinia-orm helpers too   |
 | Hidden Fields                                                          | ✅    | ❌                                                                 | ❌                                   |
 | Metadata field                                                         | ✅    | ❌                                                                 | ❌                                   |
-| Caching of queries                                                     | ✅    | (✅) with plugin                                                   | ❌                                   |
+| Caching of queries with gc                                             | ✅    | (✅) with plugin                                                   | ❌                                   |
 
  If you decide to migrate then there are some breaking changes. A guide how to migrate will be written.
  Small overview:
