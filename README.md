@@ -27,23 +27,23 @@
 You want to migrate from vuex to pinia and with it vuex-orm to pinia-orm but you don't know yet?
 Well maybe this table will help you to decide. This comparison is just about facts and current state.
 
-| Features                                                               | pinia-orm@v1.0.0-rc.6 | @vuex-orm/core@0.36.4                                             | @vuex-orm/core@1.0.0-draft.16       |
-|------------------------------------------------------------------------|------|-------------------------------------------------------------------|-------------------------------------|
-| Bundle Size  (Min + GZIP)                                              | [8.2 KB](https://bundlephobia.com/package/pinia-orm@1.0.0-rc.6) | [16.7 KB](https://bundlephobia.com/package/@vuex-orm/core@0.36.4) | [12.6 KB](https://bundlephobia.com/package/@vuex-orm/core@1.0.0-draft.16) |
-| Relations (hasMany, belongsTo, morphOne, hasManyBy, hasOne)            | ✅    | ✅                                                                 | ✅                                   |
-| Relations (morphTo, morphMany, belongsToMany)                          | ✅    | ✅                                                                 | ❌                                   |
-| Relations (morphToMany, morphedByMany, hasManyThrough)                 | ❌    | ✅                                                                 | ❌                                   |
-| Mutators                                                               | ✅    | ✅                                                                 | ❌                                   |
-| Casts                                                                  | ✅    | ❌                                                                 | ❌                                   |
-| Decorators                                                             | ✅    | ❌                                                                 | ✅                                   |
-| Single Table Inheritance                                               | ✅    | ✅                                                                 | ❌                                   |
-| Lifecycle Hooks                                                        | ✅    | ✅                                                                 | ❌                                   |
-| Aggregates                                                             | ✅    | ✅                                                                 | ❌                                   |
-| Query (orHas, doesntHave, orDoesntHave, whereHas, orWhereHas, groupBy) | ✅    | ❌                                                                 | ❌                                   |
-| Collection Helpers                                                     | ✅    | (✅) can use pinia-orm helpers too                                 | (✅) can use pinia-orm helpers too   |
-| Hidden Fields                                                          | ✅    | ❌                                                                 | ❌                                   |
-| Metadata field                                                         | ✅    | ❌                                                                 | ❌                                   |
-| Caching of queries with gc                                             | ✅    | (✅) with plugin                                                   | ❌                                   |
+| Features                                                               | pinia-orm@v1.0.0                                                | @vuex-orm/core@0.36.4                                             | @vuex-orm/core@1.0.0-draft.16       |
+|------------------------------------------------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------|
+| Bundle Size  (Min + GZIP)                                              | [9.1 KB](https://bundlephobia.com/package/pinia-orm@1.0.0) | [16.7 KB](https://bundlephobia.com/package/@vuex-orm/core@0.36.4) | [12.6 KB](https://bundlephobia.com/package/@vuex-orm/core@1.0.0-draft.16) |
+| Relations (hasMany, belongsTo, morphOne, hasManyBy, hasOne)            | ✅                                                               | ✅                                                                 | ✅                                   |
+| Relations (morphTo, morphMany, belongsToMany)                          | ✅                                                               | ✅                                                                 | ❌                                   |
+| Relations (morphToMany, morphedByMany, hasManyThrough)                 | ❌                                                               | ✅                                                                 | ❌                                   |
+| Mutators                                                               | ✅                                                               | ✅                                                                 | ❌                                   |
+| Casts                                                                  | ✅                                                               | ❌                                                                 | ❌                                   |
+| Decorators                                                             | ✅                                                               | ❌                                                                 | ✅                                   |
+| Single Table Inheritance                                               | ✅                                                               | ✅                                                                 | ❌                                   |
+| Lifecycle Hooks                                                        | ✅                                                               | ✅                                                                 | ❌                                   |
+| Aggregates                                                             | ✅                                                               | ✅                                                                 | ❌                                   |
+| Query (orHas, doesntHave, orDoesntHave, whereHas, orWhereHas, groupBy) | ✅                                                               | ❌                                                                 | ❌                                   |
+| Collection Helpers                                                     | ✅                                                               | (✅) can use pinia-orm helpers too                                 | (✅) can use pinia-orm helpers too   |
+| Hidden Fields                                                          | ✅                                                               | ❌                                                                 | ❌                                   |
+| Metadata field                                                         | ✅                                                               | ❌                                                                 | ❌                                   |
+| Caching of queries with gc                                             | ✅                                                               | (✅) with plugin                                                   | ❌                                   |
 
  If you decide to migrate then there are some breaking changes. A guide how to migrate will be written.
  Small overview:
