@@ -20,17 +20,10 @@ export function compareWithOperator(leftValue: any, rightValue: any, operator?: 
 }
 
 /**
- * Check if the given value is the type of null.
- */
-export function isNull(value: any): value is null {
-  return value === null
-}
-
-/**
  * Check if the given value is the type of undefined or null.
  */
 export function isNullish(value: any): value is undefined | null {
-  return value === undefined || isNull(value)
+  return value === undefined || value === null
 }
 
 /**
@@ -221,4 +214,32 @@ export function generateId(size: number, urlAlphabet: string) {
     id += urlAlphabet[(Math.random() * 64) | 0]
   }
   return id
+}
+
+/**
+ * Get a unique string for an key with object params
+ */
+export function generateKey(key: string, params?: any): string {
+  const keyValues = params ? { key, params } : { key }
+  const stringifiedKey = JSON.stringify(keyValues)
+
+  // This check allows to generate base64 strings depending on the current environment.
+  // If the window object exists, we can assume this code is running in a browser.
+  return typeof process === 'undefined' ? btoa(stringifiedKey) : Buffer.from(stringifiedKey, 'utf8').toString('base64')
+}
+
+/**
+ * Get a value based on a dot-notation key.
+ */
+export function getValue(obj: Object, keys: string | string[]): any {
+  keys = (typeof keys === 'string') ? keys.split('.') : keys
+  const key = keys.shift() as string
+  // eslint-disable-next-line no-prototype-builtins
+  if (obj && obj.hasOwnProperty(key) && keys.length === 0)
+    return obj[key]
+  // eslint-disable-next-line no-prototype-builtins
+  else if (!obj || !obj.hasOwnProperty(key))
+    return obj
+  else
+    return getValue(obj[key], keys)
 }

@@ -3,6 +3,8 @@ import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { DataStore, DataStoreState } from '../composables/useDataStore'
+import type { ModelConfigOptions } from '../store/Store'
+import { config } from '../store/Config'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -26,9 +28,18 @@ export type ModelRegistries = Record<string, ModelRegistry>
 export type ModelRegistry = Record<string, () => Attribute>
 
 export interface ModelOptions {
+  config?: ModelConfigOptions
   fill?: boolean
   relations?: boolean
-  mutator?: 'set' | 'get' | 'none'
+  operation?: 'set' | 'get'
+  visible?: string[]
+  hidden?: string[]
+  action?: 'save' | 'update' | 'insert'
+}
+
+export interface MetaValues {
+  createdAt: number
+  updatedAt: number
 }
 
 export interface BeforeHook<M extends Model = Model> {
@@ -45,6 +56,8 @@ export interface InheritanceTypes {
 
 export class Model {
   [s: keyof ModelFields]: any
+
+  declare _meta: undefined | MetaValues
   /**
    * The name of the model.
    */
@@ -59,6 +72,26 @@ export class Model {
    * The primary key for the model.
    */
   static primaryKey: string | string[] = 'id'
+
+  /**
+   * The meta key for the model.
+   */
+  static metaKey = '_meta'
+
+  /**
+   * Hidden properties
+   */
+  static hidden: [keyof ModelFields] | string[] = ['_meta']
+
+  /**
+   * Visible properties
+   */
+  static visible: [keyof ModelFields] | string[] = []
+
+  /**
+   * The global install options
+   */
+  static config: ModelConfigOptions
 
   /**
    * The type key for the model.
@@ -85,11 +118,13 @@ export class Model {
   protected static piniaOptions: DefineStoreOptionsBase<DataStoreState, DataStore> = {}
 
   /**
-   * The mutators for the model. It contains all mutators
-   * to the 'defineStore' function of pinia.
+   * The mutators for the model.
    */
   protected static fieldMutators: Mutators = {}
 
+  /**
+   * The casts for the model.
+   */
   protected static fieldCasts = {}
 
   /**
@@ -100,7 +135,7 @@ export class Model {
   /**
    * Create a new model instance.
    */
-  constructor(attributes?: Element, options: ModelOptions = { mutator: 'set' }) {
+  constructor(attributes?: Element, options: ModelOptions = { operation: 'set' }) {
     this.$boot()
 
     const fill = options.fill ?? true
@@ -177,6 +212,18 @@ export class Model {
   }
 
   /**
+   * Set a field to hidden
+   */
+  static setHidden<M extends typeof Model>(
+    this: M,
+    key: keyof ModelFields,
+  ): M {
+    this.hidden.push(key)
+
+    return this
+  }
+
+  /**
    * Clear the list of booted models so they can be re-booted.
    */
   static clearBootedModels(): void {
@@ -184,6 +231,8 @@ export class Model {
     this.schemas = {}
     this.fieldMutators = {}
     this.fieldCasts = {}
+    this.hidden = []
+    this.visible = []
   }
 
   /**
@@ -461,6 +510,13 @@ export class Model {
   }
 
   /**
+   * Get the model config.
+   */
+  $config(): ModelConfigOptions {
+    return this.$self().config
+  }
+
+  /**
    * Get the base entity for this model.
    */
   $baseEntity(): string {
@@ -500,6 +556,20 @@ export class Model {
    */
   $fields(): ModelFields {
     return this.$self().schemas[this.$entity()]
+  }
+
+  /**
+   * Get the model hidden fields
+   */
+  $hidden(): string[] {
+    return this.$self().hidden
+  }
+
+  /**
+   * Get the model visible fields
+   */
+  $visible(): string[] {
+    return this.$self().visible
   }
 
   /**
@@ -543,15 +613,25 @@ export class Model {
    * by the attributes default value.
    */
   $fill(attributes: Element = {}, options: ModelOptions = {}): this {
+    const operation = options.operation ?? 'get'
+
+    const modelConfig = {
+      ...config.model,
+      ...this.$config(),
+    }
+    modelConfig.withMeta && (this.$self().schemas[this.$entity()][this.$self().metaKey] = this.$self().attr({}))
+
     const fields = this.$fields()
     const fillRelation = options.relations ?? true
-    const useMutator = options.mutator ?? 'get'
     const mutators: Mutators = {
       ...this.$getMutators(),
       ...this.$self().fieldMutators,
     }
 
     for (const key in fields) {
+      if (operation === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options as Required<ModelOptions>))
+        continue
+
       const attr = fields[key]
       let value = attributes[key]
 
@@ -560,27 +640,41 @@ export class Model {
 
       const mutator = mutators?.[key]
       const cast = this.$casts()[key]?.newRawInstance(fields)
-      if (mutator && useMutator === 'get') {
+      if (mutator && operation === 'get') {
         value = typeof mutator === 'function'
           ? mutator(value)
           : typeof mutator.get === 'function' ? mutator.get(value) : value
       }
 
-      if (cast && useMutator === 'get')
+      if (cast && operation === 'get')
         value = cast.get(value)
 
       let keyValue = this.$fillField(key, attr, value)
 
-      if (mutator && typeof mutator !== 'function' && useMutator === 'set' && mutator.set)
+      if (mutator && typeof mutator !== 'function' && operation === 'set' && mutator.set)
         keyValue = mutator.set(keyValue)
 
-      if (cast && useMutator === 'set')
+      if (cast && operation === 'set')
         keyValue = cast.set(keyValue)
 
       this[key] = this[key] ?? keyValue
     }
 
+    modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
+
     return this
+  }
+
+  protected $fillMeta(action = 'save') {
+    const timestamp = Math.floor(Date.now() / 1000)
+    if (action === 'save') {
+      this[this.$self().metaKey] = {
+        createdAt: timestamp,
+        updatedAt: timestamp,
+      }
+    }
+    if (action === 'update')
+      this[this.$self().metaKey].updatedAt = timestamp
   }
 
   /**
@@ -595,6 +689,17 @@ export class Model {
 
     if (this[key] === undefined)
       return attr.setKey(key).make()
+  }
+
+  protected isFieldVisible(key: string, modelHidden: string[], modelVisible: string[], options: ModelOptions): boolean {
+    const hidden = modelHidden.length > 0 ? modelHidden : config.model.hidden ?? []
+    const visible = [...(modelVisible.length > 0 ? modelVisible : config.model.visible ?? ['*']), String(this.$primaryKey())]
+    const optionsVisible = options.visible ?? []
+    const optionsHidden = options.hidden ?? []
+    if (((hidden.includes('*') || hidden.includes(key)) && !optionsVisible.includes(key)) || optionsHidden.includes(key))
+      return false
+
+    return ((visible.includes('*') || visible.includes(key)) && !optionsHidden.includes(key)) || optionsVisible.includes(key)
   }
 
   /**
@@ -812,52 +917,5 @@ export class Model {
     return isArray(relation)
       ? relation.map(model => model.$toJson())
       : relation.$toJson()
-  }
-
-  /**
-   * Sanitize the given record. This method is similar to `$toJson` method, but
-   * the difference is that it doesn't instantiate the full model. The method
-   * is used to sanitize the record before persisting to the store.
-   *
-   * It removes fields that don't exist in the model field schema or if the
-   * field is relationship fields.
-   *
-   * Note that this method only sanitizes existing fields in the given record.
-   * It will not generate missing model fields. If you need to generate all
-   * model fields, use `$sanitizeAndFill` method instead.
-   */
-  $sanitize(record: Element): Element {
-    const sanitizedRecord = {} as Element
-    const attrs = this.$fields()
-
-    for (const key in record) {
-      const attr = attrs[key]
-      const value = record[key]
-
-      if (attr !== undefined && !(attr instanceof Relation))
-        sanitizedRecord[key] = attr.make(value)
-    }
-
-    return sanitizedRecord
-  }
-
-  /**
-   * Same as `$sanitize` method, but it produces missing model fields with its
-   * default value.
-   */
-  $sanitizeAndFill(record: Element): Element {
-    const sanitizedRecord = {} as Element
-
-    const attrs = this.$fields()
-
-    for (const key in attrs) {
-      const attr = attrs[key]
-      const value = record[key]
-
-      if (!(attr instanceof Relation))
-        sanitizedRecord[key] = attr.make(value)
-    }
-
-    return sanitizedRecord
   }
 }

@@ -22,7 +22,7 @@ describe('unit/model/Model_Casts_Boolean', () => {
       }
     }
 
-    expect(new User({ isPublished: 1 }, { mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: 1 }, { operation: 'get' }).isPublished).toBe(true)
   })
 
   it('should cast with decorator', () => {
@@ -34,14 +34,14 @@ describe('unit/model/Model_Casts_Boolean', () => {
         isPublished!: boolean
     }
 
-    expect(new User({ isPublished: true }, { mutator: 'get' }).isPublished).toBe(true)
-    expect(new User({ isPublished: 0 }, { mutator: 'get' }).isPublished).toBe(false)
-    expect(new User({ isPublished: '1' }, { mutator: 'get' }).isPublished).toBe(true)
-    expect(new User({ isPublished: null }, { mutator: 'get' }).isPublished).toBe(null)
-    expect(new User({ isPublished: '' }, { mutator: 'get' }).isPublished).toBe(false)
-    expect(new User({ isPublished: 'tt12' }, { mutator: 'get' }).isPublished).toBe(true)
-    expect(new User({ isPublished: {} }, { mutator: 'get' }).isPublished).toBe(false)
-    expect(new User({ mutator: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: true }, { operation: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: 0 }, { operation: 'get' }).isPublished).toBe(false)
+    expect(new User({ isPublished: '1' }, { operation: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: null }, { operation: 'get' }).isPublished).toBe(null)
+    expect(new User({ isPublished: '' }, { operation: 'get' }).isPublished).toBe(false)
+    expect(new User({ isPublished: 'tt12' }, { operation: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: {} }, { operation: 'get' }).isPublished).toBe(false)
+    expect(new User({ operation: 'get' }).isPublished).toBe(true)
   })
 
   it('accepts "null" when the "notNullable" option is set', () => {
@@ -53,11 +53,11 @@ describe('unit/model/Model_Casts_Boolean', () => {
         isPublished!: boolean | null
     }
 
-    expect(new User({ mutator: 'get' }).isPublished).toBe(null)
-    expect(new User({ isPublished: 'value' }, { mutator: 'get' }).isPublished).toBe(true)
-    expect(new User({ isPublished: 1 }, { mutator: 'get' }).isPublished).toBe(true)
-    expect(new User({ isPublished: true }, { mutator: 'get' }).isPublished).toBe(true)
-    expect(new User({ isPublished: null }, { mutator: 'get' }).isPublished).toBe(null)
+    expect(new User({ operation: 'get' }).isPublished).toBe(null)
+    expect(new User({ isPublished: 'value' }, { operation: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: 1 }, { operation: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: true }, { operation: 'get' }).isPublished).toBe(true)
+    expect(new User({ isPublished: null }, { operation: 'get' }).isPublished).toBe(null)
   })
 
   it('should cast before saved into store', () => {

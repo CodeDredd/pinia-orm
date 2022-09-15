@@ -16,6 +16,9 @@ import type {
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
 import { useDataStore } from '../composables/useDataStore'
+import { cache } from '../cache/SharedWeakCache'
+import type { WeakCache } from '../cache/WeakCache'
+import { config } from '../store/Config'
 
 export class Repository<M extends Model = Model> {
   /**
@@ -35,7 +38,15 @@ export class Repository<M extends Model = Model> {
    */
   protected model!: M
 
+  /**
+   * The pinia instance
+   */
   protected pinia?: Pinia
+
+  /**
+   * The cache instance
+   */
+  queryCache?: WeakCache<string, M[]>
 
   /**
    * The model object to be used for the custom repository.
@@ -54,6 +65,10 @@ export class Repository<M extends Model = Model> {
    * Initialize the repository by setting the model instance.
    */
   initialize(model?: ModelConstructor<M>): this {
+    if (config.cache && config.cache !== true)
+      // eslint-disable-next-line new-cap
+      this.queryCache = (config.cache.shared ? cache : new config.cache.provider()) as WeakCache<string, M[]>
+
     // If there's a model passed in, just use that and return immediately.
     if (model) {
       this.model = model.newRawInstance()
@@ -108,7 +123,14 @@ export class Repository<M extends Model = Model> {
    * Create a new Query instance.
    */
   query(): Query<M> {
-    return new Query(this.database, this.getModel(), this.pinia)
+    return new Query(this.database, this.getModel(), this.queryCache, this.pinia)
+  }
+
+  /**
+   * Create a new Query instance.
+   */
+  cache(): WeakCache<string, M[]> | undefined {
+    return this.queryCache
   }
 
   /**
@@ -188,6 +210,27 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Make meta field visible
+   */
+  withMeta(): Query<M> {
+    return this.query().withMeta()
+  }
+
+  /**
+   * Make hidden fields visible
+   */
+  makeVisible(fields: string[]): Query<M> {
+    return this.query().makeVisible(fields)
+  }
+
+  /**
+   * Make visible fields hidden
+   */
+  makeHidden(fields: string[]): Query<M> {
+    return this.query().makeHidden(fields)
+  }
+
+  /**
    * Add a "group by" clause to the query.
    */
   groupBy(...fields: GroupByFields): Query<M> {
@@ -234,6 +277,13 @@ export class Repository<M extends Model = Model> {
    */
   withAllRecursive(depth?: number): Query<M> {
     return this.query().withAllRecursive(depth)
+  }
+
+  /**
+   * Define to use the cache for a query
+   */
+  useCache(key?: string, params?: Record<string, any>): Query<M> {
+    return this.query().useCache(key, params)
   }
 
   /**

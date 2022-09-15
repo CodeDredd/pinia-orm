@@ -23,11 +23,13 @@ describe('unit/model/Model_Casts_Array', () => {
       }
     }
 
-    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { mutator: 'get' }).meta).toStrictEqual({
+    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { operation: 'get' }).meta).toStrictEqual({
       name: 'John',
       age: 30,
       car: null,
     })
+
+    expect(new User({ meta: false }, { operation: 'get' }).meta).toStrictEqual(false)
   })
 
   it('should cast with decorator', () => {
@@ -38,7 +40,7 @@ describe('unit/model/Model_Casts_Array', () => {
       @Cast(() => ArrayCast) @Attr('{}') declare meta: Record<string, any>
     }
 
-    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { mutator: 'get' }).meta).toStrictEqual({
+    expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { operation: 'get' }).meta).toStrictEqual({
       name: 'John',
       age: 30,
       car: null,

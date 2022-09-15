@@ -15,6 +15,7 @@ describe('feature/helpers/helpers', () => {
     @Str('') name!: string
   }
 
+  // @ts-expect-error wrong type error
   Vue.use(PiniaVuePlugin)
 
   class UserRepository extends Repository<User> {
@@ -26,6 +27,7 @@ describe('feature/helpers/helpers', () => {
     pinia.use(createORM())
 
     const vm = new Vue({
+      // @ts-expect-error wrong type error
       pinia,
       computed: mapRepos({
         userRepo: User,
@@ -41,6 +43,7 @@ describe('feature/helpers/helpers', () => {
     pinia.use(createORM())
 
     const vm = new Vue({
+      // @ts-expect-error wrong type error
       pinia,
       computed: {
         ...mapRepos({
@@ -58,6 +61,7 @@ describe('feature/helpers/helpers', () => {
     pinia.use(createORM())
 
     const vm = new Vue({
+      // @ts-expect-error wrong type error
       pinia,
       computed: {
         ...mapRepos({

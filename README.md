@@ -27,19 +27,29 @@
 You want to migrate from vuex to pinia and with it vuex-orm to pinia-orm but you don't know yet?
 Well maybe this table will help you to decide. This comparison is just about facts and current state.
 
-| Features                                                               | pinia-orm@v1.0.0-rc.6 | @vuex-orm/core@0.36.4 | @vuex-orm/core@1.0.0-draft.16 |
-|------------------------------------------------------------------------|---------|-----------|----------|
+| Features                                                               | pinia-orm@v1.0.0-rc.6 | @vuex-orm/core@0.36.4                                             | @vuex-orm/core@1.0.0-draft.16       |
+|------------------------------------------------------------------------|------|-------------------------------------------------------------------|-------------------------------------|
 | Bundle Size  (Min + GZIP)                                              | [8.2 KB](https://bundlephobia.com/package/pinia-orm@1.0.0-rc.6) | [16.7 KB](https://bundlephobia.com/package/@vuex-orm/core@0.36.4) | [12.6 KB](https://bundlephobia.com/package/@vuex-orm/core@1.0.0-draft.16) |
-| Relations (hasMany, belongsTo, morphOne, hasManyBy, hasOne)            | ✅       | ✅         | ✅        |
-| Relations (morphTo, morphMany, belongsToMany)                          | ✅       | ✅         | ❌        |
-| Relations (morphToMany, morphedByMany, hasManyThrough)                 | ❌       | ✅         | ❌        |
-| Mutators                                                               | ✅       | ✅         | ❌        |
-| Casts                                                                  | ✅       | ❌         | ❌        |
-| Decorators                                                             | ✅       | ❌         | ✅        |
-| Single Table Inheritance                                               | ✅       | ✅         | ❌        |
-| Lifecycle Hooks                                                        | ✅       | ✅         | ❌        |
-| Aggregates                                                             | ❌       | ✅         | ❌        |
-| Query (orHas, doesntHave, orDoesntHave, whereHas, orWhereHas, groupBy) | ✅       | ❌         | ❌        |
+| Relations (hasMany, belongsTo, morphOne, hasManyBy, hasOne)            | ✅    | ✅                                                                 | ✅                                   |
+| Relations (morphTo, morphMany, belongsToMany)                          | ✅    | ✅                                                                 | ❌                                   |
+| Relations (morphToMany, morphedByMany, hasManyThrough)                 | ❌    | ✅                                                                 | ❌                                   |
+| Mutators                                                               | ✅    | ✅                                                                 | ❌                                   |
+| Casts                                                                  | ✅    | ❌                                                                 | ❌                                   |
+| Decorators                                                             | ✅    | ❌                                                                 | ✅                                   |
+| Single Table Inheritance                                               | ✅    | ✅                                                                 | ❌                                   |
+| Lifecycle Hooks                                                        | ✅    | ✅                                                                 | ❌                                   |
+| Aggregates                                                             | ✅    | ✅                                                                 | ❌                                   |
+| Query (orHas, doesntHave, orDoesntHave, whereHas, orWhereHas, groupBy) | ✅    | ❌                                                                 | ❌                                   |
+| Collection Helpers                                                     | ✅    | (✅) can use pinia-orm helpers too                                 | (✅) can use pinia-orm helpers too   |
+| Hidden Fields                                                          | ✅    | ❌                                                                 | ❌                                   |
+| Metadata field                                                         | ✅    | ❌                                                                 | ❌                                   |
+| Caching of queries with gc                                             | ✅    | (✅) with plugin                                                   | ❌                                   |
+
+ If you decide to migrate then there are some breaking changes. A guide how to migrate will be written.
+ Small overview:
+ - Fields are by default `null`
+ - Renamed some functions aligning more with laravel naming
+ - Code is based on `vuex-orm-next` and not on `vuex-orm` !
 
 
 ## Help me keep working on this project 💚
@@ -72,10 +82,16 @@ Well maybe this table will help you to decide. This comparison is just about fac
 
 <h4 align="center">Lovely Sponsors</h4>
 <p align="center">
-    <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
+  <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
     <picture>
       <source srcset="https://avatars.githubusercontent.com/u/83905274?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Sven Hue" />
       <img src="https://avatars.githubusercontent.com/u/83905274?v=4" height="26px" alt="Sven Hue" />
+    </picture>
+  </a>
+  <a href="https://github.com/paolodina" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source srcset="https://avatars.githubusercontent.com/u/1157401?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Paolo Dina" />
+      <img src="https://avatars.githubusercontent.com/u/1157401?v=4" height="26px" alt="Paolo Dina" />
     </picture>
   </a>
 </p>
@@ -92,14 +108,6 @@ A few notes about the project and possible questions:
 
 **A**: Yes, this code is based on their work
 
-## Roadmap
-
-### to v 1.0.0
-- [x] Get it work with minimal breaking changes
-- [ ] Code clean up
-- [x] Documentation
-- [x] Tests
-
 ## 💻 Development
 
 - Clone this repository
@@ -107,9 +115,16 @@ A few notes about the project and possible questions:
 - Install dependencies using `pnpm install`
 - Run interactive tests using `pnpm dev`
 
-## Special thanks
+## Credits 
 
-I wan to thank [Kia King Ishii](https://github.com/kiaking) and their contributors for all their awesome work with vuex-orm
+- [Kia King Ishii](https://github.com/kiaking)
+- [Cuebit](https://github.com/cuebit)
+- [Posva](https://github.com/posva)
+
+## Related projects
+
+- [Vuex ORM](https://github.com/vuex-orm/vuex-orm)
+- [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
 
 ## License
 

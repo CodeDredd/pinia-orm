@@ -20,6 +20,7 @@
 
 - [Become a Sponsor on GitHub](https://github.com/sponsors/codedredd)
 - [One-time donation via PayPal](https://paypal.me/dredd1984)
+- [👾 &nbsp;Playground](https://pinia-orm-play.codedredd.de)
 
 <!--sponsors start-->
 

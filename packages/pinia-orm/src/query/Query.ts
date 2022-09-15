@@ -1,6 +1,6 @@
 import type { Pinia } from 'pinia'
 import {
-  assert, compareWithOperator,
+  assert, compareWithOperator, generateKey,
   groupBy,
   isArray,
   isEmpty,
@@ -14,6 +14,8 @@ import { MorphTo } from '../model/attributes/relations/MorphTo'
 import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
+import type { WeakCache } from '../cache/WeakCache'
+import type { CacheConfig } from '../types'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -64,33 +66,56 @@ export class Query<M extends Model = Model> {
   protected skip = 0
 
   /**
+   * Fields that should be visible.
+   */
+  protected visible = ['*']
+
+  /**
+   * Fields that should be hidden.
+   */
+  protected hidden: string[] = []
+
+  /**
+   * The cache object.
+   */
+  protected cache?: WeakCache<string, Collection<M> | GroupedCollection<M>> | undefined
+
+  /**
    * The relationships that should be eager loaded.
    */
   protected eagerLoad: EagerLoad = {}
 
+  /**
+   * The pinia store.
+   */
   protected pinia?: Pinia
+
+  protected fromCache = false
+
+  protected cacheConfig: CacheConfig = {}
 
   /**
    * Create a new query instance.
    */
-  constructor(database: Database, model: M, pinia?: Pinia) {
+  constructor(database: Database, model: M, cache: WeakCache<string, Collection<M> | GroupedCollection<M>> | undefined, pinia?: Pinia) {
     this.database = database
     this.model = model
     this.pinia = pinia
+    this.cache = cache
   }
 
   /**
    * Create a new query instance for the given model.
    */
   newQuery(model: string): Query {
-    return new Query(this.database, this.database.getModel(model), this.pinia)
+    return new Query(this.database, this.database.getModel(model), this.cache, this.pinia).useCache(this.cacheConfig.key, this.cacheConfig.params)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.pinia)
+    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.pinia).useCache(this.cacheConfig.key, this.cacheConfig.params)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -106,7 +131,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation(relation: Relation): Query {
-    return new Query(this.database, relation.getRelated(), this.pinia)
+    return new Query(this.database, relation.getRelated(), this.cache, this.pinia).useCache(this.cacheConfig.key, this.cacheConfig.params)
   }
 
   /**
@@ -119,12 +144,40 @@ export class Query<M extends Model = Model> {
   /**
    * Commit a store action and get the data
    */
-  protected commit(name: string, payload?: any): Elements {
+  protected commit(name: string, payload?: any) {
     const store = useDataStore<M>(this.model.$baseEntity(), this.model.$piniaOptions())(this.pinia)
     if (name && typeof store[name] === 'function')
       store[name](payload)
 
+    if (this.cache && ['get', 'all', 'insert', 'flush', 'delete', 'update', 'destroy'].includes(name))
+      this.cache.clear()
+
     return store.$state.data
+  }
+
+  /**
+   * Make meta field visible
+   */
+  withMeta(): this {
+    return this.makeVisible(['_meta'])
+  }
+
+  /**
+   * Make hidden fields visible
+   */
+  makeVisible(fields: string[]): this {
+    this.visible = fields
+
+    return this
+  }
+
+  /**
+   * Make visible fields hidden
+   */
+  makeHidden(fields: string[]): this {
+    this.hidden = fields
+
+    return this
   }
 
   /**
@@ -296,12 +349,27 @@ export class Query<M extends Model = Model> {
   }
 
   /**
+   * Define to use the cache for a query
+   */
+  useCache(key?: string, params?: Record<string, any>): this {
+    this.fromCache = true
+    this.cacheConfig = {
+      key,
+      params,
+    }
+
+    return this
+  }
+
+  /**
    * Get where closure for relations
    */
   protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure {
     const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get(false)
       .filter(model => compareWithOperator(
-        model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
+        model[relation] !== undefined
+          ? (isArray(model[relation]) ? model[relation].length : model[relation] === null ? 0 : 1)
+          : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
         typeof operator === 'number' ? operator : count ?? 1,
         (typeof operator === 'number' || count === undefined) ? '>=' : operator,
       ))
@@ -311,22 +379,15 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Get raw elements from the store.
-   */
-  protected data(): Elements {
-    return this.commit('get')
-  }
-
-  /**
    * Get all models from the store. The difference with the `get` is that this
    * method will not process any query chain. It'll always retrieve all models.
    */
   all(): Collection<M> {
-    const records = this.commit('get')
+    const data = this.commit('all')
 
     const collection = [] as Collection<M>
 
-    for (const id in records) collection.push(this.hydrate(records[id]))
+    for (const id in data) collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden }))
 
     return collection
   }
@@ -336,6 +397,32 @@ export class Query<M extends Model = Model> {
    */
   get<T extends 'group' | 'collection' = 'collection'>(triggerHook?: boolean): T extends 'group' ? GroupedCollection<M> : Collection<M>
   get(triggerHook = true): Collection<M> | GroupedCollection<M> {
+    if (!this.fromCache || !this.cache)
+      return this.internalGet(triggerHook)
+
+    const key = this.cacheConfig.key
+      ? this.cacheConfig.key + JSON.stringify(this.cacheConfig.params)
+      : generateKey(this.model.$entity(), {
+        where: this.wheres,
+        groups: this.groups,
+        orders: this.orders,
+        eagerLoads: this.eagerLoad,
+        skip: this.skip,
+        take: this.take,
+        hidden: this.hidden,
+        visible: this.visible,
+      })
+    const result = this.cache.get(key)
+
+    if (result)
+      return result
+
+    const queryResult = this.internalGet(triggerHook)
+    this.cache.set(key, queryResult)
+    return queryResult
+  }
+
+  private internalGet(triggerHook: boolean): Collection<M> | GroupedCollection<M> {
     if (this.model.$entity() !== this.model.$baseEntity())
       this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make())
 
@@ -440,7 +527,7 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Filter the given collection by the registered order conditions.
+   * Filter the given collection by the registered group conditions.
    */
   protected filterGroup(models: Collection<M>): Record<string, Collection<M>> {
     const grouped: Record<string, Collection<M>> = {}
@@ -635,7 +722,6 @@ export class Query<M extends Model = Model> {
 
       query.saveElements(elements)
     }
-
     return this.revive(data) as M | M[]
   }
 
@@ -644,15 +730,15 @@ export class Query<M extends Model = Model> {
    */
   saveElements(elements: Elements): void {
     const newData = {} as Elements
-    const currentData = this.data()
+    const currentData = this.commit('all')
     const afterSavingHooks = []
 
     for (const id in elements) {
       const record = elements[id]
       const existing = currentData[id]
       const model = existing
-        ? this.hydrate({ ...existing, ...record }, { mutator: 'set' })
-        : this.hydrate(record, { mutator: 'set' })
+        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
+        : this.hydrate(record, { operation: 'set', action: 'save' })
 
       const isSaving = model.$self().saving(model)
       const isUpdatingOrCreating = existing ? model.$self().updating(model) : model.$self().creating(model)
@@ -781,11 +867,8 @@ export class Query<M extends Model = Model> {
    * Delete all records in the store.
    */
   flush(): Collection<M> {
-    const models = this.get(false)
-
     this.commit('flush')
-
-    return models
+    return this.get(false)
   }
 
   protected dispatchDeleteHooks(models: M | Collection<M>): [{ (): void }[], string[]] {

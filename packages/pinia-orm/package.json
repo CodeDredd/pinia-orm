@@ -102,6 +102,10 @@
     {
       "path": "dist/casts.mjs",
       "limit": "1 kB"
+    },
+    {
+      "path": "dist/helpers.mjs",
+      "limit": "1 kB"
     }
   ],
   "volta": {

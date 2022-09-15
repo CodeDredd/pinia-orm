@@ -8,6 +8,7 @@ export default defineBuildConfig({
     'src/index',
     'src/decorators',
     'src/casts',
+    'src/helpers',
     { input: 'src/packages/nanoid/index', name: 'nanoid/index' },
     { input: 'src/packages/nanoid/async', name: 'nanoid/async' },
     { input: 'src/packages/nanoid/non-secure', name: 'nanoid/non-secure' },
