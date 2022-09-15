@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { Splitpanes, Pane } from 'splitpanes'
-import { Hako } from 'vue-hako'
 import { orchestrator, onShouldUpdateContent } from '~/orchestrator'
 import sizes from '~/data/screen-sizes.json'
 
