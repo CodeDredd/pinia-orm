@@ -70,4 +70,36 @@ describe('feature/repository/retrieves_find', () => {
       { id: 3, name: 'Johnny Doe' },
     ])
   })
+
+  it('can find records by ids with cache usage', () => {
+    const userRepo = useRepo(User)
+
+    fillState({
+      users: {
+        1: { id: 1, name: 'John Doe' },
+        2: { id: 2, name: 'Jane Doe' },
+        3: { id: 3, name: 'Johnny Doe' },
+      },
+    })
+
+    const users = userRepo.useCache().find([1, 3])
+
+    expect(users.length).toBe(2)
+    assertInstanceOf(users, User)
+    assertModels(users, [
+      { id: 1, name: 'John Doe' },
+      { id: 3, name: 'Johnny Doe' },
+    ])
+
+    const users2 = userRepo.useCache('users', {
+      ids: [1, 3],
+    }).find([1, 3])
+
+    expect(users2.length).toBe(2)
+    assertInstanceOf(users2, User)
+    assertModels(users2, [
+      { id: 1, name: 'John Doe' },
+      { id: 3, name: 'Johnny Doe' },
+    ])
+  })
 })

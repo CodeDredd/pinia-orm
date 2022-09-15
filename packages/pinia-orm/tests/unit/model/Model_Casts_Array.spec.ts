@@ -28,6 +28,8 @@ describe('unit/model/Model_Casts_Array', () => {
       age: 30,
       car: null,
     })
+
+    expect(new User({ meta: false }, { operation: 'get' }).meta).toStrictEqual(false)
   })
 
   it('should cast with decorator', () => {

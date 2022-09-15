@@ -4,6 +4,7 @@ import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { DataStore, DataStoreState } from '../composables/useDataStore'
 import type { ModelConfigOptions } from '../store/Store'
+import { config } from '../store/Config'
 import type { Attribute } from './attributes/Attribute'
 import { Attr } from './attributes/types/Attr'
 import { String as Str } from './attributes/types/String'
@@ -613,11 +614,12 @@ export class Model {
    */
   $fill(attributes: Element = {}, options: ModelOptions = {}): this {
     const operation = options.operation ?? 'get'
-    const config = {
-      ...options.config,
+
+    const modelConfig = {
+      ...config.model,
       ...this.$config(),
     }
-    config.withMeta && (this.$self().schemas[this.$entity()][this.$self().metaKey] = this.$self().attr({}))
+    modelConfig.withMeta && (this.$self().schemas[this.$entity()][this.$self().metaKey] = this.$self().attr({}))
 
     const fields = this.$fields()
     const fillRelation = options.relations ?? true
@@ -658,7 +660,7 @@ export class Model {
       this[key] = this[key] ?? keyValue
     }
 
-    config.withMeta && operation === 'set' && this.$fillMeta(options.action)
+    modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
     return this
   }
@@ -690,8 +692,8 @@ export class Model {
   }
 
   protected isFieldVisible(key: string, modelHidden: string[], modelVisible: string[], options: ModelOptions): boolean {
-    const hidden = modelHidden.length > 0 ? modelHidden : options.config?.hidden ?? []
-    const visible = [...(modelVisible.length > 0 ? modelVisible : options.config?.visible ?? ['*']), String(this.$primaryKey())]
+    const hidden = modelHidden.length > 0 ? modelHidden : config.model.hidden ?? []
+    const visible = [...(modelVisible.length > 0 ? modelVisible : config.model.visible ?? ['*']), String(this.$primaryKey())]
     const optionsVisible = options.visible ?? []
     const optionsHidden = options.hidden ?? []
     if (((hidden.includes('*') || hidden.includes(key)) && !optionsVisible.includes(key)) || optionsHidden.includes(key))

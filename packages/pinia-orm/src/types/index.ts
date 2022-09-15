@@ -12,3 +12,8 @@ export interface MutatorFunctions<T> {
 export interface Mutators {
   [name: string]: MutatorFunctions<any> | Mutator<any>
 }
+
+export interface CacheConfig {
+  key?: string
+  params?: Record<string, any>
+}
