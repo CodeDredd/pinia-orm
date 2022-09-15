@@ -367,7 +367,9 @@ export class Query<M extends Model = Model> {
   protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure {
     const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get(false)
       .filter(model => compareWithOperator(
-        model[relation] ? model[relation].length : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
+        model[relation] !== undefined
+          ? (isArray(model[relation]) ? model[relation].length : model[relation] === null ? 0 : 1)
+          : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
         typeof operator === 'number' ? operator : count ?? 1,
         (typeof operator === 'number' || count === undefined) ? '>=' : operator,
       ))
