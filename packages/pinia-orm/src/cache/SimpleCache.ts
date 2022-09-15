@@ -1,49 +1,14 @@
-import { generateKey } from '../../src/support/Utils'
-
-export interface FetchParams {
-  key: string
-  params?: any
-  callback(): any
-  expiresInSeconds?: number
-}
-
-export interface KeyParams {
-  key: string
-  params?: any
-}
-
 export interface StoredData<T> {
   key: string
   data: T
   expiration: number
 }
 
-export interface IStorageCache {
-  fetch<T>(params: FetchParams): Promise<T> | T
-}
-
 // By default data will expire in 5 minutes.
 const DEFAULT_EXPIRATION_SECONDS = 5 * 60
 
-export class SimpleCache implements IStorageCache {
+export class SimpleCache {
   constructor(private cache = new Map()) {}
-
-  // The fetch method, before calling callback, will check if there is cached data.
-  // If cached data is not available, it will call callback, store the data in memory
-  // and return it. If cached data is available, it won't call callback and it will
-  // just return the cached values.
-  fetch<T>({
-    key,
-    params = null,
-    callback,
-    expiresInSeconds = DEFAULT_EXPIRATION_SECONDS,
-  }: FetchParams): T {
-    const cacheKey = generateKey(key, params)
-    const data = this.get<T>(cacheKey)
-    const expiration = this.computeExpirationTime(expiresInSeconds)
-
-    return data || this.set<T>({ key: cacheKey, data: callback(), expiration })
-  }
 
   clear(): void {
     this.cache = new Map()
@@ -59,15 +24,15 @@ export class SimpleCache implements IStorageCache {
 
   // Store the data in memory and attach to the object expiration containing the
   // expiration time.
-  private set<T>({ key, data, expiration }: StoredData<T>): T {
-    this.cache.set(key, { data, expiration })
+  set<T>({ key, data, expiration = DEFAULT_EXPIRATION_SECONDS }: StoredData<T>): T {
+    this.cache.set(key, { data, expiration: this.computeExpirationTime(expiration) })
 
     return data
   }
 
   // Will get specific data from the Map object based on a key and return null if
   // the data has expired.
-  private get<T>(key: string): T | null {
+  get<T>(key: string): T | null {
     if (this.cache.has(key)) {
       const { data, expiration } = this.cache.get(key) as StoredData<T>
 
