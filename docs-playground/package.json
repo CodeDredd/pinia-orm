@@ -32,7 +32,7 @@
     "pinia-orm": "^1.0.0-rc.6",
     "splitpanes": "^3.1.1",
     "theme-vitesse": "^0.5.2",
-    "vscode-html-languageservice": "^5.0.1",
+    "vscode-html-languageservice": "^5.0.2",
     "vue": "^3.2.39",
     "vue-hako": "^0.0.2"
   },
