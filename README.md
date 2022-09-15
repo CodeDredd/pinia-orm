@@ -43,6 +43,13 @@ Well maybe this table will help you to decide. This comparison is just about fac
 | Collection Helpers                                                     | ✅    | (✅) can use pinia-orm helpers too                                 | (✅) can use pinia-orm helpers too   |
 | Hidden Fields                                                          | ✅    | ❌                                                                 | ❌                                   |
 | Metadata field                                                         | ✅    | ❌                                                                 | ❌                                   |
+| Caching of queries                                                     | ✅    | (✅) with plugin                                                   | ❌                                   |
+
+ If you decide to migrate then there are some breaking changes. A guide how to migrate will be written.
+ Small overview:
+ - Fields are by default `null`
+ - Renamed some functions aligning more with laravel naming
+ - Code is based on `vuex-orm-next` and not on `vuex-orm` !
 
 
 ## Help me keep working on this project 💚
@@ -101,14 +108,6 @@ A few notes about the project and possible questions:
 
 **A**: Yes, this code is based on their work
 
-## Roadmap
-
-### to v 1.0.0
-- [x] Get it work with minimal breaking changes
-- [ ] Code clean up
-- [x] Documentation
-- [x] Tests
-
 ## 💻 Development
 
 - Clone this repository
@@ -116,9 +115,16 @@ A few notes about the project and possible questions:
 - Install dependencies using `pnpm install`
 - Run interactive tests using `pnpm dev`
 
-## Special thanks
+## Credits 
 
-I wan to thank [Kia King Ishii](https://github.com/kiaking) and their contributors for all their awesome work with vuex-orm
+- [Kia King Ishii](https://github.com/kiaking)
+- [Cuebit](https://github.com/cuebit)
+- [Posva](https://github.com/posva)
+
+## Related projects
+
+- [Vuex ORM](https://github.com/vuex-orm/vuex-orm)
+- [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
 
 ## License
 
