@@ -51,7 +51,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@size-limit/preset-small-lib": "^8.1.0",
     "eslint": "^8.23.1",
     "immutable": "^4.1.0",
