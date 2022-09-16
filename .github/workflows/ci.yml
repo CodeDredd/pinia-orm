@@ -65,9 +65,7 @@ jobs:
         with:
           node-version: 16.x
 
-      - run: pnpm i
-
-      - run: pnpm lerna run dev:prepare --scope @pinia-orm/nuxt
+      - run: pnpm i --shamefully-hoist
 
       - name: Run eslint
         run: pnpm run lint
