@@ -71,7 +71,7 @@
     "@vitest/ui": "^0.23.4",
     "@vue/composition-api": "^1.7.0",
     "c8": "^7.12.0",
-    "core-js": "^3.25.1",
+    "core-js": "^3.25.2",
     "eslint": "^8.23.1",
     "happy-dom": "^6.0.4",
     "mkdist": "^0.3.13",
