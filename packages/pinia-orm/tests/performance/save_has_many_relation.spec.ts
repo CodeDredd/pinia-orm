@@ -46,6 +46,8 @@ describe('performance/save_has_many_relation', () => {
       userRepo.useCache().with('posts').get()
       console.timeEnd(`time query ${i}`)
     }
+    expect(userRepo.cache()?.size).toBe(1)
+
     const useCacheTime = performance.now()
     console.timeEnd('get(): with cache')
     console.time('get(): without cache')
@@ -59,6 +61,5 @@ describe('performance/save_has_many_relation', () => {
     console.log(`Time with Cache ${useCacheTime - timeStart}, without: ${useWtihoutCacheTime - useCacheTime}`)
 
     expect(useCacheTime - timeStart).toBeLessThan(useWtihoutCacheTime - useCacheTime)
-    expect(userRepo.cache()?.size).toBe(1)
   })
 })

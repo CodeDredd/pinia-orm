@@ -225,7 +225,11 @@ export function generateKey(key: string, params?: any): string {
 
   // This check allows to generate base64 strings depending on the current environment.
   // If the window object exists, we can assume this code is running in a browser.
-  return typeof process === 'undefined' ? btoa(stringifiedKey) : Buffer.from(stringifiedKey, 'utf8').toString('base64')
+  return typeof process === 'undefined'
+    ? btoa(stringifiedKey)
+    : Buffer !== undefined
+      ? Buffer.from(stringifiedKey, 'utf8').toString('base64')
+      : stringifiedKey
 }
 
 /**
