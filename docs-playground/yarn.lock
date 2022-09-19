@@ -3626,10 +3626,10 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-pinia-orm@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.0.0.tgz#4516e5ac1b74d8d69d495cb32f36db750a7cfc97"
-  integrity sha512-OHux19p1cM/VV10ZkWBE2TG2vxbrJK/kjf4OuZtlQHo8wwVzqC3pknYbIvTkIcJKqqsgNe3D4C3bjctS5aK/kw==
+pinia-orm@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.0.1.tgz#46a654838eb70204933fcf8864a8343843accc3f"
+  integrity sha512-G0osjO63lmow5O+jbEt1EBGzn25okLP7BFzkAxXIms1ZKaVP3CgSOF1zaB5OrZh4Vj2d1i4uQK0SLuDhlxRWdg==
   dependencies:
     "@pinia-orm/normalizr" ">=1.0.1"
 
