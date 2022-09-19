@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0...pinia-orm@1.0.1) (2022-09-19)
+
+### Bug Fixes
+
+- **pinia-orm:** fallback for "Buffer is not defined" & fix cache config ([#360](https://github.com/CodeDredd/pinia-orm/issues/360)) ([4c9a9f1](https://github.com/CodeDredd/pinia-orm/commit/4c9a9f1abedbdee50bf1873478dba593573c403a))
+
 # [1.0.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.6...pinia-orm@1.0.0) (2022-09-15)
 
 # [1.0.0-rc.6](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0-rc.5...pinia-orm@1.0.0-rc.6) (2022-08-20)
