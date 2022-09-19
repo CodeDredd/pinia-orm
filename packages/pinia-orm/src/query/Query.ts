@@ -108,14 +108,14 @@ export class Query<M extends Model = Model> {
    * Create a new query instance for the given model.
    */
   newQuery(model: string): Query {
-    return new Query(this.database, this.database.getModel(model), this.cache, this.pinia).useCache(this.cacheConfig.key, this.cacheConfig.params)
+    return new Query(this.database, this.database.getModel(model), this.cache, this.pinia)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.pinia).useCache(this.cacheConfig.key, this.cacheConfig.params)
+    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -123,6 +123,8 @@ export class Query<M extends Model = Model> {
     newQuery.orders = [...this.orders]
     newQuery.take = this.take
     newQuery.skip = this.skip
+    newQuery.fromCache = this.fromCache
+    newQuery.cacheConfig = this.cacheConfig
 
     return newQuery
   }
@@ -131,7 +133,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation(relation: Relation): Query {
-    return new Query(this.database, relation.getRelated(), this.cache, this.pinia).useCache(this.cacheConfig.key, this.cacheConfig.params)
+    return new Query(this.database, relation.getRelated(), this.cache, this.pinia)
   }
 
   /**
