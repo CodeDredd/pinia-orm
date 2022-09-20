@@ -340,8 +340,7 @@ export class Model {
     parentKey = parentKey ?? model.$getLocalKey()
     relatedKey = relatedKey ?? instance.$getLocalKey()
 
-    this.schemas[related.entity].pivot = new HasOne(instance, pivotInstance, relatedPivotKey, relatedKey)
-    this.schemas[related.entity][`pivot_${pivotInstance.$entity()}`] = this.schemas[related.entity].pivot
+    this.schemas[related.entity][`pivot_${pivotInstance.$entity()}`] = new HasOne(instance, pivotInstance, relatedPivotKey, relatedKey)
 
     return new BelongsToMany(
       model,
@@ -815,6 +814,10 @@ export class Model {
    * Set the given relationship on the model.
    */
   $setRelation(relation: string, model: Model | Model[] | null): this {
+    if (relation.includes('pivot')) {
+      this.pivot = model
+      return this
+    }
     if (this.$fields()[relation])
       this[relation] = model
 
