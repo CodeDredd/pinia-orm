@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.1...pinia-orm@1.0.2) (2022-09-20)
+
+### Bug Fixes
+
+- **pinia-orm:** multiple belongsTo relationships between 2 entities lead to unintended outcome ([#369](https://github.com/CodeDredd/pinia-orm/issues/369)) ([809f234](https://github.com/CodeDredd/pinia-orm/commit/809f2340da08001f240f8196135b84834f333d8d)), closes [#363](https://github.com/CodeDredd/pinia-orm/issues/363)
+
 ## [1.0.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.0...pinia-orm@1.0.1) (2022-09-19)
 
 ### Bug Fixes
