@@ -48,7 +48,7 @@ describe('feature/relations/belongs_to_many_save', () => {
     userRepo.save([
       {
         id: 1,
-        roles: [{ id: 1, pivot: { level: 1 } }, { id: 2 }],
+        roles: [{ id: 1, pivot: { level: 1 } }, { id: 2 }, { id: 4 }],
         superRoles: [{ id: 2, pivot: { super: true } }],
       },
       {
@@ -67,14 +67,15 @@ describe('feature/relations/belongs_to_many_save', () => {
         1: { id: 1 },
         2: { id: 2 },
         3: { id: 3 },
+        4: { id: 4 },
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
         '[2,1]': { role_id: 2, user_id: 1, level: null },
+        '[4,1]': { role_id: 4, user_id: 1, level: null },
         '[1,2]': { role_id: 1, user_id: 2, level: 2 },
       },
       superRoleUser: {
-        '[1,1]': { role_id: 1, user_id: 1, super: false },
         '[2,1]': { role_id: 2, user_id: 1, super: true },
         '[1,2]': { role_id: 1, user_id: 2, super: false },
         '[3,2]': { role_id: 3, user_id: 2, super: true },
