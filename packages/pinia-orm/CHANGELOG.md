@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.2...pinia-orm@1.0.3) (2022-09-20)
+
+### Bug Fixes
+
+- **pinia-orm:** multiple belongsToMany relations still wrong saved ([#373](https://github.com/CodeDredd/pinia-orm/issues/373)) ([6fd7348](https://github.com/CodeDredd/pinia-orm/commit/6fd73485afc283be72717b3d510f6ecfe6b3a5b7))
+
 ## [1.0.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.1...pinia-orm@1.0.2) (2022-09-20)
 
 ### Bug Fixes
