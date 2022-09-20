@@ -335,16 +335,18 @@ export class Model {
   ): BelongsToMany {
     const instance = related.newRawInstance()
     const model = this.newRawInstance()
+    const pivotInstance = pivot.newRawInstance()
 
     parentKey = parentKey ?? model.$getLocalKey()
     relatedKey = relatedKey ?? instance.$getLocalKey()
 
-    this.schemas[related.entity].pivot = new HasOne(instance, pivot.newRawInstance(), relatedPivotKey, relatedKey)
+    this.schemas[related.entity].pivot = new HasOne(instance, pivotInstance, relatedPivotKey, relatedKey)
+    this.schemas[related.entity][`pivot_${pivotInstance.$entity()}`] = this.schemas[related.entity].pivot
 
     return new BelongsToMany(
       model,
       instance,
-      pivot.newRawInstance(),
+      pivotInstance,
       foreignPivotKey,
       relatedPivotKey,
       parentKey,

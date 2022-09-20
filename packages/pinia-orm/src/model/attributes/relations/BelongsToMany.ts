@@ -79,6 +79,7 @@ export class BelongsToMany extends Relation {
     pivot[this.foreignPivotKey] = record[this.parentKey]
     pivot[this.relatedPivotKey] = child[this.relatedKey]
     child.pivot = pivot
+    child[`pivot_${this.pivot.$entity()}`] = pivot
   }
 
   /**
