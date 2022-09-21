@@ -27,7 +27,7 @@
   "dependencies": {
     "@docsearch/css": "^3.2.1",
     "@docsearch/js": "^3.2.1",
-    "@nuxtjs/algolia": "^1.1.1",
+    "@nuxtjs/algolia": "^1.1.2",
     "@typescript/ata": "^0.9.3"
   }
 }
