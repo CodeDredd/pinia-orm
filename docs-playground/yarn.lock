@@ -4351,10 +4351,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vite-plugin-pwa@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.13.0.tgz#d22dc1122b53d98936a50841a5f5f700b560afdb"
-  integrity sha512-/oTQGbOvRI2Zew0Enc3dpNrt23U4G0QwkuobLN/oHgBKcK+sYylj8kW72N7natGIIoKEmmfMnrfk2SSW8OUsAw==
+vite-plugin-pwa@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.13.1.tgz#345133f947d4fc8252a1fd96f2fcb0e17c4201ae"
+  integrity sha512-NR3dIa+o2hzlzo4lF4Gu0cYvoMjSw2DdRc6Epw1yjmCqWaGuN86WK9JqZie4arNlE1ZuWT3CLiMdiX5wcmmUmg==
   dependencies:
     debug "^4.3.4"
     fast-glob "^3.2.11"
