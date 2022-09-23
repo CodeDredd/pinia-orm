@@ -69,7 +69,7 @@
     "@types/uuid": "^8.3.4",
     "@vitest/coverage-c8": "^0.23.4",
     "@vitest/ui": "^0.23.4",
-    "@vue/composition-api": "^1.7.0",
+    "@vue/composition-api": "^1.7.1",
     "c8": "^7.12.0",
     "core-js": "^3.25.2",
     "eslint": "^8.23.1",
