@@ -29,7 +29,7 @@
     "@lerna-lite/cli": "^1.11.3",
     "@lerna-lite/run": "^1.11.3",
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^16.11.60",
+    "@types/node": "^16.11.62",
     "chalk": "^4.1.2",
     "conventional-changelog-cli": "^2.2.2",
     "enquirer": "^2.3.6",
