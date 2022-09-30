@@ -34,7 +34,7 @@
     "conventional-changelog-cli": "^2.2.2",
     "enquirer": "^2.3.6",
     "execa": "^6.1.0",
-    "expect": "^29.1.0",
+    "expect": "^29.1.2",
     "globby": "^13.1.2",
     "lint-staged": "^13.0.3",
     "lodash.kebabcase": "^4.1.1",
