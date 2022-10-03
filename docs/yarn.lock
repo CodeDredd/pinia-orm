@@ -1043,10 +1043,10 @@
     socket.io-client "^4.5.1"
     unstorage "^0.5.5"
 
-"@nuxtjs/algolia@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/algolia/-/algolia-1.1.2.tgz#09b6c2e8580103114238f2c3ff8c25a24fedcb3f"
-  integrity sha512-CfO5+J5x/Ks3145ts/xLNuhlxcdsrrvZ5XRxtPp8BLcUOWeIl8VzH44YknwTlIDbZZnWWAephG5LvrwGOiYBIg==
+"@nuxtjs/algolia@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/algolia/-/algolia-1.1.4.tgz#72839139306d16ad4eb5448407adbdfbcd8b948c"
+  integrity sha512-amelTxnWvJifmJkbYZm7XEhzDKCAVYXqxev+44LI1m1wqmNUZx9JpnYn9xMJO5B9sqzpvDvKft1gO9oAV6cKCQ==
   dependencies:
     "@algolia/recommend" "^4.12.2"
     "@nuxt/kit" "^3.0.0-rc.9"
