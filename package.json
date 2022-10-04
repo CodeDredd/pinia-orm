@@ -43,7 +43,7 @@
     "pascalcase": "^2.0.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "semver": "^7.3.7",
+    "semver": "^7.3.8",
     "typescript": "^4.8.4",
     "yorkie": "^2.0.0"
   },
