@@ -10,14 +10,16 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
 
     @Attr() id!: number
     @Str('') name!: string
-    @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id') roles!: Role[]
+    @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
+    roles!: Role[]
   }
 
   class Role extends Model {
     static entity = 'roles'
 
     @Attr() id!: number
-    @BelongsToMany(() => User, () => RoleUser, 'role_id', 'user_id') users!: User[]
+    @BelongsToMany(() => User, () => RoleUser, 'role_id', 'user_id')
+    users!: User[]
 
     pivot!: RoleUser
   }
@@ -65,6 +67,61 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
 
     const userWithoutRoles = userRepo.with('roles').find(3)
     expect(userWithoutRoles?.roles.length).toBe(0)
+  })
+
+  it('can eager load belongs to many relations with pivots', () => {
+    fillState({
+      users: {
+        1: { id: 1 },
+        2: { id: 2 },
+        3: { id: 3 },
+      },
+      roles: {
+        1: { id: 1 },
+        2: { id: 2 },
+      },
+      roleUser: {
+        '[1,1]': { role_id: 1, user_id: 1, level: 1 },
+        '[1,2]': { role_id: 1, user_id: 2, level: 2 },
+        '[2,1]': { role_id: 2, user_id: 1, level: null },
+      },
+    })
+
+    const users = useRepo(User).with('roles').get()
+
+    expect(users[0].id).toBe(1)
+    expect(users[0].roles[0].id).toBe(1)
+    expect(users[0].roles[0].pivot.role_id).toBe(1)
+    expect(users[0].roles[0].pivot.user_id).toBe(1)
+    expect(users[0].roles[0].pivot.level).toBe(1)
+    expect(users[0].roles[1].id).toBe(2)
+    expect(users[0].roles[1].pivot.role_id).toBe(2)
+    expect(users[0].roles[1].pivot.user_id).toBe(1)
+    expect(users[0].roles[1].pivot.level).toBe(null)
+    expect(users[1].id).toBe(2)
+    expect(users[1].roles[0].id).toBe(1)
+    expect(users[1].roles[0].pivot.role_id).toBe(1)
+    expect(users[1].roles[0].pivot.user_id).toBe(2)
+    expect(users[1].roles[0].pivot.level).toBe(2)
+
+    const roles = useRepo(Role).with('users').get()
+
+    expect(roles[0].id).toBe(1)
+    expect(roles[0].users[0].id).toBe(1)
+    expect(roles[0].users[0].pivot.role_id).toBe(1)
+    expect(roles[0].users[0].pivot.user_id).toBe(1)
+    expect(roles[0].users[0].pivot.level).toBe(1)
+
+    expect(roles[0].users[1].id).toBe(2)
+    expect(roles[0].users[1].pivot.role_id).toBe(1)
+    expect(roles[0].users[1].pivot.user_id).toBe(2)
+    expect(roles[0].users[1].pivot.level).toBe(2)
+
+    expect(roles[1].id).toBe(2)
+    expect(roles[1].users[0].id).toBe(1)
+    expect(roles[1].users[0].pivot.role_id).toBe(2)
+    expect(roles[1].users[0].pivot.user_id).toBe(1)
+    expect(roles[1].users[0].pivot.level).toBe(null)
   })
 
   it('can eager load missing relation as empty array', () => {
