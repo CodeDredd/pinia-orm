@@ -104,6 +104,7 @@ importers:
       '@antfu/eslint-config': ^0.27.0
       '@pinia-orm/normalizr': '>=1.0.1'
       '@size-limit/preset-small-lib': ^8.1.0
+      '@types/lodash': ^4.14.186
       '@types/prettier': ^2
       '@types/uuid': ^8.3.4
       '@vitest/coverage-c8': ^0.23.4
@@ -113,6 +114,7 @@ importers:
       core-js: ^3.25.3
       eslint: ^8.24.0
       happy-dom: ^7.0.0
+      lodash: ^4.17.21
       mkdist: ^0.3.13
       nanoid: ^4.0.0
       pinia: ^2.0.22
@@ -130,9 +132,11 @@ importers:
       vue2: npm:vue@^2.7.3
     dependencies:
       '@pinia-orm/normalizr': link:../normalizr
+      lodash: 4.17.21
     devDependencies:
       '@antfu/eslint-config': 0.27.0_ypn2ylkkyfa5i233caldtndbqa
       '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
+      '@types/lodash': 4.14.186
       '@types/prettier': 2.6.3
       '@types/uuid': 8.3.4
       '@vitest/coverage-c8': 0.23.4_o3qmrs2vl47jti3grz7j7xdxpa
@@ -1747,6 +1751,10 @@ packages:
 
   /@types/lodash/4.14.182:
     resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
+    dev: true
+
+  /@types/lodash/4.14.186:
+    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -7131,7 +7139,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}

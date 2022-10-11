@@ -66,6 +66,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
     "@size-limit/preset-small-lib": "^8.1.0",
+    "@types/lodash": "^4.14.186",
     "@types/prettier": "^2",
     "@types/uuid": "^8.3.4",
     "@vitest/coverage-c8": "^0.23.4",
