@@ -38,7 +38,7 @@
     "globby": "^13.1.2",
     "lint-staged": "^13.0.3",
     "lodash.kebabcase": "^4.1.1",
-    "minimist": "^1.2.6",
+    "minimist": "^1.2.7",
     "p-series": "^3.0.0",
     "pascalcase": "^2.0.0",
     "prettier": "^2.7.1",
