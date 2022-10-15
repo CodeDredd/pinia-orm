@@ -26,7 +26,7 @@
     "docs:api": "lerna run docs:api --scope @pinia/docs"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^1.11.3",
+    "@lerna-lite/cli": "^1.12.0",
     "@lerna-lite/run": "^1.11.3",
     "@types/lodash.kebabcase": "^4.1.7",
     "@types/node": "^16.11.65",
