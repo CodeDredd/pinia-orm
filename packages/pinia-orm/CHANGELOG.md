@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.3...pinia-orm@1.0.4) (2022-10-17)
+
+### Bug Fixes
+
+- **pinia-orm:** pivot are not correctly loaded ([#438](https://github.com/CodeDredd/pinia-orm/issues/438)) ([589136a](https://github.com/CodeDredd/pinia-orm/commit/589136a1349adced1371a1b26d8a003768a69bcc))
+
 ## [1.0.3](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.2...pinia-orm@1.0.3) (2022-09-20)
 
 ### Bug Fixes

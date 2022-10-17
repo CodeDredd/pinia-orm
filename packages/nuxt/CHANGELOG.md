@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.1.0...@pinia-orm/nuxt@1.1.1) (2022-10-17)
+
+### Bug Fixes
+
+- **pinia-orm:** pivot are not correctly loaded ([#438](https://github.com/CodeDredd/pinia-orm/issues/438)) ([589136a](https://github.com/CodeDredd/pinia-orm/commit/589136a1349adced1371a1b26d8a003768a69bcc))
+
 # [1.1.0](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.19...@pinia-orm/nuxt@1.1.0) (2022-09-15)
 
 ## [1.0.19](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.0.18...@pinia-orm/nuxt@1.0.19) (2022-08-20)
