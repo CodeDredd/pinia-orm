@@ -27,7 +27,7 @@
     "jszip": "^3.10.1",
     "lz-string": "^1.4.4",
     "monaco-editor": "0.34.0",
-    "monaco-editor-core": "^0.34.0",
+    "monaco-editor-core": "^0.34.1",
     "pinia": "^2.0.23",
     "pinia-orm": "^1.0.4",
     "splitpanes": "^3.1.1",
