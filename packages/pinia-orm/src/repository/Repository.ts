@@ -144,6 +144,13 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Add a where clause on the primary key to the query.
+   */
+  whereId(ids: string | number | (string | number)[]): Query<M> {
+    return this.query().whereId(ids)
+  }
+
+  /**
    * Add an "or where" clause to the query.
    */
   orWhere(

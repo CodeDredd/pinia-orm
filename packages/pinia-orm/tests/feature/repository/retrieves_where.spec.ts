@@ -101,4 +101,27 @@ describe('feature/repository/retrieves_where', () => {
     assertInstanceOf(users, User)
     assertModels(users, expected)
   })
+
+  it('can filter records with "whereId"', () => {
+    const userRepo = useRepo(User)
+
+    fillState({
+      users: {
+        1: { id: 1, name: 'John Doe', age: 30 },
+        2: { id: 2, name: 'Jane Doe', age: 30 },
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
+    })
+
+    const users = userRepo.whereId([1, 2]).get()
+
+    const expected = [
+      { id: 1, name: 'John Doe', age: 30 },
+      { id: 2, name: 'Jane Doe', age: 30 },
+    ]
+
+    expect(users).toHaveLength(2)
+    assertInstanceOf(users, User)
+    assertModels(users, expected)
+  })
 })
