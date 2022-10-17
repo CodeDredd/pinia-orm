@@ -1,5 +1,4 @@
 import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
-import _ from 'lodash'
 import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
@@ -106,7 +105,7 @@ export class BelongsToMany extends Relation {
           .where(this.foreignPivotKey, parentModel[this.parentKey])
           .first()
 
-        const relatedModelCopy = _.cloneDeep(relatedModel)
+        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$getAttributes())
         relatedModelCopy.$setRelation('pivot', pivot)
 
         if (pivot) relationResults.push(relatedModelCopy)

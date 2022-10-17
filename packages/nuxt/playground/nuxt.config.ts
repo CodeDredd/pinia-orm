@@ -1,5 +1,5 @@
-import { defineNuxtConfig } from 'nuxt'
-import PiniaOrm from '../../nuxt'
+import { defineNuxtConfig } from 'nuxt/config'
+import PiniaOrm from '..'
 
 export default defineNuxtConfig({
   buildModules: ['@pinia/nuxt'],

@@ -18,7 +18,7 @@ package-lock.json
 **/.yarn/*state*
 
 # Generated dirs
-# dist
+ dist
 .nuxt
 .nuxt-*
 .output
