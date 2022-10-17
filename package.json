@@ -1,7 +1,7 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "packageManager": "pnpm@7.13.4",
+  "packageManager": "pnpm@7.13.5",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -26,15 +26,15 @@
     "docs:api": "lerna run docs:api --scope @pinia/docs"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^1.11.3",
-    "@lerna-lite/run": "^1.11.3",
+    "@lerna-lite/cli": "^1.12.0",
+    "@lerna-lite/run": "^1.12.0",
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^16.11.65",
+    "@types/node": "^16.11.66",
     "chalk": "^4.1.2",
     "conventional-changelog-cli": "^2.2.2",
     "enquirer": "^2.3.6",
     "execa": "^6.1.0",
-    "expect": "^29.1.2",
+    "expect": "^29.2.0",
     "globby": "^13.1.2",
     "lint-staged": "^13.0.3",
     "lodash.kebabcase": "^4.1.1",
