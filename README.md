@@ -112,9 +112,9 @@ A few notes about the project and possible questions:
 
 - Clone this repository
 - Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
-- Build normalizr package: `cd packages/normalizr; pnpm build`
 - Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
+- Build normalizr package: `pnpm build`
+- Run interactive tests using `cd packages/pinia-orm && pnpm test:ui`
 
 ## Credits
 
