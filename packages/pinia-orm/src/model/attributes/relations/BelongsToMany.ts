@@ -99,13 +99,17 @@ export class BelongsToMany extends Relation {
       const relationResults: Model[] = []
       relatedModels.forEach((relatedModel) => {
         const key = relatedModel[this.relatedKey]
-        const pivot = query.newQuery(this.pivot.$entity())
+        const pivot = query
+          .newQuery(this.pivot.$entity())
           .where(this.relatedPivotKey, key)
           .where(this.foreignPivotKey, parentModel[this.parentKey])
           .first()
-        relatedModel.$setRelation('pivot', pivot)
+
+        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$getAttributes())
+        relatedModelCopy.$setRelation('pivot', pivot)
+
         if (pivot)
-          relationResults.push(relatedModel)
+          relationResults.push(relatedModelCopy)
       })
       parentModel.$setRelation(relation, relationResults)
     })
@@ -117,14 +121,12 @@ export class BelongsToMany extends Relation {
   addEagerConstraints(query: Query, collection: Collection): void {
     query.database.register(this.pivot)
 
-    const pivotKeys = query.newQuery(this.pivot.$entity()).where(
-      this.foreignPivotKey,
-      this.getKeys(collection, this.parentKey),
-    ).get(false).map((item: Model) => item[this.relatedPivotKey])
+    const pivotKeys = query
+      .newQuery(this.pivot.$entity())
+      .where(this.foreignPivotKey, this.getKeys(collection, this.parentKey))
+      .get(false)
+      .map((item: Model) => item[this.relatedPivotKey])
 
-    query.whereIn(
-      this.relatedKey,
-      pivotKeys,
-    )
+    query.whereIn(this.relatedKey, pivotKeys)
   }
 }
