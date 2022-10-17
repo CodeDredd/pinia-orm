@@ -46,7 +46,7 @@ export class BelongsToMany extends Relation {
     foreignPivotKey: string,
     relatedPivotKey: string,
     parentKey: string,
-    relatedKey: string
+    relatedKey: string,
   ) {
     super(parent, related)
 
@@ -86,7 +86,7 @@ export class BelongsToMany extends Relation {
    */
   make(elements?: Element[]): Model[] {
     return elements
-      ? elements.map((element) => this.related.$newInstance(element))
+      ? elements.map(element => this.related.$newInstance(element))
       : []
   }
 
@@ -108,7 +108,8 @@ export class BelongsToMany extends Relation {
         const relatedModelCopy = relatedModel.$newInstance(relatedModel.$getAttributes())
         relatedModelCopy.$setRelation('pivot', pivot)
 
-        if (pivot) relationResults.push(relatedModelCopy)
+        if (pivot)
+          relationResults.push(relatedModelCopy)
       })
       parentModel.$setRelation(relation, relationResults)
     })
