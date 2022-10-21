@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, HasMany, HasOne, Num, Str } from '../../../src/decorators'
@@ -212,10 +212,8 @@ describe('feature/repository/retrieves_has', () => {
     assertModels(users, expected)
   })
 
-  it.skip('can throw an error if a wrong relation is queried', () => {
+  it('can throw an error if a wrong relation is queried', () => {
     const userRepo = useRepo(User)
-
-    const hasMeethod = vi.spyOn(userRepo, 'has')
 
     fillState({
       users: {
@@ -230,8 +228,8 @@ describe('feature/repository/retrieves_has', () => {
       },
     })
 
-    userRepo.has('postss', '<', 2).get()
-
-    expect(hasMeethod).toThrowError('[Pinia ORM] Relationship [postss] on model [users] not found.')
+    expect(() => {
+      userRepo.has('postss', '<', 2).get()
+    }).toThrowError('[Pinia ORM] Relationship [postss] on model [users] not found.')
   })
 })
