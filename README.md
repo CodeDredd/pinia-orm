@@ -72,15 +72,21 @@ Small overview:
 
 <h4 align="center">Bronze Sponsors</h4>
 <p align="center">
-    <a href="https://github.com/tintin10q" target="_blank" rel="noopener noreferrer">
+  <a href="https://github.com/tintin10q" target="_blank" rel="noopener noreferrer">
     <picture>
       <source srcset="https://avatars.githubusercontent.com/u/24190849?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="tintin10q" />
       <img src="https://avatars.githubusercontent.com/u/24190849?v=4" height="26px" alt="tintin10q" />
     </picture>
   </a>
+  <a href="https://github.com/salcedo" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source srcset="https://avatars.githubusercontent.com/u/823026?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="salcedo" />
+      <img src="https://avatars.githubusercontent.com/u/823026?v=4" height="26px" alt="salcedo" />
+    </picture>
+  </a>
 </p>
 
-<h4 align="center">Lovely Sponsors</h4>
+<h4 align="center">Backers</h4>
 <p align="center">
   <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
     <picture>
