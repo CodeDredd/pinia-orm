@@ -14,7 +14,7 @@
     "enableNonBrowserBranches": true
   },
   "dependencies": {
-    "@antfu/utils": "^0.5.2",
+    "@antfu/utils": "^0.6.0",
     "@headlessui/vue": "^1.7.3",
     "@types/splitpanes": "^2.2.1",
     "@vue/runtime-core": "^3.2.41",
