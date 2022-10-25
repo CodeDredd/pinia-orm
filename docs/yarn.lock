@@ -14,6 +14,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@algolia/autocomplete-core@npm:1.7.2":
+  version: 1.7.2
+  resolution: "@algolia/autocomplete-core@npm:1.7.2"
+  dependencies:
+    "@algolia/autocomplete-shared": 1.7.2
+  checksum: 7d3e879ac74f2d3fd6f80a01d6c05bd22264c428030396234112be7628a80d3a7c250613b2d4102f8ef63115be7b96d8d0231bdf8a02aa9b58873500aa61ffcc
+  languageName: node
+  linkType: hard
+
 "@algolia/autocomplete-preset-algolia@npm:1.7.1":
   version: 1.7.1
   resolution: "@algolia/autocomplete-preset-algolia@npm:1.7.1"
@@ -26,10 +35,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@algolia/autocomplete-preset-algolia@npm:1.7.2":
+  version: 1.7.2
+  resolution: "@algolia/autocomplete-preset-algolia@npm:1.7.2"
+  dependencies:
+    "@algolia/autocomplete-shared": 1.7.2
+  peerDependencies:
+    "@algolia/client-search": ">= 4.9.1 < 6"
+    algoliasearch: ">= 4.9.1 < 6"
+  checksum: 7120ce1d312dbe6d898a0cecd9b28e45f9162a2fd9208a4c4e2efa77027455ee083c11cb782196374da717e990d6ca362c286ace475db97916e52bd277061d77
+  languageName: node
+  linkType: hard
+
 "@algolia/autocomplete-shared@npm:1.7.1":
   version: 1.7.1
   resolution: "@algolia/autocomplete-shared@npm:1.7.1"
   checksum: 0e137f1a470fab9b1bc493284b0be9b83503bda8aa37be9726a8fddf4791dccbd28f9eec399a7c75c1eb3196510dac7be454307fc97fbca2999f3fbc30756c28
+  languageName: node
+  linkType: hard
+
+"@algolia/autocomplete-shared@npm:1.7.2":
+  version: 1.7.2
+  resolution: "@algolia/autocomplete-shared@npm:1.7.2"
+  checksum: 8336cd1e79e56e3901196862ae17896c6e9542e269a05860ab72d869e35f17ab0f40ecbe35d1e34617cc70749d3f8323d09b347c443a7b7b2b126dddb44779aa
   languageName: node
   linkType: hard
 
@@ -588,20 +616,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/css@npm:3.2.2, @docsearch/css@npm:^3.2.1, @docsearch/css@npm:^3.2.2":
+"@docsearch/css@npm:3.2.2, @docsearch/css@npm:^3.2.1":
   version: 3.2.2
   resolution: "@docsearch/css@npm:3.2.2"
   checksum: 8e0555249047c0313466ffe149c9ab7d091485649b4267dc22899b1e7a94cd8deef9b9e8d75997e66e289d16a8b0cb86f05212ab750b25741cdd03ba2aab1e3e
   languageName: node
   linkType: hard
 
-"@docsearch/js@npm:^3.2.1, @docsearch/js@npm:^3.2.2":
+"@docsearch/css@npm:3.3.0, @docsearch/css@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@docsearch/css@npm:3.3.0"
+  checksum: 1cbf381fe0b454f933e736d04fe8a2d9f86c375022ef738b44d67a0b4c187b0d8fcb945a1ba5a404059e50e3968d9fe769de22779d071f6189f07c161239892c
+  languageName: node
+  linkType: hard
+
+"@docsearch/js@npm:^3.2.1":
   version: 3.2.2
   resolution: "@docsearch/js@npm:3.2.2"
   dependencies:
     "@docsearch/react": 3.2.2
     preact: ^10.0.0
   checksum: 6678223b41f1e31f06f0136edee2e95932df93e680341e76017fa1d0617e887d5037f34f2c91723efcd4b77e3140fb70369ca47e82a9f8bd51efc3f2ae8208b2
+  languageName: node
+  linkType: hard
+
+"@docsearch/js@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@docsearch/js@npm:3.3.0"
+  dependencies:
+    "@docsearch/react": 3.3.0
+    preact: ^10.0.0
+  checksum: b612c6e91482419ccde4be30bf8c3fe095066fb0013941a6a3e201df33e108864a0d8fe5728571be6053cbfed32c2e38f86aec9584b365ff1ac2024cb64a7310
   languageName: node
   linkType: hard
 
@@ -625,6 +670,29 @@ __metadata:
     react-dom:
       optional: true
   checksum: 7653f72e4044907a64d46ceb5b34b9ad14b42a18317b2a2025a8bae71728c007ea7a25b617faf9ed10da396c35f679c335157f6d535537f14f9f4d1d6a67728c
+  languageName: node
+  linkType: hard
+
+"@docsearch/react@npm:3.3.0":
+  version: 3.3.0
+  resolution: "@docsearch/react@npm:3.3.0"
+  dependencies:
+    "@algolia/autocomplete-core": 1.7.2
+    "@algolia/autocomplete-preset-algolia": 1.7.2
+    "@docsearch/css": 3.3.0
+    algoliasearch: ^4.0.0
+  peerDependencies:
+    "@types/react": ">= 16.8.0 < 19.0.0"
+    react: ">= 16.8.0 < 19.0.0"
+    react-dom: ">= 16.8.0 < 19.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 2bc4aa649fad3ff74e61537e674e658903c01509b2835827943f23895b40b7697476399179d43bc721f7e72044c797d4d793fcdaa394ff4f9fca1389a197a78c
   languageName: node
   linkType: hard
 
@@ -1250,8 +1318,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
-    "@docsearch/css": ^3.2.2
-    "@docsearch/js": ^3.2.2
+    "@docsearch/css": ^3.3.0
+    "@docsearch/js": ^3.3.0
     "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest"
     "@nuxtjs/algolia": ^1.1.4
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
