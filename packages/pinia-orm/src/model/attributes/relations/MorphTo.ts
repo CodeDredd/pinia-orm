@@ -16,27 +16,27 @@ export class MorphTo extends Relation {
   /**
    * The related models.
    */
-  protected relatedModels: Model[]
+  relatedModels: Model[]
 
   /**
    * The related model dictionary.
    */
-  protected relatedTypes: Record<string, Model>
+  relatedTypes: Record<string, Model>
 
   /**
    * The field name that contains id of the parent model.
    */
-  protected morphId: string
+  morphId: string
 
   /**
    * The field name that contains type of the parent model.
    */
-  protected morphType: string
+  morphType: string
 
   /**
    * The associated key of the child model.
    */
-  protected ownerKey: string
+  ownerKey: string
 
   /**
    * Create a new morph-to relation instance.

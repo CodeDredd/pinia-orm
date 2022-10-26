@@ -13,17 +13,17 @@ export abstract class Relation extends Attribute {
   /**
    * The parent model.
    */
-  protected parent: Model
+  parent: Model
 
   /**
    * The related model.
    */
-  protected related: Model
+  related: Model
 
   /**
    * Create a new relation instance.
    */
-  constructor(parent: Model, related: Model) {
+  protected constructor(parent: Model, related: Model) {
     super(parent)
     this.parent = parent
     this.related = related

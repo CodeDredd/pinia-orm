@@ -9,17 +9,17 @@ export class BelongsTo extends Relation {
   /**
    * The child model instance of the relation.
    */
-  protected child: Model
+  child: Model
 
   /**
    * The foreign key of the parent model.
    */
-  protected foreignKey: string
+  foreignKey: string
 
   /**
    * The associated key on the parent model.
    */
-  protected ownerKey: string
+  ownerKey: string
 
   /**
    * Create a new belongs-to relation instance.

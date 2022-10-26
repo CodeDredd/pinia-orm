@@ -43,11 +43,11 @@ export interface MetaValues {
 }
 
 export interface BeforeHook<M extends Model = Model> {
-  (model: M): void | boolean
+  (model: M, record?: Element): void | boolean
 }
 
 export interface AfterHook<M extends Model = Model> {
-  (model: M): void
+  (model: M, record?: Element): void
 }
 
 export interface InheritanceTypes {

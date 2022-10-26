@@ -16,9 +16,11 @@ class User extends Model {
     }
   }
 
-  static created (model) {
+  static created (model, record) {
       // check value saved
     console.log(model.published)
+    // check original data
+    console.log(record)
   }
 }
 ````
@@ -26,7 +28,7 @@ class User extends Model {
 ## Typescript Declarations
 ````ts
 export interface AfterHook<M extends Model = Model> {
-  (model: M): void
+  (model: M, record?: Element): void
 }
 
 const created: AfterHook = () => {}
