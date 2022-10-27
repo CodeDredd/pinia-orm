@@ -10,17 +10,17 @@ export class MorphMany extends Relation {
   /**
    * The field name that contains id of the parent model.
    */
-  protected morphId: string
+  morphId: string
 
   /**
    * The field name that contains type of the parent model.
    */
-  protected morphType: string
+  morphType: string
 
   /**
    * The local key of the model.
    */
-  protected localKey: string
+  localKey: string
 
   /**
    * Create a new morph-many relation instance.

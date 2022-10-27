@@ -16,13 +16,15 @@ class User extends Model {
     }
   }
 
-  static creating (model) {
+  static creating (model, record) {
       // change values before saving
     model.published = true
     if (model.userId === 2) {
         // prevent model with userId 2 being saved in the store
         return false
     }
+    // check original data
+    console.log(record)
   }
 }
 ````
@@ -30,7 +32,7 @@ class User extends Model {
 ## Typescript Declarations
 ````ts
 export interface BeforeHook<M extends Model = Model> {
-  (model: M): void | boolean
+  (model: M, record?: Element): void | boolean
 }
 
 const creating: BeforeHook = () => {}

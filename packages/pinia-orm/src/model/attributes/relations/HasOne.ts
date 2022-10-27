@@ -10,12 +10,12 @@ export class HasOne extends Relation {
   /**
    * The foreign key of the parent model.
    */
-  protected foreignKey: string
+  foreignKey: string
 
   /**
    * The local key of the parent model.
    */
-  protected localKey: string
+  localKey: string
 
   /**
    * Create a new has-one relation instance.
