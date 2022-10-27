@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.4...pinia-orm@1.1.0) (2022-10-27)
+
+### Features
+
+- **pinia-orm:** add `record` to saving hooks ([#491](https://github.com/CodeDredd/pinia-orm/issues/491)) ([3153101](https://github.com/CodeDredd/pinia-orm/commit/315310133762e744d4901cb8de2d55f6f37277ad))
+
 ## [1.0.4](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.3...pinia-orm@1.0.4) (2022-10-17)
 
 ### Bug Fixes
