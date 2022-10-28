@@ -7,6 +7,7 @@
     "module": "esnext",
     "moduleResolution": "Node",
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
