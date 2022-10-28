@@ -4064,10 +4064,10 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.11.tgz#50c0d8c40a14ec1bf449bae69a0ea4685a9d9f95"
   integrity sha512-Ctl2BrFiM0X3MANYgj3CkygxhRmr9mi6xhejbdO960nF6EDJApTYpn0BQnDKlnNBULKiCN1n3w9EBkHK8ZWg+g==
 
-splitpanes@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/splitpanes/-/splitpanes-3.1.4.tgz#59b2b1845caaae410a5121402e43720b7750ec9e"
-  integrity sha512-6XbhyxNkjVft87lfQkodjOE6b7zd/Pnh7nYbKevJ4G/owX+bkwQRWU+UDd6/7Ub8BOTQu0rm4BCvXaAGIZPCkw==
+splitpanes@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/splitpanes/-/splitpanes-3.1.5.tgz#de81da25681c252d131747a9cb48a17156e2b210"
+  integrity sha512-r3Mq2ITFQ5a2VXLOy4/Sb2Ptp7OfEO8YIbhVJqJXoFc9hc5nTXXkCvtVDjIGbvC0vdE7tse+xTM9BMjsszP6bw==
 
 string.prototype.matchall@^4.0.6:
   version "4.0.7"
