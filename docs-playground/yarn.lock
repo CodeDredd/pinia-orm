@@ -91,6 +91,11 @@
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.6.0.tgz#c555b859843127853ffbe1adde25f6a365daa820"
   integrity sha512-VauUKmo22NYo3y6fIjGjVU7LJyhaedYL9kyabdvIIIl7P+qbNPbQiaLwwk4UOU4McFfA2eg+aIWpEYhkHzsE9Q==
 
+"@antfu/utils@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.6.1.tgz#6219c57546ce6256a577a5da366fa93922e4fdd3"
+  integrity sha512-X3cfmHwiQ3qNQclfDNxFSjpqYVlhUjTj59cV/P9DfRy0zpEWDRcwI4yaqfxvWyJKlg1uhNApoK9YNKjX5SQfQA==
+
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@apideck/better-ajv-errors/-/better-ajv-errors-0.3.6.tgz#957d4c28e886a64a8141f7522783be65733ff097"
