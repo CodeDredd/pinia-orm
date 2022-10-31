@@ -108,8 +108,8 @@ importers:
       '@size-limit/preset-small-lib': ^8.1.0
       '@types/prettier': ^2
       '@types/uuid': ^8.3.4
-      '@vitest/coverage-c8': ^0.24.3
-      '@vitest/ui': ^0.24.3
+      '@vitest/coverage-c8': ^0.24.4
+      '@vitest/ui': ^0.24.4
       '@vue/composition-api': ^1.7.1
       c8: ^7.12.0
       core-js: ^3.26.0
@@ -125,8 +125,8 @@ importers:
       typescript: ^4.8.4
       unbuild: ^0.9.4
       uuid: ^9.0.0
-      vite: ^3.2.1
-      vitest: ^0.24.3
+      vite: ^3.2.2
+      vitest: ^0.24.4
       vue: ^3.2.41
       vue-demi: ^0.13.11
       vue2: npm:vue@^2.7.3
@@ -137,8 +137,8 @@ importers:
       '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
       '@types/prettier': 2.6.3
       '@types/uuid': 8.3.4
-      '@vitest/coverage-c8': 0.24.3_4pl5b7d4wusn45o2onzcevcw2y
-      '@vitest/ui': 0.24.3
+      '@vitest/coverage-c8': 0.24.4_ulhgfgpf2jujk6g7twwzjqk3by
+      '@vitest/ui': 0.24.4
       '@vue/composition-api': 1.7.1_vue@3.2.41
       c8: 7.12.0
       core-js: 3.26.0
@@ -154,8 +154,8 @@ importers:
       typescript: 4.8.4
       unbuild: 0.9.4
       uuid: 9.0.0
-      vite: 3.2.1
-      vitest: 0.24.3_4pl5b7d4wusn45o2onzcevcw2y
+      vite: 3.2.2
+      vitest: 0.24.4_ulhgfgpf2jujk6g7twwzjqk3by
       vue: 3.2.41
       vue-demi: 0.13.11_dyjqe6a6hnb4vyzxfuk6bzpiny
       vue2: /vue/2.7.3
@@ -1854,10 +1854,6 @@ packages:
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
     dev: true
 
-  /@types/node/18.11.7:
-    resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==}
-    dev: true
-
   /@types/node/18.11.8:
     resolution: {integrity: sha512-uGwPWlE0Hj972KkHtCDVwZ8O39GmyjfMane1Z3GUBGGnkZ2USDq7SxLpVIiIHpweY9DS0QTDH0Nw7RNBsAAZ5A==}
     dev: true
@@ -2210,11 +2206,11 @@ packages:
       vue: 3.2.41
     dev: true
 
-  /@vitest/coverage-c8/0.24.3_4pl5b7d4wusn45o2onzcevcw2y:
-    resolution: {integrity: sha512-tAmMyHxWYnAwGeJb7QgTuEX8aLasTg4X1/6INobXa/7wYGEJ28CACFO5iLn1HzFVPoLvhsS3luQjiflGjjSMRQ==}
+  /@vitest/coverage-c8/0.24.4_ulhgfgpf2jujk6g7twwzjqk3by:
+    resolution: {integrity: sha512-1mhYQip6IJw1p9hzM+sH8O/RbILMe7FwScWI7COoMGAThdDRytDjmOal38F/EVrIPZY3nZ5hf7S7JFGjbb4bTg==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.24.3_4pl5b7d4wusn45o2onzcevcw2y
+      vitest: 0.24.4_ulhgfgpf2jujk6g7twwzjqk3by
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -2229,8 +2225,8 @@ packages:
       - terser
     dev: true
 
-  /@vitest/ui/0.24.3:
-    resolution: {integrity: sha512-f5agYA/sdkiipq42TZayJoeUGjWx+opDjIVeNnb1SG2BNxqObFqh6GuJlzpGHerg4a2+ZSoVo4f4p2+dEyXPmg==}
+  /@vitest/ui/0.24.4:
+    resolution: {integrity: sha512-R3AAw/6XkkjISta88LIcs6flC89EHPXYH1R6VPbM6B20ACGE+NndBykjEjEmHZDbJTNCWd56AJFxYgCZV/bAMg==}
     dependencies:
       sirv: 2.0.2
     dev: true
@@ -10440,7 +10436,7 @@ packages:
       debug: 4.3.4
       mlly: 0.5.16
       pathe: 0.2.0
-      vite: 3.2.1
+      vite: 3.2.2
     transitivePeerDependencies:
       - less
       - sass
@@ -10516,8 +10512,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/3.2.1:
-    resolution: {integrity: sha512-ADtMkfHuWq4tskJsri2n2FZkORO8ZyhI+zIz7zTrDAgDEtct1jdxOg3YsZBfHhKjmMoWLOSCr+64qrEDGo/DbQ==}
+  /vite/3.2.2:
+    resolution: {integrity: sha512-pLrhatFFOWO9kS19bQ658CnRYzv0WLbsPih6R+iFeEEhDOuYgYCX2rztUViMz/uy/V8cLCJvLFeiOK7RJEzHcw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -10546,8 +10542,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.24.3_4pl5b7d4wusn45o2onzcevcw2y:
-    resolution: {integrity: sha512-aM0auuPPgMSstWvr851hB74g/LKaKBzSxcG3da7ejfZbx08Y21JpZmbmDYrMTCGhVZKqTGwzcnLMwyfz2WzkhQ==}
+  /vitest/0.24.4_ulhgfgpf2jujk6g7twwzjqk3by:
+    resolution: {integrity: sha512-4ratHSyVEJPtBLV00uhL4Wj3Pmandc9rsxUkE0q9peNOfaOgGF4lEepdkaXGRi9AGFKr1GRVtjGOJ6Fp2lCpEg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -10570,8 +10566,8 @@ packages:
     dependencies:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.11.7
-      '@vitest/ui': 0.24.3
+      '@types/node': 18.11.8
+      '@vitest/ui': 0.24.4
       chai: 4.3.6
       debug: 4.3.4
       happy-dom: 7.6.6
@@ -10580,7 +10576,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.2.1
+      vite: 3.2.2
     transitivePeerDependencies:
       - less
       - sass
