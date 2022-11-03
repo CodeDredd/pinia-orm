@@ -80,7 +80,7 @@
     "prettier": "^2.7.1",
     "size-limit": "^8.1.0",
     "std-env": "^3.3.0",
-    "tsup": "^6.3.0",
+    "tsup": "^6.4.0",
     "typescript": "^4.8.4",
     "unbuild": "^0.9.4",
     "uuid": "^9.0.0",
