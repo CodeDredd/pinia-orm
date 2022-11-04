@@ -44,16 +44,16 @@
     "pinia-orm": ">=1.0.4"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.12"
+    "@nuxt/kit": "^3.0.0-rc.13"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
-    "@nuxt/schema": "^3.0.0-rc.12",
+    "@nuxt/schema": "^3.0.0-rc.13",
     "@nuxtjs/eslint-config-typescript": "latest",
     "@pinia/nuxt": "^0.4.3",
     "@types/prettier": "^2",
     "eslint": "^8.26.0",
-    "nuxt": "^3.0.0-rc.12",
+    "nuxt": "^3.0.0-rc.13",
     "pinia": "^2.0.23",
     "pinia-orm": "^1.0.0",
     "prettier": "^2.7.1",
