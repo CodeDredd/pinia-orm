@@ -17,7 +17,7 @@ console.log(userRepo.destroy([1,2,5])) // User[]
 ````
 
 ::alert{type='info'}
-If you want also relations to be deleted the the deleted record look at [Deleting Relationships](/guide/relationships/getting-started#deleting-relationships)
+If you want also relations to be deleted with the deleted record look at [Deleting Relationships](/guide/relationships/getting-started#deleting-relationships)
 ::
 
 ## Typescript Declarations

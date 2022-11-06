@@ -34,8 +34,22 @@ describe('feature/repository/delete_with_relations', () => {
       @Str('') declare title: string
     }
 
+    class ExtraComment extends Model {
+      static entity = 'extraComments'
+
+      @Num(0) declare id: number
+      @Num(0) declare postId: number
+      @Str('') declare title: string
+    }
+
     class Post extends Model {
       static entity = 'posts'
+
+      static fields() {
+        return {
+          extraComments: this.hasMany(ExtraComment, 'postId').onDelete('cascade'),
+        }
+      }
 
       @Num(0) declare id: number
       @Num(0) declare userId: number
@@ -77,6 +91,10 @@ describe('feature/repository/delete_with_relations', () => {
             { id: 3, title: 'Title 03' },
             { id: 4, title: 'Title 04' },
           ],
+          extraComments: [
+            { id: 3, title: 'Title 03' },
+            { id: 4, title: 'Title 04' },
+          ],
         },
         { id: 2, title: 'Title 02' },
       ],
@@ -89,6 +107,10 @@ describe('feature/repository/delete_with_relations', () => {
           id: 3,
           title: 'Title 03',
           comments: [
+            { id: 1, title: 'Title 01' },
+            { id: 2, title: 'Title 02' },
+          ],
+          extraComments: [
             { id: 1, title: 'Title 01' },
             { id: 2, title: 'Title 02' },
           ],
@@ -113,6 +135,10 @@ describe('feature/repository/delete_with_relations', () => {
         2: { id: 2, userId: 1, title: 'Title 02' },
       },
       comments: {
+        3: { id: 3, postId: 1, title: 'Title 03' },
+        4: { id: 4, postId: 1, title: 'Title 04' },
+      },
+      extraComments: {
         3: { id: 3, postId: 1, title: 'Title 03' },
         4: { id: 4, postId: 1, title: 'Title 04' },
       },

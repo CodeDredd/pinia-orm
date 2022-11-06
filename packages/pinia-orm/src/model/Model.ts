@@ -100,9 +100,9 @@ export class Model {
   static typeKey = 'type'
 
   /**
-   * The field behaviour for relational fields on delete.
+   * Behaviour for relational fields on delete.
    */
-  static fieldDeleteMode = {}
+  static fieldsOnDelete = {}
 
   /**
    * The schema for the model. It contains the result of the `fields`
@@ -173,8 +173,8 @@ export class Model {
       this.schemas[this.entity][key]
         = typeof attribute === 'function' ? attribute() : attribute
 
-      if (this.fieldDeleteMode[key])
-        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldDeleteMode[key])
+      if (this.fieldsOnDelete[key])
+        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[key])
     }
   }
 
@@ -202,7 +202,7 @@ export class Model {
     key: string,
     mode: deleteModes,
   ): M {
-    this.fieldDeleteMode[key] = mode
+    this.fieldsOnDelete[key] = mode
 
     return this
   }
