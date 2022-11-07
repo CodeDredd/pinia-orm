@@ -11,6 +11,7 @@ import { String as Str } from './attributes/types/String'
 import { Number as Num } from './attributes/types/Number'
 import { Boolean as Bool } from './attributes/types/Boolean'
 import { Uid } from './attributes/types/Uid'
+import type { deleteModes } from './attributes/relations/Relation'
 import { Relation } from './attributes/relations/Relation'
 import { HasOne } from './attributes/relations/HasOne'
 import { BelongsTo } from './attributes/relations/BelongsTo'
@@ -99,6 +100,11 @@ export class Model {
   static typeKey = 'type'
 
   /**
+   * Behaviour for relational fields on delete.
+   */
+  static fieldsOnDelete = {}
+
+  /**
    * The schema for the model. It contains the result of the `fields`
    * method or the attributes defined by decorators.
    */
@@ -166,6 +172,9 @@ export class Model {
 
       this.schemas[this.entity][key]
         = typeof attribute === 'function' ? attribute() : attribute
+
+      if (this.fieldsOnDelete[key])
+        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[key])
     }
   }
 
@@ -181,6 +190,19 @@ export class Model {
       this.registries[this.entity] = {}
 
     this.registries[this.entity][key] = attribute
+
+    return this
+  }
+
+  /**
+   * Set delete behaviour for relation field
+   */
+  static setFieldDeleteMode<M extends typeof Model>(
+    this: M,
+    key: string,
+    mode: deleteModes,
+  ): M {
+    this.fieldsOnDelete[key] = mode
 
     return this
   }
