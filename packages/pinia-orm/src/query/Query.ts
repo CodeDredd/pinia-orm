@@ -197,7 +197,10 @@ export class Query<M extends Model = Model> {
   /**
    * Add a "where in" clause to the query.
    */
-  whereIn(field: string, values: any[]): this {
+  whereIn(field: string, values: any[] | Set<any>): this {
+    if (values instanceof Set)
+      values = Array.from(values)
+
     this.wheres.push({ field, value: values, boolean: 'and' })
 
     return this
