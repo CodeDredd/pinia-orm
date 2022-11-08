@@ -16,7 +16,7 @@ importers:
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
       execa: ^6.1.0
-      expect: ^29.2.2
+      expect: ^29.3.0
       globby: ^13.1.2
       lint-staged: ^13.0.3
       lodash.kebabcase: ^4.1.1
@@ -37,7 +37,7 @@ importers:
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
       execa: 6.1.0
-      expect: 29.2.2
+      expect: 29.3.0
       globby: 13.1.2
       lint-staged: 13.0.3_enquirer@2.3.6
       lodash.kebabcase: 4.1.1
@@ -5743,8 +5743,8 @@ packages:
       strip-final-newline: 3.0.0
     dev: true
 
-  /expect/29.2.2:
-    resolution: {integrity: sha512-hE09QerxZ5wXiOhqkXy5d2G9ar+EqOyifnCXCpMNu+vZ6DG9TJ6CO2c2kPDSLqERTTWrO7OZj8EkYHQqSd78Yw==}
+  /expect/29.3.0:
+    resolution: {integrity: sha512-bms139btnQNZh4uxCPmzbWz46YOjtEpYIZ847OfY9GCeSBEfzedHWH0CkdR20Sy+XBs8/FI2lFJPZiuH0NGv+w==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/expect-utils': 29.2.2
