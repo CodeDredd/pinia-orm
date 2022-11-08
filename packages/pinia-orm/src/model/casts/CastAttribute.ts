@@ -16,10 +16,19 @@ export class CastAttribute {
   static parameters: Record<string, any>
 
   /**
+   * Default parameters
+   */
+  $parameters: Record<string, any> = {}
+
+  /**
    * Create a new Attribute instance.
    */
   constructor(attributes: ModelFields | undefined) {
     this.$self().attributes = attributes
+    this.$parameters = {
+      ...this.$parameters,
+      ...this.$self().parameters,
+    }
   }
 
   /**
@@ -45,7 +54,7 @@ export class CastAttribute {
    * Get the cast parameters
    */
   getParameters(): Record<string, any> {
-    return this.$self().parameters
+    return this.$parameters
   }
 
   /**
