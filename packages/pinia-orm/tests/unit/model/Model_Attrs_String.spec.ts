@@ -36,4 +36,14 @@ describe('unit/model/Model_Attrs_String', () => {
     expect(new User({ str: null }).str).toBe(null)
     expect(logger).toBeCalledTimes(3)
   })
+
+  it('accepts a closure as default value', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Str(() => 'Test') declare str: string
+    }
+
+    expect(new User({}).str).toBe('Test')
+  })
 })

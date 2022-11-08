@@ -1,10 +1,11 @@
 import type { PropertyDecorator, TypeOptions } from '../../Contracts'
+import type { TypeDefault } from '../../../attributes/types/Type'
 
 /**
  * Create a String attribute property decorator.
  */
 export function Str(
-  value: string | null,
+  value: TypeDefault<string>,
   options: TypeOptions = {},
 ): PropertyDecorator {
   return (target, propertyKey) => {
