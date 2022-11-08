@@ -14,6 +14,7 @@ class User extends Model {
   static fields () {
     return {
       id: this.number(0)
+      extraId: this.number(() => 0)
     }
   }
 }
@@ -29,11 +30,12 @@ class User extends Model {
   static entity = 'users'
   
   @Num(0) declare id: number
+  @Num(() => 0) declare extraId: number
 }
 ````
 
 ## Typescript Declarations
 
 ````ts
-function number(value: number | null): Number
+function number(value: number | null | (() => number | null)): Number
 ````

@@ -14,7 +14,8 @@ class User extends Model {
   static fields () {
     return {
       id: this.number(0),
-      published: this.boolean(false)
+      published: this.boolean(false),
+      released: this.boolean(() => false),
     }
   }
 }
@@ -31,11 +32,12 @@ class User extends Model {
   
   @Num(0) declare id: number
   @Bool(false) declare published: boolean
+  @Bool(() => false) declare released: boolean
 }
 ````
 
 ## Typescript Declarations
 
 ````ts
-function boolean(value: boolean | null): Bool
+function boolean(value: boolean | null | (() => boolean | null)): Bool
 ````

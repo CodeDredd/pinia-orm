@@ -22,6 +22,7 @@ import { MorphOne } from './attributes/relations/MorphOne'
 import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
 import type { CastAttribute, Casts } from './casts/CastAttribute'
+import {TypeDefault} from "@/model/attributes/types/Type";
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -282,28 +283,28 @@ export class Model {
   /**
    * Create a new Attr attribute instance.
    */
-  static attr(value: any): Attr {
+  static attr(value: TypeDefault<any>): Attr {
     return new Attr(this.newRawInstance(), value)
   }
 
   /**
    * Create a new String attribute instance.
    */
-  static string(value: string | null): Str {
+  static string(value: TypeDefault<string>): Str {
     return new Str(this.newRawInstance(), value)
   }
 
   /**
    * Create a new Number attribute instance.
    */
-  static number(value: number | null): Num {
+  static number(value: TypeDefault<number>): Num {
     return new Num(this.newRawInstance(), value)
   }
 
   /**
    * Create a new Boolean attribute instance.
    */
-  static boolean(value: boolean | null): Bool {
+  static boolean(value: TypeDefault<boolean>): Bool {
     return new Bool(this.newRawInstance(), value)
   }
 

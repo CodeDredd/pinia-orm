@@ -1,6 +1,8 @@
 import type { Model } from '../../Model'
 import { Attribute } from '../Attribute'
 
+export type TypeDefault<T> = T | null | (() => T | null)
+
 export abstract class Type extends Attribute {
   /**
    * The default value for the attribute.
@@ -15,9 +17,9 @@ export abstract class Type extends Attribute {
   /**
    * Create a new Type attribute instance.
    */
-  constructor(model: Model, value: any = null) {
+  constructor(model: Model, value: TypeDefault<any> = null) {
     super(model)
-    this.value = value
+    this.value = typeof value === 'function' ? value() : value
   }
 
   /**
