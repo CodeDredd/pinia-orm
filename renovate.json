@@ -11,7 +11,7 @@
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
-  "ignoreDeps": ["vue2", "chalk"],
+  "ignoreDeps": ["vue2", "chalk", "nuxt3", "nuxt"],
   "ignorePaths": ["**/playgrounds/**"],
   "automerge": true,
   "packageRules": [
