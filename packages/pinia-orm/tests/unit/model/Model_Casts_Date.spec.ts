@@ -29,6 +29,8 @@ describe('unit/model/Model_Casts_String', () => {
     }
 
     expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(exspectedISODate)
+    expect(new User({ updated: new Date('2017-01-26') }, { operation: 'set' }).updated).toBe(exspectedISODate)
+    expect(new User({ updated: '2017-01-26' }, { operation: 'set' }).updated).toBe(exspectedISODate)
   })
 
   it('should cast with decorator', () => {
