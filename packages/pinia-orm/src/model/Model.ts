@@ -11,6 +11,7 @@ import { String as Str } from './attributes/types/String'
 import { Number as Num } from './attributes/types/Number'
 import { Boolean as Bool } from './attributes/types/Boolean'
 import { Uid } from './attributes/types/Uid'
+import type { deleteModes } from './attributes/relations/Relation'
 import { Relation } from './attributes/relations/Relation'
 import { HasOne } from './attributes/relations/HasOne'
 import { BelongsTo } from './attributes/relations/BelongsTo'
@@ -21,6 +22,7 @@ import { MorphOne } from './attributes/relations/MorphOne'
 import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
 import type { CastAttribute, Casts } from './casts/CastAttribute'
+import type { TypeDefault } from './attributes/types/Type'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -99,6 +101,11 @@ export class Model {
   static typeKey = 'type'
 
   /**
+   * Behaviour for relational fields on delete.
+   */
+  static fieldsOnDelete = {}
+
+  /**
    * The schema for the model. It contains the result of the `fields`
    * method or the attributes defined by decorators.
    */
@@ -166,6 +173,9 @@ export class Model {
 
       this.schemas[this.entity][key]
         = typeof attribute === 'function' ? attribute() : attribute
+
+      if (this.fieldsOnDelete[key])
+        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[key])
     }
   }
 
@@ -181,6 +191,19 @@ export class Model {
       this.registries[this.entity] = {}
 
     this.registries[this.entity][key] = attribute
+
+    return this
+  }
+
+  /**
+   * Set delete behaviour for relation field
+   */
+  static setFieldDeleteMode<M extends typeof Model>(
+    this: M,
+    key: string,
+    mode: deleteModes,
+  ): M {
+    this.fieldsOnDelete[key] = mode
 
     return this
   }
@@ -260,28 +283,28 @@ export class Model {
   /**
    * Create a new Attr attribute instance.
    */
-  static attr(value: any): Attr {
+  static attr(value: TypeDefault<any>): Attr {
     return new Attr(this.newRawInstance(), value)
   }
 
   /**
    * Create a new String attribute instance.
    */
-  static string(value: string | null): Str {
+  static string(value: TypeDefault<string>): Str {
     return new Str(this.newRawInstance(), value)
   }
 
   /**
    * Create a new Number attribute instance.
    */
-  static number(value: number | null): Num {
+  static number(value: TypeDefault<number>): Num {
     return new Num(this.newRawInstance(), value)
   }
 
   /**
    * Create a new Boolean attribute instance.
    */
-  static boolean(value: boolean | null): Bool {
+  static boolean(value: TypeDefault<boolean>): Bool {
     return new Bool(this.newRawInstance(), value)
   }
 
@@ -693,8 +716,8 @@ export class Model {
   }
 
   protected isFieldVisible(key: string, modelHidden: string[], modelVisible: string[], options: ModelOptions): boolean {
-    const hidden = modelHidden.length > 0 ? modelHidden : config.model.hidden ?? []
-    const visible = [...(modelVisible.length > 0 ? modelVisible : config.model.visible ?? ['*']), String(this.$primaryKey())]
+    const hidden = modelHidden.length > 0 ? modelHidden : config.model.hidden
+    const visible = [...(modelVisible.length > 0 ? modelVisible : config.model.visible), String(this.$primaryKey())]
     const optionsVisible = options.visible ?? []
     const optionsHidden = options.hidden ?? []
     if (((hidden.includes('*') || hidden.includes(key)) && !optionsVisible.includes(key)) || optionsHidden.includes(key))

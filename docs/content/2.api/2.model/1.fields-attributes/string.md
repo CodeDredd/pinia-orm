@@ -15,6 +15,7 @@ class User extends Model {
     return {
       id: this.number(0),
       name: this.string('')
+      address: this.string(() => 'street')
     }
   }
 }
@@ -31,11 +32,12 @@ class User extends Model {
   
   @Num(0) declare id: number
   @Str('') declare name: string
+  @Str(() => 'street') declare address: string
 }
 ````
 
 ## Typescript Declarations
 
 ````ts
-function string(value: string | null): String
+function string(value: string | null | (() => string | null)): String
 ````

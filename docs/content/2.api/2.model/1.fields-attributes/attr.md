@@ -14,7 +14,8 @@ class User extends Model {
   static fields () {
     return {
       id: this.attr(null),
-      name: this.attr('John Doe')
+      name: this.attr('John Doe'),
+      address: this.attr(() => 'Address'),
     }
   }
 }
@@ -31,11 +32,12 @@ class User extends Model {
   
   @Attr(null) declare id: number | null
   @Attr('') declare name: string
+  @Attr(() => 'street') declare address: string
 }
 ````
 
 ## Typescript Declarations
 
 ````ts
-function attr(value: any): Attr
+function attr(value: any | (() => any)): Attr
 ````

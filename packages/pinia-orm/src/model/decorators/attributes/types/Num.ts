@@ -1,10 +1,11 @@
 import type { PropertyDecorator, TypeOptions } from '../../Contracts'
+import type { TypeDefault } from '../../../attributes/types/Type'
 
 /**
  * Create a Number attribute property decorator.
  */
 export function Num(
-  value: number | null,
+  value: TypeDefault<number>,
   options: TypeOptions = {},
 ): PropertyDecorator {
   return (target, propertyKey) => {

@@ -9,6 +9,8 @@ export interface Dictionary {
   [id: string]: Model[]
 }
 
+export type deleteModes = 'cascade' | 'set null'
+
 export abstract class Relation extends Attribute {
   /**
    * The parent model.
@@ -19,6 +21,11 @@ export abstract class Relation extends Attribute {
    * The related model.
    */
   related: Model
+
+  /**
+   * The delete mode
+   */
+  onDeleteMode?: deleteModes
 
   /**
    * Create a new relation instance.
@@ -66,6 +73,15 @@ export abstract class Relation extends Attribute {
    */
   protected getKeys(models: Collection, key: string): (string | number)[] {
     return models.map(model => model[key])
+  }
+
+  /**
+   * Specify how this model should behave on delete
+   */
+  onDelete(mode?: deleteModes): this {
+    this.onDeleteMode = mode
+
+    return this
   }
 
   /**

@@ -5,7 +5,7 @@ import {
   isArray,
   isEmpty,
   isFunction,
-  orderBy, throwError,
+  orderBy,
 } from '../support/Utils'
 import type { Collection, Element, Elements, GroupedCollection, Item, NormalizedData } from '../data/Data'
 import type { Database } from '../database/Database'
@@ -16,6 +16,9 @@ import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
 import type { WeakCache } from '../cache/WeakCache'
 import type { CacheConfig } from '../types'
+import type { HasMany } from '../model/attributes/relations/HasMany'
+import type { MorphMany } from '../model/attributes/relations/MorphMany'
+import type { Type } from '../model/attributes/types/Type'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -197,7 +200,10 @@ export class Query<M extends Model = Model> {
   /**
    * Add a "where in" clause to the query.
    */
-  whereIn(field: string, values: any[]): this {
+  whereIn(field: string, values: any[] | Set<any>): this {
+    if (values instanceof Set)
+      values = Array.from(values)
+
     this.wheres.push({ field, value: values, boolean: 'and' })
 
     return this
@@ -369,9 +375,7 @@ export class Query<M extends Model = Model> {
   protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure {
     const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get(false)
       .filter(model => compareWithOperator(
-        model[relation] !== undefined
-          ? (isArray(model[relation]) ? model[relation].length : model[relation] === null ? 0 : 1)
-          : throwError(['Relation', relation, 'not found in model: ', model.$entity()]),
+        isArray(model[relation]) ? model[relation].length : model[relation] === null ? 0 : 1,
         typeof operator === 'number' ? operator : count ?? 1,
         (typeof operator === 'number' || count === undefined) ? '>=' : operator,
       ))
@@ -694,19 +698,21 @@ export class Query<M extends Model = Model> {
   save(records: Element | Element[]): M | M[] {
     let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
     const modelTypes = this.model.$types()
+    const isChildEntity = this.model.$baseEntity() !== this.model.$entity()
 
-    if (Object.values(modelTypes).length > 0) {
+    if (Object.values(modelTypes).length > 0 || isChildEntity) {
       const modelTypesKeys = Object.keys(modelTypes)
       const recordsByTypes = {}
       records = isArray(records) ? records : [records]
 
       records.forEach((record: Element) => {
-        const recordType = modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) ? record[this.model.$typeKey()] : modelTypesKeys[0]
+        const recordType = (modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) || isChildEntity)
+          ? record[this.model.$typeKey()] ?? (this.model.$fields()[this.model.$typeKey()] as Type).value
+          : modelTypesKeys[0]
         if (!recordsByTypes[recordType])
           recordsByTypes[recordType] = []
         recordsByTypes[recordType].push(record)
       })
-
       for (const entry in recordsByTypes) {
         const typeModel = modelTypes[entry]
         if (typeModel.entity === this.model.$entity())
@@ -873,12 +879,50 @@ export class Query<M extends Model = Model> {
     return this.get(false)
   }
 
+  protected checkAndDeleteRelations(model: M) {
+    const fields = model.$fields()
+    for (const name in fields) {
+      const relation = fields[name] as Relation
+      if (fields[name] instanceof Relation && relation.onDeleteMode && model[name]) {
+        const models = isArray(model[name]) ? model[name] : [model[name]]
+        const relationIds = models.map((relation: M) => {
+          return relation[relation.$getLocalKey()]
+        })
+        const record = {}
+
+        switch (relation.onDeleteMode) {
+          case 'cascade': {
+            this.newQueryForRelation(relation).destroy(relationIds)
+            break
+          }
+          case 'set null': {
+            if ((relation as HasMany).foreignKey)
+              record[(relation as HasMany).foreignKey] = null
+
+            if ((relation as MorphMany).morphId) {
+              record[(relation as MorphMany).morphId] = null
+              record[(relation as MorphMany).morphType] = null
+            }
+
+            this.newQueryForRelation(relation).whereId(relationIds).update(record)
+            break
+          }
+        }
+      }
+    }
+  }
+
   protected dispatchDeleteHooks(models: M | Collection<M>): [{ (): void }[], string[]] {
     const afterHooks: { (): void }[] = []
     const notDeletableIds: string[] = []
     models = isArray(models) ? models : [models]
+
+    // This is needed to be able to cascade delete relations.
+    this.withAll().load(models)
+
     models.forEach((currentModel) => {
       const isDeleting = currentModel.$self().deleting(currentModel)
+      this.checkAndDeleteRelations(currentModel)
       if (isDeleting === false)
         notDeletableIds.push(currentModel.$getIndexId())
       else
