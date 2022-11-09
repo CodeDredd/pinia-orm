@@ -61,19 +61,25 @@ describe('unit/model/Model_STI', () => {
       },
     ])
 
+    useRepo(Dog).save({
+      id: 4,
+      race: 'Rattler',
+    })
+
     assertState({
       animals: {
         1: { id: 1, type: 'animal' },
         2: { id: 2, type: 'dog', race: 'Rattler' },
         3: { id: 3, type: 'cat' },
+        4: { id: 4, type: 'dog', race: 'Rattler' },
       },
     })
 
     expect(animalsRepo.find(1)).toBeInstanceOf(Animal)
     expect(animalsRepo.find(2)).toBeInstanceOf(Dog)
     expect(animalsRepo.find(3)).toBeInstanceOf(Animal)
-    expect(animalsRepo.all().length).toBe(3)
-    expect(useRepo(Dog).all().length).toBe(1)
+    expect(animalsRepo.all().length).toBe(4)
+    expect(useRepo(Dog).all().length).toBe(2)
   })
 
   it('saves with deocrators the types correctly', () => {

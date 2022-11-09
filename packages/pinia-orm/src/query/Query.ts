@@ -16,6 +16,9 @@ import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
 import type { WeakCache } from '../cache/WeakCache'
 import type { CacheConfig } from '../types'
+import type { HasMany } from '../model/attributes/relations/HasMany'
+import type { MorphMany } from '../model/attributes/relations/MorphMany'
+import type { Type } from '../model/attributes/types/Type'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -28,8 +31,6 @@ import type {
   WherePrimaryClosure,
   WhereSecondaryClosure,
 } from './Options'
-import type { HasMany } from '@/model/attributes/relations/HasMany'
-import type { MorphMany } from '@/model/attributes/relations/MorphMany'
 
 export class Query<M extends Model = Model> {
   /**
@@ -697,19 +698,21 @@ export class Query<M extends Model = Model> {
   save(records: Element | Element[]): M | M[] {
     let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
     const modelTypes = this.model.$types()
+    const isChildEntity = this.model.$baseEntity() !== this.model.$entity()
 
-    if (Object.values(modelTypes).length > 0) {
+    if (Object.values(modelTypes).length > 0 || isChildEntity) {
       const modelTypesKeys = Object.keys(modelTypes)
       const recordsByTypes = {}
       records = isArray(records) ? records : [records]
 
       records.forEach((record: Element) => {
-        const recordType = modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) ? record[this.model.$typeKey()] : modelTypesKeys[0]
+        const recordType = (modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) || isChildEntity)
+          ? record[this.model.$typeKey()] ?? (this.model.$fields()[this.model.$typeKey()] as Type).value
+          : modelTypesKeys[0]
         if (!recordsByTypes[recordType])
           recordsByTypes[recordType] = []
         recordsByTypes[recordType].push(record)
       })
-
       for (const entry in recordsByTypes) {
         const typeModel = modelTypes[entry]
         if (typeModel.entity === this.model.$entity())
