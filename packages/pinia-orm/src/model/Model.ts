@@ -716,8 +716,8 @@ export class Model {
   }
 
   protected isFieldVisible(key: string, modelHidden: string[], modelVisible: string[], options: ModelOptions): boolean {
-    const hidden = modelHidden.length > 0 ? modelHidden : config.model.hidden ?? []
-    const visible = [...(modelVisible.length > 0 ? modelVisible : config.model.visible ?? ['*']), String(this.$primaryKey())]
+    const hidden = modelHidden.length > 0 ? modelHidden : config.model.hidden
+    const visible = [...(modelVisible.length > 0 ? modelVisible : config.model.visible), String(this.$primaryKey())]
     const optionsVisible = options.visible ?? []
     const optionsHidden = options.hidden ?? []
     if (((hidden.includes('*') || hidden.includes(key)) && !optionsVisible.includes(key)) || optionsHidden.includes(key))
