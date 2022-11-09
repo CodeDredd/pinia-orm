@@ -1,3 +1,5 @@
+# [1.2.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.1.0...pinia-orm@1.2.0) (2022-11-09)
+
 # [1.1.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.4...pinia-orm@1.1.0) (2022-10-27)
 
 ### Features
