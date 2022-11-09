@@ -7,7 +7,7 @@ export abstract class Type extends Attribute {
   /**
    * The default value for the attribute.
    */
-  protected value: any
+  value: any
 
   /**
    * Whether the attribute accepts `null` value or not.
