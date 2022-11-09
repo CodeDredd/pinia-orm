@@ -924,7 +924,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.0.0-rc.12, @nuxt/kit@npm:^3.0.0-rc.11, @nuxt/kit@npm:^3.0.0-rc.12, @nuxt/kit@npm:^3.0.0-rc.5, @nuxt/kit@npm:^3.0.0-rc.9":
+"@nuxt/kit@npm:3.0.0-rc.12, @nuxt/kit@npm:^3.0.0-rc.11, @nuxt/kit@npm:^3.0.0-rc.12, @nuxt/kit@npm:^3.0.0-rc.9":
   version: 3.0.0-rc.12
   resolution: "@nuxt/kit@npm:3.0.0-rc.12"
   dependencies:
@@ -947,6 +947,32 @@ __metadata:
     unimport: ^0.6.8
     untyped: ^0.5.0
   checksum: f3053cb4198b645c9b4b9e83ad1177205481141396fa57563bc71e9d4853ec3ab55e7d949cb7316975c90dc8f50bac1c6efae22ad5127ddc21e496599cf6b575
+  languageName: node
+  linkType: hard
+
+"@nuxt/kit@npm:^3.0.0-rc.5":
+  version: 3.0.0-rc.13
+  resolution: "@nuxt/kit@npm:3.0.0-rc.13"
+  dependencies:
+    "@nuxt/schema": 3.0.0-rc.13
+    c12: ^0.2.13
+    consola: ^2.15.3
+    defu: ^6.1.0
+    globby: ^13.1.2
+    hash-sum: ^2.0.0
+    ignore: ^5.2.0
+    jiti: ^1.16.0
+    knitwork: ^0.1.2
+    lodash.template: ^4.5.0
+    mlly: ^0.5.16
+    pathe: ^0.3.9
+    pkg-types: ^0.3.6
+    scule: ^0.3.2
+    semver: ^7.3.8
+    unctx: ^2.0.2
+    unimport: ^0.7.0
+    untyped: ^0.5.0
+  checksum: fb11140bdd9c60447aec6232bb8d0adac0fd6bdc31c7fe0a24efa8443d627dd131ad5216b94e8c7ed9b2c887c5cb26e9c0168929e67315853d6894933020e7ca
   languageName: node
   linkType: hard
 
@@ -983,6 +1009,26 @@ __metadata:
     unimport: ^0.6.8
     untyped: ^0.5.0
   checksum: d6ec542fa4b4a1ef3cead85cdbc200282b3140a399988c28839c677ac2049927e41b6aa151f40e543f0ba4c8ce24cfefd2893bfb99d1730b261c099c6ffb989f
+  languageName: node
+  linkType: hard
+
+"@nuxt/schema@npm:3.0.0-rc.13":
+  version: 3.0.0-rc.13
+  resolution: "@nuxt/schema@npm:3.0.0-rc.13"
+  dependencies:
+    c12: ^0.2.13
+    create-require: ^1.1.1
+    defu: ^6.1.0
+    jiti: ^1.16.0
+    pathe: ^0.3.9
+    pkg-types: ^0.3.6
+    postcss-import-resolver: ^2.0.0
+    scule: ^0.3.2
+    std-env: ^3.3.0
+    ufo: ^0.8.6
+    unimport: ^0.7.0
+    untyped: ^0.5.0
+  checksum: 7b34fc7f312f541dff53edd7578282e2d3fea2b33248b4f09e9bb8245e6febbed7c60cbbb059fd5d23133da51062121a7e15a24fce2ce4e1ae8d53ed3ea6a5eb
   languageName: node
   linkType: hard
 
@@ -1066,7 +1112,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/algolia@npm:^1.1.1, @nuxtjs/algolia@npm:^1.1.4":
+"@nuxtjs/algolia@npm:^1.1.1":
   version: 1.1.4
   resolution: "@nuxtjs/algolia@npm:1.1.4"
   dependencies:
@@ -1261,9 +1307,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest"
-    "@nuxtjs/algolia": ^1.1.4
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
-    "@typescript/ata": ^0.9.3
     jiti: ^1.16.0
     nuxt: 3.0.0-rc.12
     pathe: ^0.3.9
@@ -1633,15 +1677,6 @@ __metadata:
   version: 0.0.16
   resolution: "@types/web-bluetooth@npm:0.0.16"
   checksum: f68a630d062202a25c46d48686ebae1cf429dc70b4578fcf13b8357b2db63e4aedfb6f6d752bd388366be46ebd19c1c9de45f8a15c2631bb79e904fdfc454f94
-  languageName: node
-  linkType: hard
-
-"@typescript/ata@npm:^0.9.3":
-  version: 0.9.3
-  resolution: "@typescript/ata@npm:0.9.3"
-  peerDependencies:
-    typescript: ^4.4.4
-  checksum: ddf0c9dcd0f3de98e82f571e98cbd00696e47d7611bff430da02570503d287c23d54d640aa13320c9814e0aa1a59e036102d92b762551f145039851dae6f8718
   languageName: node
   linkType: hard
 

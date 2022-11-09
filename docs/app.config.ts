@@ -7,11 +7,11 @@ export default defineAppConfig({
       twitter: '@_GregorBecker',
       github: 'codedredd/pinia-orm'
     },
-    github: {
-      root: 'docs/content',
-      edit: true,
-      releases: true
-    },
+    // github: {
+    //   root: 'docs/content',
+    //   edit: true,
+    //   releases: true
+    // },
     cover: {
       src: '/preview.png',
       alt: 'Pina ORM module'

@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  extends: ['@nuxt-themes/docus'],
   runtimeConfig: {
     public: {
       plausible: {
@@ -13,7 +14,10 @@ export default defineNuxtConfig({
       },
     }
   },
-
+  app: {
+    pageTransition: false,
+    layoutTransition: false
+  },
   build: {
     transpile: [/content-edge/]
   },
@@ -23,7 +27,6 @@ export default defineNuxtConfig({
       routes: ['/', '/404.html']
     }
   },
-  extends: ['@nuxt-themes/docus'],
   github: {
     owner: 'CodeDredd',
     repo: 'pinia-orm',
