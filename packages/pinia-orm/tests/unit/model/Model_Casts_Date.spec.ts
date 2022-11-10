@@ -5,7 +5,7 @@ import { Attr, Cast } from '../../../src/decorators'
 import { DateCast } from '../../../src/casts'
 import { assertState } from '../../helpers'
 
-describe('unit/model/Model_Casts_String', () => {
+describe('unit/model/Model_Casts_Date', () => {
   const exspectedISODate = new Date('2017-01-26').toISOString()
 
   beforeEach(() => {
@@ -43,6 +43,19 @@ describe('unit/model/Model_Casts_String', () => {
     }
 
     expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(exspectedISODate)
+  })
+
+  it('should allow null values', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Cast(() => DateCast)
+      @Attr('')
+        updated!: Date
+    }
+
+    expect(new User({ updated: null }, { operation: 'get' }).updated).toBe(null)
+    expect(new User({ updated: '' }, { operation: 'get' }).updated).toBe(null)
   })
 
   it('should cast before saved into store', () => {
