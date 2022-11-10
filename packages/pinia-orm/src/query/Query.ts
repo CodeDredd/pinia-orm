@@ -19,6 +19,7 @@ import type { CacheConfig } from '../types'
 import type { HasMany } from '../model/attributes/relations/HasMany'
 import type { MorphMany } from '../model/attributes/relations/MorphMany'
 import type { Type } from '../model/attributes/types/Type'
+import { BelongsToMany } from '../model/attributes/relations/BelongsToMany'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -889,6 +890,11 @@ export class Query<M extends Model = Model> {
           return relation[relation.$getLocalKey()]
         })
         const record = {}
+
+        if (relation instanceof BelongsToMany) {
+          this.newQuery(relation.pivot.$entity()).where(relation.foreignPivotKey, model[model.$getLocalKey()]).delete()
+          continue
+        }
 
         switch (relation.onDeleteMode) {
           case 'cascade': {
