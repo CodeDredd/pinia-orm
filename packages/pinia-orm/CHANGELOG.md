@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.2.0...pinia-orm@1.2.1) (2022-11-10)
+
+### Bug Fixes
+
+- **pinia-orm:** delete on cascade doesn't work with n:m relations ([#562](https://github.com/CodeDredd/pinia-orm/issues/562)) ([37b767c](https://github.com/CodeDredd/pinia-orm/commit/37b767c809ea6ea9c8e71d696353b2cfd994ca41))
+
 # [1.2.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.1.0...pinia-orm@1.2.0) (2022-11-09)
 
 # [1.1.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.0.4...pinia-orm@1.1.0) (2022-10-27)
