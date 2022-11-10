@@ -1,7 +1,7 @@
 import { beforeEach, describe, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
-import { Attr, HasMany, HasOne, MorphMany, Num, Str } from '../../../src/decorators'
+import { Attr, BelongsToMany, HasMany, HasOne, MorphMany, Num, Str } from '../../../src/decorators'
 import { assertState } from '../../helpers'
 import { OnDelete } from '../../../src/model/decorators/OnDelete'
 
@@ -67,15 +67,36 @@ describe('feature/repository/delete_with_relations', () => {
       declare images: Image[]
     }
 
+    class Role extends Model {
+      static entity = 'roles'
+
+      @Num(0) declare id: number
+      declare pivot: RoleUser
+    }
+
+    class RoleUser extends Model {
+      static entity = 'roleUser'
+
+      static primaryKey = ['role_id', 'user_id']
+
+      @Attr(null) role_id!: number | null
+      @Attr(null) user_id!: number | null
+      @Attr(null) level!: number | null
+    }
+
     class User extends Model {
       static entity = 'users'
 
       @Num(0) id!: number
       @Str('') name!: string
 
+      @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
+      @OnDelete('cascade')
+      declare roles: Role[]
+
       @HasMany(() => Post, 'userId')
       @OnDelete('cascade')
-      posts!: Post[]
+      declare posts: Post[]
     }
 
     const usersRepo = useRepo(User)
@@ -83,6 +104,7 @@ describe('feature/repository/delete_with_relations', () => {
     usersRepo.save([{
       id: 1,
       name: 'John Doe',
+      roles: [{ id: 1, pivot: { level: 1 } }, { id: 2 }, { id: 4 }],
       posts: [
         {
           id: 1,
@@ -102,6 +124,7 @@ describe('feature/repository/delete_with_relations', () => {
     {
       id: 2,
       name: 'Johnny Doe',
+      roles: [{ id: 1, pivot: { level: 2 } }],
       posts: [
         {
           id: 3,
@@ -129,6 +152,16 @@ describe('feature/repository/delete_with_relations', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
+      },
+      roles: {
+        1: { id: 1 },
+        2: { id: 2 },
+        4: { id: 4 },
+      },
+      roleUser: {
+        '[1,1]': { role_id: 1, user_id: 1, level: 1 },
+        '[2,1]': { role_id: 2, user_id: 1, level: null },
+        '[4,1]': { role_id: 4, user_id: 1, level: null },
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },

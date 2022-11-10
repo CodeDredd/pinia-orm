@@ -1,6 +1,6 @@
 {
   "name": "pinia-orm",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store.",
   "keywords": [
     "vue",
@@ -86,7 +86,7 @@
     "uuid": "^9.0.0",
     "vite": "^3.2.3",
     "vitest": "^0.25.1",
-    "vue": "^3.2.43",
+    "vue": "^3.2.44",
     "vue-demi": "^0.13.11",
     "vue2": "npm:vue@^2.7.3"
   },

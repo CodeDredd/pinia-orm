@@ -3,9 +3,13 @@ on:
   push:
     branches:
       - '**'
+    paths:
+      - packages/**
   pull_request:
     branches:
       - master
+    paths:
+      - packages/**
 jobs:
   unit-test:
     runs-on: ubuntu-latest
