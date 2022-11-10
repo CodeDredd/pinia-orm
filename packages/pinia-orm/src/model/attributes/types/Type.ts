@@ -23,11 +23,10 @@ export abstract class Type extends Attribute {
   }
 
   /**
-   * Set the nullable option to true.
+   * Set the nullable option to false.
    */
   notNullable(): this {
     this.isNullable = false
-
     return this
   }
 

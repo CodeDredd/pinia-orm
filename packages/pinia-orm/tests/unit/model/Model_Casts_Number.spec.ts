@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, Cast, Num } from '../../../src/decorators'
@@ -9,6 +9,7 @@ describe('unit/model/Model_Casts_Number', () => {
   beforeEach(() => {
     Model.clearRegistries()
   })
+
   it('should cast to number', () => {
     class User extends Model {
       static entity = 'users'
@@ -41,16 +42,21 @@ describe('unit/model/Model_Casts_Number', () => {
     expect(new User({ operation: 'get' }).count).toBe(0)
   })
 
-  it('throws warning with null when the notnotNullable option is set', () => {
+  it('throws warning with null when the notNullable option is set', () => {
+    const warningMessage = '[Pinia ORM] Field users:count -  is set as non nullable!'
+    const warningSpy = vi.spyOn(console, 'warn')
+
     class User extends Model {
       static entity = 'users'
 
       @Cast(() => NumberCast)
-      @Num(null, { notnotNullable: true })
+      @Num(null, { notNullable: true })
         count!: number | null
     }
 
     expect(new User({ operation: 'get' }).count).toBe(null)
+    expect(new User({ count: null }, { operation: 'get' }).count).toBe(null)
+    expect(warningSpy).toHaveBeenNthCalledWith(1, warningMessage)
     expect(new User({ count: 'value' }, { operation: 'get' }).count).toBe(NaN)
     expect(new User({ count: 1 }, { operation: 'get' }).count).toBe(1)
     expect(new User({ count: true }, { operation: 'get' }).count).toBe(1)
