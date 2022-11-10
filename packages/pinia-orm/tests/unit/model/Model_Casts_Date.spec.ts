@@ -11,6 +11,7 @@ describe('unit/model/Model_Casts_Date', () => {
   beforeEach(() => {
     Model.clearRegistries()
   })
+
   it('should cast to Date UTC with string', () => {
     class User extends Model {
       static entity = 'users'
@@ -50,12 +51,11 @@ describe('unit/model/Model_Casts_Date', () => {
       static entity = 'users'
 
       @Cast(() => DateCast)
-      @Attr('')
+      @Attr('test')
         updated!: Date
     }
 
     expect(new User({ updated: null }, { operation: 'get' }).updated).toBe(null)
-    expect(new User({ updated: '' }, { operation: 'get' }).updated).toBe(null)
   })
 
   it('should cast before saved into store', () => {
