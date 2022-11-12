@@ -114,7 +114,7 @@ importers:
       c8: ^7.12.0
       core-js: ^3.26.0
       eslint: ^8.27.0
-      happy-dom: ^7.6.7
+      happy-dom: ^7.7.0
       mkdist: ^0.4.0
       nanoid: ^4.0.0
       pinia: ^2.0.23
@@ -137,13 +137,13 @@ importers:
       '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
       '@types/prettier': 2.6.3
       '@types/uuid': 8.3.4
-      '@vitest/coverage-c8': 0.25.1_c6i55f4zfxzk73yp32iagqsyta
+      '@vitest/coverage-c8': 0.25.1_a5bqc67qdi4bljrlqk2rk56owa
       '@vitest/ui': 0.25.1
       '@vue/composition-api': 1.7.1_vue@3.2.45
       c8: 7.12.0
       core-js: 3.26.0
       eslint: 8.27.0
-      happy-dom: 7.6.7
+      happy-dom: 7.7.0
       mkdist: 0.4.0_typescript@4.8.4
       nanoid: 4.0.0
       pinia: 2.0.23_czymzxcaeidcgpjkacfuy6iy2e
@@ -155,7 +155,7 @@ importers:
       unbuild: 0.9.4
       uuid: 9.0.0
       vite: 3.2.3
-      vitest: 0.25.1_c6i55f4zfxzk73yp32iagqsyta
+      vitest: 0.25.1_a5bqc67qdi4bljrlqk2rk56owa
       vue: 3.2.45
       vue-demi: 0.13.11_y3dbsgppqv4jnxjxtdjaj42kje
       vue2: /vue/2.7.3
@@ -2383,11 +2383,11 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@vitest/coverage-c8/0.25.1_c6i55f4zfxzk73yp32iagqsyta:
+  /@vitest/coverage-c8/0.25.1_a5bqc67qdi4bljrlqk2rk56owa:
     resolution: {integrity: sha512-gpl5QNaNeIN0mfRiosCqBFoZcizb5GA458TDnOQXkGDc4kklazxn70u9evGfV62wiiAUfGGebgRhxlBkAa6m6g==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.1_c6i55f4zfxzk73yp32iagqsyta
+      vitest: 0.25.1_a5bqc67qdi4bljrlqk2rk56owa
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -6294,8 +6294,8 @@ packages:
       uglify-js: 3.16.2
     dev: true
 
-  /happy-dom/7.6.7:
-    resolution: {integrity: sha512-9pOslsClyF5JX9ZM3dzRhLjTHqc4dha7v+ZB94u4PHMVTdLplXAnh5e5WXtPUU1n0J4tDUavslJqitqt/1W45g==}
+  /happy-dom/7.7.0:
+    resolution: {integrity: sha512-U10JXl5qSaHswXT5kyE7lvSDoyK48GyPGpe74qI9KT29frt1AlS+jnwy77RUJIknx+4b52DK1NllXTgHH8k20w==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
@@ -10975,7 +10975,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.25.1_c6i55f4zfxzk73yp32iagqsyta:
+  /vitest/0.25.1_a5bqc67qdi4bljrlqk2rk56owa:
     resolution: {integrity: sha512-eH74h6MkuEgsqR4mAQZeMK9O0PROiKY+i+1GMz/fBi5A3L2ml5U7JQs7LfPU7+uWUziZyLHagl+rkyfR8SLhlA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -11005,7 +11005,7 @@ packages:
       acorn-walk: 8.2.0
       chai: 4.3.6
       debug: 4.3.4
-      happy-dom: 7.6.7
+      happy-dom: 7.7.0
       local-pkg: 0.4.2
       source-map: 0.6.1
       strip-literal: 0.4.2
