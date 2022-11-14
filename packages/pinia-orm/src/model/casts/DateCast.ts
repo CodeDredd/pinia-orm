@@ -9,14 +9,18 @@ export class DateCast extends CastAttribute {
     super(attributes)
   }
 
-  get(value?: any): Date {
-    return new Date(value)
+  get(value: string | null): Date | null {
+    return value === null ? null : new Date(value)
   }
 
   /**
    * Make the value for the attribute.
    */
-  set(value: string | Date): string {
+
+  set(value: string | Date | null): string | null {
+    if (value === null)
+      return null
+
     return (typeof value === 'string' ? new Date(Date.parse(value)) : value).toISOString()
   }
 }
