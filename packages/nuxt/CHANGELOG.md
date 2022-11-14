@@ -1,3 +1,5 @@
+## [1.1.4](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.1.3...@pinia-orm/nuxt@1.1.4) (2022-11-14)
+
 ## [1.1.3](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.1.2...@pinia-orm/nuxt@1.1.3) (2022-11-10)
 
 ## [1.1.2](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.1.1...@pinia-orm/nuxt@1.1.2) (2022-11-09)

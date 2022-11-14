@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.2.1...pinia-orm@1.2.2) (2022-11-14)
+
+### Bug Fixes
+
+- **pinia-orm:** `null` is casted in DateCast ([#565](https://github.com/CodeDredd/pinia-orm/issues/565)) ([f101155](https://github.com/CodeDredd/pinia-orm/commit/f1011554877ec42f4715820e26c9ee9f375d3252))
+
 ## [1.2.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.2.0...pinia-orm@1.2.1) (2022-11-10)
 
 ### Bug Fixes
