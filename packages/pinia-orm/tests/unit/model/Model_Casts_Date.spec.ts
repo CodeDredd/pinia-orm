@@ -40,7 +40,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
       @Cast(() => DateCast)
       @Attr('test')
-        updated!: Date
+        declare updated: Date
     }
 
     expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(exspectedISODate)
@@ -52,10 +52,11 @@ describe('unit/model/Model_Casts_Date', () => {
 
       @Cast(() => DateCast)
       @Attr('test')
-        updated!: Date
+        declare updated: Date
     }
 
     expect(new User({ updated: null }, { operation: 'get' }).updated).toBe(null)
+    expect(new User({ updated: null }, { operation: 'set' }).updated).toBe(null)
   })
 
   it('should cast before saved into store', () => {

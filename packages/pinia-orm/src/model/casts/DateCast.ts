@@ -10,7 +10,7 @@ export class DateCast extends CastAttribute {
   }
 
   get(value: string | null): Date | null {
-    return typeof value === 'string' ? new Date(value) : value
+    return value === null ? null : new Date(value)
   }
 
   /**
@@ -18,10 +18,9 @@ export class DateCast extends CastAttribute {
    */
 
   set(value: string | Date | null): string | null {
-    if (typeof value === 'string')
-      return new Date(Date.parse(value)).toISOString()
-    if (value instanceof Date)
-      return value.toISOString()
-    return null
+    if (value === null)
+      return null
+
+    return (typeof value === 'string' ? new Date(Date.parse(value)) : value).toISOString()
   }
 }
