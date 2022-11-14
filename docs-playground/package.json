@@ -29,7 +29,7 @@
     "monaco-editor": "0.34.1",
     "monaco-editor-core": "^0.34.1",
     "pinia": "^2.0.23",
-    "pinia-orm": "^1.2.1",
+    "pinia-orm": "^1.2.2",
     "splitpanes": "^3.1.5",
     "theme-vitesse": "^0.6.0",
     "vscode-html-languageservice": "^5.0.2",
