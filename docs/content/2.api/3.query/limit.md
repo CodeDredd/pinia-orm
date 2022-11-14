@@ -3,6 +3,8 @@ title: 'limit()'
 description: 'Set the "limit" value of the query.'
 ---
 
+# `limit()`
+
 ## Usage
 
 ````ts

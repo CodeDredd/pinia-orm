@@ -3,6 +3,8 @@ title: 'find()'
 description: 'Find a model by its primary key.'
 ---
 
+# `find()`
+
 ## Usage
 
 ````ts

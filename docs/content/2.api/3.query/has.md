@@ -3,6 +3,8 @@ title: 'has()'
 description: 'Add a "has" clause to the query.'
 ---
 
+# `has()`
+
 ## Usage
 
 ````ts

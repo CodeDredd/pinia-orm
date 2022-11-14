@@ -3,6 +3,8 @@ title: 'morphMany()'
 description: 'Makes a "morph many" relation of the property'
 ---
 
+# `morphMany`
+
 ## Usage
 
 ```js

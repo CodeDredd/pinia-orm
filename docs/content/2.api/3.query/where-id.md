@@ -3,6 +3,8 @@ title: 'whereId()'
 description: 'Add a where clause on the primary key to the query.'
 ---
 
+# `whereId()`
+
 ## Usage
 
 ````ts

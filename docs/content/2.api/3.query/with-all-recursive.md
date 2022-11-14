@@ -3,6 +3,8 @@ title: 'withAllRecursive()'
 description: 'Set to eager load all relationships recursively.'
 ---
 
+# `withAllRecursive()`
+
 ## Usage
 
 ````ts

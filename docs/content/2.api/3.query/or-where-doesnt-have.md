@@ -3,6 +3,8 @@ title: 'orWhereDoesntHave()'
 description: 'Add a "or where doesnt have" clause to the query.'
 ---
 
+# `orWhereDoesntHave()`
+
 ## Usage
 
 Same as [whereDoesntHave usage](./whereDoesntHave#usage) just with "or" condition

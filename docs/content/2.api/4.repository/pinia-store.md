@@ -3,6 +3,8 @@ title: 'piniaStore'
 description: 'Returns the pinia store used with this model'
 ---
 
+# `piniaStore()`
+
 ## Usage
 
 ````js

@@ -3,6 +3,8 @@ title: 'hasOne()'
 description: 'Makes a "has one" relation of the property'
 ---
 
+# `hasOne`
+
 ## Usage
 
 ```js

@@ -3,6 +3,8 @@ title: 'deleted()'
 description: 'This hook is triggered when a record is already deleted'
 ---
 
+# `deleted`
+
 ## Usage
 
 ````js

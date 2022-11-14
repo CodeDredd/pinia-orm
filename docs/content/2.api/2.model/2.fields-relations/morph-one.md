@@ -3,6 +3,8 @@ title: 'morphOne()'
 description: 'Makes a "morph one" relation of the property'
 ---
 
+# `morphOne`
+
 ## Usage
 
 ```js

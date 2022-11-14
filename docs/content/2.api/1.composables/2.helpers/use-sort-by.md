@@ -3,6 +3,8 @@ title: 'useSortBy()'
 description: 'Sorts the collection by a given key'
 ---
 
+# `useSortBy()`
+
 ## Usage
 
 ````ts

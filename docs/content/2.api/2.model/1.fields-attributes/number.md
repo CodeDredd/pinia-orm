@@ -3,6 +3,8 @@ title: 'number()'
 description: 'Define a number type'
 ---
 
+# `number`
+
 ## Usage
 
 ````js[User.js]

@@ -3,6 +3,8 @@ title: 'get()'
 description: 'Retrieve models by processing whole query chain.'
 ---
 
+# `get()`
+
 ## Usage
 
 ````ts

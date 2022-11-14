@@ -3,6 +3,8 @@ title: 'attr()'
 description: 'Define a generic type'
 ---
 
+# `attr`
+
 ## Usage
 
 ````js[User.js]

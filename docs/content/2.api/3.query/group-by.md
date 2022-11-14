@@ -3,6 +3,8 @@ title: 'groupBy()'
 description: 'Groups the result by specific columns'
 ---
 
+# `groupBy()`
+
 ## Usage
 
 ````ts

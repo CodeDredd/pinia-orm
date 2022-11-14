@@ -3,6 +3,8 @@ title: 'useKeys()'
 description: 'The keys method returns all of the collections primary keys'
 ---
 
+# `useKeys()`
+
 ## Usage
 
 ````ts

@@ -3,6 +3,8 @@ title: 'doesntHave()'
 description: 'Add a "doesnt have" clause to the query.'
 ---
 
+# `doesntHave()`
+
 ## Usage
 
 ````ts

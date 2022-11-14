@@ -3,6 +3,8 @@ title: 'morphTo()'
 description: 'Makes a "morph to" relation of the property'
 ---
 
+# `morphTo`
+
 ## Usage
 
 ```js

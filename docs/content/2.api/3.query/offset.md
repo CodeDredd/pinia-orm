@@ -3,6 +3,8 @@ title: 'offset()'
 description: 'Set the "offset" value of the query.'
 ---
 
+# `offset()`
+
 ## Usage
 
 ````ts

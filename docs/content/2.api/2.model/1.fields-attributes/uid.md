@@ -3,6 +3,8 @@ title: 'uid()'
 description: 'Define a unique id type'
 ---
 
+# `uid`
+
 ## Usage
 
 ````js[User.js]

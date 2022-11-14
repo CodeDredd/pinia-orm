@@ -3,6 +3,8 @@ title: 'created()'
 description: 'This hook is triggered when a record is already created'
 ---
 
+# `created`
+
 ## Usage
 
 ````js

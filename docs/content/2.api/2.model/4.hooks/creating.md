@@ -3,6 +3,8 @@ title: 'creating()'
 description: 'This hook is triggered when a record is creating'
 ---
 
+# `creating`
+
 ## Usage
 
 ````js

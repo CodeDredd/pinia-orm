@@ -3,6 +3,8 @@ title: 'load()'
 description: 'Eager load relations on the model.'
 ---
 
+# `load()`
+
 ## Usage
 
 ````ts

@@ -3,6 +3,8 @@ title: 'first()'
 description: 'Execute the query and get the first result.'
 ---
 
+# `first()`
+
 ## Usage
 
 ````ts

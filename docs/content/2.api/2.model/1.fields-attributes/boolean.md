@@ -3,6 +3,8 @@ title: 'boolean()'
 description: 'Define a boolean type'
 ---
 
+# `boolean`
+
 ## Usage
 
 ````js[User.js]

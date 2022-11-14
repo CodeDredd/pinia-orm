@@ -3,6 +3,8 @@ title: 'hasManyBy()'
 description: 'Makes a "has many by" relation of the property'
 ---
 
+# `hasManyBy`
+
 ## Usage
 
 ```js

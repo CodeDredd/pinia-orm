@@ -3,6 +3,8 @@ title: 'useCollect()'
 description: 'This wrapper gives a collection a lot of helper functions'
 ---
 
+# `useCollect()`
+
 For Details what each function can do, look at the separate composable for it e.g. `min` -> `useMin`
 
 ## Usage

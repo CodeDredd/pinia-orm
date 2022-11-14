@@ -3,6 +3,8 @@ title: 'where()'
 description: 'Add a basic where clause to the query.'
 ---
 
+# `where()`
+
 ## Usage
 
 ````ts

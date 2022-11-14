@@ -3,6 +3,8 @@ title: 'hasMany()'
 description: 'Makes a "has many" relation of the property'
 ---
 
+# `hasMany`
+
 ## Usage
 
 ```js

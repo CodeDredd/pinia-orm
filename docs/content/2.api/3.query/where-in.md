@@ -3,6 +3,8 @@ title: 'whereIn()'
 description: 'Add a "where in" clause to the query.'
 ---
 
+# `whereIn()`
+
 ## Usage
 
 ````ts

@@ -3,6 +3,8 @@ title: 'makeHidden()'
 description: 'Make visible fields hidden'
 ---
 
+# `makeHidden()`
+
 ## Usage
 
 ````ts

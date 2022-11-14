@@ -3,6 +3,8 @@ title: 'destroy()'
 description: 'Delete a model by its primary key.'
 ---
 
+# `destroy()`
+
 ## Usage
 
 ````ts

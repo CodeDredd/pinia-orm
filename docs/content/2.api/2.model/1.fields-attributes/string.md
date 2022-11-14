@@ -3,6 +3,8 @@ title: 'string()'
 description: 'Define a string type'
 ---
 
+# `string`
+
 ## Usage
 
 ````js[User.js]

@@ -3,6 +3,8 @@ title: 'deleting()'
 description: 'This hook is triggered when a record is deleting'
 ---
 
+# `deleting`
+
 ## Usage
 
 ````js

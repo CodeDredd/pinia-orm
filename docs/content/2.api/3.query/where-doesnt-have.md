@@ -3,6 +3,8 @@ title: 'whereDoesntHave()'
 description: 'Add a "where doesnt have" clause to the query.'
 ---
 
+# `whereDoesntHave()`
+
 ## Usage
 
 ````ts

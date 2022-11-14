@@ -3,6 +3,8 @@ title: 'cache'
 description: 'Returns the cache instance of the repository'
 ---
 
+# `cache()`
+
 ## Usage
 
 ````js

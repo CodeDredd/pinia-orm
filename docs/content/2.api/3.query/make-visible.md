@@ -3,6 +3,8 @@ title: 'makeVisible()'
 description: 'Make hidden fields visible'
 ---
 
+# `makeVisible()`
+
 ## Usage
 
 ````ts

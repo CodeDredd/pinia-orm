@@ -3,6 +3,8 @@ title: 'updating()'
 description: 'This hook is triggered when a record is updating'
 ---
 
+# `updating`
+
 ## Usage
 
 ````js

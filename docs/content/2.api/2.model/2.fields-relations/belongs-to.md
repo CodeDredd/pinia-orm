@@ -3,6 +3,8 @@ title: 'belongsTo()'
 description: 'Makes a "belong to" relation of the property'
 ---
 
+# `belongsTo`
+
 ## Usage
 
 ```js

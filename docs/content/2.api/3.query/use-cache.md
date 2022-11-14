@@ -3,6 +3,8 @@ title: 'useCache()'
 description: 'Cache the query result.'
 ---
 
+# `useCache()`
+
 ## Usage
 
 ````ts

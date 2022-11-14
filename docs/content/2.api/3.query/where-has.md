@@ -3,6 +3,8 @@ title: 'whereHas()'
 description: 'Add a "where has" clause to the query.'
 ---
 
+# `whereHas()`
+
 ## Usage
 
 ````ts

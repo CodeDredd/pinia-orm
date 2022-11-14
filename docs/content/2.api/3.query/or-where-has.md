@@ -3,6 +3,8 @@ title: 'orWhereHas()'
 description: 'Add a "or where has" clause to the query.'
 ---
 
+# `orWhereHas()`
+
 ## Usage
 
 Same as [whereHas usage](./whereHas#usage) just with "or" condition

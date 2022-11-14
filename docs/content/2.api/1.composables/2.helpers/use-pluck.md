@@ -3,6 +3,8 @@ title: 'usePluck()'
 description: 'The pluck method retrieves all of the values for a given key.'
 ---
 
+# `usePluck()`
+
 ## Usage
 
 ````ts

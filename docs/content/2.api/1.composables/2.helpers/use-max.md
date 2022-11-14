@@ -3,6 +3,8 @@ title: 'useMax()'
 description: 'Get the max value of the specified filed.'
 ---
 
+# `useMax()`
+
 ## Usage
 
 ````ts

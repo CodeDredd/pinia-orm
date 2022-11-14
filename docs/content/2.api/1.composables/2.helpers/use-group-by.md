@@ -3,6 +3,8 @@ title: 'useGroupBy()'
 description: 'The useGroupBy method groups the collections items by a given key.'
 ---
 
+# `useGroupBy()`
+
 ## Usage
 
 ````ts

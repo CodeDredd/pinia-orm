@@ -3,6 +3,8 @@ title: 'belongsToMany()'
 description: 'Makes a "belongs to many" relation of the property'
 ---
 
+# `belongsToMany`
+
 ## Usage
 
 ```js

@@ -3,6 +3,8 @@ title: 'retrieved()'
 description: 'This hook is triggered when a record is already retrieved'
 ---
 
+# `retrieved`
+
 ## Usage
 
 ````js

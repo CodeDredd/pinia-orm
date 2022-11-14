@@ -3,6 +3,8 @@ title: 'delete()'
 description: 'Delete a model by query'
 ---
 
+# `delete()`
+
 ## Usage
 
 ````ts

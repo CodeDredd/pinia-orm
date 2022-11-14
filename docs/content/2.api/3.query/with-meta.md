@@ -3,6 +3,8 @@ title: 'withMeta()'
 description: 'Makes `_meta` unhidden, so you can access it'
 ---
 
+# `withMeta()`
+
 ::info{type='info'}
 `_meta` is only filled if you have defined in your model `static config = { model: { withMeta = true } }` or
 globally set by configuration

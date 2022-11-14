@@ -3,6 +3,8 @@ title: 'orWhere()'
 description: 'Add an "or where" clause to the query.'
 ---
 
+# `orWhere()`
+
 ## Usage
 
 Same as [where usage](./where#usage) just with "or" condition

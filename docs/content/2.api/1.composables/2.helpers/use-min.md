@@ -3,6 +3,8 @@ title: 'useMin()'
 description: 'Get the min value of the specified filed.'
 ---
 
+# `useMin()`
+
 ## Usage
 
 ````ts

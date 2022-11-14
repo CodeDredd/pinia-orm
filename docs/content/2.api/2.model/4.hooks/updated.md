@@ -3,6 +3,8 @@ title: 'updated()'
 description: 'This hook is triggered when a record is already updated'
 ---
 
+# `updated`
+
 ## Usage
 
 ````js

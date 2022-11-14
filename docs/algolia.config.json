@@ -10,13 +10,13 @@
       "default_value": "Documentation"
     },
     "lvl1": {
-      "selector": "header h1"
+      "selector": "article h1"
     },
-    "lvl2": ".docus-content h2",
-    "lvl3": ".docus-content h3",
-    "lvl4": ".docus-content h4",
-    "lvl5": ".docus-content h5",
-    "content": ".docus-content p, .docus-content li",
+    "lvl2": "article h2",
+    "lvl3": "article h3",
+    "lvl4": "article h4",
+    "lvl5": "article h5",
+    "content": "article p, article li",
     "language": {
       "selector": ".exists-probably .language",
       "global": true,

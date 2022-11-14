@@ -3,6 +3,8 @@ title: 'orderBy()'
 description: 'Set the "orderBy" value of the query.'
 ---
 
+# `orderBy()`
+
 ## Usage
 
 ````ts
