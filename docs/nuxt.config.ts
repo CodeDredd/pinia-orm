@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     branch: 'master',
     token: process.env.GITHUB_TOKEN
   },
-  modules: ['@nuxtlabs/github-module', 'vue-plausible'],
+  modules: ['@nuxtlabs/github-module', 'vue-plausible', '@nuxthq/studio'],
   colorMode: {
     preference: 'dark',
   },
