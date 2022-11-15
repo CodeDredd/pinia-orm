@@ -23,12 +23,7 @@ const addEntities = entities => (schema, processedEntity, value, parent, key) =>
     entities[schemaKey] = {}
   }
 
-  const existingEntity = entities[schemaKey][id]
-  if (existingEntity) {
-    entities[schemaKey][id] = schema.merge(existingEntity, processedEntity)
-  } else {
-    entities[schemaKey][id] = processedEntity
-  }
+  entities[schemaKey][id] = entities[schemaKey][id] ? schema.merge(entities[schemaKey][id], processedEntity) : processedEntity
 }
 
 export const schema = {

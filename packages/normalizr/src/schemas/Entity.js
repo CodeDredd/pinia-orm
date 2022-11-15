@@ -1,8 +1,3 @@
-import * as ImmutableUtils from './ImmutableUtils'
-
-const getDefaultGetId = idAttribute => input =>
-  ImmutableUtils.isImmutable(input) ? input.get(idAttribute) : input[idAttribute]
-
 export default class EntitySchema {
   constructor (key, definition = {}, options = {}) {
     if (!key || typeof key !== 'string') {
@@ -14,25 +9,18 @@ export default class EntitySchema {
       mergeStrategy = (entityA, entityB) => {
         return { ...entityA, ...entityB }
       },
-      processStrategy = input => ({ ...input }),
-      fallbackStrategy = () => undefined
+      processStrategy = input => ({ ...input })
     } = options
 
     this._key = key
-    this._getId = typeof idAttribute === 'function' ? idAttribute : getDefaultGetId(idAttribute)
-    this._idAttribute = idAttribute
+    this._getId = idAttribute
     this._mergeStrategy = mergeStrategy
     this._processStrategy = processStrategy
-    this._fallbackStrategy = fallbackStrategy
     this.define(definition)
   }
 
   get key () {
     return this._key
-  }
-
-  get idAttribute () {
-    return this._idAttribute
   }
 
   define (definition) {
@@ -48,10 +36,6 @@ export default class EntitySchema {
 
   merge (entityA, entityB) {
     return this._mergeStrategy(entityA, entityB)
-  }
-
-  fallback (id, schema) {
-    return this._fallbackStrategy(id, schema)
   }
 
   normalize (input, parent, key, visit, addEntity, visitedEntities) {
