@@ -115,7 +115,7 @@ importers:
       core-js: ^3.26.1
       eslint: ^8.27.0
       happy-dom: ^7.7.0
-      mkdist: ^0.4.0
+      mkdist: ^0.4.1
       nanoid: ^4.0.0
       pinia: ^2.0.23
       prettier: ^2.7.1
@@ -144,7 +144,7 @@ importers:
       core-js: 3.26.1
       eslint: 8.27.0
       happy-dom: 7.7.0
-      mkdist: 0.4.0_typescript@4.8.4
+      mkdist: 0.4.1_typescript@4.8.4
       nanoid: 4.0.0
       pinia: 2.0.23_czymzxcaeidcgpjkacfuy6iy2e
       prettier: 2.7.1
@@ -1372,7 +1372,7 @@ packages:
       ci-info: 3.5.0
       consola: 2.15.3
       create-require: 1.1.1
-      defu: 6.1.0
+      defu: 6.1.1
       destr: 1.2.0
       dotenv: 16.0.3
       fs-extra: 10.1.0
@@ -1409,7 +1409,7 @@ packages:
       autoprefixer: 10.4.13_postcss@8.4.18
       chokidar: 3.5.3
       cssnano: 5.1.14_postcss@8.4.18
-      defu: 6.1.0
+      defu: 6.1.1
       esbuild: 0.15.13
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.1
@@ -3027,7 +3027,7 @@ packages:
   /c12/0.2.13:
     resolution: {integrity: sha512-wJL0/knDbqM/3moLb+8Xd+w3JdkggkIIhiNBkxZ1mWlskKC/vajb85wM3UPg/D9nK6RbI1NgaVTg6AeXBVbknA==}
     dependencies:
-      defu: 6.1.0
+      defu: 6.1.1
       dotenv: 16.0.3
       gittar: 0.1.1
       jiti: 1.16.0
@@ -3946,6 +3946,9 @@ packages:
 
   /defu/6.1.0:
     resolution: {integrity: sha512-pOFYRTIhoKujrmbTRhcW5lYQLBXw/dlTwfI8IguF1QCDJOcJzNH1w+YFjxqy6BAuJrClTy6MUE8q+oKJ2FLsIw==}
+
+  /defu/6.1.1:
+    resolution: {integrity: sha512-aA964RUCsBt0FGoNIlA3uFgo2hO+WWC0fiC6DBps/0SFzkKcYoM/3CzVLIa5xSsrFjdioMdYgAIbwo80qp2MoA==}
 
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
@@ -7304,7 +7307,7 @@ packages:
     dependencies:
       clipboardy: 3.0.0
       colorette: 2.0.19
-      defu: 6.1.0
+      defu: 6.1.1
       get-port-please: 2.6.1
       http-shutdown: 1.2.2
       ip-regex: 5.0.0
@@ -7845,7 +7848,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      defu: 6.1.0
+      defu: 6.1.1
       esbuild: 0.14.51
       fs-extra: 10.1.0
       globby: 11.1.0
@@ -7855,11 +7858,11 @@ packages:
       typescript: 4.8.4
     dev: true
 
-  /mkdist/0.4.0_typescript@4.8.4:
-    resolution: {integrity: sha512-513LkEPKcd0wVwFwyZl0xLlmZO6tVS+RNPjgOLuMGQiVUSoyHOWHMyois+RbHd8V6Pi/EscL0jzer0UUPq4LQg==}
+  /mkdist/0.4.1_typescript@4.8.4:
+    resolution: {integrity: sha512-3uMNUdekmD2rVXOy6fCtOqtUKaB0L86OfrcBoKrQxtX9JZZZrG98aQV1CkNkaHMc7LLq0U2UdVEVGJ3l5P2x3A==}
     hasBin: true
     peerDependencies:
-      sass: ^1.55.0
+      sass: ^1.56.1
       typescript: '>=4.8.4'
     peerDependenciesMeta:
       sass:
@@ -7867,13 +7870,13 @@ packages:
       typescript:
         optional: true
     dependencies:
-      defu: 6.1.0
-      esbuild: 0.15.12
+      defu: 6.1.1
+      esbuild: 0.15.13
       fs-extra: 10.1.0
       globby: 13.1.2
       jiti: 1.16.0
       mri: 1.2.0
-      pathe: 0.3.9
+      pathe: 1.0.0
       typescript: 4.8.4
     dev: true
 
@@ -7998,7 +8001,7 @@ packages:
       chokidar: 3.5.3
       consola: 2.15.3
       cookie-es: 0.5.0
-      defu: 6.1.0
+      defu: 6.1.1
       destr: 1.2.0
       dot-prop: 7.2.0
       esbuild: 0.15.13
@@ -8850,6 +8853,10 @@ packages:
   /pathe/0.3.9:
     resolution: {integrity: sha512-6Y6s0vT112P3jD8dGfuS6r+lpa0qqNrLyHPOwvXMnyNTQaYiwgau2DP3aNDsR13xqtGj7rrPo+jFUATpU6/s+g==}
 
+  /pathe/1.0.0:
+    resolution: {integrity: sha512-nPdMG0Pd09HuSsr7QOKUXO2Jr9eqaDiZvDwdyIhNG5SHYujkQHYKDfGQkulBxvbDHz8oHLsTgKN86LSwYzSHAg==}
+    dev: true
+
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
     dev: true
@@ -9436,7 +9443,7 @@ packages:
   /rc9/1.2.2:
     resolution: {integrity: sha512-zbe8+HR2X28eZepAwohuKkebbEsA67h0DO9I7g12QrHa2CQopR9gztOLPIPXXGTvcxeUjAN4wZ+b29t3m/u05g==}
     dependencies:
-      defu: 6.1.0
+      defu: 6.1.1
       destr: 1.2.0
       flat: 5.0.2
 
@@ -9849,7 +9856,7 @@ packages:
   /serve-placeholder/2.0.1:
     resolution: {integrity: sha512-rUzLlXk4uPFnbEaIz3SW8VISTxMuONas88nYWjAWaM2W9VDbt9tyFOr3lq8RhVOFrT3XISoBw8vni5una8qMnQ==}
     dependencies:
-      defu: 6.1.0
+      defu: 6.1.1
     dev: true
 
   /serve-static/1.15.0:
@@ -10752,7 +10759,7 @@ packages:
   /unenv/0.6.2:
     resolution: {integrity: sha512-IdQfYsHsGKDkiBdeOmtU4MjWvPYfMDOC63cvFqZPodAc5aVezvfD9Bwr7FL/G78cAMMCaDm5Jux3vYo+Z8c/Dg==}
     dependencies:
-      defu: 6.1.0
+      defu: 6.1.1
       mime: 3.0.0
       node-fetch-native: 0.1.8
       pathe: 0.3.9
