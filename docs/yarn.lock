@@ -848,7 +848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt-themes/docus@npm:@nuxt-themes/docus-edge@latest":
+"@nuxt-themes/docus@npm:@nuxt-themes/docus-edge@0.1.0-2a7c428":
   version: 0.1.0-2a7c428
   resolution: "@nuxt-themes/docus-edge@npm:0.1.0-2a7c428"
   dependencies:
@@ -1306,7 +1306,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
-    "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest"
+    "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@0.1.0-2a7c428"
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
     jiti: ^1.16.0
     nuxt: 3.0.0-rc.12
