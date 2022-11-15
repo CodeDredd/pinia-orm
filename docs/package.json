@@ -14,7 +14,7 @@
     "build": "nuxi generate"
   },
   "dependencies": {
-    "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@0.1.0-2a7c428",
+    "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest",
     "@nuxthq/studio": "^0.1.4",
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
   },
