@@ -1,7 +1,7 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "packageManager": "pnpm@7.16.0",
+  "packageManager": "pnpm@7.16.1",
   "workspaces": {
     "packages": [
       "packages/*"
