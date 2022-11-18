@@ -1248,9 +1248,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/studio@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@nuxthq/studio@npm:0.2.3"
+"@nuxthq/studio@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "@nuxthq/studio@npm:0.2.4"
   dependencies:
     "@nuxt/kit": ^3.0.0-rc.13
     "@nuxt/schema": ^3.0.0-rc.13
@@ -1258,7 +1258,7 @@ __metadata:
     nuxt-component-meta: ^0.3.3
     socket.io-client: ^4.5.3
     ufo: ^0.8.6
-  checksum: 6a8f0990ab2be437e7e5f4f5b242183bf5cd54ed35e5209292c6947e8d65d4b1fde9a29a6cd6ecc9647aa7ef73b07485404d88065442ccec193e0d864916b74b
+  checksum: 3edeb999d629345d18502e4563ca07697b25c4e048061ce0a03922160f2b9992d3e390d38da5307b6e3b0b810f5f4be589ef6778508d22ec904c93ba44d98474
   languageName: node
   linkType: hard
 
@@ -1457,7 +1457,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest"
-    "@nuxthq/studio": ^0.2.3
+    "@nuxthq/studio": ^0.2.4
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
     jiti: ^1.16.0
     nuxt: 3.0.0-rc.12
