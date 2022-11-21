@@ -74,11 +74,11 @@ importers:
       '@nuxt/module-builder': latest
       '@nuxt/schema': ^3.0.0
       '@nuxtjs/eslint-config-typescript': latest
-      '@pinia/nuxt': ^0.4.4
+      '@pinia/nuxt': ^0.4.5
       '@types/prettier': ^2
       eslint: ^8.28.0
       nuxt: ^3.0.0-rc.13
-      pinia: ^2.0.24
+      pinia: ^2.0.25
       pinia-orm: ^1.0.0
       prettier: ^2.7.1
       std-env: ^3.1.1
@@ -90,11 +90,11 @@ importers:
       '@nuxt/module-builder': 0.2.1
       '@nuxt/schema': 3.0.0
       '@nuxtjs/eslint-config-typescript': 12.0.0_hsf322ms6xhhd4b5ne6lb74y4a
-      '@pinia/nuxt': 0.4.4_mgnvym7yiazkylwwogi5r767ue
+      '@pinia/nuxt': 0.4.5_mgnvym7yiazkylwwogi5r767ue
       '@types/prettier': 2.6.3
       eslint: 8.28.0
       nuxt: 3.0.0-rc.13_hsf322ms6xhhd4b5ne6lb74y4a
-      pinia: 2.0.24_mgnvym7yiazkylwwogi5r767ue
+      pinia: 2.0.25_mgnvym7yiazkylwwogi5r767ue
       pinia-orm: link:../pinia-orm
       prettier: 2.7.1
       std-env: 3.1.1
@@ -117,7 +117,7 @@ importers:
       happy-dom: ^7.7.0
       mkdist: ^1.0.0
       nanoid: ^4.0.0
-      pinia: ^2.0.24
+      pinia: ^2.0.25
       prettier: ^2.7.1
       size-limit: ^8.1.0
       std-env: ^3.1.1
@@ -146,7 +146,7 @@ importers:
       happy-dom: 7.7.0
       mkdist: 1.0.0_typescript@4.9.3
       nanoid: 4.0.0
-      pinia: 2.0.24_q7xtilhbvrtzprpkfr3mlv2n4q
+      pinia: 2.0.25_q7xtilhbvrtzprpkfr3mlv2n4q
       prettier: 2.7.1
       size-limit: 8.1.0
       std-env: 3.1.1
@@ -1603,11 +1603,11 @@ packages:
       '@octokit/openapi-types': 14.0.0
     dev: true
 
-  /@pinia/nuxt/0.4.4_mgnvym7yiazkylwwogi5r767ue:
-    resolution: {integrity: sha512-8C9Vv/Mx+IMZFnWTX0nFGW+pXk6hF4Ibgc0OZqlI6/Ii26/Do+gfEQLC/0J/7gFFe/VFhwLMlrK8WEL6oIRdmA==}
+  /@pinia/nuxt/0.4.5_mgnvym7yiazkylwwogi5r767ue:
+    resolution: {integrity: sha512-lnJdZkpySxBArpiOLTJZtA+QSbODl6xIk4psgGWzrWiEwPjUSup/RmQ7zlWz7dmQTONA/mttR0j4V1Zh0b5NKA==}
     dependencies:
       '@nuxt/kit': 3.0.0
-      pinia: 2.0.24_mgnvym7yiazkylwwogi5r767ue
+      pinia: 2.0.25_mgnvym7yiazkylwwogi5r767ue
     transitivePeerDependencies:
       - '@vue/composition-api'
       - rollup
@@ -8624,8 +8624,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /pinia/2.0.24_mgnvym7yiazkylwwogi5r767ue:
-    resolution: {integrity: sha512-DDLd4Iphyc+6PYYYbx7jkb6WP9gecgu9bz9huyB5rb7CdJI3DhzYiZI+/Ih8MLewRrP9DSpslF/BgSNrJtZU7A==}
+  /pinia/2.0.25_mgnvym7yiazkylwwogi5r767ue:
+    resolution: {integrity: sha512-3reAkjJ6bW2D5hZKRMS0c9rUbHVlsVyZd037xO0PJr2AuF/09RRSBnFLlJgmHF4Jx6dEoW/jZBOHTushY7IMlw==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
@@ -8642,8 +8642,8 @@ packages:
       vue-demi: 0.13.11_vue@3.2.45
     dev: true
 
-  /pinia/2.0.24_q7xtilhbvrtzprpkfr3mlv2n4q:
-    resolution: {integrity: sha512-DDLd4Iphyc+6PYYYbx7jkb6WP9gecgu9bz9huyB5rb7CdJI3DhzYiZI+/Ih8MLewRrP9DSpslF/BgSNrJtZU7A==}
+  /pinia/2.0.25_q7xtilhbvrtzprpkfr3mlv2n4q:
+    resolution: {integrity: sha512-3reAkjJ6bW2D5hZKRMS0c9rUbHVlsVyZd037xO0PJr2AuF/09RRSBnFLlJgmHF4Jx6dEoW/jZBOHTushY7IMlw==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
