@@ -78,7 +78,7 @@ importers:
       '@types/prettier': ^2
       eslint: ^8.28.0
       nuxt: ^3.0.0-rc.13
-      pinia: ^2.0.25
+      pinia: ^2.0.26
       pinia-orm: ^1.0.0
       prettier: ^2.8.0
       std-env: ^3.1.1
@@ -94,7 +94,7 @@ importers:
       '@types/prettier': 2.6.3
       eslint: 8.28.0
       nuxt: 3.0.0-rc.13_hsf322ms6xhhd4b5ne6lb74y4a
-      pinia: 2.0.25_mgnvym7yiazkylwwogi5r767ue
+      pinia: 2.0.26_mgnvym7yiazkylwwogi5r767ue
       pinia-orm: link:../pinia-orm
       prettier: 2.8.0
       std-env: 3.1.1
@@ -117,7 +117,7 @@ importers:
       happy-dom: ^7.7.0
       mkdist: ^1.0.0
       nanoid: ^4.0.0
-      pinia: ^2.0.25
+      pinia: ^2.0.26
       prettier: ^2.8.0
       size-limit: ^8.1.0
       std-env: ^3.1.1
@@ -146,7 +146,7 @@ importers:
       happy-dom: 7.7.0
       mkdist: 1.0.0_typescript@4.9.3
       nanoid: 4.0.0
-      pinia: 2.0.25_q7xtilhbvrtzprpkfr3mlv2n4q
+      pinia: 2.0.26_q7xtilhbvrtzprpkfr3mlv2n4q
       prettier: 2.8.0
       size-limit: 8.1.0
       std-env: 3.1.1
@@ -1577,7 +1577,7 @@ packages:
     resolution: {integrity: sha512-lnJdZkpySxBArpiOLTJZtA+QSbODl6xIk4psgGWzrWiEwPjUSup/RmQ7zlWz7dmQTONA/mttR0j4V1Zh0b5NKA==}
     dependencies:
       '@nuxt/kit': 3.0.0
-      pinia: 2.0.25_mgnvym7yiazkylwwogi5r767ue
+      pinia: 2.0.26_mgnvym7yiazkylwwogi5r767ue
     transitivePeerDependencies:
       - '@vue/composition-api'
       - rollup
@@ -8472,8 +8472,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /pinia/2.0.25_mgnvym7yiazkylwwogi5r767ue:
-    resolution: {integrity: sha512-3reAkjJ6bW2D5hZKRMS0c9rUbHVlsVyZd037xO0PJr2AuF/09RRSBnFLlJgmHF4Jx6dEoW/jZBOHTushY7IMlw==}
+  /pinia/2.0.26_mgnvym7yiazkylwwogi5r767ue:
+    resolution: {integrity: sha512-tSxZNUcMGxQOvKZRjPKXxd2+/2NZhRF/CoYVE/+K6uE/Z3v1Oi4fcQFpxu5nMB1dCchjXUZ+lz0tBxV5ntwmQQ==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
@@ -8490,8 +8490,8 @@ packages:
       vue-demi: 0.13.11_vue@3.2.45
     dev: true
 
-  /pinia/2.0.25_q7xtilhbvrtzprpkfr3mlv2n4q:
-    resolution: {integrity: sha512-3reAkjJ6bW2D5hZKRMS0c9rUbHVlsVyZd037xO0PJr2AuF/09RRSBnFLlJgmHF4Jx6dEoW/jZBOHTushY7IMlw==}
+  /pinia/2.0.26_q7xtilhbvrtzprpkfr3mlv2n4q:
+    resolution: {integrity: sha512-tSxZNUcMGxQOvKZRjPKXxd2+/2NZhRF/CoYVE/+K6uE/Z3v1Oi4fcQFpxu5nMB1dCchjXUZ+lz0tBxV5ntwmQQ==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
