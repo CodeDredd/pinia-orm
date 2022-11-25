@@ -1436,6 +1436,11 @@
     "@volar/typescript" "1.0.9"
     "@volar/vue-language-core" "1.0.9"
 
+"@vscode/l10n@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@vscode/l10n/-/l10n-0.0.10.tgz#9c513107c690c0dd16e3ec61e453743de15ebdb0"
+  integrity sha512-E1OCmDcDWa0Ya7vtSjp/XfHFGqYJfh+YPC1RkATU71fTac+j1JjCcB3qwSzmlKAighx2WxhLlfhS0RwAN++PFQ==
+
 "@vue/compiler-core@3.2.40":
   version "3.2.40"
   resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.2.40.tgz#c785501f09536748121e937fb87605bbb1ada8e5"
@@ -4489,15 +4494,15 @@ vite@^3.2.4:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vscode-html-languageservice@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-5.0.2.tgz#a66cb9d779f3094a8d14dd3a8f7935748435fd2a"
-  integrity sha512-TQmeyE14Ure/w/S+RV2IItuRWmw/i1QaS+om6t70iHCpamuTTWnACQPMSltVGm/DlbdyMquUePJREjd/h3AVkQ==
+vscode-html-languageservice@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-5.0.3.tgz#2a10eb324a132e01af8e0340c2cc5af88f256955"
+  integrity sha512-6rfrtcHhXDMXmC5pR2WXrx02HiNCzQDynOBMn+53zLxr2hvZrDzoc0QgC0FaFGfcglf7GeOsfhkWvJBFC/a70g==
   dependencies:
+    "@vscode/l10n" "^0.0.10"
     vscode-languageserver-textdocument "^1.0.7"
     vscode-languageserver-types "^3.17.2"
-    vscode-nls "^5.2.0"
-    vscode-uri "^3.0.4"
+    vscode-uri "^3.0.6"
 
 vscode-languageserver-textdocument@^1.0.7:
   version "1.0.7"
@@ -4509,15 +4514,10 @@ vscode-languageserver-types@^3.17.2:
   resolved "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.17.2.tgz#b2c2e7de405ad3d73a883e91989b850170ffc4f2"
   integrity sha512-zHhCWatviizPIq9B7Vh9uvrH6x3sK8itC84HkamnBWoDFJtzBf7SWlpLCZUit72b3os45h6RWQNC9xHRDF8dRA==
 
-vscode-nls@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-5.2.0.tgz#3cb6893dd9bd695244d8a024bdf746eea665cc3f"
-  integrity sha512-RAaHx7B14ZU04EU31pT+rKz2/zSl7xMsfIZuo8pd+KZO6PXtQmpevpq3vxvWNcrGbdmhM/rr5Uw5Mz+NBfhVng==
-
-vscode-uri@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-3.0.4.tgz#703c6dd7c0b727ee1c34a1287434138fb52d054f"
-  integrity sha512-aEmKD6H8Sg8gaQAUrnadG0BMeWXtiWhRsj1a94n2FYsMkDpgnK7BRVzZjOUYIvkv2B+bp5Bmt4ImZCpYbnJwkg==
+vscode-uri@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-3.0.6.tgz#5e6e2e1a4170543af30151b561a41f71db1d6f91"
+  integrity sha512-fmL7V1eiDBFRRnu+gfRWTzyPpNIHJTc4mWnFkwBUmO9U3KPgJAmTx7oxi2bl/Rh6HLdU7+4C9wlj0k2E4AdKFQ==
 
 vue-demi@*:
   version "0.13.7"
