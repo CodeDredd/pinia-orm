@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest",
-    "@nuxthq/studio": "^0.2.6",
+    "@nuxthq/studio": "^0.2.7",
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
   },
   "devDependencies": {
