@@ -1,39 +1,63 @@
 import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../../src'
-import { Attr, HasOne, Str } from '../../../../src/decorators'
+import { Attr, BelongsToMany, HasOne, Num, Str } from '../../../../src/decorators'
 
 describe('feature/relations/constraints/constraints', () => {
   class Type extends Model {
     static entity = 'types'
 
-    @Attr() id!: number
-    @Attr() phoneId!: number
-    @Str('') name!: string
+    @Attr() declare id: number
+    @Attr() declare phoneId: number
+    @Str('') declare name: string
   }
 
   class Phone extends Model {
     static entity = 'phones'
 
-    @Attr() id!: number
-    @Attr() userId!: number
-    @Str('') number!: string
+    @Attr() declare id: number
+    @Attr() declare userId: number
+    @Attr() declare roleId: number
+    @Str('') declare number: string
 
     @HasOne(() => Type, 'phoneId')
-      type!: Type | null
+    declare type: Type | null
+  }
+
+  class Role extends Model {
+    static entity = 'roles'
+
+    @Num(0) declare id: number
+    declare pivot: RoleUser
+
+    @HasOne(() => Phone, 'roleId')
+    declare phone: Phone | null
+  }
+
+  class RoleUser extends Model {
+    static entity = 'roleUser'
+
+    static primaryKey = ['role_id', 'user_id']
+
+    @Attr(null) declare role_id: number | null
+    @Attr(null) declare user_id: number | null
+    @Attr(null) declare level: number | null
   }
 
   class User extends Model {
     static entity = 'users'
 
-    @Attr() id!: number
-    @Str('') name!: string
+    @Attr() declare id: number
+    @Str('') declare name: string
+
+    @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
+    declare roles: Role[]
 
     @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+    declare phone: Phone | null
   }
 
-  it('can add constraints to the relationship query', () => {
+  it.skip('can add constraints to the relationship query', () => {
     const usersRepo = useRepo(User)
     const phonesRepo = useRepo(Phone)
 
@@ -66,8 +90,8 @@ describe('feature/relations/constraints/constraints', () => {
     const typesRepo = useRepo(Type)
 
     usersRepo.save([
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'John Doe' },
+      { id: 1, name: 'John Doe', roles: [{ id: 1, pivot: { level: 1 }, phone: { id: 4, number: '999' } }, { id: 2 }, { id: 4 }] },
+      { id: 2, name: 'John Doe', roles: [{ id: 1, pivot: { level: 2 } }] },
       { id: 3, name: 'Johnny Doe' },
     ])
 
@@ -85,9 +109,14 @@ describe('feature/relations/constraints/constraints', () => {
       .with('phone', (query) => {
         query.with('type')
       })
+      .with('roles', (query) => {
+        query.with('phone')
+      })
       .get()
 
     expect(users[0].phone!.type!.id).toBe(1)
+    expect(users[0].roles.length).toBe(3)
+    expect(users[0].roles[0].phone!.number).toBe('999')
     expect(users[1].phone!.type!.id).toBe(2)
     expect(users[2].phone!.type).toBe(null)
   })

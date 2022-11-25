@@ -105,7 +105,7 @@ export class BelongsToMany extends Relation {
           .where(this.foreignPivotKey, parentModel[this.parentKey])
           .first()
 
-        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$getAttributes())
+        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson())
         relatedModelCopy.$setRelation('pivot', pivot)
 
         if (pivot)
