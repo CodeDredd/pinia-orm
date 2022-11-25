@@ -57,7 +57,7 @@ describe('feature/relations/constraints/constraints', () => {
     declare phone: Phone | null
   }
 
-  it.skip('can add constraints to the relationship query', () => {
+  it('can add constraints to the relationship query', () => {
     const usersRepo = useRepo(User)
     const phonesRepo = useRepo(Phone)
 
