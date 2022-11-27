@@ -3725,10 +3725,10 @@ pinia-orm@^1.2.2:
   dependencies:
     "@pinia-orm/normalizr" ">=1.0.4"
 
-pinia@^2.0.26:
-  version "2.0.26"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.26.tgz#8c1113ba0ff5cb4968dac5f63321f8f8b5d78297"
-  integrity sha512-tSxZNUcMGxQOvKZRjPKXxd2+/2NZhRF/CoYVE/+K6uE/Z3v1Oi4fcQFpxu5nMB1dCchjXUZ+lz0tBxV5ntwmQQ==
+pinia@^2.0.27:
+  version "2.0.27"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.27.tgz#cf13a8dca2792a613c1d8bb8ef50707756e5a6ef"
+  integrity sha512-nOnXP0OFeL8R4WjAHsterU+11vptda643gH02xKNtSCDPiRzVfRYodOLihLDoa0gL1KKuQKV+KOzEgdt3YvqEw==
   dependencies:
     "@vue/devtools-api" "^6.4.5"
     vue-demi "*"
