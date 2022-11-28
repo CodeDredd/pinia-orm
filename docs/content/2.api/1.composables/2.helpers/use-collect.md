@@ -41,7 +41,7 @@ export interface UseCollect<M extends Model = Model> {
   max: (field: string) => number
   pluck: (field: string) => any[]
   groupBy: (fields: string[] | string) => Record<string, Collection<M>>
-  sortBy: (sort: sorting<M>) => M[]
+  sortBy: (sort: sorting<M>, flags?: SortFlags) => M[]
   keys: () => string[]
 }
 
