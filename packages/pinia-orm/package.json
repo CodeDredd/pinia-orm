@@ -63,7 +63,7 @@
     "@pinia-orm/normalizr": ">=1.0.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.33.0",
+    "@antfu/eslint-config": "^0.33.1",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@types/prettier": "^2",
     "@types/uuid": "^9.0.0",
