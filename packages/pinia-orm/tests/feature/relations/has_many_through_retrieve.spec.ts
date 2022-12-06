@@ -52,7 +52,6 @@ describe('feature/relations/has_many_through_retrieve', () => {
     const countries = countryRepo.with('posts').get()
 
     assertInstanceOf(countries, Country)
-    console.log(countries[0])
     assertInstanceOf(countries[0].posts, Post)
     assertModel(countries[0], {
       id: 1,
