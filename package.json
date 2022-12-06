@@ -1,7 +1,7 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "packageManager": "pnpm@7.17.1",
+  "packageManager": "pnpm@7.18.0",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -29,14 +29,14 @@
     "@lerna-lite/cli": "^1.13.0",
     "@lerna-lite/run": "^1.13.0",
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.11",
     "chalk": "^4.1.2",
     "conventional-changelog-cli": "^2.2.2",
     "enquirer": "^2.3.6",
     "execa": "^6.1.0",
     "expect": "^29.3.1",
     "globby": "^13.1.2",
-    "lint-staged": "^13.0.4",
+    "lint-staged": "^13.1.0",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.7",
     "p-series": "^3.0.0",
