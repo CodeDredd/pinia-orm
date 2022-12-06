@@ -1294,18 +1294,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/studio@npm:^0.3.2":
-  version: 0.3.2
-  resolution: "@nuxthq/studio@npm:0.3.2"
+"@nuxthq/studio@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "@nuxthq/studio@npm:0.3.4"
   dependencies:
     "@nuxt/kit": ^3.0.0
     "@nuxt/schema": ^3.0.0
     defu: ^6.1.1
-    nuxt-component-meta: ^0.3.5
-    nuxt-config-schema: ^0.3.3
+    nuxt-component-meta: ^0.3.8
+    nuxt-config-schema: ^0.3.4
     socket.io-client: ^4.5.4
     ufo: ^1.0.1
-  checksum: 041dbce245454e6fd4947a1c5168b1bb584ded842bd6497ec5e802ca8631389cf40fff23e147ed558df879eebfe55449ed049a58e3ee131ff2df0b04dfd56404
+  checksum: 903c3e52fe5fda89c49b038eff3e1bf2e4bb849e8d0e144d6cf00d22d33d612e8d554b2f4a145d1f351f2eabb8dc3a16cb0db1f6221fafa1e25bbb4c8440d228
   languageName: node
   linkType: hard
 
@@ -1504,7 +1504,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest"
-    "@nuxthq/studio": ^0.3.2
+    "@nuxthq/studio": ^0.3.4
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
     jiti: ^1.16.0
     nuxt: 3.0.0-rc.12
@@ -7772,19 +7772,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-component-meta@npm:^0.3.5":
-  version: 0.3.5
-  resolution: "nuxt-component-meta@npm:0.3.5"
+"nuxt-component-meta@npm:^0.3.8":
+  version: 0.3.8
+  resolution: "nuxt-component-meta@npm:0.3.8"
   dependencies:
     "@nuxt/kit": ^3.0.0
     scule: ^1.0.0
     typescript: ^4.9.3
     vue-component-meta: ^1.0.9
-  checksum: 2b9c02025c71c5f8943419d3a4fd5158c89b2bb2d6c3f5d787525306a4674f70c3d7bca0ebee4399650468fb3fae0e27d316e3269788bc4952fb6bbf066c270e
+  checksum: a525b1371f0135b362c1d7ddf26ee89652d5aadc1d1d5e4a46793629d6eda819fabfed58720bfe4a80baca8e918b026024308d69e21c9b779466d7d02bf439c9
   languageName: node
   linkType: hard
 
-"nuxt-config-schema@npm:^0.3.3":
+"nuxt-config-schema@npm:^0.3.4":
   version: 0.3.4
   resolution: "nuxt-config-schema@npm:0.3.4"
   dependencies:
