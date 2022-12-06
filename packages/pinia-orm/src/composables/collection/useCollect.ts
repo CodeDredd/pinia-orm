@@ -1,4 +1,5 @@
 import type { Collection, Model } from '../../../src'
+import type { SortFlags } from '../../support/Utils'
 import { useSum } from './useSum'
 import { useMax } from './useMax'
 import { useMin } from './useMin'
@@ -7,7 +8,6 @@ import { useKeys } from './useKeys'
 import { useGroupBy } from './useGroupBy'
 import type { sorting } from './useSortBy'
 import { useSortBy } from './useSortBy'
-import type { SortFlags } from '@/support/Utils'
 
 export interface UseCollect<M extends Model = Model> {
   sum: (field: string) => number
