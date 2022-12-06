@@ -11,7 +11,7 @@ importers:
       '@lerna-lite/cli': ^1.13.0
       '@lerna-lite/run': ^1.13.0
       '@types/lodash.kebabcase': ^4.1.7
-      '@types/node': ^18.11.10
+      '@types/node': ^18.11.11
       chalk: ^4.1.2
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
@@ -32,7 +32,7 @@ importers:
       '@lerna-lite/cli': 1.13.0
       '@lerna-lite/run': 1.13.0
       '@types/lodash.kebabcase': 4.1.7
-      '@types/node': 18.11.10
+      '@types/node': 18.11.11
       chalk: 4.1.2
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
@@ -679,7 +679,7 @@ packages:
       '@jest/schemas': 29.0.0
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.11.10
+      '@types/node': 18.11.11
       '@types/yargs': 17.0.10
       chalk: 4.1.2
     dev: true
@@ -1892,7 +1892,7 @@ packages:
   /@types/concat-stream/1.6.1:
     resolution: {integrity: sha512-eHE4cQPoj6ngxBZMvVf6Hw7Mh4jMW4U9lpGmS5GBPB9RYxlFg+CHaVN7ErNY4W9XfLIEn20b4VDYaIrbq0q4uA==}
     dependencies:
-      '@types/node': 18.11.10
+      '@types/node': 18.11.11
     dev: true
 
   /@types/estree/1.0.0:
@@ -1901,7 +1901,7 @@ packages:
   /@types/form-data/0.0.33:
     resolution: {integrity: sha512-8BSvG1kGm83cyJITQMZSulnl6QV8jqAGreJsc5tPu1Jq0vTSOiY/k24Wx82JRpWwZSqrala6sd5rWi6aNXvqcw==}
     dependencies:
-      '@types/node': 18.11.10
+      '@types/node': 18.11.11
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:
@@ -1958,6 +1958,10 @@ packages:
 
   /@types/node/18.11.10:
     resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
+    dev: true
+
+  /@types/node/18.11.11:
+    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
     dev: true
 
   /@types/node/8.10.66:
@@ -3165,10 +3169,6 @@ packages:
 
   /ci-info/1.6.0:
     resolution: {integrity: sha512-vsGdkwSCDpWmP80ncATX7iea5DWQemg1UgCW5J8tqjU3lYw4FBYuj89J0CTVomA7BEfvSZd84GmHko+MxFQU2A==}
-    dev: true
-
-  /ci-info/3.5.0:
-    resolution: {integrity: sha512-yH4RezKOGlOhxkmhbeNuC4eYZKAUsEaGtBuBzDDP1eFUKiccDWzBABxBfOx31IDwDIXMTxWuwAxUGModvkbuVw==}
     dev: true
 
   /ci-info/3.7.0:
@@ -5230,7 +5230,7 @@ packages:
       eslint: '>=8.8.0'
     dependencies:
       '@babel/helper-validator-identifier': 7.19.1
-      ci-info: 3.5.0
+      ci-info: 3.7.0
       clean-regexp: 1.0.0
       eslint: 8.29.0
       eslint-utils: 3.0.0_eslint@8.29.0
@@ -6804,7 +6804,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.3.1
-      '@types/node': 18.11.10
+      '@types/node': 18.11.11
       chalk: 4.1.2
       ci-info: 3.7.0
       graceful-fs: 4.2.10
@@ -6815,7 +6815,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.10
+      '@types/node': 18.11.11
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
