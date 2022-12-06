@@ -5,9 +5,9 @@ import {
   BelongsTo, BelongsToMany,
   HasMany,
   HasManyBy,
-  HasOne, MorphMany,
-  MorphOne,
-  MorphTo, Num, Str,
+  HasManyThrough, HasOne,
+  MorphMany,
+  MorphOne, MorphTo, Num, Str,
 } from '../../../src/decorators'
 
 describe('unit/model/Model_Relations', () => {
@@ -22,6 +22,8 @@ describe('unit/model/Model_Relations', () => {
     static entity = 'countries'
 
     @Attr() id!: number
+    @HasManyThrough(() => Post, () => User, 'countryId', 'userId')
+    declare posts: Post[]
   }
 
   class Role extends Model {
@@ -155,6 +157,20 @@ describe('unit/model/Model_Relations', () => {
     expect(user.posts[1]).toBeInstanceOf(Post)
     expect(user.posts[0].id).toBe(2)
     expect(user.posts[1].id).toBe(3)
+  })
+
+  it('fills "has many through" relation', () => {
+    const countryRepo = useRepo(Country)
+
+    const country = countryRepo.make({
+      id: 1,
+      posts: [{ id: 2 }, { id: 3 }],
+    })
+
+    expect(country.posts[0]).toBeInstanceOf(Post)
+    expect(country.posts[1]).toBeInstanceOf(Post)
+    expect(country.posts[0].id).toBe(2)
+    expect(country.posts[1].id).toBe(3)
   })
 
   it('fills "has many by" relation', () => {
