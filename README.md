@@ -106,14 +106,6 @@ Small overview:
 
 ---
 
-## FAQ
-
-A few notes about the project and possible questions:
-
-**Q**: _Does it work with the same models as vuex-orm?_
-
-**A**: Yes, this code is based on their work
-
 ## 💻 Development
 
 - Clone this repository

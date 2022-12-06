@@ -3,13 +3,19 @@ on:
   push:
     branches:
       - '**'
-    paths:
-      - packages/**
+    paths-ignore:
+      - docs/**
+      - docs-playground/**
+      - playgrounds/**
+      - scripts
   pull_request:
     branches:
       - master
-    paths:
-      - packages/**
+    paths-ignore:
+      - docs/**
+      - docs-playground/**
+      - playgrounds/**
+      - scripts
 jobs:
   unit-test:
     runs-on: ubuntu-latest
