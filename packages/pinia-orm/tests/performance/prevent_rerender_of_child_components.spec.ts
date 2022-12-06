@@ -42,7 +42,7 @@ describe('performance/prevent_rerender_of_child_components', () => {
       const addPost = () => {
         postRepo.insert({
           id: counter++,
-          title: `test${counter}`,
+          title: `Test ${counter}`,
         })
       }
 
@@ -86,6 +86,11 @@ describe('performance/prevent_rerender_of_child_components', () => {
     await nextTick()
     await wrapper.find('button').trigger('click')
     await nextTick()
+
+    expect(wrapper.html()).toContain('Test 1')
+    expect(wrapper.html()).toContain('Test 11')
+    expect(wrapper.html()).toContain('Test 12')
+    expect(wrapper.html()).toContain('Test 13')
 
     expect(logger).not.toBeCalled()
   })

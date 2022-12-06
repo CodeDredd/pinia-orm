@@ -959,7 +959,7 @@ export class Query<M extends Model = Model> {
   protected hydrate(records: Element | Element[], options?: ModelOptions, update = false): M | Collection<M> {
     return isArray(records)
       ? records.map(record => this.hydrate(record, options, update))
-      : this.getHydratedModels(records, update, { relations: false, ...(options || {}) })
+      : this.getHydratedModel(records, update, { relations: false, ...(options || {}) })
   }
 
   /**
@@ -978,7 +978,7 @@ export class Query<M extends Model = Model> {
   /**
    * Instantiate new models by type if set.
    */
-  protected getHydratedModels(record: Element, update = false, options?: ModelOptions): M {
+  protected getHydratedModel(record: Element, update = false, options?: ModelOptions): M {
     const id = record[this.model.$getKeyName() as string]
     const savedHydratedModel = this.hydratedData.get(id)
 
