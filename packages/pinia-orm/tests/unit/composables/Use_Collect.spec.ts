@@ -27,6 +27,8 @@ describe('unit/composables/Collect', () => {
     { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
     { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
     { id: 3, name: 'David', age: 20 },
+    { id: 4, name: 'john', age: 20 },
+    { id: 5, name: 'Zod', age: 20 },
   ]))
 
   it('can group records using the "groupBy" modifier', () => {
@@ -37,6 +39,12 @@ describe('unit/composables/Collect', () => {
       ]),
       David: useRepo(User).make([
         { id: 3, name: 'David', age: 20, post: null },
+      ]),
+      john: useRepo(User).make([
+        { id: 4, name: 'john', age: 20, post: null },
+      ]),
+      Zod: useRepo(User).make([
+        { id: 5, name: 'Zod', age: 20, post: null },
       ]),
     }
 
@@ -50,6 +58,12 @@ describe('unit/composables/Collect', () => {
       '[David,20]': useRepo(User).make([
         { id: 3, name: 'David', age: 20 },
       ]),
+      '[john,20]': useRepo(User).make([
+        { id: 4, name: 'john', age: 20 },
+      ]),
+      '[Zod,20]': useRepo(User).make([
+        { id: 5, name: 'Zod', age: 20 },
+      ]),
     }
 
     expect(userCollection.groupBy('name')).toEqual(expected)
@@ -61,15 +75,26 @@ describe('unit/composables/Collect', () => {
       { id: 3, name: 'David', age: 20, post: null },
       { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
       { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
+      { id: 5, name: 'Zod', age: 20, post: null },
+      { id: 4, name: 'john', age: 20, post: null },
+    ])
+
+    const expected2 = useRepo(User).make([
+      { id: 3, name: 'David', age: 20, post: null },
+      { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
+      { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
+      { id: 4, name: 'john', age: 20, post: null },
+      { id: 5, name: 'Zod', age: 20, post: null },
     ])
 
     expect(userCollection.sortBy('name')).toEqual(expected)
+    expect(userCollection.sortBy('name', 'SORT_FLAG_CASE')).toEqual(expected2)
     expect(userCollection.sortBy(model => model.name)).toEqual(expected)
     expect(userCollection.sortBy([['name', 'asc']])).toEqual(expected)
   })
 
   it('can sum up by field name', () => {
-    expect(userCollection.sum('age')).toEqual(90)
+    expect(userCollection.sum('age')).toEqual(130)
     expect(userCollection.sum('name')).toEqual(0)
   })
 
@@ -84,11 +109,11 @@ describe('unit/composables/Collect', () => {
   })
 
   it('can pluck by field name', () => {
-    expect(userCollection.pluck('age')).toEqual([40, 30, 20])
+    expect(userCollection.pluck('age')).toEqual([40, 30, 20, 20, 20])
   })
 
   it('can return the keys of the collection', () => {
-    expect(userCollection.keys()).toEqual([1, 2, 3])
+    expect(userCollection.keys()).toEqual([1, 2, 3, 4, 5])
   })
 
   it('can pluck by field with dot notation', () => {

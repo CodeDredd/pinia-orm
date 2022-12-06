@@ -4,6 +4,8 @@ interface SortableArray<T> {
   value: T
 }
 
+export type SortFlags = 'SORT_REGULAR' | 'SORT_FLAG_CASE'
+
 /**
  * Compare two values with custom string operator
  */
@@ -65,6 +67,7 @@ export function orderBy<T>(
   collection: T[],
   iteratees: (((record: T) => any) | string)[],
   directions: string[],
+  flags: SortFlags = 'SORT_REGULAR',
 ): T[] {
   let index = -1
 
@@ -77,7 +80,7 @@ export function orderBy<T>(
   })
 
   return baseSortBy(result, (object, other) => {
-    return compareMultiple(object, other, directions)
+    return compareMultiple(object, other, directions, flags)
   })
 }
 
@@ -114,6 +117,7 @@ function compareMultiple<T>(
   object: SortableArray<T>,
   other: SortableArray<T>,
   directions: string[],
+  flags: SortFlags,
 ): number {
   let index = -1
 
@@ -122,11 +126,10 @@ function compareMultiple<T>(
   const length = objCriteria.length
 
   while (++index < length) {
-    const result = compareAscending(objCriteria[index], othCriteria[index])
+    const result = compareAscending(objCriteria[index], othCriteria[index], flags)
 
     if (result) {
       const direction = directions[index]
-
       return result * (direction === 'desc' ? -1 : 1)
     }
   }
@@ -137,7 +140,7 @@ function compareMultiple<T>(
 /**
  * Compares values to sort them in ascending order.
  */
-function compareAscending(value: any, other: any): number {
+function compareAscending(value: any, other: any, flags: SortFlags): number {
   if (value !== other) {
     const valIsDefined = value !== undefined
     const valIsNull = value === null
@@ -149,6 +152,11 @@ function compareAscending(value: any, other: any): number {
     if (typeof value !== 'number' || typeof other !== 'number') {
       value = String(value)
       other = String(other)
+
+      if (flags === 'SORT_FLAG_CASE') {
+        value = value.toUpperCase()
+        other = other.toUpperCase()
+      }
     }
 
     if (
