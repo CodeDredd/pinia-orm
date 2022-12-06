@@ -99,27 +99,33 @@ export class Query<M extends Model = Model> {
   protected cacheConfig: CacheConfig = {}
 
   /**
+   * Hydrated models. They are stored to prevent rerendering of child components.
+   */
+  hydratedData: Map<string, M>
+
+  /**
    * Create a new query instance.
    */
-  constructor(database: Database, model: M, cache: WeakCache<string, Collection<M> | GroupedCollection<M>> | undefined, pinia?: Pinia) {
+  constructor(database: Database, model: M, cache: WeakCache<string, Collection<M> | GroupedCollection<M>> | undefined, hydratedData: Map<string, M>, pinia?: Pinia) {
     this.database = database
     this.model = model
     this.pinia = pinia
     this.cache = cache
+    this.hydratedData = hydratedData
   }
 
   /**
    * Create a new query instance for the given model.
    */
   newQuery(model: string): Query {
-    return new Query(this.database, this.database.getModel(model), this.cache, this.pinia)
+    return new Query(this.database, this.database.getModel(model), this.cache, new Map(), this.pinia)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.pinia)
+    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.hydratedData, this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -137,7 +143,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation(relation: Relation): Query {
-    return new Query(this.database, relation.getRelated(), this.cache, this.pinia)
+    return new Query(this.database, relation.getRelated(), this.cache, new Map(), this.pinia)
   }
 
   /**
@@ -151,7 +157,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit(name: string, payload?: any) {
-    const store = useDataStore<M>(this.model.$baseEntity(), this.model.$piniaOptions())(this.pinia)
+    const store = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions())(this.pinia)
     if (name && typeof store[name] === 'function')
       store[name](payload)
 
@@ -625,7 +631,7 @@ export class Query<M extends Model = Model> {
     if (!item)
       return null
 
-    const model = this.hydrate(item)
+    const model = this.hydrate(item, undefined, true)
 
     this.reviveRelations(model, schema)
 
@@ -684,7 +690,7 @@ export class Query<M extends Model = Model> {
    * Create and persist model with default values.
    */
   new(): M {
-    const model = this.hydrate({})
+    const model = this.hydrate({}, undefined, true)
 
     this.commit('insert', this.compile(model))
 
@@ -746,8 +752,8 @@ export class Query<M extends Model = Model> {
       const record = elements[id]
       const existing = currentData[id]
       const model = existing
-        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
-        : this.hydrate(record, { operation: 'set', action: 'save' })
+        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' }, true)
+        : this.hydrate(record, { operation: 'set', action: 'save' }, true)
 
       const isSaving = model.$self().saving(model, record)
       const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
@@ -802,7 +808,7 @@ export class Query<M extends Model = Model> {
       return []
 
     const newModels = models.map((model) => {
-      return this.hydrate({ ...model.$getAttributes(), ...record })
+      return this.hydrate({ ...model.$getAttributes(), ...record }, undefined, true)
     })
 
     this.commit('update', this.compile(newModels))
@@ -948,12 +954,12 @@ export class Query<M extends Model = Model> {
   /**
    * Instantiate new models with the given record.
    */
-  protected hydrate(record: Element, options?: ModelOptions): M
-  protected hydrate(records: Element[], options?: ModelOptions): Collection<M>
-  protected hydrate(records: Element | Element[], options?: ModelOptions): M | Collection<M> {
+  protected hydrate(record: Element, options?: ModelOptions, update?: boolean): M
+  protected hydrate(records: Element[], options?: ModelOptions, update?: boolean): Collection<M>
+  protected hydrate(records: Element | Element[], options?: ModelOptions, update = false): M | Collection<M> {
     return isArray(records)
-      ? records.map(record => this.hydrate(record), options)
-      : this.checkAndGetSTI(records, { relations: false, ...(options || {}) })
+      ? records.map(record => this.hydrate(record, options, update))
+      : this.getHydratedModel(records, update, { relations: false, ...(options || {}) })
   }
 
   /**
@@ -972,10 +978,22 @@ export class Query<M extends Model = Model> {
   /**
    * Instantiate new models by type if set.
    */
-  protected checkAndGetSTI(record: Element, options?: ModelOptions): M {
-    const modelByType = this.model.$types()[record[this.model.$typeKey()]]
+  protected getHydratedModel(record: Element, update = false, options?: ModelOptions): M {
+    const id = record[this.model.$getKeyName() as string]
+    const savedHydratedModel = this.hydratedData.get(id)
 
-    return (modelByType ? modelByType.newRawInstance() as M : this.model)
+    const modelByType = this.model.$types()[record[this.model.$typeKey()]]
+    const hydratedModel = (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}) })
+
+    if (!update
+      && savedHydratedModel
+      && JSON.stringify(savedHydratedModel) === JSON.stringify(hydratedModel)
+    )
+      return savedHydratedModel
+
+    this.hydratedData.set(id, hydratedModel)
+
+    return hydratedModel
   }
 }

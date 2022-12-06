@@ -49,6 +49,11 @@ export class Repository<M extends Model = Model> {
   queryCache?: WeakCache<string, M[]>
 
   /**
+   * Hydrated models. They are stored to prevent rerendering of child components.
+   */
+  hydratedData: Map<string, M>
+
+  /**
    * The model object to be used for the custom repository.
    */
   use?: typeof Model
@@ -59,6 +64,7 @@ export class Repository<M extends Model = Model> {
   constructor(database: Database, pinia?: Pinia) {
     this.database = database
     this.pinia = pinia
+    this.hydratedData = new Map()
   }
 
   /**
@@ -107,7 +113,7 @@ export class Repository<M extends Model = Model> {
    * Returns the pinia store used with this model
    */
   piniaStore() {
-    return useDataStore<M>(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
+    return useDataStore(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
   }
 
   /**
@@ -123,7 +129,7 @@ export class Repository<M extends Model = Model> {
    * Create a new Query instance.
    */
   query(): Query<M> {
-    return new Query(this.database, this.getModel(), this.queryCache, this.pinia)
+    return new Query(this.database, this.getModel(), this.queryCache, this.hydratedData, this.pinia)
   }
 
   /**
