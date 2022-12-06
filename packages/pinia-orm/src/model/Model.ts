@@ -23,6 +23,7 @@ import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
 import type { CastAttribute, Casts } from './casts/CastAttribute'
 import type { TypeDefault } from './attributes/types/Type'
+import { HasManyThrough } from './attributes/relations/HasManyThrough'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -404,6 +405,26 @@ export class Model {
     ownerKey = ownerKey ?? instance.$getLocalKey()
 
     return new HasManyBy(this.newRawInstance(), instance, foreignKey, ownerKey)
+  }
+
+  /**
+   * Create a new HasMany relation instance.
+   */
+  static hasManyThrough(
+    related: typeof Model,
+    through: typeof Model,
+    firstKey: string,
+    secondKey: string,
+    localKey?: string,
+    secondLocalKey?: string,
+  ): HasManyThrough {
+    const model = this.newRawInstance()
+    const throughModel = through.newRawInstance()
+
+    localKey = localKey ?? model.$getLocalKey()
+    secondLocalKey = secondLocalKey ?? throughModel.$getLocalKey()
+
+    return new HasManyThrough(model, related.newRawInstance(), throughModel, firstKey, secondKey, localKey, secondLocalKey)
   }
 
   /**
