@@ -791,7 +791,7 @@ export class Query<M extends Model = Model> {
   fresh(records: Element[]): Collection<M>
   fresh(record: Element): M
   fresh(records: Element | Element[]): M | Collection<M> {
-    const models = this.hydrate(records)
+    const models = this.hydrate(records, { action: 'update' })
 
     this.commit('fresh', this.compile(models))
 
@@ -808,7 +808,11 @@ export class Query<M extends Model = Model> {
       return []
 
     const newModels = models.map((model) => {
-      return this.hydrate({ ...model.$getAttributes(), ...record })
+      const newModel = this.hydrate({ ...model.$getAttributes(), ...record }, { action: 'update' })
+      if (model.$self().updating(model, record) === false)
+        return model
+      newModel.$self().updated(newModel)
+      return newModel
     })
 
     this.commit('update', this.compile(newModels))
@@ -883,6 +887,7 @@ export class Query<M extends Model = Model> {
    */
   flush(): Collection<M> {
     this.commit('flush')
+    this.hydratedData.clear()
     return this.get(false)
   }
 
