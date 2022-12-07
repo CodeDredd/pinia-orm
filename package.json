@@ -41,7 +41,7 @@
     "minimist": "^1.2.7",
     "p-series": "^3.0.0",
     "pascalcase": "^2.0.0",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
     "semver": "^7.3.8",
     "typescript": "^4.9.3",
