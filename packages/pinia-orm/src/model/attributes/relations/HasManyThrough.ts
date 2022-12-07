@@ -33,7 +33,7 @@ export class HasManyThrough extends Relation {
   secondLocalKey: string
 
   /**
-   * Create a new morph-many relation instance.
+   * Create a new has-many-through relation instance.
    */
   constructor(
     parent: Model,
@@ -90,7 +90,7 @@ export class HasManyThrough extends Relation {
     const relatedModels = query
       .where(this.secondKey, this.getKeys(throughModels, this.secondLocalKey))
       .groupBy(this.secondKey)
-      .get()
+      .get(false)
     const dictionary = this.buildDictionary(throughModels, relatedModels)
 
     models.forEach((model) => {
