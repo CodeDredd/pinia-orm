@@ -3,7 +3,7 @@ title: 'hasManyThrough()'
 description: 'Makes a "has many through" relation of the property'
 ---
 
-# `hasMany`
+# `hasManyThrough`
 
 ## Usage
 
