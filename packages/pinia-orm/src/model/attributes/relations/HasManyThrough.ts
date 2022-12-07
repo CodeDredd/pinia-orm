@@ -56,7 +56,7 @@ export class HasManyThrough extends Relation {
    * Get all related models for the relationship.
    */
   getRelateds(): Model[] {
-    return [this.related]
+    return [this.related, this.through]
   }
 
   /**
@@ -75,9 +75,7 @@ export class HasManyThrough extends Relation {
   /**
    * Only register missing through relation
    */
-  addEagerConstraints(query: Query, _models: Collection): void {
-    query.database.register(this.through)
-  }
+  addEagerConstraints(_query: Query, _models: Collection): void {}
 
   /**
    * Match the eagerly loaded results to their parents.
