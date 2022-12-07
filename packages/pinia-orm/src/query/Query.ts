@@ -984,7 +984,7 @@ export class Query<M extends Model = Model> {
     const idAndOptions = id + JSON.stringify(options)
     const savedHydratedModel = id && this.hydratedData.get(idAndOptions)
 
-    if (savedHydratedModel)
+    if (savedHydratedModel && JSON.stringify(record) === JSON.stringify(savedHydratedModel.$toJson()))
       return savedHydratedModel
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
