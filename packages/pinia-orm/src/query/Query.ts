@@ -979,7 +979,9 @@ export class Query<M extends Model = Model> {
    * Instantiate new models by type if set.
    */
   protected getHydratedModel(record: Element, update = false, options?: ModelOptions): M {
-    const id = record[this.model.$getKeyName() as string]
+    const modelKey = this.model.$getKeyName()
+    const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
+
     const stringOptions = JSON.stringify(options)
     const savedHydratedModel = id && this.hydratedData.get(id + stringOptions)
     if (!update && savedHydratedModel)
