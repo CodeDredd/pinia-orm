@@ -981,8 +981,8 @@ export class Query<M extends Model = Model> {
   protected getHydratedModel(record: Element, options?: ModelOptions): M {
     const modelKey = this.model.$getKeyName()
     const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
-    const stringOptions = JSON.stringify(options)
-    const savedHydratedModel = id && this.hydratedData.get(id + stringOptions)
+    const idAndOptions = id + JSON.stringify(options)
+    const savedHydratedModel = id && this.hydratedData.get(idAndOptions)
 
     if (savedHydratedModel)
       return savedHydratedModel
@@ -992,7 +992,7 @@ export class Query<M extends Model = Model> {
       .$newInstance(record, { relations: false, ...(options || {}) })
 
     if (id)
-      this.hydratedData.set(id + stringOptions, hydratedModel)
+      this.hydratedData.set(idAndOptions, hydratedModel)
 
     return hydratedModel
   }
