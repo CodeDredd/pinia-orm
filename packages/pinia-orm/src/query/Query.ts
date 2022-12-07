@@ -980,19 +980,17 @@ export class Query<M extends Model = Model> {
    */
   protected getHydratedModel(record: Element, update = false, options?: ModelOptions): M {
     const id = record[this.model.$getKeyName() as string]
-    const savedHydratedModel = this.hydratedData.get(id)
+    const stringOptions = JSON.stringify(options)
+    const savedHydratedModel = id && this.hydratedData.get(id + stringOptions)
+    if (!update && savedHydratedModel)
+      return savedHydratedModel
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
     const hydratedModel = (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}) })
 
-    if (!update
-      && savedHydratedModel
-      && JSON.stringify(savedHydratedModel) === JSON.stringify(hydratedModel)
-    )
-      return savedHydratedModel
-
-    this.hydratedData.set(id, hydratedModel)
+    if (id)
+      this.hydratedData.set(id + stringOptions, hydratedModel)
 
     return hydratedModel
   }
