@@ -57,7 +57,7 @@ export interface InheritanceTypes {
 }
 
 export class Model {
-  pivot: undefined | null | Model | Model[];
+  pivot: any;
 
   declare _meta: undefined | MetaValues
   /**
