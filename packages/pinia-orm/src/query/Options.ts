@@ -1,14 +1,17 @@
+import { Model } from '@/model/Model';
 import type { Query } from './Query'
 
-export interface Where {
-  field: WherePrimaryClosure | string
-  value: WhereSecondaryClosure | any
+export interface Where<T = Model> {
+  field: WherePrimaryClosure<T> | NonMethodKeys<T> | string
+  value: WhereSecondaryClosure<T> | any
   boolean: 'and' | 'or'
 }
 
-export type WherePrimaryClosure = (model: any) => boolean
+export type NonMethodKeys<T> = { [P in keyof T]: T[P] extends Function ? never : P }[keyof T];
 
-export type WhereSecondaryClosure = (value: any) => boolean
+export type WherePrimaryClosure<T> = (model: T) => boolean
+
+export type WhereSecondaryClosure<T> = (value: T) => boolean
 
 export interface WhereGroup {
   and?: Where[]

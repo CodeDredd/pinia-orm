@@ -9,6 +9,7 @@ import { Query } from '../query/Query'
 import type {
   EagerLoadConstraint,
   GroupByFields,
+  NonMethodKeys,
   OrderBy,
   OrderDirection,
   WherePrimaryClosure,
@@ -142,19 +143,19 @@ export class Repository<M extends Model = Model> {
   /**
    * Add a basic where clause to the query.
    */
-  where(
-    field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any,
+  where<T extends WherePrimaryClosure<M> | NonMethodKeys<M>>(
+    field: T | string & {},
+    value?: WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never],
   ): Query<M> {
-    return this.query().where(field, value)
+    return this.query().where(field, value as any)
   }
 
   /**
    * Add an "or where" clause to the query.
    */
-  orWhere(
-    field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any,
+   orWhere<T extends WherePrimaryClosure<M> | NonMethodKeys<M>>(
+    field: T | string & {},
+    value?: WhereSecondaryClosure<M[T extends keyof M ? T : never]> | any,
   ): Query<M> {
     return this.query().orWhere(field, value)
   }

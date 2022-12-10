@@ -57,7 +57,7 @@ export interface InheritanceTypes {
 }
 
 export class Model {
-  [s: keyof ModelFields]: any
+  pivot: undefined | null | Model | Model[];
 
   declare _meta: undefined | MetaValues
   /**

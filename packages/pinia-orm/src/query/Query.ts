@@ -25,6 +25,7 @@ import type {
   EagerLoadConstraint,
   Group,
   GroupByFields,
+  NonMethodKeys,
   Order,
   OrderBy,
   OrderDirection,
@@ -47,7 +48,7 @@ export class Query<M extends Model = Model> {
   /**
    * The where constraints for the query.
    */
-  protected wheres: Where[] = []
+  protected wheres: Where<M>[] = []
 
   /**
    * The orderings for the query.
@@ -124,8 +125,8 @@ export class Query<M extends Model = Model> {
   /**
    * Create a new query instance with constraints for the given model.
    */
-  newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.hydratedData, this.pinia)
+  newQueryWithConstraints(model: string): Query<M> {
+    const newQuery = new Query<M>(this.database, this.database.getModel(model), this.cache, this.hydratedData, this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -195,9 +196,9 @@ export class Query<M extends Model = Model> {
   /**
    * Add a basic where clause to the query.
    */
-  where(
-    field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any,
+  where<T extends WherePrimaryClosure<M> | NonMethodKeys<M>>(
+    field: T | string & {},
+    value?: WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never],
   ): this {
     this.wheres.push({ field, value, boolean: 'and' })
 
@@ -207,7 +208,7 @@ export class Query<M extends Model = Model> {
   /**
    * Add a "where in" clause to the query.
    */
-  whereIn(field: string, values: any[] | Set<any>): this {
+  whereIn<T extends NonMethodKeys<M>>(field: T | string & {}, values: any[] | Set<any>): this {
     if (values instanceof Set)
       values = Array.from(values)
 
@@ -226,9 +227,9 @@ export class Query<M extends Model = Model> {
   /**
    * Add an "or where" clause to the query.
    */
-  orWhere(
-    field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any,
+  orWhere<T extends WherePrimaryClosure<M> | NonMethodKeys<M>>(
+    field: T  | string & {},
+    value?: WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never],
   ): this {
     this.wheres.push({ field, value, boolean: 'or' })
 
@@ -379,7 +380,7 @@ export class Query<M extends Model = Model> {
   /**
    * Get where closure for relations
    */
-  protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure {
+  protected getFieldWhereForRelations(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): WherePrimaryClosure<M> {
     const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get(false)
       .filter(model => compareWithOperator(
         isArray(model[relation]) ? model[relation].length : model[relation] === null ? 0 : 1,
@@ -513,17 +514,17 @@ export class Query<M extends Model = Model> {
   /**
    * The function to compare where clause to the given model.
    */
-  protected whereComparator(model: M, where: Where): boolean {
+  protected whereComparator(model: M, where: Where<M>): boolean {
     if (isFunction(where.field))
       return where.field(model)
 
     if (isArray(where.value))
-      return where.value.includes(model[where.field])
+      return where.value.includes(model[where.field as string])
 
     if (isFunction(where.value))
-      return where.value(model[where.field])
+      return where.value(model[where.field as string])
 
-    return model[where.field] === where.value
+    return model[where.field as string] === where.value
   }
 
   /**
@@ -673,13 +674,13 @@ export class Query<M extends Model = Model> {
       if (attr instanceof MorphTo) {
         const relatedType = model[attr.getType()]
 
-        // @ts-expect-error Don't know why its necessary yet
+        // @ts- expect-error Don't know why its necessary yet
         model[key] = this.newQuery(relatedType).reviveOne(relatedSchema)
 
         continue
       }
 
-      // @ts-expect-error Don't know why its necessary yet
+      // @ts- expect-error Don't know why its necessary yet
       model[key] = isArray(relatedSchema)
         ? this.newQueryForRelation(attr).reviveMany(relatedSchema)
         : this.newQueryForRelation(attr).reviveOne(relatedSchema)
