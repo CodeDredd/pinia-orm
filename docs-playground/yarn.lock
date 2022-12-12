@@ -68,14 +68,6 @@
     jsonc-eslint-parser "^2.1.0"
     yaml-eslint-parser "^1.1.0"
 
-"@antfu/install-pkg@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@antfu/install-pkg/-/install-pkg-0.1.0.tgz#8d8c61820cbc32e5c37d82d515485ad3ee9bd052"
-  integrity sha512-VaIJd3d1o7irZfK1U0nvBsHMyjkuyMP3HKYVV53z8DKyulkHKmjhhtccXO51WSPeeSHIeoJEoNOKavYpS7jkZw==
-  dependencies:
-    execa "^5.1.1"
-    find-up "^5.0.0"
-
 "@antfu/install-pkg@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@antfu/install-pkg/-/install-pkg-0.1.1.tgz#157bb04f0de8100b9e4c01734db1a6c77e98bbb5"
@@ -88,11 +80,6 @@
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.5.2.tgz#8c2d931ff927be0ebe740169874a3d4004ab414b"
   integrity sha512-CQkeV+oJxUazwjlHD0/3ZD08QWKuGQkhnrKo3e6ly5pd48VUpXbb77q0xMU4+vc2CkJnDS02Eq/M9ugyX20XZA==
-
-"@antfu/utils@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.6.3.tgz#0bc85e4368c83a18590682276a69fbae61a0f1f3"
-  integrity sha512-sEYpyyKUPOew9QsXZ8feRVMzW6DWLviwOl+/ap06UQW02A8Srbc95CPHVm4eUbiBzBgD46eyIT+przv//KSSlQ==
 
 "@antfu/utils@^0.7.2":
   version "0.7.2"
@@ -1179,16 +1166,16 @@
   resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
-"@iconify/utils@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.0.2.tgz#d3986021d691c66a5fe8d29ae5113e0a0e221d71"
-  integrity sha512-13B3wJxDLmSNBEIEpKleKSkJVQgdAy9ra3Xsu233i/5qD5yXBGhpOFxTB/k8cqme0xVsMKBPV5vbvq9MgQlX+w==
+"@iconify/utils@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.0.3.tgz#87a6524348197d229b04bcc1db8ffebf31f3d09d"
+  integrity sha512-kLpJ95/ZeT1+vIstjdeFnyfiEmmTJuekGb5SVykfKjLSJjmftTCzm7sxxzNHsd8i5mpKPl7Rws9sLGR3juKJ+g==
   dependencies:
-    "@antfu/install-pkg" "^0.1.0"
+    "@antfu/install-pkg" "^0.1.1"
     "@antfu/utils" "^0.5.2"
     "@iconify/types" "^2.0.0"
     debug "^4.3.4"
-    kolorist "^1.5.1"
+    kolorist "^1.6.0"
     local-pkg "^0.4.2"
 
 "@jridgewell/gen-mapping@^0.1.0":
@@ -4350,18 +4337,18 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unplugin-icons@^0.14.14:
-  version "0.14.14"
-  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.14.14.tgz#a8eba4bab2b4357332e7023c10e6733094b273f6"
-  integrity sha512-5apStlsB9AetB7JQ0DpHG+aFNGQOL8yrO+6XbYadywMXwCeLAPDPdSW0gWd8R3aB/rER1PM+LQikXlaakHH1Uw==
+unplugin-icons@^0.14.15:
+  version "0.14.15"
+  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.14.15.tgz#535605e25a34c6613888dca2094caf6ce2a5907c"
+  integrity sha512-J6YBA+fUzVM2IZPXCK3Pnk36jYVwQ6lkjRgOnZaXNIxpMDsmwDqrE1AGJ0zUbfuEoOa90OBGc0OPfN1r+qlSIQ==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
-    "@antfu/utils" "^0.6.3"
-    "@iconify/utils" "^2.0.2"
+    "@antfu/utils" "^0.7.2"
+    "@iconify/utils" "^2.0.3"
     debug "^4.3.4"
     kolorist "^1.6.0"
     local-pkg "^0.4.2"
-    unplugin "^1.0.0"
+    unplugin "^1.0.1"
 
 unplugin-vue-components@^0.22.12:
   version "0.22.12"
@@ -4378,16 +4365,6 @@ unplugin-vue-components@^0.22.12:
     minimatch "^5.1.1"
     resolve "^1.22.1"
     unplugin "^1.0.1"
-
-unplugin@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.0.0.tgz#8d12e0d116bf56313d42755094fc370e9c18da86"
-  integrity sha512-H5UnBUxfhTXBXGo2AwKsl0UaLSHzSNDZNehPQSgdhVfO/t+XAS1Yoj3vmLrrlBrS9ZwtH5tejbX/TCp5DcyCKg==
-  dependencies:
-    acorn "^8.8.1"
-    chokidar "^3.5.3"
-    webpack-sources "^3.2.3"
-    webpack-virtual-modules "^0.4.6"
 
 unplugin@^1.0.1:
   version "1.0.1"
@@ -4554,11 +4531,6 @@ webpack-sources@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
-
-webpack-virtual-modules@^0.4.6:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.4.6.tgz#3e4008230731f1db078d9cb6f68baf8571182b45"
-  integrity sha512-5tyDlKLqPfMqjT3Q9TAqf2YqjwmnUleZwzJi1A5qXnlBCdj2AtOJ6wAWdglTIDOPgOiOrXeBeFcsQ8+aGQ6QbA==
 
 webpack-virtual-modules@^0.5.0:
   version "0.5.0"
