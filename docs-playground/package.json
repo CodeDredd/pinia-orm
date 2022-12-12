@@ -47,7 +47,7 @@
     "vite": "^4.0.0",
     "unplugin-vue-components": "^0.22.12",
     "unplugin-icons": "^0.14.15",
-    "vite-plugin-pwa": "^0.13.3",
+    "vite-plugin-pwa": "^0.14.0",
     "vite-plugin-windicss": "^1.8.8",
     "vue-tsc": "^1.0.13",
     "windicss": "^3.5.6"
