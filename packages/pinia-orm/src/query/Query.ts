@@ -125,7 +125,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.hydratedData, this.pinia)
+    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, new Map(), this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -981,15 +981,20 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Instantiate new models by type if set.
+   * Save already existing models and return them if they exist to prevent
+   * an update event trigger in vue if the object is used.
    */
   protected getHydratedModel(record: Element, options?: ModelOptions): M {
     const modelKey = this.model.$getKeyName()
     const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
-    const idAndOptions = id + JSON.stringify(options)
-    const savedHydratedModel = id && this.hydratedData.get(idAndOptions)
+    const savedHydratedModel = id && this.hydratedData.get(id)
 
-    if (savedHydratedModel && JSON.stringify(record) === JSON.stringify(savedHydratedModel.$toJson()))
+    if (
+      savedHydratedModel
+      && this.hidden.length === 0
+      && this.visible.includes('*')
+      && JSON.stringify(record) === JSON.stringify(savedHydratedModel.$toJson())
+    )
       return savedHydratedModel
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
@@ -997,7 +1002,7 @@ export class Query<M extends Model = Model> {
       .$newInstance(record, { relations: false, ...(options || {}) })
 
     if (id)
-      this.hydratedData.set(idAndOptions, hydratedModel)
+      this.hydratedData.set(id, hydratedModel)
 
     return hydratedModel
   }

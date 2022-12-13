@@ -23,7 +23,7 @@ describe('performance/prevent_rerender_of_child_components', () => {
     },
     setup() {
       onUpdated(() => {
-        console.log('<PostComponent /> Updated')
+        console.warn('<PostComponent /> Updated')
       })
     },
     template: `
@@ -78,7 +78,7 @@ describe('performance/prevent_rerender_of_child_components', () => {
       },
     })
 
-    const logger = vi.spyOn(console, 'log')
+    const logger = vi.spyOn(console, 'warn')
 
     await wrapper.find('button').trigger('click')
     await nextTick()
