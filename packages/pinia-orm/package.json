@@ -63,7 +63,7 @@
     "@pinia-orm/normalizr": ">=1.0.5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.33.1",
+    "@antfu/eslint-config": "^0.34.0",
     "@pinia/testing": "^0.0.14",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@types/prettier": "^2",
@@ -86,7 +86,7 @@
     "typescript": "^4.9.4",
     "unbuild": "^1.0.2",
     "uuid": "^9.0.0",
-    "vite": "^4.0.0",
+    "vite": "^4.0.1",
     "vitest": "^0.25.7",
     "vue": "^3.2.45",
     "vue-demi": "^0.13.11",
