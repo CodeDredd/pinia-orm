@@ -1670,22 +1670,22 @@
   dependencies:
     vue-demi "*"
 
-"@windicss/config@1.8.9":
-  version "1.8.9"
-  resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.8.9.tgz#afbaaa87c4e9d3e79a12f5080bae8c64103ac08e"
-  integrity sha512-ikvKVrr/CsTO5FEpPWTyCMryoukIDsc0p8KxU8q8Fgt45SIPNZRaYP9yNJvDE1ytrPnwvgOMRXMxuMmxOXtvMQ==
+"@windicss/config@1.8.10":
+  version "1.8.10"
+  resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.8.10.tgz#717f070889db153fdfead4bc4401f4120f3de4ae"
+  integrity sha512-O9SsC110b1Ik3YYa4Ck/0TWuCo7YFfA9KDrwD5sAeqscT5COIGK1HszdCT3oh0MJFej2wNrvpfyW9h6yQaW6PA==
   dependencies:
     debug "^4.3.4"
     jiti "^1.16.0"
     windicss "^3.5.6"
 
-"@windicss/plugin-utils@1.8.9":
-  version "1.8.9"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.8.9.tgz#eb1f4bbaba4f4e7884285481a62ada0e73cf611c"
-  integrity sha512-c4n6LX9B8tokBM0PitCY+GPobUMklrfNF+TfwHr2RpN+SIJ37CxEEBCB7Q4QpUVdSyCW99RCGkxb/7ysT2MSkg==
+"@windicss/plugin-utils@1.8.10":
+  version "1.8.10"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.8.10.tgz#241d5a93650be826c9cbd2614341885b044251c7"
+  integrity sha512-Phqk5OW1w+Mv+ry6t7BzAeDq3aMhbI94gR49j9vQCufFfDGCHndhhjtMK0sBv+NPJUsIAIh6qayb1iwBCXUGrw==
   dependencies:
     "@antfu/utils" "^0.7.2"
-    "@windicss/config" "1.8.9"
+    "@windicss/config" "1.8.10"
     debug "^4.3.4"
     fast-glob "^3.2.12"
     magic-string "^0.27.0"
@@ -4417,12 +4417,12 @@ vite-plugin-pwa@^0.14.0:
     workbox-build "^6.5.4"
     workbox-window "^6.5.4"
 
-vite-plugin-windicss@^1.8.9:
-  version "1.8.9"
-  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.8.9.tgz#cd4e843ab1d956bdcb8aa81a676739dae6781bcd"
-  integrity sha512-ADM8jBcZKJ9RXdnUy47R/omX6xQuW3U0DcwX2lb21tCO2ticG0JY1/ji/8ysB9/cMluGVOCue2EL5Su3ZVy7Jg==
+vite-plugin-windicss@^1.8.10:
+  version "1.8.10"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.8.10.tgz#a0e022c5d3def185fb2458a0ba41fc140421ddcb"
+  integrity sha512-scywsuzo46lcTBohspmF0WiwhWEte6p+OUVrX4yr7VMRvLHMHVfLtJReyD5pppjijG7YOwVsZn7XBWWZtF658Q==
   dependencies:
-    "@windicss/plugin-utils" "1.8.9"
+    "@windicss/plugin-utils" "1.8.10"
     debug "^4.3.4"
     kolorist "^1.6.0"
     windicss "^3.5.6"
