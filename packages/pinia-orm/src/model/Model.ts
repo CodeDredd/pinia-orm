@@ -1,8 +1,6 @@
-import type { DefineStoreOptionsBase } from 'pinia'
 import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
-import type { DataStore, DataStoreState } from '../composables/useDataStore'
 import type { ModelConfigOptions } from '../store/Store'
 import { config } from '../store/Config'
 import type { Attribute } from './attributes/Attribute'
@@ -163,6 +161,7 @@ export class Model {
    */
   protected static initializeSchema(): void {
     this.schemas[this.entity] = {}
+    this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
 
     const registry = {
       ...this.fields(),
@@ -175,8 +174,9 @@ export class Model {
       this.schemas[this.entity][key]
         = typeof attribute === 'function' ? attribute() : attribute
 
-      if (this.fieldsOnDelete[key])
-        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[key])
+      console.log(this.fieldsOnDelete[this.entity][key])
+      if (this.fieldsOnDelete[this.entity][key])
+        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[this.entity][key])
     }
   }
 
@@ -204,7 +204,8 @@ export class Model {
     key: string,
     mode: deleteModes,
   ): M {
-    this.fieldsOnDelete[key] = mode
+    this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
+    this.fieldsOnDelete[this.entity][key] = mode
 
     return this
   }
