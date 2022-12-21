@@ -123,7 +123,7 @@ export class Model {
    * The pinia options for the model. It can contain options which will passed
    * to the 'defineStore' function of pinia.
    */
-  protected static piniaOptions: DefineStoreOptionsBase<DataStoreState, DataStore> = {}
+  protected static piniaOptions = {}
 
   /**
    * The mutators for the model.
@@ -585,7 +585,7 @@ export class Model {
   /**
    * Get the pinia options for this model.
    */
-  $piniaOptions(): DefineStoreOptionsBase<DataStoreState, DataStore> {
+  $piniaOptions() {
     return this.$self().piniaOptions
   }
 
