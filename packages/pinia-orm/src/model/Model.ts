@@ -1,8 +1,6 @@
-import type { DefineStoreOptionsBase } from 'pinia'
 import { assert, isArray, isNullish } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
-import type { DataStore, DataStoreState } from '../composables/useDataStore'
 import type { ModelConfigOptions } from '../store/Store'
 import { config } from '../store/Config'
 import type { Attribute } from './attributes/Attribute'
