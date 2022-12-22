@@ -939,11 +939,12 @@ export class Query<M extends Model = Model> {
 
     models.forEach((currentModel) => {
       const isDeleting = currentModel.$self().deleting(currentModel)
-      this.checkAndDeleteRelations(currentModel)
-      if (isDeleting === false)
-        notDeletableIds.push(currentModel.$getIndexId())
-      else
+      // eslint-disable-next-line max-statements-per-line
+      if (isDeleting === false) { notDeletableIds.push(currentModel.$getIndexId()) }
+      else {
         afterHooks.push(() => currentModel.$self().deleted(currentModel))
+        this.checkAndDeleteRelations(currentModel)
+      }
     })
 
     return [afterHooks, notDeletableIds]
