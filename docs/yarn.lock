@@ -1384,18 +1384,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/studio@npm:^0.3.11":
-  version: 0.3.11
-  resolution: "@nuxthq/studio@npm:0.3.11"
+"@nuxthq/studio@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "@nuxthq/studio@npm:0.4.1"
   dependencies:
     "@nuxt/kit": ^3.0.0
     "@nuxt/schema": ^3.0.0
     defu: ^6.1.1
-    nuxt-component-meta: ^0.3.8
-    nuxt-config-schema: ^0.3.4
+    nuxt-component-meta: ^0.4.1
+    nuxt-config-schema: ^0.3.7
     socket.io-client: ^4.5.4
     ufo: ^1.0.1
-  checksum: f49634ec2c030214523a8b0005f4b476708a6e5d3d630ec2a89e5ebe063f8f5dbb0ec059807785faa06f8d58c2561350473f6202029f0d5a313eaaf218aed393
+  checksum: 05092da13906f8a9f142b3307ec5c9c2c910f91277e4c38588b36de7844ab3f89d6d0c15416830feef53723ece6c7543a67c52cd08f43755adb70987287f80a4
   languageName: node
   linkType: hard
 
@@ -1594,7 +1594,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest"
-    "@nuxthq/studio": ^0.3.11
+    "@nuxthq/studio": ^0.4.1
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
     jiti: ^1.16.0
     nuxt: 3.0.0-rc.12
@@ -7862,28 +7862,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-component-meta@npm:^0.3.8":
-  version: 0.3.8
-  resolution: "nuxt-component-meta@npm:0.3.8"
+"nuxt-component-meta@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "nuxt-component-meta@npm:0.4.1"
   dependencies:
     "@nuxt/kit": ^3.0.0
     scule: ^1.0.0
     typescript: ^4.9.3
     vue-component-meta: ^1.0.9
-  checksum: a525b1371f0135b362c1d7ddf26ee89652d5aadc1d1d5e4a46793629d6eda819fabfed58720bfe4a80baca8e918b026024308d69e21c9b779466d7d02bf439c9
+  checksum: 7da8b6ce64cbf068cfcd752c85f27e52a3078932116080f8d3bea1be8125663cf6cd6ef56c6ddb82d24bde2e9e8d859ddf1ff939ece2133687a1134d594e1b6a
   languageName: node
   linkType: hard
 
-"nuxt-config-schema@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "nuxt-config-schema@npm:0.3.4"
+"nuxt-config-schema@npm:^0.3.7":
+  version: 0.3.7
+  resolution: "nuxt-config-schema@npm:0.3.7"
   dependencies:
     "@nuxt/kit": ^3.0.0
     defu: ^6.1.1
     jiti: ^1.16.0
     pathe: ^1.0.0
-    untyped: ^1.0.0
-  checksum: 6a0964f01479edeb62c90bb1b0461d431b1edfb87c11308706a3481745739bf6a49480b98f317f27116a06b6731a94ac53196ced02864458552449741df68a1d
+    untyped: ^1.2.0
+  checksum: 0ace3d7adce3b37459273d1607ef7b102a3709bf2e6a4437018de0202fd8c236c030c1fd51d9aa4cca282cd14915316d3f7fc48bddbc6b8847d8e7bea4400a24
   languageName: node
   linkType: hard
 
