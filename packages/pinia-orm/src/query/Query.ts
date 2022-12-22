@@ -1,6 +1,6 @@
 import type { Pinia } from 'pinia'
 import {
-  assert, compareWithOperator, generateKey,
+  assert, compareWithOperator, equals, generateKey,
   groupBy,
   isArray,
   isEmpty,
@@ -993,7 +993,7 @@ export class Query<M extends Model = Model> {
       savedHydratedModel
       && this.hidden.length === 0
       && this.visible.includes('*')
-      && JSON.stringify(record) === JSON.stringify(savedHydratedModel.$toJson())
+      && equals(record, savedHydratedModel.$toJson())
     )
       return savedHydratedModel
 

@@ -1,4 +1,4 @@
-import { assert, isArray, isNullish, throwError } from '../support/Utils'
+import { assert, equals, isArray, isNullish, throwError } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { ModelConfigOptions } from '../store/Store'
@@ -912,10 +912,10 @@ export class Model {
     if ($attribute) {
       if (!Object.keys(original).includes($attribute))
         throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"'])
-      return this[$attribute] !== original[$attribute]
+      return !equals(this[$attribute], original[$attribute])
     }
 
-    return JSON.stringify(original) !== JSON.stringify(this.$getAttributes())
+    return !equals(original, this.$getAttributes())
   }
 
   /**
