@@ -174,7 +174,6 @@ export class Model {
       this.schemas[this.entity][key]
         = typeof attribute === 'function' ? attribute() : attribute
 
-      console.log(this.fieldsOnDelete[this.entity][key])
       if (this.fieldsOnDelete[this.entity][key])
         this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[this.entity][key])
     }
