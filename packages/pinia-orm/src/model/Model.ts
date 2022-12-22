@@ -1,4 +1,4 @@
-import { assert, isArray, isNullish } from '../support/Utils'
+import { assert, equals, isArray, isNullish, throwError } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { ModelConfigOptions } from '../store/Store'
@@ -103,6 +103,11 @@ export class Model {
    * Behaviour for relational fields on delete.
    */
   static fieldsOnDelete = {}
+
+  /**
+   * Original model data.
+   */
+  protected static original = {}
 
   /**
    * The schema for the model. It contains the result of the `fields`
@@ -705,6 +710,8 @@ export class Model {
       this[key] = this[key] ?? keyValue
     }
 
+    operation === 'set' && (this.$self().original = this.$getAttributes())
+
     modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
     return this
@@ -880,6 +887,35 @@ export class Model {
    */
   $getCasts() {
     return this.$self().casts()
+  }
+
+  /**
+   * Get the original values of the model instance
+   */
+  $getOriginal(): Element {
+    return this.$self().original
+  }
+
+  /**
+   * Return the model instance with its original state
+   */
+  $refresh(): this {
+    this.$isDirty() && this.$fill(this.$getOriginal(), { action: 'save', relations: false, operation: 'set' })
+    return this
+  }
+
+  /**
+   * Checks if attributes were changed
+   */
+  $isDirty($attribute?: keyof ModelFields): Boolean {
+    const original = this.$getOriginal()
+    if ($attribute) {
+      if (!Object.keys(original).includes($attribute))
+        throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"'])
+      return !equals(this[$attribute], original[$attribute])
+    }
+
+    return !equals(original, this.$getAttributes())
   }
 
   /**
