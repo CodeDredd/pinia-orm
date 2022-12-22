@@ -50,7 +50,7 @@
     "size": "size-limit",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --fix --ext .ts",
-    "test:ui": "vue-demi-switch 3 && vitest --ui",
+    "test:ui": "vue-demi-switch 3 && vitest --ui --api 9527",
     "test:watch": "vue-demi-switch 3 && vitest --watch",
     "test:2": "vue-demi-switch 2 vue2 && vitest --run",
     "test:3": "vue-demi-switch 3 && vitest --run",
@@ -95,7 +95,7 @@
   "size-limit": [
     {
       "path": "dist/index.mjs",
-      "limit": "10 kB"
+      "limit": "11 kB"
     },
     {
       "path": "dist/decorators.mjs",

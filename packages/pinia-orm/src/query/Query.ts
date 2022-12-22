@@ -1,6 +1,6 @@
 import type { Pinia } from 'pinia'
 import {
-  assert, compareWithOperator, generateKey,
+  assert, compareWithOperator, equals, generateKey,
   groupBy,
   isArray,
   isEmpty,
@@ -125,7 +125,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.hydratedData, this.pinia)
+    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, new Map(), this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -631,7 +631,7 @@ export class Query<M extends Model = Model> {
     if (!item)
       return null
 
-    const model = this.hydrate(item, undefined, true)
+    const model = this.hydrate(item)
 
     this.reviveRelations(model, schema)
 
@@ -690,7 +690,7 @@ export class Query<M extends Model = Model> {
    * Create and persist model with default values.
    */
   new(): M {
-    const model = this.hydrate({}, undefined, true)
+    const model = this.hydrate({})
 
     this.commit('insert', this.compile(model))
 
@@ -752,8 +752,8 @@ export class Query<M extends Model = Model> {
       const record = elements[id]
       const existing = currentData[id]
       const model = existing
-        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' }, true)
-        : this.hydrate(record, { operation: 'set', action: 'save' }, true)
+        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
+        : this.hydrate(record, { operation: 'set', action: 'save' })
 
       const isSaving = model.$self().saving(model, record)
       const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
@@ -791,7 +791,7 @@ export class Query<M extends Model = Model> {
   fresh(records: Element[]): Collection<M>
   fresh(record: Element): M
   fresh(records: Element | Element[]): M | Collection<M> {
-    const models = this.hydrate(records)
+    const models = this.hydrate(records, { action: 'update' })
 
     this.commit('fresh', this.compile(models))
 
@@ -808,7 +808,11 @@ export class Query<M extends Model = Model> {
       return []
 
     const newModels = models.map((model) => {
-      return this.hydrate({ ...model.$getAttributes(), ...record }, undefined, true)
+      const newModel = this.hydrate({ ...model.$getAttributes(), ...record }, { action: 'update' })
+      if (model.$self().updating(model, record) === false)
+        return model
+      newModel.$self().updated(newModel)
+      return newModel
     })
 
     this.commit('update', this.compile(newModels))
@@ -883,6 +887,7 @@ export class Query<M extends Model = Model> {
    */
   flush(): Collection<M> {
     this.commit('flush')
+    this.hydratedData.clear()
     return this.get(false)
   }
 
@@ -934,11 +939,12 @@ export class Query<M extends Model = Model> {
 
     models.forEach((currentModel) => {
       const isDeleting = currentModel.$self().deleting(currentModel)
-      this.checkAndDeleteRelations(currentModel)
-      if (isDeleting === false)
-        notDeletableIds.push(currentModel.$getIndexId())
-      else
+      // eslint-disable-next-line max-statements-per-line
+      if (isDeleting === false) { notDeletableIds.push(currentModel.$getIndexId()) }
+      else {
         afterHooks.push(() => currentModel.$self().deleted(currentModel))
+        this.checkAndDeleteRelations(currentModel)
+      }
     })
 
     return [afterHooks, notDeletableIds]
@@ -954,12 +960,12 @@ export class Query<M extends Model = Model> {
   /**
    * Instantiate new models with the given record.
    */
-  protected hydrate(record: Element, options?: ModelOptions, update?: boolean): M
-  protected hydrate(records: Element[], options?: ModelOptions, update?: boolean): Collection<M>
-  protected hydrate(records: Element | Element[], options?: ModelOptions, update = false): M | Collection<M> {
+  protected hydrate(record: Element, options?: ModelOptions): M
+  protected hydrate(records: Element[], options?: ModelOptions): Collection<M>
+  protected hydrate(records: Element | Element[], options?: ModelOptions): M | Collection<M> {
     return isArray(records)
-      ? records.map(record => this.hydrate(record, options, update))
-      : this.getHydratedModel(records, update, { relations: false, ...(options || {}) })
+      ? records.map(record => this.hydrate(record, options))
+      : this.getHydratedModel(records, { relations: false, ...(options || {}) })
   }
 
   /**
@@ -976,23 +982,28 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Instantiate new models by type if set.
+   * Save already existing models and return them if they exist to prevent
+   * an update event trigger in vue if the object is used.
    */
-  protected getHydratedModel(record: Element, update = false, options?: ModelOptions): M {
-    const id = record[this.model.$getKeyName() as string]
-    const savedHydratedModel = this.hydratedData.get(id)
+  protected getHydratedModel(record: Element, options?: ModelOptions): M {
+    const modelKey = this.model.$getKeyName()
+    const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
+    const savedHydratedModel = id && this.hydratedData.get(id)
+
+    if (
+      savedHydratedModel
+      && this.hidden.length === 0
+      && this.visible.includes('*')
+      && equals(record, savedHydratedModel.$toJson())
+    )
+      return savedHydratedModel
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
     const hydratedModel = (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}) })
 
-    if (!update
-      && savedHydratedModel
-      && JSON.stringify(savedHydratedModel) === JSON.stringify(hydratedModel)
-    )
-      return savedHydratedModel
-
-    this.hydratedData.set(id, hydratedModel)
+    if (id)
+      this.hydratedData.set(id, hydratedModel)
 
     return hydratedModel
   }

@@ -15,21 +15,32 @@ describe('feature/repository/save', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Num(0) id!: number
-    @Str('') name!: string
-    @Num(0) age!: number
+    @Num(0) declare id: number
+    @Str('') declare name: string
+    @Num(0) declare age: number
 
     static piniaOptions = {
+      state: () => ({
+        data: {},
+        currentId: <number | string | null>null,
+      }),
       persist: true,
     }
+  }
+
+  interface CurrentState {
+    data: Record<string, User>
+    currentId: number | string | null
   }
 
   it('does nothing when passing in an empty array', () => {
     const userRepo = useRepo(User)
 
+    expect(userRepo.piniaStore<CurrentState>().currentId).toBeNull()
+
     userRepo.save([])
 
-    assertState({})
+    assertState({ users: {} }, { currentId: null })
   })
 
   it('saves a model to the store and check pinia options', () => {
@@ -45,7 +56,7 @@ describe('feature/repository/save', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 30 },
       },
-    })
+    }, { currentId: null })
   })
 
   it('saves multiple models to the store', () => {
@@ -61,7 +72,7 @@ describe('feature/repository/save', () => {
         1: { id: 1, name: 'John Doe', age: 30 },
         2: { id: 2, name: 'Jane Doe', age: 20 },
       },
-    })
+    }, { currentId: null })
   })
 
   it('updates existing model if it exists', () => {

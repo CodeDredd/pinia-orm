@@ -61,7 +61,7 @@ export class BelongsToMany extends Relation {
    * Get all related models for the relationship.
    */
   getRelateds(): Model[] {
-    return [this.related]
+    return [this.related, this.pivot]
   }
 
   /**
@@ -119,8 +119,6 @@ export class BelongsToMany extends Relation {
    * Set the constraints for the related relation.
    */
   addEagerConstraints(query: Query, collection: Collection): void {
-    query.database.register(this.pivot)
-
     const pivotKeys = query
       .newQuery(this.pivot.$entity())
       .where(this.foreignPivotKey, this.getKeys(collection, this.parentKey))

@@ -15,6 +15,7 @@ import type {
   WhereSecondaryClosure,
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
+import type { DataStoreState } from '../composables/useDataStore'
 import { useDataStore } from '../composables/useDataStore'
 import { cache } from '../cache/SharedWeakCache'
 import type { WeakCache } from '../cache/WeakCache'
@@ -112,8 +113,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Returns the pinia store used with this model
    */
-  piniaStore() {
-    return useDataStore(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
+  piniaStore<S extends DataStoreState = DataStoreState>() {
+    return useDataStore<S>(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
   }
 
   /**

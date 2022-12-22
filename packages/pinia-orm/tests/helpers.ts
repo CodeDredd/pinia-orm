@@ -23,12 +23,12 @@ export function createPiniaORM(options?: InstallOptions) {
   setActivePinia(pinia)
 }
 
-export function createState(entities: Entities): any {
+export function createState(entities: Entities, additionalStoreProperties = {}): any {
   const state = {} as any
 
   for (const entity in entities) {
     if (!state[entity])
-      state[entity] = { data: {} }
+      state[entity] = { data: {}, ...additionalStoreProperties }
 
     state[entity].data = entities[entity]
   }
@@ -42,8 +42,8 @@ export function fillState(entities: Entities): void {
   getActivePinia().state.value = createState(entities)
 }
 
-export function assertState(entities: Entities): void {
-  expect(getActivePinia()?.state.value).toEqual(createState(entities))
+export function assertState(entities: Entities, additionalStoreProperties?: Record<string, any>): void {
+  expect(getActivePinia()?.state.value).toEqual(createState(entities, additionalStoreProperties))
 }
 
 export function assertModel<M extends Model>(

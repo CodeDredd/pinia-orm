@@ -71,6 +71,7 @@ describe('feature/repository/delete_with_relations', () => {
       static entity = 'roles'
 
       @Num(0) declare id: number
+      @Str('') declare posts: string
       declare pivot: RoleUser
     }
 
@@ -154,9 +155,9 @@ describe('feature/repository/delete_with_relations', () => {
         1: { id: 1, name: 'John Doe' },
       },
       roles: {
-        1: { id: 1 },
-        2: { id: 2 },
-        4: { id: 4 },
+        1: { id: 1, posts: '' },
+        2: { id: 2, posts: '' },
+        4: { id: 4, posts: '' },
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
