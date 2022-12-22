@@ -104,7 +104,7 @@ importers:
   packages/pinia-orm:
     specifiers:
       '@antfu/eslint-config': ^0.34.0
-      '@pinia-orm/normalizr': '>=1.0.5'
+      '@pinia-orm/normalizr': '>=1.0.6'
       '@pinia/testing': ^0.0.14
       '@size-limit/preset-small-lib': ^8.1.0
       '@types/prettier': ^2
