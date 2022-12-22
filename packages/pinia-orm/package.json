@@ -1,6 +1,6 @@
 {
   "name": "pinia-orm",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store.",
   "keywords": [
     "vue",
@@ -60,7 +60,7 @@
     "pinia": "^2.0.28"
   },
   "dependencies": {
-    "@pinia-orm/normalizr": ">=1.0.5"
+    "@pinia-orm/normalizr": ">=1.0.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.34.0",
