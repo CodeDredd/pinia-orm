@@ -107,7 +107,7 @@ export class Model {
   /**
    * Original model data.
    */
-  static original = {}
+  protected static original = {}
 
   /**
    * The schema for the model. It contains the result of the `fields`
@@ -890,14 +890,14 @@ export class Model {
   }
 
   /**
-   * Get the original model values
+   * Get the original values of the model instance
    */
   $getOriginal(): Element {
     return this.$self().original
   }
 
   /**
-   * Refresh the model values to its initial state
+   * Return the model instance with its original state
    */
   $refresh(): this {
     this.$isDirty() && this.$fill(this.$getOriginal(), { action: 'save', relations: false, operation: 'set' })
