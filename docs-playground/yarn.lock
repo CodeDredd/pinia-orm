@@ -1639,16 +1639,6 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.45.tgz#a3fffa7489eafff38d984e23d0236e230c818bc2"
   integrity sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==
 
-"@vueuse/core@9.8.2":
-  version "9.8.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.8.2.tgz#a142281bb33368c74668a180a813c7c8d91f89d8"
-  integrity sha512-aWiCmcYIpPt7xjuqYiceODEMHchDYthrJ4AqI+FXPZrR23PZOqdiktbUVyQl2kGlR3H4i9UJ/uimQrwhz9UouQ==
-  dependencies:
-    "@types/web-bluetooth" "^0.0.16"
-    "@vueuse/metadata" "9.8.2"
-    "@vueuse/shared" "9.8.2"
-    vue-demi "*"
-
 "@vueuse/core@9.9.0":
   version "9.9.0"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.9.0.tgz#ad6849cd03ba7ee396ef93fa01d4f2e5b11a4942"
@@ -1659,19 +1649,14 @@
     "@vueuse/shared" "9.9.0"
     vue-demi "*"
 
-"@vueuse/integrations@^9.8.2":
-  version "9.8.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-9.8.2.tgz#97b17a0cdfecc15189beeee887c872ed9b632e59"
-  integrity sha512-8nIMfD5HezootbTt5Un6AkiK9CL657YxI1ZFtcQa5CggKhYjyoLiJn68HaQ80GeE4LJ++F51qksENKoTukIWQA==
+"@vueuse/integrations@^9.9.0":
+  version "9.9.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-9.9.0.tgz#fe1c0bdcbba92983a8f6f93386377ed5b3da7302"
+  integrity sha512-/wr3jrMlzbPNd38dO85NOT4j7vga9+eQewEZFXHJAFEvKnRxBy/Ytp1pt4Sz8dVOLLYMBHfSaVAra91ftfIh0w==
   dependencies:
-    "@vueuse/core" "9.8.2"
-    "@vueuse/shared" "9.8.2"
+    "@vueuse/core" "9.9.0"
+    "@vueuse/shared" "9.9.0"
     vue-demi "*"
-
-"@vueuse/metadata@9.8.2":
-  version "9.8.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.8.2.tgz#864905e351a88165717c66d35d4b59a84bed2ae1"
-  integrity sha512-N4E/BKS+9VsUeD4WLVRU1J2kCOLh+iikBcMtipFcTyL204132vDYHs27zLAVabJYGnhC0dIVGdhg9pbOZiY2TQ==
 
 "@vueuse/metadata@9.9.0":
   version "9.9.0"
