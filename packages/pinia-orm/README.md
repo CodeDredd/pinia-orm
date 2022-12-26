@@ -1,20 +1,12 @@
-<p align="center">
-  <a href="https://github.com/storm-tail/pinia-orm" target="_blank" rel="noopener noreferrer">
-    <img width="120" src="https://pinia-orm.codedredd.de/logo.png" alt="Pinia ORM logo">
-  </a>
-</p>
-
-<p align="center">
-  <i>Artwork from <a href="https://pinia.vuejs.org/">Pinia</a></i>
-</p>
-
-<h1 align="center">pinia-orm</h1>
+[![Pinia ORM banner](./.github/assets/banner.png)](https://github.com/storm-tail/pinia-orm)
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![Coverage][code-coverage-src]][code-coverage-href]
 [![License][license-src]][license-href]
+
+# Welcome to pinia-orm
 
 > Intuitive, type safe and flexible ORM for Pinia based on [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
 
