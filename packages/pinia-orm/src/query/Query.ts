@@ -395,7 +395,7 @@ export class Query<M extends Model = Model> {
    * Get all models from the store. The difference with the `get` is that this
    * method will not process any query chain. It'll always retrieve all models.
    */
-  all(): Collection<M> {
+  private all(): Collection<M> {
     const data = this.commit('all')
 
     const collection = [] as Collection<M>
