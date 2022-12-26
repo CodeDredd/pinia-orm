@@ -1,11 +1,7 @@
 <p align="center">
   <a href="https://github.com/storm-tail/pinia-orm" target="_blank" rel="noopener noreferrer">
-    <img width="120" src="https://pinia-orm.codedredd.de/logo_pinia_orm.png" alt="Pinia ORM logo">
+    <img width="120" src="https://pinia-orm.codedredd.de/logo.png" alt="Pinia ORM logo">
   </a>
-</p>
-
-<p align="center">
-  <i>Artwork from <a href="https://pinia.vuejs.org/">Pinia</a></i>
 </p>
 
 <h1 align="center">pinia-orm</h1>
