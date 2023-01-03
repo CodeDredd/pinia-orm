@@ -15,16 +15,6 @@ export function useStoreActions() {
     fresh(this: DataStore, records: Elements) {
       this.data = records
     },
-    destroy(this: DataStore, ids: string[]): void {
-      const data: Elements = {}
-
-      for (const id in this.data) {
-        if (!ids.includes(id))
-          data[id] = this.data[id]
-      }
-
-      this.data = data
-    },
     /**
      * Commit `delete` change to the store.
      */
