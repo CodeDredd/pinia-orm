@@ -1669,13 +1669,6 @@
   dependencies:
     vue-demi "*"
 
-"@vueuse/shared@9.9.0":
-  version "9.9.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.9.0.tgz#3f02e6a86d9c789c3dd73308bd3adea958860086"
-  integrity sha512-+D0XFwHG0T+uaIbCSlROBwm1wzs71B7n3KyDOxnvfEMMHDOzl09rYKwaE2AENmYwYPXfHPbSBRDD2gBVHbvTcg==
-  dependencies:
-    vue-demi "*"
-
 "@windicss/config@1.8.10":
   version "1.8.10"
   resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.8.10.tgz#717f070889db153fdfead4bc4401f4120f3de4ae"
