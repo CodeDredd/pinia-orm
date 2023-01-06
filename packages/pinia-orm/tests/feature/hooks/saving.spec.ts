@@ -2,8 +2,8 @@ import { describe, expect, it, vi } from 'vitest'
 
 import type { Element } from '../../../src'
 import { BelongsTo as BelongsToClass, Model, useRepo } from '../../../src'
-import {Attr, BelongsTo, Num, Str, Uid} from '../../../src/decorators'
-import {assertState, mockUid} from '../../helpers'
+import { Attr, BelongsTo, Num, Str, Uid } from '../../../src/decorators'
+import { assertState, mockUid } from '../../helpers'
 
 describe('feature/hooks/saving', () => {
   it('does nothing when passing in an empty array', () => {

@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
-import {Num, Str, Uid} from '../../../src/decorators'
-import {assertState, mockUid} from '../../helpers'
+import { Num, Str, Uid } from '../../../src/decorators'
+import { assertState, mockUid } from '../../helpers'
 
 describe('feature/hooks/saved', () => {
   it('does nothing when passing in an empty array', () => {
