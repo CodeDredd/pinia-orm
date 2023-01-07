@@ -79,7 +79,7 @@
     "mkdist": "^1.0.0",
     "nanoid": "^4.0.0",
     "pinia": "^2.0.28",
-    "prettier": "^2.8.1",
+    "prettier": "^2.8.2",
     "size-limit": "^8.1.0",
     "std-env": "^3.3.1",
     "tsup": "^6.5.0",
