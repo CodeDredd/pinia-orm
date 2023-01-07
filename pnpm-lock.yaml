@@ -80,7 +80,7 @@ importers:
       nuxt: ^3.0.0-rc.13
       pinia: ^2.0.28
       pinia-orm: ^1.0.0
-      prettier: ^2.8.1
+      prettier: ^2.8.2
       std-env: ^3.1.1
       typescript: ^4.9.4
       vue: ^3.2.45
@@ -96,7 +96,7 @@ importers:
       nuxt: 3.0.0-rc.13_iukboom6ndih5an6iafl45j2fe
       pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
       pinia-orm: link:../pinia-orm
-      prettier: 2.8.1
+      prettier: 2.8.2
       std-env: 3.1.1
       typescript: 4.9.4
       vue: 3.2.45
@@ -120,7 +120,7 @@ importers:
       mkdist: ^1.0.0
       nanoid: ^4.0.0
       pinia: ^2.0.28
-      prettier: ^2.8.1
+      prettier: ^2.8.2
       size-limit: ^8.1.0
       std-env: ^3.1.1
       tsup: ^6.5.0
@@ -151,7 +151,7 @@ importers:
       mkdist: 1.0.0_typescript@4.9.4
       nanoid: 4.0.0
       pinia: 2.0.28_ax6mpyprelqlmurvismt2kzsgu
-      prettier: 2.8.1
+      prettier: 2.8.2
       size-limit: 8.1.0
       std-env: 3.1.1
       tsup: 6.5.0_typescript@4.9.4
@@ -9092,12 +9092,6 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
-    dev: true
-
-  /prettier/2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
     dev: true
 
   /prettier/2.8.2:
