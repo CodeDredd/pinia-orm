@@ -1,6 +1,6 @@
 {
   "name": "@pinia-orm/normalizr",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Normalizes JSON according to schema for Redux and Flux applications",
   "bugs": {
     "url": "https://github.com/CodeDredd/pinia-orm/issues"
@@ -53,8 +53,8 @@
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@size-limit/preset-small-lib": "^8.1.0",
-    "eslint": "^8.29.0",
-    "immutable": "^4.1.0",
+    "eslint": "^8.31.0",
+    "immutable": "^4.2.2",
     "size-limit": "^8.1.0",
     "typescript": "^4.9.4",
     "unbuild": "^1.0.2"

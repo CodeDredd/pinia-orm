@@ -17,5 +17,10 @@ useRepo(User).piniaStore()
 
 ## Typescript Declarations
 ````ts
-function piniaStore(): Store
+export interface DataStoreState {
+  data: Record<string, any>
+  [s: string]: any
+}
+
+function piniaStore<S extends DataStoreState = DataStoreState>(): Store
 ````

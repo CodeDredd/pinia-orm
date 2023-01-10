@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, Num, Str } from '../../../src/decorators'
-import { assertState, fillState } from '../../helpers'
+import { assertModel, assertState, fillState } from '../../helpers'
 
 describe('feature/repository/update', () => {
   class User extends Model {
@@ -26,6 +26,7 @@ describe('feature/repository/update', () => {
 
     userRepo.where('name', 'Jane Doe').update({ age: 50 })
 
+    assertModel(userRepo.where('name', 'Jane Doe').first()!, { id: 2, name: 'Jane Doe', age: 50 })
     assertState({
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },

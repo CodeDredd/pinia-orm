@@ -69,13 +69,15 @@ describe('feature/hooks/updating', () => {
       { id: 2, name: 'John Doe 2', age: 40 },
     ])
 
+    useRepo(User).where('id', 1).update({ age: 100 })
+
     expect(creatingMethod).toHaveBeenCalledTimes(0)
-    expect(updatingMethod).toHaveBeenCalledTimes(2)
+    expect(updatingMethod).toHaveBeenCalledTimes(3)
     expect(savingMethod).toHaveBeenCalledTimes(2)
 
     assertState({
       users: {
-        1: { id: 1, name: 'John', age: 30 },
+        1: { id: 1, name: 'John', age: 100 },
         2: { id: 2, name: 'John', age: 40 },
       },
     })

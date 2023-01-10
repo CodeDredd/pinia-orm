@@ -1,20 +1,12 @@
-<p align="center">
-  <a href="https://github.com/storm-tail/pinia-orm" target="_blank" rel="noopener noreferrer">
-    <img width="120" src="https://pinia-orm.codedredd.de/logo_pinia_orm.png" alt="Pinia ORM logo">
-  </a>
-</p>
-
-<p align="center">
-  <i>Artwork from <a href="https://pinia.vuejs.org/">Pinia</a></i>
-</p>
-
-<h1 align="center">pinia-orm</h1>
+[![Pinia ORM banner](./.github/assets/banner.png)](https://github.com/storm-tail/pinia-orm)
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![Coverage][code-coverage-src]][code-coverage-href]
 [![License][license-src]][license-href]
+
+# Welcome to pinia-orm
 
 > Intuitive, type safe and flexible ORM for Pinia based on [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
 
@@ -27,12 +19,12 @@
 You want to migrate from vuex to pinia and with it vuex-orm to pinia-orm but you don't know yet?
 Well maybe this table will help you to decide. This comparison is just about facts and current state.
 
-| Features                                                               | pinia-orm@v1.2.2                                           | @vuex-orm/core@0.36.4                                             | @vuex-orm/core@1.0.0-draft.16                                             |
-| ---------------------------------------------------------------------- |------------------------------------------------------------| ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Bundle Size (Min + GZIP)                                               | [9.5 KB](https://bundlephobia.com/package/pinia-orm@1.2.2) | [16.7 KB](https://bundlephobia.com/package/@vuex-orm/core@0.36.4) | [12.6 KB](https://bundlephobia.com/package/@vuex-orm/core@1.0.0-draft.16) |
-| Relations (hasMany, belongsTo, morphOne, hasManyBy, hasOne)            | ✅                                                          | ✅                                                                | ✅                                                                        |
-| Relations (morphTo, morphMany, belongsToMany)                          | ✅                                                          | ✅                                                                | ❌                                                                        |
-| Relations (morphToMany, morphedByMany, hasManyThrough)                 | ❌                                                          | ✅                                                                | ❌                                                                        |
+| Features                                                               | pinia-orm@v1.4.0                                           | @vuex-orm/core@0.36.4                                             | @vuex-orm/core@1.0.0-draft.16                                             |
+|------------------------------------------------------------------------|------------------------------------------------------------| ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Bundle Size (Min + GZIP)                                               | [9.9 KB](https://bundlephobia.com/package/pinia-orm@1.4.0) | [16.7 KB](https://bundlephobia.com/package/@vuex-orm/core@0.36.4) | [12.6 KB](https://bundlephobia.com/package/@vuex-orm/core@1.0.0-draft.16) |
+| Relations (hasMany, belongsTo, morphOne, hasManyBy, hasOne, morphTo)   | ✅                                                          | ✅                                                                | ✅                                                                        |
+| Relations (morphMany, belongsToMany, hasManyThrough)                   | ✅                                                          | ✅                                                                | ❌                                                                        |
+| Relations (morphToMany, morphedByMany)                                 | ❌                                                          | ✅                                                                | ❌                                                                        |
 | Mutators                                                               | ✅                                                          | ✅                                                                | ❌                                                                        |
 | Casts                                                                  | ✅                                                          | ❌                                                                | ❌                                                                        |
 | Decorators                                                             | ✅                                                          | ❌                                                                | ✅                                                                        |

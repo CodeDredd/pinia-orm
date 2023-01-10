@@ -8,11 +8,11 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@pinia-orm/nuxt": "^1.0.18",
-    "@pinia/nuxt": "^0.4.1",
-    "nuxt": "^3.0.0-rc.8",
+    "@pinia-orm/nuxt": "^1.1.6",
+    "@pinia/nuxt": "^0.4.6",
+    "nuxt": "^3.0.0",
     "pinia": "^2.0.20",
-    "pinia-orm": "^1.0.0-rc.5"
+    "pinia-orm": "^1.4.0"
   },
   "dependencies": {
     "nanoid": "^4.0.0",

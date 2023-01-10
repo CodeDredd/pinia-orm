@@ -8,8 +8,8 @@ export default class User extends Model {
     return {
       id: this.uid(),
       name: this.string(''),
-      first_name: this.string('').nullable(),
-      last_name: this.string('').nullable(),
+      first_name: this.string(''),
+      last_name: this.string(''),
       todos: this.hasMany(ToDo, 'user_id'),
     }
   }

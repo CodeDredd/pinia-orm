@@ -7,7 +7,8 @@ describe('unit/model/Model', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Attr() id!: number
+    @Attr() declare id: number
+    @Attr() declare lastName: string
   }
 
   it('ignores unkown field when filling the model', () => {
@@ -23,5 +24,19 @@ describe('unit/model/Model', () => {
 
     const userB = new User({ id: 1 }).$fill({})
     expect(userB.id).toBe(1)
+  })
+
+  it('can refresh to its original state', () => {
+    const user = new User({ id: 1, lastName: 'John Doe' })
+    expect(user.$getOriginal()).toMatchObject(user.$getAttributes())
+    expect(user.$isDirty()).toBeFalsy()
+
+    user.lastName = 'Johnny Doe'
+    expect(user.$isDirty()).toBeTruthy()
+    expect(user.$isDirty('lastName')).toBeTruthy()
+    expect(user.$isDirty('id')).toBeFalsy()
+    user.$refresh()
+    expect(user.$isDirty()).toBeFalsy()
+    expect(() => user.$isDirty('name')).toThrowError()
   })
 })

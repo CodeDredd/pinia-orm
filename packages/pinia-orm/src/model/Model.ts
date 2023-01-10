@@ -1,8 +1,6 @@
-import type { DefineStoreOptionsBase } from 'pinia'
-import { assert, isArray, isNullish } from '../support/Utils'
+import { assert, equals, isArray, isNullish, throwError } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
-import type { DataStore, DataStoreState } from '../composables/useDataStore'
 import type { ModelConfigOptions } from '../store/Store'
 import { config } from '../store/Config'
 import type { Attribute } from './attributes/Attribute'
@@ -23,6 +21,7 @@ import { MorphTo } from './attributes/relations/MorphTo'
 import { MorphMany } from './attributes/relations/MorphMany'
 import type { CastAttribute, Casts } from './casts/CastAttribute'
 import type { TypeDefault } from './attributes/types/Type'
+import { HasManyThrough } from './attributes/relations/HasManyThrough'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -110,6 +109,11 @@ export class Model {
   static fieldsOnDelete = {}
 
   /**
+   * Original model data.
+   */
+  protected static original = {}
+
+  /**
    * The schema for the model. It contains the result of the `fields`
    * method or the attributes defined by decorators.
    */
@@ -126,7 +130,7 @@ export class Model {
    * The pinia options for the model. It can contain options which will passed
    * to the 'defineStore' function of pinia.
    */
-  protected static piniaOptions: DefineStoreOptionsBase<DataStoreState, DataStore> = {}
+  protected static piniaOptions = {}
 
   /**
    * The mutators for the model.
@@ -166,6 +170,7 @@ export class Model {
    */
   protected static initializeSchema(): void {
     this.schemas[this.entity] = {}
+    this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
 
     const registry = {
       ...this.fields(),
@@ -178,8 +183,8 @@ export class Model {
       this.schemas[this.entity][key]
         = typeof attribute === 'function' ? attribute() : attribute
 
-      if (this.fieldsOnDelete[key])
-        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[key])
+      if (this.fieldsOnDelete[this.entity][key])
+        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[this.entity][key])
     }
   }
 
@@ -207,7 +212,8 @@ export class Model {
     key: string,
     mode: deleteModes,
   ): M {
-    this.fieldsOnDelete[key] = mode
+    this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
+    this.fieldsOnDelete[this.entity][key] = mode
 
     return this
   }
@@ -411,6 +417,26 @@ export class Model {
   }
 
   /**
+   * Create a new HasMany relation instance.
+   */
+  static hasManyThrough(
+    related: typeof Model,
+    through: typeof Model,
+    firstKey: string,
+    secondKey: string,
+    localKey?: string,
+    secondLocalKey?: string,
+  ): HasManyThrough {
+    const model = this.newRawInstance()
+    const throughModel = through.newRawInstance()
+
+    localKey = localKey ?? model.$getLocalKey()
+    secondLocalKey = secondLocalKey ?? throughModel.$getLocalKey()
+
+    return new HasManyThrough(model, related.newRawInstance(), throughModel, firstKey, secondKey, localKey, secondLocalKey)
+  }
+
+  /**
    * Create a new MorphOne relation instance.
    */
   static morphOne(
@@ -568,7 +594,7 @@ export class Model {
   /**
    * Get the pinia options for this model.
    */
-  $piniaOptions(): DefineStoreOptionsBase<DataStoreState, DataStore> {
+  $piniaOptions() {
     return this.$self().piniaOptions
   }
 
@@ -687,6 +713,8 @@ export class Model {
 
       this[key] = this[key] ?? keyValue
     }
+
+    operation === 'set' && (this.$self().original = this.$getAttributes())
 
     modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
@@ -863,6 +891,35 @@ export class Model {
    */
   $getCasts() {
     return this.$self().casts()
+  }
+
+  /**
+   * Get the original values of the model instance
+   */
+  $getOriginal(): Element {
+    return this.$self().original
+  }
+
+  /**
+   * Return the model instance with its original state
+   */
+  $refresh(): this {
+    this.$isDirty() && this.$fill(this.$getOriginal(), { action: 'save', relations: false, operation: 'set' })
+    return this
+  }
+
+  /**
+   * Checks if attributes were changed
+   */
+  $isDirty($attribute?: keyof ModelFields): Boolean {
+    const original = this.$getOriginal()
+    if ($attribute) {
+      if (!Object.keys(original).includes($attribute))
+        throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"'])
+      return !equals(this[$attribute], original[$attribute])
+    }
+
+    return !equals(original, this.$getAttributes())
   }
 
   /**

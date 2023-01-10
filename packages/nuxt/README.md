@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://github.com/storm-tail/pinia-orm" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://pinia-orm.codedredd.de/logo_pinia_orm.png" alt="Pinia ORM logo">
-  </a>
-</p>
+[![Pinia ORM banner](./.github/assets/banner.png)](https://github.com/storm-tail/pinia-orm)
 
 # @pinia-orm/nuxt
 
