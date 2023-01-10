@@ -19,7 +19,7 @@
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
   },
   "devDependencies": {
-    "jiti": "^1.16.1",
+    "jiti": "^1.16.2",
     "nuxt": "3.0.0-rc.12",
     "pathe": "^1.0.0",
     "scule": "^1.0.0",
