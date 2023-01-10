@@ -1645,7 +1645,7 @@ __metadata:
     "@nuxt-themes/docus": "npm:@nuxt-themes/docus-edge@latest"
     "@nuxthq/studio": ^0.5.1
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest"
-    jiti: ^1.16.1
+    jiti: ^1.16.2
     nuxt: 3.0.0-rc.12
     pathe: ^1.0.0
     scule: ^1.0.0
@@ -6296,12 +6296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jiti@npm:^1.16.1":
-  version: 1.16.1
-  resolution: "jiti@npm:1.16.1"
+"jiti@npm:^1.16.2":
+  version: 1.16.2
+  resolution: "jiti@npm:1.16.2"
   bin:
     jiti: bin/jiti.js
-  checksum: dce56f5bb0ba61d500e854389fed128a19f72061247c86405c7e2a47f772ca8dea26bb9e64b9b69a5645dbc1d4170f29e147606e4c6359a3a0800a0658e4e593
+  checksum: c0e83d1ac976c0157ac0fdd0f11aafad8d276d44ad672100d1a97b266e70ef2fa7606b6bd128d3cddd8f5f61a56390a6bd9442275e6afef7bd76d0a976ddf555
   languageName: node
   linkType: hard
 
