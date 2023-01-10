@@ -3,11 +3,12 @@ import type { Constructor } from '../types'
 import { assert, isArray } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { Database } from '../database/Database'
-import type { Model } from '../model/Model'
+import type { Model, WithKeys } from '../model/Model'
 import type { ModelConstructor } from '../model/ModelConstructor'
 import { Query } from '../query/Query'
 import type {
   EagerLoadConstraint,
+  GetElementType,
   GroupByFields,
   NonMethodKeys,
   OrderBy,
@@ -20,6 +21,8 @@ import { useDataStore } from '../composables/useDataStore'
 import { cache } from '../cache/SharedWeakCache'
 import type { WeakCache } from '../cache/WeakCache'
 import { config } from '../store/Config'
+
+
 
 export class Repository<M extends Model = Model> {
   /**
@@ -143,34 +146,34 @@ export class Repository<M extends Model = Model> {
   /**
    * Add a basic where clause to the query.
    */
-  where<T extends WherePrimaryClosure<M> | NonMethodKeys<M>>(
-    field: T | string & {},
-    value?: WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never],
+  where<T extends WherePrimaryClosure<M> | NonMethodKeys<M> | string & {}>(
+    field: T,
+    value?: T extends string[] ? string | number | (string | number)[] : WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never],
   ): Query<M> {
-    return this.query().where(field, value as any)
+    return this.query().where<T>(field, value)
   }
 
   /**
    * Add an "or where" clause to the query.
    */
-   orWhere<T extends WherePrimaryClosure<M> | NonMethodKeys<M>>(
-    field: T | string & {},
-    value?: WhereSecondaryClosure<M[T extends keyof M ? T : never]> | any,
+  orWhere<T extends WherePrimaryClosure<M> | NonMethodKeys<M> | string & {}>(
+    field: T,
+    value?: WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never],
   ): Query<M> {
-    return this.query().orWhere(field, value)
+    return this.query().orWhere<T>(field, value)
   }
 
   /**
    * Add a "where has" clause to the query.
    */
-  whereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): Query<M> {
-    return this.query().whereHas(relation, callback, operator, count)
+  whereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): Query<M> {
+    return this.query().whereHas<T>(relation, callback, operator, count)
   }
 
   /**
    * Add an "or where has" clause to the query.
    */
-  orWhereHas(relation: string, callback: EagerLoadConstraint = () => {}, operator?: string | number, count?: number): Query<M> {
+  orWhereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): Query<M> {
     return this.query().orWhereHas(relation, callback, operator, count)
   }
 
@@ -205,14 +208,14 @@ export class Repository<M extends Model = Model> {
   /**
    * Add a "where doesn't have" clause to the query.
    */
-  whereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): Query<M> {
+  whereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): Query<M> {
     return this.query().whereDoesntHave(relation, callback)
   }
 
   /**
    * Add an "or where doesn't have" clause to the query.
    */
-  orWhereDoesntHave(relation: string, callback: EagerLoadConstraint = () => {}): Query<M> {
+  orWhereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): Query<M> {
     return this.query().orWhereDoesntHave(relation, callback)
   }
 
@@ -268,14 +271,14 @@ export class Repository<M extends Model = Model> {
   /**
    * Set the relationships that should be eager loaded.
    */
-  with(name: string, callback?: EagerLoadConstraint): Query<M> {
+  with<T extends WithKeys<M>>(name: string & {} | T, callback?: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : never): Query<M> {
     return this.query().with(name, callback)
   }
 
   /**
    * Set to eager load all top-level relationships. Constraint is set for all relationships.
    */
-  withAll(callback?: EagerLoadConstraint): Query<M> {
+  withAll(callback?: EagerLoadConstraint<M>): Query<M> {
     return this.query().withAll(callback)
   }
 

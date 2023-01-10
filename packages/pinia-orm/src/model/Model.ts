@@ -56,8 +56,12 @@ export interface InheritanceTypes {
   [key: string]: typeof Model
 }
 
+export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[] ? P & string : never }[keyof T];
+// export type WithKeys<T> = { [P in keyof T]: T[P] extends Model[] ? P : never }[keyof T];
+
 export class Model {
-  pivot: any;
+  // [s: keyof ModelFields]: any
+  pivot: undefined | null | Model | Model[];
 
   declare _meta: undefined | MetaValues
   /**
@@ -456,47 +460,47 @@ export class Model {
   /**
    * Lifecycle hook for before saving
    */
-  static saving: BeforeHook = () => {}
+  static saving: BeforeHook = () => { }
 
   /**
    * Lifecycle hook for before updating
    */
-  static updating: BeforeHook = () => {}
+  static updating: BeforeHook = () => { }
 
   /**
    * Lifecycle hook for before creating
    */
-  static creating: BeforeHook = () => {}
+  static creating: BeforeHook = () => { }
 
   /**
    * Lifecycle hook for before deleting
    */
-  static deleting: BeforeHook = () => {}
+  static deleting: BeforeHook = () => { }
 
   /**
    * Lifecycle hook for after getting data
    */
-  static retrieved: AfterHook = () => {}
+  static retrieved: AfterHook = () => { }
 
   /**
    * Lifecycle hook for after saved
    */
-  static saved: AfterHook = () => {}
+  static saved: AfterHook = () => { }
 
   /**
    * Lifecycle hook for after updated
    */
-  static updated: AfterHook = () => {}
+  static updated: AfterHook = () => { }
 
   /**
    * Lifecycle hook for after created
    */
-  static created: AfterHook = () => {}
+  static created: AfterHook = () => { }
 
   /**
    * Lifecycle hook for after deleted
    */
-  static deleted: AfterHook = () => {}
+  static deleted: AfterHook = () => { }
 
   /**
    * Mutators to mutate matching fields when instantiating the model.
@@ -761,17 +765,17 @@ export class Model {
   protected $getCompositeKey(record: Element): (string | number)[] | null {
     let ids = [] as (string | number)[] | null
 
-    ;(this.$getKeyName() as string[]).every((key) => {
-      const id = record[key]
+      ; (this.$getKeyName() as string[]).every((key) => {
+        const id = record[key]
 
-      if (isNullish(id)) {
-        ids = null
-        return false
-      }
+        if (isNullish(id)) {
+          ids = null
+          return false
+        }
 
-      (ids as (string | number)[]).push(id)
-      return true
-    })
+        (ids as (string | number)[]).push(id)
+        return true
+      })
 
     return ids === null ? null : ids
   }
