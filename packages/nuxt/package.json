@@ -54,7 +54,7 @@
     "@types/prettier": "^2",
     "eslint": "^8.29.0",
     "nuxt": "^3.0.0-rc.13",
-    "pinia": "^2.0.27",
+    "pinia": "^2.0.28",
     "pinia-orm": "^1.0.0",
     "prettier": "^2.8.1",
     "std-env": "^3.3.1",
