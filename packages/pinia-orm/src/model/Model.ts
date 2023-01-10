@@ -61,7 +61,7 @@ export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[
 
 export class Model {
   // [s: keyof ModelFields]: any
-  pivot: undefined | null | Model | Model[];
+  pivot: undefined | unknown;
 
   declare _meta: undefined | MetaValues
   /**
