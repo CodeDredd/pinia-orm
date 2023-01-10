@@ -350,7 +350,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Create and persist model with default values.
    */
-  new(): M {
+  new(): M | null {
     return this.query().new()
   }
 

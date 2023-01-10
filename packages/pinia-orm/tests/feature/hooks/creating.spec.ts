@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
-import { Num, Str } from '../../../src/decorators'
-import { assertState } from '../../helpers'
+import { Num, Str, Uid } from '../../../src/decorators'
+import { assertState, mockUid } from '../../helpers'
 
 describe('feature/hooks/creating', () => {
   it('does nothing when passing in an empty array', () => {
@@ -84,5 +84,30 @@ describe('feature/hooks/creating', () => {
     assertState({
       users: {},
     })
+  })
+
+  it('is stopping record to be saved with new method', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Uid() declare id: string
+      @Str('') declare name: string
+      @Num(0) declare age: number
+
+      static creating(model: Model) {
+        model.name = 'John'
+        return false
+      }
+    }
+
+    mockUid(['uid1'])
+
+    const creatingMethod = vi.spyOn(User, 'creating')
+
+    useRepo(User).new()
+
+    expect(creatingMethod).toHaveBeenCalledOnce()
+
+    assertState({})
   })
 })
