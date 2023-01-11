@@ -106,7 +106,7 @@ importers:
       '@antfu/eslint-config': ^0.34.1
       '@pinia-orm/normalizr': '>=1.0.6'
       '@pinia/testing': ^0.0.14
-      '@size-limit/preset-small-lib': ^8.1.0
+      '@size-limit/preset-small-lib': ^8.1.1
       '@types/prettier': ^2
       '@types/uuid': ^9.0.0
       '@vitest/coverage-c8': ^0.27.0
@@ -121,7 +121,7 @@ importers:
       nanoid: ^4.0.0
       pinia: ^2.0.28
       prettier: ^2.8.2
-      size-limit: ^8.1.0
+      size-limit: ^8.1.1
       std-env: ^3.1.1
       tsup: ^6.5.0
       typescript: ^4.9.4
@@ -137,7 +137,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config': 0.34.1_iukboom6ndih5an6iafl45j2fe
       '@pinia/testing': 0.0.14_jm6bm6vjbzaeo6xrfa4gn55uku
-      '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
+      '@size-limit/preset-small-lib': 8.1.1_size-limit@8.1.1
       '@types/prettier': 2.6.3
       '@types/uuid': 9.0.0
       '@vitest/coverage-c8': 0.27.0_xizlie234qpb3mqrqq6riiwq4u
@@ -152,7 +152,7 @@ importers:
       nanoid: 4.0.0
       pinia: 2.0.28_ax6mpyprelqlmurvismt2kzsgu
       prettier: 2.8.2
-      size-limit: 8.1.0
+      size-limit: 8.1.1
       std-env: 3.1.1
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
@@ -2265,6 +2265,17 @@ packages:
       size-limit: 8.1.0
     dev: true
 
+  /@size-limit/esbuild/8.1.1_size-limit@8.1.1:
+    resolution: {integrity: sha512-Y071Vs3M3pxNplE98SFf32IREXSMzBErkO2uAeh3CeZfyUOItpH59ETlmEAAf7blCRrUXhygecJl80NbRNWSsA==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      size-limit: 8.1.1
+    dependencies:
+      esbuild: 0.16.16
+      nanoid: 3.3.4
+      size-limit: 8.1.1
+    dev: true
+
   /@size-limit/file/8.1.0_size-limit@8.1.0:
     resolution: {integrity: sha512-Ur+NgJSRHBnbQBrD8X2doxXYdBcVJsMxe2KfWrUmnZ6wYz09YKhQ1iYLqNztjf2yf/JEp00zp1vyhmimUQfUHQ==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
@@ -2275,6 +2286,16 @@ packages:
       size-limit: 8.1.0
     dev: true
 
+  /@size-limit/file/8.1.1_size-limit@8.1.1:
+    resolution: {integrity: sha512-4VW3r5TuKXGyycrWdhKhYaBSpWQq2sxuz0UOMoKYiTGcYBM6Sqpk4342RbnoIjVDmj7kyD4PS4eBstUnvF3TSA==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      size-limit: 8.1.1
+    dependencies:
+      semver: 7.3.8
+      size-limit: 8.1.1
+    dev: true
+
   /@size-limit/preset-small-lib/8.1.0_size-limit@8.1.0:
     resolution: {integrity: sha512-fs0XD0+rN4SVKGUwae7VMX1uDqK+oUYNGlPe7E0oKhwAH6ek08iH8qiEm0q9IKDrsCfZ9/d/pqNpg9di3p1SVw==}
     peerDependencies:
@@ -2283,6 +2304,16 @@ packages:
       '@size-limit/esbuild': 8.1.0_size-limit@8.1.0
       '@size-limit/file': 8.1.0_size-limit@8.1.0
       size-limit: 8.1.0
+    dev: true
+
+  /@size-limit/preset-small-lib/8.1.1_size-limit@8.1.1:
+    resolution: {integrity: sha512-AB1v9zQ9F3ii/3xOJQOHmxaPsuQ3BgA99P2NtpOg5l0vP/306k/xfvveZL98a6gk20hIWWysrzrI1ydKeF9Iaw==}
+    peerDependencies:
+      size-limit: 8.1.1
+    dependencies:
+      '@size-limit/esbuild': 8.1.1_size-limit@8.1.1
+      '@size-limit/file': 8.1.1_size-limit@8.1.1
+      size-limit: 8.1.1
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -9987,6 +10018,21 @@ packages:
 
   /size-limit/8.1.0:
     resolution: {integrity: sha512-bUL+Uyyt/G+a1XzKlI2WKHVDepmXtqMDhF65pdtjccheiQTNjExWW4nFefgbRL2QgNTzRfK6ayFKjO3o4ER4gg==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+    hasBin: true
+    dependencies:
+      bytes-iec: 3.1.1
+      chokidar: 3.5.3
+      ci-job-number: 1.2.2
+      globby: 11.1.0
+      lilconfig: 2.0.6
+      mkdirp: 1.0.4
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
+    dev: true
+
+  /size-limit/8.1.1:
+    resolution: {integrity: sha512-8Zx+SJVxwcsDBYEl3Xt+FilpuxshVcgq446L8e1k8xD+Qa4LuUmFeesb+oiaRpoJnWCrOd7QUaiU9kFVocIeHQ==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     dependencies:
