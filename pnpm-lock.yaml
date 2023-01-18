@@ -56,15 +56,15 @@ importers:
       '@size-limit/preset-small-lib': ^8.1.2
       eslint: ^8.32.0
       immutable: ^4.2.2
-      size-limit: ^8.1.1
+      size-limit: ^8.1.2
       typescript: ^4.9.4
       unbuild: ^1.1.1
     devDependencies:
       '@nuxtjs/eslint-config-typescript': 10.0.0_7uibuqfxkfaozanbtbziikiqje
-      '@size-limit/preset-small-lib': 8.1.2_size-limit@8.1.1
+      '@size-limit/preset-small-lib': 8.1.2_size-limit@8.1.2
       eslint: 8.32.0
       immutable: 4.2.2
-      size-limit: 8.1.1
+      size-limit: 8.1.2
       typescript: 4.9.4
       unbuild: 1.1.1
 
@@ -2633,17 +2633,6 @@ packages:
     resolution: {integrity: sha512-gHJu8cdYTD5p4UqmQHrxaWrtb/jkH5imLXzuBypWhKzNkW0qfmgz+w1xaJccWVuJta1YYUdlDiPHXRTR4Ku0MQ==}
     dev: true
 
-  /@size-limit/esbuild/8.1.2_size-limit@8.1.1:
-    resolution: {integrity: sha512-BQZg+8QDVz4qQK4Iok8bjrAmzUPDTQW5ht6IrqLfeinHZQOn05fkxbcQuGoja0r6xoQ9+bM7b4cnqgCl61dXEw==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    peerDependencies:
-      size-limit: 8.1.2
-    dependencies:
-      esbuild: 0.17.2
-      nanoid: 3.3.4
-      size-limit: 8.1.1
-    dev: true
-
   /@size-limit/esbuild/8.1.2_size-limit@8.1.2:
     resolution: {integrity: sha512-BQZg+8QDVz4qQK4Iok8bjrAmzUPDTQW5ht6IrqLfeinHZQOn05fkxbcQuGoja0r6xoQ9+bM7b4cnqgCl61dXEw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
@@ -2655,16 +2644,6 @@ packages:
       size-limit: 8.1.2
     dev: true
 
-  /@size-limit/file/8.1.2_size-limit@8.1.1:
-    resolution: {integrity: sha512-cjtGk1GejrmT+ik3LjXpRe+zrS/U15h+Py3L8sYN0XGat0+Y6pPbli1VuRRRcdXZNegpiW+UcxDxPN1AuZC5qA==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    peerDependencies:
-      size-limit: 8.1.2
-    dependencies:
-      semver: 7.3.8
-      size-limit: 8.1.1
-    dev: true
-
   /@size-limit/file/8.1.2_size-limit@8.1.2:
     resolution: {integrity: sha512-cjtGk1GejrmT+ik3LjXpRe+zrS/U15h+Py3L8sYN0XGat0+Y6pPbli1VuRRRcdXZNegpiW+UcxDxPN1AuZC5qA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
@@ -2673,16 +2652,6 @@ packages:
     dependencies:
       semver: 7.3.8
       size-limit: 8.1.2
-    dev: true
-
-  /@size-limit/preset-small-lib/8.1.2_size-limit@8.1.1:
-    resolution: {integrity: sha512-KfczbDq+4qFUXVMdNJlIZycp1WY1aqSfHfz4nRZNVaSxBSixrgBYkV6/M+qwP2axNFIXGzIMolqbTCUxvqikyQ==}
-    peerDependencies:
-      size-limit: 8.1.2
-    dependencies:
-      '@size-limit/esbuild': 8.1.2_size-limit@8.1.1
-      '@size-limit/file': 8.1.2_size-limit@8.1.1
-      size-limit: 8.1.1
     dev: true
 
   /@size-limit/preset-small-lib/8.1.2_size-limit@8.1.2:
@@ -3975,10 +3944,6 @@ packages:
   /ci-info/3.7.0:
     resolution: {integrity: sha512-2CpRNYmImPx+RXKLq6jko/L07phmS9I02TyqkcNU20GCF/GgaWvc58hPtjxDX8lPpkdwc9sNh72V9k00S7ezog==}
     engines: {node: '>=8'}
-    dev: true
-
-  /ci-job-number/1.2.2:
-    resolution: {integrity: sha512-CLOGsVDrVamzv8sXJGaILUVI6dsuAkouJP/n6t+OxLPeeA4DDby7zn9SB6EUpa1H7oIKoE+rMmkW80zYsFfUjA==}
     dev: true
 
   /clean-regexp/1.0.0:
@@ -10235,21 +10200,6 @@ packages:
       '@polka/url': 1.0.0-next.21
       mrmime: 1.0.1
       totalist: 3.0.0
-    dev: true
-
-  /size-limit/8.1.1:
-    resolution: {integrity: sha512-8Zx+SJVxwcsDBYEl3Xt+FilpuxshVcgq446L8e1k8xD+Qa4LuUmFeesb+oiaRpoJnWCrOd7QUaiU9kFVocIeHQ==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    hasBin: true
-    dependencies:
-      bytes-iec: 3.1.1
-      chokidar: 3.5.3
-      ci-job-number: 1.2.2
-      globby: 11.1.0
-      lilconfig: 2.0.6
-      mkdirp: 1.0.4
-      nanospinner: 1.1.0
-      picocolors: 1.0.0
     dev: true
 
   /size-limit/8.1.2:
