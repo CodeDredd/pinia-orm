@@ -53,7 +53,7 @@ importers:
   packages/normalizr:
     specifiers:
       '@nuxtjs/eslint-config-typescript': ^10.0.0
-      '@size-limit/preset-small-lib': ^8.1.1
+      '@size-limit/preset-small-lib': ^8.1.2
       eslint: ^8.32.0
       immutable: ^4.2.2
       size-limit: ^8.1.1
@@ -61,7 +61,7 @@ importers:
       unbuild: ^1.1.1
     devDependencies:
       '@nuxtjs/eslint-config-typescript': 10.0.0_7uibuqfxkfaozanbtbziikiqje
-      '@size-limit/preset-small-lib': 8.1.1_size-limit@8.1.1
+      '@size-limit/preset-small-lib': 8.1.2_size-limit@8.1.1
       eslint: 8.32.0
       immutable: 4.2.2
       size-limit: 8.1.1
@@ -2633,13 +2633,13 @@ packages:
     resolution: {integrity: sha512-gHJu8cdYTD5p4UqmQHrxaWrtb/jkH5imLXzuBypWhKzNkW0qfmgz+w1xaJccWVuJta1YYUdlDiPHXRTR4Ku0MQ==}
     dev: true
 
-  /@size-limit/esbuild/8.1.1_size-limit@8.1.1:
-    resolution: {integrity: sha512-Y071Vs3M3pxNplE98SFf32IREXSMzBErkO2uAeh3CeZfyUOItpH59ETlmEAAf7blCRrUXhygecJl80NbRNWSsA==}
+  /@size-limit/esbuild/8.1.2_size-limit@8.1.1:
+    resolution: {integrity: sha512-BQZg+8QDVz4qQK4Iok8bjrAmzUPDTQW5ht6IrqLfeinHZQOn05fkxbcQuGoja0r6xoQ9+bM7b4cnqgCl61dXEw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 8.1.1
+      size-limit: 8.1.2
     dependencies:
-      esbuild: 0.16.16
+      esbuild: 0.17.2
       nanoid: 3.3.4
       size-limit: 8.1.1
     dev: true
@@ -2655,11 +2655,11 @@ packages:
       size-limit: 8.1.2
     dev: true
 
-  /@size-limit/file/8.1.1_size-limit@8.1.1:
-    resolution: {integrity: sha512-4VW3r5TuKXGyycrWdhKhYaBSpWQq2sxuz0UOMoKYiTGcYBM6Sqpk4342RbnoIjVDmj7kyD4PS4eBstUnvF3TSA==}
+  /@size-limit/file/8.1.2_size-limit@8.1.1:
+    resolution: {integrity: sha512-cjtGk1GejrmT+ik3LjXpRe+zrS/U15h+Py3L8sYN0XGat0+Y6pPbli1VuRRRcdXZNegpiW+UcxDxPN1AuZC5qA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 8.1.1
+      size-limit: 8.1.2
     dependencies:
       semver: 7.3.8
       size-limit: 8.1.1
@@ -2675,13 +2675,13 @@ packages:
       size-limit: 8.1.2
     dev: true
 
-  /@size-limit/preset-small-lib/8.1.1_size-limit@8.1.1:
-    resolution: {integrity: sha512-AB1v9zQ9F3ii/3xOJQOHmxaPsuQ3BgA99P2NtpOg5l0vP/306k/xfvveZL98a6gk20hIWWysrzrI1ydKeF9Iaw==}
+  /@size-limit/preset-small-lib/8.1.2_size-limit@8.1.1:
+    resolution: {integrity: sha512-KfczbDq+4qFUXVMdNJlIZycp1WY1aqSfHfz4nRZNVaSxBSixrgBYkV6/M+qwP2axNFIXGzIMolqbTCUxvqikyQ==}
     peerDependencies:
-      size-limit: 8.1.1
+      size-limit: 8.1.2
     dependencies:
-      '@size-limit/esbuild': 8.1.1_size-limit@8.1.1
-      '@size-limit/file': 8.1.1_size-limit@8.1.1
+      '@size-limit/esbuild': 8.1.2_size-limit@8.1.1
+      '@size-limit/file': 8.1.2_size-limit@8.1.1
       size-limit: 8.1.1
     dev: true
 
