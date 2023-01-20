@@ -1658,13 +1658,6 @@
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.11.1.tgz#f4e5fd9cb421c5a02373d034a0ce53538b370518"
   integrity sha512-ABjkrG+VXggNhjfGyw5e/sekxTZfXTwjrYXkkWQmQ7Biyv+Gq9UD6IDNfeGvQZEINI0Qzw6nfuO2UFCd3hlrxQ==
 
-"@vueuse/shared@9.11.0":
-  version "9.11.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.11.0.tgz#8cf7c64789040e90d0cb5c8ac73cc9d252f7306c"
-  integrity sha512-8lO7wD5abYxupKy2KynH1pSgP715ky6iCrWYb8aX2AuAVi9uHXj7qE1dw6BnmArSaLHci4x9iuzWPCpAzUkC/A==
-  dependencies:
-    vue-demi "*"
-
 "@vueuse/shared@9.11.1":
   version "9.11.1"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.11.1.tgz#c76805c9d86da109b132529b4745d7d706106e7f"
