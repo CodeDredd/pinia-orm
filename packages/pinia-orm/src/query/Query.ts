@@ -98,10 +98,12 @@ export class Query<M extends Model = Model> {
 
   protected cacheConfig: CacheConfig = {}
 
+  protected getNewHydrated = false
+
   /**
    * Hydrated models. They are stored to prevent rerendering of child components.
    */
-  hydratedData: Map<string, M>
+  hydratedDataCache: Map<string, M>
 
   /**
    * Create a new query instance.
@@ -111,21 +113,22 @@ export class Query<M extends Model = Model> {
     this.model = model
     this.pinia = pinia
     this.cache = cache
-    this.hydratedData = hydratedData
+    this.hydratedDataCache = hydratedData
+    this.getNewHydrated = false
   }
 
   /**
    * Create a new query instance for the given model.
    */
   newQuery(model: string): Query {
-    return new Query(this.database, this.database.getModel(model), this.cache, new Map(), this.pinia)
+    return new Query(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints(model: string): Query {
-    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, new Map(), this.pinia)
+    const newQuery = new Query(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -143,7 +146,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation(relation: Relation): Query {
-    return new Query(this.database, relation.getRelated(), this.cache, new Map(), this.pinia)
+    return new Query(this.database, relation.getRelated(), this.cache, this.hydratedDataCache, this.pinia)
   }
 
   /**
@@ -179,6 +182,7 @@ export class Query<M extends Model = Model> {
    */
   makeVisible(fields: string[]): this {
     this.visible = fields
+    this.getNewHydrated = true
 
     return this
   }
@@ -188,6 +192,7 @@ export class Query<M extends Model = Model> {
    */
   makeHidden(fields: string[]): this {
     this.hidden = fields
+    this.getNewHydrated = true
 
     return this
   }
@@ -893,7 +898,7 @@ export class Query<M extends Model = Model> {
    */
   flush(): Collection<M> {
     this.commit('flush')
-    this.hydratedData.clear()
+    this.hydratedDataCache.clear()
     return this.get(false)
   }
 
@@ -994,12 +999,12 @@ export class Query<M extends Model = Model> {
   protected getHydratedModel(record: Element, options?: ModelOptions): M {
     const modelKey = this.model.$getKeyName()
     const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
-    const savedHydratedModel = id && this.hydratedData.get(id)
+    const savedHydratedModel = id && this.hydratedDataCache.get(this.model.$entity() + id)
 
     if (
-      savedHydratedModel
-      && this.hidden.length === 0
-      && this.visible.includes('*')
+      !this.getNewHydrated
+      && options?.action !== 'save'
+      && savedHydratedModel
       && equals(record, savedHydratedModel.$toJson())
     )
       return savedHydratedModel
@@ -1008,8 +1013,8 @@ export class Query<M extends Model = Model> {
     const hydratedModel = (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}) })
 
-    if (id)
-      this.hydratedData.set(id, hydratedModel)
+    if (id && options?.action !== 'save')
+      this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel)
 
     return hydratedModel
   }
