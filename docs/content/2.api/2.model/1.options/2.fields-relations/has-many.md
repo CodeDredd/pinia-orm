@@ -45,7 +45,7 @@ class Post extends Model {
 ````ts
 function hasMany(
   related: typeof Model,
-  foreignKey: string,
-  localKey?: string,
+  foreignKey: string | string[],
+  localKey?: string | string[],
 ): HasMany 
 ````

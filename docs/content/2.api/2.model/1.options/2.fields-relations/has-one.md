@@ -45,7 +45,7 @@ class User extends Model {
 ````ts
 function hasOne(
   related: typeof Model,
-  foreignKey: string,
-  localKey?: string,
+  foreignKey: string | string[],
+  localKey?: string | string[],
 ): HasOne
 ````

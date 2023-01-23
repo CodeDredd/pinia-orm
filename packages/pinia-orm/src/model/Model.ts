@@ -27,6 +27,7 @@ export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
 export type ModelRegistries = Record<string, ModelRegistry>
 export type ModelRegistry = Record<string, () => Attribute>
+export type PrimaryKey = string | string[]
 
 export interface ModelOptions {
   config?: ModelConfigOptions
@@ -326,12 +327,12 @@ export class Model {
    */
   static hasOne(
     related: typeof Model,
-    foreignKey: string,
-    localKey?: string,
+    foreignKey: PrimaryKey,
+    localKey?: PrimaryKey,
   ): HasOne {
     const model = this.newRawInstance()
 
-    localKey = localKey ?? model.$getLocalKey()
+    localKey = localKey ?? model.$getKeyName()
 
     return new HasOne(model, related.newRawInstance(), foreignKey, localKey)
   }
@@ -341,12 +342,12 @@ export class Model {
    */
   static belongsTo(
     related: typeof Model,
-    foreignKey: string,
-    ownerKey?: string,
+    foreignKey: PrimaryKey,
+    ownerKey?: PrimaryKey,
   ): BelongsTo {
     const instance = related.newRawInstance()
 
-    ownerKey = ownerKey ?? instance.$getLocalKey()
+    ownerKey = ownerKey ?? instance.$getKeyName()
 
     return new BelongsTo(this.newRawInstance(), instance, foreignKey, ownerKey)
   }
@@ -387,12 +388,12 @@ export class Model {
    */
   static hasMany(
     related: typeof Model,
-    foreignKey: string,
-    localKey?: string,
+    foreignKey: PrimaryKey,
+    localKey?: PrimaryKey,
   ): HasMany {
     const model = this.newRawInstance()
 
-    localKey = localKey ?? model.$getLocalKey()
+    localKey = localKey ?? model.$getKeyName()
 
     return new HasMany(model, related.newRawInstance(), foreignKey, localKey)
   }
