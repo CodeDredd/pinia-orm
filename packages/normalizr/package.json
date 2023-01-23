@@ -24,6 +24,9 @@
     "README.md"
   ],
   "type": "module",
+  "funding": "https://github.com/sponsors/codedredd",
+  "jsdelivr": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "index.d.ts",
