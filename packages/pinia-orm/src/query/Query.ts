@@ -920,7 +920,7 @@ export class Query<M extends Model = Model> {
           }
           case 'set null': {
             if ((relation as HasMany).foreignKey)
-              record[(relation as HasMany).foreignKey] = null
+              record[(relation as HasMany).foreignKey as string] = null
 
             if ((relation as MorphMany).morphId) {
               record[(relation as MorphMany).morphId] = null

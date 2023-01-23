@@ -1,4 +1,4 @@
-import type { Model } from '../../../Model'
+import type { Model, PrimaryKey } from '../../../Model'
 import type { PropertyDecorator } from '../../Contracts'
 
 /**
@@ -6,8 +6,8 @@ import type { PropertyDecorator } from '../../Contracts'
  */
 export function BelongsTo(
   related: () => typeof Model,
-  foreignKey: string,
-  ownerKey?: string,
+  foreignKey: PrimaryKey,
+  ownerKey?: PrimaryKey,
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
