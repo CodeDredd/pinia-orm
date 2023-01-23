@@ -1533,6 +1533,11 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
+"@pinia-orm/normalizr@>=1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@pinia-orm/normalizr/-/normalizr-1.0.6.tgz#44bb588fe117ca1922df8ca062d3d7ac372d9499"
+  integrity sha512-xDCJS8tIVziaMhCrIIztIQx6OmerXQEBq4m6cQ+9Y8HQkQY19kutttJ2khuhOdQyIlxzj8WbvxdQM7E84+8nkw==
+
 "@pinia-orm/nuxt@^1.0.18":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@pinia-orm/nuxt/-/nuxt-1.0.18.tgz#8a950678c9932be16825f19502e29997bd4f2ea3"
@@ -6429,7 +6434,7 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.16.0.tgz#664f43e45460fb98faf00edca0bb0d7b8dce7916"
   integrity sha512-UdAqHyFngu7TfQKsCBgAA6pWDkT8MAO7d0jyOecVhN5354xbLqdn8mV9Tat9gepAupm0bt2DbeaSC8vS52MuFA==
 
-nanoid@3.3.4, nanoid@^3.1.23, nanoid@^3.3.4, nanoid@^4.0.0:
+nanoid@3.3.4, nanoid@^3.1.23, nanoid@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
@@ -6597,11 +6602,6 @@ normalize-url@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.1.0.tgz#40d0885b535deffe3f3147bec877d05fe4c5668a"
   integrity sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==
-
-normalizr@^3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.6.2.tgz#ac1571207dc3008adb46e3f62311c17f11dcf083"
-  integrity sha512-30qCybsBaCBciotorvuOZTCGEg2AXrJfADMT2Kk/lvpIAcipHdK0zc33nNtwKzyfQAqIJXAcqET6YgflYUgsoQ==
 
 npm-run-path@^4.0.1:
   version "4.0.1"
@@ -7099,13 +7099,12 @@ pify@^5.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-5.0.0.tgz#1f5eca3f5e87ebec28cc6d54a0e4aaf00acc127f"
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
-pinia-orm@^1.0.0-rc.4:
-  version "1.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.0.0-rc.4.tgz#64505922611b69dd902c9e06c4e56d5704a541e0"
-  integrity sha512-zKNYuTdbs43JKcfMwGvDUeQffeiJCSstyjXdgx4xYpp2qX51gNosSiV2+iYnND1koBxZzpQh7SBOrHPXQSAUcQ==
+pinia-orm@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.4.0.tgz#59ff38dcd17873164d43ae8d8f19c29bd5f0cedf"
+  integrity sha512-lZ0VFW+iwzET3jukEnnf7APlj/jk5vmrSR6DGknjRPHN+jyS4IQoIjPwjbmvT/BblRinyvgo+fNe0SxmJTh9/g==
   dependencies:
-    nanoid "^4.0.0"
-    normalizr "^3.6.2"
+    "@pinia-orm/normalizr" ">=1.0.6"
 
 pinia@^2.0.20:
   version "2.0.20"
