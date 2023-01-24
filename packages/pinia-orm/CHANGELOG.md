@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.5.0...pinia-orm@1.5.1) (2023-01-24)
+
+### Performance Improvements
+
+- **pinia-orm:** Improve `find` speed for huge data ([1714d7a](https://github.com/CodeDredd/pinia-orm/commit/1714d7aeea16747ac13ac54c7d1d6445bd5b007f))
+
 # [1.5.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.4.0...pinia-orm@1.5.0) (2023-01-24)
 
 # [1.4.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.3.0...pinia-orm@1.4.0) (2022-12-22)
