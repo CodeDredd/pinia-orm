@@ -32,6 +32,7 @@ import type {
   WherePrimaryClosure,
   WhereSecondaryClosure,
 } from './Options'
+import { config } from '@/store/Config'
 
 export class Query<M extends Model = Model> {
   /**
@@ -405,7 +406,7 @@ export class Query<M extends Model = Model> {
 
     const collection = [] as Collection<M>
 
-    for (const id in data) collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden }))
+    for (const id in data) collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' }))
 
     return collection
   }
@@ -471,6 +472,7 @@ export class Query<M extends Model = Model> {
   find(id: string | number): Item<M>
   find(ids: (string | number)[]): Collection<M>
   find(ids: any): any {
+    console.log('find')
     return this.whereId(ids)[isArray(ids) ? 'get' : 'first']()
   }
 
@@ -636,7 +638,7 @@ export class Query<M extends Model = Model> {
     if (!item)
       return null
 
-    const model = this.hydrate(item)
+    const model = this.hydrate(item, { visible: this.visible, hidden: this.hidden, operation: 'get' })
 
     this.reviveRelations(model, schema)
 
@@ -1000,11 +1002,22 @@ export class Query<M extends Model = Model> {
     const modelKey = this.model.$getKeyName()
     const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
     const savedHydratedModel = id && this.hydratedDataCache.get(this.model.$entity() + id)
+    const mergedHidden = [...new Set([
+      ...this.hidden,
+      ...config.model.hidden,
+    ])]
+    const mergedVisible = [...new Set([
+      ...this.visible,
+      ...config.model.visible,
+    ])]
+    const visibleHidden = mergedHidden.length === config.model.hidden.length
+      && mergedVisible.length === config.model.visible.length
 
     if (
       !this.getNewHydrated
-      && options?.action !== 'save'
+      && options?.operation !== 'set'
       && savedHydratedModel
+      && visibleHidden
       && equals(record, savedHydratedModel.$toJson())
     )
       return savedHydratedModel
@@ -1013,7 +1026,7 @@ export class Query<M extends Model = Model> {
     const hydratedModel = (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}) })
 
-    if (id && options?.action !== 'save')
+    if (id && !this.getNewHydrated && options?.operation !== 'set')
       this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel)
 
     return hydratedModel
