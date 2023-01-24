@@ -35,7 +35,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/nuxt -r 1",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "lint": "eslint . --ext .ts",
+    "lint": "nuxt-module-build --stub && nuxi prepare playground && eslint . --ext .ts",
     "lint:fix": "eslint . --fix --ext .ts",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
