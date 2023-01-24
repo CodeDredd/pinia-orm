@@ -211,9 +211,9 @@ const appTemplate = `
   <div class="min-w-[300px]">
     <select v-model="userSelect" class="mb-8 block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
       <option :value="null" selected>None</option>
-      <option v-for="user in users" :value="user.id">{{ user.name }}</option>
+      <option v-for="user in users" :value="user.id" :key="user.id">{{ user.name }}</option>
     </select>
-    <user-card v-if="userSelect !== null" :user="users.find(user => user.id === userSelect)" @removeTodo="removeTodo" />
+    <user-card v-if="selectedData" :user="selectedData" :todos="selectedData.todos" @removeTodo="removeTodo" />
     <div v-else class="min-h-[350px]"></div>
   </div>
 </div>
@@ -236,6 +236,8 @@ userRepo.save(data.users)
 
 const users = computed(() => userRepo.with('todos').get())
 
+const selectedData = computed(() => users.value.find(user => user.id === userSelect.value))
+
 const removeTodo = (id) => {
   todoRepo.destroy(id)
 }
@@ -247,8 +249,8 @@ const userCardTemplate = `
         <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="user.avatarImgUrl" :alt="user.name">
         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ user.firstName }}</h5>
         <span class="text-sm text-gray-500 dark:text-gray-400">{{ user.lastName }}</span>
-        <ul class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-            <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600 flex items-center" v-for="todo in user.todos">
+        <ul v-if="user.todos" class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600 flex items-center" v-for="todo in user.todos" :key="todo.id">
                 <span class="flex-grow">{{ todo.title }}</span>
                 <button @click="removeTodo(todo.id)" class="inline-block p-[8px] rounded bg-red-400">
                     <svg class="h-[12px] w-[12px]" viewPort="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -272,6 +274,7 @@ import { useRepo } from 'pinia-orm'
 
 defineProps({
   user: Object,
+  todos: Array
 })
 
 const emit = defineEmits(['removeTodo'])
@@ -334,8 +337,8 @@ export default class User extends Model {
       id: this.uid(),
       name: this.string(''),
       avatarImgUrl: this.string(''),
-      firstName: this.string('').nullable(),
-      lastName: this.string('').nullable(),
+      firstName: this.string(''),
+      lastName: this.string(''),
       todos: this.hasMany(Todo, 'userId'),
     }
   }
@@ -353,7 +356,7 @@ export default class Todo extends Model {
     return {
       id: this.uid(),
       title: this.string(''),
-      userId: this.attr(null).nullable(),
+      userId: this.attr(null),
     }
   }
 }
@@ -388,13 +391,13 @@ const initialPackages = [
     name: 'pinia',
     source: 'unpkg',
     description: 'Pinia',
-    url: 'https://unpkg.com/pinia@2.0.18/dist/pinia.esm-browser.js',
+    url: 'https://unpkg.com/pinia@2.0.29/dist/pinia.esm-browser.js',
   },
   {
-    name: 'normalizr',
+    name: '@pinia-orm/normalizr',
     source: 'unpkg',
-    description: 'normalizr',
-    url: 'https://unpkg.com/normalizr@3.6.2/dist/normalizr.es.js',
+    description: 'Pinia ORM normalizr',
+    url: 'https://unpkg.com/@pinia-orm/normalizr@1.1.0/dist/index.mjs',
   },
   {
     name: 'nanoid/non-secure',
@@ -406,7 +409,7 @@ const initialPackages = [
     name: 'pinia-orm',
     source: 'unpkg',
     description: 'Pinia ORM',
-    url: 'https://unpkg.com/pinia-orm@1.0.0-rc.5/dist/index.mjs',
+    url: 'https://unpkg.com/pinia-orm@1.5.0/dist/index.mjs',
   },
 ]
 
