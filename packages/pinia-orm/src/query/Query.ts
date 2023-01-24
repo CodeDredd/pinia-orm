@@ -32,7 +32,6 @@ import type {
   WherePrimaryClosure,
   WhereSecondaryClosure,
 } from './Options'
-import { config } from '@/store/Config'
 
 export class Query<M extends Model = Model> {
   /**
@@ -122,6 +121,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance for the given model.
    */
   newQuery(model: string): Query {
+    this.getNewHydrated = true
     return new Query(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
   }
 
@@ -147,7 +147,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation(relation: Relation): Query {
-    return new Query(this.database, relation.getRelated(), this.cache, this.hydratedDataCache, this.pinia)
+    return new Query(this.database, relation.getRelated(), this.cache, new Map<string, M>(), this.pinia)
   }
 
   /**
@@ -472,7 +472,6 @@ export class Query<M extends Model = Model> {
   find(id: string | number): Item<M>
   find(ids: (string | number)[]): Collection<M>
   find(ids: any): any {
-    console.log('find')
     return this.whereId(ids)[isArray(ids) ? 'get' : 'first']()
   }
 
@@ -821,7 +820,7 @@ export class Query<M extends Model = Model> {
       return []
 
     const newModels = models.map((model) => {
-      const newModel = this.hydrate({ ...model.$getAttributes(), ...record }, { action: 'update' })
+      const newModel = this.hydrate({ ...model.$getAttributes(), ...record }, { action: 'update', operation: 'set' })
       if (model.$self().updating(model, record) === false)
         return model
       newModel.$self().updated(newModel)
@@ -1002,32 +1001,24 @@ export class Query<M extends Model = Model> {
     const modelKey = this.model.$getKeyName()
     const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
     const savedHydratedModel = id && this.hydratedDataCache.get(this.model.$entity() + id)
-    const mergedHidden = [...new Set([
-      ...this.hidden,
-      ...config.model.hidden,
-    ])]
-    const mergedVisible = [...new Set([
-      ...this.visible,
-      ...config.model.visible,
-    ])]
-    const visibleHidden = mergedHidden.length === config.model.hidden.length
-      && mergedVisible.length === config.model.visible.length
 
     if (
       !this.getNewHydrated
       && options?.operation !== 'set'
       && savedHydratedModel
-      && visibleHidden
-      && equals(record, savedHydratedModel.$toJson())
     )
       return savedHydratedModel
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
-    const hydratedModel = (modelByType ? modelByType.newRawInstance() as M : this.model)
-      .$newInstance(record, { relations: false, ...(options || {}) })
+    const getNewInsance = (newOptions?: ModelOptions) => (modelByType ? modelByType.newRawInstance() as M : this.model)
+      .$newInstance(record, { relations: false, ...(options || {}), ...newOptions })
+    const hydratedModel = getNewInsance()
 
     if (id && !this.getNewHydrated && options?.operation !== 'set')
       this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel)
+
+    if (id && options?.action === 'update')
+      this.hydratedDataCache.set(this.model.$entity() + id, getNewInsance({ operation: 'get' }))
 
     return hydratedModel
   }
