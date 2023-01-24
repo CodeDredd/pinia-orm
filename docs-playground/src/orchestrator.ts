@@ -409,7 +409,7 @@ const initialPackages = [
     name: 'pinia-orm',
     source: 'unpkg',
     description: 'Pinia ORM',
-    url: 'https://unpkg.com/pinia-orm@1.5.0/dist/index.mjs',
+    url: 'https://unpkg.com/pinia-orm@1.5.1/dist/index.mjs',
   },
 ]
 
