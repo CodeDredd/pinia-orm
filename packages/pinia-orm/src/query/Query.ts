@@ -1,6 +1,6 @@
 import type { Pinia } from 'pinia'
 import {
-  assert, compareWithOperator, equals, generateKey,
+  assert, compareWithOperator, generateKey,
   groupBy,
   isArray,
   isEmpty,
@@ -954,6 +954,7 @@ export class Query<M extends Model = Model> {
       // eslint-disable-next-line max-statements-per-line
       if (isDeleting === false) { notDeletableIds.push(currentModel.$getIndexId()) }
       else {
+        this.hydratedDataCache.delete(this.model.$entity() + currentModel.$getIndexId())
         afterHooks.push(() => currentModel.$self().deleted(currentModel))
         this.checkAndDeleteRelations(currentModel)
       }
