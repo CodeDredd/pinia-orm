@@ -398,17 +398,27 @@ export class Query<M extends Model = Model> {
   }
 
   /**
+   * Get all models by id from the store. The difference with the `get` is that this
+   * method will not process any query chain.
+   */
+  protected storeFind(ids: string[] = []): Collection<M> {
+    const data = this.commit('all')
+    const collection = [] as Collection<M>
+
+    for (const id in data) {
+      if (ids === undefined || ids.length === 0 || ids.includes(id))
+        collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' }))
+    }
+
+    return collection
+  }
+
+  /**
    * Get all models from the store. The difference with the `get` is that this
    * method will not process any query chain. It'll always retrieve all models.
    */
   all(): Collection<M> {
-    const data = this.commit('all')
-
-    const collection = [] as Collection<M>
-
-    for (const id in data) collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' }))
-
-    return collection
+    return this.storeFind()
   }
 
   /**
@@ -479,7 +489,12 @@ export class Query<M extends Model = Model> {
    * Retrieve models by processing all filters set to the query chain.
    */
   select(): Collection<M> {
-    let models = this.all()
+    const whereIds = this.wheres.find(where => where.field === this.model.$getKeyName())?.value
+    let ids: string[] = []
+    if (whereIds)
+      ids = ((isFunction(whereIds) ? [] : isArray(whereIds) ? whereIds : [whereIds]) || []).map(String) || []
+
+    let models = this.storeFind(ids)
 
     models = this.filterWhere(models)
     models = this.filterOrder(models)
