@@ -47,18 +47,17 @@ const addTab = () => {
     <Tab v-for="file in orchestrator.files" :key="file.filename" :active="file.filename === orchestrator.activeFilename" :name="file.filename">
       {{ file.filename }}
     </Tab>
-    <div v-if="isAddingTab">
-      <Tab>
-        <input
-          ref="fileNameInput"
-          v-model="filename"
-          outline="focus:none"
-          bg="transparent"
-          type="text"
-          @keydown.enter="addFile()"
-        >
-      </Tab>
-    </div>
+    <Tab :name="filename.value" :active="!!filename.value" v-if="isAddingTab">
+      <input
+        ref="fileNameInput"
+        v-model="filename"
+        outline="focus:none"
+        bg="transparent"
+        type="text"
+        @keydown.enter="addFile()"
+      >
+    </Tab>
+
     <Button small m="l-2" icon @click="addTab()">
       <carbon-add class="text-base" />
     </Button>
