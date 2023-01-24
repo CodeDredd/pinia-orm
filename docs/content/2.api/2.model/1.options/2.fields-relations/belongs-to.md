@@ -47,7 +47,7 @@ class User extends Model {
 ````ts
 function belongsTo(
   related: typeof Model,
-  foreignKey: string,
-  ownerKey?: string,
+  foreignKey: string | string[],
+  ownerKey?: string | string[],
 ): BelongsTo
 ````

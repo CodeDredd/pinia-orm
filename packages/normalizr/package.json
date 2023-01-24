@@ -24,6 +24,9 @@
     "README.md"
   ],
   "type": "module",
+  "funding": "https://github.com/sponsors/codedredd",
+  "jsdelivr": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "index.d.ts",
@@ -51,7 +54,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@size-limit/preset-small-lib": "^8.1.2",
     "eslint": "^8.32.0",
     "immutable": "^4.2.2",

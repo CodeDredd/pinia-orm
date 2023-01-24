@@ -92,6 +92,12 @@ Small overview:
       <img src="https://avatars.githubusercontent.com/u/1157401?v=4" height="26px" alt="Paolo Dina" />
     </picture>
   </a>
+  <a href="https://github.com/alfonsodou" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source srcset="https://avatars.githubusercontent.com/u/1931360?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Alfonso Dou Oblanca" />
+      <img src="https://avatars.githubusercontent.com/u/1931360?v=4" height="26px" alt="Alfonso Dou Oblanca" />
+    </picture>
+  </a>
 </p>
 
 <!--sponsors end-->

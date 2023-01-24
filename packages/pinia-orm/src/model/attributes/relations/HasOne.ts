@@ -2,7 +2,7 @@ import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
 import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
-import type { Model } from '../../Model'
+import type { Model, PrimaryKey } from '../../Model'
 import type { Dictionary } from './Relation'
 import { Relation } from './Relation'
 
@@ -10,12 +10,12 @@ export class HasOne extends Relation {
   /**
    * The foreign key of the parent model.
    */
-  foreignKey: string
+  foreignKey: PrimaryKey
 
   /**
    * The local key of the parent model.
    */
-  localKey: string
+  localKey: PrimaryKey
 
   /**
    * Create a new has-one relation instance.
@@ -23,8 +23,8 @@ export class HasOne extends Relation {
   constructor(
     parent: Model,
     related: Model,
-    foreignKey: string,
-    localKey: string,
+    foreignKey: PrimaryKey,
+    localKey: PrimaryKey,
   ) {
     super(parent, related)
     this.foreignKey = foreignKey
@@ -49,14 +49,22 @@ export class HasOne extends Relation {
    * Attach the relational key to the given relation.
    */
   attach(record: Element, child: Element): void {
-    child[this.foreignKey] = record[this.localKey]
+    this.compositeKeyMapper(
+      this.foreignKey,
+      this.localKey,
+      (foreignKey, localKey) => child[foreignKey] = record[localKey],
+    )
   }
 
   /**
    * Set the constraints for an eager load of the relation.
    */
   addEagerConstraints(query: Query, models: Collection): void {
-    query.whereIn(this.foreignKey, this.getKeys(models, this.localKey))
+    this.compositeKeyMapper(
+      this.foreignKey,
+      this.localKey,
+      (foreignKey, localKey) => query.whereIn(foreignKey, this.getKeys(models, localKey)),
+    )
   }
 
   /**
@@ -66,7 +74,7 @@ export class HasOne extends Relation {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
-      const key = model[this.localKey]
+      const key = model[this.getKey(this.localKey)]
 
       dictionary[key]
         ? model.$setRelation(relation, dictionary[key][0])
@@ -79,7 +87,7 @@ export class HasOne extends Relation {
    */
   protected buildDictionary(results: Collection): Dictionary {
     return this.mapToDictionary(results, (result) => {
-      return [result[this.foreignKey], result]
+      return [result[this.getKey(this.foreignKey)], result]
     })
   }
 

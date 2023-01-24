@@ -1,4 +1,4 @@
-import { beforeEach, describe, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, HasMany, Str } from '../../../src/decorators'
@@ -93,5 +93,42 @@ describe('feature/relations/has_many_save_custom_key', () => {
         2: { id: 2, userId: 2, title: 'Title 02' },
       },
     })
+  })
+
+  it('throws an error with wrong key match', () => {
+    class Post extends Model {
+      static entity = 'posts'
+
+      @Attr() declare id: number
+      @Attr() declare userId: number
+      @Attr() declare userSecondId: number
+      @Str('') declare title: string
+    }
+
+    class User extends Model {
+      static entity = 'users'
+      static primaryKey = ['id', 'secondId']
+
+      @Attr() declare id: number
+      @Attr() declare secondId: number
+      @Str('') declare name: string
+
+      @HasMany(() => Post, ['userId', 'userSecondId'], 'id')
+      declare posts: Post[]
+    }
+
+    const usersRepo = useRepo(User)
+
+    expect(() => {
+      usersRepo.save({
+        id: 1,
+        secondId: 2,
+        name: 'John Doe',
+        posts: [
+          { id: 1, title: 'Title 01' },
+          { id: 2, title: 'Title 02' },
+        ],
+      })
+    }).toThrowError()
   })
 })
