@@ -1305,17 +1305,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt-themes/docus@npm:1.6.1":
-  version: 1.6.1
-  resolution: "@nuxt-themes/docus@npm:1.6.1"
+"@nuxt-themes/docus@npm:1.6.3":
+  version: 1.6.3
+  resolution: "@nuxt-themes/docus@npm:1.6.3"
   dependencies:
     "@nuxt-themes/elements": ^0.5.2
-    "@nuxt-themes/tokens": ^1.6.1
-    "@nuxt-themes/typography": ^0.5.0
-    "@nuxt/content": ^2.3.0
+    "@nuxt-themes/tokens": ^1.6.2
+    "@nuxt-themes/typography": ^0.6.0
+    "@nuxt/content": ^2.4.1
     "@nuxthq/studio": ^0.6.5
     "@vueuse/nuxt": ^9.11.1
-  checksum: ce7b4e08808e1d210a1886317a9d76cb15ade038fc8491d875c109dea615001a8cb7a24aced2344adb084b164971904398297210b9477a537a33b48e744c3fd1
+  checksum: 60f7539a888f58aae05a188a491876143233008b048f74d72ade5ca3f36ee2f8c4a84df8915c575b74b1feb41a6490cf24ed3c8e9297326b2a14434e17f046a6
   languageName: node
   linkType: hard
 
@@ -1340,36 +1340,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt-themes/typography@npm:^0.5.0":
-  version: 0.5.2
-  resolution: "@nuxt-themes/typography@npm:0.5.2"
+"@nuxt-themes/tokens@npm:^1.6.2":
+  version: 1.6.2
+  resolution: "@nuxt-themes/tokens@npm:1.6.2"
+  dependencies:
+    "@nuxtjs/color-mode": ^3.2.0
+    "@vueuse/core": ^9.11.1
+    pinceau: ^0.12.7
+  checksum: d489bc54f83f26a74c75510144950ffa74cb1527a126324b2f0213bcbd0b9ebfc26d4b94c7645f6d7007b5c1506c198d970aeba49d16baa78a45cea6670e209c
+  languageName: node
+  linkType: hard
+
+"@nuxt-themes/typography@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@nuxt-themes/typography@npm:0.6.0"
   dependencies:
     "@nuxt-themes/tokens": ^1.6.1
     "@nuxtjs/color-mode": ^3.2.0
     nuxt-config-schema: ^0.4.4
-    nuxt-icon: ^0.2.9
+    nuxt-icon: ^0.2.10
     ufo: ^1.0.1
-  checksum: 3a155710a0962c530dd25260a929ab2b4eb7285a5a4f43354c4d1cb05d31905cd09c8769ddfc5fccbb28de794c8a0e20680400353be91d1be35364ada07f3fa5
+  checksum: f7777e92a40db84576e5ba0ffdd2a7b0b566ca798a5897a9806c890df784d027aa755c2cf8dbd6a0b839836709b514c806db4fc56aa9533c27668a952dc1cf5d
   languageName: node
   linkType: hard
 
-"@nuxt/content@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@nuxt/content@npm:2.3.0"
+"@nuxt/content@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@nuxt/content@npm:2.4.1"
   dependencies:
-    "@nuxt/kit": v3.0.0
+    "@nuxt/kit": 3.1.1
     consola: ^2.15.3
-    defu: ^6.1.1
+    defu: ^6.1.2
     destr: ^1.2.2
     detab: ^3.0.2
     html-tags: ^3.2.0
-    json5: ^2.2.1
+    json5: ^2.2.3
     knitwork: ^1.0.0
-    listhen: ^1.0.1
-    mdast-util-to-hast: ^12.2.4
+    listhen: ^1.0.2
+    mdast-util-to-hast: ^12.2.6
     mdurl: ^1.0.1
     ohash: ^1.0.0
-    pathe: ^1.0.0
+    pathe: ^1.1.0
     property-information: ^6.2.0
     rehype-external-links: ^2.0.1
     rehype-raw: ^6.1.1
@@ -1383,17 +1394,17 @@ __metadata:
     remark-rehype: ^10.1.0
     remark-squeeze-paragraphs: ^5.0.1
     scule: ^1.0.0
-    shiki-es: ^0.1.2
+    shiki-es: ^0.2.0
     slugify: ^1.6.5
     socket.io-client: ^4.5.4
     ufo: ^1.0.1
     unified: ^10.1.2
-    unist-builder: ^3.0.0
-    unist-util-position: ^4.0.3
-    unist-util-visit: ^4.1.1
+    unist-builder: ^3.0.1
+    unist-util-position: ^4.0.4
+    unist-util-visit: ^4.1.2
     unstorage: ^1.0.1
-    ws: ^8.11.0
-  checksum: 1812a5f2f52949821f1ff69fa098b4480cbc7c5951c2c41876fcbf58414a978d5e7be51c70b8c1912321367b15329f2c8cbb1a7697b6602c5c97e5b455be369d
+    ws: ^8.12.0
+  checksum: f44646a163bc63e6fc46d10a7e0555a90ecc1cad309d2f4b3fd14d3a558f580571bad0dbaef348aa26ab394ea701e56dd34f7703341911980721ddae33abaa3d
   languageName: node
   linkType: hard
 
@@ -1430,7 +1441,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:^3.0.0, @nuxt/kit@npm:v3.0.0":
+"@nuxt/kit@npm:^3.0.0":
   version: 3.0.0
   resolution: "@nuxt/kit@npm:3.0.0"
   dependencies:
@@ -1817,7 +1828,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@docsearch/js": ^3.3.2
-    "@nuxt-themes/docus": 1.6.1
+    "@nuxt-themes/docus": 1.6.3
     "@nuxthq/studio": ^0.6.5
     "@nuxtjs/tailwindcss": ^6.3.0
     "@nuxtlabs/github-module": 1.6.1
@@ -2139,6 +2150,13 @@ __metadata:
   version: 0.48.5
   resolution: "@unocss/reset@npm:0.48.5"
   checksum: f7f37cb374187685bb3859ba5dd8d2563b01537175cb9443f0d8a56f3a821bb39c31ec54f265cecd446cc5e4db84c66dbc1461b7f892160d53989b2778029ae7
+  languageName: node
+  linkType: hard
+
+"@unocss/reset@npm:^0.49.0":
+  version: 0.49.0
+  resolution: "@unocss/reset@npm:0.49.0"
+  checksum: 0075c9724ebfe5bd56885669f092977b9e16e88f5ead53ae12ff1f61e8bd6f30034b7c227d4bf87e9c134dd17ab3a955058b9277d09bd7dbc2e34e466dac70a9
   languageName: node
   linkType: hard
 
@@ -6088,7 +6106,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"listhen@npm:^1.0.0, listhen@npm:^1.0.1":
+"listhen@npm:^1.0.0":
   version: 1.0.1
   resolution: "listhen@npm:1.0.1"
   dependencies:
@@ -6488,7 +6506,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-to-hast@npm:^12.1.0, mdast-util-to-hast@npm:^12.2.4":
+"mdast-util-to-hast@npm:^12.1.0":
   version: 12.2.4
   resolution: "mdast-util-to-hast@npm:12.2.4"
   dependencies:
@@ -6502,6 +6520,23 @@ __metadata:
     unist-util-position: ^4.0.0
     unist-util-visit: ^4.0.0
   checksum: c9a1c31527590a11ec7a637ae46a8f52b05b457523e9be9c4ca8bcc1efb3eac5ed1575353e97a70fffcf61e40c80d649bee28058fa1509bc1c213eacfa73bc5f
+  languageName: node
+  linkType: hard
+
+"mdast-util-to-hast@npm:^12.2.6":
+  version: 12.2.6
+  resolution: "mdast-util-to-hast@npm:12.2.6"
+  dependencies:
+    "@types/hast": ^2.0.0
+    "@types/mdast": ^3.0.0
+    mdast-util-definitions: ^5.0.0
+    micromark-util-sanitize-uri: ^1.1.0
+    trim-lines: ^3.0.0
+    unist-builder: ^3.0.0
+    unist-util-generated: ^2.0.0
+    unist-util-position: ^4.0.0
+    unist-util-visit: ^4.0.0
+  checksum: abc3ab03ed00715df58f87b3b5abaeb5ed01d1bf92940a9856c35a022ef6a41a220b3543a8c1238804a63b602057817de16666aaae177efa07e4d65d8ca6e13d
   languageName: node
   linkType: hard
 
@@ -7590,7 +7625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-icon@npm:^0.2.9":
+"nuxt-icon@npm:^0.2.10":
   version: 0.2.10
   resolution: "nuxt-icon@npm:0.2.10"
   dependencies:
@@ -8040,6 +8075,32 @@ __metadata:
     unbuild: ^1.1.1
     unplugin: ^1.0.1
   checksum: 04fca46704abc571cf2e466a7ca835cb391a2c1743dfe925fb086b60029df98c21be7f9d72214ff4f03a955e0ea96c343ab91c2784776170bace5fc8ed58a5de
+  languageName: node
+  linkType: hard
+
+"pinceau@npm:^0.12.7":
+  version: 0.12.8
+  resolution: "pinceau@npm:0.12.8"
+  dependencies:
+    "@unocss/reset": ^0.49.0
+    "@volar/vue-language-core": ^1.0.24
+    acorn: ^8.8.2
+    chroma-js: ^2.4.2
+    consola: ^2.15.3
+    csstype: ^3.1.1
+    defu: ^6.1.2
+    magic-string: ^0.27.0
+    nanoid: ^4.0.0
+    ohash: ^1.0.0
+    postcss-custom-properties: 13.1.0
+    postcss-dark-theme-class: 0.7.3
+    postcss-nested: ^6.0.0
+    recast: ^0.22.0
+    scule: ^1.0.0
+    style-dictionary-esm: ^1.2.0
+    unbuild: ^1.1.1
+    unplugin: ^1.0.1
+  checksum: 9a10c69c463bac0d6ac923dd1324ae6be64f76364e1ca95dd83acc9411dd4b336ea5ce0e25fec8cb73b630eaa1bb9b85a65838c95cc2d9e569d31cfbe70bf230
   languageName: node
   linkType: hard
 
@@ -9348,10 +9409,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki-es@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "shiki-es@npm:0.1.2"
-  checksum: 3436111ff4e5eed864fb51e660fc95e822768d005add78cb9d47c66d52457a39552763767f45e7c927870be2d92fec8f86f27f619fed282ce4c65b91e71834e5
+"shiki-es@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "shiki-es@npm:0.2.0"
+  checksum: a3af5c946398fd91c7e64d019b1cdc2e2df66aec79b9f1ebd3f77b19bf34966415fe873571e5d4bacee961f30c08d210a5e3d2a89b5f3345b6b27ba0135e6684
   languageName: node
   linkType: hard
 
@@ -10166,6 +10227,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unist-builder@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "unist-builder@npm:3.0.1"
+  dependencies:
+    "@types/unist": ^2.0.0
+  checksum: d8c42fe69aa55a3e9aed3c581007ec5371349bf9885bfa8b0b787634f8d12fa5081f066b205ded379b6d0aeaa884039bae9ebb65a3e71784005fb110aef30d0f
+  languageName: node
+  linkType: hard
+
 "unist-util-generated@npm:^2.0.0":
   version: 2.0.0
   resolution: "unist-util-generated@npm:2.0.0"
@@ -10180,12 +10250,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-position@npm:^4.0.0, unist-util-position@npm:^4.0.3":
+"unist-util-position@npm:^4.0.0":
   version: 4.0.3
   resolution: "unist-util-position@npm:4.0.3"
   dependencies:
     "@types/unist": ^2.0.0
   checksum: 0d89973628d40f19345cbcc50008f7f56d411afa54434bbe6c224b22d26aaf9d4500da2de363f1f01945acab1f1c31920c514253149eb546ff9b8bbc1ea94209
+  languageName: node
+  linkType: hard
+
+"unist-util-position@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "unist-util-position@npm:4.0.4"
+  dependencies:
+    "@types/unist": ^2.0.0
+  checksum: e7487b6cec9365299695e3379ded270a1717074fa11fd2407c9b934fb08db6fe1d9077ddeaf877ecf1813665f8ccded5171693d3d9a7a01a125ec5cdd5e88691
   languageName: node
   linkType: hard
 
@@ -10227,6 +10306,17 @@ __metadata:
     unist-util-is: ^5.0.0
     unist-util-visit-parents: ^5.1.1
   checksum: c4a63734b0a5b439c62d20901bb472bdafdbbcd80c383e254aedeb98b23d0bae815a331e776ce7d63ea3c8018a54318abb8709d07cdf7dd094f79b2f07bb39f0
+  languageName: node
+  linkType: hard
+
+"unist-util-visit@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "unist-util-visit@npm:4.1.2"
+  dependencies:
+    "@types/unist": ^2.0.0
+    unist-util-is: ^5.0.0
+    unist-util-visit-parents: ^5.1.1
+  checksum: 95a34e3f7b5b2d4b68fd722b6229972099eb97b6df18913eda44a5c11df8b1e27efe7206dd7b88c4ed244a48c474a5b2e2629ab79558ff9eb936840295549cee
   languageName: node
   linkType: hard
 
@@ -10795,7 +10885,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.11.0":
+"ws@npm:^8.11.0, ws@npm:^8.12.0":
   version: 8.12.0
   resolution: "ws@npm:8.12.0"
   peerDependencies:
