@@ -1162,10 +1162,10 @@
   resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
-"@iconify/utils@^2.0.9":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.0.10.tgz#be86c397c4cd19867bfe8dc750fd3758b84c80ae"
-  integrity sha512-DvVLHl2w5ooo8pfUsvcMy+Rh1wkjeTOWWMicUDlLQMBE0baP8l/vwzQwmD7E0s04ixaDsv1I2JiYhKzQgB0GQw==
+"@iconify/utils@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.1.0.tgz#60b17c26009f6384fa80919ec8e689c902eb220b"
+  integrity sha512-ouXv1hQfOKq4k3wxQ2OJBYQ2gXBMeFoUCIiORmuUVUNlSq9oOTzQBF3jpFRb0+/P0bnV+RIoHcbZKufZTlJ16g==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
     "@antfu/utils" "^0.7.2"
@@ -4334,14 +4334,14 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unplugin-icons@^0.15.1:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.15.1.tgz#816eaa67e545e31087b055d211fbf0a66f35d963"
-  integrity sha512-d4Gc8A4qIJYIXKueltTwoHfR3Cxsdfnmz8lSN5dsITEyai5tdb0uWpbQkn3j9HUlLDSB1ybdQIf5CItxJT3UDw==
+unplugin-icons@^0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.15.2.tgz#f91884f6d2f7256ee356fe0223b32149a90ed78d"
+  integrity sha512-oWTTdLMuqfEYfZcko+KZHDEOIsqT4OeyJB1e4U7luCOo9gto/JLyHkqfbqjmjkjdQqA3DNHS18WOKh5esqQM5g==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
     "@antfu/utils" "^0.7.2"
-    "@iconify/utils" "^2.0.9"
+    "@iconify/utils" "^2.1.0"
     debug "^4.3.4"
     kolorist "^1.6.0"
     local-pkg "^0.4.2"
