@@ -55,7 +55,7 @@ importers:
       '@nuxtjs/eslint-config-typescript': ^12.0.0
       '@size-limit/preset-small-lib': ^8.1.2
       eslint: ^8.33.0
-      immutable: ^4.2.2
+      immutable: ^4.2.3
       size-limit: ^8.1.2
       typescript: ^4.9.5
       unbuild: ^1.1.1
@@ -63,7 +63,7 @@ importers:
       '@nuxtjs/eslint-config-typescript': 12.0.0_4vsywjlpuriuw3tl5oq6zy5a64
       '@size-limit/preset-small-lib': 8.1.2_size-limit@8.1.2
       eslint: 8.33.0
-      immutable: 4.2.2
+      immutable: 4.2.3
       size-limit: 8.1.2
       typescript: 4.9.5
       unbuild: 1.1.1
@@ -7048,8 +7048,8 @@ packages:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
 
-  /immutable/4.2.2:
-    resolution: {integrity: sha512-fTMKDwtbvO5tldky9QZ2fMX7slR0mYpY5nbnFWYp0fOzDhHqhgIw9KoYgxLWsoNTS9ZHGauHj18DTyEw6BK3Og==}
+  /immutable/4.2.3:
+    resolution: {integrity: sha512-IHpmvaOIX4VLJwPOuQr1NpeBr2ZG6vpIj3blsLVxXRWJscLioaJRStqC+NcBsLeCDsnGlPpXd5/WZmnE7MbsKA==}
     dev: true
 
   /import-fresh/3.3.0:
