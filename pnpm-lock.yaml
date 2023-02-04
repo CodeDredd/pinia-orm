@@ -9,7 +9,7 @@ importers:
   .:
     specifiers:
       '@lerna-lite/cli': ^1.15.0
-      '@lerna-lite/run': ^1.14.2
+      '@lerna-lite/run': ^1.15.0
       '@types/lodash.kebabcase': ^4.1.7
       '@types/node': ^18.11.18
       chalk: ^4.1.2
@@ -30,7 +30,7 @@ importers:
       yorkie: ^2.0.0
     devDependencies:
       '@lerna-lite/cli': 1.15.0
-      '@lerna-lite/run': 1.14.2
+      '@lerna-lite/run': 1.15.0
       '@types/lodash.kebabcase': 4.1.7
       '@types/node': 18.11.18
       chalk: 4.1.2
@@ -1530,58 +1530,6 @@ packages:
       - supports-color
     dev: true
 
-  /@lerna-lite/core/1.14.2:
-    resolution: {integrity: sha512-KRYpNOO85QQ7lav/nQcLuTIgqO0jxZSUS8JKnrE5WCmrlT78aoQoYy17nK/SDy1A98Pmutg6Y9AvZK18vBkCOA==}
-    engines: {node: '>=14.17.0', npm: '>=8.0.0'}
-    dependencies:
-      '@npmcli/run-script': 6.0.0
-      '@octokit/plugin-enterprise-rest': 6.0.1
-      '@octokit/rest': 19.0.5
-      chalk: 4.1.2
-      clone-deep: 4.0.1
-      config-chain: 1.1.13
-      conventional-changelog-angular: 5.0.13
-      conventional-changelog-core: 4.2.4
-      conventional-changelog-writer: 5.0.1
-      conventional-commits-parser: 3.2.4
-      conventional-recommended-bump: 6.1.0
-      cosmiconfig: 8.0.0
-      dedent: 0.7.0
-      execa: 5.1.1
-      fs-extra: 11.1.0
-      get-stream: 6.0.1
-      git-url-parse: 13.1.0
-      glob-parent: 6.0.2
-      globby: 11.1.0
-      graceful-fs: 4.2.10
-      inquirer: 8.2.4
-      is-ci: 3.0.1
-      is-stream: 2.0.1
-      load-json-file: 6.2.0
-      make-dir: 3.1.0
-      minimatch: 5.1.6
-      node-fetch: 2.6.7
-      npm-package-arg: 10.1.0
-      npmlog: 7.0.1
-      p-map: 4.0.0
-      p-queue: 6.6.2
-      path: 0.12.7
-      pify: 5.0.0
-      resolve-from: 5.0.0
-      semver: 7.3.8
-      slash: 3.0.0
-      strong-log-transformer: 2.1.0
-      temp-dir: 1.0.0
-      uuid: 9.0.0
-      write-file-atomic: 5.0.0
-      write-json-file: 4.3.0
-      write-pkg: 4.0.0
-    transitivePeerDependencies:
-      - bluebird
-      - encoding
-      - supports-color
-    dev: true
-
   /@lerna-lite/core/1.15.0:
     resolution: {integrity: sha512-NpG5rJtGr2d5bSitdIBpXDMp19gK7CmB48U+Q3WHnWbBbzNJ3nCOZhQWTQ2OFOQ8fgtQ8idyCKREBZ+vnB0XzQ==}
     engines: {node: '>=14.17.0', npm: '>=8.0.0'}
@@ -1612,6 +1560,18 @@ packages:
       write-file-atomic: 5.0.0
       write-json-file: 4.3.0
       write-pkg: 4.0.0
+    transitivePeerDependencies:
+      - bluebird
+      - supports-color
+    dev: true
+
+  /@lerna-lite/filter-packages/1.15.0:
+    resolution: {integrity: sha512-R2ilxu5MMIOpYJlBolGgTSRAKVmUgotqt+Ep3huCrnLOus2xNZBWOnDxzXH/LKDL3fyWxNvo+wUiT3LXfrU3Vw==}
+    engines: {node: '>=14.17.0', npm: '>=8.0.0'}
+    dependencies:
+      '@lerna-lite/core': 1.15.0
+      multimatch: 5.0.0
+      npmlog: 7.0.1
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -1654,18 +1614,16 @@ packages:
       - supports-color
     dev: true
 
-  /@lerna-lite/optional-cmd-common/1.14.2:
-    resolution: {integrity: sha512-fArrjNNZ9+9mj+OZcZDHUYsvy9xVklYOK8g3CW4AEWdsMO7hlmiVMOPvDmOxkKnvuAo/urlRRcdteAPH8tvlUw==}
+  /@lerna-lite/profiler/1.15.0:
+    resolution: {integrity: sha512-2/moKqhDhA5ptotBPuDzEywzZ3ZkV/uehA+w1dLv0gTp47eWj53ozL6ypiLQdGZ7MrzNjeGxwR5NPDIockNKzg==}
     engines: {node: '>=14.17.0', npm: '>=8.0.0'}
     dependencies:
-      '@lerna-lite/core': 1.14.2
+      '@lerna-lite/core': 1.15.0
       fs-extra: 11.1.0
-      multimatch: 5.0.0
       npmlog: 7.0.1
       upath: 2.0.1
     transitivePeerDependencies:
       - bluebird
-      - encoding
       - supports-color
     dev: true
 
@@ -1704,19 +1662,19 @@ packages:
       - supports-color
     dev: true
 
-  /@lerna-lite/run/1.14.2:
-    resolution: {integrity: sha512-sN6XjjJm8WHbUlUbkAJlDOXXKJbor5ZRrWBd2aFysJsHag4byEfVBQ8ox4KWAZ2l513AChWrgS8al9txh8GSDA==}
+  /@lerna-lite/run/1.15.0:
+    resolution: {integrity: sha512-n0lmXHvNNLCgCOJWkO8Mcq0m8gCqMLr4/7cLXjhhM6oRY3GblwNkdngKfA9MHmvLR2HHpQxCt/cUmLECs8aXvg==}
     engines: {node: '>=14.17.0', npm: '>=8.0.0'}
     dependencies:
-      '@lerna-lite/core': 1.14.2
-      '@lerna-lite/optional-cmd-common': 1.14.2
+      '@lerna-lite/core': 1.15.0
+      '@lerna-lite/filter-packages': 1.15.0
+      '@lerna-lite/profiler': 1.15.0
       chalk: 4.1.2
       fs-extra: 11.1.0
       npmlog: 7.0.1
       p-map: 4.0.0
     transitivePeerDependencies:
       - bluebird
-      - encoding
       - supports-color
     dev: true
 
@@ -2349,16 +2307,6 @@ packages:
     resolution: {integrity: sha512-93uGjlhUD+iNg1iWhUENAtJata6w5nE+V4urXOAlIXdco6xNZtUSfYY8dzp3Udy74aqO/B5UZL80x/YMa5PKRw==}
     dev: true
 
-  /@octokit/plugin-paginate-rest/5.0.1_@octokit+core@4.1.0:
-    resolution: {integrity: sha512-7A+rEkS70pH36Z6JivSlR7Zqepz3KVucEFVDnSrgHXzG7WLAzYwcHZbKdfTXHwuTHbkT1vKvz7dHl1+HNf6Qyw==}
-    engines: {node: '>= 14'}
-    peerDependencies:
-      '@octokit/core': '>=4'
-    dependencies:
-      '@octokit/core': 4.1.0
-      '@octokit/types': 8.0.0
-    dev: true
-
   /@octokit/plugin-paginate-rest/6.0.0_@octokit+core@4.1.0:
     resolution: {integrity: sha512-Sq5VU1PfT6/JyuXPyt04KZNVsFOSBaYOAq2QRZUwzVlI10KFvcbUo8lR258AAQL1Et60b0WuVik+zOWKLuDZxw==}
     engines: {node: '>= 14'}
@@ -2375,17 +2323,6 @@ packages:
       '@octokit/core': '>=3'
     dependencies:
       '@octokit/core': 4.1.0
-    dev: true
-
-  /@octokit/plugin-rest-endpoint-methods/6.7.0_@octokit+core@4.1.0:
-    resolution: {integrity: sha512-orxQ0fAHA7IpYhG2flD2AygztPlGYNAdlzYz8yrD8NDgelPfOYoRPROfEyIe035PlxvbYrgkfUZIhSBKju/Cvw==}
-    engines: {node: '>= 14'}
-    peerDependencies:
-      '@octokit/core': '>=3'
-    dependencies:
-      '@octokit/core': 4.1.0
-      '@octokit/types': 8.0.0
-      deprecation: 2.3.1
     dev: true
 
   /@octokit/plugin-rest-endpoint-methods/7.0.1_@octokit+core@4.1.0:
@@ -2418,18 +2355,6 @@ packages:
       is-plain-object: 5.0.0
       node-fetch: 2.6.7
       universal-user-agent: 6.0.0
-    transitivePeerDependencies:
-      - encoding
-    dev: true
-
-  /@octokit/rest/19.0.5:
-    resolution: {integrity: sha512-+4qdrUFq2lk7Va+Qff3ofREQWGBeoTKNqlJO+FGjFP35ZahP+nBenhZiGdu8USSgmq4Ky3IJ/i4u0xbLqHaeow==}
-    engines: {node: '>= 14'}
-    dependencies:
-      '@octokit/core': 4.1.0
-      '@octokit/plugin-paginate-rest': 5.0.1_@octokit+core@4.1.0
-      '@octokit/plugin-request-log': 1.0.4_@octokit+core@4.1.0
-      '@octokit/plugin-rest-endpoint-methods': 6.7.0_@octokit+core@4.1.0
     transitivePeerDependencies:
       - encoding
     dev: true
