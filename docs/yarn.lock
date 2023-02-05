@@ -1305,27 +1305,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt-themes/docus@npm:1.7.4":
-  version: 1.7.4
-  resolution: "@nuxt-themes/docus@npm:1.7.4"
+"@nuxt-themes/docus@npm:1.8.1":
+  version: 1.8.1
+  resolution: "@nuxt-themes/docus@npm:1.8.1"
   dependencies:
-    "@nuxt-themes/elements": ^0.6.3
+    "@nuxt-themes/elements": ^0.7.0
     "@nuxt-themes/tokens": ^1.7.3
-    "@nuxt-themes/typography": ^0.7.2
+    "@nuxt-themes/typography": ^0.8.0
     "@nuxt/content": ^2.4.3
     "@nuxthq/studio": ^0.7.0
     "@vueuse/nuxt": ^9.12.0
-  checksum: 2b8833a816eaf13fe898c5987e99badb465262ca1a0b4fac525c27474abf1f35c9c5ce3f4b2de9cae38297922af5b14e760a0e4fe9c4134894d7cff61419eaaf
+  checksum: 07765a7bdad5faa3798f1924b13c38f7e195cb8295199b9dc4e3e922b5f113b7c0ea4a90812299607ffa25db472f9795d1b8a1a142621ae198d20ea1efce936b
   languageName: node
   linkType: hard
 
-"@nuxt-themes/elements@npm:^0.6.3":
-  version: 0.6.3
-  resolution: "@nuxt-themes/elements@npm:0.6.3"
+"@nuxt-themes/elements@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@nuxt-themes/elements@npm:0.7.0"
   dependencies:
     "@nuxt-themes/tokens": ^1.7.3
     "@vueuse/core": ^9.12.0
-  checksum: 4e4ef1d456fadd3f49ae277c81d4ba02e71543d43167dad7ac6bf561292be06b3f3fb3cfbb7f3ca0935a7bda6f331e36a088fe37698c10f39398d08bad257b9a
+  checksum: fcc7d614c9e92916b50971625926ec5e84ac8a27251be69b7f9d4b2a4f3ced8f2a2668c38e3e6875f7a924d27152390eec5c21f029dafe86a58056679470526f
   languageName: node
   linkType: hard
 
@@ -1340,16 +1340,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt-themes/typography@npm:^0.7.2":
-  version: 0.7.2
-  resolution: "@nuxt-themes/typography@npm:0.7.2"
+"@nuxt-themes/typography@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@nuxt-themes/typography@npm:0.8.0"
   dependencies:
     "@nuxt-themes/tokens": ^1.7.3
     "@nuxtjs/color-mode": ^3.2.0
     nuxt-config-schema: ^0.4.4
     nuxt-icon: ^0.2.10
     ufo: ^1.0.1
-  checksum: 073546083368989d3a39c08ddf6667b2237ea747405fc74b6dbff305879edcbe557422662e9301d3c1192d368882327b2ec8128113ef0c7356699d63cb3263d3
+  checksum: 242dda5e2dccce46a3dcd599d65f51d1e106c0426ff09ccb866cc8efc5b8c516d93a0c82549bb76399d39506a046cd231121dc63511c8cd7d690b10a4db79667
   languageName: node
   linkType: hard
 
@@ -1817,7 +1817,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@docsearch/js": ^3.3.2
-    "@nuxt-themes/docus": 1.7.4
+    "@nuxt-themes/docus": 1.8.1
     "@nuxthq/studio": ^0.7.0
     "@nuxtjs/tailwindcss": ^6.3.1
     "@nuxtlabs/github-module": 1.6.1
