@@ -11,7 +11,7 @@ importers:
       '@lerna-lite/cli': ^1.15.0
       '@lerna-lite/run': ^1.15.0
       '@types/lodash.kebabcase': ^4.1.7
-      '@types/node': ^18.11.18
+      '@types/node': ^18.11.19
       chalk: ^4.1.2
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
@@ -32,7 +32,7 @@ importers:
       '@lerna-lite/cli': 1.15.0
       '@lerna-lite/run': 1.15.0
       '@types/lodash.kebabcase': 4.1.7
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       chalk: 4.1.2
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
@@ -1462,7 +1462,7 @@ packages:
       '@jest/schemas': 29.4.0
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       '@types/yargs': 17.0.10
       chalk: 4.1.2
     dev: true
@@ -2760,6 +2760,10 @@ packages:
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+    dev: true
+
+  /@types/node/18.11.19:
+    resolution: {integrity: sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -7555,7 +7559,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.4.1
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       chalk: 4.1.2
       ci-info: 3.7.1
       graceful-fs: 4.2.10
@@ -7566,7 +7570,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
