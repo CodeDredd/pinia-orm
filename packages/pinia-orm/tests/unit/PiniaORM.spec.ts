@@ -23,8 +23,11 @@ describe('unit/PiniaORM', () => {
       username: 'JD',
     })
 
-    expect(userRepo.find(1)?._meta).toBe(undefined)
-    expect(userRepo.withMeta().find(1)?._meta).toHaveProperty('createdAt')
+    const userMeta = userRepo.find(1)?._meta
+    const userMeta2 = userRepo.withMeta().find(1)?._meta
+
+    expect(userMeta).toBe(undefined)
+    expect(userMeta2).toHaveProperty('createdAt')
   })
 
   it('pass config "model.hidden"', () => {

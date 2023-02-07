@@ -1,6 +1,6 @@
 {
   "name": "@pinia-orm/normalizr",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Normalizes JSON according to schema for Redux and Flux applications",
   "bugs": {
     "url": "https://github.com/CodeDredd/pinia-orm/issues"
@@ -24,6 +24,9 @@
     "README.md"
   ],
   "type": "module",
+  "funding": "https://github.com/sponsors/codedredd",
+  "jsdelivr": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "index.d.ts",
@@ -51,13 +54,13 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@size-limit/preset-small-lib": "^8.1.0",
-    "eslint": "^8.31.0",
-    "immutable": "^4.2.2",
-    "size-limit": "^8.1.0",
-    "typescript": "^4.9.4",
-    "unbuild": "^1.0.2"
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@size-limit/preset-small-lib": "^8.1.2",
+    "eslint": "^8.33.0",
+    "immutable": "^4.2.4",
+    "size-limit": "^8.1.2",
+    "typescript": "^4.9.5",
+    "unbuild": "^1.1.1"
   },
   "size-limit": [
     {

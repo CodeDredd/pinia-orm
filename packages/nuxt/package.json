@@ -1,7 +1,7 @@
 {
   "name": "@pinia-orm/nuxt",
   "description": "Nuxt module for pinia-orm",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "license": "MIT",
   "type": "module",
   "author": {
@@ -35,28 +35,28 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/nuxt -r 1",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "lint": "eslint . --ext .ts",
+    "lint": "nuxt-module-build --stub && nuxi prepare playground && eslint . --ext .ts",
     "lint:fix": "eslint . --fix --ext .ts",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "peerDependencies": {
     "@pinia/nuxt": "^0.4.6",
-    "pinia-orm": ">=1.4.0"
+    "pinia-orm": ">=1.5.0"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0"
+    "@nuxt/kit": "^3.1.1"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "latest",
-    "@nuxt/schema": "^3.0.0",
-    "@nuxtjs/eslint-config-typescript": "latest",
+    "@nuxt/module-builder": "^0.2.1",
+    "@nuxt/schema": "^3.1.1",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@pinia/nuxt": "^0.4.6",
     "@types/prettier": "^2",
-    "eslint": "^8.31.0",
-    "nuxt": "^3.0.0-rc.13",
-    "pinia": "^2.0.28",
+    "eslint": "^8.32.0",
+    "nuxt": "^3.0.0",
+    "pinia": "^2.0.29",
     "pinia-orm": "^1.0.0",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.3",
     "std-env": "^3.3.1",
     "typescript": "^4.9.4",
     "vue": "^3.2.45"

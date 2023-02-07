@@ -2,7 +2,7 @@ import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
 import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
-import type { Model } from '../../Model'
+import type { Model, PrimaryKey } from '../../Model'
 import { Relation } from './Relation'
 
 export class BelongsTo extends Relation {
@@ -14,12 +14,12 @@ export class BelongsTo extends Relation {
   /**
    * The foreign key of the parent model.
    */
-  foreignKey: string
+  foreignKey: PrimaryKey
 
   /**
    * The associated key on the parent model.
    */
-  ownerKey: string
+  ownerKey: PrimaryKey
 
   /**
    * Create a new belongs-to relation instance.
@@ -27,8 +27,8 @@ export class BelongsTo extends Relation {
   constructor(
     parent: Model,
     child: Model,
-    foreignKey: string,
-    ownerKey: string,
+    foreignKey: PrimaryKey,
+    ownerKey: PrimaryKey,
   ) {
     super(parent, child)
     this.foreignKey = foreignKey
@@ -58,23 +58,31 @@ export class BelongsTo extends Relation {
    * Attach the relational key to the given relation.
    */
   attach(record: Element, child: Element): void {
-    record[this.foreignKey] = child[this.ownerKey]
+    this.compositeKeyMapper(
+      this.foreignKey,
+      this.ownerKey,
+      (foreignKey, ownerKey) => record[foreignKey] = child[ownerKey],
+    )
   }
 
   /**
    * Set the constraints for an eager load of the relation.
    */
   addEagerConstraints(query: Query, models: Collection): void {
-    query.whereIn(this.ownerKey, this.getEagerModelKeys(models))
+    this.compositeKeyMapper(
+      this.foreignKey,
+      this.ownerKey,
+      (foreignKey, ownerKey) => query.whereIn(ownerKey, this.getEagerModelKeys(models, foreignKey)),
+    )
   }
 
   /**
    * Gather the keys from a collection of related models.
    */
-  protected getEagerModelKeys(models: Collection): (string | number)[] {
+  protected getEagerModelKeys(models: Collection, foreignKey: string): (string | number)[] {
     return models.reduce<(string | number)[]>((keys, model) => {
-      if (model[this.foreignKey] !== null)
-        keys.push(model[this.foreignKey])
+      if (model[foreignKey] !== null)
+        keys.push(model[foreignKey])
 
       return keys
     }, [])
@@ -87,7 +95,7 @@ export class BelongsTo extends Relation {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
-      const key = model[this.foreignKey]
+      const key = model[this.getKey(this.foreignKey)]
 
       dictionary[key]
         ? model.$setRelation(relation, dictionary[key])
@@ -100,7 +108,7 @@ export class BelongsTo extends Relation {
    */
   protected buildDictionary(models: Collection): Record<string, Model> {
     return models.reduce<Record<string, Model>>((dictionary, model) => {
-      dictionary[model[this.ownerKey]] = model
+      dictionary[model[this.getKey(this.ownerKey)]] = model
 
       return dictionary
     }, {})

@@ -1,7 +1,7 @@
-import { defineThemeTokens } from '@nuxt-themes/kit'
+import { defineTheme, palette } from 'pinceau'
 
-export default defineThemeTokens({
-  colors: {
+export default defineTheme({
+  color: {
     primary: {
       50: { value: '#ecfeff' },
       100: { value: '#cffafe' },
@@ -13,6 +13,11 @@ export default defineThemeTokens({
       700: { value: '#0e7490' },
       800: { value: '#155e75' },
       900: { value: '#164e63' }
+    }
+  },
+  typography: {
+    color: {
+      primary: palette('#06b6d4')
     }
   }
 })

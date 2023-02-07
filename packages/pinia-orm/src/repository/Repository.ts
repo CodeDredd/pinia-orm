@@ -56,7 +56,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Hydrated models. They are stored to prevent rerendering of child components.
    */
-  hydratedData: Map<string, M>
+  hydratedDataCache: Map<string, M>
 
   /**
    * The model object to be used for the custom repository.
@@ -69,7 +69,7 @@ export class Repository<M extends Model = Model> {
   constructor(database: Database, pinia?: Pinia) {
     this.database = database
     this.pinia = pinia
-    this.hydratedData = new Map()
+    this.hydratedDataCache = new Map<string, M>()
   }
 
   /**
@@ -134,7 +134,7 @@ export class Repository<M extends Model = Model> {
    * Create a new Query instance.
    */
   query(): Query<M> {
-    return new Query(this.database, this.getModel(), this.queryCache, this.hydratedData, this.pinia)
+    return new Query(this.database, this.getModel(), this.queryCache, this.hydratedDataCache, this.pinia)
   }
 
   /**
@@ -354,7 +354,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Create and persist model with default values.
    */
-  new(): M {
+  new(): M | null {
     return this.query().new()
   }
 

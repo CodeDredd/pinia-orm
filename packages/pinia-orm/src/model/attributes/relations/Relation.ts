@@ -2,8 +2,9 @@ import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
 import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
-import type { Model } from '../../Model'
+import type { Model, PrimaryKey } from '../../Model'
 import { Attribute } from '../Attribute'
+import { isArray, throwError } from '../../../support/Utils'
 
 export interface Dictionary {
   [id: string]: Model[]
@@ -100,5 +101,37 @@ export abstract class Relation extends Attribute {
 
       return dictionary
     }, {})
+  }
+
+  /**
+   * Call a function for a current key match
+   */
+  protected compositeKeyMapper(
+    foreignKey: PrimaryKey,
+    localKey: PrimaryKey,
+    call: (foreignKey: string, localKey: string) => void,
+  ): void {
+    if (isArray(foreignKey) && isArray(localKey)) {
+      foreignKey.forEach((key, index) => {
+        call(key, localKey[index])
+      })
+    }
+    else if (!isArray(localKey) && !isArray(foreignKey)) {
+      call(foreignKey, localKey)
+    }
+    else {
+      throwError([
+        'This relation cant be resolve. Either child or parent doesnt have different key types (composite)',
+        JSON.stringify(foreignKey),
+        JSON.stringify(localKey),
+      ])
+    }
+  }
+
+  /**
+   * Get the index key defined by the primary key or keys (composite)
+   */
+  protected getKey(key: PrimaryKey): string {
+    return isArray(key) ? `[${key.join(',')}]` : key
   }
 }

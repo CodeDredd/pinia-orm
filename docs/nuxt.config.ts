@@ -18,23 +18,16 @@ export default defineNuxtConfig({
     pageTransition: false,
     layoutTransition: false
   },
-  build: {
-    transpile: [/content-edge/]
-  },
   nitro: {
     prerender: {
       crawlLinks: true,
       routes: ['/', '/404.html']
-    }
+    },
   },
+  modules: ['@nuxtlabs/github-module', 'nuxt-plausible', '@nuxtjs/tailwindcss'],
   github: {
     owner: 'CodeDredd',
     repo: 'pinia-orm',
     branch: 'master',
-    token: process.env.GITHUB_TOKEN
-  },
-  modules: ['@nuxtlabs/github-module', 'vue-plausible', '@nuxthq/studio'],
-  colorMode: {
-    preference: 'dark',
-  },
+  }
 })
