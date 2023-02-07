@@ -791,9 +791,8 @@ export class Model {
    * Get the composite key values for the given model as an array of ids.
    */
   protected $getCompositeKey(record: Element): (string | number)[] | null {
-    let ids = [] as (string | number)[] | null
-
-      ; (this.$getKeyName() as string[]).every((key) => {
+    let ids = [] as (string | number)[] | null;
+    (this.$getKeyName() as string[]).every((key) => {
         const id = record[key]
 
         if (isNullish(id)) {
