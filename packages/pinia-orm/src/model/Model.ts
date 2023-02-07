@@ -56,12 +56,12 @@ export interface InheritanceTypes {
   [key: string]: typeof Model
 }
 
-export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[] ? P & string : never }[keyof T];
+export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[] ? P & string : never }[keyof T]
 // export type WithKeys<T> = { [P in keyof T]: T[P] extends Model[] ? P : never }[keyof T];
 
 export class Model {
   // [s: keyof ModelFields]: any
-  pivot: undefined | unknown;
+  pivot: undefined | unknown
 
   declare _meta: undefined | MetaValues
   /**
@@ -794,16 +794,16 @@ export class Model {
   protected $getCompositeKey(record: Element): (string | number)[] | null {
     let ids = [] as (string | number)[] | null;
     (this.$getKeyName() as string[]).every((key) => {
-        const id = record[key]
+      const id = record[key]
 
-        if (isNullish(id)) {
-          ids = null
-          return false
-        }
+      if (isNullish(id)) {
+        ids = null
+        return false
+      }
 
-        (ids as (string | number)[]).push(id)
-        return true
-      })
+      (ids as (string | number)[]).push(id)
+      return true
+    })
 
     return ids === null ? null : ids
   }

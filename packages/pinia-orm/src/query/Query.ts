@@ -199,6 +199,7 @@ export class Query<M extends Model = Model> {
 
     return this
   }
+
   // where(field: T, value?: WhereSecondaryClosure<M[T]> | M[T]): this;
   // where<T extends WherePrimaryClosure<M> | keyof M>(field: T, value?: WhereSecondaryClosure<M[T]> | M[T]): this;
   /**
@@ -391,7 +392,7 @@ export class Query<M extends Model = Model> {
   protected getFieldWhereForRelations<T extends WithKeys<M>>(relation: T | (string & {}), callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): WherePrimaryClosure<M> {
     const modelIdsByRelation = this.newQuery<M>(this.model.$entity()).with(relation, callback).get(false)
       .filter((model) => {
-        let modelRelation = model[relation as T];
+        const modelRelation = model[relation as T]
 
         return compareWithOperator(
           isArray(modelRelation) ? modelRelation.length : modelRelation === null ? 0 : 1,

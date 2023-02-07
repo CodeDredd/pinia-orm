@@ -1,5 +1,5 @@
-import { Model, WithKeys } from '@/model/Model';
 import type { Query } from './Query'
+import type { Model, WithKeys } from '@/model/Model'
 
 export interface Where<T = Model> {
   field: WherePrimaryClosure<T> | NonMethodKeys<T> | string | string[]
@@ -7,8 +7,8 @@ export interface Where<T = Model> {
   boolean: 'and' | 'or'
 }
 
-export type NonMethodKeys<T> = { [P in keyof T]: T[P] extends Function ? never : P }[keyof T];
-export type GetElementType<T extends unknown[] | unknown> = T extends (infer U)[] ? U : T;
+export type NonMethodKeys<T> = { [P in keyof T]: T[P] extends Function ? never : P }[keyof T]
+export type GetElementType<T extends unknown[] | unknown> = T extends (infer U)[] ? U : T
 export type UltimateKeys<M> = { [T in keyof M]: M[T] extends Model | Model[] | null ? GetElementType<NonNullable<M[T]>> : never }
 export type WherePrimaryClosure<T> = (model: T) => boolean
 

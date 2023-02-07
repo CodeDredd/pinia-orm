@@ -23,8 +23,6 @@ import { cache } from '../cache/SharedWeakCache'
 import type { WeakCache } from '../cache/WeakCache'
 import { config } from '../store/Config'
 
-
-
 export class Repository<M extends Model = Model> {
   /**
    * A special flag to indicate if this is the repository class or not. It's
