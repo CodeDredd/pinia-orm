@@ -4100,10 +4100,10 @@ monaco-editor-core@^0.34.1:
   resolved "https://registry.yarnpkg.com/monaco-editor-core/-/monaco-editor-core-0.34.1.tgz#e51563e87f3ba392a86254fb7aeaa1ba8ae129f4"
   integrity sha512-RaYj0HGvKZjy7H3HCluhypExLi2Z7rpHVKc4KQ6iShqY3TW5cKGaETrr4wJ7aPz2UAWVtGmXNjea/BpoCAjY+w==
 
-monaco-editor@0.34.1:
-  version "0.34.1"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.34.1.tgz#1b75c4ad6bc4c1f9da656d740d98e0b850a22f87"
-  integrity sha512-FKc80TyiMaruhJKKPz5SpJPIjL+dflGvz4CpuThaPMc94AyN7SeC9HQ8hrvaxX7EyHdJcUY5i4D0gNyJj1vSZQ==
+monaco-editor@0.35.0:
+  version "0.35.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.35.0.tgz#49c4220c815262a900dacf0ae8a59bef66efab8b"
+  integrity sha512-BJfkAZ0EJ7JgrgWzqjfBNP9hPSS8NlfECEDMEIIiozV2UaPq22yeuOjgbd3TwMh3anH0krWZirXZfn8KUSxiOA==
 
 mri@^1.2.0:
   version "1.2.0"
