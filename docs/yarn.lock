@@ -775,30 +775,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/css@npm:3.3.2":
-  version: 3.3.2
-  resolution: "@docsearch/css@npm:3.3.2"
-  checksum: 867a32c01d581cccc422a57eb9a37917f68ef8cdd5091132d348f41f5aa560db03fa61d86b04a6c0c865a3992b5ce33499813d692c8058ebe0077de3dfb1595c
+"@docsearch/css@npm:3.3.3":
+  version: 3.3.3
+  resolution: "@docsearch/css@npm:3.3.3"
+  checksum: c3e678dd5e05a962d3e29b4c953632a013af3a352ad99d0e630546409e665684e122265034bca1619d9bd659e42d35c7cc90ee373836fcfb2614aae2057c5dc1
   languageName: node
   linkType: hard
 
-"@docsearch/js@npm:^3.3.2":
-  version: 3.3.2
-  resolution: "@docsearch/js@npm:3.3.2"
+"@docsearch/js@npm:^3.3.3":
+  version: 3.3.3
+  resolution: "@docsearch/js@npm:3.3.3"
   dependencies:
-    "@docsearch/react": 3.3.2
+    "@docsearch/react": 3.3.3
     preact: ^10.0.0
-  checksum: 2c3347dcc51df492526532c122b72ce0e3b7fe5fc5d82bac7dafbccfee65bf6baace7d1ef7442665b61d7acf4a7838d2cccc65051e6eaede6abf8b6cbbaa15b6
+  checksum: 445bb7f66f9ca4b385a28fd78bcbac048acd20d925978a1c23cc1ef74022ec4e3ff93d58819eae9a721dc1ac6eed17e40de536ec67ab99b87fff6e4db6b78a96
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:3.3.2":
-  version: 3.3.2
-  resolution: "@docsearch/react@npm:3.3.2"
+"@docsearch/react@npm:3.3.3":
+  version: 3.3.3
+  resolution: "@docsearch/react@npm:3.3.3"
   dependencies:
     "@algolia/autocomplete-core": 1.7.4
     "@algolia/autocomplete-preset-algolia": 1.7.4
-    "@docsearch/css": 3.3.2
+    "@docsearch/css": 3.3.3
     algoliasearch: ^4.0.0
   peerDependencies:
     "@types/react": ">= 16.8.0 < 19.0.0"
@@ -811,7 +811,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 8bf420c35a8d80f2b08faa9c68ec13c40308aee461c968bcb5674c4b9224ed57b69919d681eb9a03d204eb42e3d751fe53f66fcd9239cc40a059f5d0786605ad
+  checksum: 8a31c175853b61ee80748abc0cebdc33d247483643c4151a430e05d37f159bf59ea08cb69f878cff7787d3ca122b664701575543914d3c3692b448b63d3ad716
   languageName: node
   linkType: hard
 
@@ -1607,6 +1607,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxthq/studio@npm:^0.7.2":
+  version: 0.7.2
+  resolution: "@nuxthq/studio@npm:0.7.2"
+  dependencies:
+    "@nuxt/kit": ^3.0.0
+    "@nuxt/schema": ^3.0.0
+    defu: ^6.1.1
+    nuxt-component-meta: ^0.4.3
+    nuxt-config-schema: ^0.4.2
+    socket.io-client: ^4.5.4
+    ufo: ^1.0.1
+  checksum: a878066928e2d45b8b3a0959239f1733f8591e96a90fc0a92c79c8bac88ff4bf797d0c882fda6710e0b28ab61e3f6a763bf367709bf733aa401ad3f16f0905b4
+  languageName: node
+  linkType: hard
+
 "@nuxtjs/color-mode@npm:^3.2.0":
   version: 3.2.0
   resolution: "@nuxtjs/color-mode@npm:3.2.0"
@@ -1816,9 +1831,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
-    "@docsearch/js": ^3.3.2
+    "@docsearch/js": ^3.3.3
     "@nuxt-themes/docus": 1.8.1
-    "@nuxthq/studio": ^0.7.0
+    "@nuxthq/studio": ^0.7.2
     "@nuxtjs/tailwindcss": ^6.3.1
     "@nuxtlabs/github-module": 1.6.1
     nuxt: 3.1.1
