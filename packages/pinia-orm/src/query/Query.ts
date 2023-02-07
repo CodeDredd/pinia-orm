@@ -122,7 +122,7 @@ export class Query<M extends Model = Model> {
   /**
    * Create a new query instance for the given model.
    */
-  newQuery<T extends Model>(model: string): Query<T> {
+  newQuery(model: string): Query<M> {
     this.getNewHydrated = true
     return new Query(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
   }
