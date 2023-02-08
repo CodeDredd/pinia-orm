@@ -9,7 +9,7 @@ importers:
   .:
     specifiers:
       '@lerna-lite/cli': ^1.15.1
-      '@lerna-lite/run': ^1.15.0
+      '@lerna-lite/run': ^1.15.1
       '@types/lodash.kebabcase': ^4.1.7
       '@types/node': ^18.13.0
       chalk: ^4.1.2
@@ -30,7 +30,7 @@ importers:
       yorkie: ^2.0.0
     devDependencies:
       '@lerna-lite/cli': 1.15.1
-      '@lerna-lite/run': 1.15.0
+      '@lerna-lite/run': 1.15.1
       '@types/lodash.kebabcase': 4.1.7
       '@types/node': 18.13.0
       chalk: 4.1.2
@@ -1529,41 +1529,6 @@ packages:
       - supports-color
     dev: true
 
-  /@lerna-lite/core/1.15.0:
-    resolution: {integrity: sha512-NpG5rJtGr2d5bSitdIBpXDMp19gK7CmB48U+Q3WHnWbBbzNJ3nCOZhQWTQ2OFOQ8fgtQ8idyCKREBZ+vnB0XzQ==}
-    engines: {node: '>=14.17.0', npm: '>=8.0.0'}
-    dependencies:
-      '@npmcli/run-script': 6.0.0
-      chalk: 4.1.2
-      clone-deep: 4.0.1
-      config-chain: 1.1.13
-      cosmiconfig: 8.0.0
-      dedent: 0.7.0
-      execa: 5.1.1
-      fs-extra: 11.1.0
-      glob-parent: 6.0.2
-      globby: 11.1.0
-      inquirer: 8.2.4
-      is-ci: 3.0.1
-      load-json-file: 6.2.0
-      minimatch: 5.1.6
-      npm-package-arg: 10.1.0
-      npmlog: 7.0.1
-      p-map: 4.0.0
-      p-queue: 6.6.2
-      path: 0.12.7
-      resolve-from: 5.0.0
-      semver: 7.3.8
-      slash: 3.0.0
-      strong-log-transformer: 2.1.0
-      write-file-atomic: 5.0.0
-      write-json-file: 4.3.0
-      write-pkg: 4.0.0
-    transitivePeerDependencies:
-      - bluebird
-      - supports-color
-    dev: true
-
   /@lerna-lite/core/1.15.1:
     resolution: {integrity: sha512-NRg2OZ44j+RHtWFC6tqzweO3gB+c1kU7EYsh5OCDUid0/U3+2OAxbq/WLaq/u0GUnLeXqVmCcb3231vi1noSCg==}
     engines: {node: '>=14.17.0', npm: '>=8.0.0'}
@@ -1599,11 +1564,11 @@ packages:
       - supports-color
     dev: true
 
-  /@lerna-lite/filter-packages/1.15.0:
-    resolution: {integrity: sha512-R2ilxu5MMIOpYJlBolGgTSRAKVmUgotqt+Ep3huCrnLOus2xNZBWOnDxzXH/LKDL3fyWxNvo+wUiT3LXfrU3Vw==}
+  /@lerna-lite/filter-packages/1.15.1:
+    resolution: {integrity: sha512-3jsKGkCvoUOOdOxKdBpSQqR3bYWaq00jkziB+i8Vs3eY/6l6LZSScioc3+LGc1etqUvvgrVFzdddM+b0BpFcsQ==}
     engines: {node: '>=14.17.0', npm: '>=8.0.0'}
     dependencies:
-      '@lerna-lite/core': 1.15.0
+      '@lerna-lite/core': 1.15.1
       multimatch: 5.0.0
       npmlog: 7.0.1
     transitivePeerDependencies:
@@ -1637,11 +1602,11 @@ packages:
       - supports-color
     dev: true
 
-  /@lerna-lite/profiler/1.15.0:
-    resolution: {integrity: sha512-2/moKqhDhA5ptotBPuDzEywzZ3ZkV/uehA+w1dLv0gTp47eWj53ozL6ypiLQdGZ7MrzNjeGxwR5NPDIockNKzg==}
+  /@lerna-lite/profiler/1.15.1:
+    resolution: {integrity: sha512-OxMwhSFn2i8AvZJMItbc0n/K7mRWQRo2SK1b8yzYIb+kEbtxxXuce1ehO9Y2zDYcWukhMd9+JAz5gfQl/Ht56g==}
     engines: {node: '>=14.17.0', npm: '>=8.0.0'}
     dependencies:
-      '@lerna-lite/core': 1.15.0
+      '@lerna-lite/core': 1.15.1
       fs-extra: 11.1.0
       npmlog: 7.0.1
       upath: 2.0.1
@@ -1685,13 +1650,13 @@ packages:
       - supports-color
     dev: true
 
-  /@lerna-lite/run/1.15.0:
-    resolution: {integrity: sha512-n0lmXHvNNLCgCOJWkO8Mcq0m8gCqMLr4/7cLXjhhM6oRY3GblwNkdngKfA9MHmvLR2HHpQxCt/cUmLECs8aXvg==}
+  /@lerna-lite/run/1.15.1:
+    resolution: {integrity: sha512-9ARNzWejZ4zYrKvnX3nZkEXnTDrkgk62TiPNE4JQi2nA9EFEf5mxJZ/mH8D96SaEjfIgBBZBCg8ZlY9bvtpoKA==}
     engines: {node: '>=14.17.0', npm: '>=8.0.0'}
     dependencies:
-      '@lerna-lite/core': 1.15.0
-      '@lerna-lite/filter-packages': 1.15.0
-      '@lerna-lite/profiler': 1.15.0
+      '@lerna-lite/core': 1.15.1
+      '@lerna-lite/filter-packages': 1.15.1
+      '@lerna-lite/profiler': 1.15.1
       chalk: 4.1.2
       fs-extra: 11.1.0
       npmlog: 7.0.1
@@ -1940,7 +1905,7 @@ packages:
       '@npmcli/node-gyp': 3.0.0
       '@npmcli/promise-spawn': 6.0.1
       node-gyp: 9.0.0
-      read-package-json-fast: 3.0.1
+      read-package-json-fast: 3.0.2
       which: 3.0.0
     transitivePeerDependencies:
       - bluebird
@@ -9878,14 +9843,6 @@ packages:
   /read-cmd-shim/4.0.0:
     resolution: {integrity: sha512-yILWifhaSEEytfXI76kB9xEEiG1AiozaCJZ83A87ytjRiN+jVibXjedjCRNjoZviinhG+4UkalO3mWTd8u5O0Q==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    dev: true
-
-  /read-package-json-fast/3.0.1:
-    resolution: {integrity: sha512-8+HW7Yo+cjfF+md8DqsZHgats2mxf7gGYow/+2JjxrftoHFZz9v4dzd0EubzYbkNaLxrTVcnllHwklXN2+7aTQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    dependencies:
-      json-parse-even-better-errors: 3.0.0
-      npm-normalize-package-bin: 3.0.0
     dev: true
 
   /read-package-json-fast/3.0.2:
