@@ -56,15 +56,15 @@ importers:
       '@size-limit/preset-small-lib': ^8.2.4
       eslint: ^8.34.0
       immutable: ^4.2.4
-      size-limit: ^8.1.2
+      size-limit: ^8.2.4
       typescript: ^4.9.5
       unbuild: ^1.1.1
     devDependencies:
       '@nuxtjs/eslint-config-typescript': 12.0.0_7kw3g6rralp5ps6mg3uyzz6azm
-      '@size-limit/preset-small-lib': 8.2.4_size-limit@8.1.2
+      '@size-limit/preset-small-lib': 8.2.4_size-limit@8.2.4
       eslint: 8.34.0
       immutable: 4.2.4
-      size-limit: 8.1.2
+      size-limit: 8.2.4
       typescript: 4.9.5
       unbuild: 1.1.1
 
@@ -2854,7 +2854,7 @@ packages:
       size-limit: 8.1.2
     dev: true
 
-  /@size-limit/esbuild/8.2.4_size-limit@8.1.2:
+  /@size-limit/esbuild/8.2.4_size-limit@8.2.4:
     resolution: {integrity: sha512-kPgNfpwUvBD98s5axlf1UciFg4Ki4AYSl/cOmSyyYBuzksHiwW7Myeu0w4mTxtV9nwBFbkrrNXqszE7b+OhFLA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
@@ -2862,7 +2862,7 @@ packages:
     dependencies:
       esbuild: 0.17.7
       nanoid: 3.3.4
-      size-limit: 8.1.2
+      size-limit: 8.2.4
     dev: true
 
   /@size-limit/file/8.1.2_size-limit@8.1.2:
@@ -2875,14 +2875,14 @@ packages:
       size-limit: 8.1.2
     dev: true
 
-  /@size-limit/file/8.2.4_size-limit@8.1.2:
+  /@size-limit/file/8.2.4_size-limit@8.2.4:
     resolution: {integrity: sha512-xLuF97W7m7lxrRJvqXRlxO/4t7cpXtfxOnjml/t4aRVUCMXLdyvebRr9OM4jjoK8Fmiz8jomCbETUCI3jVhLzA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
       size-limit: 8.2.4
     dependencies:
       semver: 7.3.8
-      size-limit: 8.1.2
+      size-limit: 8.2.4
     dev: true
 
   /@size-limit/preset-small-lib/8.1.2_size-limit@8.1.2:
@@ -2895,14 +2895,14 @@ packages:
       size-limit: 8.1.2
     dev: true
 
-  /@size-limit/preset-small-lib/8.2.4_size-limit@8.1.2:
+  /@size-limit/preset-small-lib/8.2.4_size-limit@8.2.4:
     resolution: {integrity: sha512-AL4384oBgMcDPlNblgWHreqFSSOui0J9NbgyHhegB1h8AgRyHbdVGC3yWLpEESYQXHYnKdbNrYeRE/TclsViog==}
     peerDependencies:
       size-limit: 8.2.4
     dependencies:
-      '@size-limit/esbuild': 8.2.4_size-limit@8.1.2
-      '@size-limit/file': 8.2.4_size-limit@8.1.2
-      size-limit: 8.1.2
+      '@size-limit/esbuild': 8.2.4_size-limit@8.2.4
+      '@size-limit/file': 8.2.4_size-limit@8.2.4
+      size-limit: 8.2.4
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -10591,6 +10591,19 @@ packages:
 
   /size-limit/8.1.2:
     resolution: {integrity: sha512-/EfKz9I/K2ouBN+BcrTX2WiaPTOX5yiCXtM07jYpuVtyzX9r4FDUsuCq13nNmoWqRFYbtH/7wqgRLvF40AGKoQ==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+    hasBin: true
+    dependencies:
+      bytes-iec: 3.1.1
+      chokidar: 3.5.3
+      globby: 11.1.0
+      lilconfig: 2.0.6
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
+    dev: true
+
+  /size-limit/8.2.4:
+    resolution: {integrity: sha512-Un16nSreD1v2CYwSorattiJcHuAWqXvg4TsGgzpjnoByqQwsSfCIEQHuaD14HNStzredR8cdsO9oGH91ibypTA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     dependencies:
