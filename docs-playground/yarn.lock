@@ -1296,17 +1296,17 @@
   resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
-"@iconify/utils@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.1.0.tgz#60b17c26009f6384fa80919ec8e689c902eb220b"
-  integrity sha512-ouXv1hQfOKq4k3wxQ2OJBYQ2gXBMeFoUCIiORmuUVUNlSq9oOTzQBF3jpFRb0+/P0bnV+RIoHcbZKufZTlJ16g==
+"@iconify/utils@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.1.2.tgz#5be27198ed9a9b5cb6d4ef381d3606e670f2b4f6"
+  integrity sha512-SM5vvo30FlLMI5zOQ+ZrTI/CerdQa8icocnDl8rKPgy3evqw4mgw0qAYT2bnbvtlh0+F5cPwG2scnOb1kWBc9w==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
     "@antfu/utils" "^0.7.2"
     "@iconify/types" "^2.0.0"
     debug "^4.3.4"
-    kolorist "^1.6.0"
-    local-pkg "^0.4.2"
+    kolorist "^1.7.0"
+    local-pkg "^0.4.3"
 
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
@@ -3836,6 +3836,11 @@ kolorist@^1.6.0:
   resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.6.0.tgz#f43ac794305b30032a5bedcae7799d0f91d2ff36"
   integrity sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==
 
+kolorist@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.7.0.tgz#8e22bc470ea2d2743dbd461808f8b5246b19f5f4"
+  integrity sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==
+
 leven@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
@@ -3860,11 +3865,6 @@ lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
-
-local-pkg@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/local-pkg/-/local-pkg-0.4.2.tgz#13107310b77e74a0e513147a131a2ba288176c2f"
-  integrity sha512-mlERgSPrbxU3BP4qBqAvvwlgW4MTg78iwJdGGnv7kibKjWcJksrG3t6LB5lXI93wXRDvG4NpUgJFmTG4T6rdrg==
 
 local-pkg@^0.4.3:
   version "0.4.3"
@@ -5174,17 +5174,17 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unplugin-icons@^0.15.2:
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.15.2.tgz#f91884f6d2f7256ee356fe0223b32149a90ed78d"
-  integrity sha512-oWTTdLMuqfEYfZcko+KZHDEOIsqT4OeyJB1e4U7luCOo9gto/JLyHkqfbqjmjkjdQqA3DNHS18WOKh5esqQM5g==
+unplugin-icons@^0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.15.3.tgz#0d7d0cbcd6c420c2638d6a95f9929e75e66f86e6"
+  integrity sha512-YWgJqv5AahrokeOnta8uX/m1damZA6Rf6zPClgHg2Fa/45iyOe3Lj+Wn/Ba+CSsq9yBffn17YfKfJNyWCNZPvw==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
     "@antfu/utils" "^0.7.2"
-    "@iconify/utils" "^2.1.0"
+    "@iconify/utils" "^2.1.2"
     debug "^4.3.4"
-    kolorist "^1.6.0"
-    local-pkg "^0.4.2"
+    kolorist "^1.7.0"
+    local-pkg "^0.4.3"
     unplugin "^1.0.1"
 
 unplugin-vue-components@^0.23.0:
