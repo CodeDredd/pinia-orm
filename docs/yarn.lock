@@ -1663,6 +1663,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxthq/studio@npm:^0.7.4":
+  version: 0.7.4
+  resolution: "@nuxthq/studio@npm:0.7.4"
+  dependencies:
+    "@nuxt/kit": ^3.0.0
+    "@nuxt/schema": ^3.0.0
+    defu: ^6.1.1
+    nuxt-component-meta: ^0.4.3
+    nuxt-config-schema: ^0.4.2
+    socket.io-client: ^4.5.4
+    ufo: ^1.0.1
+  checksum: dea4b00d2d00bf9eed3011c0133dbd2ec966774267f053acb143b0d611f9b4018c0e3ef1b9eba1a4cb827ed156d3234ba2570b6c7865be2b874aa90b11a72c1d
+  languageName: node
+  linkType: hard
+
 "@nuxtjs/color-mode@npm:^3.2.0":
   version: 3.2.0
   resolution: "@nuxtjs/color-mode@npm:3.2.0"
@@ -1874,7 +1889,7 @@ __metadata:
   dependencies:
     "@docsearch/js": ^3.3.3
     "@nuxt-themes/docus": 1.8.2
-    "@nuxthq/studio": ^0.7.2
+    "@nuxthq/studio": ^0.7.4
     "@nuxtjs/tailwindcss": ^6.4.0
     "@nuxtlabs/github-module": 1.6.1
     nuxt: 3.1.1
