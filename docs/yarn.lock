@@ -545,6 +545,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/parser@npm:^7.20.15":
+  version: 7.20.15
+  resolution: "@babel/parser@npm:7.20.15"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: 1d0f47ca67ff2652f1c0ff1570bed8deccbc4b53509e7cd73476af9cc7ed23480c99f1179bd6d0be01612368b92b39e206d330ad6054009d699934848a89298b
+  languageName: node
+  linkType: hard
+
 "@babel/parser@npm:^7.20.7":
   version: 7.20.7
   resolution: "@babel/parser@npm:7.20.7"
@@ -1305,51 +1314,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt-themes/docus@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@nuxt-themes/docus@npm:1.8.1"
+"@nuxt-themes/docus@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@nuxt-themes/docus@npm:1.8.2"
   dependencies:
-    "@nuxt-themes/elements": ^0.7.0
-    "@nuxt-themes/tokens": ^1.7.3
-    "@nuxt-themes/typography": ^0.8.0
+    "@nuxt-themes/elements": ^0.8.0
+    "@nuxt-themes/tokens": ^1.8.2
+    "@nuxt-themes/typography": ^0.8.3
     "@nuxt/content": ^2.4.3
-    "@nuxthq/studio": ^0.7.0
+    "@nuxthq/studio": ^0.7.2
     "@vueuse/nuxt": ^9.12.0
-  checksum: 07765a7bdad5faa3798f1924b13c38f7e195cb8295199b9dc4e3e922b5f113b7c0ea4a90812299607ffa25db472f9795d1b8a1a142621ae198d20ea1efce936b
+  checksum: f50aafc6a3bfafb9ca1bb7ffbd6081179d4d872fa6a6180a4321cc2da7d97c1d4778a55bb820aa68cb5d72ee8e84c74f28c606469cab8085fa7c53094bf4f825
   languageName: node
   linkType: hard
 
-"@nuxt-themes/elements@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "@nuxt-themes/elements@npm:0.7.0"
+"@nuxt-themes/elements@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@nuxt-themes/elements@npm:0.8.0"
   dependencies:
-    "@nuxt-themes/tokens": ^1.7.3
+    "@nuxt-themes/tokens": ^1.8.2
     "@vueuse/core": ^9.12.0
-  checksum: fcc7d614c9e92916b50971625926ec5e84ac8a27251be69b7f9d4b2a4f3ced8f2a2668c38e3e6875f7a924d27152390eec5c21f029dafe86a58056679470526f
+  checksum: c1692362993f1796aac19e457baff0473e8a7deab757e9c834c4b5ec4c8630bf6f3edf686f2c4e29b588fb79981ce8a2ebeee68ac40c2b890cadac2f978f0cea
   languageName: node
   linkType: hard
 
-"@nuxt-themes/tokens@npm:^1.7.3":
-  version: 1.7.3
-  resolution: "@nuxt-themes/tokens@npm:1.7.3"
+"@nuxt-themes/tokens@npm:^1.8.2":
+  version: 1.8.2
+  resolution: "@nuxt-themes/tokens@npm:1.8.2"
   dependencies:
     "@nuxtjs/color-mode": ^3.2.0
     "@vueuse/core": ^9.12.0
-    pinceau: ^0.13.8
-  checksum: 1d0534be6010481a31d6c2dcfe9a29855e048708b6211daa9a8cac1725c4141e584fc59092b4197124956fb95b46459063a8ac48c63a9ce3d0a0700c5833c05f
+    pinceau: ^0.15.4
+  checksum: 1db0e3a0850cd4cc41573a9d2e04aa1f7b1185586b8c5d6938b05e67f34bbbc18eff3a5b9fb7cdfbb61c407cef631d1b97229d2c4f3ce5f3eb4e8d44c24c55d7
   languageName: node
   linkType: hard
 
-"@nuxt-themes/typography@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "@nuxt-themes/typography@npm:0.8.0"
+"@nuxt-themes/typography@npm:^0.8.3":
+  version: 0.8.3
+  resolution: "@nuxt-themes/typography@npm:0.8.3"
   dependencies:
-    "@nuxt-themes/tokens": ^1.7.3
     "@nuxtjs/color-mode": ^3.2.0
     nuxt-config-schema: ^0.4.4
-    nuxt-icon: ^0.2.10
+    nuxt-icon: ^0.2.11
+    pinceau: ^0.15.4
     ufo: ^1.0.1
-  checksum: 242dda5e2dccce46a3dcd599d65f51d1e106c0426ff09ccb866cc8efc5b8c516d93a0c82549bb76399d39506a046cd231121dc63511c8cd7d690b10a4db79667
+  checksum: 3ae3b65f23ae2e2825b9a7d3764c3a716b0244412af756db4be6671977a911ba124debcb91069c8e64f28a036392ddc63989f95fbe61f4f42a9037a4f0561b3c
   languageName: node
   linkType: hard
 
@@ -1639,21 +1648,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/studio@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "@nuxthq/studio@npm:0.7.0"
-  dependencies:
-    "@nuxt/kit": ^3.0.0
-    "@nuxt/schema": ^3.0.0
-    defu: ^6.1.1
-    nuxt-component-meta: ^0.4.3
-    nuxt-config-schema: ^0.4.2
-    socket.io-client: ^4.5.4
-    ufo: ^1.0.1
-  checksum: 41dd1b0bc5b8f1c5014c803d8c6af8ab5856e2d525d2f57e7649d263c1cad9e8066636098797bd27293339bf029a3cb1c3f402240d1585f974f1d1c08e43d363
-  languageName: node
-  linkType: hard
-
 "@nuxthq/studio@npm:^0.7.2":
   version: 0.7.2
   resolution: "@nuxthq/studio@npm:0.7.2"
@@ -1879,7 +1873,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@docsearch/js": ^3.3.3
-    "@nuxt-themes/docus": 1.8.1
+    "@nuxt-themes/docus": 1.8.2
     "@nuxthq/studio": ^0.7.2
     "@nuxtjs/tailwindcss": ^6.4.0
     "@nuxtlabs/github-module": 1.6.1
@@ -2828,15 +2822,6 @@ __metadata:
     object-is: ^1.0.1
     util: ^0.12.0
   checksum: bb91f181a86d10588ee16c5e09c280f9811373974c29974cbe401987ea34e966699d7989a812b0e19377b511ea0bc627f5905647ce569311824848ede382cae8
-  languageName: node
-  linkType: hard
-
-"ast-types@npm:0.14.2":
-  version: 0.14.2
-  resolution: "ast-types@npm:0.14.2"
-  dependencies:
-    tslib: ^2.0.1
-  checksum: 8674a77307764979f0a0b2006b7223a4b789abffaa7acbf6a1132650a799252155170173a1ff6a7fb6897f59437fc955f2707bdfc391b0797750898876e6c9ed
   languageName: node
   linkType: hard
 
@@ -6406,6 +6391,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"magic-string@npm:^0.29.0":
+  version: 0.29.0
+  resolution: "magic-string@npm:0.29.0"
+  dependencies:
+    "@jridgewell/sourcemap-codec": ^1.4.13
+  checksum: 19e5398fcfc44804917127c72ad622c68a19a0a10cbdb8d4f9f9417584a087fe9e117140bfb2463d86743cf1ed9cf4182ae0b0ad1a7536f7fdda257ee4449ffb
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^3.1.0, make-dir@npm:~3.1.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
@@ -7360,6 +7354,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "nanoid@npm:4.0.1"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 21022a7910aa690cb05872c07f0c4a317dfe2aa79cc2b5e4ab41d17476e23d973d24c683206d6fa7e1b56bf657cf5dfbc0f1cac7d596bcd2dea0f49635316628
+  languageName: node
+  linkType: hard
+
 "negotiator@npm:0.6.3, negotiator@npm:^0.6.3":
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
@@ -7687,14 +7690,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-icon@npm:^0.2.10":
-  version: 0.2.10
-  resolution: "nuxt-icon@npm:0.2.10"
+"nuxt-icon@npm:^0.2.11":
+  version: 0.2.11
+  resolution: "nuxt-icon@npm:0.2.11"
   dependencies:
     "@iconify/vue": ^4.0.2
     "@nuxt/kit": ^3.1.0
     nuxt-config-schema: ^0.4.4
-  checksum: 310199d5caca4e7d501d397b9c3e882745d325a6f48b07a7f0066664692c0c9bc5ef4fca6ee7a6465b5a34353b4f88b57675146f4b667e0d3bf0cdde2bc287b0
+  checksum: 356435613644f55008e0796ac5fc53435870417783264b0cda1f34f1c98a68f43364d4d609db2a14c6ce5a62f253728e6dcb99319f72713c2d1f0b203b94d8ed
   languageName: node
   linkType: hard
 
@@ -7912,12 +7915,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"paneer@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "paneer@npm:0.0.1"
+"paneer@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "paneer@npm:0.1.0"
   dependencies:
-    recast: ^0.20.4
-  checksum: 47eeee56255771e84cce5aaedf53cb3997da351754becbd2c85dc13827e0630113c2c01897d3cc92e542e0b67af953894ce7745cb81f64f6eecdbbe2cbba3b1f
+    "@babel/parser": ^7.20.15
+    "@types/estree": ^1.0.0
+    recast: ^0.22.0
+  checksum: c392646947af7d8f541395ccae7a6d157462aacce9bed0e845eedb0cf65d0c302bef399aefb44237d0272b557643fc6fe7142a8ad292c04df1141ed60048feba
   languageName: node
   linkType: hard
 
@@ -8123,9 +8128,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinceau@npm:^0.13.8":
-  version: 0.13.8
-  resolution: "pinceau@npm:0.13.8"
+"pinceau@npm:^0.15.4":
+  version: 0.15.4
+  resolution: "pinceau@npm:0.15.4"
   dependencies:
     "@unocss/reset": ^0.49.4
     "@volar/vue-language-core": ^1.0.24
@@ -8134,11 +8139,12 @@ __metadata:
     consola: ^2.15.3
     csstype: ^3.1.1
     defu: ^6.1.2
-    magic-string: ^0.27.0
-    nanoid: ^4.0.0
+    magic-string: ^0.29.0
+    nanoid: ^4.0.1
     ohash: ^1.0.0
-    paneer: ^0.0.1
-    postcss-custom-properties: 13.1.1
+    paneer: ^0.1.0
+    pathe: ^1.1.0
+    postcss-custom-properties: 13.1.3
     postcss-dark-theme-class: 0.7.3
     postcss-nested: ^6.0.0
     recast: ^0.22.0
@@ -8146,7 +8152,7 @@ __metadata:
     style-dictionary-esm: ^1.2.0
     unbuild: ^1.1.1
     unplugin: ^1.0.1
-  checksum: 7c2b8ef712c7539b9ed30670b089bf67704f9f2ce20456d125ecbd2145d8b50fc0d007b688409d8581bef65f2bda574dc0ba5644720a667a8f678568e7cb29d5
+  checksum: 45e750db4f74e7fe2bf268ea287a2da6de4f94858688493946ad9ddc52afacba720d53c7929aa3d5fc8578f6afb4711d30388e38f8a6eab052ebae50c08fbb80
   languageName: node
   linkType: hard
 
@@ -8217,21 +8223,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-custom-properties@npm:13.1.1":
-  version: 13.1.1
-  resolution: "postcss-custom-properties@npm:13.1.1"
-  dependencies:
-    "@csstools/cascade-layer-name-parser": ^1.0.0
-    "@csstools/css-parser-algorithms": ^2.0.0
-    "@csstools/css-tokenizer": ^2.0.0
-    postcss-value-parser: ^4.2.0
-  peerDependencies:
-    postcss: ^8.4
-  checksum: 21af14e82addfacdb1f02d7b3e7d77af1470b3dee8f47be5d3a2e5586f8206213a56e6e562254614a083ee3536d620311d56ff8682429b4bf2fecaa1b6471af8
-  languageName: node
-  linkType: hard
-
-"postcss-custom-properties@npm:^13.1.3":
+"postcss-custom-properties@npm:13.1.3, postcss-custom-properties@npm:^13.1.3":
   version: 13.1.3
   resolution: "postcss-custom-properties@npm:13.1.3"
   dependencies:
@@ -8915,18 +8907,6 @@ __metadata:
   dependencies:
     picomatch: ^2.2.1
   checksum: 1ced032e6e45670b6d7352d71d21ce7edf7b9b928494dcaba6f11fba63180d9da6cd7061ebc34175ffda6ff529f481818c962952004d273178acd70f7059b320
-  languageName: node
-  linkType: hard
-
-"recast@npm:^0.20.4":
-  version: 0.20.5
-  resolution: "recast@npm:0.20.5"
-  dependencies:
-    ast-types: 0.14.2
-    esprima: ~4.0.0
-    source-map: ~0.6.1
-    tslib: ^2.0.1
-  checksum: 14c35115cd9965950724cb2968f069a247fa79ce890643ab6dc3795c705b363f7b92a45238e9f765387c306763be9955f72047bb9d15b5d60b0a55f9e7912d5a
   languageName: node
   linkType: hard
 
