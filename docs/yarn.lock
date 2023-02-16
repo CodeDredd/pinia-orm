@@ -1663,9 +1663,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/studio@npm:^0.7.4":
-  version: 0.7.4
-  resolution: "@nuxthq/studio@npm:0.7.4"
+"@nuxthq/studio@npm:^0.7.5":
+  version: 0.7.5
+  resolution: "@nuxthq/studio@npm:0.7.5"
   dependencies:
     "@nuxt/kit": ^3.0.0
     "@nuxt/schema": ^3.0.0
@@ -1674,7 +1674,7 @@ __metadata:
     nuxt-config-schema: ^0.4.2
     socket.io-client: ^4.5.4
     ufo: ^1.0.1
-  checksum: dea4b00d2d00bf9eed3011c0133dbd2ec966774267f053acb143b0d611f9b4018c0e3ef1b9eba1a4cb827ed156d3234ba2570b6c7865be2b874aa90b11a72c1d
+  checksum: 1bd753a80968ab6b5a0b05898ee7e82a9f5863f162d59899d5ca6bcb69bba005db14e4d996ea89e7f47d1bfc6510c0c2afb9a37267b9c0bfef0f2717b18fb901
   languageName: node
   linkType: hard
 
@@ -1889,7 +1889,7 @@ __metadata:
   dependencies:
     "@docsearch/js": ^3.3.3
     "@nuxt-themes/docus": 1.8.2
-    "@nuxthq/studio": ^0.7.4
+    "@nuxthq/studio": ^0.7.5
     "@nuxtjs/tailwindcss": ^6.4.0
     "@nuxtlabs/github-module": 1.6.1
     nuxt: 3.1.1
