@@ -1689,9 +1689,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/tailwindcss@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@nuxtjs/tailwindcss@npm:6.4.0"
+"@nuxtjs/tailwindcss@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "@nuxtjs/tailwindcss@npm:6.4.1"
   dependencies:
     "@nuxt/kit": ^3.2.0
     "@nuxt/postcss8": ^1.1.3
@@ -1704,11 +1704,11 @@ __metadata:
     pathe: ^1.1.0
     postcss: ^8.4.21
     postcss-custom-properties: ^13.1.3
-    postcss-nesting: ^11.1.0
+    postcss-nesting: ^11.2.1
     tailwind-config-viewer: ^1.7.2
-    tailwindcss: ^3.2.6
-    ufo: ^1.0.1
-  checksum: 7ab63a5646be2da8a3d0aa0c626ab430b31362cc448320ce8ad8a1b299f471f63c4384caf5b0d14777a20c4d642f347c45c3296d4e9bdc8e211c5cefffdcb436
+    tailwindcss: ^3.2.7
+    ufo: ^1.1.0
+  checksum: 83883155c3a359f6267f91e9ab86d9e8a1fe6066c1b9b0de3dacc59bda2bb6554912955cb9aa71f6cd81490ce6876352b772799a93b912602c72fb13f0e33711
   languageName: node
   linkType: hard
 
@@ -1890,7 +1890,7 @@ __metadata:
     "@docsearch/js": ^3.3.3
     "@nuxt-themes/docus": 1.8.2
     "@nuxthq/studio": ^0.7.5
-    "@nuxtjs/tailwindcss": ^6.4.0
+    "@nuxtjs/tailwindcss": ^6.4.1
     "@nuxtlabs/github-module": 1.6.1
     nuxt: 3.1.1
     nuxt-plausible: ^0.1.2
@@ -8519,15 +8519,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-nesting@npm:^11.1.0":
-  version: 11.1.0
-  resolution: "postcss-nesting@npm:11.1.0"
+"postcss-nesting@npm:^11.2.1":
+  version: 11.2.1
+  resolution: "postcss-nesting@npm:11.2.1"
   dependencies:
     "@csstools/selector-specificity": ^2.0.0
     postcss-selector-parser: ^6.0.10
   peerDependencies:
     postcss: ^8.4
-  checksum: 639392ca6909133c72e1a8450f6c1004d2bbdfe58404c2a021ef8fffe696cafd359cf8b55c92ddb75d0656d6f98885bd1807b5e701c1cba938a8a58167b55462
+  checksum: 4dcc09beecf0b7b810343aa16438218626955d8a0746b94e61fc2395087268f074222de080fb59d38dd9e63b4828d2ebfa04ba41cb5aca89c99cb4e99e7d4c65
   languageName: node
   linkType: hard
 
@@ -9870,9 +9870,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.2.6":
-  version: 3.2.6
-  resolution: "tailwindcss@npm:3.2.6"
+"tailwindcss@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "tailwindcss@npm:3.2.7"
   dependencies:
     arg: ^5.0.2
     chokidar: ^3.5.3
@@ -9902,7 +9902,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 908451ff7b334b2aec2a0ba5bf426a786a3f190b440a1f8ede206d889448ffda3b77349829f06dc297336fd0b5edc696ae5f23b808d6444bb5c689f218e95323
+  checksum: 819446bf67acea1fc738f345d80f328b7bb6e6ef4b24070249a11219307045881cf97baed6258cbdcede7fa18886e9c9c41fd0fa087b3e987cf2948560a2f164
   languageName: node
   linkType: hard
 
@@ -10140,6 +10140,13 @@ __metadata:
   version: 1.0.1
   resolution: "ufo@npm:1.0.1"
   checksum: 63024876f21b7cc44267255a8043062046d3215e09212bd682787a13ccf1e0c5d23f7686a7f1bc7ac9f34c7e8a88100af234f42b509db50f17ce638af6ac87cc
+  languageName: node
+  linkType: hard
+
+"ufo@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "ufo@npm:1.1.0"
+  checksum: f4098df457526be8bb1a466f05a2f72075b91580519215e0c219a4ff7dca4327b59964a053012f8547da77501b61cdebffbf8e16ef4d0509a7561efffe8e74ea
   languageName: node
   linkType: hard
 
