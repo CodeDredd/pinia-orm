@@ -1314,27 +1314,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt-themes/docus@npm:1.8.2":
-  version: 1.8.2
-  resolution: "@nuxt-themes/docus@npm:1.8.2"
+"@nuxt-themes/docus@npm:1.8.3":
+  version: 1.8.3
+  resolution: "@nuxt-themes/docus@npm:1.8.3"
   dependencies:
-    "@nuxt-themes/elements": ^0.8.0
+    "@nuxt-themes/elements": ^0.8.1
     "@nuxt-themes/tokens": ^1.8.2
     "@nuxt-themes/typography": ^0.8.3
     "@nuxt/content": ^2.4.3
-    "@nuxthq/studio": ^0.7.2
-    "@vueuse/nuxt": ^9.12.0
-  checksum: f50aafc6a3bfafb9ca1bb7ffbd6081179d4d872fa6a6180a4321cc2da7d97c1d4778a55bb820aa68cb5d72ee8e84c74f28c606469cab8085fa7c53094bf4f825
+    "@nuxthq/studio": ^0.7.5
+    "@vueuse/nuxt": ^9.13.0
+  checksum: 510176ba21c6284366d8402496a47b603ed09ac7bafa332b1acb262e8730b0163285c26ac56c9f63591415e58b66a69e3a201b75c602152aff93528cd0fb4018
   languageName: node
   linkType: hard
 
-"@nuxt-themes/elements@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "@nuxt-themes/elements@npm:0.8.0"
+"@nuxt-themes/elements@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "@nuxt-themes/elements@npm:0.8.1"
   dependencies:
     "@nuxt-themes/tokens": ^1.8.2
     "@vueuse/core": ^9.12.0
-  checksum: c1692362993f1796aac19e457baff0473e8a7deab757e9c834c4b5ec4c8630bf6f3edf686f2c4e29b588fb79981ce8a2ebeee68ac40c2b890cadac2f978f0cea
+  checksum: d7ad60b9c095637abb0afb7295e5a17b7a52a97db16e1ce8ba00722cccd4be71fb96ec2baf34a8900d60e344ce0895f292b1a98cff6f22fb90b86579f66c2291
   languageName: node
   linkType: hard
 
@@ -1412,7 +1412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.1.1, @nuxt/kit@npm:^3.1.0, @nuxt/kit@npm:^3.1.1":
+"@nuxt/kit@npm:3.1.1, @nuxt/kit@npm:^3.1.0":
   version: 3.1.1
   resolution: "@nuxt/kit@npm:3.1.1"
   dependencies:
@@ -1648,21 +1648,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/studio@npm:^0.7.2":
-  version: 0.7.2
-  resolution: "@nuxthq/studio@npm:0.7.2"
-  dependencies:
-    "@nuxt/kit": ^3.0.0
-    "@nuxt/schema": ^3.0.0
-    defu: ^6.1.1
-    nuxt-component-meta: ^0.4.3
-    nuxt-config-schema: ^0.4.2
-    socket.io-client: ^4.5.4
-    ufo: ^1.0.1
-  checksum: a878066928e2d45b8b3a0959239f1733f8591e96a90fc0a92c79c8bac88ff4bf797d0c882fda6710e0b28ab61e3f6a763bf367709bf733aa401ad3f16f0905b4
-  languageName: node
-  linkType: hard
-
 "@nuxthq/studio@npm:^0.7.5":
   version: 0.7.5
   resolution: "@nuxthq/studio@npm:0.7.5"
@@ -1888,7 +1873,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@docsearch/js": ^3.3.3
-    "@nuxt-themes/docus": 1.8.2
+    "@nuxt-themes/docus": 1.8.3
     "@nuxthq/studio": ^0.7.5
     "@nuxtjs/tailwindcss": ^6.4.1
     "@nuxtlabs/github-module": 1.6.1
@@ -2472,7 +2457,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:9.12.0, @vueuse/core@npm:^9.12.0":
+"@vueuse/core@npm:9.13.0":
+  version: 9.13.0
+  resolution: "@vueuse/core@npm:9.13.0"
+  dependencies:
+    "@types/web-bluetooth": ^0.0.16
+    "@vueuse/metadata": 9.13.0
+    "@vueuse/shared": 9.13.0
+    vue-demi: "*"
+  checksum: 2b19d8ec4305f6c65650813c0fa9c15af6b322fc253ad656eb1c4bc8d7617a2ddd46a46d7ea359c4cdc5a5724aa5fc152fa7a3816ed6ebeaec4f7e58defb7153
+  languageName: node
+  linkType: hard
+
+"@vueuse/core@npm:^9.12.0":
   version: 9.12.0
   resolution: "@vueuse/core@npm:9.12.0"
   dependencies:
@@ -2505,18 +2502,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/nuxt@npm:^9.12.0":
-  version: 9.12.0
-  resolution: "@vueuse/nuxt@npm:9.12.0"
+"@vueuse/metadata@npm:9.13.0":
+  version: 9.13.0
+  resolution: "@vueuse/metadata@npm:9.13.0"
+  checksum: 91e137bf2fb1406587b523edae26b58b315d3a59797c9f2ed5dde9cb707026aa740b86da5955ea7f9662a93ce92249d0b3af763c65449b4a843bbd0725eb67f6
+  languageName: node
+  linkType: hard
+
+"@vueuse/nuxt@npm:^9.13.0":
+  version: 9.13.0
+  resolution: "@vueuse/nuxt@npm:9.13.0"
   dependencies:
-    "@nuxt/kit": ^3.1.1
-    "@vueuse/core": 9.12.0
-    "@vueuse/metadata": 9.12.0
+    "@nuxt/kit": ^3.2.0
+    "@vueuse/core": 9.13.0
+    "@vueuse/metadata": 9.13.0
     local-pkg: ^0.4.3
     vue-demi: "*"
   peerDependencies:
     nuxt: ^3.0.0
-  checksum: 07a786fb452a2441dd4d9682042b41fec1399f5f62a5829e2f4922457915315a8050d586387a6ec225fdea054a53d139881c80b992bd02b010cb459b05781d1d
+  checksum: ecea1c6015d0fd29adcd9bab08aec6d7cf9619d3c85cbfd9b6a09cd8a67bfd3223ab623b6f81a58dc63e117ee6156dc070c5311aa635f8e3c476db3d825d6abd
   languageName: node
   linkType: hard
 
@@ -2526,6 +2530,15 @@ __metadata:
   dependencies:
     vue-demi: "*"
   checksum: b359e78dddef960c7456c0bad7427ad255239740ae02485ac64ed5df3f58387253647cf243a0839f9eb014e91f315db850745ab5930e22a0c52434d1619bc04e
+  languageName: node
+  linkType: hard
+
+"@vueuse/shared@npm:9.13.0":
+  version: 9.13.0
+  resolution: "@vueuse/shared@npm:9.13.0"
+  dependencies:
+    vue-demi: "*"
+  checksum: e53e7312bdd2030b7970afcf4d3dc3f9a47f7721a92ccb51c364d23246233cb54758f7ddacbdb9ac63d1e86ec82e97d06cb53b05a4b8d43be877d16ab61dd9bb
   languageName: node
   linkType: hard
 
