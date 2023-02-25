@@ -4196,10 +4196,10 @@ mlly@^1.0.0, mlly@^1.1.0:
     pkg-types "^1.0.1"
     ufo "^1.0.1"
 
-monaco-editor-core@^0.35.0:
-  version "0.35.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor-core/-/monaco-editor-core-0.35.0.tgz#e046755290f82e71b74b2e18c908dcb6c8e76a81"
-  integrity sha512-bgH4X+uX+2M19S3tDUcVEWnsfkqvJtIIdUMMeQTAFCD7BmFZh1zPRMnM6ydmIPmbSTZIECOUcqodJZ6XrkHKZQ==
+monaco-editor-core@^0.36.0:
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor-core/-/monaco-editor-core-0.36.0.tgz#e4fe4de93eab479a30a04ad431ce356e2366e854"
+  integrity sha512-d0559W7eAJUAIUYZxVNwvjRTnBux1UXnT5FP94Fmq2w6aNG4/xPQkis5E9+AoPF5hVoNXkQMP5aYnPyogoOR/w==
 
 monaco-editor@0.36.0:
   version "0.36.0"
