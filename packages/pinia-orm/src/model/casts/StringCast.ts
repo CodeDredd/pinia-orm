@@ -10,7 +10,7 @@ export class StringCast extends CastAttribute {
   }
 
   get(value?: any): any {
-    return typeof value === 'string' || value === undefined || value === null ? value : `${value}`
+    return (typeof value === 'string' || value === undefined || value === null) ? value : `${value}`
   }
 
   /**
