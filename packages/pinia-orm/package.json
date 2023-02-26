@@ -73,7 +73,7 @@
     "@vue/composition-api": "^1.7.1",
     "@vue/test-utils": "^2.3.0",
     "c8": "^7.13.0",
-    "core-js": "^3.28.0",
+    "core-js": "^3.29.0",
     "eslint": "^8.35.0",
     "happy-dom": "^8.9.0",
     "mkdist": "^1.1.1",
