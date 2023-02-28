@@ -44,11 +44,11 @@
     "pinia-orm": ">=1.5.0"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.2.2"
+    "@nuxt/kit": "^3.2.3"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.2.1",
-    "@nuxt/schema": "^3.2.2",
+    "@nuxt/schema": "^3.2.3",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@pinia/nuxt": "^0.4.7",
     "@types/prettier": "^2",
