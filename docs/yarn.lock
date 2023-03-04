@@ -1644,6 +1644,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxt/kit@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "@nuxt/kit@npm:3.2.3"
+  dependencies:
+    "@nuxt/schema": 3.2.3
+    c12: ^1.1.2
+    consola: ^2.15.3
+    defu: ^6.1.2
+    globby: ^13.1.3
+    hash-sum: ^2.0.0
+    ignore: ^5.2.4
+    jiti: ^1.17.1
+    knitwork: ^1.0.0
+    lodash.template: ^4.5.0
+    mlly: ^1.1.1
+    pathe: ^1.1.0
+    pkg-types: ^1.0.2
+    scule: ^1.0.0
+    semver: ^7.3.8
+    unctx: ^2.1.2
+    unimport: ^2.2.4
+    untyped: ^1.2.2
+  checksum: e52482e84c1117c1dad1a93af2a8521341d810855e0e5aa7a1189020f603212e76bd95fc266148112701d140993d71556ba92f6886f87840125c53096eaaf58d
+  languageName: node
+  linkType: hard
+
 "@nuxt/postcss8@npm:^1.1.3":
   version: 1.1.3
   resolution: "@nuxt/postcss8@npm:1.1.3"
@@ -1719,6 +1745,27 @@ __metadata:
     unimport: ^2.2.4
     untyped: ^1.2.2
   checksum: 0bad0daa19fe54c9885886dada65c6fb8a129e649d1b64cc213a28a523abb91ccf67c6338cfcd58db5aa25a0d8ba24c899087ee39776bec7489fe888b204823e
+  languageName: node
+  linkType: hard
+
+"@nuxt/schema@npm:3.2.3":
+  version: 3.2.3
+  resolution: "@nuxt/schema@npm:3.2.3"
+  dependencies:
+    c12: ^1.1.2
+    create-require: ^1.1.1
+    defu: ^6.1.2
+    hookable: ^5.4.2
+    jiti: ^1.17.1
+    pathe: ^1.1.0
+    pkg-types: ^1.0.2
+    postcss-import-resolver: ^2.0.0
+    scule: ^1.0.0
+    std-env: ^3.3.2
+    ufo: ^1.1.1
+    unimport: ^2.2.4
+    untyped: ^1.2.2
+  checksum: 3cf137a0038af5b185ea3af2594f21798b7c821e24bd42f51da972d6ffb73ebde6b9fd44febc3b833aa669f535031e26d6a459ffcf211a6ba9ba9504bfefee5d
   languageName: node
   linkType: hard
 
@@ -1817,18 +1864,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxthq/studio@npm:^0.7.8":
-  version: 0.7.8
-  resolution: "@nuxthq/studio@npm:0.7.8"
+"@nuxthq/studio@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "@nuxthq/studio@npm:0.8.1"
   dependencies:
-    "@nuxt/kit": ^3.0.0
-    "@nuxt/schema": ^3.0.0
-    defu: ^6.1.1
+    "@nuxt/kit": ^3.2.3
+    defu: ^6.1.2
     nuxt-component-meta: ^0.4.3
-    nuxt-config-schema: ^0.4.2
-    socket.io-client: ^4.5.4
-    ufo: ^1.0.1
-  checksum: 38544dbd5c6600803f15101414c79d942d0f428dd1786252f29ab15b661fd7ad17845533091763b672efe7e2529e1df5e49416897befb0bcb998e5e84fd78f0a
+    nuxt-config-schema: ^0.4.5
+    socket.io-client: ^4.6.1
+    ufo: ^1.1.1
+  checksum: 32b068fd92575baa509417b2a81798ebfe982f6f4e2117b6cdd1de2c8128919c59ce2f276183b3f9a264c3a640f7bd1f3198856bea6402a2d680f31611c4013b
   languageName: node
   linkType: hard
 
@@ -2043,7 +2089,7 @@ __metadata:
   dependencies:
     "@docsearch/js": ^3.3.3
     "@nuxt-themes/docus": 1.9.1
-    "@nuxthq/studio": ^0.7.8
+    "@nuxthq/studio": ^0.8.1
     "@nuxtjs/tailwindcss": ^6.4.1
     "@nuxtlabs/github-module": 1.6.1
     nuxt: 3.1.1
@@ -3318,6 +3364,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"c12@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "c12@npm:1.1.2"
+  dependencies:
+    defu: ^6.1.2
+    dotenv: ^16.0.3
+    giget: ^1.1.0
+    jiti: ^1.17.1
+    mlly: ^1.1.1
+    pathe: ^1.1.0
+    pkg-types: ^1.0.2
+    rc9: ^2.0.1
+  checksum: 51c1beb2d046e6df08b1048940dff6787ac2ba2016e652ed0baf2cae765e5eeaa1768af260feda4d19821e2c183facc24d1204db9025fc0d47df42c4731e1fff
+  languageName: node
+  linkType: hard
+
 "cac@npm:^6.7.14":
   version: 6.7.14
   resolution: "cac@npm:6.7.14"
@@ -4502,6 +4564,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"engine.io-client@npm:~6.4.0":
+  version: 6.4.0
+  resolution: "engine.io-client@npm:6.4.0"
+  dependencies:
+    "@socket.io/component-emitter": ~3.1.0
+    debug: ~4.3.1
+    engine.io-parser: ~5.0.3
+    ws: ~8.11.0
+    xmlhttprequest-ssl: ~2.0.0
+  checksum: f412a5d490d073bc6b1240002ea9d46c4813bfb7ad98edd54db3760d75cac1d7f73c2f802a7ce04827c1e304fa26f4d464785efdb003d6231cadedca649a7146
+  languageName: node
+  linkType: hard
+
 "engine.io-parser@npm:~5.0.3":
   version: 5.0.4
   resolution: "engine.io-parser@npm:5.0.4"
@@ -5265,6 +5340,23 @@ __metadata:
   bin:
     giget: dist/cli.mjs
   checksum: adb9a1ed8a2895e9962865ac02d648134c82e17bd149804244322a27a7fc547bf57a0f8d4090d7d5bbce5ceba2914d5db6a94db41489eae92fbef2f1a1c27261
+  languageName: node
+  linkType: hard
+
+"giget@npm:^1.1.0":
+  version: 1.1.2
+  resolution: "giget@npm:1.1.2"
+  dependencies:
+    colorette: ^2.0.19
+    defu: ^6.1.2
+    https-proxy-agent: ^5.0.1
+    mri: ^1.2.0
+    node-fetch-native: ^1.0.2
+    pathe: ^1.1.0
+    tar: ^6.1.13
+  bin:
+    giget: dist/cli.mjs
+  checksum: 76ad0f7e792ee95dd6c4e1096697fdcce61a2a3235a6c21761fc3e0d1053342074ce71c80059d6d4363fd34152e5d7b2e58221412f300c852ff7d4a12d0321fe
   languageName: node
   linkType: hard
 
@@ -7842,6 +7934,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-fetch-native@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "node-fetch-native@npm:1.0.2"
+  checksum: cd1f031bb3fd5b467bdc5a515f0042923821b91be5f01f47a0f17dd97b7de0921bd965a2caf9b2e64d13dc6d65dd195387b43cdc2127a7a2b1db84c8659fb1c7
+  languageName: node
+  linkType: hard
+
 "node-fetch@npm:^2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
@@ -8057,6 +8156,20 @@ __metadata:
     pathe: ^1.0.0
     untyped: ^1.2.2
   checksum: a624926fbabf691ccfec58600b0d7a787843d56f4cf02276e5173e063a6b88daa0c8d788696d46ce70812a6697d72d56e482165512b2baef95a0fc6c2d87862e
+  languageName: node
+  linkType: hard
+
+"nuxt-config-schema@npm:^0.4.5":
+  version: 0.4.5
+  resolution: "nuxt-config-schema@npm:0.4.5"
+  dependencies:
+    "@nuxt/kit": ^3.0.0
+    changelogen: ^0.4.1
+    defu: ^6.1.2
+    jiti: ^1.16.2
+    pathe: ^1.0.0
+    untyped: ^1.2.2
+  checksum: 994dd4ee1cf2a805550c14131ed2b6c5e7112bbda04072a5b5bc87f0b33da3db82cf5f0cc6f40cffc608577469fb12ea9a2b1a3ccc5f8a11e93e65f60bd7f110
   languageName: node
   linkType: hard
 
@@ -9298,6 +9411,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rc9@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "rc9@npm:2.0.1"
+  dependencies:
+    defu: ^6.1.2
+    destr: ^1.2.2
+    flat: ^5.0.2
+  checksum: 360a7b60ab7d58e79cf020985c51aa3906fee155fcdbd62fd57c269afade70ad7d3a69e63df42cc6325f1329e0f9ce697df44a2e2c6fd403255c96498cef3e89
+  languageName: node
+  linkType: hard
+
 "read-cache@npm:^1.0.0":
   version: 1.0.0
   resolution: "read-cache@npm:1.0.0"
@@ -9980,6 +10104,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"socket.io-client@npm:^4.6.1":
+  version: 4.6.1
+  resolution: "socket.io-client@npm:4.6.1"
+  dependencies:
+    "@socket.io/component-emitter": ~3.1.0
+    debug: ~4.3.2
+    engine.io-client: ~6.4.0
+    socket.io-parser: ~4.2.1
+  checksum: cc6abd3f9db41379d1aa115cee5743c97f450c47cf416885660a62d1250696c38c40d0b6d1e6a6b7c6f7ffa02c504e9c04ceffe1459ae0208c8697dc8f69aae8
+  languageName: node
+  linkType: hard
+
 "socket.io-parser@npm:~4.2.1":
   version: 4.2.1
   resolution: "socket.io-parser@npm:4.2.1"
@@ -10401,7 +10537,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:^6.1.12":
+"tar@npm:^6.1.12, tar@npm:^6.1.13":
   version: 6.1.13
   resolution: "tar@npm:6.1.13"
   dependencies:
@@ -10667,6 +10803,18 @@ __metadata:
     magic-string: ^0.26.7
     unplugin: ^1.0.0
   checksum: 757e4881d14bd7c854c5c93afa7f951a3d198ebd4f4111b0d37fef3a309964af6fa367d240b07d33bc6d6b24bbc75ff2a792f32eeb00df758d90ba110e23ea6f
+  languageName: node
+  linkType: hard
+
+"unctx@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "unctx@npm:2.1.2"
+  dependencies:
+    acorn: ^8.8.2
+    estree-walker: ^3.0.3
+    magic-string: ^0.27.0
+    unplugin: ^1.0.1
+  checksum: c44f14d02ccbe537c2dbb25f8cc838a29d7f6895b1ec67fa3b255c57c9c02289bc50d66359f0b559f8c450a7279dfea5eae82a775ed93bf1c0fd8249a614037f
   languageName: node
   linkType: hard
 
@@ -11474,6 +11622,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 818ff3f8749c172a95a114cceb8b89cedd27e43a82d65c7ad0f7882b1e96a2ee6709e3746a903c3fa88beec0c8bae9a9fcd75f20858b32a166dfb7519316a5d7
+  languageName: node
+  linkType: hard
+
+"ws@npm:~8.11.0":
+  version: 8.11.0
+  resolution: "ws@npm:8.11.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ^5.0.2
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 316b33aba32f317cd217df66dbfc5b281a2f09ff36815de222bc859e3424d83766d9eb2bd4d667de658b6ab7be151f258318fb1da812416b30be13103e5b5c67
   languageName: node
   linkType: hard
 
