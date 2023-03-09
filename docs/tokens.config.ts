@@ -1,4 +1,4 @@
-import { defineTheme, palette } from 'pinceau'
+import { defineTheme } from 'pinceau'
 
 export default defineTheme({
   color: {
@@ -13,11 +13,6 @@ export default defineTheme({
       700: { value: '#0e7490' },
       800: { value: '#155e75' },
       900: { value: '#164e63' }
-    }
-  },
-  typography: {
-    color: {
-      primary: palette('#06b6d4')
     }
   }
 })
