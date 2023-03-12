@@ -22,6 +22,7 @@ import { MorphMany } from './attributes/relations/MorphMany'
 import type { CastAttribute, Casts } from './casts/CastAttribute'
 import type { TypeDefault } from './attributes/types/Type'
 import { HasManyThrough } from './attributes/relations/HasManyThrough'
+import { MorphToMany } from '@/model/attributes/relations/MorphToMany'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -378,6 +379,39 @@ export class Model {
       pivotInstance,
       foreignPivotKey,
       relatedPivotKey,
+      parentKey,
+      relatedKey,
+    )
+  }
+
+  /**
+   * Create a new MorphToMany relation instance.
+   */
+  static morphToMany(
+    related: typeof Model,
+    pivot: typeof Model,
+    relatedId: string,
+    id: string,
+    type: string,
+    parentKey?: string,
+    relatedKey?: string,
+  ): MorphToMany {
+    const instance = related.newRawInstance()
+    const model = this.newRawInstance()
+    const pivotInstance = pivot.newRawInstance()
+
+    parentKey = parentKey ?? model.$getLocalKey()
+    relatedKey = relatedKey ?? instance.$getLocalKey()
+
+    this.schemas[related.entity][`pivot_${pivotInstance.$entity()}`] = new MorphOne(instance, pivotInstance, relatedId, model.$entity(), relatedKey)
+
+    return new MorphToMany(
+      model,
+      instance,
+      pivotInstance,
+      relatedId,
+      id,
+      type,
       parentKey,
       relatedKey,
     )
