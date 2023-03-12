@@ -15,7 +15,7 @@ importers:
       chalk: ^4.1.2
       conventional-changelog-cli: ^2.2.2
       enquirer: ^2.3.6
-      execa: ^7.0.0
+      execa: ^7.1.0
       expect: ^29.5.0
       globby: ^13.1.3
       lint-staged: ^13.2.0
@@ -36,7 +36,7 @@ importers:
       chalk: 4.1.2
       conventional-changelog-cli: 2.2.2
       enquirer: 2.3.6
-      execa: 7.0.0
+      execa: 7.1.0
       expect: 29.5.0
       globby: 13.1.3
       lint-staged: 13.2.0_enquirer@2.3.6
@@ -6142,8 +6142,8 @@ packages:
       strip-final-newline: 2.0.0
     dev: true
 
-  /execa/7.0.0:
-    resolution: {integrity: sha512-tQbH0pH/8LHTnwTrsKWideqi6rFB/QNUawEwrn+WHyz7PX1Tuz2u7wfTvbaNBdP5JD5LVWxNo8/A8CHNZ3bV6g==}
+  /execa/7.1.0:
+    resolution: {integrity: sha512-T6nIJO3LHxUZ6ahVRaxXz9WLEruXLqdcluA+UuTptXmLM7nDAn9lx9IfkxPyzEL21583qSt4RmL44pO71EHaJQ==}
     engines: {node: ^14.18.0 || ^16.14.0 || >=18.0.0}
     dependencies:
       cross-spawn: 7.0.3
@@ -7654,7 +7654,7 @@ packages:
       cli-truncate: 3.1.0
       commander: 10.0.0
       debug: 4.3.4
-      execa: 7.0.0
+      execa: 7.1.0
       lilconfig: 2.1.0
       listr2: 5.0.7_enquirer@2.3.6
       micromatch: 4.0.5
