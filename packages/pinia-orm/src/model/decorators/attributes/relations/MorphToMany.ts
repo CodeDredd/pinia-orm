@@ -2,7 +2,7 @@ import type { Model } from '../../../Model'
 import type { PropertyDecorator } from '../../Contracts'
 
 /**
- * Create a morph-to attribute property decorator.
+ * Create a morph-to-many attribute property decorator.
  */
 export function MorphToMany(
   related: () => typeof Model,

@@ -42,7 +42,7 @@ export class MorphToMany extends Relation {
   pivotKey = 'pivot'
 
   /**
-   * Create a new belongs to instance.
+   * Create a new morph to many to instance.
    */
   constructor(
     parent: Model,
