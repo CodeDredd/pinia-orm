@@ -87,6 +87,14 @@ describe('unit/repository/Repository', () => {
     expect(postRepo.getModel()).toBeInstanceOf(Post)
   })
 
+  it('can trigger cache & hook from the pinia store action', () => {
+    const userRepo = useRepo(User)
+    expect(userRepo.hydratedDataCache.size).toBe(0)
+
+    userRepo.piniaStore().save({ 1: { id: 1, name: 'John' } })
+    expect(userRepo.hydratedDataCache.size).toBe(1)
+  })
+
   it('can access the pinia store', () => {
     const logger = vi.spyOn(console, 'log')
 
