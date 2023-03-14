@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@lerna-lite/cli": "^1.16.2",
-    "@lerna-lite/run": "^1.16.1",
+    "@lerna-lite/run": "^1.16.2",
     "@types/lodash.kebabcase": "^4.1.7",
     "@types/node": "^18.15.0",
     "chalk": "^4.1.2",
