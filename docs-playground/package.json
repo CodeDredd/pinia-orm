@@ -39,7 +39,7 @@
     "@antfu/eslint-config": "^0.36.0",
     "@iconify/json": "^2.2.34",
     "@types/file-saver": "^2.0.5",
-    "@types/node": "^18.15.2",
+    "@types/node": "^18.15.3",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.2.47",
     "eslint": "^8.36.0",
