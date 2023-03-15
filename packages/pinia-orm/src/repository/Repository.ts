@@ -18,6 +18,7 @@ import { useRepo } from '../composables/useRepo'
 import type { DataStoreState } from '../composables/useDataStore'
 import { useDataStore } from '../composables/useDataStore'
 import { cache } from '../cache/SharedWeakCache'
+import { cache as hydratedDataCache } from '../cache/SharedHydratedDatakCache'
 import type { WeakCache } from '../cache/WeakCache'
 import { config } from '../store/Config'
 
@@ -65,7 +66,7 @@ export class Repository<M extends Model = Model> {
   constructor(database: Database, pinia?: Pinia) {
     this.database = database
     this.pinia = pinia
-    this.hydratedDataCache = new Map<string, M>()
+    this.hydratedDataCache = hydratedDataCache<M>()
   }
 
   /**
@@ -114,7 +115,7 @@ export class Repository<M extends Model = Model> {
    * Returns the pinia store used with this model
    */
   piniaStore<S extends DataStoreState = DataStoreState>() {
-    return useDataStore<S>(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
+    return useDataStore<S>(this.model.$entity(), this.model.$piniaOptions(), this.query())(this.pinia)
   }
 
   /**
