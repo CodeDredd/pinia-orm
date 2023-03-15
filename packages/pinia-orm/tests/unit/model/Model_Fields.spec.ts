@@ -9,7 +9,7 @@ describe('unit/model/Model_Fields', () => {
 
       static fields() {
         return {
-          id: this.attr(null),
+          id: this.attr(() => undefined),
           str: this.string(''),
           num: this.number(0),
           bool: this.boolean(false),
@@ -28,7 +28,7 @@ describe('unit/model/Model_Fields', () => {
       bool: true,
     })
 
-    expect(user.id).toBe(null)
+    expect(user.id).toBe(undefined)
     expect(user.str).toBe('string')
     expect(user.num).toBe(1)
     expect(user.bool).toBe(true)
