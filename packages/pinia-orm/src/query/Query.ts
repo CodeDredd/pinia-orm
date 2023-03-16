@@ -818,6 +818,7 @@ export class Query<M extends Model = Model> {
   fresh(records: Element[]): Collection<M>
   fresh(record: Element): M
   fresh(records: Element | Element[]): M | Collection<M> {
+    this.hydratedDataCache.clear()
     const models = this.hydrate(records, { action: 'update' })
 
     this.commit('fresh', this.compile(models))
