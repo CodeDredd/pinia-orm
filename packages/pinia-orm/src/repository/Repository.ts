@@ -343,8 +343,17 @@ export class Repository<M extends Model = Model> {
    */
   save(records: Element[]): M[]
   save(record: Element): M
-  public save(records: Element | Element[]): M | M[] {
+  save(records: Element | Element[]): M | M[] {
     return this.query().save(records)
+  }
+
+  /**
+ * Tries to update given record or records by their id.
+ */
+  update(records: Element[]): M[]
+  update(record: Element): M
+  update(records: Element | Element[]): M | M[] {
+    return this.query().processSavingElements(records, ['update'])
   }
 
   /**

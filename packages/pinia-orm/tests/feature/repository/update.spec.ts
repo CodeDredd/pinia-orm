@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, Num, Str } from '../../../src/decorators'
@@ -72,6 +72,53 @@ describe('feature/repository/update', () => {
     const users = userRepo.where('name', 'No match').update({ age: 50 })
 
     expect(users).toEqual([])
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'John Doe', age: 40 },
+        2: { id: 2, name: 'Jane Doe', age: 30 },
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
+    })
+  })
+
+  it('updates with repository update', () => {
+    const userRepo = useRepo(User)
+
+    fillState({
+      users: {
+        1: { id: 1, name: 'John Doe', age: 40 },
+        2: { id: 2, name: 'Jane Doe', age: 30 },
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
+    })
+
+    userRepo.update({ id: 1, age: 50 })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'John Doe', age: 50 },
+        2: { id: 2, name: 'Jane Doe', age: 30 },
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
+    })
+  })
+
+  it('throws warning if no updatable record found', () => {
+    const userRepo = useRepo(User)
+    const logger = vi.spyOn(console, 'warn')
+
+    fillState({
+      users: {
+        1: { id: 1, name: 'John Doe', age: 40 },
+        2: { id: 2, name: 'Jane Doe', age: 30 },
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
+    })
+
+    userRepo.update({ id: 4, age: 50 })
+
+    expect(logger).toBeCalledTimes(1)
 
     assertState({
       users: {

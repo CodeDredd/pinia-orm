@@ -202,6 +202,11 @@ export function throwError(
   throw new Error(['[Pinia ORM]'].concat(message).join(' '))
 }
 
+export function throwWarning(message: string[], ...variables: any) {
+  // eslint-disable-next-line no-console
+  console.warn(['[Pinia ORM]'].concat(message).join(' '), ...variables)
+}
+
 /**
  * Asserts that the condition is truthy, throwing immediately if not.
  */

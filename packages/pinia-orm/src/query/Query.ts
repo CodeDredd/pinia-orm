@@ -5,7 +5,7 @@ import {
   isArray,
   isEmpty,
   isFunction,
-  orderBy,
+  orderBy, throwWarning,
 } from '../support/Utils'
 import type { Collection, Element, Elements, GroupedCollection, Item, NormalizedData } from '../data/Data'
 import type { Database } from '../database/Database'
@@ -32,6 +32,8 @@ import type {
   WherePrimaryClosure,
   WhereSecondaryClosure,
 } from './Options'
+
+export type SaveModes = Array<'create' | 'update' | 'insert'>
 
 export class Query<M extends Model = Model> {
   /**
@@ -728,8 +730,14 @@ export class Query<M extends Model = Model> {
    * Save the given records to the store with data normalization.
    */
   save(records: Element[]): M[]
-  save(record: Element): M
+  save(records: Element): M
   save(records: Element | Element[]): M | M[] {
+    return this.processSavingElements(records)
+  }
+
+  processSavingElements(records: Element[], modes?: SaveModes): M[]
+  processSavingElements(records: Element, modes?: SaveModes): M
+  processSavingElements(records: Element | Element[], modes: SaveModes = ['create', 'update', 'insert']): M | M[] {
     let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
     const modelTypes = this.model.$types()
     const isChildEntity = this.model.$baseEntity() !== this.model.$entity()
@@ -762,7 +770,7 @@ export class Query<M extends Model = Model> {
       const query = this.newQuery(entity)
       const elements = entities[entity]
 
-      query.saveElements(elements)
+      query.saveElements(elements, modes)
     }
     return this.revive(data) as M | M[]
   }
@@ -770,7 +778,7 @@ export class Query<M extends Model = Model> {
   /**
    * Save the given elements to the store.
    */
-  saveElements(elements: Elements): void {
+  protected saveElements(elements: Elements, modes: SaveModes): void {
     const newData = {} as Elements
     const currentData = this.commit('all')
     const afterSavingHooks = []
@@ -778,23 +786,44 @@ export class Query<M extends Model = Model> {
     for (const id in elements) {
       const record = elements[id]
       const existing = currentData[id]
-      const model = existing
-        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
-        : this.hydrate(record, { operation: 'set', action: 'save' })
+      let model: M | null = null
+      if (existing) {
+        if (modes.includes('update'))
+          model = this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
 
-      const isSaving = model.$self().saving(model, record)
-      const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
-      if (isSaving === false || isUpdatingOrCreating === false)
-        continue
+        if (!model && modes.includes('insert'))
+          throwWarning(['Inserting a record which already exist.'], 'Existing', existing, 'New Record', record)
+      }
+      else {
+        if (modes.includes('create') || modes.includes('insert'))
+          model = this.hydrate(record, { operation: 'set', action: 'save' })
 
-      afterSavingHooks.push(() => model.$self().saved(model, record))
-      afterSavingHooks.push(() => existing ? model.$self().updated(model, record) : model.$self().created(model, record))
-      newData[id] = model.$getAttributes()
-      if (Object.values(model.$types()).length > 0 && !newData[id][model.$typeKey()])
-        newData[id][model.$typeKey()] = record[model.$typeKey()]
+        if (!model && modes.includes('update'))
+          throwWarning(['Updating a record which does not exist.'], record)
+      }
+
+      if (model) {
+        const isSaving = model.$self().saving(model, record)
+        const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
+        if (isSaving === false || isUpdatingOrCreating === false)
+          continue
+
+        // @ts-expect-error model is not null
+        afterSavingHooks.push(() => model.$self().saved(model, record))
+        // @ts-expect-error model is not null
+        afterSavingHooks.push(() => existing ? model.$self().updated(model, record) : model.$self().created(model, record))
+        newData[id] = model.$getAttributes()
+        if (Object.values(model.$types()).length > 0 && !newData[id][model.$typeKey()])
+          newData[id][model.$typeKey()] = record[model.$typeKey()]
+      }
     }
+
     if (Object.keys(newData).length > 0) {
-      this.commit('save', newData)
+      if (modes.length === 1)
+        this.commit(modes[0], newData)
+      else
+        this.commit('save', newData)
+
       afterSavingHooks.forEach(hook => hook())
     }
   }
@@ -805,11 +834,7 @@ export class Query<M extends Model = Model> {
   insert(records: Element[]): Collection<M>
   insert(record: Element): M
   insert(records: Element | Element[]): M | Collection<M> {
-    const models = this.hydrate(records)
-
-    this.commit('insert', this.compile(models))
-
-    return models
+    return this.processSavingElements(records, ['insert'])
   }
 
   /**
@@ -826,7 +851,7 @@ export class Query<M extends Model = Model> {
   }
 
   /**
-   * Update the reocrd matching the query chain.
+   * Update the record matching the query chain.
    */
   update(record: Element): Collection<M> {
     const models = this.get(false)
@@ -869,7 +894,7 @@ export class Query<M extends Model = Model> {
 
     const [afterHooks, removeIds] = this.dispatchDeleteHooks(model)
     if (!removeIds.includes(model.$getIndexId())) {
-      this.commit('destroy', [model.$getIndexId()])
+      this.commit('delete', [model.$getIndexId()])
       afterHooks.forEach(hook => hook())
     }
 
@@ -885,7 +910,7 @@ export class Query<M extends Model = Model> {
     const [afterHooks, removeIds] = this.dispatchDeleteHooks(models)
     const checkedIds = this.getIndexIdsFromCollection(models).filter(id => !removeIds.includes(id))
 
-    this.commit('destroy', checkedIds)
+    this.commit('delete', checkedIds)
     afterHooks.forEach(hook => hook())
 
     return models
