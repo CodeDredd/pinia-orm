@@ -23,7 +23,7 @@ importers:
       minimist: ^1.2.8
       p-series: ^3.0.0
       pascalcase: ^2.0.0
-      prettier: ^2.8.4
+      prettier: ^2.8.5
       rimraf: ^4.4.0
       semver: ^7.3.8
       typescript: ^5.0.2
@@ -44,7 +44,7 @@ importers:
       minimist: 1.2.8
       p-series: 3.0.0
       pascalcase: 2.0.0
-      prettier: 2.8.4
+      prettier: 2.8.5
       rimraf: 4.4.0
       semver: 7.3.8
       typescript: 5.0.2
@@ -9636,6 +9636,12 @@ packages:
 
   /prettier/2.8.4:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier/2.8.5:
+    resolution: {integrity: sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
