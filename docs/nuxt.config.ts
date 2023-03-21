@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       plausible: {
-        domain: 'pinia-orm.codedredd.de'
+        domain: 'pinia-orm.codedredd.de',
+        apiHost: 'https://plausible.stormtail.dev'
       },
       algolia: {
         apiKey: '2a399a1ca2c1fa45dc7b5e4381952dd8',
@@ -24,7 +25,7 @@ export default defineNuxtConfig({
       routes: ['/', '/404.html']
     },
   },
-  modules: ['@nuxtlabs/github-module', 'nuxt-plausible', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxtlabs/github-module', '@nuxtjs/plausible', '@nuxtjs/tailwindcss'],
   github: {
     owner: 'CodeDredd',
     repo: 'pinia-orm',
