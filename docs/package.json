@@ -17,12 +17,11 @@
   },
   "devDependencies": {
     "@docsearch/js": "^3.3.3",
-    "@nuxt-themes/docus": "1.9.1",
-    "@nuxthq/studio": "^0.8.1",
-    "@nuxtjs/tailwindcss": "^6.4.1",
+    "@nuxt-themes/docus": "1.9.9",
+    "@nuxtjs/tailwindcss": "^6.6.0",
     "@nuxtlabs/github-module": "1.6.1",
-    "nuxt": "3.1.1",
+    "nuxt": "3.2.3",
     "nuxt-plausible": "^0.1.2"
   },
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.5.0"
 }
