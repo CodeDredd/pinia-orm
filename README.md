@@ -49,58 +49,11 @@ Small overview:
 - [Become a Sponsor on GitHub](https://github.com/sponsors/codedredd)
 - [One-time donation via PayPal](https://paypal.me/dredd1984)
 
-<!--sponsors start-->
-<h3 align="center">Platinum Sponsors</h3>
 <p align="center">
-</p>
-
-<h4 align="center">Gold Sponsors</h4>
-<p align="center">
-</p>
-
-<h4 align="center">Silver Sponsors</h4>
-<p align="center">
-</p>
-
-<h4 align="center">Bronze Sponsors</h4>
-<p align="center">
-  <a href="https://github.com/tintin10q" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source srcset="https://avatars.githubusercontent.com/u/24190849?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="tintin10q" />
-      <img src="https://avatars.githubusercontent.com/u/24190849?v=4" height="26px" alt="tintin10q" />
-    </picture>
-  </a>
-  <a href="https://github.com/salcedo" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source srcset="https://avatars.githubusercontent.com/u/823026?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="salcedo" />
-      <img src="https://avatars.githubusercontent.com/u/823026?v=4" height="26px" alt="salcedo" />
-    </picture>
+  <a href="https://pinia-orm.codedredd.de/sponsorkit/sponsors.png">
+    <img src='https://pinia-orm.codedredd.de/sponsorkit/sponsors.svg'/>
   </a>
 </p>
-
-<h4 align="center">Backers</h4>
-<p align="center">
-  <a href="https://github.com/svenhue" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source srcset="https://avatars.githubusercontent.com/u/83905274?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Sven Hue" />
-      <img src="https://avatars.githubusercontent.com/u/83905274?v=4" height="26px" alt="Sven Hue" />
-    </picture>
-  </a>
-  <a href="https://github.com/paolodina" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source srcset="https://avatars.githubusercontent.com/u/1157401?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Paolo Dina" />
-      <img src="https://avatars.githubusercontent.com/u/1157401?v=4" height="26px" alt="Paolo Dina" />
-    </picture>
-  </a>
-  <a href="https://github.com/alfonsodou" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source srcset="https://avatars.githubusercontent.com/u/1931360?v=4" media="(prefers-color-scheme: dark)" height="26px" alt="Alfonso Dou Oblanca" />
-      <img src="https://avatars.githubusercontent.com/u/1931360?v=4" height="26px" alt="Alfonso Dou Oblanca" />
-    </picture>
-  </a>
-</p>
-
-<!--sponsors end-->
 
 ---
 
