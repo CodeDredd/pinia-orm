@@ -19,9 +19,9 @@
     "@docsearch/js": "^3.3.3",
     "@nuxt-themes/docus": "1.9.9",
     "@nuxtjs/plausible": "^0.2.0",
-    "@nuxtjs/tailwindcss": "^6.4.1",
+    "@nuxtjs/tailwindcss": "^6.6.0",
     "@nuxtlabs/github-module": "1.6.1",
     "nuxt": "3.2.3"
   },
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.5.0"
 }

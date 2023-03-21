@@ -57,37 +57,37 @@
     "test": "pnpm run test:3"
   },
   "peerDependencies": {
-    "pinia": "^2.0.32"
+    "pinia": "^2.0.33"
   },
   "dependencies": {
     "@pinia-orm/normalizr": ">=1.1.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.3",
+    "@antfu/eslint-config": "^0.37.0",
     "@pinia/testing": "^0.0.15",
     "@size-limit/preset-small-lib": "^8.2.4",
-    "@types/prettier": "^2",
+    "@types/prettier": "^2.7.2",
     "@types/uuid": "^9.0.1",
-    "@vitest/coverage-c8": "^0.29.2",
-    "@vitest/ui": "^0.29.2",
+    "@vitest/coverage-c8": "^0.29.7",
+    "@vitest/ui": "^0.29.7",
     "@vue/composition-api": "^1.7.1",
-    "@vue/test-utils": "^2.3.0",
+    "@vue/test-utils": "^2.3.2",
     "c8": "^7.13.0",
-    "core-js": "^3.29.0",
-    "eslint": "^8.35.0",
+    "core-js": "^3.29.1",
+    "eslint": "^8.36.0",
     "happy-dom": "^8.9.0",
-    "mkdist": "^1.1.1",
+    "mkdist": "^1.1.2",
     "nanoid": "^4.0.1",
-    "pinia": "^2.0.32",
-    "prettier": "^2.8.4",
+    "pinia": "^2.0.33",
+    "prettier": "^2.8.6",
     "size-limit": "^8.2.4",
     "std-env": "^3.3.2",
-    "tsup": "^6.6.3",
-    "typescript": "^4.9.5",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.2",
     "unbuild": "^1.1.2",
     "uuid": "^9.0.0",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.2",
+    "vite": "^4.2.1",
+    "vitest": "^0.29.7",
     "vue": "^3.2.47",
     "vue-demi": "^0.13.11",
     "vue2": "npm:vue@^2.7.3"
@@ -111,7 +111,7 @@
     }
   ],
   "volta": {
-    "node": "18.14.2"
+    "node": "18.15.0"
   },
   "repository": {
     "type": "git",
