@@ -710,16 +710,18 @@ export class Query<M extends Model = Model> {
   /**
    * Create and persist model with default values.
    */
-  new(): M | null {
-    const model = this.hydrate({})
+  new(persist = true): M | null {
+    const model = this.hydrate({}, { operation: persist ? 'get' : 'set' })
     const isCreating = model.$self().creating(model)
     const isSaving = model.$self().saving(model)
     if (isCreating === false || isSaving === false)
       return null
 
-    model.$self().created(model)
-    model.$self().saved(model)
-    this.commit('insert', this.compile(model))
+    if (persist) {
+      model.$self().created(model)
+      model.$self().saved(model)
+      this.commit('insert', this.compile(model))
+    }
 
     return model
   }

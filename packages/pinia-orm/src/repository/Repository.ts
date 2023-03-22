@@ -351,8 +351,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Create and persist model with default values.
    */
-  new(): M | null {
-    return this.query().new()
+  new(persist = true): M | null {
+    return this.query().new(persist)
   }
 
   /**

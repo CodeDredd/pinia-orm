@@ -69,7 +69,7 @@ describe('feature/hooks/creating', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static creating(model: Model) {
+      static creating(model: User) {
         model.name = 'John'
         return false
       }
@@ -94,7 +94,7 @@ describe('feature/hooks/creating', () => {
       @Str('') declare name: string
       @Num(0) declare age: number
 
-      static creating(model: Model) {
+      static creating(model: User) {
         model.name = 'John'
         return false
       }
@@ -107,6 +107,31 @@ describe('feature/hooks/creating', () => {
     useRepo(User).new()
 
     expect(creatingMethod).toHaveBeenCalledOnce()
+
+    assertState({})
+  })
+
+  it('is stopping record to be saved with new method and option false', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Uid() declare id: string
+      @Str('') declare name: string
+      @Num(0) declare age: number
+
+      static creating(model: User) {
+        model.name = 'John'
+      }
+    }
+
+    mockUid(['uid1'])
+
+    const creatingMethod = vi.spyOn(User, 'creating')
+
+    const user = useRepo(User).new(false)
+
+    expect(creatingMethod).toHaveBeenCalledOnce()
+    expect(user).toBeInstanceOf(User)
 
     assertState({})
   })
