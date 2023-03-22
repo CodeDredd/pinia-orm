@@ -1,7 +1,7 @@
 {
   "name": "@pinia-orm/nuxt",
   "description": "Nuxt module for pinia-orm",
-  "version": "1.1.7",
+  "version": "1.6.0",
   "license": "MIT",
   "type": "module",
   "author": {
@@ -41,7 +41,7 @@
   },
   "peerDependencies": {
     "@pinia/nuxt": "^0.4.7",
-    "pinia-orm": ">=1.5.0"
+    "pinia-orm": ">=1.6.0"
   },
   "dependencies": {
     "@nuxt/kit": "^3.3.1"
