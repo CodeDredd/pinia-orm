@@ -22,7 +22,7 @@ import { MorphMany } from './attributes/relations/MorphMany'
 import type { CastAttribute, Casts } from './casts/CastAttribute'
 import type { TypeDefault } from './attributes/types/Type'
 import { HasManyThrough } from './attributes/relations/HasManyThrough'
-import { MorphToMany } from '@/model/attributes/relations/MorphToMany'
+import { MorphToMany } from './attributes/relations/MorphToMany'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>

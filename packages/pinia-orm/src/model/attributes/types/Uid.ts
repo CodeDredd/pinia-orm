@@ -1,7 +1,7 @@
 import type { Model } from '../../Model'
 import { generateId } from '../../../support/Utils'
+import type { CastAttribute } from '../../../model/casts/CastAttribute'
 import { Type } from './Type'
-import type { CastAttribute } from '@/model/casts/CastAttribute'
 
 export class Uid extends Type {
   // This alphabet uses `A-Za-z0-9_-` symbols.
