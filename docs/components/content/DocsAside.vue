@@ -10,7 +10,7 @@ const { tree } = useDocus()
       <span class="text">Go back</span>
     </NuxtLink>
     <h4 class='mb-4 mt-12'>Special supporters</h4>
-    <a href='https://recordonce.com/' ><nuxt-img class='h-6' src="/logos/Record_Once_logo.svg" /></a>
+    <a href='https://recordonce.com/' target='_blank' ><nuxt-img class='h-6' src="/logos/Record_Once_logo.svg" /></a>
   </nav>
 </template>
 
