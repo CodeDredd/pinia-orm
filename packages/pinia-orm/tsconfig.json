@@ -1,11 +1,16 @@
 {
   "include": ["src/global.d.ts", "src/**/*.ts", "__tests__/**/*.ts"],
   "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "dist",
     "suppressImplicitAnyIndexErrors": true,
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": ["esnext", "dom"],
     "module": "esnext",
-    "moduleResolution": "Node",
+    "allowJs": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "noUnusedParameters": true,
@@ -15,7 +20,6 @@
     "strictNullChecks": true,
     "target": "esnext",
     "types": ["nanoid", "@types/node", "vitest/globals", "@types/uuid"],
-    "baseUrl": ".",
     "paths": {
       "@": [
         "./src"
