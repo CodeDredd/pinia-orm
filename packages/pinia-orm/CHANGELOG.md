@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.0...pinia-orm@1.6.1) (2023-03-22)
+
+### Features
+
+- **pinia-orm:** Add the option for new not to persist the model ([#1107](https://github.com/CodeDredd/pinia-orm/issues/1107)) ([dc3e13e](https://github.com/CodeDredd/pinia-orm/commit/dc3e13e53399c71ca1d77db1ea2ece5accc3a955))
+
 # [1.6.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.5.1...pinia-orm@1.6.0) (2023-03-22)
 
 ## [1.5.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.5.0...pinia-orm@1.5.1) (2023-01-24)
