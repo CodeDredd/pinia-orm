@@ -4,7 +4,6 @@ export default defineAppConfig({
     description: 'The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store.',
     url: 'https://pinia-orm.codedredd.de',
     socials: {
-      twitter: '@_GregorBecker',
       github: 'codedredd/pinia-orm'
     },
     cover: {
@@ -14,12 +13,8 @@ export default defineAppConfig({
     aside: {
       level: 1,
       collapsed: true,
-      filter: [
-        '/v1'
-      ]
     },
     header: {
-      title: false,
       logo: true
     },
     footer: {

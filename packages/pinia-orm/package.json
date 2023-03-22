@@ -39,7 +39,12 @@
     }
   },
   "files": [
-    "dist",
+    "dist/*.js",
+    "dist/**/*.js",
+    "dist/*.mjs",
+    "dist/**/*.mjs",
+    "dist/*.d.ts",
+    "dist/**/*.d.ts",
     "LICENSE",
     "README.md"
   ],
@@ -95,7 +100,7 @@
   "size-limit": [
     {
       "path": "dist/index.mjs",
-      "limit": "11 kB"
+      "limit": "12 kB"
     },
     {
       "path": "dist/decorators.mjs",
