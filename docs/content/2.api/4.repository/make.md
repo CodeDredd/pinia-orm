@@ -6,7 +6,7 @@ description: 'Creates a new model instance'
 # `make()`
 
 This method will not save the model to the store. It's pretty much the alternative to `new Model()`, but it injects
-the store instance to support model instance methods in SSR environment.
+the store instance to support model instance methods in SSR environment. It also won't fire any hooks.
 
 ## Usage
 
