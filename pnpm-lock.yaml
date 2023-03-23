@@ -24,7 +24,7 @@ importers:
       p-series: ^3.0.0
       pascalcase: ^2.0.0
       prettier: ^2.8.6
-      rimraf: ^4.4.0
+      rimraf: ^4.4.1
       semver: ^7.3.8
       sponsorkit: ^0.8.2
       typescript: ^5.0.2
@@ -46,7 +46,7 @@ importers:
       p-series: 3.0.0
       pascalcase: 2.0.0
       prettier: 2.8.6
-      rimraf: 4.4.0
+      rimraf: 4.4.1
       semver: 7.3.8
       sponsorkit: 0.8.3
       typescript: 5.0.2
@@ -8128,11 +8128,6 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lru-cache/7.18.1:
-    resolution: {integrity: sha512-8/HcIENyQnfUTCDizRu9rrDyG6XG/21M4X7/YEGZeD76ZJilFPAUVb/2zysFf7VVO1LEjCDFyHp8pMMvozIrvg==}
-    engines: {node: '>=12'}
-    dev: true
-
   /lru-cache/7.18.3:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
@@ -9493,7 +9488,7 @@ packages:
     resolution: {integrity: sha512-OW+5s+7cw6253Q4E+8qQ/u1fVvcJQCJo/VFD8pje+dbJCF1n5ZRMV2AEHbGp+5Q7jxQIYJxkHopnj6nzdGeZLA==}
     engines: {node: '>=14'}
     dependencies:
-      lru-cache: 7.18.1
+      lru-cache: 7.18.3
       minipass: 4.2.4
     dev: true
 
@@ -10420,8 +10415,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.4.0:
-    resolution: {integrity: sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==}
+  /rimraf/4.4.1:
+    resolution: {integrity: sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
