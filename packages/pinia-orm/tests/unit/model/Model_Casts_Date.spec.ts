@@ -6,7 +6,7 @@ import { DateCast } from '../../../src/casts'
 import { assertState } from '../../helpers'
 
 describe('unit/model/Model_Casts_Date', () => {
-  const exspectedISODate = new Date('2017-01-26').toISOString()
+  const expectedISODate = new Date('2017-01-26').toISOString()
 
   beforeEach(() => {
     Model.clearRegistries()
@@ -29,9 +29,9 @@ describe('unit/model/Model_Casts_Date', () => {
       }
     }
 
-    expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(exspectedISODate)
-    expect(new User({ updated: new Date('2017-01-26') }, { operation: 'set' }).updated).toBe(exspectedISODate)
-    expect(new User({ updated: '2017-01-26' }, { operation: 'set' }).updated).toBe(exspectedISODate)
+    expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(expectedISODate)
+    expect(new User({ updated: new Date('2017-01-26') }, { operation: 'set' }).updated).toBe(expectedISODate)
+    expect(new User({ updated: '2017-01-26' }, { operation: 'set' }).updated).toBe(expectedISODate)
   })
 
   it('should cast with decorator', () => {
@@ -43,7 +43,7 @@ describe('unit/model/Model_Casts_Date', () => {
       declare updated: Date
     }
 
-    expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(exspectedISODate)
+    expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(expectedISODate)
   })
 
   it('should allow null values', () => {
@@ -60,7 +60,7 @@ describe('unit/model/Model_Casts_Date', () => {
   })
 
   it('should cast before saved into store', () => {
-    const exspectedIsoDate = new Date('2023-01-26')
+    const expectedIsoDate2 = new Date('2023-01-26')
 
     class User extends Model {
       static entity = 'users'
@@ -73,7 +73,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
       static saving(model: Model) {
         console.log('saving')
-        model.updatedAt = exspectedIsoDate
+        model.updatedAt = expectedIsoDate2
       }
 
       static casts() {
@@ -91,10 +91,10 @@ describe('unit/model/Model_Casts_Date', () => {
 
     assertState({
       users: {
-        1: { id: 1, updated: exspectedISODate, createdAt: null, updatedAt: exspectedIsoDate.toISOString() },
+        1: { id: 1, updated: expectedISODate, createdAt: null, updatedAt: expectedIsoDate2.toISOString() },
       },
     })
 
-    expect(userRepo.find(1)?.updated.toISOString()).toBe(exspectedISODate)
+    expect(userRepo.find(1)?.updated.toISOString()).toBe(expectedISODate)
   })
 })
