@@ -1,3 +1,9 @@
+## [1.6.4](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.3...pinia-orm@1.6.4) (2023-03-24)
+
+### Bug Fixes
+
+- **pinia-orm:** DateCast still causing unexpected result ([519681c](https://github.com/CodeDredd/pinia-orm/commit/519681c258885110478191e9bfd3a9dfb016d670))
+
 ## [1.6.3](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.2...pinia-orm@1.6.3) (2023-03-24)
 
 ### Bug Fixes
