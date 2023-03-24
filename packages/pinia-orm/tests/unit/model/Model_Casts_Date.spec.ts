@@ -63,8 +63,15 @@ describe('unit/model/Model_Casts_Date', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr(0) id!: number
-      @Attr('') updated!: Date
+      @Attr(0) declare id: number
+      @Attr('') declare updated: Date
+
+      @Cast(() => DateCast) @Attr(null) declare createdAt: Date
+      @Cast(() => DateCast) @Attr(null) declare updatedAt: Date
+
+      static saving(model: Model) {
+        model.updatedAt = new Date()
+      }
 
       static casts() {
         return {
@@ -81,7 +88,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
     assertState({
       users: {
-        1: { id: 1, updated: exspectedISODate },
+        1: { id: 1, updated: exspectedISODate, createdAt: null, updatedAt: null },
       },
     })
 

@@ -21,6 +21,8 @@ export class DateCast extends CastAttribute {
     if (value === null)
       return null
 
-    return (typeof value === 'string' ? new Date(Date.parse(value)) : value).toISOString()
+    const newDate = ((typeof value === 'string') ? new Date(Date.parse(value)) : value)
+
+    return 'toISOString' in newDate ? newDate.toISOString() : null
   }
 }
