@@ -339,6 +339,7 @@ export class Query<M extends Model = Model> {
    * Set the relationships that should be eager loaded.
    */
   with(name: string, callback: EagerLoadConstraint = () => {}): this {
+    this.getNewHydrated = true
     this.eagerLoad[name] = callback
 
     return this
@@ -645,8 +646,9 @@ export class Query<M extends Model = Model> {
    * Revive single model from the given schema.
    */
   reviveOne(schema: Element): Item<M> {
-    const id = this.model.$getIndexId(schema)
+    this.getNewHydrated = false
 
+    const id = this.model.$getIndexId(schema)
     const item = this.commit('get')[id] ?? null
 
     if (!item)
@@ -711,13 +713,17 @@ export class Query<M extends Model = Model> {
    * Create and persist model with default values.
    */
   new(persist = true): M | null {
-    const model = this.hydrate({}, { operation: persist ? 'get' : 'set' })
+    let model = this.hydrate({}, { operation: persist ? 'set' : 'get' })
     const isCreating = model.$self().creating(model)
     const isSaving = model.$self().saving(model)
     if (isCreating === false || isSaving === false)
       return null
 
+    if (model.$isDirty())
+      model = this.hydrate(model.$getAttributes(), { operation: persist ? 'set' : 'get' })
+
     if (persist) {
+      this.hydratedDataCache.set(this.model.$entity() + model.$getKey(undefined, true), this.hydrate(model.$getAttributes(), { operation: 'get' }))
       model.$self().created(model)
       model.$self().saved(model)
       this.commit('insert', this.compile(model))
@@ -780,7 +786,7 @@ export class Query<M extends Model = Model> {
     for (const id in elements) {
       const record = elements[id]
       const existing = currentData[id]
-      const model = existing
+      let model = existing
         ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
         : this.hydrate(record, { operation: 'set', action: 'save' })
 
@@ -788,6 +794,9 @@ export class Query<M extends Model = Model> {
       const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
       if (isSaving === false || isUpdatingOrCreating === false)
         continue
+
+      if (model.$isDirty())
+        model = this.hydrate(model.$getAttributes(), { operation: 'set', action: existing ? 'update' : 'save' })
 
       afterSavingHooks.push(() => model.$self().saved(model, record))
       afterSavingHooks.push(() => existing ? model.$self().updated(model, record) : model.$self().created(model, record))
@@ -1017,8 +1026,7 @@ export class Query<M extends Model = Model> {
    * an update event trigger in vue if the object is used.
    */
   protected getHydratedModel(record: Element, options?: ModelOptions): M {
-    const modelKey = this.model.$getKeyName()
-    const id = (!isArray(modelKey) ? [modelKey] : modelKey).map(key => record[key]).join('')
+    const id = this.model.$getKey(record, true)
     const savedHydratedModel = id && this.hydratedDataCache.get(this.model.$entity() + id)
 
     if (

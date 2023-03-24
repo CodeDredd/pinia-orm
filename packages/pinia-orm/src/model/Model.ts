@@ -800,11 +800,13 @@ export class Model {
    * Get primary key value for the model. If the model has the composite key,
    * it will return an array of ids.
    */
-  $getKey(record?: Element): string | number | (string | number)[] | null {
+  $getKey(record?: Element, concatCompositeKey = false): string | number | (string | number)[] | null {
     record = record ?? this
 
-    if (this.$hasCompositeKey())
-      return this.$getCompositeKey(record)
+    if (this.$hasCompositeKey()) {
+      const compositeKey = this.$getCompositeKey(record)
+      return concatCompositeKey ? compositeKey?.join('') ?? null : compositeKey
+    }
 
     const id = record[this.$getKeyName() as string]
 
