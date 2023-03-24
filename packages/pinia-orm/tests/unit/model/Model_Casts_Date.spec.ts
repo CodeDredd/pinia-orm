@@ -60,6 +60,8 @@ describe('unit/model/Model_Casts_Date', () => {
   })
 
   it('should cast before saved into store', () => {
+    const exspectedIsoDate = new Date('2023-01-26')
+
     class User extends Model {
       static entity = 'users'
 
@@ -70,7 +72,8 @@ describe('unit/model/Model_Casts_Date', () => {
       @Cast(() => DateCast) @Attr(null) declare updatedAt: Date
 
       static saving(model: Model) {
-        model.updatedAt = new Date()
+        console.log('saving')
+        model.updatedAt = exspectedIsoDate
       }
 
       static casts() {
@@ -88,7 +91,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
     assertState({
       users: {
-        1: { id: 1, updated: exspectedISODate, createdAt: null, updatedAt: null },
+        1: { id: 1, updated: exspectedISODate, createdAt: null, updatedAt: exspectedIsoDate.toISOString() },
       },
     })
 

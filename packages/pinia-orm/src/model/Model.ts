@@ -998,8 +998,12 @@ export class Model {
     if (isArray(value))
       return this.serializeArray(value)
 
-    if (typeof value === 'object')
-      return this.serializeObject(value)
+    if (typeof value === 'object') {
+      if ('toISOString' in value)
+        return value.toISOString()
+      else
+        return this.serializeObject(value)
+    }
 
     return value
   }
