@@ -1,3 +1,9 @@
+## [1.6.3](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.2...pinia-orm@1.6.3) (2023-03-24)
+
+### Bug Fixes
+
+- **pinia-orm:** DateCast with null causes type error with empty object ([2caa97a](https://github.com/CodeDredd/pinia-orm/commit/2caa97a63be98ecc1f0ce863a5ad529bda4e3cf3))
+
 ## [1.6.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.1...pinia-orm@1.6.2) (2023-03-24)
 
 ### Bug Fixes
