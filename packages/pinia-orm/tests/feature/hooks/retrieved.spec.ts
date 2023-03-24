@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Num, Str } from '../../../src/decorators'
@@ -7,6 +7,10 @@ import {
 } from '../../helpers'
 
 describe('feature/hooks/retrieved', () => {
+  beforeEach(() => {
+    Model.clearRegistries()
+  })
+
   it('is not triggered when trying to retrieve a non existing record', () => {
     class User extends Model {
       static entity = 'users'
@@ -42,7 +46,7 @@ describe('feature/hooks/retrieved', () => {
       @Num(0) age!: number
 
       static retrieved() {
-        // Doing retrieved stuff
+        console.warn('retrieved')
       }
     }
 
@@ -69,7 +73,7 @@ describe('feature/hooks/retrieved', () => {
       @Num(0) age!: number
 
       static retrieved() {
-        // Doing retrieved stuff
+        console.warn('retrieved')
       }
     }
 

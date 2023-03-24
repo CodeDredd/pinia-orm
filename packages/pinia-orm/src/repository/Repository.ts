@@ -66,7 +66,7 @@ export class Repository<M extends Model = Model> {
   constructor(database: Database, pinia?: Pinia) {
     this.database = database
     this.pinia = pinia
-    this.hydratedDataCache = hydratedDataCache<M>()
+    this.hydratedDataCache = hydratedDataCache as Map<string, M>
   }
 
   /**
