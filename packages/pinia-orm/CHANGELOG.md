@@ -1,3 +1,9 @@
+## [1.6.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.1...pinia-orm@1.6.2) (2023-03-24)
+
+### Bug Fixes
+
+- **pinia-orm:** Hooks should update cache & hydration ([#1113](https://github.com/CodeDredd/pinia-orm/issues/1113)) ([a9fd092](https://github.com/CodeDredd/pinia-orm/commit/a9fd09263d5e57cd5c549db8dbadc8503d866d3b))
+
 ## [1.6.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.0...pinia-orm@1.6.1) (2023-03-22)
 
 ### Features
