@@ -124,7 +124,7 @@ importers:
       eslint: ^8.36.0
       happy-dom: ^8.9.0
       mkdist: ^1.1.2
-      nanoid: ^4.0.1
+      nanoid: ^4.0.2
       pinia: ^2.0.33
       prettier: ^2.8.7
       size-limit: ^8.2.4
@@ -155,7 +155,7 @@ importers:
       eslint: 8.36.0
       happy-dom: 8.9.0
       mkdist: 1.1.2_typescript@5.0.2
-      nanoid: 4.0.1
+      nanoid: 4.0.2
       pinia: 2.0.33_3kykrtgdjzejfwx3icdik2trn4
       prettier: 2.8.7
       size-limit: 8.2.4
@@ -2204,7 +2204,7 @@ packages:
       is-docker: 3.0.0
       jiti: 1.18.2
       mri: 1.2.0
-      nanoid: 4.0.1
+      nanoid: 4.0.2
       node-fetch: 3.3.0
       ofetch: 1.0.1
       parse-git-config: 3.0.0
@@ -8540,8 +8540,8 @@ packages:
     hasBin: true
     dev: true
 
-  /nanoid/4.0.1:
-    resolution: {integrity: sha512-udKGtCCUafD3nQtJg9wBhRP3KMbPglUsgV5JVsXhvyBs/oefqb4sqMEhKBBgqZncYowu58p1prsZQBYvAj/Gww==}
+  /nanoid/4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
     dev: true
