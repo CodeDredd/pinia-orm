@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.4...pinia-orm@1.6.5) (2023-03-27)
+
+### Bug Fixes
+
+- **pinia-orm:** `$refresh()` is not working ([#1125](https://github.com/CodeDredd/pinia-orm/issues/1125)) ([7cf0d6e](https://github.com/CodeDredd/pinia-orm/commit/7cf0d6ebffb21009192bde6e3b1b40a311700915)), closes [#1124](https://github.com/CodeDredd/pinia-orm/issues/1124)
+- **pinia-orm:** Improve Date serialization in Model class ([#1121](https://github.com/CodeDredd/pinia-orm/issues/1121)) ([84aeb72](https://github.com/CodeDredd/pinia-orm/commit/84aeb72f9739f634aac8b71a2c80708526711825))
+
 ## [1.6.4](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.3...pinia-orm@1.6.4) (2023-03-24)
 
 ### Bug Fixes
