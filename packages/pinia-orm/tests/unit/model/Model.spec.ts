@@ -37,6 +37,7 @@ describe('unit/model/Model', () => {
     expect(user.$isDirty('id')).toBeFalsy()
     user.$refresh()
     expect(user.$isDirty()).toBeFalsy()
+    expect(user.lastName).toBe('John Doe')
     expect(() => user.$isDirty('name')).toThrowError()
   })
 })

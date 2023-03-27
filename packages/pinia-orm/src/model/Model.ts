@@ -937,7 +937,11 @@ export class Model {
    * Return the model instance with its original state
    */
   $refresh(): this {
-    this.$isDirty() && this.$fill(this.$getOriginal(), { action: 'save', relations: false, operation: 'set' })
+    if (this.$isDirty()) {
+      Object.entries(this.$getOriginal()).forEach((entry) => {
+        this[entry[0]] = entry[1]
+      })
+    }
     return this
   }
 
