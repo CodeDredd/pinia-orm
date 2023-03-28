@@ -1,3 +1,9 @@
+## [1.6.7](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.6...@pinia-orm/nuxt@1.6.7) (2023-03-28)
+
+### Bug Fixes
+
+- **pinia-orm:** build broken cause of missing files ([ecaed0f](https://github.com/CodeDredd/pinia-orm/commit/ecaed0f0464fa7b0ebc596ebc568f2abe563c4fe))
+
 ## [1.6.6](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.5...@pinia-orm/nuxt@1.6.6) (2023-03-28)
 
 ### Bug Fixes

@@ -1,3 +1,9 @@
+## [1.6.7](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.6...pinia-orm@1.6.7) (2023-03-28)
+
+### Bug Fixes
+
+- **pinia-orm:** build broken cause of missing files ([ecaed0f](https://github.com/CodeDredd/pinia-orm/commit/ecaed0f0464fa7b0ebc596ebc568f2abe563c4fe))
+
 ## [1.6.6](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.5...pinia-orm@1.6.6) (2023-03-28)
 
 ## [1.6.5](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.4...pinia-orm@1.6.5) (2023-03-27)
