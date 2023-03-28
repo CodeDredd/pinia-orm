@@ -3912,7 +3912,7 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-pinia-orm@^1.6.6:
+pinia-orm@^1.6.7:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.6.7.tgz#b378a9d2b983b5d636dd01841f607c60422d2de3"
   integrity sha512-Te5F/8eoZ2U8v6qliTwHB9282vo42GLMZiQ/vr+7yWqtaIg/hvYC+NLeppWwRPi77+XBJrJIlz+0F4L2sgp//g==
