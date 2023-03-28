@@ -37,7 +37,7 @@ export default defineNuxtModule<PiniaOrmNuxtOptions>({
     // Transpile runtime
     nuxt.options.build.transpile.push(resolver.resolve('./runtime'))
 
-    // @ts-expect-error - private API
+    // @ts-ignore
     nuxt.hook('devtools:customTabs', (iframeTabs) => {
       iframeTabs.push({
         name: 'pinia-orm',
