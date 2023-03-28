@@ -1,3 +1,9 @@
+## [1.6.6](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.5...@pinia-orm/nuxt@1.6.6) (2023-03-28)
+
+### Bug Fixes
+
+- **nuxt:** Nuxt 3 throws error on build & dev ([#1136](https://github.com/CodeDredd/pinia-orm/issues/1136)) ([12e3ea3](https://github.com/CodeDredd/pinia-orm/commit/12e3ea392816b0e7bbbe790e405623467e4c6480)), closes [#1135](https://github.com/CodeDredd/pinia-orm/issues/1135)
+
 ## [1.6.5](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.3...@pinia-orm/nuxt@1.6.5) (2023-03-27)
 
 ## [1.6.3](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.0...@pinia-orm/nuxt@1.6.3) (2023-03-24)
