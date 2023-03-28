@@ -1057,10 +1057,10 @@
     vite-plugin-checker "^0.5.6"
     vue-bundle-renderer "^1.0.2"
 
-"@pinia-orm/normalizr@>=1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@pinia-orm/normalizr/-/normalizr-1.1.0.tgz#cc49edcd141a727ecccfad727b5ab4aaeb6e62e7"
-  integrity sha512-8OfFZx8Fa+7E+SytnhRVHRFdK1cNlhIOnbEtkoZPC4EHXPss542mYIPHaH9WIt+GL/joyyidS4nOt+70ION3Cg==
+"@pinia-orm/normalizr@>=1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@pinia-orm/normalizr/-/normalizr-1.6.0.tgz#a695abec668dc793555d20c1f55820495e7db038"
+  integrity sha512-6k/iWwXfYUlENxo03VMcqppW2lPZY8ZNR4OF0PWumwNYNLVg2uPgRsSkRtUHwij2QXr9G8Vf+wuKPb/5YLsV7Q==
 
 "@pinia-orm/nuxt@^1.1.7":
   version "1.1.7"
@@ -3760,12 +3760,12 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
-pinia-orm@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.5.1.tgz#847e5b0bfcdd61a92ab8c04c4019c6824d63cfba"
-  integrity sha512-8kZQA/L+/jaNnLrT420MUvO97UzIHMo/+hB7OIAQXdKllwfh5yCQOs+GZhkTF5KLfjSCYT25BHHKUF6RWS/gWg==
+pinia-orm@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.6.5.tgz#49e89b81cc8b6859a08bc10191fd9fd6805f2d01"
+  integrity sha512-S4AyM3LkAJmixXJpNUT6E2oJBmXxnPjAqwSV23LVH272F9P8udBMgkG2VpADj2kMvHdHWKqxLWdlM6BuFPgwgQ==
   dependencies:
-    "@pinia-orm/normalizr" ">=1.1.0"
+    "@pinia-orm/normalizr" ">=1.6.0"
 
 pinia@>=2.0.31:
   version "2.0.33"
