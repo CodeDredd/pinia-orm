@@ -12,7 +12,7 @@
     "@pinia/nuxt": "^0.4.7",
     "nuxt": "^3.3.1",
     "pinia": "^2.0.20",
-    "pinia-orm": "^1.5.1"
+    "pinia-orm": "^1.6.5"
   },
   "dependencies": {
     "nanoid": "^4.0.0",
