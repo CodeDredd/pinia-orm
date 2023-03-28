@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@docsearch/js": "^3.3.3",
-    "@nuxt-themes/docus": "1.9.10",
+    "@nuxt-themes/docus": "1.10.1",
     "@nuxtjs/plausible": "^0.2.0",
     "@nuxtjs/tailwindcss": "^6.6.4",
     "@nuxtlabs/github-module": "1.6.1",
