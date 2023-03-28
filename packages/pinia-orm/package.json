@@ -39,12 +39,7 @@
     }
   },
   "files": [
-    "dist/*.js",
-    "dist/**/*.js",
-    "dist/*.mjs",
-    "dist/**/*.mjs",
-    "dist/*.d.ts",
-    "dist/**/*.d.ts",
+    "dist",
     "LICENSE",
     "README.md"
   ],

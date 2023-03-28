@@ -947,6 +947,30 @@
     unimport "^1.0.1"
     untyped "^1.0.0"
 
+"@nuxt/kit@^3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.3.2.tgz#e3cd19c0f5cd0f124fff6f659a5f25002f808946"
+  integrity sha512-mHucMYuN/nVJp0p+L6ezzEls8Y1PerAXCJi01lS3Z5ozz+l2OusEfes8EBxWcy3x0C5465ignXCujQs3/LAvnQ==
+  dependencies:
+    "@nuxt/schema" "3.3.2"
+    c12 "^1.2.0"
+    consola "^2.15.3"
+    defu "^6.1.2"
+    globby "^13.1.3"
+    hash-sum "^2.0.0"
+    ignore "^5.2.4"
+    jiti "^1.18.2"
+    knitwork "^1.0.0"
+    lodash.template "^4.5.0"
+    mlly "^1.2.0"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    scule "^1.0.0"
+    semver "^7.3.8"
+    unctx "^2.1.2"
+    unimport "^3.0.4"
+    untyped "^1.2.2"
+
 "@nuxt/schema@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.0.0.tgz#d499fd7d8309f9bd3403411b32c19e726969cd71"
@@ -982,6 +1006,25 @@
     std-env "^3.3.2"
     ufo "^1.1.1"
     unimport "^3.0.2"
+    untyped "^1.2.2"
+
+"@nuxt/schema@3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.3.2.tgz#c567dfaf099c65ae2fce4b5d1bcf43a94239a4c6"
+  integrity sha512-M2X/iwdX4hct31A7LA2+e41F91VZUXmwS5sZ03G49RnZdEXHMOKBO67e1d+5uxYmRD6eM/EyxWdPVgyLf6wocw==
+  dependencies:
+    c12 "^1.2.0"
+    create-require "^1.1.1"
+    defu "^6.1.2"
+    hookable "^5.5.0"
+    jiti "^1.18.2"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    postcss-import-resolver "^2.0.0"
+    scule "^1.0.0"
+    std-env "^3.3.2"
+    ufo "^1.1.1"
+    unimport "^3.0.4"
     untyped "^1.2.2"
 
 "@nuxt/telemetry@^2.1.10":
@@ -1062,12 +1105,12 @@
   resolved "https://registry.yarnpkg.com/@pinia-orm/normalizr/-/normalizr-1.6.0.tgz#a695abec668dc793555d20c1f55820495e7db038"
   integrity sha512-6k/iWwXfYUlENxo03VMcqppW2lPZY8ZNR4OF0PWumwNYNLVg2uPgRsSkRtUHwij2QXr9G8Vf+wuKPb/5YLsV7Q==
 
-"@pinia-orm/nuxt@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@pinia-orm/nuxt/-/nuxt-1.1.7.tgz#68b7ffeaf39557f60847f0df13fb8354b1d9113f"
-  integrity sha512-MDYxDfQW01ij2xm2WS2x32OZ+DGYJdVzz0z3v9jgeKXUpLOKfeZoATjtblH/O+OLrNpEQdnp8WcV9GQTQa01LQ==
+"@pinia-orm/nuxt@^1.6.6":
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/@pinia-orm/nuxt/-/nuxt-1.6.6.tgz#82685c9de588df89d676197b4c97e98d25bb39ae"
+  integrity sha512-ZuDygZ1P8p5ZaEdl7yfJpP662+rinXgSTpWk1/WoKBGasTzNo9Ct+ddmrIKr2azifb9fm+N0Q30phXZUFERTjA==
   dependencies:
-    "@nuxt/kit" "^3.0.0"
+    "@nuxt/kit" "^3.3.2"
 
 "@pinia/nuxt@^0.4.7":
   version "0.4.7"
@@ -3009,7 +3052,7 @@ jiti@^1.16.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.16.0.tgz#f72065954446ad1866fa8d6bcc3bed3cc1cebdaa"
   integrity sha512-L3BJStEf5NAqNuzrpfbN71dp43mYIcBUlCRea/vdyv5dW/AYa1d4bpelko4SHdY3I6eN9Wzyasxirj1/vv5kmg==
 
-jiti@^1.17.1, jiti@^1.17.2:
+jiti@^1.17.1, jiti@^1.17.2, jiti@^1.18.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.18.2.tgz#80c3ef3d486ebf2450d9335122b32d121f2a83cd"
   integrity sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==
@@ -3760,10 +3803,10 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
-pinia-orm@^1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.6.5.tgz#49e89b81cc8b6859a08bc10191fd9fd6805f2d01"
-  integrity sha512-S4AyM3LkAJmixXJpNUT6E2oJBmXxnPjAqwSV23LVH272F9P8udBMgkG2VpADj2kMvHdHWKqxLWdlM6BuFPgwgQ==
+pinia-orm@^1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/pinia-orm/-/pinia-orm-1.6.6.tgz#23908fcb37fc2c2d5e2b12043474e0b32fb1f70f"
+  integrity sha512-bcBa8MJZZllE0OneqvcAoBzNTXRZ1iCJ8LMcf6RWNhz0bnS4WfGtVs1UEcQYanx5zm2mL3nYdbA/pu/60tKTBw==
   dependencies:
     "@pinia-orm/normalizr" ">=1.6.0"
 
@@ -4738,6 +4781,23 @@ unimport@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/unimport/-/unimport-3.0.3.tgz#f5750a934086310d1595384899ff09404cc3dfd1"
   integrity sha512-RzQqQiqepF5P13SwBGCe4pLlRnAQlbFuDAaQlSkXiNJDpN2iymtGMSfa75AcVSejgV05Q2aQYt6UhCiy5GuZ2A==
+  dependencies:
+    "@rollup/pluginutils" "^5.0.2"
+    escape-string-regexp "^5.0.0"
+    fast-glob "^3.2.12"
+    local-pkg "^0.4.3"
+    magic-string "^0.30.0"
+    mlly "^1.2.0"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    scule "^1.0.0"
+    strip-literal "^1.0.1"
+    unplugin "^1.3.1"
+
+unimport@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/unimport/-/unimport-3.0.4.tgz#b54d414b0f78673e76c9cbc2568b915c2d64b7c9"
+  integrity sha512-eoof/HLiNJcIkVpnqc7sJbzKSLx39J6xTaP7E4ElgVQKeq2t9fPTkvJKcA55IJTaRPkEkDq8kcc/IZPmrypnFg==
   dependencies:
     "@rollup/pluginutils" "^5.0.2"
     escape-string-regexp "^5.0.0"

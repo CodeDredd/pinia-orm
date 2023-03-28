@@ -54,12 +54,6 @@ export default defineNuxtModule<PiniaOrmNuxtOptions>({
       references.push({ types: '@pinia-orm/nuxt' })
     })
 
-    nuxt.hook('vite:extend', ({ config }) => {
-      config.optimizeDeps ||= {}
-      config.optimizeDeps.exclude ||= []
-      config.optimizeDeps.exclude.push('pinia-orm')
-    })
-
     // Add runtime options
     addTemplate({
       filename: 'orm-options.mjs',
