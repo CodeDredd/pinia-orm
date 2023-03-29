@@ -1,8 +1,12 @@
-import { beforeEach, describe, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Model, useRepo } from '../../../src'
-import { Attr, BelongsToMany, Num } from '../../../src/decorators'
+import { getActivePinia } from 'pinia'
+import { makeExecutableSchema } from '@graphql-tools/schema'
+import { addMocksToSchema } from '@graphql-tools/mock'
+import { graphql } from 'graphql'
 import { assertState } from '../../helpers'
+import { Attr, BelongsToMany, Num, Str } from '../../../src/decorators'
+import { Model, useRepo } from '../../../src'
 
 describe('feature/relations/belongs_to_many_save_custom_key', () => {
   beforeEach(() => {
@@ -195,5 +199,190 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
         '[2,2]': { role_id: 2, user_id: 2, level: null },
       },
     })
+  })
+
+  it('inserts "belongs to many" relation from graphql response', () => {
+    const sourceSchema = `
+  type OutsourcingPartner {
+    id: Int!
+    name: String!
+    billingGroups: [BillingGroup]
+  }
+
+  type BillingGroup {
+    id: Int!
+    name: String
+    votes: Int
+  }
+
+  type Query {
+    outsourcingpartners: [OutsourcingPartner]
+  }
+
+`
+
+    const schema = makeExecutableSchema({
+      typeDefs: sourceSchema,
+    })
+
+    const schemaWithMocks = addMocksToSchema({
+      schema,
+    })
+
+    const query = `
+  query {
+            outsourcingpartners {
+              id
+              name
+              __typename
+              billingGroups {
+                id
+                name
+                __typename
+              }
+            }
+          }
+  `
+    class BillingGroup extends Model {
+      static entity = 'billingGroups'
+
+      @Num(0)
+      declare id: number
+
+      @Str('')
+      declare name: string
+    }
+
+    class OutsourcingPartner extends Model {
+      static entity = 'outsourcingPartners'
+
+      @Num(0)
+      declare id: number
+
+      @Str('')
+      declare name: string
+
+      @BelongsToMany(
+        () => BillingGroup,
+        () => OutsourcingPartnerBillingGroup,
+        'outsourcingPartner_id',
+        'billingGroup_id',
+      )
+      declare billingGroups: BillingGroup[]
+    }
+
+    class OutsourcingPartnerBillingGroup extends Model {
+      static entity = 'outsourcingPartnerBillingGroups'
+
+      static primaryKey = ['outsourcingPartner_id', 'billingGroup_id']
+
+      @Num(0)
+      declare outsourcingPartner_id: number
+
+      @Num(0)
+      declare billingGroup_id: number
+    }
+
+    graphql({
+      schema: schemaWithMocks,
+      source: query,
+    }).then((result) => {
+      console.log(result)
+    })
+
+    useRepo(OutsourcingPartner).save([
+      {
+        __typename: 'Outsourcingpartner',
+        id: 1,
+        name: 'Luke Skywalker',
+        billingGroups: [
+          {
+            __typename: 'Billinggroup',
+            id: 1,
+            name: 'Dark Forces',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 2,
+            name: 'Jedi Council',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 3,
+            name: 'The Jedis',
+          },
+        ],
+      },
+      {
+        __typename: 'Outsourcingpartner',
+        id: 2,
+        name: 'Darth Vader',
+        billingGroups: [
+          {
+            __typename: 'Billinggroup',
+            id: 1,
+            name: 'Dark Forces',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 2,
+            name: 'Jedi Council',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 3,
+            name: 'The Jedis',
+          },
+        ],
+      },
+      {
+        __typename: 'Outsourcingpartner',
+        id: 3,
+        name: 'Yoda',
+        billingGroups: [
+          {
+            __typename: 'Billinggroup',
+            id: 1,
+            name: 'Dark Forces',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 2,
+            name: 'Jedi Council',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 3,
+            name: 'The Jedis',
+          },
+        ],
+      },
+      {
+        __typename: 'Outsourcingpartner',
+        id: 4,
+        name: 'Clone Trooper 0815',
+        billingGroups: [
+          {
+            __typename: 'Billinggroup',
+            id: 1,
+            name: 'Dark Forces',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 2,
+            name: 'Jedi Council',
+          },
+          {
+            __typename: 'Billinggroup',
+            id: 3,
+            name: 'The Jedis',
+          },
+        ],
+      },
+    ])
+
+    console.log(getActivePinia().state.value)
+
+    expect(true).toBeFalsy()
   })
 })
