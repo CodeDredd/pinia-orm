@@ -11,6 +11,10 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     setupFiles: ['./tests/setup.ts'],
+    // https://github.com/vitejs/vite/issues/7879
+    deps: {
+      fallbackCJS: true,
+    },
     // silent: true,
     coverage: {
       reporter: ['lcov', 'text'],

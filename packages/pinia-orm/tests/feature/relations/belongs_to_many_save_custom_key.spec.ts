@@ -4,6 +4,7 @@ import { getActivePinia } from 'pinia'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { addMocksToSchema } from '@graphql-tools/mock'
 import { graphql } from 'graphql'
+import gql from 'graphql-tag'
 import { assertState } from '../../helpers'
 import { Attr, BelongsToMany, Num, Str } from '../../../src/decorators'
 import { Model, useRepo } from '../../../src'
@@ -229,19 +230,19 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       schema,
     })
 
-    const query = `
+    const query = gql`
   query {
-            outsourcingpartners {
-              id
-              name
-              __typename
-              billingGroups {
-                id
-                name
-                __typename
-              }
-            }
-          }
+    outsourcingpartners {
+      id
+      name
+      __typename
+      billingGroups {
+        id
+        name
+        __typename
+      }
+    }
+  }
   `
     class BillingGroup extends Model {
       static entity = 'billingGroups'

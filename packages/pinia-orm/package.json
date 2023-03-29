@@ -78,6 +78,7 @@
     "core-js": "^3.29.1",
     "eslint": "^8.36.0",
     "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
     "happy-dom": "^8.9.0",
     "mkdist": "^1.2.0",
     "nanoid": "^4.0.2",
@@ -125,9 +126,6 @@
   },
   "homepage": "https://github.com/CodeDredd/pinia-orm#readme",
   "pnpm": {
-    "overrides": {
-      "graphql": "^16.6.0"
-    },
     "packageExtensions": {
       "@vue/composition-api": {
         "peerDependencies": {
