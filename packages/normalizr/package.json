@@ -59,7 +59,7 @@
     "eslint": "^8.36.0",
     "immutable": "^4.3.0",
     "size-limit": "^8.2.4",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.3",
     "unbuild": "^1.1.2"
   },
   "size-limit": [
