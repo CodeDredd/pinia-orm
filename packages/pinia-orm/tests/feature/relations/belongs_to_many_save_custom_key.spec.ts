@@ -4,7 +4,6 @@ import { getActivePinia } from 'pinia'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { addMocksToSchema } from '@graphql-tools/mock'
 import { graphql } from 'graphql'
-import gql from 'graphql-tag'
 import { assertState } from '../../helpers'
 import { Attr, BelongsToMany, Num, Str } from '../../../src/decorators'
 import { Model, useRepo } from '../../../src'
@@ -226,11 +225,26 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       typeDefs: sourceSchema,
     })
 
+    const mocks = {
+      OutsourcingPartner: () => {
+        return {
+          name: 'Luke Skywalker',
+        }
+      },
+      BillingGroup: () => {
+        return {
+          name: 'Dark Forces',
+        }
+      },
+    };
+
     const schemaWithMocks = addMocksToSchema({
       schema,
+      mocks,
+      preserveResolvers: true,
     })
 
-    const query = gql`
+    const query = `
   query {
     outsourcingpartners {
       id
@@ -288,101 +302,10 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       schema: schemaWithMocks,
       source: query,
     }).then((result) => {
-      console.log(result)
+      console.log(result.data.outsourcingpartners[0])
+      useRepo(OutsourcingPartner).save(result.data.outsourcingpartners)
+      console.log(getActivePinia().state.value)
     })
-
-    useRepo(OutsourcingPartner).save([
-      {
-        __typename: 'Outsourcingpartner',
-        id: 1,
-        name: 'Luke Skywalker',
-        billingGroups: [
-          {
-            __typename: 'Billinggroup',
-            id: 1,
-            name: 'Dark Forces',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 2,
-            name: 'Jedi Council',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 3,
-            name: 'The Jedis',
-          },
-        ],
-      },
-      {
-        __typename: 'Outsourcingpartner',
-        id: 2,
-        name: 'Darth Vader',
-        billingGroups: [
-          {
-            __typename: 'Billinggroup',
-            id: 1,
-            name: 'Dark Forces',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 2,
-            name: 'Jedi Council',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 3,
-            name: 'The Jedis',
-          },
-        ],
-      },
-      {
-        __typename: 'Outsourcingpartner',
-        id: 3,
-        name: 'Yoda',
-        billingGroups: [
-          {
-            __typename: 'Billinggroup',
-            id: 1,
-            name: 'Dark Forces',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 2,
-            name: 'Jedi Council',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 3,
-            name: 'The Jedis',
-          },
-        ],
-      },
-      {
-        __typename: 'Outsourcingpartner',
-        id: 4,
-        name: 'Clone Trooper 0815',
-        billingGroups: [
-          {
-            __typename: 'Billinggroup',
-            id: 1,
-            name: 'Dark Forces',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 2,
-            name: 'Jedi Council',
-          },
-          {
-            __typename: 'Billinggroup',
-            id: 3,
-            name: 'The Jedis',
-          },
-        ],
-      },
-    ])
-
-    console.log(getActivePinia().state.value)
 
     expect(true).toBeFalsy()
   })
