@@ -4,6 +4,7 @@ import { getActivePinia } from 'pinia'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { addMocksToSchema } from '@graphql-tools/mock'
 import { graphql } from 'graphql'
+import casual from 'casual'
 import { assertState } from '../../helpers'
 import { Attr, BelongsToMany, Num, Str } from '../../../src/decorators'
 import { Model, useRepo } from '../../../src'
@@ -21,7 +22,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
 
       @Num(0) belongsToManyId!: number
       @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-        permissions!: Role
+      permissions!: Role
     }
 
     class Role extends Model {
@@ -121,10 +122,12 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       user: {
         id: 1,
         prename: 'blub',
-        groups: [{
-          id: 1,
-          name: 'hoho',
-        }],
+        groups: [
+          {
+            id: 1,
+            name: 'hoho',
+          },
+        ],
       },
     })
 
@@ -152,7 +155,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
 
       @Num(0) belongsToManyId!: number
       @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-        permissions!: Role
+      permissions!: Role
     }
 
     class Role extends Model {
@@ -201,7 +204,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     })
   })
 
-  it('inserts "belongs to many" relation from graphql response', () => {
+  it('inserts "belongs to many" relation from graphql response', async () => {
     const sourceSchema = `
   type OutsourcingPartner {
     id: Int!
@@ -225,23 +228,35 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       typeDefs: sourceSchema,
     })
 
-    const mocks = {
-      OutsourcingPartner: () => {
-        return {
-          name: 'Luke Skywalker',
-        }
-      },
-      BillingGroup: () => {
-        return {
-          name: 'Dark Forces',
-        }
-      },
-    };
+    let ospIdCounter = 0
+    function getOutsourcingpartner() {
+      return {
+        id: ospIdCounter++,
+        name: casual.name,
+        billingGroups: [
+          {
+            id: 1,
+            name: 'Dark Forces',
+          },
+          {
+            id: 2,
+            name: 'Jedi Council',
+          },
+          {
+            id: 3,
+            name: 'The Jedis',
+          },
+        ],
+      }
+    }
 
     const schemaWithMocks = addMocksToSchema({
       schema,
-      mocks,
-      preserveResolvers: true,
+      mocks: {
+        OutsourcingPartner: () => {
+          return getOutsourcingpartner()
+        },
+      },
     })
 
     const query = `
@@ -281,7 +296,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
         () => BillingGroup,
         () => OutsourcingPartnerBillingGroup,
         'outsourcingPartner_id',
-        'billingGroup_id',
+        'billingGroup_id'
       )
       declare billingGroups: BillingGroup[]
     }
@@ -298,15 +313,18 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       declare billingGroup_id: number
     }
 
-    graphql({
+    const result = await graphql({
       schema: schemaWithMocks,
       source: query,
-    }).then((result) => {
-      console.log(result.data.outsourcingpartners[0])
-      useRepo(OutsourcingPartner).save(result.data.outsourcingpartners)
-      console.log(getActivePinia().state.value)
     })
+    console.log('GrapgQL Response: ', result.data.outsourcingpartners)
+    const repo = useRepo(OutsourcingPartner)
+    repo.save(result.data.outsourcingpartners)
+    console.log('State: ', getActivePinia().state.value)
 
-    expect(true).toBeFalsy()
+    const data = repo.with('billingGroups').get()
+    data.forEach((outsourcingPartner) => {
+      expect(outsourcingPartner.billingGroups.length).toBe(3)
+    })
   })
 })

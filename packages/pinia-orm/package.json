@@ -75,6 +75,7 @@
     "@vue/composition-api": "^1.7.1",
     "@vue/test-utils": "^2.3.2",
     "c8": "^7.13.0",
+    "casual": "^1.6.2",
     "core-js": "^3.29.1",
     "eslint": "^8.36.0",
     "graphql": "^16.6.0",
