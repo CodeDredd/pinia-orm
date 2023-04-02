@@ -1,10 +1,17 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { getActivePinia } from 'pinia'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { addMocksToSchema } from '@graphql-tools/mock'
 import { graphql } from 'graphql'
 import casual from 'casual'
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from '@apollo/client/core'
+import gql from 'graphql-tag'
+import * as _ from 'lodash'
+import { getActivePinia } from 'pinia'
 import { assertState } from '../../helpers'
 import { Attr, BelongsToMany, Num, Str } from '../../../src/decorators'
 import { Model, useRepo } from '../../../src'
@@ -317,14 +324,99 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       schema: schemaWithMocks,
       source: query,
     })
-    console.log('GrapgQL Response: ', result.data.outsourcingpartners)
     const repo = useRepo(OutsourcingPartner)
     repo.save(result.data.outsourcingpartners)
-    console.log('State: ', getActivePinia().state.value)
 
     const data = repo.with('billingGroups').get()
     data.forEach((outsourcingPartner) => {
       expect(outsourcingPartner.billingGroups.length).toBe(3)
     })
+  })
+
+  it('inserts "belong to many" relation from deep cloned apollo graphql response', async () => {
+    // HTTP connection to the API
+    const httpLink = createHttpLink({
+      // You should use an absolute URL here
+      uri: 'https://mockend.com/Marvin-S/MockedGraphQL-OSP-BillingGroups/graphql',
+    })
+
+    // Cache implementation
+    const cache = new InMemoryCache()
+
+    // Create the apollo client
+    const apolloClient = new ApolloClient({
+      link: httpLink,
+      cache,
+    })
+
+    class BillingGroup extends Model {
+      static entity = 'billingGroups'
+
+      @Num(0)
+      declare id: number
+
+      @Str('')
+      declare name: string
+    }
+
+    class OutsourcingPartner extends Model {
+      static entity = 'outsourcingPartners'
+
+      @Num(0)
+      declare id: number
+
+      @Str('')
+      declare name: string
+
+      @BelongsToMany(
+        () => BillingGroup,
+        () => OutsourcingPartnerBillingGroup,
+        'outsourcingPartner_id',
+        'billingGroup_id'
+      )
+      declare billingGroups: BillingGroup[]
+    }
+
+    class OutsourcingPartnerBillingGroup extends Model {
+      static entity = 'outsourcingPartnerBillingGroups'
+
+      static primaryKey = ['outsourcingPartner_id', 'billingGroup_id']
+
+      @Num(0)
+      declare outsourcingPartner_id: number
+
+      @Num(0)
+      declare billingGroup_id: number
+    }
+
+    interface OutsourcingPartnerRequestResult {
+      outsourcingpartners: OutsourcingPartner[]
+    }
+
+    const queryResult =
+      await apolloClient.query<OutsourcingPartnerRequestResult>({
+        query: gql`
+          query {
+            outsourcingpartners {
+              id
+              name
+              __typename
+              billingGroups {
+                id
+                name
+                __typename
+              }
+            }
+          }
+        `,
+      })
+
+    console.log('Apollo Response: ', queryResult.data.outsourcingpartners)
+    const clonedData = _.cloneDeep(queryResult.data.outsourcingpartners)
+    const repo = useRepo(OutsourcingPartner)
+    repo.save(clonedData)
+    console.log('Store: ', getActivePinia().state.value)
+
+    expect(true).toBeFalsy()
   })
 })
