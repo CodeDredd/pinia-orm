@@ -1,9 +1,4 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-
-import { getActivePinia } from 'pinia'
-import { makeExecutableSchema } from '@graphql-tools/schema'
-import { addMocksToSchema } from '@graphql-tools/mock'
-import { graphql } from 'graphql'
 import { assertState } from '../../helpers'
 import { Attr, BelongsToMany, Num, Str } from '../../../src/decorators'
 import { Model, useRepo } from '../../../src'
@@ -21,7 +16,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
 
       @Num(0) belongsToManyId!: number
       @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-        permissions!: Role
+      permissions!: Role
     }
 
     class Role extends Model {
@@ -121,10 +116,12 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       user: {
         id: 1,
         prename: 'blub',
-        groups: [{
-          id: 1,
-          name: 'hoho',
-        }],
+        groups: [
+          {
+            id: 1,
+            name: 'hoho',
+          },
+        ],
       },
     })
 
@@ -152,7 +149,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
 
       @Num(0) belongsToManyId!: number
       @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-        permissions!: Role
+      permissions!: Role
     }
 
     class Role extends Model {
@@ -201,65 +198,47 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     })
   })
 
-  it('inserts "belongs to many" relation from graphql response', () => {
-    const sourceSchema = `
-  type OutsourcingPartner {
-    id: Int!
-    name: String!
-    billingGroups: [BillingGroup]
-  }
-
-  type BillingGroup {
-    id: Int!
-    name: String
-    votes: Int
-  }
-
-  type Query {
-    outsourcingpartners: [OutsourcingPartner]
-  }
-
-`
-
-    const schema = makeExecutableSchema({
-      typeDefs: sourceSchema,
-    })
-
-    const mocks = {
-      OutsourcingPartner: () => {
-        return {
-          name: 'Luke Skywalker',
-        }
+  it('inserts "belongs to many" relation with shared instance data', () => {
+    const classes = [
+      {
+        id: 1,
+        name: 'The Jedis',
       },
-      BillingGroup: () => {
-        return {
-          name: 'Dark Forces',
-        }
+      {
+        id: 2,
+        name: 'Jedi Council',
       },
-    };
+      {
+        id: 3,
+        name: 'Dark Forces',
+      },
+    ]
 
-    const schemaWithMocks = addMocksToSchema({
-      schema,
-      mocks,
-      preserveResolvers: true,
-    })
+    const students = [
+      {
+        id: 1,
+        name: 'Luke Skywalker',
+        classes: [classes[0], classes[1], classes[2]],
+      },
+      {
+        id: 2,
+        name: 'Darth Vader',
+        classes: [classes[0], classes[1], classes[2]],
+      },
+      {
+        id: 3,
+        name: 'Yoda',
+        classes: [classes[0], classes[1], classes[2]],
+      },
+      {
+        id: 4,
+        name: 'Clone Trooper 0815',
+        classes: [classes[0], classes[1], classes[2]],
+      },
+    ]
 
-    const query = `
-  query {
-    outsourcingpartners {
-      id
-      name
-      __typename
-      billingGroups {
-        id
-        name
-        __typename
-      }
-    }
-  }
-  `
-    class BillingGroup extends Model {
-      static entity = 'billingGroups'
+    class Class extends Model {
+      static entity = 'classes'
 
       @Num(0)
       declare id: number
@@ -268,8 +247,8 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       declare name: string
     }
 
-    class OutsourcingPartner extends Model {
-      static entity = 'outsourcingPartners'
+    class Student extends Model {
+      static entity = 'students'
 
       @Num(0)
       declare id: number
@@ -277,36 +256,28 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       @Str('')
       declare name: string
 
-      @BelongsToMany(
-        () => BillingGroup,
-        () => OutsourcingPartnerBillingGroup,
-        'outsourcingPartner_id',
-        'billingGroup_id',
-      )
-      declare billingGroups: BillingGroup[]
+      @BelongsToMany(() => Class, () => StudentClass, 'student_id', 'class_id')
+      declare classes: Class[]
     }
 
-    class OutsourcingPartnerBillingGroup extends Model {
-      static entity = 'outsourcingPartnerBillingGroups'
+    class StudentClass extends Model {
+      static entity = 'studentsClasses'
 
-      static primaryKey = ['outsourcingPartner_id', 'billingGroup_id']
-
-      @Num(0)
-      declare outsourcingPartner_id: number
+      static primaryKey = ['student_id', 'class_id']
 
       @Num(0)
-      declare billingGroup_id: number
+      declare student_id: number
+
+      @Num(0)
+      declare class_id: number
     }
 
-    graphql({
-      schema: schemaWithMocks,
-      source: query,
-    }).then((result) => {
-      console.log(result.data.outsourcingpartners[0])
-      useRepo(OutsourcingPartner).save(result.data.outsourcingpartners)
-      console.log(getActivePinia().state.value)
+    const repo = useRepo(Student)
+    repo.save(students)
+
+    const data = repo.with('classes').get()
+    data.forEach((students) => {
+      expect(students.classes.length).toBe(3)
     })
-
-    expect(true).toBeFalsy()
   })
 })
