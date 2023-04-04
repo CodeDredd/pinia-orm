@@ -12,6 +12,14 @@ export default defineConfig({
   outputDir: './docs/public/sponsorkit',
   includePrivate: true,
   onSponsorsFetched: (sponsors) => {
+    sponsors = sponsors.map(sponsor => {
+      if (sponsor.isOneTime) {
+        sponsor.monthlyDollars = 0
+      }
+
+      return sponsor
+    })
+    console.log(sponsors)
 
     sponsors.push({
         sponsor: {
@@ -27,9 +35,37 @@ export default defineConfig({
         tierName: undefined,
         createdAt: 'Fri, 03 Mar 1999 23:00:00 GMT',
         provider: 'github'
-    })
-
-    console.log(sponsors)
+    },
+      {
+        sponsor: {
+          __typename: undefined,
+          login: 'jhercog',
+          name: 'jhercog',
+          avatarUrl: 'https://avatars.githubusercontent.com/u/181355?v=4',
+          type: 'User'
+        },
+        isOneTime: true,
+        monthlyDollars: 0,
+        privacyLevel: 'PUBLIC',
+        tierName: undefined,
+        createdAt: 'Fri, 03 Mar 2023 23:00:00 GMT',
+        provider: 'github'
+      },
+      {
+        sponsor: {
+          __typename: undefined,
+          login: 'svenhue',
+          name: 'Sven Hue',
+          avatarUrl: 'https://avatars.githubusercontent.com/u/83905274?v=4',
+          type: 'User'
+        },
+        isOneTime: true,
+        monthlyDollars: 0,
+        privacyLevel: 'PUBLIC',
+        tierName: undefined,
+        createdAt: 'Fri, 03 Mar 1999 23:00:00 GMT',
+        provider: 'github'
+      })
 
     return sponsors
   },
