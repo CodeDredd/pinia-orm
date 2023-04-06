@@ -26,7 +26,7 @@
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "lz-string": "^1.5.0",
-    "monaco-editor": "0.37.0",
+    "monaco-editor": "0.37.1",
     "monaco-editor-core": "^0.37.0",
     "pinia": "^2.0.33",
     "pinia-orm": "^1.6.7",
