@@ -39,8 +39,8 @@ importers:
         specifier: ^13.1.3
         version: 13.1.3
       lint-staged:
-        specifier: ^13.2.0
-        version: 13.2.0(enquirer@2.3.6)
+        specifier: ^13.2.1
+        version: 13.2.1(enquirer@2.3.6)
       lodash.kebabcase:
         specifier: ^4.1.1
         version: 4.1.1
@@ -7534,8 +7534,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged@13.2.0(enquirer@2.3.6):
-    resolution: {integrity: sha512-GbyK5iWinax5Dfw5obm2g2ccUiZXNGtAS4mCbJ0Lv4rq6iEtfBSjOYdcbOtAIFtM114t0vdpViDDetjVTSd8Vw==}
+  /lint-staged@13.2.1(enquirer@2.3.6):
+    resolution: {integrity: sha512-8gfzinVXoPfga5Dz/ZOn8I2GOhf81Wvs+KwbEXQn/oWZAvCVS2PivrXfVbFJc93zD16uC0neS47RXHIjXKYZQw==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
