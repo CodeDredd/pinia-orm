@@ -28,7 +28,7 @@
     "lz-string": "^1.5.0",
     "monaco-editor": "0.37.1",
     "monaco-editor-core": "^0.37.1",
-    "pinia": "^2.0.33",
+    "pinia": "^2.0.34",
     "pinia-orm": "^1.6.7",
     "splitpanes": "^3.1.5",
     "theme-vitesse": "^0.6.4",
