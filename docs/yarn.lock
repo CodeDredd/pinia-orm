@@ -1788,16 +1788,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtlabs/github-module@npm:1.6.1":
-  version: 1.6.1
-  resolution: "@nuxtlabs/github-module@npm:1.6.1"
+"@nuxtlabs/github-module@npm:1.6.2":
+  version: 1.6.2
+  resolution: "@nuxtlabs/github-module@npm:1.6.2"
   dependencies:
     "@nuxt/kit": ^3.0.0
     "@octokit/graphql": ^5.0.1
     "@octokit/rest": ^19.0.4
     remark-gfm: ^3.0.1
     remark-github: ^11.2.4
-  checksum: f3035738987c50b37888422f38900cc77361198a3eb86d655642653ff63048efa8175f54ec42be54070ca3957e560642f6ccacabaedafe64668e6cfffb7d5677
+  checksum: f3da790d9279e80ad891e8ff4dbcbebdbfebc24d10ede557e71651ab5c35ba56bea0a11bc4bde7d692c70ba29ae5e9be76ec9ca7c2f35fc108ac2ae73e2b0bf8
   languageName: node
   linkType: hard
 
@@ -1947,7 +1947,7 @@ __metadata:
     "@nuxt-themes/docus": 1.10.1
     "@nuxtjs/plausible": ^0.2.0
     "@nuxtjs/tailwindcss": ^6.6.5
-    "@nuxtlabs/github-module": 1.6.1
+    "@nuxtlabs/github-module": 1.6.2
     nuxt: 3.2.3
   languageName: unknown
   linkType: soft
