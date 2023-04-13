@@ -60,7 +60,7 @@
     "immutable": "^4.3.0",
     "size-limit": "^8.2.4",
     "typescript": "^5.0.4",
-    "unbuild": "^1.2.0"
+    "unbuild": "^1.2.1"
   },
   "size-limit": [
     {
