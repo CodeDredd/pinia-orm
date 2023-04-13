@@ -15,9 +15,9 @@ const userRepo = useRepo(User)
 
 const users = userRepo.all()
 
-// eager load "coomments" relation  for all users
+// eager load "comments" relation  for all users
 userRepo.with('comments').load(users) 
-// eager load "coomments" relation with closure  for all users
+// eager load "comments" relation with closure  for all users
 userRepo.with('comments', (query) => {
     query.where('active', true)
 }).load(users)
