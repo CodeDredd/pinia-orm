@@ -1760,9 +1760,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/tailwindcss@npm:^6.6.5":
-  version: 6.6.5
-  resolution: "@nuxtjs/tailwindcss@npm:6.6.5"
+"@nuxtjs/tailwindcss@npm:^6.6.6":
+  version: 6.6.6
+  resolution: "@nuxtjs/tailwindcss@npm:6.6.6"
   dependencies:
     "@nuxt/kit": ^3.3.1
     "@nuxt/postcss8": ^1.1.3
@@ -1784,7 +1784,7 @@ __metadata:
     tailwindcss: ~3.3.0
     ufo: ^1.1.1
     uncrypto: ^0.1.2
-  checksum: 904753837030f11781a19fa2bd30662d34c57209b26d5d4d68f1bebf635444c20e9c20528e9d1f376fcae2c8f837cca255326afe39bab5cf504eb0204a81e065
+  checksum: 7a1b0c54d7a387d1d21c33cde01ba6014c638fb2a541c91efad982163a1f57e0500eadc757a27504b76b046a56193888a01c4d9b32375fd51325ddae02e50f77
   languageName: node
   linkType: hard
 
@@ -1946,7 +1946,7 @@ __metadata:
     "@docsearch/js": ^3.3.3
     "@nuxt-themes/docus": 1.10.1
     "@nuxtjs/plausible": ^0.2.0
-    "@nuxtjs/tailwindcss": ^6.6.5
+    "@nuxtjs/tailwindcss": ^6.6.6
     "@nuxtlabs/github-module": 1.6.2
     nuxt: 3.2.3
   languageName: unknown

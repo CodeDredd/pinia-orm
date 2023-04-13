@@ -19,7 +19,7 @@
     "@docsearch/js": "^3.3.3",
     "@nuxt-themes/docus": "1.10.1",
     "@nuxtjs/plausible": "^0.2.0",
-    "@nuxtjs/tailwindcss": "^6.6.5",
+    "@nuxtjs/tailwindcss": "^6.6.6",
     "@nuxtlabs/github-module": "1.6.2",
     "nuxt": "3.2.3"
   },
