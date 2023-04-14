@@ -20,7 +20,7 @@
     "@vue/runtime-core": "^3.2.47",
     "@vue/runtime-dom": "^3.2.47",
     "@vue/shared": "^3.2.47",
-    "@vueuse/core": "9.13.0",
+    "@vueuse/core": "10.0.2",
     "@vueuse/integrations": "^9.13.0",
     "@vueuse/shared": "9.13.0",
     "file-saver": "^2.0.5",
