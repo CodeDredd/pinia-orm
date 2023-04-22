@@ -21,7 +21,7 @@
     "@vue/runtime-dom": "^3.2.47",
     "@vue/shared": "^3.2.47",
     "@vueuse/core": "10.1.0",
-    "@vueuse/integrations": "^10.0.2",
+    "@vueuse/integrations": "^10.1.0",
     "@vueuse/shared": "10.0.2",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
