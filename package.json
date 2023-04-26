@@ -37,7 +37,7 @@
     "execa": "^7.1.1",
     "expect": "^29.5.0",
     "globby": "^13.1.4",
-    "lint-staged": "^13.2.1",
+    "lint-staged": "^13.2.2",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.8",
     "p-series": "^3.0.0",
