@@ -100,7 +100,7 @@ export class BelongsToMany extends Relation {
       .whereIn(this.relatedPivotKey, this.getKeys(relatedModels, this.relatedKey))
       .whereIn(this.foreignPivotKey, this.getKeys(models, this.parentKey))
       .groupBy(this.foreignPivotKey, this.relatedPivotKey)
-      .get()
+      .get<'group'>()
 
     models.forEach((parentModel) => {
       const relationResults: Model[] = []

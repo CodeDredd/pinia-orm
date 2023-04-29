@@ -104,12 +104,12 @@ export class Model {
   /**
    * Behaviour for relational fields on delete.
    */
-  static fieldsOnDelete = {}
+  static fieldsOnDelete: Record<string, any> = {}
 
   /**
    * Original model data.
    */
-  protected static original = {}
+  protected static original: Record<string, any> = {}
 
   /**
    * The schema for the model. It contains the result of the `fields`
@@ -138,7 +138,7 @@ export class Model {
   /**
    * The casts for the model.
    */
-  protected static fieldCasts = {}
+  protected static fieldCasts: Record<string, any> = {}
 
   /**
    * The array of booted models.
