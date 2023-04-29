@@ -1,4 +1,4 @@
-import { Element } from '@'
+import type { Element } from '@'
 
 interface SortableArray<T> {
   criteria: any[]
@@ -237,9 +237,7 @@ export function generateKey(key: string, params?: any): string {
   // If the window object exists, we can assume this code is running in a browser.
   return typeof process === 'undefined'
     ? btoa(stringifiedKey)
-    : Buffer !== undefined
-      ? Buffer.from(stringifiedKey, 'utf8').toString('base64')
-      : stringifiedKey
+    : stringifiedKey
 }
 
 /**
