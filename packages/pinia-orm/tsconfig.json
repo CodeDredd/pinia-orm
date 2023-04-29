@@ -4,7 +4,6 @@
     "baseUrl": ".",
     "rootDir": ".",
     "outDir": "dist",
-    "suppressImplicitAnyIndexErrors": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "module": "esnext",

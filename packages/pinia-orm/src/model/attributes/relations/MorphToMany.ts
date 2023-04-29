@@ -108,7 +108,7 @@ export class MorphToMany extends Relation {
       .whereIn(this.relatedId, this.getKeys(relatedModels, this.relatedKey))
       .whereIn(this.morphId, this.getKeys(models, this.parentKey))
       .groupBy(this.morphId, this.relatedId, this.morphType)
-      .get()
+      .get<'group'>()
 
     models.forEach((parentModel) => {
       const relationResults: Model[] = []

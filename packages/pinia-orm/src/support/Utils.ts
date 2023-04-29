@@ -1,3 +1,5 @@
+import { Element } from '@'
+
 interface SortableArray<T> {
   criteria: any[]
   index: number
@@ -63,7 +65,7 @@ export function size(collection: any[] | object): number {
  * Creates an array of elements, sorted in specified order by the results
  * of running each element in a collection thru each iteratee.
  */
-export function orderBy<T>(
+export function orderBy<T extends Element>(
   collection: T[],
   iteratees: (((record: T) => any) | string)[],
   directions: string[],
@@ -177,11 +179,11 @@ function compareAscending(value: any, other: any, flags: SortFlags): number {
  * Creates an object composed of keys generated from the results of running
  * each element of collection through iteratee.
  */
-export function groupBy<T>(
+export function groupBy<T extends Element>(
   collection: T[],
   iteratee: (record: T) => string,
 ): { [key: string]: T[] } {
-  return collection.reduce((records, record) => {
+  return collection.reduce((records: Record<string, any>, record) => {
     const key = iteratee(record)
 
     if (records[key] === undefined)
@@ -243,7 +245,7 @@ export function generateKey(key: string, params?: any): string {
 /**
  * Get a value based on a dot-notation key.
  */
-export function getValue(obj: Object, keys: string | string[]): any {
+export function getValue(obj: Record<string, any>, keys: string | string[]): any {
   keys = (typeof keys === 'string') ? keys.split('.') : keys
   const key = keys.shift() as string
   // eslint-disable-next-line no-prototype-builtins
