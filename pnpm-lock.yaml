@@ -103,8 +103,8 @@ importers:
         version: 3.4.3(rollup@3.20.2)
     devDependencies:
       '@nuxt/devtools':
-        specifier: ^0.4.3
-        version: 0.4.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
+        specifier: ^0.4.4
+        version: 0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
       '@nuxt/module-builder':
         specifier: ^0.3.0
         version: 0.3.0
@@ -194,8 +194,8 @@ importers:
         specifier: ^8.39.0
         version: 8.39.0
       happy-dom:
-        specifier: ^9.10.0
-        version: 9.10.0
+        specifier: ^9.10.1
+        version: 9.10.1
       mkdist:
         specifier: ^1.2.0
         version: 1.2.0(typescript@5.0.4)
@@ -231,7 +231,7 @@ importers:
         version: 4.3.3(@types/node@18.16.3)
       vitest:
         specifier: ^0.30.1
-        version: 0.30.1(@vitest/ui@0.30.1)(happy-dom@9.10.0)
+        version: 0.30.1(@vitest/ui@0.30.1)(happy-dom@9.10.1)
       vue:
         specifier: ^3.2.47
         version: 3.2.47
@@ -1682,8 +1682,8 @@ packages:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
     dev: true
 
-  /@nuxt/devtools-kit@0.4.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
-    resolution: {integrity: sha512-4r9Ljf0ZQXdVd0ou5zqhNR1yKWYfWdgCWjUYTeNUnF2S4MRWwXjVUT+gj/gH4uPwN75W7GlEJZZuhYoaesNwQw==}
+  /@nuxt/devtools-kit@0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
+    resolution: {integrity: sha512-s0rx3W8brsL8lR1GnuAnTMXevxyqfxAfVJtr9QhV1O9OrDc9Edh5/C5meJ7WXGRJ+grsIzgTpKVZTHxzovUCiw==}
     peerDependencies:
       nuxt: ^3.4.2
       vite: '*'
@@ -1698,8 +1698,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/devtools-wizard@0.4.3:
-    resolution: {integrity: sha512-vGGm20nQuTJQhFh0cS1kjsrHf8J0knvwi8UsR7MoVZyE2XPw5uBxASg6zwuTD9YhwEjgOOF7zsnIbKPgitEyDQ==}
+  /@nuxt/devtools-wizard@0.4.4:
+    resolution: {integrity: sha512-KIb/T4PNB1eABz8MjebnlL3+xL0PElYEEpadjPjuizA0VBKOwroGDTN+vxz9PTbWBaKJTnOptXVxvniEWGtH4Q==}
     hasBin: true
     dependencies:
       consola: 3.1.0
@@ -1715,15 +1715,15 @@ packages:
       semver: 7.5.0
     dev: true
 
-  /@nuxt/devtools@0.4.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
-    resolution: {integrity: sha512-GtblwcWagvvdJMEoQZMHDWW4txpCsL/2zX8jz2Rt3wR1Uqw1khI40xax7bh6pbRL6+YFQKWRo6j5K0LlWzp4IQ==}
+  /@nuxt/devtools@0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
+    resolution: {integrity: sha512-wRX2hRF8SJwwqHh09oBm7e0vPE6U31Dhrcs+8XLzVf/nkk1AJ8zim/m/mbsdVCCyCRLsuyIFoOgaweMA3Jcxvw==}
     hasBin: true
     peerDependencies:
       nuxt: ^3.4.2
       vite: '*'
     dependencies:
-      '@nuxt/devtools-kit': 0.4.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
-      '@nuxt/devtools-wizard': 0.4.3
+      '@nuxt/devtools-kit': 0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
+      '@nuxt/devtools-wizard': 0.4.4
       '@nuxt/kit': 3.4.3(rollup@3.20.2)
       birpc: 0.2.11
       consola: 3.1.0
@@ -2858,7 +2858,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.1.1
-      vitest: 0.30.1(@vitest/ui@0.30.1)(happy-dom@9.10.0)
+      vitest: 0.30.1(@vitest/ui@0.30.1)(happy-dom@9.10.1)
     dev: true
 
   /@vitest/expect@0.30.1:
@@ -6345,8 +6345,8 @@ packages:
       uglify-js: 3.16.2
     dev: true
 
-  /happy-dom@9.10.0:
-    resolution: {integrity: sha512-A2NGV4Z2goQEoFUed1jODPcG7WYHF04Ashv804qzIZU0I8kF5wQoJM6SVGC77nxZZAk7PypWzXKenfskgcpdMw==}
+  /happy-dom@9.10.1:
+    resolution: {integrity: sha512-4wEWL9jYxtjcvGJDACtcelTBD86Sv//Kwn3G/+zb0mrNF3sC/JC0lTznqLu4Vw4cNUfR4WLMjiC+jeAr8CxM2g==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
@@ -11507,7 +11507,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.30.1(@vitest/ui@0.30.1)(happy-dom@9.10.0):
+  /vitest@0.30.1(@vitest/ui@0.30.1)(happy-dom@9.10.1):
     resolution: {integrity: sha512-y35WTrSTlTxfMLttgQk4rHcaDkbHQwDP++SNwPb+7H8yb13Q3cu2EixrtHzF27iZ8v0XCciSsLg00RkPAzB/aA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -11553,7 +11553,7 @@ packages:
       chai: 4.3.7
       concordance: 5.0.4
       debug: 4.3.4
-      happy-dom: 9.10.0
+      happy-dom: 9.10.1
       local-pkg: 0.4.3
       magic-string: 0.30.0
       pathe: 1.1.0
