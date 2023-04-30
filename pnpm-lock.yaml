@@ -103,8 +103,8 @@ importers:
         version: 3.4.3(rollup@3.20.2)
     devDependencies:
       '@nuxt/devtools':
-        specifier: ^0.4.4
-        version: 0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
+        specifier: ^0.4.5
+        version: 0.4.5(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
       '@nuxt/module-builder':
         specifier: ^0.3.0
         version: 0.3.0
@@ -1682,8 +1682,8 @@ packages:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
     dev: true
 
-  /@nuxt/devtools-kit@0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
-    resolution: {integrity: sha512-s0rx3W8brsL8lR1GnuAnTMXevxyqfxAfVJtr9QhV1O9OrDc9Edh5/C5meJ7WXGRJ+grsIzgTpKVZTHxzovUCiw==}
+  /@nuxt/devtools-kit@0.4.5(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
+    resolution: {integrity: sha512-qB+jVdlZBJsw0h7YxtDFNJVspaDFO4PUV96dMzH8/mxvUKCTtjqI+i6bA7ZG/GKY8bT3BFTzsNvm/UEO7KqdGA==}
     peerDependencies:
       nuxt: ^3.4.2
       vite: '*'
@@ -1698,8 +1698,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/devtools-wizard@0.4.4:
-    resolution: {integrity: sha512-KIb/T4PNB1eABz8MjebnlL3+xL0PElYEEpadjPjuizA0VBKOwroGDTN+vxz9PTbWBaKJTnOptXVxvniEWGtH4Q==}
+  /@nuxt/devtools-wizard@0.4.5:
+    resolution: {integrity: sha512-5OQtXv9Lf4TDTw8J8Tlh/CIaiJGtr7xs5KXO6zuIbSuCle66NTPse/2immtiP2anbV/snEMgO7K04uVM/E2uSQ==}
     hasBin: true
     dependencies:
       consola: 3.1.0
@@ -1715,15 +1715,15 @@ packages:
       semver: 7.5.0
     dev: true
 
-  /@nuxt/devtools@0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
-    resolution: {integrity: sha512-wRX2hRF8SJwwqHh09oBm7e0vPE6U31Dhrcs+8XLzVf/nkk1AJ8zim/m/mbsdVCCyCRLsuyIFoOgaweMA3Jcxvw==}
+  /@nuxt/devtools@0.4.5(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3):
+    resolution: {integrity: sha512-OyYoW3gOSH13BK3f0DqDb6HGPAohLHIFaZo89+XE46aYCABq/Qh54GMPfSHxIq+6KAkYPJDSmpgwu+Zc0DANRQ==}
     hasBin: true
     peerDependencies:
       nuxt: ^3.4.2
       vite: '*'
     dependencies:
-      '@nuxt/devtools-kit': 0.4.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
-      '@nuxt/devtools-wizard': 0.4.4
+      '@nuxt/devtools-kit': 0.4.5(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.3)
+      '@nuxt/devtools-wizard': 0.4.5
       '@nuxt/kit': 3.4.3(rollup@3.20.2)
       birpc: 0.2.11
       consola: 3.1.0
