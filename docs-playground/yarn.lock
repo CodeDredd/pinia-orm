@@ -1802,13 +1802,6 @@
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-10.1.2.tgz#d8ffe557b1042efd03a0aa88540a00c25d193ee3"
   integrity sha512-3mc5BqN9aU2SqBeBuWE7ne4OtXHoHKggNgxZR2K+zIW4YLsy6xoZ4/9vErQs6tvoKDX6QAqm3lvsrv0mczAwIQ==
 
-"@vueuse/shared@10.1.0":
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-10.1.0.tgz#1158713a69d33b84c473dbd078c0e8c587e6ab5f"
-  integrity sha512-2X52ogu12i9DkKOQ01yeb/BKg9UO87RNnpm5sXkQvyORlbq8ONS5l39MYkjkeVWWjdT0teJru7a2S41dmHmqjQ==
-  dependencies:
-    vue-demi ">=0.14.0"
-
 "@vueuse/shared@10.1.2":
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-10.1.2.tgz#31d8733a217a6396eb67706319133bf62cdd8baa"
