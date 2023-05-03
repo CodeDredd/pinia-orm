@@ -3751,10 +3751,10 @@ minimist@^1.2.0, minimist@^1.2.6:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
-monaco-editor-core@^0.37.1:
-  version "0.37.1"
-  resolved "https://registry.yarnpkg.com/monaco-editor-core/-/monaco-editor-core-0.37.1.tgz#f1983d6b7748a6fed06aac0f11cbd1cdc3e10bc2"
-  integrity sha512-bcggKPMlQnsQnbiTxCfhKKDvsxGsvWzDFkkDYoZgc90bwzVswA1zTGQ8HbyY+TtIkUaFY0Zq+p7tEAwmxBUFAw==
+monaco-editor-core@^0.38.0:
+  version "0.38.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor-core/-/monaco-editor-core-0.38.0.tgz#1c0b9911d4757081ce966cad4fa7de6812402d0f"
+  integrity sha512-xMYhffdnz+sKcA9OTxsSh4s1Wul3WocjIKZqX47ULgC5m8Fprwn6CrD+CQG663xQd3pjjoh9xEggy/wN7iqcWA==
 
 monaco-editor@0.38.0:
   version "0.38.0"
