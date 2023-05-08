@@ -57,16 +57,16 @@
     "test": "pnpm run test:3"
   },
   "peerDependencies": {
-    "pinia": "^2.0.35"
+    "pinia": "^2.0.36"
   },
   "dependencies": {
     "@pinia-orm/normalizr": ">=1.6.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.6",
-    "@pinia/testing": "^0.0.16",
+    "@pinia/testing": "^0.1.0",
     "@size-limit/preset-small-lib": "^8.2.4",
-    "@types/node": "^18.16.5",
+    "@types/node": "^18.16.6",
     "@types/prettier": "^2.7.2",
     "@types/uuid": "^9.0.1",
     "@vitest/coverage-c8": "^0.31.0",
@@ -79,7 +79,7 @@
     "happy-dom": "^9.10.9",
     "mkdist": "^1.2.0",
     "nanoid": "^4.0.2",
-    "pinia": "^2.0.35",
+    "pinia": "^2.0.36",
     "prettier": "^2.8.8",
     "size-limit": "^8.2.4",
     "std-env": "^3.3.3",
