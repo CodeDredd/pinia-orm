@@ -1809,25 +1809,25 @@
   dependencies:
     vue-demi ">=0.14.0"
 
-"@windicss/config@1.8.10":
-  version "1.8.10"
-  resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.8.10.tgz#717f070889db153fdfead4bc4401f4120f3de4ae"
-  integrity sha512-O9SsC110b1Ik3YYa4Ck/0TWuCo7YFfA9KDrwD5sAeqscT5COIGK1HszdCT3oh0MJFej2wNrvpfyW9h6yQaW6PA==
+"@windicss/config@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.9.0.tgz#a5cb18653477284095e1694e962b42442a770446"
+  integrity sha512-QO4+udbmDIgZwAi89tqUt5nGwBq3IgyELjLn83twZXiIqzOw+77ecCuM0oPSbzWmIbCqXq3wRQHd6Z1u5E/5zQ==
   dependencies:
     debug "^4.3.4"
-    jiti "^1.16.0"
+    jiti "^1.18.2"
     windicss "^3.5.6"
 
-"@windicss/plugin-utils@1.8.10":
-  version "1.8.10"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.8.10.tgz#241d5a93650be826c9cbd2614341885b044251c7"
-  integrity sha512-Phqk5OW1w+Mv+ry6t7BzAeDq3aMhbI94gR49j9vQCufFfDGCHndhhjtMK0sBv+NPJUsIAIh6qayb1iwBCXUGrw==
+"@windicss/plugin-utils@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.9.0.tgz#a38a5e37abf47ce43bb2cd8332cdecc647531f6a"
+  integrity sha512-omAacM5ExIr9XBUI2z47CyCXJBke4imJZqXW41YgHhRLbahTngbScFk5yxa6dXivDXUpUKqasOPXBJgA4bhHCg==
   dependencies:
     "@antfu/utils" "^0.7.2"
-    "@windicss/config" "1.8.10"
+    "@windicss/config" "1.9.0"
     debug "^4.3.4"
     fast-glob "^3.2.12"
-    magic-string "^0.27.0"
+    magic-string "^0.30.0"
     micromatch "^4.0.5"
     windicss "^3.5.6"
 
@@ -3434,10 +3434,10 @@ jest-worker@^26.2.1:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jiti@^1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.16.0.tgz#f72065954446ad1866fa8d6bcc3bed3cc1cebdaa"
-  integrity sha512-L3BJStEf5NAqNuzrpfbN71dp43mYIcBUlCRea/vdyv5dW/AYa1d4bpelko4SHdY3I6eN9Wzyasxirj1/vv5kmg==
+jiti@^1.18.2:
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.18.2.tgz#80c3ef3d486ebf2450d9335122b32d121f2a83cd"
+  integrity sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==
 
 js-sdsl@^4.1.4:
   version "4.1.4"
@@ -3552,15 +3552,15 @@ jszip@^3.10.1:
     readable-stream "~2.3.6"
     setimmediate "^1.0.5"
 
-kolorist@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.6.0.tgz#f43ac794305b30032a5bedcae7799d0f91d2ff36"
-  integrity sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==
-
 kolorist@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.7.0.tgz#8e22bc470ea2d2743dbd461808f8b5246b19f5f4"
   integrity sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==
+
+kolorist@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.8.0.tgz#edddbbbc7894bc13302cdf740af6374d4a04743c"
+  integrity sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==
 
 leven@^3.1.0:
   version "3.1.0"
@@ -3651,13 +3651,6 @@ magic-string@^0.26.4:
   integrity sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==
   dependencies:
     sourcemap-codec "^1.4.8"
-
-magic-string@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.27.0.tgz#e4a3413b4bab6d98d2becffd48b4a257effdbbf3"
-  integrity sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==
-  dependencies:
-    "@jridgewell/sourcemap-codec" "^1.4.13"
 
 magic-string@^0.30.0:
   version "0.30.0"
@@ -4814,14 +4807,14 @@ vite-plugin-pwa@^0.14.7:
     workbox-build "^6.5.4"
     workbox-window "^6.5.4"
 
-vite-plugin-windicss@^1.8.10:
-  version "1.8.10"
-  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.8.10.tgz#a0e022c5d3def185fb2458a0ba41fc140421ddcb"
-  integrity sha512-scywsuzo46lcTBohspmF0WiwhWEte6p+OUVrX4yr7VMRvLHMHVfLtJReyD5pppjijG7YOwVsZn7XBWWZtF658Q==
+vite-plugin-windicss@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.9.0.tgz#0b635c3cf3557267d2f97bc42e3f9842a67360af"
+  integrity sha512-w0unPfcbVU5eaISAsFTLgIb41SLhmXoUF75Othu8NqFioe8+DEqiuvJ7/k/LRuEuvI8Rt/OKrY6cNzrB+dykaA==
   dependencies:
-    "@windicss/plugin-utils" "1.8.10"
+    "@windicss/plugin-utils" "1.9.0"
     debug "^4.3.4"
-    kolorist "^1.6.0"
+    kolorist "^1.8.0"
     windicss "^3.5.6"
 
 vite@^4.3.5:
