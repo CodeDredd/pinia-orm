@@ -4573,10 +4573,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
-theme-vitesse@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/theme-vitesse/-/theme-vitesse-0.6.4.tgz#6dcbe2b2cbcf80b62eb33dfec405b3f93cbfed08"
-  integrity sha512-uCn8emUUfEOKoukSZz0GqxB5q+gQ2wVEXx6+cCKWbXIjW56afkozVdosVSqXkRuML7i77tMmzMbvzcY/2uc01w==
+theme-vitesse@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/theme-vitesse/-/theme-vitesse-0.7.2.tgz#a1de4f4e1f4d19de0ea6a27e622ab2e99735a3cf"
+  integrity sha512-e214q5dCGCkjORY0el6lz+JEmZIR1HQOnGhKehMYh0jJaZgqbPKbwHIULsBvQsUM4Q+ZX0AzBgKbUU2UksYOCg==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
