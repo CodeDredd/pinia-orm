@@ -17,9 +17,9 @@
     "@antfu/utils": "^0.7.2",
     "@headlessui/vue": "^1.7.13",
     "@types/splitpanes": "^2.2.1",
-    "@vue/runtime-core": "^3.2.47",
-    "@vue/runtime-dom": "^3.2.47",
-    "@vue/shared": "^3.2.47",
+    "@vue/runtime-core": "^3.3.1",
+    "@vue/runtime-dom": "^3.3.1",
+    "@vue/shared": "^3.3.1",
     "@vueuse/core": "10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "@vueuse/shared": "10.1.2",
@@ -33,7 +33,7 @@
     "splitpanes": "^3.1.5",
     "theme-vitesse": "^0.7.2",
     "vscode-html-languageservice": "^5.0.5",
-    "vue": "^3.2.47"
+    "vue": "^3.3.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.6",
@@ -41,7 +41,7 @@
     "@types/file-saver": "^2.0.5",
     "@types/node": "^18.16.7",
     "@vitejs/plugin-vue": "^4.2.2",
-    "@vue/compiler-sfc": "^3.2.47",
+    "@vue/compiler-sfc": "^3.3.1",
     "eslint": "^8.40.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
