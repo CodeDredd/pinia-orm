@@ -66,7 +66,7 @@
     "@antfu/eslint-config": "^0.38.6",
     "@pinia/testing": "^0.1.0",
     "@size-limit/preset-small-lib": "^8.2.4",
-    "@types/node": "^18.16.9",
+    "@types/node": "^18.16.10",
     "@types/prettier": "^2.7.2",
     "@types/uuid": "^9.0.1",
     "@vitest/coverage-c8": "^0.31.0",
