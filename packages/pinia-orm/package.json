@@ -63,7 +63,7 @@
     "@pinia-orm/normalizr": ">=1.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.38.6",
+    "@antfu/eslint-config": "^0.39.0",
     "@pinia/testing": "^0.1.2",
     "@size-limit/preset-small-lib": "^8.2.4",
     "@types/node": "^18.16.13",
