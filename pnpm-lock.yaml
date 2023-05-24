@@ -103,8 +103,8 @@ importers:
         version: 3.5.1(rollup@3.20.2)
     devDependencies:
       '@nuxt/devtools':
-        specifier: ^0.5.3
-        version: 0.5.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8)
+        specifier: ^0.5.4
+        version: 0.5.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8)
       '@nuxt/module-builder':
         specifier: ^0.3.1
         version: 0.3.1
@@ -375,7 +375,7 @@ packages:
       '@babel/helper-compilation-targets': 7.20.7(@babel/core@7.21.3)
       '@babel/helper-module-transforms': 7.21.2
       '@babel/helpers': 7.21.0
-      '@babel/parser': 7.21.8
+      '@babel/parser': 7.21.9
       '@babel/template': 7.20.7
       '@babel/traverse': 7.21.3
       '@babel/types': 7.21.5
@@ -561,6 +561,14 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.21.5
+    dev: true
+
+  /@babel/parser@7.21.9:
+    resolution: {integrity: sha512-q5PNg/Bi1OpGgx5jYlvWZwAorZepEudDMCLtj967aeS7WMont7dUZI46M2XwcIQqvUlMxWfdLFu4S/qSxeUu5g==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@babel/types': 7.21.5
 
   /@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.21.3):
     resolution: {integrity: sha512-Yqfm+XDx0+Prh3VSeEQCPU81yC+JWZ2pDPFSS4ZdpfZhp4MkFMaDC1UqseovEKwSUpnIL7+vK+Clp7bfh0iD7g==}
@@ -615,7 +623,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/parser': 7.21.8
+      '@babel/parser': 7.21.9
       '@babel/types': 7.21.5
 
   /@babel/traverse@7.21.3:
@@ -628,7 +636,7 @@ packages:
       '@babel/helper-function-name': 7.21.0
       '@babel/helper-hoist-variables': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.21.8
+      '@babel/parser': 7.21.9
       '@babel/types': 7.21.5
       debug: 4.3.4
       globals: 11.12.0
@@ -1685,10 +1693,10 @@ packages:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
     dev: true
 
-  /@nuxt/devtools-kit@0.5.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8):
-    resolution: {integrity: sha512-ogPOAECwJMNExZWdKS9BHOyAY+KKNT7N58RirmlmjfPLzDrj4ufCNdE027LUg/HKbYhK0GrmtlmSwthL+6ELrQ==}
+  /@nuxt/devtools-kit@0.5.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8):
+    resolution: {integrity: sha512-GOPEXR00otH1yt1MSvqJ9p78REKSj2B8bNdXdx/cFFfveXa8L3JQnO0KfO8sTmsUsZRbv7jMesM4yBbMt+KH3A==}
     peerDependencies:
-      nuxt: ^3.4.2
+      nuxt: ^3.5.1
       vite: '*'
     dependencies:
       '@nuxt/kit': 3.5.1(rollup@3.20.2)
@@ -1701,15 +1709,15 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/devtools-wizard@0.5.3:
-    resolution: {integrity: sha512-gtMwUczPGJnwVfXPO61XHy4p2iraKjBZZ63ED+zBw85Wu4gIyDotV6NdKTyxTG35t+3gbd+uKLM2eeScpuUcxA==}
+  /@nuxt/devtools-wizard@0.5.4:
+    resolution: {integrity: sha512-7wIrHTC9UEt6Y0vza/VWcfkFZEmubivYK3kKC5HHR2jSo1H4aimtN3BcNusdd5EwNeRu+eqqJj5gu8A6p8nEEA==}
     hasBin: true
     dependencies:
       consola: 3.1.0
       diff: 5.1.0
       execa: 7.1.1
       global-dirs: 3.0.1
-      magicast: 0.2.7
+      magicast: 0.2.8
       pathe: 1.1.0
       picocolors: 1.0.0
       pkg-types: 1.0.3
@@ -1718,15 +1726,15 @@ packages:
       semver: 7.5.1
     dev: true
 
-  /@nuxt/devtools@0.5.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8):
-    resolution: {integrity: sha512-Qhw5qNf4sbIyQtDEOxQbN3CoSoXtqBF5oK90Yfbw/eJka4IQqudmPMW9pScU5aPJ9iTzNz6+wp25PFuvDvbSnQ==}
+  /@nuxt/devtools@0.5.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8):
+    resolution: {integrity: sha512-5lTVJ8l6C4IrekFpKQ3waseX/TenUFGoV1xq1p9TNqO77HIRRNlFJPk+2e0PxIhATxixroG01b3sS6hg3ZtPjw==}
     hasBin: true
     peerDependencies:
-      nuxt: ^3.4.2
+      nuxt: ^3.5.1
       vite: '*'
     dependencies:
-      '@nuxt/devtools-kit': 0.5.3(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8)
-      '@nuxt/devtools-wizard': 0.5.3
+      '@nuxt/devtools-kit': 0.5.4(nuxt@3.3.2)(rollup@3.20.2)(vite@4.3.8)
+      '@nuxt/devtools-wizard': 0.5.4
       '@nuxt/kit': 3.5.1(rollup@3.20.2)
       birpc: 0.2.11
       consola: 3.1.0
@@ -1741,7 +1749,7 @@ packages:
       is-installed-globally: 0.4.0
       launch-editor: 2.6.0
       local-pkg: 0.4.3
-      magicast: 0.2.7
+      magicast: 0.2.8
       nuxt: 3.3.2(@types/node@18.16.14)(eslint@8.41.0)(rollup@3.20.2)(typescript@5.0.4)
       nypm: 0.2.0
       pacote: 15.2.0
@@ -1752,7 +1760,6 @@ packages:
       rc9: 2.1.0
       semver: 7.5.1
       sirv: 2.0.3
-      tinyws: 0.1.0(ws@8.13.0)
       unimport: 3.0.7(rollup@3.20.2)
       vite: 4.3.8(@types/node@18.16.14)
       vite-plugin-inspect: 0.7.28(rollup@3.20.2)(vite@4.3.8)
@@ -2953,7 +2960,7 @@ packages:
   /@vue/compiler-core@3.3.4:
     resolution: {integrity: sha512-cquyDNvZ6jTbf/+x+AgM2Arrp6G4Dzbb0R64jiG804HRMfRiFXWI6kqUVqZ6ZR0bQhIoQjB4+2bhNtVwndW15g==}
     dependencies:
-      '@babel/parser': 7.21.8
+      '@babel/parser': 7.21.9
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
       source-map-js: 1.0.2
@@ -2977,7 +2984,7 @@ packages:
   /@vue/compiler-sfc@3.3.4:
     resolution: {integrity: sha512-6y/d8uw+5TkCuzBkgLS0v3lSM3hJDntFEiUORM11pQ/hKvkhSKZrXW6i69UyXlJQisJxuUEJKAWEqWbWsLeNKQ==}
     dependencies:
-      '@babel/parser': 7.21.8
+      '@babel/parser': 7.21.9
       '@vue/compiler-core': 3.3.4
       '@vue/compiler-dom': 3.3.4
       '@vue/compiler-ssr': 3.3.4
@@ -3011,7 +3018,7 @@ packages:
   /@vue/reactivity-transform@3.3.4:
     resolution: {integrity: sha512-MXgwjako4nu5WFLAjpBnCj/ieqcjE2aJBINUNQzkZQfzIZA4xn+0fV1tIYBJvvva3N3OvKGofRLvQIwEQPpaXw==}
     dependencies:
-      '@babel/parser': 7.21.8
+      '@babel/parser': 7.21.9
       '@vue/compiler-core': 3.3.4
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
@@ -5278,7 +5285,7 @@ packages:
       eslint-import-resolver-node: 0.3.7
       eslint-module-utils: 2.7.4(@typescript-eslint/parser@5.48.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.2)(eslint@8.41.0)
       has: 1.0.3
-      is-core-module: 2.11.0
+      is-core-module: 2.12.1
       is-glob: 4.0.3
       minimatch: 3.1.2
       object.values: 1.1.6
@@ -7798,10 +7805,10 @@ packages:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /magicast@0.2.7:
-    resolution: {integrity: sha512-3THKRfye8bkMgH1USXhZXJW3LlyyQCr0+yYh1b+b8Qp169xlu8jseBFikQyDOmBXku5w8bljZX9bP3b9L9lw0Q==}
+  /magicast@0.2.8:
+    resolution: {integrity: sha512-zEnqeb3E6TfMKYXGyHv3utbuHNixr04o3/gVGviSzVQkbFiU46VZUd+Ea/1npKfvEsEWxBYuIksKzoztTDPg0A==}
     dependencies:
-      '@babel/parser': 7.21.8
+      '@babel/parser': 7.21.9
       '@babel/types': 7.21.5
       recast: 0.23.2
     dev: true
@@ -10909,15 +10916,6 @@ packages:
   /tinyspy@2.1.0:
     resolution: {integrity: sha512-7eORpyqImoOvkQJCSkL0d0mB4NHHIFAy4b1u8PHdDa7SjGS2njzl6/lyGoZLm+eyYEtlUmFGE0rFj66SWxZgQQ==}
     engines: {node: '>=14.0.0'}
-    dev: true
-
-  /tinyws@0.1.0(ws@8.13.0):
-    resolution: {integrity: sha512-6WQ2FlFM7qm6lAXxeKnzsAEfmnBHz5W5EwonNs52V0++YfK1IoCCAWM429afcChFE9BFrDgOFnq7ligaWMsa/A==}
-    engines: {node: '>=12.4'}
-    peerDependencies:
-      ws: '>=8'
-    dependencies:
-      ws: 8.13.0
     dev: true
 
   /titleize@3.0.0:
