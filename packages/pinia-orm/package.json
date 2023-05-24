@@ -63,7 +63,7 @@
     "@pinia-orm/normalizr": ">=1.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.1",
+    "@antfu/eslint-config": "^0.39.3",
     "@pinia/testing": "^0.1.2",
     "@size-limit/preset-small-lib": "^8.2.4",
     "@types/node": "^18.16.14",
@@ -76,7 +76,7 @@
     "c8": "^7.13.0",
     "core-js": "^3.30.2",
     "eslint": "^8.41.0",
-    "happy-dom": "^9.20.1",
+    "happy-dom": "^9.20.3",
     "mkdist": "^1.2.0",
     "nanoid": "^4.0.2",
     "pinia": "^2.1.3",
