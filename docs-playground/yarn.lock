@@ -1202,16 +1202,16 @@
   resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
-"@iconify/utils@^2.1.5":
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.1.5.tgz#75c17410aadec724d2ab7bd71e8710e448102438"
-  integrity sha512-6MvDI+I6QMvXn5rK9KQGdpEE4mmLTcuQdLZEiX5N+uZB+vc4Yw9K1OtnOgkl8mp4d9X0UrILREyZgF1NUwUt+Q==
+"@iconify/utils@^2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.1.6.tgz#038c1144d3f696148954dce3b30064568af16285"
+  integrity sha512-WJNcj/mmFQoYok+576EexlCQe/g2tZ8X9jR4QLo++z6DlVqrjwt7FBYetTQ3iyTtrPMFHcAx0JiCqtUz30XG5A==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
-    "@antfu/utils" "^0.7.2"
+    "@antfu/utils" "^0.7.4"
     "@iconify/types" "^2.0.0"
     debug "^4.3.4"
-    kolorist "^1.7.0"
+    kolorist "^1.8.0"
     local-pkg "^0.4.3"
 
 "@jridgewell/gen-mapping@^0.1.0":
@@ -3555,11 +3555,6 @@ jszip@^3.10.1:
     readable-stream "~2.3.6"
     setimmediate "^1.0.5"
 
-kolorist@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.7.0.tgz#8e22bc470ea2d2743dbd461808f8b5246b19f5f4"
-  integrity sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==
-
 kolorist@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.8.0.tgz#edddbbbc7894bc13302cdf740af6374d4a04743c"
@@ -4712,14 +4707,14 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unplugin-icons@^0.16.2:
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.16.2.tgz#579f1fc7f4b821854c464b7fde054fbf9d805a67"
-  integrity sha512-CwQS1/deta/I1GwVhcdrJBp0+Qf/XWPLoMMbuVA9ZWhdOhKF7A38zvfE2JnC99t64WfZM44ikdSKPZJzXFL3iw==
+unplugin-icons@^0.16.3:
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.16.3.tgz#2c8e5bedcb89309970eb8a3c09f051dcc3d06cf0"
+  integrity sha512-hivVVr6++WHSj6Iz+rjTa14/ALMYT+PFd2sPtTBKlQR3cdzui1VwM72TzSu94NkDm/KVncvOIiBwoHwUPeL9bg==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
     "@antfu/utils" "^0.7.4"
-    "@iconify/utils" "^2.1.5"
+    "@iconify/utils" "^2.1.6"
     debug "^4.3.4"
     kolorist "^1.8.0"
     local-pkg "^0.4.3"
