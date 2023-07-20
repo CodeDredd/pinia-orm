@@ -44,7 +44,7 @@
     "@vue/compiler-sfc": "^3.3.4",
     "eslint": "^8.45.0",
     "typescript": "^5.1.6",
-    "vite": "^4.4.4",
+    "vite": "^4.4.5",
     "unplugin-vue-components": "^0.25.1",
     "unplugin-icons": "^0.16.5",
     "vite-plugin-pwa": "^0.16.4",
