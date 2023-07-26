@@ -1676,10 +1676,10 @@
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.5.0.tgz#98b99425edee70b4c992692628fa1ea2c1e57d07"
   integrity sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==
 
-"@vue/language-core@1.8.7":
-  version "1.8.7"
-  resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-1.8.7.tgz#b5526a9bb1eb74a9a0cc4236dae9ab350c0d635e"
-  integrity sha512-VxZUGM77byVIoXmvIq0VufdBlmkvOToQC+yC6+6f4+sJ16W2R884mENpypHB+y74uzrn6cjBF8LMq244VQSIOg==
+"@vue/language-core@1.8.8":
+  version "1.8.8"
+  resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-1.8.8.tgz#5a8aa8363f4dfacdfcd7808a9926744d7c310ae6"
+  integrity sha512-i4KMTuPazf48yMdYoebTkgSOJdFraE4pQf0B+FTOFkbB+6hAfjrSou/UmYWRsWyZV6r4Rc6DDZdI39CJwL0rWw==
   dependencies:
     "@volar/language-core" "~1.10.0"
     "@volar/source-map" "~1.10.0"
@@ -1750,13 +1750,13 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.3.4.tgz#06e83c5027f464eef861c329be81454bc8b70780"
   integrity sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==
 
-"@vue/typescript@1.8.7":
-  version "1.8.7"
-  resolved "https://registry.yarnpkg.com/@vue/typescript/-/typescript-1.8.7.tgz#88af1654c66c4b53579e64b1c058eb1c76daa31b"
-  integrity sha512-l2rJKNfrRPyZvRcm4fX8aonwNCyb4RLO0BNV6UtKpxDp/e8NT5iIBLcREmwgmuZ67Ac7PiEFbdu9W2Sr80l4YQ==
+"@vue/typescript@1.8.8":
+  version "1.8.8"
+  resolved "https://registry.yarnpkg.com/@vue/typescript/-/typescript-1.8.8.tgz#8efb375d448862134492a044f4e96afada547500"
+  integrity sha512-jUnmMB6egu5wl342eaUH236v8tdcEPXXkPgj+eI/F6JwW/lb+yAU6U07ZbQ3MVabZRlupIlPESB7ajgAGixhow==
   dependencies:
     "@volar/typescript" "~1.10.0"
-    "@vue/language-core" "1.8.7"
+    "@vue/language-core" "1.8.8"
 
 "@vueuse/core@10.2.1":
   version "10.2.1"
@@ -4630,13 +4630,13 @@ vue-template-compiler@^2.7.14:
     de-indent "^1.0.2"
     he "^1.2.0"
 
-vue-tsc@^1.8.7:
-  version "1.8.7"
-  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-1.8.7.tgz#2dbfc291576baa6b56ebe262ddddb0c95924f16b"
-  integrity sha512-AcByExNmDo8Gkb6QLkryLkq10CpP0UX3BIrAanX+lQu990BE8zaXjYpqPbzckr//Wcrh3ytou91l0ec6IjNDeQ==
+vue-tsc@^1.8.8:
+  version "1.8.8"
+  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-1.8.8.tgz#67317693eb2ef6747e89e6d834eeb6d2deb8871d"
+  integrity sha512-bSydNFQsF7AMvwWsRXD7cBIXaNs/KSjvzWLymq/UtKE36697sboX4EccSHFVxvgdBlI1frYPc/VMKJNB7DFeDQ==
   dependencies:
-    "@vue/language-core" "1.8.7"
-    "@vue/typescript" "1.8.7"
+    "@vue/language-core" "1.8.8"
+    "@vue/typescript" "1.8.8"
     semver "^7.3.8"
 
 vue@^2.0.0:
