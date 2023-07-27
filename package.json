@@ -34,7 +34,7 @@
     "chalk": "^4.1.2",
     "conventional-changelog-cli": "^3.0.0",
     "enquirer": "^2.4.0",
-    "execa": "^7.1.1",
+    "execa": "^7.2.0",
     "expect": "^29.6.1",
     "globby": "^13.2.2",
     "lint-staged": "^13.2.3",
