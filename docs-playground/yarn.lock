@@ -15,12 +15,12 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@antfu/eslint-config-basic@0.39.8":
-  version "0.39.8"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-basic/-/eslint-config-basic-0.39.8.tgz#5b9dfd5daafd916bc429e840552f01f86f06d98a"
-  integrity sha512-HvxNu11NRpX/DHmcMcA2KenY/IIy3THEn5tpizg6vPIp3ZYSNkW3ov6sK2wxCd1S8Rwl/65566wplJ8xTYe0EA==
+"@antfu/eslint-config-basic@0.40.0":
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-basic/-/eslint-config-basic-0.40.0.tgz#b242f9f386b40131f2d03f027a0fd431f5b530c5"
+  integrity sha512-SAwz/0pVvGyWX4bpd2HpGw3Otl2SQu0ayGnuDgKTnolqYHQsVTHLMU7+keGP9hBLlyFAGz+keuNwgJz1K6NGdQ==
   dependencies:
-    eslint-plugin-antfu "0.39.8"
+    eslint-plugin-antfu "0.40.0"
     eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-html "^7.1.0"
     eslint-plugin-import "npm:eslint-plugin-i@2.27.5-4"
@@ -35,32 +35,32 @@
     jsonc-eslint-parser "^2.3.0"
     yaml-eslint-parser "^1.2.2"
 
-"@antfu/eslint-config-ts@0.39.8":
-  version "0.39.8"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-ts/-/eslint-config-ts-0.39.8.tgz#dfccbca0ec6ea8289b997165ced3d2b303632631"
-  integrity sha512-oMkIzxxD+sdHpO7Ctk+ej1SCZAoSbPMGyqjfaGLqpaxh87gP7LSFlm6QpsdIWllnTyYB75Hk8LMqFQWCJU9dxw==
+"@antfu/eslint-config-ts@0.40.0":
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-ts/-/eslint-config-ts-0.40.0.tgz#10c1deaf371f912ee7ba0a159a4993f5d6fd7bed"
+  integrity sha512-FHZFoIdmeo08NEqMoRNcu82FWZqvod2rjWcA313+qenbpVRtn640J+MDWkrHAxNd4pZ8PZd8cfMpp5OSWHW7sw==
   dependencies:
-    "@antfu/eslint-config-basic" "0.39.8"
+    "@antfu/eslint-config-basic" "0.40.0"
     "@typescript-eslint/eslint-plugin" "^6.0.0"
     "@typescript-eslint/parser" "^6.0.0"
     eslint-plugin-jest "^27.2.3"
 
-"@antfu/eslint-config-vue@0.39.8":
-  version "0.39.8"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-vue/-/eslint-config-vue-0.39.8.tgz#8642ce5d00258a8e93a5454d293f13334d6d5401"
-  integrity sha512-BeBRdI8Bm0d9ppomvmPkrIim4IEW4ZHZHsGw2qSw/mSDZwprLyGi9tgNMnoHbN9OBGQwveuurdKFlJz5SlCjrA==
+"@antfu/eslint-config-vue@0.40.0":
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-vue/-/eslint-config-vue-0.40.0.tgz#464cdc2b8907e966a3ca7167ef5c9f9870286468"
+  integrity sha512-9SVPincP0FkVqkwYKe2qadfQZflOUFLVFEYJSAMIcfupz3gezjTJSTzdIQocep+DECB9Lt0n1Qkx/w2thr+QFw==
   dependencies:
-    "@antfu/eslint-config-basic" "0.39.8"
-    "@antfu/eslint-config-ts" "0.39.8"
+    "@antfu/eslint-config-basic" "0.40.0"
+    "@antfu/eslint-config-ts" "0.40.0"
     eslint-plugin-vue "^9.15.1"
     local-pkg "^0.4.3"
 
-"@antfu/eslint-config@^0.39.8":
-  version "0.39.8"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config/-/eslint-config-0.39.8.tgz#055a541767e21f72b89d6d2c202b300a0d2fff9f"
-  integrity sha512-KnDjLw6UEoHdEzB6CzQMm+EkA4ZI94r1Of1rRRw0qxhkFhD/+SQ2BTBgmF5d4wTsU0IT1Dk5JjJ6J/cVFKdXWQ==
+"@antfu/eslint-config@^0.40.0":
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config/-/eslint-config-0.40.0.tgz#345644282252eda054db265acc8788ec46ec1fab"
+  integrity sha512-ZaXPSqdIrDWpNyxRWFtwhD43aNQKaVw5aTRWEoDA8VDM176UngbbHXS8H0cSFXYb618l2pOA5wBXMSJSn+05kg==
   dependencies:
-    "@antfu/eslint-config-vue" "0.39.8"
+    "@antfu/eslint-config-vue" "0.40.0"
     "@typescript-eslint/eslint-plugin" "^6.0.0"
     "@typescript-eslint/parser" "^6.0.0"
     eslint-plugin-eslint-comments "^3.2.0"
@@ -2367,10 +2367,10 @@ eslint-module-utils@^2.8.0:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-antfu@0.39.8:
-  version "0.39.8"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-antfu/-/eslint-plugin-antfu-0.39.8.tgz#11206bfa54b2c020bcaa6a531f73b3d55b92ec45"
-  integrity sha512-VsQF1mofv0pg+9rhSohNhrxcufOzSsGyQdKqdyJHPMTT2mMwXAPgKW/v8SC6W7UDk1q/j2EHZ+UUOEAKRnkd7g==
+eslint-plugin-antfu@0.40.0:
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-antfu/-/eslint-plugin-antfu-0.40.0.tgz#27eef71e9664795b549af73cb4478bc69aedd075"
+  integrity sha512-2L218fh+ILn+SC0vbIgoK1UCP5XVoCHqm3fJskLfpYJYjjm4BEaqEWKhmTOX0V1tDeySSbTEuInfALpfZry3Aw==
   dependencies:
     "@typescript-eslint/utils" "^6.0.0"
 
