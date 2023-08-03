@@ -42,7 +42,7 @@
     "minimist": "^1.2.8",
     "p-series": "^3.0.0",
     "pascalcase": "^2.0.0",
-    "prettier": "^3.0.0",
+    "prettier": "^3.0.1",
     "rimraf": "^5.0.1",
     "semver": "^7.5.4",
     "sponsorkit": "^0.8.7",
