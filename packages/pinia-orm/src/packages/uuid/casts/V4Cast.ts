@@ -14,6 +14,6 @@ export class UidCast extends CastAttribute {
    * Make the value for the attribute.
    */
   set(value: any): string | null {
-    return value ?? v4()
+    return value ?? v4(this.$parameters)
   }
 }

@@ -23,6 +23,7 @@ import type { CastAttribute, Casts } from './casts/CastAttribute'
 import type { TypeDefault } from './attributes/types/Type'
 import { HasManyThrough } from './attributes/relations/HasManyThrough'
 import { MorphToMany } from './attributes/relations/MorphToMany'
+import type { UidOptions } from './decorators/Contracts'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -319,8 +320,8 @@ export class Model {
   /**
    * Create a new Uid attribute instance.
    */
-  static uid(size?: number): Uid {
-    return new Uid(this.newRawInstance(), size)
+  static uid(options?: UidOptions): Uid {
+    return new Uid(this.newRawInstance(), options)
   }
 
   /**

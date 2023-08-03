@@ -1,9 +1,12 @@
 import type { Model } from '../../Model'
-import { generateId } from '../../../support/Utils'
+import type { UidOptions } from '../../decorators/Contracts'
 import type { CastAttribute } from '../../../model/casts/CastAttribute'
+import { generateId } from '../../../support/Utils'
 import { Type } from './Type'
 
 export class Uid extends Type {
+  protected options: Record<string, any>
+
   // This alphabet uses `A-Za-z0-9_-` symbols.
   // The order of characters is optimized for better gzip and brotli compression.
   // References to the same file (works both for gzip and brotli):
@@ -14,9 +17,11 @@ export class Uid extends Type {
 
   protected size = 21
 
-  constructor(model: Model, size = 21) {
+  constructor(model: Model, options: UidOptions = {}) {
     super(model)
-    this.size = size
+    this.options = typeof options === 'number' ? { size: options } : options
+    this.urlAlphabet = this.options.urlAlphabet ?? this.urlAlphabet
+    this.size = this.options.size ?? this.size
   }
 
   /**
@@ -25,7 +30,7 @@ export class Uid extends Type {
   make(value: any): string {
     const uidCast: typeof CastAttribute = this.model.$casts()[this.model.$getKeyName() as string]
     if (uidCast)
-      return value ?? uidCast.newRawInstance(this.model.$fields()).set(value)
+      return value ?? uidCast.withParameters(this.options).newRawInstance(this.model.$fields()).set(value)
 
     return value ?? generateId(this.size, this.urlAlphabet)
   }

@@ -3,6 +3,10 @@ import type { ModelFields } from '../../../../src/model/Model'
 import { CastAttribute } from '../../../../src/model/casts/CastAttribute'
 
 export class UidCast extends CastAttribute {
+  static parameters = {
+    size: 'number',
+  }
+
   /**
    * Create a new String attribute instance.
    */
@@ -14,6 +18,6 @@ export class UidCast extends CastAttribute {
    * Make the value for the attribute.
    */
   async set(value: any): Promise<string | null> {
-    return value ?? await nanoid()
+    return value ?? await nanoid(this.$parameters.size)
   }
 }
