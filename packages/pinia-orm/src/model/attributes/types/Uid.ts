@@ -13,14 +13,14 @@ export class Uid extends Type {
   // `'use`, `andom`, and `rict'`
   // References to the brotli default dictionary:
   // `-26T`, `1983`, `40px`, `75px`, `bush`, `jack`, `mind`, `very`, and `wolf`
-  protected urlAlphabet = 'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
+  protected alphabet = 'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
 
   protected size = 21
 
   constructor(model: Model, options: UidOptions = {}) {
     super(model)
     this.options = typeof options === 'number' ? { size: options } : options
-    this.urlAlphabet = this.options.urlAlphabet ?? this.urlAlphabet
+    this.alphabet = this.options.alphabet ?? this.alphabet
     this.size = this.options.size ?? this.size
   }
 
@@ -32,6 +32,6 @@ export class Uid extends Type {
     if (uidCast)
       return value ?? uidCast.withParameters(this.options).newRawInstance(this.model.$fields()).set(value)
 
-    return value ?? generateId(this.size, this.urlAlphabet)
+    return value ?? generateId(this.size, this.alphabet)
   }
 }

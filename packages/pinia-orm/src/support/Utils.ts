@@ -215,13 +215,13 @@ export function assert(
     throwError(message)
 }
 
-export function generateId(size: number, urlAlphabet: string) {
+export function generateId(size: number, alphabet: string) {
   let id = ''
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   let i = size
   while (i--) {
     // `| 0` is more compact and faster than `Math.floor()`.
-    id += urlAlphabet[(Math.random() * 64) | 0]
+    id += alphabet[(Math.random() * 64) | 0]
   }
   return id
 }
