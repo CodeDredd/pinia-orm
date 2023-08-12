@@ -1792,22 +1792,22 @@
   dependencies:
     vue-demi ">=0.14.5"
 
-"@windicss/config@1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.9.0.tgz#a5cb18653477284095e1694e962b42442a770446"
-  integrity sha512-QO4+udbmDIgZwAi89tqUt5nGwBq3IgyELjLn83twZXiIqzOw+77ecCuM0oPSbzWmIbCqXq3wRQHd6Z1u5E/5zQ==
+"@windicss/config@1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@windicss/config/-/config-1.9.1.tgz#d14081c92d29191614a168b1087dff0873c0e17d"
+  integrity sha512-MjutTiS9XIteriwkH9D+que+bILbpulekYzjJGQDg3Sb2H87aOcO30f7N11ZiHF5OYoZn4yJz4lDbB3A6IuXfQ==
   dependencies:
     debug "^4.3.4"
     jiti "^1.18.2"
     windicss "^3.5.6"
 
-"@windicss/plugin-utils@1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.9.0.tgz#a38a5e37abf47ce43bb2cd8332cdecc647531f6a"
-  integrity sha512-omAacM5ExIr9XBUI2z47CyCXJBke4imJZqXW41YgHhRLbahTngbScFk5yxa6dXivDXUpUKqasOPXBJgA4bhHCg==
+"@windicss/plugin-utils@1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.9.1.tgz#ee1787f929f469dfb4bc2f0176bc988e99bd544c"
+  integrity sha512-sz/Z2sxUZIkJ2nVeTmtYTtXhWxe/yTTkM5nqU6eKhP0n6waipTCJJdLvWoZcgzQBbBCL/JLRQd/9BYsBqKuLDQ==
   dependencies:
     "@antfu/utils" "^0.7.2"
-    "@windicss/config" "1.9.0"
+    "@windicss/config" "1.9.1"
     debug "^4.3.4"
     fast-glob "^3.2.12"
     magic-string "^0.30.0"
@@ -4570,12 +4570,12 @@ vite-plugin-pwa@^0.16.4:
     workbox-build "^7.0.0"
     workbox-window "^7.0.0"
 
-vite-plugin-windicss@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.9.0.tgz#0b635c3cf3557267d2f97bc42e3f9842a67360af"
-  integrity sha512-w0unPfcbVU5eaISAsFTLgIb41SLhmXoUF75Othu8NqFioe8+DEqiuvJ7/k/LRuEuvI8Rt/OKrY6cNzrB+dykaA==
+vite-plugin-windicss@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.9.1.tgz#8a31ec5c37248037db076305925b8c2e6472ff22"
+  integrity sha512-CWm1b/tXVCJTbEGn4oB8B7Gev9xDuY9k4E/KiJqDuLYspBUFQyZKPF2mSZ3DfNdojsfqgzxu9ervqvlb9jJ7fw==
   dependencies:
-    "@windicss/plugin-utils" "1.9.0"
+    "@windicss/plugin-utils" "1.9.1"
     debug "^4.3.4"
     kolorist "^1.8.0"
     windicss "^3.5.6"
