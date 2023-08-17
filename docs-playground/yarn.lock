@@ -1175,10 +1175,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.47.0.tgz#5478fdf443ff8158f9de171c704ae45308696c7d"
   integrity sha512-P6omY1zv5MItm93kLM8s2vr1HICJH8v0dvddDhysbIuZ+vcjOHg5Zbkf1mTkcmi2JA9oBG2anOkRnW8WJTS8Og==
 
-"@headlessui/vue@^1.7.15":
-  version "1.7.15"
-  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.15.tgz#82e25e1649c7687f93c5d50af98ba65bd25be721"
-  integrity sha512-3ozVEgQ8mw09nWvUPN+8S6C8l3SM0lVT1aEN/+oP5Y4LF0WNMM9UrVisVTN9LLQ06v/X3EFA0blyL/vg8XNZlg==
+"@headlessui/vue@^1.7.16":
+  version "1.7.16"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.16.tgz#bdc9d32d329248910325539b99e6abfce0c69f89"
+  integrity sha512-nKT+nf/q6x198SsyK54mSszaQl/z+QxtASmgMEJtpxSX2Q0OPJX0upS/9daDyiECpeAsvjkoOrm2O/6PyBQ+Qg==
 
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
