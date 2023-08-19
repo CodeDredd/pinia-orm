@@ -34,8 +34,8 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       execa:
-        specifier: ^8.0.0
-        version: 8.0.0
+        specifier: ^8.0.1
+        version: 8.0.1
       expect:
         specifier: ^29.6.2
         version: 29.6.2
@@ -6660,8 +6660,8 @@ packages:
       strip-final-newline: 3.0.0
     dev: true
 
-  /execa@8.0.0:
-    resolution: {integrity: sha512-CTNS0BcKBcoOsawKBlpcKNmK4Kjuyz5jVLhf+PUsHGMqiKMVTa4cN3U7r7bRY8KTpfOGpXMo27fdy0dYVg2pqA==}
+  /execa@8.0.1:
+    resolution: {integrity: sha512-VyhnebXciFV2DESc+p6B+y0LjSm0krU4OgJN44qFAhBY0TJ+1V61tYD2+wHusZ6F9n5K+vl8k0sTy7PEfV4qpg==}
     engines: {node: '>=16.17'}
     dependencies:
       cross-spawn: 7.0.3
@@ -6890,7 +6890,7 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       cross-spawn: 7.0.3
-      signal-exit: 4.0.1
+      signal-exit: 4.1.0
     dev: true
 
   /forever-agent@0.6.1:
@@ -11280,11 +11280,6 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /signal-exit@4.0.1:
-    resolution: {integrity: sha512-uUWsN4aOxJAS8KOuf3QMyFtgm1pkb6I+KRZbRF/ghdf5T7sM+B1lLLzPDxswUjkmHyxQAVzEgG35E3NzDM9GVw==}
-    engines: {node: '>=14'}
-    dev: true
-
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
@@ -13199,7 +13194,7 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       imurmurhash: 0.1.4
-      signal-exit: 4.0.1
+      signal-exit: 4.1.0
     dev: true
 
   /write-json-file@5.0.0:
