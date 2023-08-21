@@ -43,8 +43,8 @@ importers:
         specifier: ^13.2.2
         version: 13.2.2
       lint-staged:
-        specifier: ^14.0.0
-        version: 14.0.0(enquirer@2.4.1)
+        specifier: ^14.0.1
+        version: 14.0.1(enquirer@2.4.1)
       lodash.kebabcase:
         specifier: ^4.1.1
         version: 4.1.1
@@ -5648,10 +5648,10 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.48.0(eslint@8.41.0)(typescript@5.0.4)
+      '@typescript-eslint/parser': 5.48.0(eslint@8.47.0)(typescript@5.1.6)
       debug: 3.2.7
       eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 3.5.2(eslint-plugin-import@2.26.0)(eslint@8.41.0)
+      eslint-import-resolver-typescript: 3.5.2(eslint-plugin-import@2.26.0)(eslint@8.47.0)
       find-up: 2.1.0
     transitivePeerDependencies:
       - supports-color
@@ -8482,8 +8482,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged@14.0.0(enquirer@2.4.1):
-    resolution: {integrity: sha512-0tLf0pqZYkar/wu3nTctk4rVIG+d7PanDYv4/IQR4qwdqfQkTDziLRFnqMcLuLBTuUqmcLwsHPD2EjQ18d/oaA==}
+  /lint-staged@14.0.1(enquirer@2.4.1):
+    resolution: {integrity: sha512-Mw0cL6HXnHN1ag0mN/Dg4g6sr8uf8sn98w2Oc1ECtFto9tvRF7nkXGJRbx8gPlHyoR0pLyBr2lQHbWwmUHe1Sw==}
     engines: {node: ^16.14.0 || >=18.0.0}
     hasBin: true
     dependencies:
