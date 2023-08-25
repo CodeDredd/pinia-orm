@@ -42,7 +42,7 @@
     "@types/node": "^18.17.11",
     "@vitejs/plugin-vue": "^4.3.3",
     "@vue/compiler-sfc": "^3.3.4",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "unplugin-vue-components": "^0.25.1",
