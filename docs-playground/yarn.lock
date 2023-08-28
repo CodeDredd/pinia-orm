@@ -1604,10 +1604,10 @@
   dependencies:
     "@volar/language-core" "1.10.0"
 
-"@vscode/l10n@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@vscode/l10n/-/l10n-0.0.14.tgz#431e5814c35c3cb11ee21873bc70a4b0fbf90fcf"
-  integrity sha512-/yrv59IEnmh655z1oeDnGcvMYwnEzNzHLgeYcQCkhYX0xBvYWrAuefoiLcPBUkMpJsb46bqQ6Yv4pwTTQ4d3Qg==
+"@vscode/l10n@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@vscode/l10n/-/l10n-0.0.16.tgz#f075db346d0b08419a12540171b230bd803c42be"
+  integrity sha512-JT5CvrIYYCrmB+dCana8sUqJEcGB1ZDXNLMQ2+42bW995WmNoenijWMUdZfwmuQUTQcEVVIa2OecZzTYWUW9Cg==
 
 "@vue/compiler-core@3.3.2":
   version "3.3.2"
@@ -4590,12 +4590,12 @@ vite@^4.4.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vscode-html-languageservice@^5.0.6:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-5.0.6.tgz#e7a7f78e9f98d0f5341c5518dd9305e3cc438bb6"
-  integrity sha512-gCixNg6fjPO7+kwSMBAVXcwDRHdjz1WOyNfI0n5Wx0J7dfHG8ggb3zD1FI8E2daTZrwS1cooOiSoc1Xxph4qRQ==
+vscode-html-languageservice@^5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-5.0.7.tgz#8d27773e0197799a9db777ee4fc134cf1c669d84"
+  integrity sha512-jX+7/kUXrdOaRT8vqYR/jLxrGDib+Far8I7n/A6apuEl88k+mhIHZPwc6ezuLeiCKUCaLG4b0dqFwjVa7QL3/w==
   dependencies:
-    "@vscode/l10n" "^0.0.14"
+    "@vscode/l10n" "^0.0.16"
     vscode-languageserver-textdocument "^1.0.8"
     vscode-languageserver-types "^3.17.3"
     vscode-uri "^3.0.7"
