@@ -259,6 +259,7 @@ export class Model {
    */
   static clearBootedModels(): void {
     this.booted = {}
+    this.original = {}
     this.schemas = {}
     this.fieldMutators = {}
     this.fieldCasts = {}
@@ -745,7 +746,7 @@ export class Model {
       this[key] = this[key] ?? keyValue
     }
 
-    operation === 'set' && (this.$self().original = this.$getAttributes())
+    operation === 'set' && (this.$self().original[this.$getKey(this, true) as string] = this.$getAttributes())
 
     modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
@@ -930,7 +931,7 @@ export class Model {
    * Get the original values of the model instance
    */
   $getOriginal(): Element {
-    return this.$self().original
+    return this.$self().original[this.$getKey(this, true) as string]
   }
 
   /**
