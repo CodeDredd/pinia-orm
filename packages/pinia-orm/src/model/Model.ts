@@ -259,6 +259,7 @@ export class Model {
    */
   static clearBootedModels(): void {
     this.booted = {}
+    this.original = {}
     this.schemas = {}
     this.fieldMutators = {}
     this.fieldCasts = {}
