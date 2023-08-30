@@ -745,7 +745,7 @@ export class Model {
       this[key] = this[key] ?? keyValue
     }
 
-    operation === 'set' && (this.$self().original[this[this.$getKeyName()]] = this.$getAttributes())
+    operation === 'set' && (this.$self().original[this[this.$getKey(this, true) as string]] = this.$getAttributes())
 
     modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
@@ -930,7 +930,7 @@ export class Model {
    * Get the original values of the model instance
    */
   $getOriginal(): Element {
-    return this.$self().original[this[this.$getKeyName()]]
+    return this.$self().original[this[this.$getKey(this, true) as string]]
   }
 
   /**
