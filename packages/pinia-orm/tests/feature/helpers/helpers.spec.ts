@@ -30,15 +30,15 @@ describe('feature/helpers/helpers', () => {
       // @ts-expect-error wrong type error
       pinia,
       computed: mapRepos({
-        userRepo: User,
-      }),
+        userRepo: User
+      })
     })
 
     expect(vm.userRepo).toBeInstanceOf(Repository)
     expect(vm.userRepo.getModel()).toBeInstanceOf(User)
   })
 
-  it('can map repositories from abstract repositories in Vue components', async () => {
+  it('can map repositories from abstract repositories in Vue components', () => {
     const pinia = createPinia()
     pinia.use(createORM())
 
@@ -47,16 +47,16 @@ describe('feature/helpers/helpers', () => {
       pinia,
       computed: {
         ...mapRepos({
-          userRepo: UserRepository,
-        }),
-      },
+          userRepo: UserRepository
+        })
+      }
     })
 
     expect(vm.userRepo).toBeInstanceOf(Repository)
     expect(vm.userRepo.getModel()).toBeInstanceOf(User)
   })
 
-  it('can map repositories in Vue components using spread syntax', async () => {
+  it('can map repositories in Vue components using spread syntax', () => {
     const pinia = createPinia()
     pinia.use(createORM())
 
@@ -65,9 +65,9 @@ describe('feature/helpers/helpers', () => {
       pinia,
       computed: {
         ...mapRepos({
-          userRepo: User,
-        }),
-      },
+          userRepo: User
+        })
+      }
     })
 
     expect(vm.userRepo).toBeInstanceOf(Repository)

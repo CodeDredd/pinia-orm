@@ -35,14 +35,14 @@ export class HasManyThrough extends Relation {
   /**
    * Create a new has-many-through relation instance.
    */
-  constructor(
+  constructor (
     parent: Model,
     related: Model,
     through: Model,
     firstKey: string,
     secondKey: string,
     localKey: string,
-    secondLocalKey: string,
+    secondLocalKey: string
   ) {
     super(parent, related)
     this.through = through
@@ -55,14 +55,14 @@ export class HasManyThrough extends Relation {
   /**
    * Get all related models for the relationship.
    */
-  getRelateds(): Model[] {
+  getRelateds (): Model[] {
     return [this.related, this.through]
   }
 
   /**
    * Define the normalizr schema for the relation.
    */
-  define(schema: Schema): NormalizrSchema {
+  define (schema: Schema): NormalizrSchema {
     return schema.many(this.related, this.parent)
   }
 
@@ -70,17 +70,17 @@ export class HasManyThrough extends Relation {
    * Attach the relational key to the given data. Since has many through
    * relationship doesn't have any foreign key, it would do nothing.
    */
-  attach(_record: Element, _child: Element): void {}
+  attach (_record: Element, _child: Element): void {}
 
   /**
    * Only register missing through relation
    */
-  addEagerConstraints(_query: Query, _models: Collection): void {}
+  addEagerConstraints (_query: Query, _models: Collection): void {}
 
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match(relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection, query: Query): void {
     const throughModels = query
       .newQuery(this.through.$entity())
       .where(this.firstKey, this.getKeys(models, this.localKey))
@@ -103,7 +103,7 @@ export class HasManyThrough extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary(throughResults: Collection, results: Collection): Dictionary {
+  protected buildDictionary (throughResults: Collection, results: Collection): Dictionary {
     return this.mapToDictionary(throughResults, (throughResult) => {
       return [throughResult[this.firstKey], results[throughResult[this.secondLocalKey]]]
     })
@@ -112,7 +112,7 @@ export class HasManyThrough extends Relation {
   /**
    * Make related models.
    */
-  make(elements?: Element[]): Model[] {
+  make (elements?: Element[]): Model[] {
     return elements
       ? elements.map(element => this.related.$newInstance(element))
       : []

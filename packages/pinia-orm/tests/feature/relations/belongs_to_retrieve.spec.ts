@@ -37,7 +37,7 @@ describe('feature/relations/belongs_to_retrieve', () => {
       id: 1,
       userId: 1,
       title: 'Title 01',
-      author: { id: 1, name: 'John Doe' },
+      author: { id: 1, name: 'John Doe' }
     })
   })
 
@@ -53,7 +53,7 @@ describe('feature/relations/belongs_to_retrieve', () => {
       id: 1,
       userId: 1,
       title: 'Title 01',
-      author: null,
+      author: null
     })
   })
 
@@ -71,7 +71,7 @@ describe('feature/relations/belongs_to_retrieve', () => {
       id: 1,
       userId: null,
       title: 'Title 01',
-      author: null,
+      author: null
     })
   })
 })

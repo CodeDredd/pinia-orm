@@ -5,20 +5,20 @@ import { Vue2, createApp, install, isVue2 } from 'vue-demi'
 import { Model, createORM, useRepo } from '../src'
 
 vi.mock('nanoid/non-secure', () => ({
-  nanoid: vi.fn(),
+  nanoid: vi.fn()
 }))
 
 vi.mock('nanoid', () => ({
-  nanoid: vi.fn(),
+  nanoid: vi.fn()
 }))
 
 vi.mock('nanoid/async', () => ({
-  nanoid: vi.fn(),
+  nanoid: vi.fn()
 }))
 
 vi.mock('uuid', () => ({
   v1: vi.fn(),
-  v4: vi.fn(),
+  v4: vi.fn()
 }))
 
 beforeAll(() => {

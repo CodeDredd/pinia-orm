@@ -36,28 +36,28 @@ describe('feature/relations/morph_many_save_custom_key', () => {
       link: '/video.mp4',
       comments: [
         { id: 1, body: 'Cool Video!' },
-        { id: 2, body: 'Cool Video Again!' },
-      ],
+        { id: 2, body: 'Cool Video Again!' }
+      ]
     })
 
     assertState({
       videos: {
-        1: { morphableId: 1, link: '/video.mp4' },
+        1: { morphableId: 1, link: '/video.mp4' }
       },
       comments: {
         1: {
           id: 1,
           commentableId: 1,
           commentableType: 'videos',
-          body: 'Cool Video!',
+          body: 'Cool Video!'
         },
         2: {
           id: 2,
           commentableId: 1,
           commentableType: 'videos',
-          body: 'Cool Video Again!',
-        },
-      },
+          body: 'Cool Video Again!'
+        }
+      }
     })
   })
 
@@ -82,7 +82,7 @@ describe('feature/relations/morph_many_save_custom_key', () => {
         () => Comment,
         'commentableId',
         'commentableType',
-        'morphableId',
+        'morphableId'
       )
         comments!: Comment[]
     }
@@ -93,28 +93,28 @@ describe('feature/relations/morph_many_save_custom_key', () => {
       link: '/video.mp4',
       comments: [
         { id: 1, body: 'Cool Video!' },
-        { id: 2, body: 'Cool Video Again!' },
-      ],
+        { id: 2, body: 'Cool Video Again!' }
+      ]
     })
 
     assertState({
       videos: {
-        1: { id: 1, morphableId: 2, link: '/video.mp4' },
+        1: { id: 1, morphableId: 2, link: '/video.mp4' }
       },
       comments: {
         1: {
           id: 1,
           commentableId: 2,
           commentableType: 'videos',
-          body: 'Cool Video!',
+          body: 'Cool Video!'
         },
         2: {
           id: 2,
           commentableId: 2,
           commentableType: 'videos',
-          body: 'Cool Video Again!',
-        },
-      },
+          body: 'Cool Video Again!'
+        }
+      }
     })
   })
 })

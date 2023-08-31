@@ -4,16 +4,16 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a has-one attribute property decorator.
  */
-export function HasOne(
+export function HasOne (
   related: () => typeof Model,
   foreignKey: PrimaryKey,
-  localKey?: PrimaryKey,
+  localKey?: PrimaryKey
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
     self.setRegistry(propertyKey, () =>
-      self.hasOne(related(), foreignKey, localKey),
+      self.hasOne(related(), foreignKey, localKey)
     )
   }
 }

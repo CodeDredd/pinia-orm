@@ -7,7 +7,7 @@ export default defineConfig({
   entry: [
     'src/index.ts',
     'src/casts.ts',
-    'src/decorators.ts',
+    'src/decorators.ts'
   ],
-  dts: true,
+  dts: true
 })

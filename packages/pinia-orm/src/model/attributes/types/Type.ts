@@ -17,7 +17,7 @@ export abstract class Type extends Attribute {
   /**
    * Create a new Type attribute instance.
    */
-  constructor(model: Model, value: TypeDefault<any> = null) {
+  constructor (model: Model, value: TypeDefault<any> = null) {
     super(model)
     this.value = typeof value === 'function' ? value() : value
   }
@@ -25,24 +25,21 @@ export abstract class Type extends Attribute {
   /**
    * Set the nullable option to false.
    */
-  notNullable(): this {
+  notNullable (): this {
     this.isNullable = false
     return this
   }
 
-  protected makeReturn<T>(type: string, value: any): T {
-    if (value === undefined)
-      return this.value
+  protected makeReturn<T> (type: 'boolean' | 'number' | 'string', value: any): T {
+    if (value === undefined) { return this.value }
 
     if (value === null) {
-      if (!this.isNullable)
-        this.throwWarning(['is set as non nullable!'])
+      if (!this.isNullable) { this.throwWarning(['is set as non nullable!']) }
 
       return value
     }
 
-    if (typeof value !== type)
-      this.throwWarning([value, 'is not a', type])
+    if (typeof value !== type) { this.throwWarning([value, 'is not a', type]) }
 
     return value
   }
@@ -50,8 +47,7 @@ export abstract class Type extends Attribute {
   /**
    * Throw warning for wrong type
    */
-  protected throwWarning(message: string[]) {
-    // eslint-disable-next-line no-console
+  protected throwWarning (message: string[]) {
     console.warn(['[Pinia ORM]'].concat([`Field ${this.model.$entity()}:${this.key} - `, ...message]).join(' '))
   }
 }

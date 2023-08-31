@@ -69,6 +69,13 @@
     ]
   },
   "pnpm": {
+    "packageExtensions": {
+      "@vue/composition-api": {
+        "peerDependencies": {
+          "vue": "*"
+        }
+      }
+    },
     "overrides": {
       "ufo": "^0.8.4",
       "std-env": "^3.1.1"

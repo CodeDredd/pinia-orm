@@ -15,9 +15,9 @@ describe('unit/model/Model_Casts_Boolean', () => {
 
       @Bool(false) isPublished!: boolean
 
-      static casts() {
+      static casts () {
         return {
-          isPublished: BooleanCast,
+          isPublished: BooleanCast
         }
       }
     }
@@ -67,9 +67,9 @@ describe('unit/model/Model_Casts_Boolean', () => {
       @Attr(0) id!: number
       @Bool(false) isPublished!: boolean
 
-      static casts() {
+      static casts () {
         return {
-          isPublished: BooleanCast,
+          isPublished: BooleanCast
         }
       }
     }
@@ -77,13 +77,13 @@ describe('unit/model/Model_Casts_Boolean', () => {
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
-      isPublished: 1,
+      isPublished: 1
     })
 
     assertState({
       users: {
-        1: { id: 1, isPublished: true },
-      },
+        1: { id: 1, isPublished: true }
+      }
     })
 
     expect(userRepo.find(1)?.isPublished).toBe(true)

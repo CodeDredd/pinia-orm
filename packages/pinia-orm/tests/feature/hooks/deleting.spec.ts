@@ -4,7 +4,7 @@ import { Model, useRepo } from '../../../src'
 import { Num, Str } from '../../../src/decorators'
 import {
   assertState,
-  fillState,
+  fillState
 } from '../../helpers'
 
 describe('feature/hooks/deleting', () => {
@@ -16,7 +16,7 @@ describe('feature/hooks/deleting', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static deleting(model: Model) {
+      static deleting (model: Model) {
         model.name = 'John'
       }
     }
@@ -25,8 +25,8 @@ describe('feature/hooks/deleting', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 },
-      },
+        1: { id: 1, name: 'John Doe', age: 30 }
+      }
     })
 
     useRepo(User).destroy(1)
@@ -34,7 +34,7 @@ describe('feature/hooks/deleting', () => {
     expect(deletingMethod).toHaveBeenCalledOnce()
 
     assertState({
-      users: {},
+      users: {}
     })
   })
 
@@ -46,7 +46,7 @@ describe('feature/hooks/deleting', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static deleting(model: Model) {
+      static deleting (model: Model) {
         model.name = 'John'
       }
     }
@@ -56,8 +56,8 @@ describe('feature/hooks/deleting', () => {
     fillState({
       users: {
         1: { id: 1, name: 'John Doe', age: 10 },
-        2: { id: 2, name: 'John Doe', age: 10 },
-      },
+        2: { id: 2, name: 'John Doe', age: 10 }
+      }
     })
 
     useRepo(User).where('id', 1).delete()
@@ -66,8 +66,8 @@ describe('feature/hooks/deleting', () => {
 
     assertState({
       users: {
-        2: { id: 2, name: 'John Doe', age: 10 },
-      },
+        2: { id: 2, name: 'John Doe', age: 10 }
+      }
     })
   })
 
@@ -79,7 +79,7 @@ describe('feature/hooks/deleting', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static deleting(model: Model) {
+      static deleting (model: Model) {
         model.name = 'John'
         return false
       }
@@ -89,8 +89,8 @@ describe('feature/hooks/deleting', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John', age: 50 },
-      },
+        1: { id: 1, name: 'John', age: 50 }
+      }
     })
 
     useRepo(User).destroy(1)
@@ -99,8 +99,8 @@ describe('feature/hooks/deleting', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John', age: 50 },
-      },
+        1: { id: 1, name: 'John', age: 50 }
+      }
     })
   })
 })

@@ -13,7 +13,7 @@ describe('feature/hooks/creating', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static creating(model: Model) {
+      static creating (model: Model) {
         model.name = 'John'
       }
     }
@@ -35,7 +35,7 @@ describe('feature/hooks/creating', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static creating(model: Model) {
+      static creating (model: Model) {
         model.name = 'John'
       }
     }
@@ -46,7 +46,7 @@ describe('feature/hooks/creating', () => {
 
     useRepo(User).save([
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'John Doe 2', age: 40 },
+      { id: 2, name: 'John Doe 2', age: 40 }
     ])
 
     expect(useRepo(User).hydratedDataCache.size).toBe(2)
@@ -57,8 +57,8 @@ describe('feature/hooks/creating', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John', age: 30 },
-        2: { id: 2, name: 'John', age: 40 },
-      },
+        2: { id: 2, name: 'John', age: 40 }
+      }
     })
   })
 
@@ -70,7 +70,7 @@ describe('feature/hooks/creating', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static creating(model: User) {
+      static creating (model: User) {
         model.name = 'John'
         return false
       }
@@ -83,7 +83,7 @@ describe('feature/hooks/creating', () => {
     expect(creatingMethod).toHaveBeenCalledOnce()
 
     assertState({
-      users: {},
+      users: {}
     })
   })
 
@@ -95,7 +95,7 @@ describe('feature/hooks/creating', () => {
       @Str('') declare name: string
       @Num(0) declare age: number
 
-      static creating(model: User) {
+      static creating (model: User) {
         model.name = 'John'
         return false
       }
@@ -120,7 +120,7 @@ describe('feature/hooks/creating', () => {
       @Str('') declare name: string
       @Num(0) declare age: number
 
-      static creating(model: User) {
+      static creating (model: User) {
         model.name = 'John'
       }
     }

@@ -35,28 +35,28 @@ describe('feature/relations/morph_many_save_uid', () => {
       link: '/video.mp4',
       comments: [
         { id: 1, body: 'Cool Video!' },
-        { id: 2, body: 'Cool Video Again!' },
-      ],
+        { id: 2, body: 'Cool Video Again!' }
+      ]
     })
 
     assertState({
       videos: {
-        uid1: { id: 'uid1', link: '/video.mp4' },
+        uid1: { id: 'uid1', link: '/video.mp4' }
       },
       comments: {
         1: {
           id: 1,
           commentableId: 'uid1',
           commentableType: 'videos',
-          body: 'Cool Video!',
+          body: 'Cool Video!'
         },
         2: {
           id: 2,
           commentableId: 'uid1',
           commentableType: 'videos',
-          body: 'Cool Video Again!',
-        },
-      },
+          body: 'Cool Video Again!'
+        }
+      }
     })
   })
 
@@ -84,27 +84,27 @@ describe('feature/relations/morph_many_save_uid', () => {
 
     useRepo(Video).save({
       link: '/video.mp4',
-      comments: [{ body: 'Cool Video!' }, { body: 'Cool Video Again!' }],
+      comments: [{ body: 'Cool Video!' }, { body: 'Cool Video Again!' }]
     })
 
     assertState({
       videos: {
-        uid1: { id: 'uid1', link: '/video.mp4' },
+        uid1: { id: 'uid1', link: '/video.mp4' }
       },
       comments: {
         uid2: {
           id: 'uid2',
           commentableId: 'uid1',
           commentableType: 'videos',
-          body: 'Cool Video!',
+          body: 'Cool Video!'
         },
         uid3: {
           id: 'uid3',
           commentableId: 'uid1',
           commentableType: 'videos',
-          body: 'Cool Video Again!',
-        },
-      },
+          body: 'Cool Video Again!'
+        }
+      }
     })
   })
 })

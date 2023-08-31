@@ -7,7 +7,7 @@ export type sorting<T> = ((record: T) => any) | string | [string, 'asc' | 'desc'
  * Creates an array of elements, sorted in specified order by the results
  * of running each element in a collection thru each iteratee.
  */
-export function useSortBy<T extends Record<string, any>>(collection: T[], sort: sorting<T>, flags?: SortFlags): T[] {
+export function useSortBy<T extends Record<string, any>> (collection: T[], sort: sorting<T>, flags?: SortFlags): T[] {
   const directions = []
   const iteratees = []
 

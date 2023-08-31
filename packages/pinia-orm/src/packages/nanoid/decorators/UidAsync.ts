@@ -4,7 +4,7 @@ import { UidCast } from '../casts/AsyncCast'
 /**
  * Create a cast for an attribute property decorator.
  */
-export function Uid(): PropertyDecorator {
+export function Uid (): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
     self.setCast(propertyKey, UidCast)
