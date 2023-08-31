@@ -112,8 +112,8 @@ importers:
         specifier: ^0.8.2
         version: 0.8.2(nuxt@3.7.0)(rollup@3.28.1)(vite@4.4.9)
       '@nuxt/module-builder':
-        specifier: ^0.5.0
-        version: 0.5.0(@nuxt/kit@3.7.0)(nuxi@3.7.3)(typescript@5.2.2)
+        specifier: ^0.5.1
+        version: 0.5.1(@nuxt/kit@3.7.0)(nuxi@3.7.3)(typescript@5.2.2)
       '@nuxt/schema':
         specifier: ^3.7.0
         version: 3.7.0(rollup@3.28.1)
@@ -2066,12 +2066,12 @@ packages:
       - rollup
       - supports-color
 
-  /@nuxt/module-builder@0.5.0(@nuxt/kit@3.7.0)(nuxi@3.7.3)(typescript@5.2.2):
-    resolution: {integrity: sha512-RTLZa+FY0QffqXXNAcrCB4ttEOhPcNTy845yHd+xP92AIq1I8DVNjJMRuKNQOw7bBzZkL6SJU8FgpRtr7fiKaQ==}
+  /@nuxt/module-builder@0.5.1(@nuxt/kit@3.7.0)(nuxi@3.7.3)(typescript@5.2.2):
+    resolution: {integrity: sha512-O39UrOFbNgL27urwDqeMgXeYiNIUvp73nsmtt7jm9JDcMVIWykuUzyBPYtHif7gq5ElzIjjmDw9zdRGgyMzo+w==}
     hasBin: true
     peerDependencies:
       '@nuxt/kit': ^3.7.0
-      nuxi: ^3.7.2
+      nuxi: ^3.7.3
     dependencies:
       '@nuxt/kit': 3.7.0(rollup@3.28.1)
       consola: 3.2.3
@@ -3990,7 +3990,7 @@ packages:
       '@npmcli/move-file': 2.0.0
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      glob: 8.0.3
+      glob: 8.1.0
       infer-owner: 1.0.4
       lru-cache: 7.18.3
       minipass: 3.3.4
