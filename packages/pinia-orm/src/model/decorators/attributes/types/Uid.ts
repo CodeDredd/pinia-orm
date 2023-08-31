@@ -3,7 +3,7 @@ import type { PropertyDecorator, UidOptions } from '../../Contracts'
 /**
  * Create a Uid attribute property decorator.
  */
-export function Uid(options?: UidOptions): PropertyDecorator {
+export function Uid (options?: UidOptions): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 

@@ -5,20 +5,20 @@ import { CastAttribute } from '../../../../src/model/casts/CastAttribute'
 export class UidCast extends CastAttribute {
   static parameters = {
     alphabet: 'string',
-    size: 'number',
+    size: 'number'
   }
 
   /**
    * Create a new String attribute instance.
    */
-  constructor(attributes: ModelFields) {
+  constructor (attributes: ModelFields) {
     super(attributes)
   }
 
   /**
    * Make the value for the attribute.
    */
-  async set(value: any): Promise<string | null> {
+  async set (value: any): Promise<string | null> {
     const nanoid = this.$parameters.alphabet ? customAlphabet(this.$parameters.alphabet) : urlAlphabet
     return value ?? await nanoid(this.$parameters.size)
   }

@@ -4,7 +4,7 @@ import { UidCast } from '../casts/DefaultCast'
 /**
  * Create a cast for an attribute property decorator.
  */
-export function Uid(options?: UidOptions): PropertyDecorator {
+export function Uid (options?: UidOptions): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
     self.setCast(propertyKey, UidCast)

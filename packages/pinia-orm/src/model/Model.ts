@@ -149,7 +149,7 @@ export class Model {
   /**
    * Create a new model instance.
    */
-  constructor(attributes?: Element, options: ModelOptions = { operation: 'set' }) {
+  constructor (attributes?: Element, options: ModelOptions = { operation: 'set' }) {
     this.$boot()
 
     const fill = options.fill ?? true
@@ -160,43 +160,41 @@ export class Model {
   /**
    * Create a new model fields definition.
    */
-  static fields(): ModelFields {
+  static fields (): ModelFields {
     return {}
   }
 
   /**
    * Build the schema by evaluating fields and registry.
    */
-  protected static initializeSchema(): void {
+  protected static initializeSchema (): void {
     this.schemas[this.entity] = {}
     this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
 
     const registry = {
       ...this.fields(),
-      ...this.registries[this.entity],
+      ...this.registries[this.entity]
     }
 
     for (const key in registry) {
       const attribute = registry[key]
 
-      this.schemas[this.entity][key]
-        = typeof attribute === 'function' ? attribute() : attribute
+      this.schemas[this.entity][key] =
+        typeof attribute === 'function' ? attribute() : attribute
 
-      if (this.fieldsOnDelete[this.entity][key])
-        this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[this.entity][key])
+      if (this.fieldsOnDelete[this.entity][key]) { this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[this.entity][key]) }
     }
   }
 
   /**
    * Set the attribute to the registry.
    */
-  static setRegistry<M extends typeof Model>(
+  static setRegistry<M extends typeof Model> (
     this: M,
     key: string,
-    attribute: () => Attribute,
+    attribute: () => Attribute
   ): M {
-    if (!this.registries[this.entity])
-      this.registries[this.entity] = {}
+    if (!this.registries[this.entity]) { this.registries[this.entity] = {} }
 
     this.registries[this.entity][key] = attribute
 
@@ -206,10 +204,10 @@ export class Model {
   /**
    * Set delete behaviour for relation field
    */
-  static setFieldDeleteMode<M extends typeof Model>(
+  static setFieldDeleteMode<M extends typeof Model> (
     this: M,
     key: string,
-    mode: deleteModes,
+    mode: deleteModes
   ): M {
     this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
     this.fieldsOnDelete[this.entity][key] = mode
@@ -220,10 +218,10 @@ export class Model {
   /**
    * Set an mutator for a field
    */
-  static setMutator<M extends typeof Model>(
+  static setMutator<M extends typeof Model> (
     this: M,
     key: string,
-    mutator: MutatorFunctions<any>,
+    mutator: MutatorFunctions<any>
   ): M {
     this.fieldMutators[key] = mutator
 
@@ -233,10 +231,10 @@ export class Model {
   /**
    * Set a cast for a field
    */
-  static setCast<M extends typeof Model>(
+  static setCast<M extends typeof Model> (
     this: M,
     key: string,
-    to: typeof CastAttribute,
+    to: typeof CastAttribute
   ): M {
     this.fieldCasts[key] = to
 
@@ -246,9 +244,9 @@ export class Model {
   /**
    * Set a field to hidden
    */
-  static setHidden<M extends typeof Model>(
+  static setHidden<M extends typeof Model> (
     this: M,
-    key: keyof ModelFields,
+    key: keyof ModelFields
   ): M {
     this.hidden.push(key)
 
@@ -258,7 +256,7 @@ export class Model {
   /**
    * Clear the list of booted models so they can be re-booted.
    */
-  static clearBootedModels(): void {
+  static clearBootedModels (): void {
     this.booted = {}
     this.schemas = {}
     this.fieldMutators = {}
@@ -270,7 +268,7 @@ export class Model {
   /**
    * Clear registries.
    */
-  static clearRegistries(): void {
+  static clearRegistries (): void {
     this.registries = {}
   }
 
@@ -285,52 +283,52 @@ export class Model {
    * - Registering model to a component (eg. Repository, Query, etc.)
    * - Registering model to attributes (String, Has Many, etc.)
    */
-  static newRawInstance<M extends typeof Model>(this: M): InstanceType<M> {
+  static newRawInstance<M extends typeof Model> (this: M): InstanceType<M> {
     return new this(undefined, { fill: false }) as InstanceType<M>
   }
 
   /**
    * Create a new Attr attribute instance.
    */
-  static attr(value: TypeDefault<any>): Attr {
+  static attr (value: TypeDefault<any>): Attr {
     return new Attr(this.newRawInstance(), value)
   }
 
   /**
    * Create a new String attribute instance.
    */
-  static string(value: TypeDefault<string>): Str {
+  static string (value: TypeDefault<string>): Str {
     return new Str(this.newRawInstance(), value)
   }
 
   /**
    * Create a new Number attribute instance.
    */
-  static number(value: TypeDefault<number>): Num {
+  static number (value: TypeDefault<number>): Num {
     return new Num(this.newRawInstance(), value)
   }
 
   /**
    * Create a new Boolean attribute instance.
    */
-  static boolean(value: TypeDefault<boolean>): Bool {
+  static boolean (value: TypeDefault<boolean>): Bool {
     return new Bool(this.newRawInstance(), value)
   }
 
   /**
    * Create a new Uid attribute instance.
    */
-  static uid(options?: UidOptions): Uid {
+  static uid (options?: UidOptions): Uid {
     return new Uid(this.newRawInstance(), options)
   }
 
   /**
    * Create a new HasOne relation instance.
    */
-  static hasOne(
+  static hasOne (
     related: typeof Model,
     foreignKey: PrimaryKey,
-    localKey?: PrimaryKey,
+    localKey?: PrimaryKey
   ): HasOne {
     const model = this.newRawInstance()
 
@@ -342,10 +340,10 @@ export class Model {
   /**
    * Create a new BelongsTo relation instance.
    */
-  static belongsTo(
+  static belongsTo (
     related: typeof Model,
     foreignKey: PrimaryKey,
-    ownerKey?: PrimaryKey,
+    ownerKey?: PrimaryKey
   ): BelongsTo {
     const instance = related.newRawInstance()
 
@@ -357,13 +355,13 @@ export class Model {
   /**
    * Create a new HasMany relation instance.
    */
-  static belongsToMany(
+  static belongsToMany (
     related: typeof Model,
     pivot: typeof Model,
     foreignPivotKey: string,
     relatedPivotKey: string,
     parentKey?: string,
-    relatedKey?: string,
+    relatedKey?: string
   ): BelongsToMany {
     const instance = related.newRawInstance()
     const model = this.newRawInstance()
@@ -381,21 +379,21 @@ export class Model {
       foreignPivotKey,
       relatedPivotKey,
       parentKey,
-      relatedKey,
+      relatedKey
     )
   }
 
   /**
    * Create a new MorphToMany relation instance.
    */
-  static morphToMany(
+  static morphToMany (
     related: typeof Model,
     pivot: typeof Model,
     relatedId: string,
     id: string,
     type: string,
     parentKey?: string,
-    relatedKey?: string,
+    relatedKey?: string
   ): MorphToMany {
     const instance = related.newRawInstance()
     const model = this.newRawInstance()
@@ -414,17 +412,17 @@ export class Model {
       id,
       type,
       parentKey,
-      relatedKey,
+      relatedKey
     )
   }
 
   /**
    * Create a new HasMany relation instance.
    */
-  static hasMany(
+  static hasMany (
     related: typeof Model,
     foreignKey: PrimaryKey,
-    localKey?: PrimaryKey,
+    localKey?: PrimaryKey
   ): HasMany {
     const model = this.newRawInstance()
 
@@ -436,10 +434,10 @@ export class Model {
   /**
    * Create a new HasManyBy relation instance.
    */
-  static hasManyBy(
+  static hasManyBy (
     related: typeof Model,
     foreignKey: string,
-    ownerKey?: string,
+    ownerKey?: string
   ): HasManyBy {
     const instance = related.newRawInstance()
 
@@ -451,13 +449,13 @@ export class Model {
   /**
    * Create a new HasMany relation instance.
    */
-  static hasManyThrough(
+  static hasManyThrough (
     related: typeof Model,
     through: typeof Model,
     firstKey: string,
     secondKey: string,
     localKey?: string,
-    secondLocalKey?: string,
+    secondLocalKey?: string
   ): HasManyThrough {
     const model = this.newRawInstance()
     const throughModel = through.newRawInstance()
@@ -471,11 +469,11 @@ export class Model {
   /**
    * Create a new MorphOne relation instance.
    */
-  static morphOne(
+  static morphOne (
     related: typeof Model,
     id: string,
     type: string,
-    localKey?: string,
+    localKey?: string
   ): MorphOne {
     const model = this.newRawInstance()
 
@@ -487,11 +485,11 @@ export class Model {
   /**
    * Create a new MorphTo relation instance.
    */
-  static morphTo(
+  static morphTo (
     related: typeof Model[],
     id: string,
     type: string,
-    ownerKey = '',
+    ownerKey = ''
   ): MorphTo {
     const instance = this.newRawInstance()
     const relatedModels = related.map(model => model.newRawInstance())
@@ -502,11 +500,11 @@ export class Model {
   /**
    * Create a new MorphMany relation instance.
    */
-  static morphMany(
+  static morphMany (
     related: typeof Model,
     id: string,
     type: string,
-    localKey?: string,
+    localKey?: string
   ): MorphMany {
     const model = this.newRawInstance()
 
@@ -563,98 +561,98 @@ export class Model {
   /**
    * Mutators to mutate matching fields when instantiating the model.
    */
-  static mutators(): Mutators {
+  static mutators (): Mutators {
     return {}
   }
 
   /**
    * Casts to cast matching fields when instantiating the model.
    */
-  static casts(): Casts {
+  static casts (): Casts {
     return {}
   }
 
   /**
    * Types mapping used to dispatch entities based on their discriminator field
    */
-  static types(): InheritanceTypes {
+  static types (): InheritanceTypes {
     return {}
   }
 
   /**
    * Get the constructor for this model.
    */
-  $self(): typeof Model {
+  $self (): typeof Model {
     return this.constructor as typeof Model
   }
 
   /**
    * Get the entity for this model.
    */
-  $entity(): string {
+  $entity (): string {
     return this.$self().entity
   }
 
   /**
    * Get the model config.
    */
-  $config(): ModelConfigOptions {
+  $config (): ModelConfigOptions {
     return this.$self().config
   }
 
   /**
    * Get the base entity for this model.
    */
-  $baseEntity(): string {
+  $baseEntity (): string {
     return this.$self().baseEntity ?? this.$entity()
   }
 
   /**
    * Get the type key for this model.
    */
-  $typeKey(): string {
+  $typeKey (): string {
     return this.$self().typeKey
   }
 
   /**
    * Get the types for this model.
    */
-  $types(): InheritanceTypes {
+  $types (): InheritanceTypes {
     return this.$self().types()
   }
 
   /**
    * Get the pinia options for this model.
    */
-  $piniaOptions() {
+  $piniaOptions () {
     return this.$self().piniaOptions
   }
 
   /**
    * Get the primary key for this model.
    */
-  $primaryKey(): string | string[] {
+  $primaryKey (): string | string[] {
     return this.$self().primaryKey
   }
 
   /**
    * Get the model fields for this model.
    */
-  $fields(): ModelFields {
+  $fields (): ModelFields {
     return this.$self().schemas[this.$entity()]
   }
 
   /**
    * Get the model hidden fields
    */
-  $hidden(): string[] {
+  $hidden (): string[] {
     return this.$self().hidden
   }
 
   /**
    * Get the model visible fields
    */
-  $visible(): string[] {
+  $visible (): string[] {
     return this.$self().visible
   }
 
@@ -663,7 +661,7 @@ export class Model {
    * to re-generate a fresh instance of this model. It's particularly useful
    * during hydration through Query operations.
    */
-  $newInstance(attributes?: Element, options?: ModelOptions): this {
+  $newInstance (attributes?: Element, options?: ModelOptions): this {
     const Self = this.$self()
 
     return new Self(attributes, options) as this
@@ -672,7 +670,7 @@ export class Model {
   /**
    * Bootstrap this model.
    */
-  protected $boot(): void {
+  protected $boot (): void {
     if (!this.$self().booted[this.$entity()]) {
       this.$self().booted[this.$entity()] = true
 
@@ -683,14 +681,14 @@ export class Model {
   /**
    * Build the schema by evaluating fields and registry.
    */
-  protected $initializeSchema(): void {
+  protected $initializeSchema (): void {
     this.$self().initializeSchema()
   }
 
-  $casts(): Casts {
+  $casts (): Casts {
     return {
       ...this.$getCasts(),
-      ...this.$self().fieldCasts,
+      ...this.$self().fieldCasts
     }
   }
 
@@ -698,12 +696,12 @@ export class Model {
    * Fill this model by the given attributes. Missing fields will be populated
    * by the attributes default value.
    */
-  $fill(attributes: Element = {}, options: ModelOptions = {}): this {
+  $fill (attributes: Element = {}, options: ModelOptions = {}): this {
     const operation = options.operation ?? 'get'
 
     const modelConfig = {
       ...config.model,
-      ...this.$config(),
+      ...this.$config()
     }
     modelConfig.withMeta && (this.$self().schemas[this.$entity()][this.$self().metaKey] = this.$self().attr({}))
 
@@ -711,18 +709,16 @@ export class Model {
     const fillRelation = options.relations ?? true
     const mutators: Mutators = {
       ...this.$getMutators(),
-      ...this.$self().fieldMutators,
+      ...this.$self().fieldMutators
     }
 
     for (const key in fields) {
-      if (operation === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options as Required<ModelOptions>))
-        continue
+      if (operation === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options as Required<ModelOptions>)) { continue }
 
       const attr = fields[key]
       let value = attributes[key]
 
-      if (attr instanceof Relation && !fillRelation)
-        continue
+      if (attr instanceof Relation && !fillRelation) { continue }
 
       const mutator = mutators?.[key]
       const cast = this.$casts()[key]?.newRawInstance(fields)
@@ -732,16 +728,13 @@ export class Model {
           : typeof mutator.get === 'function' ? mutator.get(value) : value
       }
 
-      if (cast && operation === 'get')
-        value = cast.get(value)
+      if (cast && operation === 'get') { value = cast.get(value) }
 
       let keyValue = this.$fillField(key, attr, value)
 
-      if (mutator && typeof mutator !== 'function' && operation === 'set' && mutator.set)
-        keyValue = mutator.set(keyValue)
+      if (mutator && typeof mutator !== 'function' && operation === 'set' && mutator.set) { keyValue = mutator.set(keyValue) }
 
-      if (cast && operation === 'set')
-        keyValue = cast.set(keyValue)
+      if (cast && operation === 'set') { keyValue = cast.set(keyValue) }
 
       this[key] = this[key] ?? keyValue
     }
@@ -753,39 +746,36 @@ export class Model {
     return this
   }
 
-  protected $fillMeta(action = 'save') {
+  protected $fillMeta (action = 'save') {
     const timestamp = Math.floor(Date.now() / 1000)
     if (action === 'save') {
       this[this.$self().metaKey] = {
         createdAt: timestamp,
-        updatedAt: timestamp,
+        updatedAt: timestamp
       }
     }
-    if (action === 'update')
-      this[this.$self().metaKey].updatedAt = timestamp
+    if (action === 'update') { this[this.$self().metaKey].updatedAt = timestamp }
   }
 
   /**
    * Fill the given attribute with a given value specified by the given key.
    */
-  protected $fillField(key: string, attr: Attribute, value: any): any {
+  protected $fillField (key: string, attr: Attribute, value: any): any {
     if (value !== undefined) {
       return attr instanceof MorphTo
         ? attr.setKey(key).make(value, this[attr.getType()])
         : attr.setKey(key).make(value)
     }
 
-    if (this[key] === undefined)
-      return attr.setKey(key).make()
+    if (this[key] === undefined) { return attr.setKey(key).make() }
   }
 
-  protected isFieldVisible(key: string, modelHidden: string[], modelVisible: string[], options: ModelOptions): boolean {
+  protected isFieldVisible (key: string, modelHidden: string[], modelVisible: string[], options: ModelOptions): boolean {
     const hidden = modelHidden.length > 0 ? modelHidden : config.model.hidden
     const visible = [...(modelVisible.length > 0 ? modelVisible : config.model.visible), String(this.$primaryKey())]
     const optionsVisible = options.visible ?? []
     const optionsHidden = options.hidden ?? []
-    if (((hidden.includes('*') || hidden.includes(key)) && !optionsVisible.includes(key)) || optionsHidden.includes(key))
-      return false
+    if (((hidden.includes('*') || hidden.includes(key)) && !optionsVisible.includes(key)) || optionsHidden.includes(key)) { return false }
 
     return ((visible.includes('*') || visible.includes(key)) && !optionsHidden.includes(key)) || optionsVisible.includes(key)
   }
@@ -793,7 +783,7 @@ export class Model {
   /**
    * Get the primary key field name.
    */
-  $getKeyName(): string | string[] {
+  $getKeyName (): string | string[] {
     return this.$primaryKey()
   }
 
@@ -801,7 +791,7 @@ export class Model {
    * Get primary key value for the model. If the model has the composite key,
    * it will return an array of ids.
    */
-  $getKey(record?: Element, concatCompositeKey = false): string | number | (string | number)[] | null {
+  $getKey (record?: Element, concatCompositeKey = false): string | number | (string | number)[] | null {
     record = record ?? this
 
     if (this.$hasCompositeKey()) {
@@ -817,14 +807,14 @@ export class Model {
   /**
    * Check whether the model has composite key.
    */
-  $hasCompositeKey(): boolean {
+  $hasCompositeKey (): boolean {
     return isArray(this.$getKeyName())
   }
 
   /**
    * Get the composite key values for the given model as an array of ids.
    */
-  protected $getCompositeKey(record: Element): (string | number)[] | null {
+  protected $getCompositeKey (record: Element): (string | number)[] | null {
     let ids = [] as (string | number)[] | null
 
     ;(this.$getKeyName() as string[]).every((key) => {
@@ -845,7 +835,7 @@ export class Model {
   /**
    * Get the index id of this model or for a given record.
    */
-  $getIndexId(record?: Element): string {
+  $getIndexId (record?: Element): string {
     const target = record ?? this
 
     const id = this.$getKey(target)
@@ -853,7 +843,7 @@ export class Model {
     assert(id !== null, [
       'The record is missing the primary key. If you want to persist record',
       'without the primary key, please define the primary key field with the',
-      '`uid` attribute.',
+      '`uid` attribute.'
     ])
 
     return this.$stringifyId(id)
@@ -862,20 +852,20 @@ export class Model {
   /**
    * Stringify the given id.
    */
-  protected $stringifyId(id: string | number | (string | number)[]): string {
+  protected $stringifyId (id: string | number | (string | number)[]): string {
     return isArray(id) ? JSON.stringify(id) : String(id)
   }
 
   /**
    * Get the local key name for the model.
    */
-  $getLocalKey(): string {
+  $getLocalKey (): string {
     // If the model has a composite key, we can't use it as a local key for the
     // relation. The user must provide the key name explicitly, so we'll throw
     // an error here.
     assert(!this.$hasCompositeKey(), [
       'Please provide the local key for the relationship. The model with the',
-      'composite key can\'t infer its local key.',
+      'composite key can\'t infer its local key.'
     ])
 
     return this.$getKeyName() as string
@@ -884,16 +874,15 @@ export class Model {
   /**
    * Get the relation instance for the given relation name.
    */
-  $getRelation(name: string): Relation {
+  $getRelation (name: string): Relation {
     let relation = this.$fields()[name]
     const typeModels = Object.values(this.$types())
     typeModels.forEach((typeModel) => {
-      if (relation === undefined)
-        relation = typeModel.fields()[name]
+      if (relation === undefined) { relation = typeModel.fields()[name] }
     })
 
     assert(relation instanceof Relation, [
-      `Relationship [${name}] on model [${this.$entity()}] not found.`,
+      `Relationship [${name}] on model [${this.$entity()}] not found.`
     ])
 
     return relation
@@ -902,13 +891,12 @@ export class Model {
   /**
    * Set the given relationship on the model.
    */
-  $setRelation(relation: string, model: Model | Model[] | null): this {
+  $setRelation (relation: string, model: Model | Model[] | null): this {
     if (relation.includes('pivot')) {
       this.pivot = model
       return this
     }
-    if (this.$fields()[relation])
-      this[relation] = model
+    if (this.$fields()[relation]) { this[relation] = model }
 
     return this
   }
@@ -916,28 +904,28 @@ export class Model {
   /**
    * Get the mutators of the model
    */
-  $getMutators(): Mutators {
+  $getMutators (): Mutators {
     return this.$self().mutators()
   }
 
   /**
    * Get the casts of the model
    */
-  $getCasts() {
+  $getCasts () {
     return this.$self().casts()
   }
 
   /**
    * Get the original values of the model instance
    */
-  $getOriginal(): Element {
+  $getOriginal (): Element {
     return this.$self().original
   }
 
   /**
    * Return the model instance with its original state
    */
-  $refresh(): this {
+  $refresh (): this {
     if (this.$isDirty()) {
       Object.entries(this.$getOriginal()).forEach((entry) => {
         this[entry[0]] = entry[1]
@@ -949,11 +937,10 @@ export class Model {
   /**
    * Checks if attributes were changed
    */
-  $isDirty($attribute?: keyof ModelFields): Boolean {
+  $isDirty ($attribute?: keyof ModelFields): Boolean {
     const original = this.$getOriginal()
     if ($attribute) {
-      if (!Object.keys(original).includes($attribute))
-        throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"'])
+      if (!Object.keys(original).includes($attribute)) { throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"']) }
       return !equals(this[$attribute], original[$attribute])
     }
 
@@ -963,14 +950,14 @@ export class Model {
   /**
    * Get the serialized model attributes.
    */
-  $getAttributes(): Element {
+  $getAttributes (): Element {
     return this.$toJson(this, { relations: false })
   }
 
   /**
    * Serialize this model, or the given model, as POJO.
    */
-  $toJson(model?: Model, options: ModelOptions = {}): Element {
+  $toJson (model?: Model, options: ModelOptions = {}): Element {
     model = model ?? this
 
     const fields = model.$fields()
@@ -986,8 +973,7 @@ export class Model {
         continue
       }
 
-      if (withRelation)
-        record[key] = this.serializeRelation(value)
+      if (withRelation) { record[key] = this.serializeRelation(value) }
     }
 
     return record
@@ -996,21 +982,17 @@ export class Model {
   /**
    * Serialize the given value.
    */
-  protected serializeValue(value: any): any {
-    if (value === null)
-      return null
+  protected serializeValue (value: any): any {
+    if (value === null) { return null }
 
-    if (isArray(value))
-      return this.serializeArray(value)
+    if (isArray(value)) { return this.serializeArray(value) }
 
     if (typeof value === 'object') {
       // If the value is an object, check if it's an instance of Date and that it has
       // a time value with its getTime() method, and that its toISOString() method exists
-      if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === 'function')
-        return value.toISOString()
-      else
-        // If it's not a Date object, serialize the object using the default method
-        return this.serializeObject(value)
+      if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === 'function') { return value.toISOString() } else
+      // If it's not a Date object, serialize the object using the default method
+      { return this.serializeObject(value) }
     }
 
     return value
@@ -1019,19 +1001,19 @@ export class Model {
   /**
    * Serialize the given array to JSON.
    */
-  protected serializeArray(value: any[]): any[] {
+  protected serializeArray (value: any[]): any[] {
     return value.map(v => this.serializeValue(v))
   }
 
   /**
    * Serialize the given object to JSON.
    */
-  protected serializeObject(value: {
+  protected serializeObject (value: {
     [index: string]: number | string
   }): object {
     const obj: { [index: string]: number | string } = {}
 
-    for (const key in value) obj[key] = this.serializeValue(value[key])
+    for (const key in value) { obj[key] = this.serializeValue(value[key]) }
 
     return obj
   }
@@ -1041,12 +1023,10 @@ export class Model {
    */
   protected serializeRelation(relation: Item): Element | null
   protected serializeRelation(relation: Collection): Element[]
-  protected serializeRelation(relation: any): any {
-    if (relation === undefined)
-      return undefined
+  protected serializeRelation (relation: any): any {
+    if (relation === undefined) { return undefined }
 
-    if (relation === null)
-      return null
+    if (relation === null) { return null }
 
     return isArray(relation)
       ? relation.map(model => model.$toJson())

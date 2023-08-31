@@ -11,7 +11,7 @@ export type SortFlags = 'SORT_REGULAR' | 'SORT_FLAG_CASE'
 /**
  * Compare two values with custom string operator
  */
-export function compareWithOperator(leftValue: any, rightValue: any, operator?: string): boolean {
+export function compareWithOperator (leftValue: any, rightValue: any, operator?: string): boolean {
   switch (operator) {
     case '>': return leftValue > rightValue
     case '>=': return leftValue >= rightValue
@@ -26,28 +26,28 @@ export function compareWithOperator(leftValue: any, rightValue: any, operator?: 
 /**
  * Check if the given value is the type of undefined or null.
  */
-export function isNullish(value: any): value is undefined | null {
+export function isNullish (value: any): value is undefined | null {
   return value === undefined || value === null
 }
 
 /**
  * Check if the given value is the type of array.
  */
-export function isArray(value: any): value is any[] {
+export function isArray (value: any): value is any[] {
   return Array.isArray(value)
 }
 
 /**
  * Check if the given value is the type of array.
  */
-export function isFunction(value: any): value is Function {
+export function isFunction (value: any): value is Function {
   return typeof value === 'function'
 }
 
 /**
  * Check if the given array or object is empty.
  */
-export function isEmpty(collection: any[] | object): boolean {
+export function isEmpty (collection: any[] | object): boolean {
   return size(collection) === 0
 }
 
@@ -55,7 +55,7 @@ export function isEmpty(collection: any[] | object): boolean {
  * Gets the size of collection by returning its length for array-like values
  * or the number of own enumerable string keyed properties for objects.
  */
-export function size(collection: any[] | object): number {
+export function size (collection: any[] | object): number {
   return isArray(collection)
     ? collection.length
     : Object.keys(collection).length
@@ -65,11 +65,11 @@ export function size(collection: any[] | object): number {
  * Creates an array of elements, sorted in specified order by the results
  * of running each element in a collection thru each iteratee.
  */
-export function orderBy<T extends Element>(
+export function orderBy<T extends Element> (
   collection: T[],
   iteratees: (((record: T) => any) | string)[],
   directions: string[],
-  flags: SortFlags = 'SORT_REGULAR',
+  flags: SortFlags = 'SORT_REGULAR'
 ): T[] {
   let index = -1
 
@@ -92,9 +92,9 @@ export function orderBy<T extends Element>(
  * performs a stable sort, that is, it preserves the original sort order
  * of equal elements.
  */
-function baseSortBy<T>(
+function baseSortBy<T> (
   array: SortableArray<T>[],
-  comparer: (a: SortableArray<T>, B: SortableArray<T>) => number,
+  comparer: (a: SortableArray<T>, B: SortableArray<T>) => number
 ): T[] {
   let length = array.length
 
@@ -102,7 +102,7 @@ function baseSortBy<T>(
 
   const newArray: T[] = []
 
-  while (length--) newArray[length] = array[length].value
+  while (length--) { newArray[length] = array[length].value }
 
   return newArray
 }
@@ -115,11 +115,11 @@ function baseSortBy<T>(
  * Otherwise, specify an order of "desc" for descending or "asc" for
  * ascending sort order of corresponding values.
  */
-function compareMultiple<T>(
+function compareMultiple<T> (
   object: SortableArray<T>,
   other: SortableArray<T>,
   directions: string[],
-  flags: SortFlags,
+  flags: SortFlags
 ): number {
   let index = -1
 
@@ -142,7 +142,7 @@ function compareMultiple<T>(
 /**
  * Compares values to sort them in ascending order.
  */
-function compareAscending(value: any, other: any, flags: SortFlags): number {
+function compareAscending (value: any, other: any, flags: SortFlags): number {
   if (value !== other) {
     const valIsDefined = value !== undefined
     const valIsNull = value === null
@@ -162,12 +162,11 @@ function compareAscending(value: any, other: any, flags: SortFlags): number {
     }
 
     if (
-      (!othIsNull && value > other)
-      || (valIsNull && othIsDefined)
-      || !valIsDefined
-      || !valIsReflexive
-    )
-      return 1
+      (!othIsNull && value > other) ||
+      (valIsNull && othIsDefined) ||
+      !valIsDefined ||
+      !valIsReflexive
+    ) { return 1 }
 
     return -1
   }
@@ -179,15 +178,14 @@ function compareAscending(value: any, other: any, flags: SortFlags): number {
  * Creates an object composed of keys generated from the results of running
  * each element of collection through iteratee.
  */
-export function groupBy<T extends Element>(
+export function groupBy<T extends Element> (
   collection: T[],
-  iteratee: (record: T) => string,
+  iteratee: (record: T) => string
 ): { [key: string]: T[] } {
   return collection.reduce((records: Record<string, any>, record) => {
     const key = iteratee(record)
 
-    if (records[key] === undefined)
-      records[key] = []
+    if (records[key] === undefined) { records[key] = [] }
 
     records[key].push(record)
 
@@ -198,8 +196,8 @@ export function groupBy<T extends Element>(
 /**
  * Asserts that the condition is truthy, throwing immediately if not.
  */
-export function throwError(
-  message: string[],
+export function throwError (
+  message: string[]
 ): void {
   throw new Error(['[Pinia ORM]'].concat(message).join(' '))
 }
@@ -207,15 +205,14 @@ export function throwError(
 /**
  * Asserts that the condition is truthy, throwing immediately if not.
  */
-export function assert(
+export function assert (
   condition: boolean,
-  message: string[],
+  message: string[]
 ): asserts condition {
-  if (!condition)
-    throwError(message)
+  if (!condition) { throwError(message) }
 }
 
-export function generateId(size: number, alphabet: string) {
+export function generateId (size: number, alphabet: string) {
   let id = ''
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   let i = size
@@ -229,7 +226,7 @@ export function generateId(size: number, alphabet: string) {
 /**
  * Get a unique string for an key with object params
  */
-export function generateKey(key: string, params?: any): string {
+export function generateKey (key: string, params?: any): string {
   const keyValues = params ? { key, params } : { key }
   const stringifiedKey = JSON.stringify(keyValues)
 
@@ -243,33 +240,24 @@ export function generateKey(key: string, params?: any): string {
 /**
  * Get a value based on a dot-notation key.
  */
-export function getValue(obj: Record<string, any>, keys: string | string[]): any {
+export function getValue (obj: Record<string, any>, keys: string | string[]): any {
   keys = (typeof keys === 'string') ? keys.split('.') : keys
   const key = keys.shift() as string
   // eslint-disable-next-line no-prototype-builtins
-  if (obj && obj.hasOwnProperty(key) && keys.length === 0)
-    return obj[key]
+  if (obj && obj.hasOwnProperty(key) && keys.length === 0) { return obj[key] }
   // eslint-disable-next-line no-prototype-builtins
-  else if (!obj || !obj.hasOwnProperty(key))
-    return obj
-  else
-    return getValue(obj[key], keys)
+  else if (!obj || !obj.hasOwnProperty(key)) { return obj } else { return getValue(obj[key], keys) }
 }
 
 /**
  * Compare two objects deep.
  */
-export function equals(a: any, b: any): Boolean {
-  if (a === b)
-    return true
-  if (a instanceof Date && b instanceof Date)
-    return a.getTime() === b.getTime()
-  if (!a || !b || (typeof a !== 'object' && typeof b !== 'object'))
-    return a === b
-  if (a.prototype !== b.prototype)
-    return false
+export function equals (a: any, b: any): Boolean {
+  if (a === b) { return true }
+  if (a instanceof Date && b instanceof Date) { return a.getTime() === b.getTime() }
+  if (!a || !b || (typeof a !== 'object' && typeof b !== 'object')) { return a === b }
+  if (a.prototype !== b.prototype) { return false }
   const keys = Object.keys(a)
-  if (keys.length !== Object.keys(b).length)
-    return false
+  if (keys.length !== Object.keys(b).length) { return false }
   return keys.every(k => equals(a[k], b[k]))
 }
