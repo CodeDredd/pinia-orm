@@ -13,12 +13,12 @@ export class CastAttribute {
   /**
    * Cast parameters
    */
-  static parameters: Record<string, any>
+  static parameters?: Record<string, any>
 
   /**
    * Default parameters
    */
-  $parameters: Record<string, any> = {}
+  $parameters?: Record<string, any> = {}
 
   /**
    * Create a new Attribute instance.
@@ -45,7 +45,7 @@ export class CastAttribute {
     return value
   }
 
-  static withParameters (parameters: Record<string, any>): typeof CastAttribute {
+  static withParameters (parameters?: Record<string, any>): typeof CastAttribute {
     this.parameters = parameters
     return this
   }
@@ -53,7 +53,7 @@ export class CastAttribute {
   /**
    * Get the cast parameters
    */
-  getParameters (): Record<string, any> {
+  getParameters (): Record<string, any> | undefined {
     return this.$parameters
   }
 
