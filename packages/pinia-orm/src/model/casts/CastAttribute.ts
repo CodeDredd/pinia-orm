@@ -23,29 +23,29 @@ export class CastAttribute {
   /**
    * Create a new Attribute instance.
    */
-  constructor(attributes: ModelFields | undefined) {
+  constructor (attributes: ModelFields | undefined) {
     this.$self().attributes = attributes
     this.$parameters = {
       ...this.$parameters,
-      ...this.$self().parameters,
+      ...this.$self().parameters
     }
   }
 
   /**
    * Get the value for return.
    */
-  get(value?: any): any {
+  get (value?: any): any {
     return value
   }
 
   /**
    * Set the value for the store.
    */
-  set(value?: any): any {
+  set (value?: any): any {
     return value
   }
 
-  static withParameters(parameters: Record<string, any>): typeof CastAttribute {
+  static withParameters (parameters: Record<string, any>): typeof CastAttribute {
     this.parameters = parameters
     return this
   }
@@ -53,21 +53,21 @@ export class CastAttribute {
   /**
    * Get the cast parameters
    */
-  getParameters(): Record<string, any> {
+  getParameters (): Record<string, any> {
     return this.$parameters
   }
 
   /**
    * Get the constructor for this cast.
    */
-  $self(): typeof CastAttribute {
+  $self (): typeof CastAttribute {
     return this.constructor as typeof CastAttribute
   }
 
   /**
    * Generate new instance of cast
    */
-  static newRawInstance<M extends typeof CastAttribute>(this: M, attributes: any): InstanceType<M> {
+  static newRawInstance<M extends typeof CastAttribute> (this: M, attributes: any): InstanceType<M> {
     return new this(attributes) as InstanceType<M>
   }
 }

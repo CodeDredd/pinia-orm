@@ -34,28 +34,28 @@ describe('feature/relations/morph_to_retrieve', () => {
     users: { id: 1, name: 'John Doe' },
     posts: [
       { id: 1, title: 'Hello, world!' },
-      { id: 2, title: 'Hello, world! Again!' },
+      { id: 2, title: 'Hello, world! Again!' }
     ],
     images: [
       {
         id: 1,
         url: '/profile.jpg',
         imageableId: 1,
-        imageableType: 'users',
+        imageableType: 'users'
       },
       {
         id: 2,
         url: '/post.jpg',
         imageableId: 1,
-        imageableType: 'posts',
+        imageableType: 'posts'
       },
       {
         id: 3,
         url: '/post2.jpg',
         imageableId: 2,
-        imageableType: 'posts',
-      },
-    ],
+        imageableType: 'posts'
+      }
+    ]
   }
 
   it('can eager load morph to relation', () => {
@@ -78,7 +78,7 @@ describe('feature/relations/morph_to_retrieve', () => {
       url: '/profile.jpg',
       imageableId: 1,
       imageableType: 'users',
-      imageable: { id: 1, name: 'John Doe' },
+      imageable: { id: 1, name: 'John Doe' }
     })
 
     // Assert Post Image
@@ -89,7 +89,7 @@ describe('feature/relations/morph_to_retrieve', () => {
       url: '/post.jpg',
       imageableId: 1,
       imageableType: 'posts',
-      imageable: { id: 1, title: 'Hello, world!' },
+      imageable: { id: 1, title: 'Hello, world!' }
     })
   })
 
@@ -116,14 +116,14 @@ describe('feature/relations/morph_to_retrieve', () => {
       url: '/post2.jpg',
       imageableId: 2,
       imageableType: 'posts',
-      imageable: { id: 2, title: 'Hello, world! Again!' },
+      imageable: { id: 2, title: 'Hello, world! Again!' }
     })
     assertModel(limitOrderedImages[1], {
       id: 2,
       url: '/post.jpg',
       imageableId: 1,
       imageableType: 'posts',
-      imageable: null,
+      imageable: null
     })
   })
 
@@ -134,7 +134,7 @@ describe('feature/relations/morph_to_retrieve', () => {
       id: 1,
       url: '/profile.jpg',
       imageableId: 1,
-      imageableType: 'users',
+      imageableType: 'users'
     })
 
     const image = imagesRepo.with('imageable').first()!
@@ -144,7 +144,7 @@ describe('feature/relations/morph_to_retrieve', () => {
       url: '/profile.jpg',
       imageableId: 1,
       imageableType: 'users',
-      imageable: null,
+      imageable: null
     })
   })
 
@@ -155,7 +155,7 @@ describe('feature/relations/morph_to_retrieve', () => {
     usersRepo.save({ id: 1, name: 'John Doe' })
     imagesRepo.save({
       id: 1,
-      url: '/profile.jpg',
+      url: '/profile.jpg'
     })
 
     const image = imagesRepo.with('imageable').first()!
@@ -165,7 +165,7 @@ describe('feature/relations/morph_to_retrieve', () => {
       url: '/profile.jpg',
       imageableId: null,
       imageableType: null,
-      imageable: null,
+      imageable: null
     })
   })
 })

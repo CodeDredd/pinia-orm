@@ -3,17 +3,18 @@ import { ref } from 'vue-demi'
 
 import { Model, useRepo } from '../../src'
 
+/* eslint-disable no-console */
 describe('performance/save_has_many_relation', () => {
   class Todo extends Model {
     static entity = 'todos'
 
-    static fields() {
+    static fields () {
       return {
         id: this.uid(),
         title: this.string(''),
         description: this.string(''),
         done: this.boolean(false),
-        points: this.number(0),
+        points: this.number(0)
       }
     }
   }
@@ -25,8 +26,7 @@ describe('performance/save_has_many_relation', () => {
     const generateString = (length: number) => {
       let result = ''
       const charactersLength = characters.length
-      for (let i = 0; i < length; i++)
-        result += characters.charAt(Math.floor(Math.random() * charactersLength))
+      for (let i = 0; i < length; i++) { result += characters.charAt(Math.floor(Math.random() * charactersLength)) }
 
       return result
     }
@@ -42,7 +42,7 @@ describe('performance/save_has_many_relation', () => {
         title: generateString(30),
         description: generateString(1000),
         done: false,
-        points: 13,
+        points: 13
       })
     }
 

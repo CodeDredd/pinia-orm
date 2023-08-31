@@ -6,14 +6,14 @@ export class String extends Type {
   /**
    * Create a new String attribute instance.
    */
-  constructor(model: Model, value: TypeDefault<string>) {
+  constructor (model: Model, value: TypeDefault<string>) {
     super(model, value)
   }
 
   /**
    * Make the value for the attribute.
    */
-  make(value: any): string | null {
+  make (value: any): string | null {
     return this.makeReturn<string | null>('string', value)
   }
 }

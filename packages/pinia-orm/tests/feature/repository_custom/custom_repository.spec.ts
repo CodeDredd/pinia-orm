@@ -15,7 +15,7 @@ describe('feature/repository_custom/custom_repository', () => {
     class UserRepository extends Repository<User> {
       use = User
 
-      custom(): number {
+      custom (): number {
         return 1
       }
     }
@@ -27,7 +27,7 @@ describe('feature/repository_custom/custom_repository', () => {
 
   it('can define an abstract custom repository', () => {
     class ARepository extends Repository {
-      custom(): number {
+      custom (): number {
         return 1
       }
     }
@@ -39,7 +39,7 @@ describe('feature/repository_custom/custom_repository', () => {
 
   it('throws if the user tries to access the model in abstract custom repository', () => {
     class ARepository extends Repository {
-      custom(): any {
+      custom (): any {
         this.getModel()
       }
     }

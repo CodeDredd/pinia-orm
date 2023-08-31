@@ -3,15 +3,15 @@ import { defineStore } from 'pinia'
 import type { Query } from '../query/Query'
 import { useStoreActions } from './useStoreActions'
 
-export function useDataStore<S extends DataStoreState, T extends DataStore = DataStore>(
+export function useDataStore<S extends DataStoreState, T extends DataStore = DataStore> (
   id: string,
   options: DefineStoreOptionsBase<S, T>,
-  query?: Query,
+  query?: Query
 ) {
   return defineStore(id, {
     state: () => ({ data: {} } as S),
     actions: useStoreActions(query),
-    ...options,
+    ...options
   })
 }
 

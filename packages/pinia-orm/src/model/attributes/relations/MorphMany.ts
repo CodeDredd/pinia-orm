@@ -25,12 +25,12 @@ export class MorphMany extends Relation {
   /**
    * Create a new morph-many relation instance.
    */
-  constructor(
+  constructor (
     parent: Model,
     related: Model,
     morphId: string,
     morphType: string,
-    localKey: string,
+    localKey: string
   ) {
     super(parent, related)
     this.morphId = morphId
@@ -41,21 +41,21 @@ export class MorphMany extends Relation {
   /**
    * Get all related models for the relationship.
    */
-  getRelateds(): Model[] {
+  getRelateds (): Model[] {
     return [this.related]
   }
 
   /**
    * Define the normalizr schema for the relation.
    */
-  define(schema: Schema): NormalizrSchema {
+  define (schema: Schema): NormalizrSchema {
     return schema.many(this.related, this.parent)
   }
 
   /**
    * Attach the parent type and id to the given relation.
    */
-  attach(record: Element, child: Element): void {
+  attach (record: Element, child: Element): void {
     child[this.morphId] = record[this.localKey]
     child[this.morphType] = this.parent.$entity()
   }
@@ -63,7 +63,7 @@ export class MorphMany extends Relation {
   /**
    * Set the constraints for an eager load of the relation.
    */
-  addEagerConstraints(query: Query, models: Collection): void {
+  addEagerConstraints (query: Query, models: Collection): void {
     query.where(this.morphType, this.parent.$entity())
     query.whereIn(this.morphId, this.getKeys(models, this.localKey))
   }
@@ -71,7 +71,7 @@ export class MorphMany extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match(relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
@@ -86,7 +86,7 @@ export class MorphMany extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary(results: Collection): Dictionary {
+  protected buildDictionary (results: Collection): Dictionary {
     return this.mapToDictionary(results, (result) => {
       return [result[this.morphId], result]
     })
@@ -95,7 +95,7 @@ export class MorphMany extends Relation {
   /**
    * Make related models.
    */
-  make(elements?: Element[]): Model[] {
+  make (elements?: Element[]): Model[] {
     return elements
       ? elements.map(element => this.related.$newInstance(element))
       : []

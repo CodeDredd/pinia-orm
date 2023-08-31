@@ -1,7 +1,7 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "packageManager": "pnpm@8.6.11",
+  "packageManager": "pnpm@8.7.0",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -30,23 +30,23 @@
     "@lerna-lite/cli": "^2.5.0",
     "@lerna-lite/run": "^2.5.0",
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^18.17.1",
+    "@types/node": "^18.17.12",
     "chalk": "^4.1.2",
-    "conventional-changelog-cli": "^3.0.0",
+    "conventional-changelog-cli": "^4.0.0",
     "enquirer": "^2.4.1",
-    "execa": "^7.2.0",
-    "expect": "^29.6.2",
+    "execa": "^8.0.1",
+    "expect": "^29.6.4",
     "globby": "^13.2.2",
-    "lint-staged": "^13.2.3",
+    "lint-staged": "^14.0.1",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.8",
     "p-series": "^3.0.0",
     "pascalcase": "^2.0.0",
-    "prettier": "^3.0.1",
+    "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
     "semver": "^7.5.4",
     "sponsorkit": "^0.8.7",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "yorkie": "^2.0.0"
   },
   "peerDependenciesMeta": {
@@ -69,6 +69,13 @@
     ]
   },
   "pnpm": {
+    "packageExtensions": {
+      "@vue/composition-api": {
+        "peerDependencies": {
+          "vue": "*"
+        }
+      }
+    },
     "overrides": {
       "ufo": "^0.8.4",
       "std-env": "^3.1.1"

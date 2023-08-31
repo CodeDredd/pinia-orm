@@ -36,17 +36,17 @@ describe('feature/relations/has_many_through_retrieve', () => {
       users: {
         1: { id: 1, name: 'John Doe', countryId: 1 },
         2: { id: 2, name: 'Jane Doe', countryId: 1 },
-        3: { id: 3, name: 'Johnny Doe', countryId: 2 },
+        3: { id: 3, name: 'Johnny Doe', countryId: 2 }
       },
       countries: {
         1: { id: 1 },
-        2: { id: 2 },
+        2: { id: 2 }
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },
         2: { id: 2, userId: 1, title: 'Title 02' },
-        3: { id: 3, userId: 3, title: 'Title 03' },
-      },
+        3: { id: 3, userId: 3, title: 'Title 03' }
+      }
     })
 
     const countries = countryRepo.with('posts').get()
@@ -57,14 +57,14 @@ describe('feature/relations/has_many_through_retrieve', () => {
       id: 1,
       posts: [
         { id: 1, userId: 1, title: 'Title 01' },
-        { id: 2, userId: 1, title: 'Title 02' },
-      ],
+        { id: 2, userId: 1, title: 'Title 02' }
+      ]
     })
     assertModel(countries[1], {
       id: 2,
       posts: [
-        { id: 3, userId: 3, title: 'Title 03' },
-      ],
+        { id: 3, userId: 3, title: 'Title 03' }
+      ]
     })
   })
 
@@ -78,7 +78,7 @@ describe('feature/relations/has_many_through_retrieve', () => {
     expect(user).toBeInstanceOf(Country)
     assertModel(user, {
       id: 1,
-      posts: [],
+      posts: []
     })
   })
 
@@ -89,22 +89,22 @@ describe('feature/relations/has_many_through_retrieve', () => {
       users: {
         1: { id: 1, name: 'John Doe', countryId: 1 },
         2: { id: 2, name: 'Jane Doe', countryId: 1 },
-        3: { id: 3, name: 'Johnny Doe', countryId: 2 },
+        3: { id: 3, name: 'Johnny Doe', countryId: 2 }
       },
       countries: {
         1: { id: 1 },
-        2: { id: 2 },
+        2: { id: 2 }
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },
         2: { id: 2, userId: 1, title: 'Title 02' },
-        3: { id: 3, userId: 3, title: 'Title 03' },
-      },
+        3: { id: 3, userId: 3, title: 'Title 03' }
+      }
     })
 
     const schema = {
       id: '1',
-      posts: [{ id: 2 }, { id: 1 }],
+      posts: [{ id: 2 }, { id: 1 }]
     }
 
     const country = countryRepo.revive(schema)!

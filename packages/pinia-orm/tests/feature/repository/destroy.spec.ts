@@ -18,7 +18,7 @@ describe('feature/repository/destroy', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     userRepo.destroy(2)
@@ -26,8 +26,8 @@ describe('feature/repository/destroy', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        3: { id: 3, name: 'Johnny Doe' },
-      },
+        3: { id: 3, name: 'Johnny Doe' }
+      }
     })
   })
 
@@ -37,15 +37,15 @@ describe('feature/repository/destroy', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     userRepo.destroy([2, 3])
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
-      },
+        1: { id: 1, name: 'John Doe' }
+      }
     })
   })
 
@@ -55,7 +55,7 @@ describe('feature/repository/destroy', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     const user = userRepo.destroy(2)
@@ -75,8 +75,8 @@ describe('feature/repository/destroy', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
-      },
+        1: { id: 1, name: 'John Doe' }
+      }
     })
   })
 
@@ -86,7 +86,7 @@ describe('feature/repository/destroy', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     const users = userRepo.destroy([1, 3])
@@ -100,7 +100,7 @@ describe('feature/repository/destroy', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     const users = userRepo.destroy([4])

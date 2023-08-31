@@ -34,16 +34,16 @@ describe('feature/relations/belongs_to_save_uid', () => {
 
     postsRepo.save({
       title: 'Title 01',
-      author: { id: 1, name: 'John Doe' },
+      author: { id: 1, name: 'John Doe' }
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
+        1: { id: 1, name: 'John Doe' }
       },
       posts: {
-        uid1: { id: 'uid1', userId: 1, title: 'Title 01' },
-      },
+        uid1: { id: 'uid1', userId: 1, title: 'Title 01' }
+      }
     })
   })
 
@@ -72,16 +72,16 @@ describe('feature/relations/belongs_to_save_uid', () => {
 
     postsRepo.save({
       title: 'Title 01',
-      author: { name: 'John Doe' },
+      author: { name: 'John Doe' }
     })
 
     assertState({
       users: {
-        uid2: { id: 'uid2', name: 'John Doe' },
+        uid2: { id: 'uid2', name: 'John Doe' }
       },
       posts: {
-        uid1: { id: 'uid1', userId: 'uid2', title: 'Title 01' },
-      },
+        uid1: { id: 'uid1', userId: 'uid2', title: 'Title 01' }
+      }
     })
   })
 })

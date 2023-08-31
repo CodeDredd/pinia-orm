@@ -29,7 +29,7 @@ describe('feature/relations/has_many_retrieve', () => {
 
     postsRepo.save([
       { id: 1, userId: 1, title: 'Title 01' },
-      { id: 2, userId: 1, title: 'Title 02' },
+      { id: 2, userId: 1, title: 'Title 02' }
     ])
     usersRepo.save({ id: 1, name: 'John Doe' })
 
@@ -42,8 +42,8 @@ describe('feature/relations/has_many_retrieve', () => {
       name: 'John Doe',
       posts: [
         { id: 1, userId: 1, title: 'Title 01' },
-        { id: 2, userId: 1, title: 'Title 02' },
-      ],
+        { id: 2, userId: 1, title: 'Title 02' }
+      ]
     })
   })
 
@@ -58,7 +58,7 @@ describe('feature/relations/has_many_retrieve', () => {
     assertModel(user, {
       id: 1,
       name: 'John Doe',
-      posts: [],
+      posts: []
     })
   })
 
@@ -68,13 +68,13 @@ describe('feature/relations/has_many_retrieve', () => {
 
     postsRepo.save([
       { id: 1, userId: 1, title: 'Title 01' },
-      { id: 2, userId: 1, title: 'Title 02' },
+      { id: 2, userId: 1, title: 'Title 02' }
     ])
     usersRepo.save({ id: 1, name: 'John Doe' })
 
     const schema = {
       id: '1',
-      posts: [{ id: 2 }, { id: 1 }],
+      posts: [{ id: 2 }, { id: 1 }]
     }
 
     const user = usersRepo.revive(schema)!

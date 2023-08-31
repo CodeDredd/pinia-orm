@@ -13,7 +13,7 @@ describe('feature/hooks/created', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static created(model: User) {
+      static created (model: User) {
         model.name = 'John'
       }
     }
@@ -35,7 +35,7 @@ describe('feature/hooks/created', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static created(model: User) {
+      static created (model: User) {
         model.name = 'John'
       }
     }
@@ -46,7 +46,7 @@ describe('feature/hooks/created', () => {
 
     useRepo(User).save([
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'John Doe 2', age: 40 },
+      { id: 2, name: 'John Doe 2', age: 40 }
     ])
 
     expect(createdMethod).toHaveBeenCalledTimes(2)
@@ -56,8 +56,8 @@ describe('feature/hooks/created', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe', age: 30 },
-        2: { id: 2, name: 'John Doe 2', age: 40 },
-      },
+        2: { id: 2, name: 'John Doe 2', age: 40 }
+      }
     })
   })
 
@@ -69,7 +69,7 @@ describe('feature/hooks/created', () => {
       @Str('') declare name: string
       @Num(0) declare age: number
 
-      static created(model: Model) {
+      static created (model: Model) {
         model.name = 'John'
       }
     }
@@ -84,8 +84,8 @@ describe('feature/hooks/created', () => {
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John', age: 0 },
-      },
+        uid1: { id: 'uid1', name: 'John', age: 0 }
+      }
     })
   })
 })
