@@ -990,9 +990,11 @@ export class Model {
     if (typeof value === 'object') {
       // If the value is an object, check if it's an instance of Date and that it has
       // a time value with its getTime() method, and that its toISOString() method exists
-      if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === 'function') { return value.toISOString() } else
-      // If it's not a Date object, serialize the object using the default method
-      { return this.serializeObject(value) }
+      if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === 'function') { return value.toISOString() }
+      else {
+        // If it's not a Date object, serialize the object using the default method
+        return this.serializeObject(value)
+      }
     }
 
     return value
