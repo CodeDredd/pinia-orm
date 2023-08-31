@@ -44,7 +44,7 @@ export class MorphToMany extends Relation {
   /**
    * Create a new morph to many to instance.
    */
-  constructor(
+  constructor (
     parent: Model,
     related: Model,
     pivot: Model,
@@ -52,7 +52,7 @@ export class MorphToMany extends Relation {
     morphId: string,
     morphType: string,
     parentKey: string,
-    relatedKey: string,
+    relatedKey: string
   ) {
     super(parent, related)
 
@@ -67,21 +67,21 @@ export class MorphToMany extends Relation {
   /**
    * Get all related models for the relationship.
    */
-  getRelateds(): Model[] {
+  getRelateds (): Model[] {
     return [this.related, this.pivot]
   }
 
   /**
    * Define the normalizr schema for the relationship.
    */
-  define(schema: Schema): NormalizrSchema {
+  define (schema: Schema): NormalizrSchema {
     return schema.many(this.related, this.parent)
   }
 
   /**
    * Attach the parent type and id to the given relation.
    */
-  attach(record: Element, child: Element): void {
+  attach (record: Element, child: Element): void {
     const pivot = child.pivot ?? {}
     pivot[this.morphId] = record[this.parentKey]
     pivot[this.morphType] = this.parent.$entity()
@@ -92,7 +92,7 @@ export class MorphToMany extends Relation {
   /**
    * Convert given value to the appropriate value for the attribute.
    */
-  make(elements?: Element[]): Model[] {
+  make (elements?: Element[]): Model[] {
     return elements
       ? elements.map(element => this.related.$newInstance(element))
       : []
@@ -101,14 +101,14 @@ export class MorphToMany extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match(relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection, query: Query): void {
     const relatedModels = query.get(false)
     const pivotModels = query
       .newQuery(this.pivot.$entity())
       .whereIn(this.relatedId, this.getKeys(relatedModels, this.relatedKey))
       .whereIn(this.morphId, this.getKeys(models, this.parentKey))
       .groupBy(this.morphId, this.relatedId, this.morphType)
-      .get()
+      .get<'group'>()
 
     models.forEach((parentModel) => {
       const relationResults: Model[] = []
@@ -118,8 +118,7 @@ export class MorphToMany extends Relation {
         const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson())
         relatedModelCopy.$setRelation('pivot', pivot)
 
-        if (pivot)
-          relationResults.push(relatedModelCopy)
+        if (pivot) { relationResults.push(relatedModelCopy) }
       })
       parentModel.$setRelation(relation, relationResults)
     })
@@ -128,5 +127,5 @@ export class MorphToMany extends Relation {
   /**
    * Set the constraints for the related relation.
    */
-  addEagerConstraints(_query: Query, _collection: Collection): void {}
+  addEagerConstraints (_query: Query, _collection: Collection): void {}
 }

@@ -66,13 +66,13 @@ describe('unit/model/Model_Hidden_Field', () => {
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD',
+      username: 'JD'
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John', username: 'JD' },
-      },
+        1: { id: 1, name: 'John', username: 'JD' }
+      }
     })
 
     expect(userRepo.find(1)?.name).toBe('John')

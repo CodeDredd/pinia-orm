@@ -32,17 +32,17 @@ describe('feature/relations/has_one_save', () => {
       phone: {
         id: 1,
         userId: 1,
-        number: '123-4567-8912',
-      },
+        number: '123-4567-8912'
+      }
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
+        1: { id: 1, name: 'John Doe' }
       },
       phones: {
-        1: { id: 1, userId: 1, number: '123-4567-8912' },
-      },
+        1: { id: 1, userId: 1, number: '123-4567-8912' }
+      }
     })
   })
 
@@ -54,17 +54,17 @@ describe('feature/relations/has_one_save', () => {
       name: 'John Doe',
       phone: {
         id: 1,
-        number: '123-4567-8912',
-      },
+        number: '123-4567-8912'
+      }
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
+        1: { id: 1, name: 'John Doe' }
       },
       phones: {
-        1: { id: 1, userId: 1, number: '123-4567-8912' },
-      },
+        1: { id: 1, userId: 1, number: '123-4567-8912' }
+      }
     })
   })
 
@@ -73,13 +73,13 @@ describe('feature/relations/has_one_save', () => {
 
     usersRepo.save({
       id: 1,
-      name: 'John Doe',
+      name: 'John Doe'
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
-      },
+        1: { id: 1, name: 'John Doe' }
+      }
     })
   })
 
@@ -89,13 +89,13 @@ describe('feature/relations/has_one_save', () => {
     usersRepo.save({
       id: 1,
       name: 'John Doe',
-      phone: null,
+      phone: null
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
-      },
+        1: { id: 1, name: 'John Doe' }
+      }
     })
   })
 })

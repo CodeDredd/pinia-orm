@@ -7,12 +7,12 @@ describe('unit/model/Model_Fields', () => {
     class User extends Model {
       static entity = 'users'
 
-      static fields() {
+      static fields () {
         return {
           id: this.attr(() => undefined),
           str: this.string(''),
           num: this.number(0),
-          bool: this.boolean(false),
+          bool: this.boolean(false)
         }
       }
 
@@ -25,7 +25,7 @@ describe('unit/model/Model_Fields', () => {
     const user = new User({
       str: 'string',
       num: 1,
-      bool: true,
+      bool: true
     })
 
     expect(user.id).toBe(undefined)

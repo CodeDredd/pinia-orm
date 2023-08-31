@@ -27,7 +27,7 @@ describe('unit/support/Utils_Order_by', () => {
       { name: 'Andy Newman' },
       { id: null },
       { id: 'id1' },
-      { id: 1 },
+      { id: 1 }
     ]
 
     const expected = [
@@ -37,7 +37,7 @@ describe('unit/support/Utils_Order_by', () => {
       { id: 'id3' },
       { id: null },
       { name: 'John Doe' },
-      { name: 'Andy Newman' },
+      { name: 'Andy Newman' }
     ]
 
     expect(orderBy(collection, ['id'], ['asc'])).toEqual(expected)
@@ -50,7 +50,7 @@ describe('unit/support/Utils_Order_by', () => {
       { id: 2, name: 'Andrew Black' },
       { id: 3, name: 'George Mac' },
       { id: 1, name: 'Bob Green' },
-      { id: 2, name: 'Chris Brian' },
+      { id: 2, name: 'Chris Brian' }
     ]
 
     const expected = [
@@ -59,11 +59,11 @@ describe('unit/support/Utils_Order_by', () => {
       { id: 2, name: 'Andrew Black' },
       { id: 2, name: 'Chris Brian' },
       { id: 3, name: 'George Mac' },
-      { id: 3, name: 'Peter Ericsson' },
+      { id: 3, name: 'Peter Ericsson' }
     ]
 
     expect(orderBy(collection, ['id', 'name'], ['asc', 'asc'])).toEqual(
-      expected,
+      expected
     )
   })
 
@@ -74,7 +74,7 @@ describe('unit/support/Utils_Order_by', () => {
       { id: 2, name: 'Andrew Black' },
       { name: 'George Mac' },
       { id: 1 },
-      { id: 2, name: 'Chris Brian' },
+      { id: 2, name: 'Chris Brian' }
     ]
 
     const expected = [
@@ -83,11 +83,11 @@ describe('unit/support/Utils_Order_by', () => {
       { id: 2, name: 'Chris Brian' },
       { id: 2, name: 'Andrew Black' },
       { name: 'Peter Ericsson' },
-      { name: 'George Mac' },
+      { name: 'George Mac' }
     ]
 
     expect(orderBy(collection, ['id', 'name'], ['asc', 'desc'])).toEqual(
-      expected,
+      expected
     )
   })
 

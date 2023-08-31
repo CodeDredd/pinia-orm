@@ -1,10 +1,9 @@
 {
-  "include": ["src/global.d.ts", "src/**/*.ts", "__tests__/**/*.ts"],
+  "include": ["src/global.d.ts", "src/**/*.ts", "tests/**/*.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
     "outDir": "dist",
-    "suppressImplicitAnyIndexErrors": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "module": "esnext",

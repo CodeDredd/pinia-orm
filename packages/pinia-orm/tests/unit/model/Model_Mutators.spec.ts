@@ -11,11 +11,11 @@ describe('unit/model/Model_Mutators', () => {
 
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
-          name(value: any) {
+          name (value: any) {
             return value.toUpperCase()
-          },
+          }
         }
       }
     }
@@ -41,11 +41,11 @@ describe('unit/model/Model_Mutators', () => {
 
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
           name: {
-            get: (value: any) => value.toUpperCase(),
-          },
+            get: (value: any) => value.toUpperCase()
+          }
         }
       }
     }
@@ -60,11 +60,11 @@ describe('unit/model/Model_Mutators', () => {
       @Attr(0) id!: number
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
           name: {
-            get: (value: any) => value.toUpperCase(),
-          },
+            get: (value: any) => value.toUpperCase()
+          }
         }
       }
     }
@@ -72,13 +72,13 @@ describe('unit/model/Model_Mutators', () => {
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
-      name: 'John Doe',
+      name: 'John Doe'
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
-      },
+        1: { id: 1, name: 'John Doe' }
+      }
     })
 
     expect(userRepo.find(1)?.name).toBe('JOHN DOE')
@@ -91,11 +91,11 @@ describe('unit/model/Model_Mutators', () => {
       @Attr(0) id!: number
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
           name: {
-            set: (value: any) => value.toUpperCase(),
-          },
+            set: (value: any) => value.toUpperCase()
+          }
         }
       }
     }
@@ -103,13 +103,13 @@ describe('unit/model/Model_Mutators', () => {
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
-      name: 'John Doe',
+      name: 'John Doe'
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'JOHN DOE' },
-      },
+        1: { id: 1, name: 'JOHN DOE' }
+      }
     })
 
     expect(userRepo.find(1)?.name).toBe('JOHN DOE')

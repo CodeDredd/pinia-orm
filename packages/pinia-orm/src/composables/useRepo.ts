@@ -14,9 +14,9 @@ export function useRepo<R extends Repository>(
   pinia?: Pinia,
 ): R
 
-export function useRepo(
+export function useRepo (
   ModelOrRepository: any,
-  pinia?: Pinia,
+  pinia?: Pinia
 ) {
   const database = new Database()
 
@@ -26,12 +26,8 @@ export function useRepo(
 
   try {
     const typeModels = Object.values(repository.getModel().$types())
-    if (typeModels.length > 0)
-      typeModels.forEach(typeModel => repository.database.register(typeModel.newRawInstance()))
-    else
-      repository.database.register(repository.getModel())
-  }
-  catch (e) {}
+    if (typeModels.length > 0) { typeModels.forEach(typeModel => repository.database.register(typeModel.newRawInstance())) } else { repository.database.register(repository.getModel()) }
+  } catch (e) {}
 
   return repository
 }

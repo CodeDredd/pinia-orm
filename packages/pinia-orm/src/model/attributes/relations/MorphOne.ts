@@ -24,12 +24,12 @@ export class MorphOne extends Relation {
   /**
    * Create a new morph-one relation instance.
    */
-  constructor(
+  constructor (
     parent: Model,
     related: Model,
     morphId: string,
     morphType: string,
-    localKey: string,
+    localKey: string
   ) {
     super(parent, related)
     this.morphId = morphId
@@ -40,21 +40,21 @@ export class MorphOne extends Relation {
   /**
    * Get all related models for the relationship.
    */
-  getRelateds(): Model[] {
+  getRelateds (): Model[] {
     return [this.related]
   }
 
   /**
    * Define the normalizr schema for the relation.
    */
-  define(schema: Schema): NormalizrSchema {
+  define (schema: Schema): NormalizrSchema {
     return schema.one(this.related, this.parent)
   }
 
   /**
    * Attach the parent type and id to the given relation.
    */
-  attach(record: Element, child: Element): void {
+  attach (record: Element, child: Element): void {
     child[this.morphId] = record[this.localKey]
     child[this.morphType] = this.parent.$entity()
   }
@@ -62,7 +62,7 @@ export class MorphOne extends Relation {
   /**
    * Set the constraints for an eager load of the relation.
    */
-  addEagerConstraints(query: Query, models: Collection): void {
+  addEagerConstraints (query: Query, models: Collection): void {
     query
       .where(this.morphType, this.parent.$entity())
       .whereIn(this.morphId, this.getKeys(models, this.localKey))
@@ -71,7 +71,7 @@ export class MorphOne extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match(relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
@@ -86,7 +86,7 @@ export class MorphOne extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary(models: Collection): Record<string, Model> {
+  protected buildDictionary (models: Collection): Record<string, Model> {
     return models.reduce<Record<string, Model>>((dictionary, model) => {
       dictionary[model[this.morphId]] = model
 
@@ -97,7 +97,7 @@ export class MorphOne extends Relation {
   /**
    * Make a related model.
    */
-  make(element?: Element): Model | null {
+  make (element?: Element): Model | null {
     return element ? this.related.$newInstance(element) : null
   }
 }

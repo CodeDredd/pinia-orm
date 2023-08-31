@@ -4,8 +4,8 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+      '@': path.resolve(__dirname, './src')
+    }
   },
   test: {
     globals: true,
@@ -13,9 +13,11 @@ export default defineConfig({
     setupFiles: ['./tests/setup.ts'],
     // silent: true,
     coverage: {
-      reporter: ['lcov', 'text'],
+      enabled: true,
+      reporter: ['lcov', 'text', 'html'],
       include: ['src/**/*.ts'],
-      exclude: ['src/index.ts', 'src/index.cjs.ts'],
-    },
+      exclude: ['src/index.ts', 'src/index.cjs.ts']
+    }
   },
+  enabled: true
 })

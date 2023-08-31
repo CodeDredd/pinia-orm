@@ -1,7 +1,7 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "packageManager": "pnpm@8.3.1",
+  "packageManager": "pnpm@8.7.1",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -27,26 +27,26 @@
     "docs:api": "lerna run docs:api --scope @pinia/docs"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^2.0.0",
-    "@lerna-lite/run": "^2.0.0",
+    "@lerna-lite/cli": "^2.5.0",
+    "@lerna-lite/run": "^2.5.0",
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^18.15.12",
+    "@types/node": "^18.17.12",
     "chalk": "^4.1.2",
-    "conventional-changelog-cli": "^2.2.2",
-    "enquirer": "^2.3.6",
-    "execa": "^7.1.1",
-    "expect": "^29.5.0",
-    "globby": "^13.1.4",
-    "lint-staged": "^13.2.1",
+    "conventional-changelog-cli": "^4.0.0",
+    "enquirer": "^2.4.1",
+    "execa": "^8.0.1",
+    "expect": "^29.6.4",
+    "globby": "^13.2.2",
+    "lint-staged": "^14.0.1",
     "lodash.kebabcase": "^4.1.1",
     "minimist": "^1.2.8",
     "p-series": "^3.0.0",
     "pascalcase": "^2.0.0",
-    "prettier": "^2.8.7",
-    "rimraf": "^5.0.0",
-    "semver": "^7.5.0",
-    "sponsorkit": "^0.8.3",
-    "typescript": "^5.0.4",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
+    "semver": "^7.5.4",
+    "sponsorkit": "^0.8.7",
+    "typescript": "^5.2.2",
     "yorkie": "^2.0.0"
   },
   "peerDependenciesMeta": {
@@ -69,6 +69,13 @@
     ]
   },
   "pnpm": {
+    "packageExtensions": {
+      "@vue/composition-api": {
+        "peerDependencies": {
+          "vue": "*"
+        }
+      }
+    },
     "overrides": {
       "ufo": "^0.8.4",
       "std-env": "^3.1.1"

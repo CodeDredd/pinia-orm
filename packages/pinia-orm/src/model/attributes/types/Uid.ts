@@ -14,7 +14,7 @@ export class Uid extends Type {
 
   protected size = 21
 
-  constructor(model: Model, size = 21) {
+  constructor (model: Model, size = 21) {
     super(model)
     this.size = size
   }
@@ -22,10 +22,9 @@ export class Uid extends Type {
   /**
    * Make the value for the attribute.
    */
-  make(value: any): string {
+  make (value: any): string {
     const uidCast: typeof CastAttribute = this.model.$casts()[this.model.$getKeyName() as string]
-    if (uidCast)
-      return value ?? uidCast.newRawInstance(this.model.$fields()).set(value)
+    if (uidCast) { return value ?? uidCast.newRawInstance(this.model.$fields()).set(value) }
 
     return value ?? generateId(this.size, this.urlAlphabet)
   }

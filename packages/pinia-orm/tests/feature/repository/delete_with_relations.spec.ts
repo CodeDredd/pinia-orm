@@ -45,9 +45,9 @@ describe('feature/repository/delete_with_relations', () => {
     class Post extends Model {
       static entity = 'posts'
 
-      static fields() {
+      static fields () {
         return {
-          extraComments: this.hasMany(ExtraComment, 'postId').onDelete('cascade'),
+          extraComments: this.hasMany(ExtraComment, 'postId').onDelete('cascade')
         }
       }
 
@@ -112,15 +112,15 @@ describe('feature/repository/delete_with_relations', () => {
           title: 'Title 01',
           comments: [
             { id: 3, title: 'Title 03' },
-            { id: 4, title: 'Title 04' },
+            { id: 4, title: 'Title 04' }
           ],
           extraComments: [
             { id: 3, title: 'Title 03' },
-            { id: 4, title: 'Title 04' },
-          ],
+            { id: 4, title: 'Title 04' }
+          ]
         },
-        { id: 2, title: 'Title 02' },
-      ],
+        { id: 2, title: 'Title 02' }
+      ]
     },
     {
       id: 2,
@@ -132,57 +132,57 @@ describe('feature/repository/delete_with_relations', () => {
           title: 'Title 03',
           comments: [
             { id: 1, title: 'Title 01' },
-            { id: 2, title: 'Title 02' },
+            { id: 2, title: 'Title 02' }
           ],
           extraComments: [
             { id: 1, title: 'Title 01' },
-            { id: 2, title: 'Title 02' },
+            { id: 2, title: 'Title 02' }
           ],
           specialImage: { id: 5, title: 'Title 05' },
           images: [
             { id: 1, title: 'Image 01' },
-            { id: 2, title: 'Image 02' },
-          ],
+            { id: 2, title: 'Image 02' }
+          ]
         },
-        { id: 4, title: 'Title 04' },
-      ],
+        { id: 4, title: 'Title 04' }
+      ]
     }])
 
     usersRepo.destroy(2)
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' },
+        1: { id: 1, name: 'John Doe' }
       },
       roles: {
         1: { id: 1, posts: '' },
         2: { id: 2, posts: '' },
-        4: { id: 4, posts: '' },
+        4: { id: 4, posts: '' }
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
         '[2,1]': { role_id: 2, user_id: 1, level: null },
-        '[4,1]': { role_id: 4, user_id: 1, level: null },
+        '[4,1]': { role_id: 4, user_id: 1, level: null }
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },
-        2: { id: 2, userId: 1, title: 'Title 02' },
+        2: { id: 2, userId: 1, title: 'Title 02' }
       },
       comments: {
         3: { id: 3, postId: 1, title: 'Title 03' },
-        4: { id: 4, postId: 1, title: 'Title 04' },
+        4: { id: 4, postId: 1, title: 'Title 04' }
       },
       extraComments: {
         3: { id: 3, postId: 1, title: 'Title 03' },
-        4: { id: 4, postId: 1, title: 'Title 04' },
+        4: { id: 4, postId: 1, title: 'Title 04' }
       },
       images: {
         1: { id: 1, postId: 3, title: 'Image 01' },
-        2: { id: 2, postId: 3, title: 'Image 02' },
+        2: { id: 2, postId: 3, title: 'Image 02' }
       },
       superImages: {
-        5: { id: 5, postId: null, title: 'Title 05' },
-      },
+        5: { id: 5, postId: null, title: 'Title 05' }
+      }
     })
   })
 
@@ -218,15 +218,15 @@ describe('feature/repository/delete_with_relations', () => {
             id: 1,
             commentableId: 1,
             commentableType: 'videos',
-            body: 'Cool Video!',
+            body: 'Cool Video!'
           },
           {
             id: 2,
             commentableId: 1,
             commentableType: 'videos',
-            body: 'Cool Video Again!',
-          },
-        ],
+            body: 'Cool Video Again!'
+          }
+        ]
       },
       {
         id: 2,
@@ -236,50 +236,50 @@ describe('feature/repository/delete_with_relations', () => {
             id: 3,
             commentableId: 2,
             commentableType: 'videos',
-            body: 'Cool Video!',
+            body: 'Cool Video!'
           },
           {
             id: 4,
             commentableId: 2,
             commentableType: 'videos',
-            body: 'Cool Video Again!',
-          },
-        ],
-      },
+            body: 'Cool Video Again!'
+          }
+        ]
+      }
     ])
 
     videoRepo.destroy(2)
 
     assertState({
       videos: {
-        1: { id: 1, link: '/video.mp4' },
+        1: { id: 1, link: '/video.mp4' }
       },
       comments: {
         1: {
           id: 1,
           commentableId: 1,
           commentableType: 'videos',
-          body: 'Cool Video!',
+          body: 'Cool Video!'
         },
         2: {
           id: 2,
           commentableId: 1,
           commentableType: 'videos',
-          body: 'Cool Video Again!',
+          body: 'Cool Video Again!'
         },
         3: {
           id: 3,
           commentableId: null,
           commentableType: null,
-          body: 'Cool Video!',
+          body: 'Cool Video!'
         },
         4: {
           id: 4,
           commentableId: null,
           commentableType: null,
-          body: 'Cool Video Again!',
-        },
-      },
+          body: 'Cool Video Again!'
+        }
+      }
     })
   })
 })

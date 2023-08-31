@@ -4,7 +4,7 @@ import { Model, useRepo } from '../../../src'
 import { Num, Str } from '../../../src/decorators'
 import {
   assertState,
-  fillState,
+  fillState
 } from '../../helpers'
 
 describe('feature/hooks/updated', () => {
@@ -16,7 +16,7 @@ describe('feature/hooks/updated', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static updated(model: Model) {
+      static updated (model: Model) {
         model.name = 'John'
       }
     }
@@ -25,8 +25,8 @@ describe('feature/hooks/updated', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 },
-      },
+        1: { id: 1, name: 'John Doe', age: 30 }
+      }
     })
 
     useRepo(User).save([])
@@ -35,8 +35,8 @@ describe('feature/hooks/updated', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 },
-      },
+        1: { id: 1, name: 'John Doe', age: 30 }
+      }
     })
   })
 
@@ -48,7 +48,7 @@ describe('feature/hooks/updated', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static updated() {
+      static updated () {
         // Doing updated stuff
       }
     }
@@ -60,13 +60,13 @@ describe('feature/hooks/updated', () => {
     fillState({
       users: {
         1: { id: 1, name: 'John Doe', age: 10 },
-        2: { id: 2, name: 'John Doe', age: 10 },
-      },
+        2: { id: 2, name: 'John Doe', age: 10 }
+      }
     })
 
     useRepo(User).save([
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'John Doe 2', age: 40 },
+      { id: 2, name: 'John Doe 2', age: 40 }
     ])
 
     useRepo(User).where('id', 1).update({ age: 100 })
@@ -78,8 +78,8 @@ describe('feature/hooks/updated', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe', age: 100 },
-        2: { id: 2, name: 'John Doe 2', age: 40 },
-      },
+        2: { id: 2, name: 'John Doe 2', age: 40 }
+      }
     })
   })
 })

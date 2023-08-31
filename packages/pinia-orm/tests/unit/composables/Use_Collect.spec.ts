@@ -31,7 +31,7 @@ describe('unit/composables/Collect', () => {
       { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
       { id: 3, name: 'David', age: 20 },
       { id: 4, name: 'john', age: 20 },
-      { id: 5, name: 'Zod', age: 20 },
+      { id: 5, name: 'Zod', age: 20 }
     ]))
   })
 
@@ -39,35 +39,35 @@ describe('unit/composables/Collect', () => {
     const expected = {
       James: useRepo(User).make([
         { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
-        { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
+        { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } }
       ]),
       David: useRepo(User).make([
-        { id: 3, name: 'David', age: 20, post: null },
+        { id: 3, name: 'David', age: 20, post: null }
       ]),
       john: useRepo(User).make([
-        { id: 4, name: 'john', age: 20, post: null },
+        { id: 4, name: 'john', age: 20, post: null }
       ]),
       Zod: useRepo(User).make([
-        { id: 5, name: 'Zod', age: 20, post: null },
-      ]),
+        { id: 5, name: 'Zod', age: 20, post: null }
+      ])
     }
 
     const expected2 = {
       '[James,40]': useRepo(User).make([
-        { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
+        { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } }
       ]),
       '[James,30]': useRepo(User).make([
-        { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
+        { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } }
       ]),
       '[David,20]': useRepo(User).make([
-        { id: 3, name: 'David', age: 20 },
+        { id: 3, name: 'David', age: 20 }
       ]),
       '[john,20]': useRepo(User).make([
-        { id: 4, name: 'john', age: 20 },
+        { id: 4, name: 'john', age: 20 }
       ]),
       '[Zod,20]': useRepo(User).make([
-        { id: 5, name: 'Zod', age: 20 },
-      ]),
+        { id: 5, name: 'Zod', age: 20 }
+      ])
     }
 
     expect(userCollection.groupBy('name')).toEqual(expected)
@@ -80,7 +80,7 @@ describe('unit/composables/Collect', () => {
       { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
       { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
       { id: 5, name: 'Zod', age: 20, post: null },
-      { id: 4, name: 'john', age: 20, post: null },
+      { id: 4, name: 'john', age: 20, post: null }
     ])
 
     const expected2 = useRepo(User).make([
@@ -88,7 +88,7 @@ describe('unit/composables/Collect', () => {
       { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
       { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
       { id: 4, name: 'john', age: 20, post: null },
-      { id: 5, name: 'Zod', age: 20, post: null },
+      { id: 5, name: 'Zod', age: 20, post: null }
     ])
 
     expect(userCollection.sortBy('name')).toEqual(expected)

@@ -13,7 +13,7 @@ describe('feature/hooks/saved', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static saved() {
+      static saved () {
         // Doing saved stuff
       }
     }
@@ -35,7 +35,7 @@ describe('feature/hooks/saved', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static saved() {
+      static saved () {
         // Doing saved stuff
       }
     }
@@ -48,8 +48,8 @@ describe('feature/hooks/saved', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 },
-      },
+        1: { id: 1, name: 'John Doe', age: 30 }
+      }
     })
   })
 
@@ -61,7 +61,7 @@ describe('feature/hooks/saved', () => {
       @Str('') declare name: string
       @Num(0) declare age: number
 
-      static saved(model: Model) {
+      static saved (model: Model) {
         model.name = 'John'
       }
     }
@@ -76,8 +76,8 @@ describe('feature/hooks/saved', () => {
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John', age: 0 },
-      },
+        uid1: { id: 'uid1', name: 'John', age: 0 }
+      }
     })
   })
 })
