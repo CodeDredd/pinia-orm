@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.41.0",
-    "@iconify/json": "^2.2.108",
+    "@iconify/json": "^2.2.109",
     "@types/file-saver": "^2.0.5",
     "@types/node": "^18.17.12",
     "@vitejs/plugin-vue": "^4.3.4",
