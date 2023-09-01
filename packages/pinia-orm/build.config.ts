@@ -13,23 +13,22 @@ export default defineBuildConfig({
     { input: 'src/packages/nanoid/async', name: 'nanoid/async' },
     { input: 'src/packages/nanoid/non-secure', name: 'nanoid/non-secure' },
     { input: 'src/packages/uuid/v1', name: 'uuid/v1' },
-    { input: 'src/packages/uuid/v4', name: 'uuid/v4' },
+    { input: 'src/packages/uuid/v4', name: 'uuid/v4' }
   ],
   declaration: true,
   failOnWarn: false,
   clean: true,
   externals: ['@/composables', 'nanoid', 'uuid', 'nanoid/async', 'nanoid/non-secure', 'pinia'],
   rollup: {
-    emitCJS: true,
+    emitCJS: true
   },
   hooks: {
     'build:done': (ctx) => {
       ctx.buildEntries.filter(entry => entry.path.includes('.cjs') && !entry.path.includes('shared')).forEach((entry) => {
         fs.rename(`${ctx.options.outDir}/${entry.path}`, `${ctx.options.outDir}/${entry.path}`.replace('cjs', 'js'), (err) => {
-          if (err)
-            console.log(`ERROR: ${err}`)
+          if (err) { console.error(`ERROR: ${err}`) }
         })
       })
-    },
-  },
+    }
+  }
 })

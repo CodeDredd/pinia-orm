@@ -39,28 +39,28 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     useRepo(User).save([
       {
         belongsToManyId: 1,
-        permissions: [{ id: 1, pivot: { level: 1 } }, { id: 2 }],
+        permissions: [{ id: 1, pivot: { level: 1 } }, { id: 2 }]
       },
       {
         belongsToManyId: 2,
-        permissions: [{ id: 2 }],
-      },
+        permissions: [{ id: 2 }]
+      }
     ])
 
     assertState({
       users: {
         1: { belongsToManyId: 1 },
-        2: { belongsToManyId: 2 },
+        2: { belongsToManyId: 2 }
       },
       roles: {
         1: { id: 1 },
-        2: { id: 2 },
+        2: { id: 2 }
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
         '[2,1]': { role_id: 2, user_id: 1, level: null },
-        '[2,2]': { role_id: 2, user_id: 2, level: null },
-      },
+        '[2,2]': { role_id: 2, user_id: 2, level: null }
+      }
     })
   })
 
@@ -68,11 +68,11 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     class Contact extends Model {
       static entity = 'contacts'
 
-      static fields() {
+      static fields () {
         return {
           id: this.uid(),
           userId: this.attr(null),
-          user: this.belongsTo(User, 'userId'),
+          user: this.belongsTo(User, 'userId')
         }
       }
     }
@@ -80,11 +80,11 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     class User extends Model {
       static entity = 'users'
 
-      static fields() {
+      static fields () {
         return {
           id: this.uid(),
           groups: this.belongsToMany(Group, GroupUser, 'userId', 'groupId'),
-          prename: this.string('naame'),
+          prename: this.string('naame')
         }
       }
     }
@@ -92,10 +92,10 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     class Group extends Model {
       static entity = 'groups'
 
-      static fields() {
+      static fields () {
         return {
           id: this.uid(),
-          name: this.string('group'),
+          name: this.string('group')
         }
       }
     }
@@ -104,10 +104,10 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
       static entity = 'group_user'
       static primaryKey = ['groupId', 'userId']
 
-      static fields() {
+      static fields () {
         return {
           groupId: this.attr(null), // Docs say this.attr(null) which throws an error
-          userId: this.attr(null),
+          userId: this.attr(null)
         }
       }
     }
@@ -119,24 +119,24 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
         prename: 'blub',
         groups: [{
           id: 1,
-          name: 'hoho',
-        }],
-      },
+          name: 'hoho'
+        }]
+      }
     })
 
     assertState({
       contacts: {
-        1: { id: 1, userId: 1 },
+        1: { id: 1, userId: 1 }
       },
       users: {
-        1: { id: 1, prename: 'blub' },
+        1: { id: 1, prename: 'blub' }
       },
       groups: {
-        1: { id: 1, name: 'hoho' },
+        1: { id: 1, name: 'hoho' }
       },
       group_user: {
-        '[1,1]': { groupId: 1, userId: 1 },
-      },
+        '[1,1]': { groupId: 1, userId: 1 }
+      }
     })
   })
 
@@ -172,28 +172,28 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
     useRepo(User).save([
       {
         belongsToManyId: 1,
-        permissions: [{ newRoleId: 1, pivot: { level: 1 } }, { newRoleId: 2 }],
+        permissions: [{ newRoleId: 1, pivot: { level: 1 } }, { newRoleId: 2 }]
       },
       {
         belongsToManyId: 2,
-        permissions: [{ newRoleId: 2 }],
-      },
+        permissions: [{ newRoleId: 2 }]
+      }
     ])
 
     assertState({
       users: {
         1: { belongsToManyId: 1 },
-        2: { belongsToManyId: 2 },
+        2: { belongsToManyId: 2 }
       },
       roles: {
         1: { newRoleId: 1 },
-        2: { newRoleId: 2 },
+        2: { newRoleId: 2 }
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
         '[2,1]': { role_id: 2, user_id: 1, level: null },
-        '[2,2]': { role_id: 2, user_id: 2, level: null },
-      },
+        '[2,2]': { role_id: 2, user_id: 2, level: null }
+      }
     })
   })
 })

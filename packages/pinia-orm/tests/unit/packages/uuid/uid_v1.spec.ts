@@ -25,15 +25,15 @@ describe('unit/packages/uuid/uid_v1', () => {
     class User extends Model {
       static entity = 'users'
 
-      static fields() {
+      static fields () {
         return {
-          id: this.uid(),
+          id: this.uid()
         }
       }
 
-      static casts() {
+      static casts () {
         return {
-          id: UidCast,
+          id: UidCast
         }
       }
     }

@@ -21,8 +21,8 @@ export type MappedRepositories<MR extends ModelsOrRepositories> = {
 /**
  * Map given models or repositories to the Vue Component.
  */
-export function mapRepos<MR extends ModelsOrRepositories>(
-  modelsOrRepositories: MR,
+export function mapRepos<MR extends ModelsOrRepositories> (
+  modelsOrRepositories: MR
 ): MappedRepositories<MR> {
   const repositories = {} as MappedRepositories<MR>
 

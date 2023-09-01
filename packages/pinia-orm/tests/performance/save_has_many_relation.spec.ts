@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { Model, useRepo } from '../../src'
 import { HasMany, Num, Str } from '../../src/decorators'
 
+/* eslint-disable no-console */
 describe('performance/save_has_many_relation', () => {
   class Post extends Model {
     static entity = 'posts'
@@ -31,7 +32,7 @@ describe('performance/save_has_many_relation', () => {
       users.push({
         id: i,
         name: `Username ${i}`,
-        posts: [{ id: i, title: `Title ${i}` }],
+        posts: [{ id: i, title: `Title ${i}` }]
       })
     }
 

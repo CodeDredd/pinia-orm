@@ -23,14 +23,14 @@ describe('feature/relations/lazy_loads/lazy_eager_load', () => {
       posts!: Post[]
   }
 
-  it('can lazy eager load relations', async () => {
+  it('can lazy eager load relations', () => {
     const usersRepo = useRepo(User)
     const postsRepo = useRepo(Post)
 
     usersRepo.save({ id: 1, name: 'John Doe' })
     postsRepo.save([
       { id: 1, userId: 1, title: 'Title 01' },
-      { id: 2, userId: 1, title: 'Title 02' },
+      { id: 2, userId: 1, title: 'Title 02' }
     ])
 
     const users = usersRepo.all()
@@ -45,9 +45,9 @@ describe('feature/relations/lazy_loads/lazy_eager_load', () => {
         name: 'John Doe',
         posts: [
           { id: 1, userId: 1, title: 'Title 01' },
-          { id: 2, userId: 1, title: 'Title 02' },
-        ],
-      },
+          { id: 2, userId: 1, title: 'Title 02' }
+        ]
+      }
     ])
   })
 })

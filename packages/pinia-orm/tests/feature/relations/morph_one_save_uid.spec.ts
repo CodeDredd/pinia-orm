@@ -38,22 +38,22 @@ describe('feature/relations/morph_one_save_uid', () => {
       image: {
         id: 1,
         url: '/profile.jpg',
-        imageableType: 'users',
-      },
+        imageableType: 'users'
+      }
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' },
+        uid1: { id: 'uid1', name: 'John Doe' }
       },
       images: {
         1: {
           id: 1,
           url: '/profile.jpg',
           imageableId: 'uid1',
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 
@@ -84,22 +84,22 @@ describe('feature/relations/morph_one_save_uid', () => {
     usersRepo.save({
       name: 'John Doe',
       image: {
-        url: '/profile.jpg',
-      },
+        url: '/profile.jpg'
+      }
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' },
+        uid1: { id: 'uid1', name: 'John Doe' }
       },
       images: {
         uid2: {
           id: 'uid2',
           url: '/profile.jpg',
           imageableId: 'uid1',
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 
@@ -130,21 +130,21 @@ describe('feature/relations/morph_one_save_uid', () => {
     usersRepo.save({
       name: 'John Doe',
       image: {
-        url: '/profile.jpg',
-      },
+        url: '/profile.jpg'
+      }
     })
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe' },
+        uid1: { id: 'uid1', name: 'John Doe' }
       },
       images: {
         '["uid1","users"]': {
           url: '/profile.jpg',
           imageableId: 'uid1',
-          imageableType: 'users',
-        },
-      },
+          imageableType: 'users'
+        }
+      }
     })
   })
 })

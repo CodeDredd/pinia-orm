@@ -9,20 +9,20 @@ describe('unit/model/Model_Serialization', () => {
 
     @Attr() id!: number
     @Attr() arr!: []
-    @Attr() obj!: {}
+    @Attr() obj!: Record<string, any>
   }
 
   it('can serialize the model', () => {
     const user = new User({
       id: 1,
       arr: [1, 2, 3],
-      obj: { key: 'value' },
+      obj: { key: 'value' }
     })
 
     const expected = {
       id: 1,
       arr: [1, 2, 3],
-      obj: { key: 'value' },
+      obj: { key: 'value' }
     }
 
     expect(user.$toJson()).toEqual(expected)

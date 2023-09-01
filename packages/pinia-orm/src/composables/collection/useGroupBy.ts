@@ -1,7 +1,7 @@
 /**
  * The useGroupBy method groups the collection's items by a given key.
  */
-export function useGroupBy<T extends Record<string, any>>(models: T[], fields: string[] | string): Record<string, T[]> {
+export function useGroupBy<T extends Record<string, any>> (models: T[], fields: string[] | string): Record<string, T[]> {
   const grouped: Record<string, T[]> = {}
   const props = Array.isArray(fields) ? fields : [fields]
 

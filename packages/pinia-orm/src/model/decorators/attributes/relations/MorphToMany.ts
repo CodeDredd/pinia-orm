@@ -4,20 +4,20 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a morph-to-many attribute property decorator.
  */
-export function MorphToMany(
+export function MorphToMany (
   related: () => typeof Model,
   pivot: () => typeof Model,
   relatedId: string,
   id: string,
   type: string,
   parentKey?: string,
-  relatedKey?: string,
+  relatedKey?: string
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
     self.setRegistry(propertyKey, () =>
-      self.morphToMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey),
+      self.morphToMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey)
     )
   }
 }

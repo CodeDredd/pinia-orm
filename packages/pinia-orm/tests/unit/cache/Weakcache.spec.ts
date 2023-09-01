@@ -6,12 +6,12 @@ describe('unit/support/Weakcache', () => {
   const data = [
     {
       id: 1,
-      name: 'Test',
+      name: 'Test'
     },
     {
       id: 2,
-      name: 'Test2',
-    },
+      name: 'Test2'
+    }
   ]
   const cache = new WeakCache()
 

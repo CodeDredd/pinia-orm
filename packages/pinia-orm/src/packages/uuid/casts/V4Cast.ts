@@ -6,14 +6,14 @@ export class UidCast extends CastAttribute {
   /**
    * Create a new String attribute instance.
    */
-  constructor(attributes: ModelFields) {
+  constructor (attributes: ModelFields) {
     super(attributes)
   }
 
   /**
    * Make the value for the attribute.
    */
-  set(value: any): string | null {
+  set (value: any): string | null {
     return value ?? v4()
   }
 }

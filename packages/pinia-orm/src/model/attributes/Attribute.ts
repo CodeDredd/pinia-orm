@@ -14,7 +14,7 @@ export abstract class Attribute {
   /**
    * Create a new Attribute instance.
    */
-  constructor(model: Model) {
+  constructor (model: Model) {
     this.model = model
     this.key = ''
   }
@@ -22,7 +22,7 @@ export abstract class Attribute {
   /**
    * Set the key name of the field
    */
-  setKey(key: string): this {
+  setKey (key: string): this {
     this.key = key
     return this
   }

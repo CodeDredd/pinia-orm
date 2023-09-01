@@ -27,7 +27,7 @@ export interface FilledInstallOptions {
 /**
  * Install Pinia ORM to the store.
  */
-export function createORM(options?: InstallOptions): PiniaPlugin {
+export function createORM (options?: InstallOptions): PiniaPlugin {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
   config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
   return () => {}

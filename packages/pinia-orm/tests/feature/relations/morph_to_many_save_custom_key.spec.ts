@@ -40,28 +40,28 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
     useRepo(User).save([
       {
         morphToManyId: 1,
-        permissions: [{ id: 1, pivot: { level: 1 } }, { id: 2 }],
+        permissions: [{ id: 1, pivot: { level: 1 } }, { id: 2 }]
       },
       {
         morphToManyId: 2,
-        permissions: [{ id: 2 }],
-      },
+        permissions: [{ id: 2 }]
+      }
     ])
 
     assertState({
       users: {
         1: { morphToManyId: 1 },
-        2: { morphToManyId: 2 },
+        2: { morphToManyId: 2 }
       },
       roles: {
         1: { id: 1 },
-        2: { id: 2 },
+        2: { id: 2 }
       },
       roleables: {
         '[1,1,"users"]': { roleId: 1, rolableId: 1, rolableType: 'users', level: 1 },
         '[2,1,"users"]': { roleId: 2, rolableId: 1, rolableType: 'users', level: null },
-        '[2,2,"users"]': { roleId: 2, rolableId: 2, rolableType: 'users', level: null },
-      },
+        '[2,2,"users"]': { roleId: 2, rolableId: 2, rolableType: 'users', level: null }
+      }
     })
   })
 
@@ -69,11 +69,11 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
     class Contact extends Model {
       static entity = 'contacts'
 
-      static fields() {
+      static fields () {
         return {
           id: this.uid(),
           userId: this.attr(null),
-          user: this.belongsTo(User, 'userId'),
+          user: this.belongsTo(User, 'userId')
         }
       }
     }
@@ -81,11 +81,11 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
     class User extends Model {
       static entity = 'users'
 
-      static fields() {
+      static fields () {
         return {
           id: this.uid(),
           groups: this.morphToMany(Group, Groupable, 'groupId', 'groupableId', 'groupableType'),
-          prename: this.string('naame'),
+          prename: this.string('naame')
         }
       }
     }
@@ -93,10 +93,10 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
     class Group extends Model {
       static entity = 'groups'
 
-      static fields() {
+      static fields () {
         return {
           id: this.uid(),
-          name: this.string('group'),
+          name: this.string('group')
         }
       }
     }
@@ -105,11 +105,11 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
       static entity = 'groupables'
       static primaryKey = ['groupId', 'groupableId', 'groupableType']
 
-      static fields() {
+      static fields () {
         return {
           groupId: this.attr(null),
           groupableId: this.attr(null),
-          groupableType: this.string(''),
+          groupableType: this.string('')
         }
       }
     }
@@ -121,24 +121,24 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
         prename: 'blub',
         groups: [{
           id: 1,
-          name: 'hoho',
-        }],
-      },
+          name: 'hoho'
+        }]
+      }
     })
 
     assertState({
       contacts: {
-        1: { id: 1, userId: 1 },
+        1: { id: 1, userId: 1 }
       },
       users: {
-        1: { id: 1, prename: 'blub' },
+        1: { id: 1, prename: 'blub' }
       },
       groups: {
-        1: { id: 1, name: 'hoho' },
+        1: { id: 1, name: 'hoho' }
       },
       groupables: {
-        '[1,1,"users"]': { groupId: 1, groupableId: 1, groupableType: 'users' },
-      },
+        '[1,1,"users"]': { groupId: 1, groupableId: 1, groupableType: 'users' }
+      }
     })
   })
 
@@ -175,28 +175,28 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
     useRepo(User).save([
       {
         belongsToManyId: 1,
-        permissions: [{ newRoleId: 1, pivot: { level: 1 } }, { newRoleId: 2 }],
+        permissions: [{ newRoleId: 1, pivot: { level: 1 } }, { newRoleId: 2 }]
       },
       {
         belongsToManyId: 2,
-        permissions: [{ newRoleId: 2 }],
-      },
+        permissions: [{ newRoleId: 2 }]
+      }
     ])
 
     assertState({
       users: {
         1: { belongsToManyId: 1 },
-        2: { belongsToManyId: 2 },
+        2: { belongsToManyId: 2 }
       },
       roles: {
         1: { newRoleId: 1 },
-        2: { newRoleId: 2 },
+        2: { newRoleId: 2 }
       },
       rolables: {
         '[1,1,"users"]': { roleId: 1, rolableId: 1, rolableType: 'users', level: 1 },
         '[2,1,"users"]': { roleId: 2, rolableId: 1, rolableType: 'users', level: null },
-        '[2,2,"users"]': { roleId: 2, rolableId: 2, rolableType: 'users', level: null },
-      },
+        '[2,2,"users"]': { roleId: 2, rolableId: 2, rolableType: 'users', level: null }
+      }
     })
   })
 })

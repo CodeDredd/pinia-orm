@@ -20,7 +20,7 @@ describe('unit/PiniaORM', () => {
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD',
+      username: 'JD'
     })
 
     const userMeta = userRepo.find(1)?._meta
@@ -37,7 +37,7 @@ describe('unit/PiniaORM', () => {
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD',
+      username: 'JD'
     })
 
     expect(userRepo.find(1)?.username).toBe(undefined)
@@ -60,7 +60,7 @@ describe('unit/PiniaORM', () => {
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD',
+      username: 'JD'
     })
 
     expect(userRepo.find(1)?.username).toBe(undefined)
@@ -83,7 +83,7 @@ describe('unit/PiniaORM', () => {
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD',
+      username: 'JD'
     })
 
     expect(userRepo.cache()).toBe(undefined)
@@ -105,7 +105,7 @@ describe('unit/PiniaORM', () => {
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD',
+      username: 'JD'
     })
 
     expect(userRepo.cache()).toBeInstanceOf(WeakCache)
@@ -123,15 +123,15 @@ describe('unit/PiniaORM', () => {
 
     createPiniaORM({
       cache: {
-        shared: false,
-      },
+        shared: false
+      }
     })
 
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD',
+      username: 'JD'
     })
 
     expect(userRepo.cache()).toBeInstanceOf(WeakCache)

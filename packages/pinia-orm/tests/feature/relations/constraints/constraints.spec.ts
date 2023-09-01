@@ -64,13 +64,13 @@ describe('feature/relations/constraints/constraints', () => {
     usersRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'John Doe' },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     phonesRepo.save([
       { id: 1, userId: 1, number: '123' },
       { id: 2, userId: 2, number: '345' },
-      { id: 3, userId: 3, number: '789' },
+      { id: 3, userId: 3, number: '789' }
     ])
 
     const users = usersRepo
@@ -92,17 +92,17 @@ describe('feature/relations/constraints/constraints', () => {
     usersRepo.save([
       { id: 1, name: 'John Doe', roles: [{ id: 1, pivot: { level: 1 }, phone: { id: 4, number: '999' } }, { id: 2 }, { id: 4 }] },
       { id: 2, name: 'John Doe', roles: [{ id: 1, pivot: { level: 2 } }] },
-      { id: 3, name: 'Johnny Doe' },
+      { id: 3, name: 'Johnny Doe' }
     ])
 
     phonesRepo.save([
       { id: 1, userId: 1, number: '123' },
       { id: 2, userId: 2, number: '345' },
-      { id: 3, userId: 3, number: '789' },
+      { id: 3, userId: 3, number: '789' }
     ])
     typesRepo.save([
       { id: 1, phoneId: 1, name: 'iPhone' },
-      { id: 2, phoneId: 2, name: 'Android' },
+      { id: 2, phoneId: 2, name: 'Android' }
     ])
 
     const users = usersRepo

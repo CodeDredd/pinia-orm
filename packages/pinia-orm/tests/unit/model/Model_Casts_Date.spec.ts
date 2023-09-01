@@ -16,15 +16,15 @@ describe('unit/model/Model_Casts_Date', () => {
     class User extends Model {
       static entity = 'users'
 
-      static fields() {
+      static fields () {
         return {
-          updated: this.attr(''),
+          updated: this.attr('')
         }
       }
 
-      static casts() {
+      static casts () {
         return {
-          updated: DateCast,
+          updated: DateCast
         }
       }
     }
@@ -71,14 +71,13 @@ describe('unit/model/Model_Casts_Date', () => {
       @Cast(() => DateCast) @Attr(null) declare createdAt: Date
       @Cast(() => DateCast) @Attr(null) declare updatedAt: Date
 
-      static saving(model: Model) {
-        console.log('saving')
+      static saving (model: Model) {
         model.updatedAt = expectedIsoDate2
       }
 
-      static casts() {
+      static casts () {
         return {
-          updated: DateCast,
+          updated: DateCast
         }
       }
     }
@@ -86,13 +85,13 @@ describe('unit/model/Model_Casts_Date', () => {
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
-      updated: new Date('2017-01-26'),
+      updated: new Date('2017-01-26')
     })
 
     assertState({
       users: {
-        1: { id: 1, updated: expectedISODate, createdAt: null, updatedAt: expectedIsoDate2.toISOString() },
-      },
+        1: { id: 1, updated: expectedISODate, createdAt: null, updatedAt: expectedIsoDate2.toISOString() }
+      }
     })
 
     expect(userRepo.find(1)?.updated.toISOString()).toBe(expectedISODate)

@@ -9,7 +9,7 @@ describe('unit/decorators/NonEnumerable', () => {
     @NonEnumerable
       hidden: string
 
-    constructor() {
+    constructor () {
       this.hidden = 'i am hidden'
       this.visible = 'i am visible'
     }
@@ -36,6 +36,6 @@ describe('unit/decorators/NonEnumerable', () => {
     expect(Object.values(cls)).not.toContain('i am hidden')
     expect(Object.entries(cls)).toEqual([['visible', 'i am visible']])
 
-    for (const prop in cls) expect(prop).not.toBe('hidden')
+    for (const prop in cls) { expect(prop).not.toBe('hidden') }
   })
 })

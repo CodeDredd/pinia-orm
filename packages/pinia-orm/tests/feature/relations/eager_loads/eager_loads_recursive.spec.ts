@@ -40,7 +40,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     expect(user.phone.user.phone.user).toBeInstanceOf(User)
     assertModel(user.phone.user.phone.user, {
       id: 1,
-      name: 'John Doe',
+      name: 'John Doe'
     })
   })
 
@@ -56,7 +56,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     expect(user.phone.user).toBeInstanceOf(User)
     assertModel(user.phone.user, {
       id: 1,
-      name: 'John Doe',
+      name: 'John Doe'
     })
   })
 })

@@ -5,12 +5,12 @@ export const CONFIG_DEFAULTS = {
   model: {
     withMeta: false,
     hidden: ['_meta', 'original'],
-    visible: ['*'],
+    visible: ['*']
   },
   cache: {
     shared: true,
-    provider: WeakCache,
-  },
+    provider: WeakCache
+  }
 }
 
 export const config: FilledInstallOptions = { ...CONFIG_DEFAULTS }

@@ -44,7 +44,7 @@ describe('feature/relations/belongs_to_retrieve_composite', () => {
       userId: 1,
       userSecondId: 1,
       title: 'Title 01',
-      author: { id: 1, secondId: 1, name: 'John Doe' },
+      author: { id: 1, secondId: 1, name: 'John Doe' }
     })
   })
 
@@ -61,7 +61,7 @@ describe('feature/relations/belongs_to_retrieve_composite', () => {
       userId: 1,
       userSecondId: 1,
       title: 'Title 01',
-      author: null,
+      author: null
     })
   })
 
@@ -80,7 +80,7 @@ describe('feature/relations/belongs_to_retrieve_composite', () => {
       userId: null,
       userSecondId: null,
       title: 'Title 01',
-      author: null,
+      author: null
     })
   })
 })
