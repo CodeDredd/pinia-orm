@@ -69,7 +69,7 @@
     "@types/node": "^18.17.12",
     "@types/prettier": "^2.7.3",
     "@types/uuid": "^9.0.3",
-    "@typescript-eslint/parser": "^6.5.1-alpha.15",
+    "@typescript-eslint/parser": "^6.5.1-alpha.16",
     "@vitest/coverage-v8": "^0.34.3",
     "@vitest/ui": "^0.34.3",
     "@vue/composition-api": "^1.7.2",
