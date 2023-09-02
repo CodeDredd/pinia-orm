@@ -46,7 +46,7 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "unplugin-vue-components": "^0.25.2",
-    "unplugin-icons": "^0.16.6",
+    "unplugin-icons": "^0.17.0",
     "vite-plugin-pwa": "^0.16.4",
     "vite-plugin-windicss": "^1.9.1",
     "vue-tsc": "^1.8.8",
