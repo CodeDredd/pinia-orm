@@ -47,16 +47,16 @@ describe('unit/model/Model', () => {
     userRepo.save([
       {
         id: 1,
-        lastName: 'JohnK',
+        lastName: 'JohnK'
       },
       {
         id: 2,
-        lastName: 'JaneD',
+        lastName: 'JaneD'
       },
       {
         id: 3,
-        lastName: 'TomH',
-      },
+        lastName: 'TomH'
+      }
     ])
 
     const users = computed(() => userRepo.all())

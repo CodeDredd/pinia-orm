@@ -407,7 +407,7 @@ export class Query<M extends Model = Model> {
     if (deduplicatedIds.size > 0) {
       deduplicatedIds.forEach((id) => {
         if (data[id])
-          collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' }))
+        { collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' })) }
       })
     }
     else {
@@ -488,7 +488,7 @@ export class Query<M extends Model = Model> {
    * Retrieve models by processing all filters set to the query chain.
    */
 
-  select(): Collection<M> {
+  select (): Collection<M> {
     let ids: string[] = []
     // store the original wheres so multiple selects don't alter the result
     const originalWheres = this.wheres
@@ -497,7 +497,7 @@ export class Query<M extends Model = Model> {
       const whereIds = this.wheres[whereIdsIndex].value
       ids = ((isFunction(whereIds) ? [] : isArray(whereIds) ? whereIds : [whereIds]) || []).map(String) || []
       if (ids.length > 0)
-        this.wheres = [...this.wheres.slice(0, whereIdsIndex), ...this.wheres.slice(whereIdsIndex + 1)]
+      { this.wheres = [...this.wheres.slice(0, whereIdsIndex), ...this.wheres.slice(whereIdsIndex + 1)] }
     }
 
     let models = this.storeFind(ids)

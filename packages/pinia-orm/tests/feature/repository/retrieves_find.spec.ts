@@ -105,18 +105,18 @@ describe('feature/repository/retrieves_find', () => {
 
   it('can find records with composite key', () => {
     class UserComposite extends Model {
-      static entity = 'user_composites';
-      static primaryKey = ['id', 'secondId'];
-      @Attr(null) declare id: number;
-      @Attr(null) declare secondId: number;
+      static entity = 'user_composites'
+      static primaryKey = ['id', 'secondId']
+      @Attr(null) declare id: number
+      @Attr(null) declare secondId: number
     }
 
     const userRepo = useRepo(UserComposite)
 
     userRepo.save({
       id: 1,
-      secondId: 2,
-    });
+      secondId: 2
+    })
 
     const user = userRepo.find('[1,2]')
 
