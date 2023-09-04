@@ -1,12 +1,12 @@
-import type { PropertyDecorator } from '../../Contracts'
+import type { PropertyDecorator, UidOptions } from '../../Contracts'
 
 /**
  * Create a Uid attribute property decorator.
  */
-export function Uid (): PropertyDecorator {
+export function Uid (options?: UidOptions): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
-    self.setRegistry(propertyKey, () => self.uid())
+    self.setRegistry(propertyKey, () => self.uid(options))
   }
 }

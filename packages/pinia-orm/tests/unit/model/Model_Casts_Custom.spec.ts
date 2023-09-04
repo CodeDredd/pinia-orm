@@ -79,7 +79,7 @@ describe('unit/model/Model_Casts_Custom', () => {
       }
 
       get (value?: any): any {
-        const type: 'string' = this.getParameters().type
+        const type: 'string' = this.getParameters()?.type
         return typeof value === type ? `${type} ${value}` : value
       }
 

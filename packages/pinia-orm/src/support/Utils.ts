@@ -212,13 +212,13 @@ export function assert (
   if (!condition) { throwError(message) }
 }
 
-export function generateId (size: number, urlAlphabet: string) {
+export function generateId (size: number, alphabet: string) {
   let id = ''
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   let i = size
   while (i--) {
     // `| 0` is more compact and faster than `Math.floor()`.
-    id += urlAlphabet[(Math.random() * 64) | 0]
+    id += alphabet[(Math.random() * 64) | 0]
   }
   return id
 }
@@ -232,7 +232,7 @@ export function generateKey (key: string, params?: any): string {
 
   // This check allows to generate base64 strings depending on the current environment.
   // If the window object exists, we can assume this code is running in a browser.
-  return typeof window === 'undefined'
+  return typeof process === 'undefined'
     ? btoa(stringifiedKey)
     : stringifiedKey
 }
@@ -244,16 +244,15 @@ export function getValue (obj: Record<string, any>, keys: string | string[]): an
   keys = (typeof keys === 'string') ? keys.split('.') : keys
   const key = keys.shift() as string
   // eslint-disable-next-line no-prototype-builtins
-  if (obj && obj.hasOwnProperty(key) && keys.length === 0) {
-    return obj[key]
+  if (obj && obj.hasOwnProperty(key) && keys.length === 0) { return obj[key] }
   // eslint-disable-next-line no-prototype-builtins
-  } else if (!obj || !obj.hasOwnProperty(key)) { return obj } else { return getValue(obj[key], keys) }
+  else if (!obj || !obj.hasOwnProperty(key)) { return obj } else { return getValue(obj[key], keys) }
 }
 
 /**
  * Compare two objects deep.
  */
-export function equals (a: any, b: any): boolean {
+export function equals (a: any, b: any): Boolean {
   if (a === b) { return true }
   if (a instanceof Date && b instanceof Date) { return a.getTime() === b.getTime() }
   if (!a || !b || (typeof a !== 'object' && typeof b !== 'object')) { return a === b }

@@ -12,7 +12,7 @@ describe('unit/packages/nanoid/non_secure_uid', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Uid()
+      @Uid({ alphabet: 'abcde', size: 5 })
         id!: string
     }
 

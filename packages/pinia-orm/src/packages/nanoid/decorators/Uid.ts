@@ -1,13 +1,14 @@
 import type { PropertyDecorator } from '../../../../src/decorators'
 import { UidCast } from '../casts/DefaultCast'
+import type { NanoidOptions } from '../../../../src/model/decorators/Contracts'
 
 /**
  * Create a cast for an attribute property decorator.
  */
-export function Uid (): PropertyDecorator {
+export function Uid (options?: NanoidOptions): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
-    self.setCast(propertyKey, UidCast)
+    self.setCast(propertyKey, UidCast.withParameters(options))
     self.setRegistry(propertyKey, () => self.uid())
   }
 }

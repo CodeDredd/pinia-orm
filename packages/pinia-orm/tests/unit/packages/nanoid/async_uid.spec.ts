@@ -12,7 +12,7 @@ describe('unit/packages/nanoid/async_uid', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Uid()
+      @Uid({ alphabet: 'abcde', size: 5 })
         id!: Promise<string>
     }
 
