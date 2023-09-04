@@ -1,0 +1,68 @@
+{
+  "name": "@pinia-orm/axios",
+  "version": "1.6.7",
+  "description": "Axios plugin for pinia-orm",
+  "bugs": {
+    "url": "https://github.com/CodeDredd/pinia-orm/issues"
+  },
+  "homepage": "https://github.com/CodeDredd/pinia-orm",
+  "repository": {
+    "url": "https://github.com/CodeDredd/pinia-orm.git",
+    "type": "git"
+  },
+  "keywords": [
+    "axios",
+    "pinia-orm",
+    "api"
+  ],
+  "files": [
+    "dist/",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "type": "module",
+  "funding": "https://github.com/sponsors/codedredd",
+  "jsdelivr": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "unbuild",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/axios -r 1",
+    "size": "size-limit",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --fix --ext .ts"
+  },
+  "author": {
+    "name": "Gregor Becker",
+    "email": "gregor@codedredd.de"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@size-limit/preset-small-lib": "^8.2.6",
+    "axios": "^1.5.0",
+    "axios-mock-adapter": "^1.21.5",
+    "eslint": "^8.48.0",
+    "pina-orm": "workspace:../pinia-orm",
+    "size-limit": "^8.2.6",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.mjs",
+      "limit": "2 kB"
+    }
+  ]
+}
