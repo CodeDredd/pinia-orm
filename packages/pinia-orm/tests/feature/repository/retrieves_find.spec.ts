@@ -102,4 +102,24 @@ describe('feature/repository/retrieves_find', () => {
       { id: 3, name: 'Johnny Doe' }
     ])
   })
+
+  it('can find records with composite key', () => {
+    class UserComposite extends Model {
+      static entity = 'user_composites';
+      static primaryKey = ['id', 'secondId'];
+      @Attr(null) declare id: number;
+      @Attr(null) declare secondId: number;
+    }
+
+    const userRepo = useRepo(UserComposite)
+
+    userRepo.save({
+      id: 1,
+      secondId: 2,
+    });
+
+    const user = userRepo.find('[1,2]')
+
+    expect(user).not.toBe(null)
+  })
 })
