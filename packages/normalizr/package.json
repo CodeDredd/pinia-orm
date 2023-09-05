@@ -58,7 +58,7 @@
     "@size-limit/preset-small-lib": "^8.2.6",
     "eslint": "^8.48.0",
     "immutable": "^4.3.4",
-    "size-limit": "^8.2.6",
+    "size-limit": "^9.0.0",
     "typescript": "^5.2.2",
     "unbuild": "^2.0.0"
   },
