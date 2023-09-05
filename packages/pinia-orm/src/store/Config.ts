@@ -1,5 +1,5 @@
 import { WeakCache } from '../cache/WeakCache'
-import type { InstallOptions } from './Store'
+import type { FilledInstallOptions } from './Store'
 
 export const CONFIG_DEFAULTS = {
   model: {
@@ -13,4 +13,4 @@ export const CONFIG_DEFAULTS = {
   },
 }
 
-export const config: InstallOptions = { ...CONFIG_DEFAULTS }
+export const config: FilledInstallOptions = { ...CONFIG_DEFAULTS }

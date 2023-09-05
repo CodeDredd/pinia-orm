@@ -15,14 +15,19 @@ export interface CacheConfigOptions {
 }
 
 export interface InstallOptions {
-  model: ModelConfigOptions
-  cache: CacheConfigOptions | boolean
+  model?: ModelConfigOptions
+  cache?: CacheConfigOptions | boolean
+}
+
+export interface FilledInstallOptions {
+  model: Required<ModelConfigOptions>
+  cache: Required<CacheConfigOptions | boolean>
 }
 
 /**
  * Install Pinia ORM to the store.
  */
-export function createORM (options?: Partial<InstallOptions>): PiniaPlugin {
+export function createORM (options?: InstallOptions): PiniaPlugin {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
   config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
   return () => {}

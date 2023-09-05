@@ -15,7 +15,7 @@ interface Entities {
   [name: string]: Elements
 }
 
-export function createPiniaORM (options?: Partial<InstallOptions>) {
+export function createPiniaORM (options?: InstallOptions) {
   const app = createApp({})
   const pinia = createPinia()
   pinia.use(createORM(options))
