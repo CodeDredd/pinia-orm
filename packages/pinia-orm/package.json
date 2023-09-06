@@ -18,23 +18,23 @@
   "jsdelivr": "dist/index.mjs",
   "unpkg": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "import": "./dist/index.mjs"
     },
     "./*": "./*",
     "./decorators": {
       "types": "./dist/decorators.d.ts",
-      "require": "./dist/decorators.js",
+      "require": "./dist/decorators.cjs",
       "import": "./dist/decorators.mjs"
     },
     "./casts": {
       "types": "./dist/casts.d.ts",
-      "require": "./dist/casts.js",
+      "require": "./dist/casts.cjs",
       "import": "./dist/casts.mjs"
     }
   },

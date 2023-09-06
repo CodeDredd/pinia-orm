@@ -2,11 +2,6 @@
   "name": "@stormtail/pinia-orm-root",
   "private": true,
   "packageManager": "pnpm@8.7.1",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
   "scripts": {
     "release": "node scripts/release.mjs",
     "size": "lerna run size --scope pinia-orm",
@@ -75,10 +70,6 @@
           "vue": "*"
         }
       }
-    },
-    "overrides": {
-      "ufo": "^0.8.4",
-      "std-env": "^3.1.1"
     },
     "peerDependencyRules": {
       "allowedVersions": {
