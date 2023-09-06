@@ -7,6 +7,8 @@ export type PersistOptions = { [P in PersistMethods]?: string[] }
 
 export interface Config extends AxiosRequestConfig {
   dataKey?: string
+  url?: string
+  method?: string
   dataTransformer?: (response: AxiosResponse) => Element | Element[]
   save?: boolean
   persistBy?: PersistMethods

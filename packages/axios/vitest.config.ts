@@ -2,8 +2,11 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
+    setupFiles: ['./test/setup.ts'],
+    externals: ['pinia-orm'],
     coverage: {
-      reporter: ['text', 'clover', 'json']
+      enabled: true,
+      reporter: ['lcov', 'text', 'html']
     }
   }
 })

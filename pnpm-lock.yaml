@@ -86,6 +86,9 @@ importers:
       '@size-limit/preset-small-lib':
         specifier: ^8.2.6
         version: 8.2.6(size-limit@8.2.6)
+      '@vitest/coverage-v8':
+        specifier: ^0.34.3
+        version: 0.34.3(vitest@0.34.3)
       axios:
         specifier: ^1.5.0
         version: 1.5.0
@@ -95,8 +98,11 @@ importers:
       eslint:
         specifier: ^8.48.0
         version: 8.48.0
-      pina-orm:
-        specifier: workspace:../pinia-orm
+      pinia:
+        specifier: ^2.1.6
+        version: 2.1.6(@vue/composition-api@1.7.2)(typescript@5.2.2)(vue@3.3.4)
+      pinia-orm:
+        specifier: workspace:*
         version: link:../pinia-orm
       size-limit:
         specifier: ^8.2.6
@@ -107,6 +113,12 @@ importers:
       unbuild:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.2.2)
+      vitest:
+        specifier: ^0.34.3
+        version: 0.34.3(@vitest/ui@0.34.3)(happy-dom@10.11.2)
+      vue-demi:
+        specifier: ^0.14.6
+        version: 0.14.6(@vue/composition-api@1.7.2)(vue@3.3.4)
 
   packages/normalizr:
     devDependencies:
@@ -2475,7 +2487,7 @@ packages:
       '@rollup/pluginutils': 5.0.4(rollup@3.28.1)
       commondir: 1.0.1
       estree-walker: 2.0.2
-      glob: 8.0.3
+      glob: 8.1.0
       is-reference: 1.2.1
       magic-string: 0.27.0
       rollup: 3.28.1
@@ -3258,7 +3270,7 @@ packages:
       '@vue/reactivity-transform': 3.3.4
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
-      magic-string: 0.30.0
+      magic-string: 0.30.3
       postcss: 8.4.29
       source-map-js: 1.0.2
     dev: true
@@ -6436,17 +6448,6 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
-  /glob@8.0.3:
-    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
-    engines: {node: '>=12'}
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 5.1.6
-      once: 1.4.0
-    dev: true
-
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
@@ -7827,13 +7828,6 @@ packages:
 
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.15
-    dev: true
-
-  /magic-string@0.30.0:
-    resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15

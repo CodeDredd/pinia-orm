@@ -68,7 +68,7 @@ export class Response {
 
     const options = this.getPersistOptions()
 
-    this.entities = await this.repository[method as string]({ data, ...options })
+    this.entities = await this.repository[method as string](data)
 
     this.isSaved = true
   }
@@ -83,7 +83,7 @@ export class Response {
       )
     }
 
-    await this.repository.query().delete(this.config.delete as any)
+    await this.repository.query().destroy(this.config.delete as any)
   }
 
   /**

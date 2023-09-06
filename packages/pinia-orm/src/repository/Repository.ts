@@ -61,6 +61,11 @@ export class Repository<M extends Model = Model> {
   use?: typeof Model
 
   /**
+   * The model object to be used for the custom repository.
+   */
+  static useModel?: typeof Model
+
+  /**
    * Create a new Repository instance.
    */
   constructor (database: Database, pinia?: Pinia) {
@@ -88,7 +93,8 @@ export class Repository<M extends Model = Model> {
     // passed repository to the `store.$repo` method instead of a model.
     // In this case, we'll check if the user has set model to the `use`
     // property and instantiate that.
-    if (this.use) {
+    if (this.use || this.$self().useModel) {
+      this.use = this.use ?? this.$self().useModel as typeof Model
       this.model = this.use.newRawInstance() as M
       return this
     }
@@ -96,6 +102,13 @@ export class Repository<M extends Model = Model> {
     // Else just return for now. If the user tries to call methods that require
     // a model, the error will be thrown at that time.
     return this
+  }
+
+  /**
+   * Get the constructor for this model.
+   */
+  $self (): typeof Repository {
+    return this.constructor as typeof Repository
   }
 
   /**
