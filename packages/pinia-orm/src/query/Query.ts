@@ -805,7 +805,7 @@ export class Query<M extends Model = Model> {
   insert(records: Element[]): Collection<M>
   insert(record: Element): M
   insert (records: Element | Element[]): M | Collection<M> {
-    const models = this.hydrate(records)
+    const models = this.hydrate(records, { operation: 'set', action: 'insert' })
 
     this.commit('insert', this.compile(models))
 
