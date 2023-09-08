@@ -6,7 +6,7 @@
     "release": "node scripts/release.mjs",
     "size": "lerna run size --scope pinia-orm",
     "build": "pnpm --filter './packages/**' build",
-    "build:stub": "pnpm --filter './packages/**' prepack --stub",
+    "build:stub": "pnpm --filter './packages/**' build --stub",
     "sponsor": "sponsorkit",
     "build:pinia-orm": "lerna run build --scope pinia-orm",
     "play": "lerna run play",
