@@ -102,12 +102,18 @@ describe('feature/repository/retrieves_has_or', () => {
       .where('name', 'Johnny Doe')
       .get()
 
+    const users2 = userRepo
+      .orWhereHas('posts')
+      .where('name', 'Johnny Doe')
+      .get()
+
     const expected = [
       { id: 2, name: 'Jane Doe' },
       { id: 3, name: 'Johnny Doe' }
     ]
 
     expect(users).toHaveLength(2)
+    expect(users2).toHaveLength(3)
     assertInstanceOf(users, User)
     assertModels(users, expected)
   })
@@ -135,12 +141,18 @@ describe('feature/repository/retrieves_has_or', () => {
       .where('name', 'Johnny Doe')
       .get()
 
+    const users2 = userRepo
+      .orWhereDoesntHave('posts')
+      .where('name', 'Johnny Doe')
+      .get()
+
     const expected = [
       { id: 2, name: 'Jane Doe' },
       { id: 3, name: 'Johnny Doe' }
     ]
 
     expect(users).toHaveLength(2)
+    expect(users2).toHaveLength(1)
     assertInstanceOf(users, User)
     assertModels(users, expected)
   })

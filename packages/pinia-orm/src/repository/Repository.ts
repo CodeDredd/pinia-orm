@@ -116,7 +116,7 @@ export class Repository<M extends Model = Model> {
    * Returns the pinia store used with this model
    */
   piniaStore<S extends DataStoreState = DataStoreState> () {
-    return useDataStore<S>(this.model.$entity(), this.model.$piniaOptions(), this.query())(this.pinia)
+    return useDataStore<S>(this.model.$storeName(), this.model.$piniaOptions(), this.query())(this.pinia)
   }
 
   /**
