@@ -7,6 +7,7 @@
     "size": "lerna run size --scope pinia-orm",
     "build": "pnpm --filter './packages/**' build",
     "build:stub": "pnpm --filter './packages/**' build --stub",
+    "build:prepare": "pnpm --filter './packages/**' dev:prepare",
     "sponsor": "sponsorkit",
     "build:pinia-orm": "lerna run build --scope pinia-orm",
     "play": "lerna run play",
