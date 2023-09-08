@@ -32,7 +32,7 @@ jobs:
 
       - run: pnpm i
 
-      - run: pnpm run build:ci
+      - run: pnpm run build
 
       - name: Run unit tests
         run: pnpm run test
@@ -52,7 +52,7 @@ jobs:
 
       - run: pnpm i
 
-      - run: pnpm run build:ci
+      - run: pnpm run build
 
       - name: Run test coverage
         run: pnpm run test:coverage
@@ -78,7 +78,7 @@ jobs:
 
       - run: pnpm i
 
-      - run: pnpm run build:ci
+      - run: pnpm run build
 
       - name: Run eslint
         run: pnpm run lint
@@ -99,5 +99,5 @@ jobs:
           node-version: 18.x
 
       - run: pnpm i
-      - run: pnpm run build:ci
+      - run: pnpm run build
       - run: pnpm run size
