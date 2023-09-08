@@ -22,3 +22,7 @@ export interface Config extends AxiosRequestConfig {
 export interface GlobalConfig extends Config {
   axios?: AxiosInstance
 }
+
+export interface InstallConfig {
+  axios?: GlobalConfig
+}

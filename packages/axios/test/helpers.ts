@@ -29,18 +29,3 @@ export function fillState (entities: Entities): void {
 export function assertState (entities: Entities, additionalStoreProperties?: Record<string, any>): void {
   expect(getActivePinia()?.state.value).toEqual(createState(entities, additionalStoreProperties))
 }
-
-class ApiRepository<M extends Model> extends Repository<M> {
-  axios = axios
-  globalApiConfig = {}
-  apiConfig = {}
-
-  api () {
-    return useAxiosApi(this)
-  }
-}
-
-export function useApiRepo<M extends Model> (model: M): ApiRepository<M> {
-  ApiRepository.useModel = model
-  return useRepo(ApiRepository)
-}

@@ -17,11 +17,13 @@ export interface CacheConfigOptions {
 export interface InstallOptions {
   model?: ModelConfigOptions
   cache?: CacheConfigOptions | boolean
+  [key: string]: any
 }
 
 export interface FilledInstallOptions {
   model: Required<ModelConfigOptions>
   cache: Required<CacheConfigOptions | boolean>
+  [key: string]: any
 }
 
 /**
