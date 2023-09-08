@@ -2,26 +2,22 @@
   "name": "@stormtail/pinia-orm-root",
   "private": true,
   "packageManager": "pnpm@8.7.1",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
   "scripts": {
     "release": "node scripts/release.mjs",
-    "size": "lerna run size --scope pinia-orm",
-    "build": "lerna run build --ignore @pina-orm/playground-*",
+    "cleanup": "rimraf 'packages/**/node_modules' 'playground/node_modules' 'node_modules'",
+    "size": "pnpm --filter './packages/**' size",
+    "build": "pnpm --filter './packages/**' build",
+    "build:stub": "pnpm --filter './packages/**' build --stub",
+    "build:prepare": "pnpm --filter './packages/**' dev:prepare",
     "sponsor": "sponsorkit",
-    "build:ci": "lerna run build --ignore @pina-orm/playground-* --ignore @pinia-orm/nuxt",
     "build:pinia-orm": "lerna run build --scope pinia-orm",
     "play": "lerna run play",
-    "build:dts": "lerna run build:dts --parallel",
     "format": "prettier -c --parser typescript \"packages/*/{src,__tests__,e2e}/**/*.[jt]s?(x)\"",
     "format:fix": "pnpm run format --write",
-    "lint": "lerna run lint --ignore @pina-orm/playground-* --ignore @pina-orm/playground-nuxt3",
-    "lint:fix": "lerna run lint:fix --ignore @pina-orm/playground-* --ignore @pina-orm/playground-nuxt3",
-    "test": "lerna run test --scope pinia-orm",
-    "test:coverage": "lerna run coverage --scope pinia-orm",
+    "lint": "pnpm --filter './packages/**' lint",
+    "lint:fix": "pnpm --filter './packages/**' lint:fix",
+    "test": "pnpm --filter './packages/**' test",
+    "test:coverage": "pnpm --filter './packages/**' coverage",
     "test:types": "tsc --build ./tsconfig.json",
     "test:dts": "lerna run test:dts",
     "docs:api": "lerna run docs:api --scope @pinia/docs"
@@ -30,7 +26,7 @@
     "@lerna-lite/cli": "^2.5.0",
     "@lerna-lite/run": "^2.5.0",
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^18.17.12",
+    "@types/node": "^18.17.14",
     "chalk": "^4.1.2",
     "conventional-changelog-cli": "^4.0.0",
     "enquirer": "^2.4.1",
@@ -75,10 +71,6 @@
           "vue": "*"
         }
       }
-    },
-    "overrides": {
-      "ufo": "^0.8.4",
-      "std-env": "^3.1.1"
     },
     "peerDependencyRules": {
       "allowedVersions": {

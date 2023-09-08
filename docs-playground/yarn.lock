@@ -1194,10 +1194,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@iconify/json@^2.2.109":
-  version "2.2.109"
-  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.109.tgz#e661eef1bf770d9d03000d1f562d103ad9f973d8"
-  integrity sha512-Hi5InevdpLbDOjaJ1a0e5wQq8x8lDcNh3xyCq7yMyH/N/wniKa2vGUzzLQWLwENYcMm81b50jCAt7R4cOkx1BQ==
+"@iconify/json@^2.2.111":
+  version "2.2.111"
+  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.111.tgz#3aad0ad1e5440b940dd0d40bfe9ef5a23c78a456"
+  integrity sha512-/LpDXn355r1TJIooRiRjoEHpfmvmDBfWQFtP04bo9xO05NOfQpZwadCfXZw4d3eIF0SfIlPiLMHt3UfKOCRIMw==
   dependencies:
     "@iconify/types" "*"
     pathe "^1.1.0"
@@ -1396,10 +1396,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.3.tgz#432c89796eab539b7a30b7b8801a727b585238a4"
   integrity sha512-LJgzOEwWuMTBxHzgBR/fhhBOWrvBjvO+zPteUgbbuQi80rYIZHrk1mNbRUqPZqSLP2H7Rwt1EFLL/tNLD1Xx/w==
 
-"@types/node@^18.17.12":
-  version "18.17.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.12.tgz#c6bd7413a13e6ad9cfb7e97dd5c4e904c1821e50"
-  integrity sha512-d6xjC9fJ/nSnfDeU0AMDsaJyb1iHsqCSOdi84w4u+SlN/UgQdY5tRhpMzaFYsI4mnpvgTivEaQd0yOUhAtOnEQ==
+"@types/node@^18.17.14":
+  version "18.17.14"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.14.tgz#a621ad26e7eb076d6846dd3d39557ddf9d89f04b"
+  integrity sha512-ZE/5aB73CyGqgQULkLG87N9GnyGe5TcQjv34pwS8tfBs1IkCh0ASM69mydb2znqd6v0eX+9Ytvk6oQRqu8T1Vw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -4489,10 +4489,10 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unplugin-icons@^0.16.6:
-  version "0.16.6"
-  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.16.6.tgz#dd16bdac740408600bdc483a8d95320074d79fe9"
-  integrity sha512-jL70sAC7twp4hI/MTfm+vyvTRtHqiEIzf3XOjJz7yzhMEEQnk5Ey5YIXRAU03Mc4BF99ITvvnBzfyRZee86OeA==
+unplugin-icons@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.17.0.tgz#790d47fe8c7704ea265bc0bb9837853128b9791c"
+  integrity sha512-gMv66eY/Hj64heM55XrfDH3LUCWI51mtkBVUPVl9VkpvLgAYhdVe9nRuzu6p+idmCLSQVq7xiPxQcD4aXCgW5A==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
     "@antfu/utils" "^0.7.6"

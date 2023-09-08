@@ -20,19 +20,23 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
 
       - run: pnpm i
 
-      - run: pnpm run build:ci
+      - run: pnpm run build:stub
+      - run: pnpm run build:prepare
+      - run: pnpm run build
 
       - name: Run unit tests
         run: pnpm run test
@@ -40,19 +44,20 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
 
-      - run: pnpm run build:ci
+      - run: pnpm run build:stub
+      - run: pnpm run build:prepare
+      - run: pnpm run build
 
       - name: Run test coverage
         run: pnpm run test:coverage
@@ -66,19 +71,20 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
 
-      - run: pnpm run build:ci
+      - run: pnpm run build:stub
+      - run: pnpm run build:prepare
+      - run: pnpm run build
 
       - name: Run eslint
         run: pnpm run lint
@@ -88,16 +94,17 @@ jobs:
     env:
       CI_JOB_NUMBER: 1
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
-      - run: pnpm run build:ci
+      - run: pnpm run build:stub
+      - run: pnpm run build:prepare
+      - run: pnpm run build
       - run: pnpm run size

@@ -3,8 +3,9 @@ import type { FilledInstallOptions } from './Store'
 
 export const CONFIG_DEFAULTS = {
   model: {
+    namespace: '',
     withMeta: false,
-    hidden: ['_meta', 'original'],
+    hidden: ['_meta'],
     visible: ['*']
   },
   cache: {

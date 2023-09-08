@@ -161,7 +161,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit (name: string, payload?: any) {
-    const store = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions(), this)(this.pinia)
+    const store = useDataStore(this.model.$storeName(), this.model.$piniaOptions(), this)(this.pinia)
     if (name && typeof store[name] === 'function') { store[name](payload, false) }
 
     if (this.cache && ['get', 'all', 'insert', 'flush', 'delete', 'update', 'destroy'].includes(name)) { this.cache.clear() }
@@ -805,7 +805,7 @@ export class Query<M extends Model = Model> {
   insert(records: Element[]): Collection<M>
   insert(record: Element): M
   insert (records: Element | Element[]): M | Collection<M> {
-    const models = this.hydrate(records)
+    const models = this.hydrate(records, { operation: 'set', action: 'insert' })
 
     this.commit('insert', this.compile(models))
 

@@ -73,6 +73,12 @@ export class Model {
   static baseEntity: string
 
   /**
+   * Define a namespace if you have multiple equal entity names.
+   * Resulting in "{namespace}/{entity}"
+   */
+  static namespace: string
+
+  /**
    * The primary key for the model.
    */
   static primaryKey: string | string[] = 'id'
@@ -599,6 +605,20 @@ export class Model {
    */
   $config (): ModelConfigOptions {
     return this.$self().config
+  }
+
+  /**
+   * Get the namespace.
+   */
+  $namespace (): String {
+    return this.$self().namespace ?? config.model.namespace
+  }
+
+  /**
+   * Get the store name.
+   */
+  $storeName (): string {
+    return (this.$namespace() ? this.$namespace() + '/' : '') + this.$baseEntity()
   }
 
   /**

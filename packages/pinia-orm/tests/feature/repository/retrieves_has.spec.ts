@@ -172,11 +172,14 @@ describe('feature/repository/retrieves_has', () => {
       query.where('title', 'Title 03')
     }).get()
 
+    const users3 = userRepo.whereHas('post').get()
+
     const expected = [
       { id: 2, name: 'Jane Doe' }
     ]
 
     expect(users).toHaveLength(1)
+    expect(users3).toHaveLength(2)
     assertInstanceOf(users, User)
     assertModels(users, expected)
     assertModels(users2, [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }])
@@ -202,12 +205,15 @@ describe('feature/repository/retrieves_has', () => {
       query.where('title', 'Title 03')
     }).get()
 
+    const users2 = userRepo.whereDoesntHave('posts').get()
+
     const expected = [
       { id: 2, name: 'Jane Doe' },
       { id: 3, name: 'Johnny Doe' }
     ]
 
     expect(users).toHaveLength(2)
+    expect(users2).toHaveLength(1)
     assertInstanceOf(users, User)
     assertModels(users, expected)
   })
