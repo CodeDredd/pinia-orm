@@ -112,8 +112,6 @@ describe('feature/repository/retrieves_has_or', () => {
       { id: 3, name: 'Johnny Doe' }
     ]
 
-
-
     expect(users).toHaveLength(2)
     expect(users2).toHaveLength(3)
     assertInstanceOf(users, User)
