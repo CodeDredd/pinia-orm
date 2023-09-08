@@ -617,7 +617,7 @@ export class Model {
   /**
    * Get the store name.
    */
-  $storeName (): String {
+  $storeName (): string {
     return (this.$namespace() ? this.$namespace() + '/' : '') + this.$baseEntity()
   }
 
