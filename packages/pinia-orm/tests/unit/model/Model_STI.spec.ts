@@ -305,7 +305,7 @@ describe('unit/model/Model_STI', () => {
         2: { id: 2, type: 'ADULT', name: 'Jane Doe', job: 'Software Engineer' }
       }
     })
-    const persons = useRepo(Person).all()
+    const persons = useRepo(Person).query().all()
     expect(persons[0]).toBeInstanceOf(Person)
     expect(persons[0]).not.toHaveProperty('type')
     expect(persons[1]).toBeInstanceOf(Adult)

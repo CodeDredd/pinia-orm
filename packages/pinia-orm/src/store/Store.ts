@@ -6,6 +6,7 @@ import { CONFIG_DEFAULTS, config } from './Config'
 export interface ModelConfigOptions {
   withMeta?: boolean
   hidden?: string[]
+  namespace?: string
   visible?: string[]
 }
 

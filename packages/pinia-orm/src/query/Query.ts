@@ -161,7 +161,7 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit (name: string, payload?: any) {
-    const store = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions(), this)(this.pinia)
+    const store = useDataStore(this.model.$storeName(), this.model.$piniaOptions(), this)(this.pinia)
     if (name && typeof store[name] === 'function') { store[name](payload, false) }
 
     if (this.cache && ['get', 'all', 'insert', 'flush', 'delete', 'update', 'destroy'].includes(name)) { this.cache.clear() }
