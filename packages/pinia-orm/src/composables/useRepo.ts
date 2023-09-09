@@ -3,6 +3,7 @@ import type { Model } from '../model/Model'
 import { Repository } from '../repository/Repository'
 import { Database } from '../database/Database'
 import type { Constructor } from '../types'
+import { registerPlugins } from '../store/Plugins'
 
 export function useRepo<R extends Repository>(
   repository: R | Constructor<R>,
@@ -20,9 +21,13 @@ export function useRepo (
 ) {
   const database = new Database()
 
+  const { config } = registerPlugins()
+
   const repository: Repository = ModelOrRepository._isRepository
     ? new ModelOrRepository(database, pinia).initialize()
     : new Repository(database, pinia).initialize(ModelOrRepository)
+
+  repository.setConfig(config)
 
   try {
     const typeModels = Object.values(repository.getModel().$types())
