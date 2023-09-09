@@ -13,9 +13,9 @@ export interface PiniaOrmPlugin {
 
 export const plugins: PiniaOrmPlugin[] = []
 
-export function registerPlugins(repository: Repository) {
+export function registerPlugins (repository: Repository) {
   let config = globalConfig
-  plugins.forEach(plugin => {
+  plugins.forEach((plugin) => {
     const pluginConfig = plugin({ config, repository, model: repository.getModel() })
     config = { ...config, ...pluginConfig.config }
   })

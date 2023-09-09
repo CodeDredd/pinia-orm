@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { Model, useRepo } from '../../../src'
+import { Model, useRepo, PiniaOrmPlugin } from '../../../src'
 import { Attr, Str } from '../../../src/decorators'
 import { createPiniaORM } from '../../helpers'
-import { PiniaOrmPlugin } from '../../../src'
 
 describe('feature/plugin/plugin', () => {
   class User extends Model {

@@ -1,4 +1,3 @@
-import type { PiniaPlugin } from 'pinia'
 import type { WeakCache } from '../cache/WeakCache'
 import type { Model } from '../model/Model'
 import { CONFIG_DEFAULTS, config } from './Config'
@@ -37,7 +36,7 @@ export function createORM (options?: InstallOptions) {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
   config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
   const orm = {
-    use(plugin: PiniaOrmPlugin) {
+    use (plugin: PiniaOrmPlugin) {
       plugins.push(plugin)
       return this
     }
