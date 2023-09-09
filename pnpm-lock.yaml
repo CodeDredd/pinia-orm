@@ -30,8 +30,8 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2
       conventional-changelog-cli:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
       enquirer:
         specifier: ^2.4.1
         version: 2.4.1
@@ -4256,13 +4256,13 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /conventional-changelog-cli@4.0.0:
-    resolution: {integrity: sha512-BRI/4/MmQi1KKSpXx+jync+vS81A3LO1dtiZGufUatcTgkxD6w3tlRSaoqGlGX/Oggj9aezcH/Xj3lgBtiEQkA==}
+  /conventional-changelog-cli@4.1.0:
+    resolution: {integrity: sha512-MscvILWZ6nWOoC+p/3Nn3D2cVLkjeQjyZPUr0bQ+vUORE/SPrkClJh8BOoMNpS4yk+zFJ5LlgXACxH6XGQoRXA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
       add-stream: 1.0.0
-      conventional-changelog: 5.0.0
+      conventional-changelog: 5.1.0
       meow: 12.1.0
       tempfile: 5.0.0
     dev: true
@@ -4272,15 +4272,15 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /conventional-changelog-conventionalcommits@7.0.0:
-    resolution: {integrity: sha512-iu2Zt5f7ESwpGJStnbHAG2fL/kBA5h/s1AuDYGKqb7gQcXpWlyfGiF8wM+mfFD5M/cYt9Hl3iWNDm3n72qBA1w==}
+  /conventional-changelog-conventionalcommits@7.0.2:
+    resolution: {integrity: sha512-NKXYmMR/Hr1DevQegFB4MwfM5Vv0m4UIxKZTTYuD98lpTknaZlSRrDOG4X7wIXpGkfsYxZTghUN+Qq+T0YQI7w==}
     engines: {node: '>=16'}
     dependencies:
       compare-func: 2.0.0
     dev: true
 
-  /conventional-changelog-core@6.0.0:
-    resolution: {integrity: sha512-7WPwzTp3eRMot/2mbTAHF8m/0Ue4F/R/sMpSjmhBYi/+xnW2SqnXL/FMuYqEpNC2v3rjzRZ4p+9tYcKfHn02Cg==}
+  /conventional-changelog-core@7.0.0:
+    resolution: {integrity: sha512-UYgaB1F/COt7VFjlYKVE/9tTzfU3VUq47r6iWf6lM5T7TlOxr0thI63ojQueRLIpVbrtHK4Ffw+yQGduw2Bhdg==}
     engines: {node: '>=16'}
     dependencies:
       '@hutson/parse-repository-url': 5.0.0
@@ -4288,8 +4288,7 @@ packages:
       conventional-changelog-writer: 7.0.0
       conventional-commits-parser: 5.0.0
       git-raw-commits: 4.0.0
-      git-remote-origin-url: 2.0.0
-      git-semver-tags: 6.0.0
+      git-semver-tags: 7.0.0
       hosted-git-info: 7.0.0
       normalize-package-data: 6.0.0
       read-pkg: 8.1.0
@@ -4323,8 +4322,8 @@ packages:
       compare-func: 2.0.0
     dev: true
 
-  /conventional-changelog-preset-loader@4.0.0:
-    resolution: {integrity: sha512-xYGvKMkJs8o6vnKDbo2v5VcalZmH54lVU+OCvFQvxj3AQKRMJhbKwvBVsSXfQSuhaG9r6mdK8TIMOaiwiStasg==}
+  /conventional-changelog-preset-loader@4.1.0:
+    resolution: {integrity: sha512-HozQjJicZTuRhCRTq4rZbefaiCzRM2pr6u2NL3XhrmQm4RMnDXfESU6JKu/pnKwx5xtdkYfNCsbhN5exhiKGJA==}
     engines: {node: '>=16'}
     dev: true
 
@@ -4341,21 +4340,21 @@ packages:
       split2: 4.2.0
     dev: true
 
-  /conventional-changelog@5.0.0:
-    resolution: {integrity: sha512-k0c3lCtY3+k75gyrIoO7WEyBd4HLxu8QmTTPxM4D+vKk9wN06GZ/iaVJXQsGZae3Cezb02Is5PJ70fia3zZG8Q==}
+  /conventional-changelog@5.1.0:
+    resolution: {integrity: sha512-aWyE/P39wGYRPllcCEZDxTVEmhyLzTc9XA6z6rVfkuCD2UBnhV/sgSOKbQrEG5z9mEZJjnopjgQooTKxEg8mAg==}
     engines: {node: '>=16'}
     dependencies:
       conventional-changelog-angular: 7.0.0
       conventional-changelog-atom: 4.0.0
       conventional-changelog-codemirror: 4.0.0
-      conventional-changelog-conventionalcommits: 7.0.0
-      conventional-changelog-core: 6.0.0
+      conventional-changelog-conventionalcommits: 7.0.2
+      conventional-changelog-core: 7.0.0
       conventional-changelog-ember: 4.0.0
       conventional-changelog-eslint: 5.0.0
       conventional-changelog-express: 4.0.0
       conventional-changelog-jquery: 5.0.0
       conventional-changelog-jshint: 4.0.0
-      conventional-changelog-preset-loader: 4.0.0
+      conventional-changelog-preset-loader: 4.1.0
     dev: true
 
   /conventional-commits-filter@4.0.0:
@@ -6344,16 +6343,8 @@ packages:
       split2: 4.2.0
     dev: true
 
-  /git-remote-origin-url@2.0.0:
-    resolution: {integrity: sha512-eU+GGrZgccNJcsDH5LkXR3PB9M958hxc7sbA8DFJjrv9j4L2P/eZfKhM+QD6wyzpiv+b1BpK0XrYCxkovtjSLw==}
-    engines: {node: '>=4'}
-    dependencies:
-      gitconfiglocal: 1.0.0
-      pify: 2.3.0
-    dev: true
-
-  /git-semver-tags@6.0.0:
-    resolution: {integrity: sha512-v5BL6psuUy+Ftuo99141XlOIDoJtKw5+YyDANS7fknSP0iT4cVIanc3toDsH4K+VpIWc19l2/xkwQmXMfloeUA==}
+  /git-semver-tags@7.0.0:
+    resolution: {integrity: sha512-U2oXCUEiXATRx1jhpmpvSPKrr7FZp4ifcfNy0Bfiyailu5uqTPU/ETc+bLB+m3+dz5pY5atq0tna7grOqzedyA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
@@ -6372,12 +6363,6 @@ packages:
     resolution: {integrity: sha512-5FvPJP/70WkIprlUZ33bm4UAaFdjcLkJLpWft1BeZKqwR0uhhNGoKwlUaPtVb4LxCSQ++erHapRak9kWGj+FCA==}
     dependencies:
       git-up: 7.0.0
-    dev: true
-
-  /gitconfiglocal@1.0.0:
-    resolution: {integrity: sha512-spLUXeTAVHxDtKsJc8FkFVgFtMdEN9qPGpL23VfSHx4fP4+Ds097IXLvymbnDH8FnmxX5Nr9bPw3A+AQ6mWEaQ==}
-    dependencies:
-      ini: 1.3.8
     dev: true
 
   /github-from-package@0.0.0:
