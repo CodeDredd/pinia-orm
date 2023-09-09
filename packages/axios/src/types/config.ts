@@ -24,5 +24,5 @@ export interface GlobalConfig extends Config {
 }
 
 export interface InstallConfig {
-  axios?: GlobalConfig
+  axiosApi?: GlobalConfig
 }

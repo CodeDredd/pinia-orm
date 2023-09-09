@@ -4,8 +4,8 @@ import { useAxiosApi } from '../index'
 import { Config } from '../types/config'
 
 export class AxiosRepository<M extends Model = Model> extends Repository<M> {
-  axios: AxiosInstance = config?.axios?.axios || null
-  globalApiConfig = config?.axios || {}
+  axios: AxiosInstance = config?.axiosApi?.axios || null
+  globalApiConfig = config?.axiosApi || {}
   apiConfig: Config = {}
 
   api () {
