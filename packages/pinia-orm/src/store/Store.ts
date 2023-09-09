@@ -9,7 +9,6 @@ export interface ModelConfigOptions {
   hidden?: string[]
   namespace?: string
   visible?: string[]
-  [key: string]: any
 }
 
 export interface CacheConfigOptions {
@@ -27,14 +26,16 @@ export interface InstallOptions {
 export interface FilledInstallOptions {
   model: Required<ModelConfigOptions>
   cache: Required<CacheConfigOptions | boolean>
-  [key: string]: any
+}
+
+export interface CreatePiniaOrm {
+  use(plugin: PiniaOrmPlugin): this
 }
 
 /**
  * Install Pinia ORM to the store.
  */
-export function createORM (options?: InstallOptions): PiniaPlugin {
-  config.plugins = options?.plugins
+export function createORM (options?: InstallOptions) {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
   config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
   const orm = {

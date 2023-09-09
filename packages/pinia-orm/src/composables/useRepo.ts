@@ -21,13 +21,9 @@ export function useRepo (
 ) {
   const database = new Database()
 
-  const { config } = registerPlugins()
-
   const repository: Repository = ModelOrRepository._isRepository
     ? new ModelOrRepository(database, pinia).initialize()
     : new Repository(database, pinia).initialize(ModelOrRepository)
-
-  repository.setConfig(config)
 
   try {
     const typeModels = Object.values(repository.getModel().$types())
@@ -38,5 +34,5 @@ export function useRepo (
     }
   } catch (e) {}
 
-  return repository
+  return registerPlugins(repository)
 }

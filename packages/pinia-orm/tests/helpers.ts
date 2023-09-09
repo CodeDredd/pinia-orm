@@ -7,7 +7,7 @@ import type { Mock } from 'vitest'
 import { expect, vi } from 'vitest'
 
 import { createApp } from 'vue-demi'
-import type { Collection, Elements, InstallOptions, Model } from '../src'
+import type { Collection, Elements, InstallOptions, Model, PiniaOrmPlugin } from '../src'
 import * as Utils from '../src/support/Utils'
 import { createORM } from '../src'
 
@@ -15,10 +15,14 @@ interface Entities {
   [name: string]: Elements
 }
 
-export function createPiniaORM (options?: InstallOptions) {
+export function createPiniaORM (options?: InstallOptions, plugins?: PiniaOrmPlugin[]) {
   const app = createApp({})
   const pinia = createPinia()
-  pinia.use(createORM(options))
+  const piniaOrm = createORM(options)
+  if (plugins) {
+    plugins.forEach(plugin => piniaOrm().use(plugin))
+  }
+  pinia.use(piniaOrm)
   app.use(pinia)
   setActivePinia(pinia)
 }

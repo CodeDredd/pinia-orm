@@ -4,25 +4,23 @@ import { config as globalConfig } from './Config'
 export interface PiniaOrmPluginContext {
   model: Model
   repository: Repository
-  config: FilledInstallOptions
+  config: FilledInstallOptions & { [key: string]: any }
 }
 
 export interface PiniaOrmPlugin {
-  (context: PiniaOrmPluginContext): void | Partial<PiniaOrmPluginContext>
+  (context: PiniaOrmPluginContext): PiniaOrmPluginContext
 }
 
 export const plugins: PiniaOrmPlugin[] = []
 
-export function registerPlugins() {
+export function registerPlugins(repository: Repository) {
   let config = globalConfig
   plugins.forEach(plugin => {
-    const pluginConfig = plugin({ config: config })?.config
-    if (pluginConfig) {
-      config = { ...config, ...pluginConfig }
-    }
+    const pluginConfig = plugin({ config, repository, model: repository.getModel() })
+    config = { ...config, ...pluginConfig.config }
   })
 
-  return {
-    config
-  }
+  repository.setConfig(config)
+
+  return repository
 }

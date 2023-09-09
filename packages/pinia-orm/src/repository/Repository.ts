@@ -69,7 +69,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Global config
    */
-  config: FilledInstallOptions
+  config: FilledInstallOptions & { [key: string]: any }
 
   /**
    * Create a new Repository instance.
@@ -94,7 +94,7 @@ export class Repository<M extends Model = Model> {
   initialize (model?: ModelConstructor<M>): this {
     if (this.config.cache && this.config.cache !== true) {
       // eslint-disable-next-line new-cap
-      this.queryCache = (this.config.cache.shared ? cache : new config.cache.provider()) as WeakCache<string, M[]>
+      this.queryCache = (this.config.cache.shared ? cache : new this.config.cache.provider()) as WeakCache<string, M[]>
     }
 
     // If there's a model passed in, just use that and return immediately.
