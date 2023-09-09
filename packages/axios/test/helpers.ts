@@ -1,9 +1,6 @@
-import { createPinia, getActivePinia, setActivePinia } from 'pinia'
+import { getActivePinia } from 'pinia'
 import { expect } from 'vitest'
-import { Repository, Model, useRepo } from 'pinia-orm'
 import type { Elements } from 'pinia-orm'
-import axios from 'axios'
-import { useAxiosApi } from '../src'
 
 interface Entities {
   [name: string]: Elements

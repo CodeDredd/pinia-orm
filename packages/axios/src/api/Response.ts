@@ -1,12 +1,13 @@
-import { AxiosResponse } from 'axios'
-import { Repository, Element, Collection } from 'pinia-orm'
+import type { AxiosResponse } from 'axios'
+import { Element, Collection } from 'pinia-orm'
 import { Config, PersistMethods, PersistOptions } from '../types/config'
+import { AxiosRepository } from '../repository/AxiosRepository'
 
 export class Response {
   /**
    * The repository that called the request.
    */
-  repository: typeof Repository
+  repository: AxiosRepository
 
   /**
    * The request configuration.
@@ -31,7 +32,7 @@ export class Response {
   /**
    * Create a new response instance.
    */
-  constructor (repository: typeof Repository, config: Config, response: AxiosResponse) {
+  constructor (repository: AxiosRepository, config: Config, response: AxiosResponse) {
     this.repository = repository
     this.config = config
     this.response = response
@@ -66,9 +67,9 @@ export class Response {
       method = 'save'
     }
 
-    const options = this.getPersistOptions()
+    const result = await this.repository[method](data)
 
-    this.entities = await this.repository[method as string](data)
+    this.entities = Array.isArray(result) ? result : [result]
 
     this.isSaved = true
   }
@@ -119,7 +120,7 @@ export class Response {
       .reduce((carry, key) => {
         carry[key] = persistOptions[key]
         return carry
-      }, {})
+      }, {} as PersistOptions)
   }
 
   /**

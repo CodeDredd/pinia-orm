@@ -1,13 +1,13 @@
-import { Repository } from 'pinia-orm'
-import { AxiosInstance, AxiosResponse } from 'axios'
+import type { AxiosInstance, AxiosResponse } from 'axios'
 import { Config } from '../types/config'
+import { AxiosRepository } from '../repository/AxiosRepository'
 import { Response } from './Response'
 
 export class Request {
   /**
    * The repository class.
    */
-  repository: typeof Repository
+  repository: AxiosRepository
 
   /**
    * The default config.
@@ -19,7 +19,7 @@ export class Request {
   /**
    * Create a new api instance.
    */
-  constructor (repository: typeof Repository) {
+  constructor (repository: AxiosRepository) {
     this.repository = repository
 
     this.registerActions()
@@ -47,7 +47,7 @@ export class Request {
    * Register actions from the repository config.
    */
   private registerActions (): void {
-    const actions = { ...this.repository.apiConfig.actions, ...this.repository.getModel().$config()?.api?.actions }
+    const actions = { ...this.repository.apiConfig.actions, ...this.repository.getModel().$config()?.axios?.actions }
 
     if (!actions) {
       return

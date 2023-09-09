@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, expect, it, beforeEach, afterEach } from 'vitest'
+import { describe, it, beforeEach, afterEach } from 'vitest'
 import { assertState } from '../helpers'
 import { useApiRepo } from '../../src'
 

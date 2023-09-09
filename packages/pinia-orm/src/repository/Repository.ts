@@ -63,7 +63,7 @@ export class Repository<M extends Model = Model> {
   /**
    * The model object to be used for the custom repository.
    */
-  static useModel?: typeof Model
+  static useModel?: Model
 
   /**
    * Create a new Repository instance.
@@ -94,7 +94,7 @@ export class Repository<M extends Model = Model> {
     // In this case, we'll check if the user has set model to the `use`
     // property and instantiate that.
     if (this.use || this.$self().useModel) {
-      this.use = this.use ?? this.$self().useModel as typeof Model
+      this.use = (this.use ?? this.$self().useModel) as typeof Model
       this.model = this.use.newRawInstance() as M
       return this
     }

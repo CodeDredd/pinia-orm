@@ -1,5 +1,5 @@
 import { Element, Model } from 'pinia-orm'
-import { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
+import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
 
 export type PersistMethods = 'save' | 'insert'
 

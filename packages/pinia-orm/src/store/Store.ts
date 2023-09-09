@@ -8,6 +8,7 @@ export interface ModelConfigOptions {
   hidden?: string[]
   namespace?: string
   visible?: string[]
+  [key: string]: any
 }
 
 export interface CacheConfigOptions {
