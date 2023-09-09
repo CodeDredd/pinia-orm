@@ -124,7 +124,7 @@ describe('unit/PiniaORM', () => {
       @Str('') declare name: string
       @Str('') declare username: string
     }
-    createPiniaORM({ model: { nameSpace: 'orm' } })
+    createPiniaORM({ model: { namespace: 'orm' } })
 
     const userRepo = useRepo(User)
     const user = userRepo.save({

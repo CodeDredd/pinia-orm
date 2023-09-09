@@ -19,8 +19,6 @@ export interface CacheConfigOptions {
 export interface InstallOptions {
   model?: ModelConfigOptions
   cache?: CacheConfigOptions | boolean
-  plugins: Record<string, any>
-  [key: string]: any
 }
 
 export interface FilledInstallOptions {
