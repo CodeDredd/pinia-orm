@@ -101,7 +101,7 @@ export class Model {
   /**
    * The global install options
    */
-  static config: ModelConfigOptions
+  static config: ModelConfigOptions & { [key: string]: any }
 
   /**
    * The type key for the model.
@@ -603,7 +603,7 @@ export class Model {
   /**
    * Get the model config.
    */
-  $config (): ModelConfigOptions {
+  $config (): ModelConfigOptions & { [key: string]: any } {
     return this.$self().config
   }
 
