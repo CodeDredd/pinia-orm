@@ -18,7 +18,7 @@ beforeEach(() => {
   const pinia = createPinia()
   const piniaOrm = createORM()
   piniaOrm().use(piniaOrmPluginAxios({
-    axios: axios
+    axios
   }))
   pinia.use(piniaOrm)
   app.use(pinia)
