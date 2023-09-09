@@ -47,7 +47,7 @@ export class Request {
    * Register actions from the repository config.
    */
   private registerActions (): void {
-    const actions = { ...this.repository.apiConfig.actions, ...this.repository.getModel().$config()?.axios?.actions }
+    const actions = { ...this.repository.config.axiosApi?.actions, ...this.repository.getModel().$config()?.axiosApi?.actions }
 
     if (!actions) {
       return

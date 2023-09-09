@@ -28,7 +28,7 @@ describe('Feature - Request - Actions', () => {
       }
 
       static config = {
-        api: {
+        axiosApi: {
           actions: {
             fetch: { method: 'get', url: '/users' }
           }
@@ -61,7 +61,7 @@ describe('Feature - Request - Actions', () => {
       }
 
       static config = {
-        api: {
+        axiosApi: {
           actions: {
             fetch (this: Request, url: string): Promise<Response> {
               return this.get(url)
