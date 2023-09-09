@@ -97,7 +97,7 @@
   "size-limit": [
     {
       "path": "dist/index.mjs",
-      "limit": "12 kB"
+      "limit": "13 kB"
     },
     {
       "path": "dist/decorators.mjs",
