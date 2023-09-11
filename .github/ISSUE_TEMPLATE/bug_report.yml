@@ -6,8 +6,9 @@ body:
     attributes:
       value: |
         Please use a template below to create a minimal reproduction
-        👉 https://stackblitz.com/github/nuxt/starter/tree/v3-stackblitz
-        👉 https://codesandbox.io/s/github/nuxt/starter/tree/v3-codesandbox
+        👉 https://pinia-orm-play.codedredd.de/ (pinia-orm playground, pick this if you are not using nuxt) 
+        👉 https://stackblitz.com/github/nuxt/starter/tree/v3-stackblitzk (basic nuxt on stackblitz)
+        👉 https://codesandbox.io/s/github/nuxt/starter/tree/v3-codesandbox (basic nuxt on codesandbox)
   - type: textarea
     id: bug-env
     attributes:
