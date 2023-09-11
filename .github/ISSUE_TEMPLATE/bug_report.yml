@@ -13,10 +13,10 @@ body:
     id: bug-env
     attributes:
       label: Environment
-      description: You can use e.g. `npx nuxi info` for nuxt to fill this section
+      description: Put *playground* when in the playground. Otherwise you could use `npx nuxi info` for nuxt to fill this section.
       placeholder: Environment
     validations:
-      required: true
+      required: false 
   - type: textarea
     id: reproduction
     attributes:
