@@ -4593,10 +4593,10 @@ vite@^4.4.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vscode-html-languageservice@^5.0.7:
-  version "5.0.7"
-  resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-5.0.7.tgz#8d27773e0197799a9db777ee4fc134cf1c669d84"
-  integrity sha512-jX+7/kUXrdOaRT8vqYR/jLxrGDib+Far8I7n/A6apuEl88k+mhIHZPwc6ezuLeiCKUCaLG4b0dqFwjVa7QL3/w==
+vscode-html-languageservice@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-5.1.0.tgz#ba4f302eda5d8c248bcf5d173d862f241c4b48d3"
+  integrity sha512-cGOu5+lrz+2dDXSGS15y24lDtPaML1T8K/SfqgFbLmCZ1btYOxceFieR+ybTS2es/A67kRc62m2cKFLUQPWG5g==
   dependencies:
     "@vscode/l10n" "^0.0.16"
     vscode-languageserver-textdocument "^1.0.8"
