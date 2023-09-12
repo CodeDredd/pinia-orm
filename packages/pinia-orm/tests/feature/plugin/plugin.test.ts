@@ -24,4 +24,17 @@ describe('feature/plugin/plugin', () => {
 
     expect(userRepo.config.apiConfig).toBe('test')
   })
+
+  it('can extend repository', () => {
+    const plugin: PiniaOrmPlugin = (context) => {
+      context.repository.test = () => { return 'test' }
+      return context
+    }
+
+    createPiniaORM(undefined, [plugin])
+
+    const userRepo = useRepo(User)
+
+    expect(userRepo.test()).toBe('test')
+  })
 })

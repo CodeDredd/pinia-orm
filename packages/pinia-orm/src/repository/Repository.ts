@@ -24,6 +24,7 @@ import { config as globalConfig } from '../store/Config'
 import { FilledInstallOptions } from '@/store/Store'
 
 export class Repository<M extends Model = Model> {
+  [index: string]: any
   /**
    * A special flag to indicate if this is the repository class or not. It's
    * used when retrieving repository instance from `store.$repo()` method to
