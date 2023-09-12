@@ -122,4 +122,107 @@ describe('feature/relations/morph_many_save', () => {
       }
     })
   })
+
+  it('can save complicated polymorphs', () => {
+    Model.clearRegistries()
+    class Comment extends Model {
+      static entity = "comments";
+      static fields() {
+        return {
+          id: this.number(0),
+          url: this.string(""),
+          content_id: this.number(0),
+          content_type: this.string(""),
+          content: this.morphTo([Video, Post], "content_id", "content_type"),
+          creator_id: this.string(null),
+          creator: this.belongsTo(Person, "creator_id"),
+        };
+      }
+    }
+
+    class Person extends Model {
+      static entity = "person";
+      static primaryKey = "id";
+
+      static fields() {
+        return {
+          id: this.uid(),
+          job: this.attr(""),
+          comments: this.hasMany(Comment, "creator_id"),
+        };
+      }
+    }
+
+    class Video extends Model {
+      static entity = "videos";
+      static fields() {
+        return {
+          id: this.number(0),
+          link: this.string(""),
+          comments: this.morphMany(Comment, "content_id", "content_type"),
+        };
+      }
+    }
+    class Post extends Model {
+      static entity = "posts";
+      static fields() {
+        return {
+          id: this.number(0),
+          title: this.string(""),
+          comments: this.morphMany(Comment, "content_id", "content_type"),
+        };
+      }
+    }
+    const person = useRepo(Person);
+
+    person.save({
+      id: "p",
+      job: "dev",
+      comments: [
+        {
+          id: 1,
+          content_id: 4,
+          content_type: 'posts',
+          content: { id: 4, title: 'a post' }, // comment this out to remove the error
+          creator_id: 'p'
+        },
+        {
+          id: 2,
+          content_id: 3,
+          content_type: "videos",
+          content: { id: 3, link: 'test' }, // comment this out to remove the error
+          creator_id: 'p'
+        },
+      ],
+    });
+
+    assertState({
+      posts: {
+        4: { id: 4, title: 'a post' }
+      },
+      videos: {
+        3: { id: 3, link: 'test' }
+      },
+      comments: {
+        1: {
+          id: 1,
+          url: '',
+          creator_id: 'p',
+          content_id: 4,
+          content_type: 'posts',
+        },
+        2: {
+          id: 2,
+          url: '',
+          creator_id: 'p',
+          content_id: 3,
+          content_type: 'videos',
+        }
+      },
+      person: {
+        'p': { id: 'p', job: 'dev' }
+      }
+
+    })
+  })
 })
