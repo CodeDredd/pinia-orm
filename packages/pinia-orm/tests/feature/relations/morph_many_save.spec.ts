@@ -183,14 +183,14 @@ describe('feature/relations/morph_many_save', () => {
           id: 1,
           content_id: 4,
           content_type: 'posts',
-          content: { id: 4, title: 'a post' }, // comment this out to remove the error
+          content: { id: 4, title: 'a post' },
           creator_id: 'p'
         },
         {
           id: 2,
           content_id: 3,
           content_type: 'videos',
-          content: { id: 3, link: 'test' }, // comment this out to remove the error
+          content: { id: 3, link: 'test' },
           creator_id: 'p'
         }
       ]
