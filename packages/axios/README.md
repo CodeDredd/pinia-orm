@@ -7,7 +7,7 @@
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![License][license-src]][license-href]
 
-> Intuitive, type safe and flexible ORM for Pinia based on [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
+> Pinia ORM Axios Plugin based on [Vuex ORM Axios](https://github.com/vuex-orm/axios)
 
 - [✨ &nbsp;Release Notes](https://pinia-orm.codedredd.de/changelog)
 - [📖 &nbsp;Documentation](https://pinia-orm.codedredd.de)
@@ -18,20 +18,23 @@
 - [One-time donation via PayPal](https://paypal.me/dredd1984)
 - [👾 &nbsp;Playground](https://pinia-orm-play.codedredd.de)
 
-<!--sponsors start-->
-
-
-<!--sponsors end-->
+<p align="center">
+  <a href="https://pinia-orm.codedredd.de/sponsorkit/sponsors.png">
+    <img src='https://pinia-orm.codedredd.de/sponsorkit/sponsors.svg'/>
+  </a>
+</p>
 
 ## License
 
+Made with ❤️
+
 [MIT](http://opensource.org/licenses/MIT)
 
-[npm-version-src]: https://img.shields.io/npm/v/@pinia-orm/nuxt/latest.svg
-[npm-version-href]: https://npmjs.com/package/@pinia-orm/nuxt
-[npm-downloads-src]: https://img.shields.io/npm/dm/@pinia-orm/nuxt.svg
-[npm-downloads-href]: https://npmjs.com/package/@pinia-orm/nuxt
+[npm-version-src]: https://img.shields.io/npm/v/@pinia-orm/axios/latest.svg
+[npm-version-href]: https://npmjs.com/package/@pinia-orm/axios
+[npm-downloads-src]: https://img.shields.io/npm/dm/@pinia-orm/axios.svg
+[npm-downloads-href]: https://npmjs.com/package/@pinia-orm/axios
 [github-actions-ci-src]: https://github.com/codedredd/pinia-orm/actions/workflows/build.yml/badge.svg
 [github-actions-ci-href]: https://github.com/codedredd/pinia-orm/actions?query=workflow%3Abuild
-[license-src]: https://img.shields.io/npm/l/@pinia-orm/nuxt.svg
-[license-href]: https://npmjs.com/package/@pinia-orm/nuxt
+[license-src]: https://img.shields.io/npm/l/@pinia-orm/axios.svg
+[license-href]: https://npmjs.com/package/@pinia-orm/axios

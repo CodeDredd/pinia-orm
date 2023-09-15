@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
 import { describe, expect, it, beforeEach, afterEach } from 'vitest'
 import { assertState } from '../helpers'
-import { useApiRepo } from '../../src'
+import { useAxiosRepo } from '../../src'
 
 describe('Feature - Response - Save', () => {
   let mock: MockAdapter
@@ -29,7 +29,7 @@ describe('Feature - Response - Save', () => {
   it('can save response data manually', async () => {
     mock.onGet('/api/users').reply(200, { id: 1, name: 'John Doe' })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     const response = await userStore.api().get('/api/users')
 
@@ -49,7 +49,7 @@ describe('Feature - Response - Save', () => {
   it('throws error if `delete` option is not set', async () => {
     mock.onGet('/api/users').reply(200, { id: 1, name: 'John Doe' })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     const response = await userStore.api().get('/api/users')
 

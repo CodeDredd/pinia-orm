@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
 import { describe, expect, it, beforeEach, afterEach } from 'vitest'
 import { assertState } from '../helpers'
-import { useApiRepo } from '../../src'
+import { useAxiosRepo } from '../../src'
 
 describe('Feature - Request - Save', () => {
   let mock: MockAdapter
@@ -31,7 +31,7 @@ describe('Feature - Request - Save', () => {
       data: { id: 1, name: 'John Doe' }
     })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     const result = await userStore.api().request({
       url: '/users',

@@ -2,8 +2,8 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
 import { describe, expect, it, beforeEach, afterEach } from 'vitest'
-import { assertState } from '../helpers'
-import { useApiRepo } from '../../src'
+import { assertState, createPiniaORM } from '../helpers'
+import { useAxiosRepo } from '../../src'
 
 describe('Feature - Request', () => {
   let mock: MockAdapter
@@ -32,7 +32,7 @@ describe('Feature - Request', () => {
       { id: 2, name: 'Jane Doe' }
     ])
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().get('/api/users')
 
@@ -52,7 +52,7 @@ describe('Feature - Request', () => {
       ]
     })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().get('/api/users', { dataKey: 'data' })
 
@@ -70,7 +70,7 @@ describe('Feature - Request', () => {
       { id: 2, name: 'Jane Doe' }
     ])
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().post('/api/users')
 
@@ -90,7 +90,7 @@ describe('Feature - Request', () => {
       ]
     })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().post('/api/users', {}, { dataKey: 'data' })
 
@@ -108,7 +108,7 @@ describe('Feature - Request', () => {
       { id: 2, name: 'Jane Doe' }
     ])
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().put('/api/users')
 
@@ -128,7 +128,7 @@ describe('Feature - Request', () => {
       ]
     })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().put('/api/users', {}, { dataKey: 'data' })
 
@@ -146,7 +146,7 @@ describe('Feature - Request', () => {
       { id: 2, name: 'Jane Doe' }
     ])
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().patch('/api/users')
 
@@ -166,7 +166,7 @@ describe('Feature - Request', () => {
       ]
     })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().patch('/api/users', {}, { dataKey: 'data' })
 
@@ -184,7 +184,7 @@ describe('Feature - Request', () => {
       { id: 2, name: 'Jane Doe' }
     ])
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().delete('/api/users')
 
@@ -204,7 +204,7 @@ describe('Feature - Request', () => {
       ]
     })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().delete('/api/users', { dataKey: 'data' })
 
@@ -217,17 +217,14 @@ describe('Feature - Request', () => {
   })
 
   it('throws error if `axios` is not set', async () => {
-    mock.onGet('/api/users').reply(200, { id: 1, name: 'John Doe' })
+    const userStore = useAxiosRepo(User).setAxios(null)
 
-    const userStore = useApiRepo(User)
-
-    const response = await userStore.api().get('/api/users')
 
     try {
-      await response.delete()
+      const axios = userStore.api().axios
     } catch (e) {
       expect(e.message).toBe(
-        '[Vuex ORM Axios] Could not delete records because the `delete` option is not set.'
+        '[Vuex ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'
       )
 
       return

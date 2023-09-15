@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
 import { describe, it, beforeEach, afterEach } from 'vitest'
 import { assertState } from '../helpers'
-import { useApiRepo } from '../../src'
+import { useAxiosRepo } from '../../src'
 import type { Request, Response } from '../../src'
 
 describe('Feature - Request - Actions', () => {
@@ -38,7 +38,7 @@ describe('Feature - Request - Actions', () => {
 
     mock.onGet('/users').reply(200, { id: 1, name: 'John' })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().fetch()
 
@@ -73,7 +73,7 @@ describe('Feature - Request - Actions', () => {
 
     mock.onGet('/users').reply(200, { id: 1, name: 'John' })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     await userStore.api().fetch('/users')
 

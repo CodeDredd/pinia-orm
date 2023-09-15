@@ -11,4 +11,9 @@ export class AxiosRepository<M extends Model = Model> extends Repository<M> {
   api () {
     return useAxiosApi(this)
   }
+
+  setAxios (axios: AxiosInstance) {
+    this.axios = axios
+    return this
+  }
 }

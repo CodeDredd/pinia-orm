@@ -61,7 +61,7 @@ export class Response {
       console.warn(
         '[Vuex ORM Axios] The "persistBy" option configured is not a ' +
         'recognized value. Response data will be persisted by the ' +
-        'default `insertOrUpdate` method.'
+        'default `save` method.'
       )
 
       method = 'save'
@@ -108,20 +108,20 @@ export class Response {
   /**
    * Get persist options if any set in config.
    */
-  protected getPersistOptions (): PersistOptions | undefined {
-    const persistOptions = this.config.persistOptions
-
-    if (!persistOptions || typeof persistOptions !== 'object') {
-      return
-    }
-
-    return Object.keys(persistOptions)
-      .filter(this.validatePersistAction) // Filter to avoid polluting the payload.
-      .reduce((carry, key) => {
-        carry[key] = persistOptions[key]
-        return carry
-      }, {} as PersistOptions)
-  }
+  // protected getPersistOptions (): PersistOptions | undefined {
+  //   const persistOptions = this.config.persistOptions
+  //
+  //   if (!persistOptions || typeof persistOptions !== 'object') {
+  //     return
+  //   }
+  //
+  //   return Object.keys(persistOptions)
+  //     .filter(this.validatePersistAction) // Filter to avoid polluting the payload.
+  //     .reduce((carry, key) => {
+  //       carry[key] = persistOptions[key]
+  //       return carry
+  //     }, {} as PersistOptions)
+  // }
 
   /**
    * Validate the given data to ensure the Vuex ORM persist methods accept it.

@@ -9,6 +9,7 @@ export interface Config extends AxiosRequestConfig {
   dataKey?: string
   url?: string
   method?: string
+  data?: any
   dataTransformer?: (response: AxiosResponse) => Element | Element[]
   save?: boolean
   persistBy?: PersistMethods

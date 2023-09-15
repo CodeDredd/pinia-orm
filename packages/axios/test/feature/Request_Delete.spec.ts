@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
 import { describe, it, beforeEach, afterEach } from 'vitest'
 import { assertState } from '../helpers'
-import { useApiRepo } from '../../src'
+import { useAxiosRepo } from '../../src'
 
 describe('Feature - Request - Delete', () => {
   let mock: MockAdapter
@@ -29,7 +29,7 @@ describe('Feature - Request - Delete', () => {
   it('can delete a record after the api call', async () => {
     mock.onDelete('/users/1').reply(200, { ok: true })
 
-    const userStore = useApiRepo(User)
+    const userStore = useAxiosRepo(User)
 
     userStore.save([
       { id: 1, name: 'John' },
