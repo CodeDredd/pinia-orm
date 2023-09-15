@@ -2,7 +2,7 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
 import { describe, expect, it, beforeEach, afterEach } from 'vitest'
-import { assertState, createPiniaORM } from '../helpers'
+import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 
 describe('Feature - Request', () => {
@@ -216,12 +216,12 @@ describe('Feature - Request', () => {
     })
   })
 
-  it('throws error if `axios` is not set', async () => {
+  it('throws error if `axios` is not set', () => {
     const userStore = useAxiosRepo(User).setAxios(null)
-
 
     try {
       const axios = userStore.api().axios
+      console.warn(axios)
     } catch (e) {
       expect(e.message).toBe(
         '[Vuex ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'

@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios'
 import { Element, Collection } from 'pinia-orm'
-import { Config, PersistMethods, PersistOptions } from '../types/config'
+import { Config, PersistMethods } from '../types/config'
 import { AxiosRepository } from '../repository/AxiosRepository'
 
 export class Response {
