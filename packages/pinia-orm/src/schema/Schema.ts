@@ -113,7 +113,8 @@ export class Schema {
       // If the `key` is not `null`, that means this record is a nested
       // relationship of the parent model. In this case, we'll attach any
       // missing foreign keys to the record first.
-      if (key !== null) { (parent.$fields()[key] as Relation).attach(parentRecord, record) }
+      console.log('schema', parent.$fields(), key, model.$entity(), parent.$entity())
+      if (key !== null) { (parent.$fields()[key] as Relation)?.attach(parentRecord, record) }
 
       // Next, we'll generate any missing primary key fields defined as
       // uid field.
