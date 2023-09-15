@@ -11,6 +11,8 @@ export interface PiniaOrmPlugin {
   (context: PiniaOrmPluginContext): PiniaOrmPluginContext
 }
 
+export const definePiniaOrmPlugin = (plugin: PiniaOrmPlugin) => plugin
+
 export const plugins: PiniaOrmPlugin[] = []
 
 export function registerPlugins (repository: Repository) {

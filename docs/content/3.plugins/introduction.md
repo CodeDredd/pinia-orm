@@ -1,0 +1,40 @@
+# Introduction
+
+Pinia ORM can also be extended by a plugin system which you can use to extend the
+`Repository` or the global `config`
+
+## Writing a custom plugin
+
+Use `definePiniaOrmPlugin` to create a custom Pinia ORM plugin. The context option gives you
+`model`, `repository` and `config` which you can edit
+
+````ts{piniaOrmPlugin.ts}
+export default definePiniaOrmPlugin((context) => {
+  context.config.apiConfig = 'test'
+  return context
+})
+````
+
+Now add your custom plugin to the Pinia ORM instance:
+
+````ts
+import { createPinia, setActivePinia } from 'pinia'
+import { createORM } from 'pinia-orm'
+import { createApp } from 'vue'
+import { piniaOrmPlugin } from './plugins'
+
+const app = createApp({})
+const pinia = createPinia()
+const piniaOrm = createORM()
+piniaOrm().use(piniaOrmPlugin)
+pinia.use(piniaOrm)
+app.use(pinia)
+setActivePinia(pinia)
+````
+
+Now everytime e.g. you use `useRepo` which uses the global config you can do this
+
+````ts
+console.log(useRepo(User).config.apiConfig)
+// 'test'
+````

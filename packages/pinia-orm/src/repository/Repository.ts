@@ -21,7 +21,7 @@ import { cache } from '../cache/SharedWeakCache'
 import { cache as hydratedDataCache } from '../cache/SharedHydratedDatakCache'
 import type { WeakCache } from '../cache/WeakCache'
 import { config as globalConfig } from '../store/Config'
-import { FilledInstallOptions } from '@/store/Store'
+import { FilledInstallOptions } from '../store/Store'
 
 export class Repository<M extends Model = Model> {
   [index: string]: any

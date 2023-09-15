@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { Model, useRepo, PiniaOrmPlugin } from '../../../src'
+import { Model, useRepo, definePiniaOrmPlugin } from '../../../src'
 import { Attr, Str } from '../../../src/decorators'
 import { createPiniaORM } from '../../helpers'
 
@@ -13,10 +13,10 @@ describe('feature/plugin/plugin', () => {
   }
 
   it('can add extra config to the configuration', () => {
-    const plugin: PiniaOrmPlugin = (context) => {
+    const plugin = definePiniaOrmPlugin((context) => {
       context.config.apiConfig = 'test'
       return context
-    }
+    })
 
     createPiniaORM(undefined, [plugin])
 
@@ -26,10 +26,10 @@ describe('feature/plugin/plugin', () => {
   })
 
   it('can extend repository', () => {
-    const plugin: PiniaOrmPlugin = (context) => {
+    const plugin = definePiniaOrmPlugin((context) => {
       context.repository.test = () => { return 'test' }
       return context
-    }
+    })
 
     createPiniaORM(undefined, [plugin])
 

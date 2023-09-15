@@ -73,8 +73,6 @@ describe('feature/relations/eager_loads_all', () => {
     const posts = postsRepo.withAllRecursive().get()
     const onlyPosts2 = postsRepo.all()
 
-    console.log(posts, onlyPosts)
-
     assertModels(posts, [{
       id: 1,
       userId: 1,
