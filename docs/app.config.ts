@@ -15,7 +15,8 @@ export default defineAppConfig({
       collapsed: true,
     },
     header: {
-      logo: true
+      logo: true,
+      navigation: true
     },
     footer: {
       credits: {
