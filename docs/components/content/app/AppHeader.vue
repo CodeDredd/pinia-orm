@@ -38,10 +38,6 @@ watch(Escape, () => {
         <div class="section center">
           <AppHeaderLogo />
           <AppNavigation v-if="config.header.navigation" />
-          <DocsSearchButton
-            class="docs-search-button-desktop"
-            @click="showDocsSearch = true"
-          />
           <DocsSearch v-model="showDocsSearch" />
         </div>
 
@@ -49,6 +45,10 @@ watch(Escape, () => {
           <!-- <AppTextDirection /> -->
           <DocsSearchButton
             class="docs-search-button-mobile"
+            @click="showDocsSearch = true"
+          />
+          <DocsSearchButton
+            class="docs-search-button-desktop !w-auto"
             @click="showDocsSearch = true"
           />
           <AppColorMode />
