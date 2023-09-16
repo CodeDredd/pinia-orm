@@ -57,7 +57,7 @@ describe('Feature - Response - Save', () => {
       await response.delete()
     } catch (e) {
       expect(e.message).toBe(
-        '[Vuex ORM Axios] Could not delete records because the `delete` option is not set.'
+        '[Pinia ORM Axios] Could not delete records because the `delete` option is not set.'
       )
 
       return

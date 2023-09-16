@@ -224,7 +224,7 @@ describe('Feature - Request', () => {
       console.warn(axios)
     } catch (e) {
       expect(e.message).toBe(
-        '[Vuex ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'
+        '[Pinia ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'
       )
 
       return

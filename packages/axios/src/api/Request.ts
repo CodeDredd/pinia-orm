@@ -36,7 +36,7 @@ export class Request {
   get axios (): AxiosInstance {
     if (!this.repository.axios) {
       throw new Error(
-        '[Vuex ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'
+        '[Pinia ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'
       )
     }
 

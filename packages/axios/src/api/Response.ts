@@ -20,7 +20,7 @@ export class Response {
   response: AxiosResponse
 
   /**
-   * Entities created by Vuex ORM.
+   * Entities created by Pinia ORM.
    */
   entities: Collection | null = null
 
@@ -46,7 +46,7 @@ export class Response {
 
     if (!this.validateData(data)) {
       console.warn(
-        '[Vuex ORM Axios] The response data could not be saved to the store ' +
+        '[Pinia ORM Axios] The response data could not be saved to the store ' +
         'because it is not an object or an array. You might want to use ' +
         '`dataTransformer` option to handle non-array/object response ' +
         'before saving it to the store.'
@@ -59,7 +59,7 @@ export class Response {
 
     if (!this.validatePersistAction(method)) {
       console.warn(
-        '[Vuex ORM Axios] The "persistBy" option configured is not a ' +
+        '[Pinia ORM Axios] The "persistBy" option configured is not a ' +
         'recognized value. Response data will be persisted by the ' +
         'default `save` method.'
       )
@@ -80,7 +80,7 @@ export class Response {
   async delete (): Promise<void> {
     if (this.config.delete === undefined) {
       throw new Error(
-        '[Vuex ORM Axios] Could not delete records because the `delete` option is not set.'
+        '[Pinia ORM Axios] Could not delete records because the `delete` option is not set.'
       )
     }
 
@@ -124,7 +124,7 @@ export class Response {
   // }
 
   /**
-   * Validate the given data to ensure the Vuex ORM persist methods accept it.
+   * Validate the given data to ensure the Pinia ORM persist methods accept it.
    */
   protected validateData (data: any): data is Element | Element[] {
     return data !== null && typeof data === 'object'
@@ -132,7 +132,7 @@ export class Response {
 
   /**
    * Validate the given string as to ensure it correlates with the available
-   * Vuex ORM persist methods.
+   * Pinia ORM persist methods.
    */
   protected validatePersistAction (action: string): action is PersistMethods {
     return ['save', 'insert'].includes(action)
