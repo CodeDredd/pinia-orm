@@ -1,7 +1,7 @@
-import type { PiniaPlugin } from 'pinia'
 import type { WeakCache } from '../cache/WeakCache'
 import type { Model } from '../model/Model'
 import { CONFIG_DEFAULTS, config } from './Config'
+import { PiniaOrmPlugin, plugins } from './Plugins'
 
 export interface ModelConfigOptions {
   withMeta?: boolean
@@ -25,11 +25,21 @@ export interface FilledInstallOptions {
   cache: Required<CacheConfigOptions | boolean>
 }
 
+export interface CreatePiniaOrm {
+  use(plugin: PiniaOrmPlugin): this
+}
+
 /**
  * Install Pinia ORM to the store.
  */
-export function createORM (options?: InstallOptions): PiniaPlugin {
+export function createORM (options?: InstallOptions) {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
   config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
-  return () => {}
+  const orm = {
+    use (plugin: PiniaOrmPlugin) {
+      plugins.push(plugin)
+      return this
+    }
+  }
+  return () => orm
 }

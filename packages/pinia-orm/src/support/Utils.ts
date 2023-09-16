@@ -1,4 +1,4 @@
-import type { Element } from '@'
+import type { Element } from '../../src'
 
 interface SortableArray<T> {
   criteria: any[]

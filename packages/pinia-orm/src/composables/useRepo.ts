@@ -3,9 +3,10 @@ import type { Model } from '../model/Model'
 import { Repository } from '../repository/Repository'
 import { Database } from '../database/Database'
 import type { Constructor } from '../types'
+import { registerPlugins } from '../store/Plugins'
 
 export function useRepo<R extends Repository>(
-  repository: R,
+  repository: R | Constructor<R>,
   pinia?: Pinia,
 ): R
 
@@ -33,5 +34,5 @@ export function useRepo (
     }
   } catch (e) {}
 
-  return repository
+  return registerPlugins(repository)
 }

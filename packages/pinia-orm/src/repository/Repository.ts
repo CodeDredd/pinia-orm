@@ -20,9 +20,11 @@ import { useDataStore } from '../composables/useDataStore'
 import { cache } from '../cache/SharedWeakCache'
 import { cache as hydratedDataCache } from '../cache/SharedHydratedDatakCache'
 import type { WeakCache } from '../cache/WeakCache'
-import { config } from '../store/Config'
+import { config as globalConfig } from '../store/Config'
+import { FilledInstallOptions } from '../store/Store'
 
 export class Repository<M extends Model = Model> {
+  [index: string]: any
   /**
    * A special flag to indicate if this is the repository class or not. It's
    * used when retrieving repository instance from `store.$repo()` method to
@@ -61,21 +63,39 @@ export class Repository<M extends Model = Model> {
   use?: typeof Model
 
   /**
+   * The model object to be used for the custom repository.
+   */
+  static useModel?: Model
+
+  /**
+   * Global config
+   */
+  config: FilledInstallOptions & { [key: string]: any }
+
+  /**
    * Create a new Repository instance.
    */
   constructor (database: Database, pinia?: Pinia) {
+    this.config = globalConfig
     this.database = database
     this.pinia = pinia
     this.hydratedDataCache = hydratedDataCache as Map<string, M>
   }
 
   /**
+   * Set the global config
+   */
+  setConfig (config: FilledInstallOptions) {
+    this.config = config
+  }
+
+  /**
    * Initialize the repository by setting the model instance.
    */
   initialize (model?: ModelConstructor<M>): this {
-    if (config.cache && config.cache !== true) {
+    if (this.config.cache && this.config.cache !== true) {
       // eslint-disable-next-line new-cap
-      this.queryCache = (config.cache.shared ? cache : new config.cache.provider()) as WeakCache<string, M[]>
+      this.queryCache = (this.config.cache.shared ? cache : new this.config.cache.provider()) as WeakCache<string, M[]>
     }
 
     // If there's a model passed in, just use that and return immediately.
@@ -88,7 +108,8 @@ export class Repository<M extends Model = Model> {
     // passed repository to the `store.$repo` method instead of a model.
     // In this case, we'll check if the user has set model to the `use`
     // property and instantiate that.
-    if (this.use) {
+    if (this.use || this.$self().useModel) {
+      this.use = (this.use ?? this.$self().useModel) as typeof Model
       this.model = this.use.newRawInstance() as M
       return this
     }
@@ -96,6 +117,13 @@ export class Repository<M extends Model = Model> {
     // Else just return for now. If the user tries to call methods that require
     // a model, the error will be thrown at that time.
     return this
+  }
+
+  /**
+   * Get the constructor for this model.
+   */
+  $self (): typeof Repository {
+    return this.constructor as typeof Repository
   }
 
   /**
