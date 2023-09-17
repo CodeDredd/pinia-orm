@@ -1,7 +1,7 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "packageManager": "pnpm@8.7.5",
+  "packageManager": "pnpm@8.7.6",
   "scripts": {
     "release": "node scripts/release.mjs",
     "cleanup": "rimraf 'packages/**/node_modules' 'playground/node_modules' 'node_modules'",
