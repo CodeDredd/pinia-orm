@@ -3,6 +3,7 @@ import type { FilledInstallOptions } from './Store'
 
 export const CONFIG_DEFAULTS = {
   model: {
+    namespace: '',
     withMeta: false,
     hidden: ['_meta'],
     visible: ['*']
@@ -13,4 +14,4 @@ export const CONFIG_DEFAULTS = {
   }
 }
 
-export const config: FilledInstallOptions = { ...CONFIG_DEFAULTS }
+export const config: FilledInstallOptions & { [key: string]: any } = { ...CONFIG_DEFAULTS }

@@ -1,7 +1,7 @@
 {
   "extends": [
     "config:base",
-    ":prHourlyLimit4",
+    "group:allNonMajor",
     ":semanticCommitTypeAll(chore)"
   ],
   "meteor": {
@@ -18,7 +18,7 @@
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "matchFiles": ["packages/pinia-orm/package.json", "packages/nuxt/package.json"],
+      "matchFiles": ["packages/pinia-orm/package.json", "packages/nuxt/package.json", "packages/axios/package.json", "packages/normalizr/package.json"],
       "excludePackageNames": ["vue2"],
       "matchUpdateTypes": [
         "minor",

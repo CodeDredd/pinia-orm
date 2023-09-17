@@ -1,6 +1,8 @@
 import type { Pinia } from 'pinia'
+import { acceptHMRUpdate } from 'pinia'
 import {
-  assert, compareWithOperator, generateKey,
+  compareWithOperator,
+  generateKey,
   groupBy,
   isArray,
   isEmpty,
@@ -14,6 +16,7 @@ import { MorphTo } from '../model/attributes/relations/MorphTo'
 import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
+import type { DataStore } from '../composables/useDataStore'
 import type { WeakCache } from '../cache/WeakCache'
 import type { CacheConfig } from '../types'
 import type { HasMany } from '../model/attributes/relations/HasMany'
@@ -161,7 +164,12 @@ export class Query<M extends Model = Model> {
    * Commit a store action and get the data
    */
   protected commit (name: string, payload?: any) {
-    const store = useDataStore(this.model.$baseEntity(), this.model.$piniaOptions(), this)(this.pinia)
+    const store = useDataStore(this.model.$storeName(), this.model.$piniaOptions(), this)(this.pinia)
+
+    if (import.meta.hot) {
+      import.meta.hot.accept(acceptHMRUpdate(store as DataStore, import.meta.hot))
+    }
+
     if (name && typeof store[name] === 'function') { store[name](payload, false) }
 
     if (this.cache && ['get', 'all', 'insert', 'flush', 'delete', 'update', 'destroy'].includes(name)) { this.cache.clear() }
@@ -402,8 +410,17 @@ export class Query<M extends Model = Model> {
     const data = this.commit('all')
     const collection = [] as Collection<M>
 
-    for (const id in data) {
-      if (ids === undefined || ids.length === 0 || ids.includes(id)) { collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' })) }
+    const deduplicatedIds = new Set(ids)
+
+    if (deduplicatedIds.size > 0) {
+      deduplicatedIds.forEach((id) => {
+        if (data[id])
+        { collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' })) }
+      })
+    }
+    else {
+      Object.values(data)
+        .forEach((value: any) => collection.push(this.hydrate(value, { visible: this.visible, hidden: this.hidden, operation: 'get' })))
     }
 
     return collection
@@ -478,16 +495,26 @@ export class Query<M extends Model = Model> {
   /**
    * Retrieve models by processing all filters set to the query chain.
    */
+
   select (): Collection<M> {
-    const whereIds = this.wheres.find(where => where.field === this.model.$getKeyName())?.value
     let ids: string[] = []
-    if (whereIds) { ids = ((isFunction(whereIds) ? [] : isArray(whereIds) ? whereIds : [whereIds]) || []).map(String) || [] }
+    // store the original wheres so multiple selects don't alter the result
+    const originalWheres = this.wheres
+    const whereIdsIndex = this.wheres.findIndex(where => where.field === this.model.$getKeyName())
+    if (whereIdsIndex > -1) {
+      const whereIds = this.wheres[whereIdsIndex].value
+      ids = ((isFunction(whereIds) ? [] : isArray(whereIds) ? whereIds : [whereIds]) || []).map(String) || []
+      if (ids.length > 0)
+      { this.wheres = [...this.wheres.slice(0, whereIdsIndex), ...this.wheres.slice(whereIdsIndex + 1)] }
+    }
 
     let models = this.storeFind(ids)
 
     models = this.filterWhere(models)
     models = this.filterOrder(models)
     models = this.filterLimit(models)
+
+    this.wheres = originalWheres
 
     return models
   }
@@ -786,7 +813,7 @@ export class Query<M extends Model = Model> {
   insert(records: Element[]): Collection<M>
   insert(record: Element): M
   insert (records: Element | Element[]): M | Collection<M> {
-    const models = this.hydrate(records)
+    const models = this.hydrate(records, { operation: 'set', action: 'insert' })
 
     this.commit('insert', this.compile(models))
 
@@ -833,11 +860,6 @@ export class Query<M extends Model = Model> {
   destroy(ids: (string | number)[]): Collection<M>
   destroy(id: string | number): Item<M>
   destroy (ids: any): any {
-    assert(!this.model.$hasCompositeKey(), [
-      'You can\'t use the `destroy` method on a model with a composite key.',
-      'Please use `delete` method instead.'
-    ])
-
     return isArray(ids) ? this.destroyMany(ids) : this.destroyOne(ids)
   }
 
@@ -902,7 +924,7 @@ export class Query<M extends Model = Model> {
       if (fields[name] instanceof Relation && relation.onDeleteMode && model[name]) {
         const models = isArray(model[name]) ? model[name] : [model[name]]
         const relationIds = models.map((relation: M) => {
-          return relation[relation.$getLocalKey()]
+          return relation.$getKey(undefined, true)
         })
         const record: Record<string, any> = {}
 

@@ -16,12 +16,11 @@
     "preview": "nuxi preview"
   },
   "devDependencies": {
-    "@docsearch/js": "^3.3.3",
-    "@nuxt-themes/docus": "1.10.1",
-    "@nuxtjs/plausible": "^0.2.0",
-    "@nuxtjs/tailwindcss": "^6.6.6",
-    "@nuxtlabs/github-module": "1.6.2",
-    "nuxt": "3.2.3"
+    "@nuxt-themes/docus": "2.0.0-beta.13",
+    "@nuxtjs/plausible": "^0.2.3",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@nuxtlabs/github-module": "^1.6.3",
+    "nuxt": "3.7.3"
   },
   "packageManager": "yarn@3.5.0"
 }

@@ -23,11 +23,12 @@ import type { CastAttribute, Casts } from './casts/CastAttribute'
 import type { TypeDefault } from './attributes/types/Type'
 import { HasManyThrough } from './attributes/relations/HasManyThrough'
 import { MorphToMany } from './attributes/relations/MorphToMany'
+import type { UidOptions } from './decorators/Contracts'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
-export type ModelRegistry = Record<string, () => Attribute>
 export type ModelRegistries = Record<string, ModelRegistry>
+export type ModelRegistry = Record<string, () => Attribute>
 export type PrimaryKey = string | string[]
 
 export interface ModelOptions {
@@ -72,6 +73,12 @@ export class Model {
   static baseEntity: string
 
   /**
+   * Define a namespace if you have multiple equal entity names.
+   * Resulting in "{namespace}/{entity}"
+   */
+  static namespace: string
+
+  /**
    * The primary key for the model.
    */
   static primaryKey: string | string[] = 'id'
@@ -94,7 +101,7 @@ export class Model {
   /**
    * The global install options
    */
-  static config: ModelConfigOptions
+  static config: ModelConfigOptions & { [key: string]: any }
 
   /**
    * The type key for the model.
@@ -257,6 +264,7 @@ export class Model {
    */
   static clearBootedModels (): void {
     this.booted = {}
+    this.original = {}
     this.schemas = {}
     this.fieldMutators = {}
     this.fieldCasts = {}
@@ -317,8 +325,8 @@ export class Model {
   /**
    * Create a new Uid attribute instance.
    */
-  static uid (size?: number): Uid {
-    return new Uid(this.newRawInstance(), size)
+  static uid (options?: UidOptions): Uid {
+    return new Uid(this.newRawInstance(), options)
   }
 
   /**
@@ -595,8 +603,22 @@ export class Model {
   /**
    * Get the model config.
    */
-  $config (): ModelConfigOptions {
+  $config (): ModelConfigOptions & { [key: string]: any } {
     return this.$self().config
+  }
+
+  /**
+   * Get the namespace.
+   */
+  $namespace (): String {
+    return this.$self().namespace ?? config.model.namespace
+  }
+
+  /**
+   * Get the store name.
+   */
+  $storeName (): string {
+    return (this.$namespace() ? this.$namespace() + '/' : '') + this.$baseEntity()
   }
 
   /**
@@ -738,7 +760,7 @@ export class Model {
       this[key] = this[key] ?? keyValue
     }
 
-    operation === 'set' && (this.$self().original = this.$getAttributes())
+    operation === 'set' && (this.$self().original[this.$getKey(this, true) as string] = this.$getAttributes())
 
     modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
@@ -795,7 +817,7 @@ export class Model {
 
     if (this.$hasCompositeKey()) {
       const compositeKey = this.$getCompositeKey(record)
-      return concatCompositeKey ? compositeKey?.join('') ?? null : compositeKey
+      return concatCompositeKey ? '[' + compositeKey?.join(',') + ']' : compositeKey
     }
 
     const id = record[this.$getKeyName() as string]
@@ -918,7 +940,7 @@ export class Model {
    * Get the original values of the model instance
    */
   $getOriginal (): Element {
-    return this.$self().original
+    return this.$self().original[this.$getKey(this, true) as string]
   }
 
   /**
@@ -936,7 +958,7 @@ export class Model {
   /**
    * Checks if attributes were changed
    */
-  $isDirty ($attribute?: keyof ModelFields): boolean {
+  $isDirty ($attribute?: keyof ModelFields): Boolean {
     const original = this.$getOriginal()
     if ($attribute) {
       if (!Object.keys(original).includes($attribute)) { throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"']) }
@@ -989,9 +1011,8 @@ export class Model {
     if (typeof value === 'object') {
       // If the value is an object, check if it's an instance of Date and that it has
       // a time value with its getTime() method, and that its toISOString() method exists
-      if (value instanceof Date && !Number.isNaN(value.getTime()) && typeof value.toISOString === 'function') {
-        return value.toISOString()
-      } else {
+      if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === 'function') { return value.toISOString() }
+      else {
         // If it's not a Date object, serialize the object using the default method
         return this.serializeObject(value)
       }

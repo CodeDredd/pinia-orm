@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
+import { computed } from 'vue-demi'
 
-import { Model } from '../../../src'
+import { Model, useRepo } from '../../../src'
 import { Attr } from '../../../src/decorators'
 
 describe('unit/model/Model', () => {
@@ -39,5 +40,28 @@ describe('unit/model/Model', () => {
     expect(user.$isDirty()).toBeFalsy()
     expect(user.lastName).toBe('John Doe')
     expect(() => user.$isDirty('name')).toThrowError()
+  })
+
+  it('it displays states correctly with multiple same models', () => {
+    const userRepo = useRepo(User)
+    userRepo.save([
+      {
+        id: 1,
+        lastName: 'JohnK'
+      },
+      {
+        id: 2,
+        lastName: 'JaneD'
+      },
+      {
+        id: 3,
+        lastName: 'TomH'
+      }
+    ])
+
+    const users = computed(() => userRepo.all())
+    const usersOriginal = computed(() => users.value.map(u => u.$getOriginal()))
+
+    expect(users.value.map(user => user.$toJson())).toEqual(usersOriginal.value)
   })
 })

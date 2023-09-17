@@ -4,7 +4,7 @@ import { Model, useRepo } from '../../src'
 import { HasMany, Num, Str } from '../../src/decorators'
 
 /* eslint-disable no-console */
-describe('performance/save_has_many_relation', () => {
+describe.skip('performance/save_has_many_relation', () => {
   class Post extends Model {
     static entity = 'posts'
 

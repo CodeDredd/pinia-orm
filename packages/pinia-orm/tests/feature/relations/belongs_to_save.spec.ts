@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, BelongsTo, Str } from '../../../src/decorators'
@@ -60,6 +60,18 @@ describe('feature/relations/belongs_to_save', () => {
         1: { id: 1, userId: 1, title: 'Title 01' }
       }
     })
+  })
+
+  it('throws a error if a list is passed to the relation', () => {
+    const postsRepo = useRepo(Post)
+
+    expect(() => {
+      postsRepo.save({
+        id: 1,
+        title: 'Title 01',
+        author: [{ id: 1, name: 'John Doe' }]
+      })
+    }).toThrowError('[Pinia ORM] You are passing a list to " posts.author " which is a one to one Relation(BelongsTo): [{"id":1,"name":"John Doe"}]')
   })
 
   it('can insert a record with missing relational key', () => {

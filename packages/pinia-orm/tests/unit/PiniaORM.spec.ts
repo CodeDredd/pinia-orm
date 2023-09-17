@@ -45,15 +45,6 @@ describe('unit/PiniaORM', () => {
   })
 
   it('pass config "model.visible"', () => {
-    Model.clearRegistries()
-    class User extends Model {
-      static entity = 'users'
-
-      @Attr(0) declare id: number
-      @Str('') declare name: string
-      @Str('') declare username: string
-    }
-
     createPiniaORM({ model: { visible: ['name'] } })
 
     const userRepo = useRepo(User)
@@ -68,15 +59,6 @@ describe('unit/PiniaORM', () => {
   })
 
   it('pass config "cache false"', () => {
-    Model.clearRegistries()
-    class User extends Model {
-      static entity = 'users'
-
-      @Attr(0) declare id: number
-      @Str('') declare name: string
-      @Str('') declare username: string
-    }
-
     createPiniaORM({ cache: false })
 
     const userRepo = useRepo(User)
@@ -90,15 +72,6 @@ describe('unit/PiniaORM', () => {
   })
 
   it('pass config "cache true"', () => {
-    Model.clearRegistries()
-    class User extends Model {
-      static entity = 'users'
-
-      @Attr(0) declare id: number
-      @Str('') declare name: string
-      @Str('') declare username: string
-    }
-
     createPiniaORM({ cache: true })
 
     const userRepo = useRepo(User)
@@ -112,15 +85,6 @@ describe('unit/PiniaORM', () => {
   })
 
   it('pass config "cache.shared false"', () => {
-    Model.clearRegistries()
-    class User extends Model {
-      static entity = 'users'
-
-      @Attr(0) declare id: number
-      @Str('') declare name: string
-      @Str('') declare username: string
-    }
-
     createPiniaORM({
       cache: {
         shared: false
@@ -135,5 +99,40 @@ describe('unit/PiniaORM', () => {
     })
 
     expect(userRepo.cache()).toBeInstanceOf(WeakCache)
+  })
+
+  it('can a pass a namespace for each model', () => {
+    createPiniaORM({ model: { namespace: 'orm' } })
+
+    const userRepo = useRepo(User)
+    const user = userRepo.save({
+      id: 1,
+      name: 'John',
+      username: 'JD'
+    })
+
+    expect(user.$storeName()).toBe('orm/users')
+  })
+
+  it('can overwrite namespace for a model', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      static namespace = 'otherOrm'
+
+      @Attr(0) declare id: number
+      @Str('') declare name: string
+      @Str('') declare username: string
+    }
+    createPiniaORM({ model: { namespace: 'orm' } })
+
+    const userRepo = useRepo(User)
+    const user = userRepo.save({
+      id: 1,
+      name: 'John',
+      username: 'JD'
+    })
+
+    expect(user.$storeName()).toBe('otherOrm/users')
   })
 })

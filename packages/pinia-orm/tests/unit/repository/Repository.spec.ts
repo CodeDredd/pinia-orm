@@ -88,6 +88,17 @@ describe('unit/repository/Repository', () => {
     expect(postRepo.getModel()).toBeInstanceOf(Post)
   })
 
+  it('can create a new repository from the custom repository without use defined', () => {
+    class PostRepository extends Repository<Post> {
+    }
+
+    const userRepo = useRepo(User)
+
+    const postRepo = userRepo.repo(PostRepository.setModel(Post))
+
+    expect(postRepo.getModel()).toBeInstanceOf(Post)
+  })
+
   it('can trigger cache & hook from the pinia store action', () => {
     const userRepo = useRepo(User)
     expect(userRepo.hydratedDataCache.size).toBe(0)

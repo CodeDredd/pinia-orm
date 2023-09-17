@@ -3,7 +3,6 @@
   "description": "Nuxt module for pinia-orm",
   "version": "1.6.7",
   "license": "MIT",
-  "type": "module",
   "author": {
     "name": "Gregor Becker",
     "email": "gregor@codedredd.de"
@@ -40,11 +39,11 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "peerDependencies": {
-    "@pinia/nuxt": "^0.4.11",
-    "pinia-orm": ">=1.6.7"
+    "@pinia/nuxt": "^0.4.11"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.7.3"
+    "@nuxt/kit": "^3.7.3",
+    "pinia-orm": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.8.3",
@@ -54,9 +53,8 @@
     "@pinia/nuxt": "^0.4.11",
     "@types/prettier": "^2.7.3",
     "eslint": "^8.49.0",
-    "nuxt": "^3.7.0",
+    "nuxt": "^3.7.3",
     "pinia": "^2.1.6",
-    "pinia-orm": "^1.0.0",
     "prettier": "^3.0.3",
     "std-env": "^3.4.3",
     "typescript": "^5.2.2",

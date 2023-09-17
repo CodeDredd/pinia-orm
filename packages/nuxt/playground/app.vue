@@ -1,7 +1,7 @@
 <template>
-  <button @click="todo.save({text:'Fix TS support', name:'TS Todo'})">Add todo</button>
+  <button type='button' @click="addToDo">Add todo</button>
   <button @click="todo.flush()">Clear Todos</button>
-  <span>{{all_todo_text}}</span>
+  <pre>{{all_todo_text}}</pre>
 </template>
 
 <script setup lang="ts">
@@ -10,5 +10,10 @@ import Todo from "./models/ToDo";
 
 const todo = useRepo(Todo);
 const all_todo_text = computed(() => todo.all().map((t: Todo) => t.text));
+
+const addToDo = () => {
+  console.log('Adding')
+  todo.insert({text:'Fix TS support', name:'TS Todo'})
+}
 
 </script>

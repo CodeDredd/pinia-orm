@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, MorphTo, Num, Str } from '../../../src/decorators'
@@ -45,6 +45,20 @@ describe('feature/relations/morph_to_save', () => {
         }
       }
     })
+  })
+
+  it('throws a error if a list is passed to the relation', () => {
+    const imagesRepo = useRepo(Image)
+
+    expect(() => {
+      imagesRepo.save({
+        id: 1,
+        url: '/profile.jpg',
+        imageableId: 1,
+        imageableType: 'users',
+        imageable: [{ id: 2, name: 'John Doe' }]
+      })
+    }).toThrowError('[Pinia ORM] You are passing a list to " images.imageable " which is a one to one Relation(MorphTo): [{"id":2,"name":"John Doe"}]')
   })
 
   it('generates missing relational key', () => {

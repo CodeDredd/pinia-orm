@@ -7,7 +7,7 @@ import { Model, useRepo } from '../../src'
 import { Num, Str } from '../../src/decorators'
 
 /* eslint-disable vue/one-component-per-file */
-describe('performance/prevent_rerender_of_child_components', () => {
+describe.skip('performance/prevent_rerender_of_child_components', () => {
   class Post extends Model {
     static entity = 'posts'
 

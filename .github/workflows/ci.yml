@@ -21,17 +21,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
 
       - run: pnpm i
 
+      - run: pnpm run build:stub
+#      - run: pnpm run build:prepare
       - run: pnpm run build:ci
 
       - name: Run unit tests
@@ -41,24 +45,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
 
+      - run: pnpm run build:stub
+      #      - run: pnpm run build:prepare
       - run: pnpm run build:ci
 
       - name: Run test coverage
         run: pnpm run test:coverage
 
       - name: Publish coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./packages
@@ -67,17 +72,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
 
+      - run: pnpm run build:stub
+      #      - run: pnpm run build:prepare
       - run: pnpm run build:ci
 
       - name: Run eslint
@@ -89,15 +95,16 @@ jobs:
       CI_JOB_NUMBER: 1
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - run: corepack enable
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
+      - run: pnpm run build:stub
+      #      - run: pnpm run build:prepare
       - run: pnpm run build:ci
       - run: pnpm run size

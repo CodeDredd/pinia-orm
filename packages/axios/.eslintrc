@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "@nuxtjs/eslint-config-typescript"
+  ],
+  "rules": {
+    "brace-style": "off",
+    "no-useless-constructor": "off",
+    "no-use-before-define": "off",
+    "no-self-compare": "off",
+    "func-call-spacing": "off",
+    "valid-typeof": "off",
+    "no-console": [
+      "warn",
+      { "allow": ["clear", "info", "error", "dir", "trace", "time", "timeEnd", "warn"] }
+    ]
+  }
+}

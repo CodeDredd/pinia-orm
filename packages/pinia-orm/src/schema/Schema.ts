@@ -1,6 +1,6 @@
 import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
 import { schema as Normalizr } from '@pinia-orm/normalizr'
-import { isArray, isNullish } from '../support/Utils'
+import { isArray, isNullish, throwError } from '../support/Utils'
 import { Uid } from '../model/attributes/types/Uid'
 import { Relation } from '../model/attributes/relations/Relation'
 import type { Model } from '../model/Model'
@@ -113,12 +113,17 @@ export class Schema {
       // If the `key` is not `null`, that means this record is a nested
       // relationship of the parent model. In this case, we'll attach any
       // missing foreign keys to the record first.
-      if (key !== null) { (parent.$fields()[key] as Relation).attach(parentRecord, record) }
+      if (key !== null) { (parent.$fields()[key] as Relation)?.attach(parentRecord, record) }
 
       // Next, we'll generate any missing primary key fields defined as
       // uid field.
       for (const key in uidFields) {
         if (isNullish(record[key])) { record[key] = uidFields[key].setKey(key).make(record[key]) }
+      }
+
+      // Check if a list is passed to a one to one relation and throws a error if so
+      if (['BelongsTo', 'HasOne', 'MorphOne', 'MorphTo'].includes(parent.$fields()[key]?.constructor.name ?? '') && isArray(parentRecord[key])) {
+        throwError(['You are passing a list to "', `${parent.$entity()}.${key}`, `" which is a one to one Relation(${parent.$fields()[key]?.constructor.name}):`, JSON.stringify(parentRecord[key])])
       }
 
       // Finally, obtain the index id, attach it to the current record at the
