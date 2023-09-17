@@ -3,7 +3,6 @@
   "description": "Nuxt module for pinia-orm",
   "version": "1.6.7",
   "license": "MIT",
-  "type": "module",
   "author": {
     "name": "Gregor Becker",
     "email": "gregor@codedredd.de"
