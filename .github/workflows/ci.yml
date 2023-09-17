@@ -56,7 +56,7 @@ jobs:
       - run: pnpm i
 
       - run: pnpm run build:stub
-      - run: pnpm run build:prepare
+#      - run: pnpm run build:prepare
       - run: pnpm run build
 
       - name: Run test coverage

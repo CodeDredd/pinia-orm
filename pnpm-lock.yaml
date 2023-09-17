@@ -145,6 +145,9 @@ importers:
       '@nuxt/kit':
         specifier: ^3.7.3
         version: 3.7.3(rollup@3.28.1)
+      pinia-orm:
+        specifier: workspace:*
+        version: link:../pinia-orm
     devDependencies:
       '@nuxt/devtools':
         specifier: ^0.8.3
@@ -173,9 +176,6 @@ importers:
       pinia:
         specifier: ^2.1.6
         version: 2.1.6(@vue/composition-api@1.7.2)(typescript@5.2.2)(vue@3.3.4)
-      pinia-orm:
-        specifier: workspace:*
-        version: link:../pinia-orm
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
