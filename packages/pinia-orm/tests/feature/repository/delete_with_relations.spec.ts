@@ -29,7 +29,10 @@ describe('feature/repository/delete_with_relations', () => {
     class Comment extends Model {
       static entity = 'comments'
 
+      static primaryKey = ['id', 'comment_id']
+
       @Num(0) declare id: number
+      @Num(0) declare comment_id: number
       @Num(0) declare postId: number
       @Str('') declare title: string
     }
@@ -111,8 +114,8 @@ describe('feature/repository/delete_with_relations', () => {
           id: 1,
           title: 'Title 01',
           comments: [
-            { id: 3, title: 'Title 03' },
-            { id: 4, title: 'Title 04' }
+            { id: 3, comment_id: 3, title: 'Title 03' },
+            { id: 4, comment_id: 3, title: 'Title 04' }
           ],
           extraComments: [
             { id: 3, title: 'Title 03' },
@@ -131,8 +134,8 @@ describe('feature/repository/delete_with_relations', () => {
           id: 3,
           title: 'Title 03',
           comments: [
-            { id: 1, title: 'Title 01' },
-            { id: 2, title: 'Title 02' }
+            { id: 1, comment_id: 3, title: 'Title 01' },
+            { id: 2, comment_id: 3, title: 'Title 02' }
           ],
           extraComments: [
             { id: 1, title: 'Title 01' },
@@ -169,8 +172,8 @@ describe('feature/repository/delete_with_relations', () => {
         2: { id: 2, userId: 1, title: 'Title 02' }
       },
       comments: {
-        3: { id: 3, postId: 1, title: 'Title 03' },
-        4: { id: 4, postId: 1, title: 'Title 04' }
+        '[3,3]': { id: 3, comment_id: 3, postId: 1, title: 'Title 03' },
+        '[4,3]': { id: 4, comment_id: 3, postId: 1, title: 'Title 04' }
       },
       extraComments: {
         3: { id: 3, postId: 1, title: 'Title 03' },
@@ -187,6 +190,7 @@ describe('feature/repository/delete_with_relations', () => {
   })
 
   it('works with morph relations', () => {
+    Model.clearRegistries()
     class Comment extends Model {
       static entity = 'comments'
 

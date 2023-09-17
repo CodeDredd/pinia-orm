@@ -817,7 +817,7 @@ export class Model {
 
     if (this.$hasCompositeKey()) {
       const compositeKey = this.$getCompositeKey(record)
-      return concatCompositeKey ? compositeKey?.join('') ?? null : compositeKey
+      return concatCompositeKey ? '[' + compositeKey?.join(',') + ']' : compositeKey
     }
 
     const id = record[this.$getKeyName() as string]
