@@ -35,7 +35,7 @@ jobs:
       - run: pnpm i
 
       - run: pnpm run build:stub
-      - run: pnpm run build:prepare
+#      - run: pnpm run build:prepare
       - run: pnpm run build
 
       - name: Run unit tests
@@ -83,7 +83,7 @@ jobs:
       - run: pnpm i
 
       - run: pnpm run build:stub
-      - run: pnpm run build:prepare
+#      - run: pnpm run build:prepare
       - run: pnpm run build
 
       - name: Run eslint
@@ -105,6 +105,6 @@ jobs:
 
       - run: pnpm i
       - run: pnpm run build:stub
-      - run: pnpm run build:prepare
+#      - run: pnpm run build:prepare
       - run: pnpm run build
       - run: pnpm run size
