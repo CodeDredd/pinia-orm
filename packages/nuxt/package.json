@@ -1,7 +1,7 @@
 {
   "name": "@pinia-orm/nuxt",
   "description": "Nuxt module for pinia-orm",
-  "version": "1.6.7",
+  "version": "1.7.0",
   "license": "MIT",
   "author": {
     "name": "Gregor Becker",
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.7.3",
-    "pinia-orm": "workspace:*"
+    "pinia-orm": ">=1.7.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.8.3",

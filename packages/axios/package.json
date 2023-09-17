@@ -1,6 +1,6 @@
 {
   "name": "@pinia-orm/axios",
-  "version": "1.6.7",
+  "version": "1.7.0",
   "description": "Axios plugin for pinia-orm",
   "bugs": {
     "url": "https://github.com/CodeDredd/pinia-orm/issues"
@@ -54,7 +54,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "pinia-orm": ">=1.6.7",
+    "pinia-orm": ">=1.7.0",
     "axios": ">=1.5.0"
   },
   "devDependencies": {

@@ -1,3 +1,5 @@
+# [1.7.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.7...pinia-orm@1.7.0) (2023-09-17)
+
 ## [1.6.7](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.6...pinia-orm@1.6.7) (2023-03-28)
 
 ### Bug Fixes
