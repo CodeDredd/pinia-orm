@@ -7,6 +7,7 @@
     "cleanup": "rimraf 'packages/**/node_modules' 'playground/node_modules' 'node_modules'",
     "size": "pnpm --filter './packages/**' size",
     "build": "pnpm --filter './packages/**' build",
+    "build:ci": "pnpm --filter './packages/{pinia-orm,normalizr,axios}' build",
     "build:stub": "pnpm --filter './packages/**' build --stub",
     "build:prepare": "pnpm --filter './packages/**' dev:prepare",
     "sponsor": "sponsorkit",
