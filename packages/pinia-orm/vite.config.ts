@@ -16,7 +16,7 @@ export default defineConfig({
       enabled: true,
       reporter: ['lcov', 'text', 'html'],
       include: ['src/**/*.ts'],
-      exclude: ['src/index.ts', 'src/index.cjs.ts']
+      exclude: ['src/index.ts', 'src/cache/*']
     }
   },
   enabled: true

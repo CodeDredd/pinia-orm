@@ -1,4 +1,5 @@
 import type { Pinia } from 'pinia'
+import { acceptHMRUpdate } from 'pinia'
 import {
   assert, compareWithOperator, generateKey,
   groupBy,
@@ -14,6 +15,7 @@ import { MorphTo } from '../model/attributes/relations/MorphTo'
 import type { Model, ModelFields, ModelOptions } from '../model/Model'
 import { Interpreter } from '../interpreter/Interpreter'
 import { useDataStore } from '../composables/useDataStore'
+import type { DataStore } from '../composables/useDataStore'
 import type { WeakCache } from '../cache/WeakCache'
 import type { CacheConfig } from '../types'
 import type { HasMany } from '../model/attributes/relations/HasMany'
@@ -162,6 +164,11 @@ export class Query<M extends Model = Model> {
    */
   protected commit (name: string, payload?: any) {
     const store = useDataStore(this.model.$storeName(), this.model.$piniaOptions(), this)(this.pinia)
+
+    if (import.meta.hot) {
+      import.meta.hot.accept(acceptHMRUpdate(store as DataStore, import.meta.hot))
+    }
+
     if (name && typeof store[name] === 'function') { store[name](payload, false) }
 
     if (this.cache && ['get', 'all', 'insert', 'flush', 'delete', 'update', 'destroy'].includes(name)) { this.cache.clear() }
