@@ -82,6 +82,11 @@ export class Repository<M extends Model = Model> {
     this.hydratedDataCache = hydratedDataCache as Map<string, M>
   }
 
+  static setModel(model: Model) {
+    this.useModel = model
+    return this
+  }
+
   /**
    * Set the global config
    */
