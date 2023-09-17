@@ -1,7 +1,8 @@
 import type { Pinia } from 'pinia'
 import { acceptHMRUpdate } from 'pinia'
 import {
-  assert, compareWithOperator, generateKey,
+  compareWithOperator,
+  generateKey,
   groupBy,
   isArray,
   isEmpty,
@@ -859,11 +860,6 @@ export class Query<M extends Model = Model> {
   destroy(ids: (string | number)[]): Collection<M>
   destroy(id: string | number): Item<M>
   destroy (ids: any): any {
-    assert(!this.model.$hasCompositeKey(), [
-      'You can\'t use the `destroy` method on a model with a composite key.',
-      'Please use `delete` method instead.'
-    ])
-
     return isArray(ids) ? this.destroyMany(ids) : this.destroyOne(ids)
   }
 
@@ -928,7 +924,7 @@ export class Query<M extends Model = Model> {
       if (fields[name] instanceof Relation && relation.onDeleteMode && model[name]) {
         const models = isArray(model[name]) ? model[name] : [model[name]]
         const relationIds = models.map((relation: M) => {
-          return relation[relation.$getLocalKey()]
+          return relation.$getKey(undefined, true)
         })
         const record: Record<string, any> = {}
 
