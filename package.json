@@ -1,7 +1,7 @@
 {
   "name": "@stormtail/pinia-orm-root",
   "private": true,
-  "packageManager": "pnpm@8.7.1",
+  "packageManager": "pnpm@8.7.5",
   "scripts": {
     "release": "node scripts/release.mjs",
     "cleanup": "rimraf 'packages/**/node_modules' 'playground/node_modules' 'node_modules'",
@@ -23,15 +23,15 @@
     "docs:api": "lerna run docs:api --scope @pinia/docs"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^2.5.0",
-    "@lerna-lite/run": "^2.5.0",
+    "@lerna-lite/cli": "^2.5.1",
+    "@lerna-lite/run": "^2.5.1",
     "@types/lodash.kebabcase": "^4.1.7",
-    "@types/node": "^18.17.14",
+    "@types/node": "^18.17.17",
     "chalk": "^4.1.2",
-    "conventional-changelog-cli": "^4.0.0",
+    "conventional-changelog-cli": "^4.1.0",
     "enquirer": "^2.4.1",
     "execa": "^8.0.1",
-    "expect": "^29.6.4",
+    "expect": "^29.7.0",
     "globby": "^13.2.2",
     "lint-staged": "^14.0.1",
     "lodash.kebabcase": "^4.1.1",
@@ -41,7 +41,7 @@
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
     "semver": "^7.5.4",
-    "sponsorkit": "^0.8.7",
+    "sponsorkit": "^0.8.8",
     "typescript": "^5.2.2",
     "yorkie": "^2.0.0"
   },
