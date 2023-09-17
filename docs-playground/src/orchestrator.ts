@@ -391,13 +391,13 @@ const initialPackages = [
     name: 'pinia',
     source: 'unpkg',
     description: 'Pinia',
-    url: 'https://unpkg.com/pinia@2.0.29/dist/pinia.esm-browser.js',
+    url: 'https://unpkg.com/pinia@2.1.6/dist/pinia.esm-browser.js',
   },
   {
     name: '@pinia-orm/normalizr',
     source: 'unpkg',
     description: 'Pinia ORM normalizr',
-    url: 'https://unpkg.com/@pinia-orm/normalizr@1.6.0/dist/index.mjs',
+    url: 'https://unpkg.com/@pinia-orm/normalizr@1.7.0/dist/index.mjs',
   },
   {
     name: 'nanoid/non-secure',
@@ -409,7 +409,7 @@ const initialPackages = [
     name: 'pinia-orm',
     source: 'unpkg',
     description: 'Pinia ORM',
-    url: 'https://unpkg.com/pinia-orm@1.6.2/dist/index.mjs',
+    url: 'https://unpkg.com/pinia-orm@1.7.0/dist/index.mjs',
   },
 ]
 

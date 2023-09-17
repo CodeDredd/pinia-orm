@@ -44,12 +44,13 @@
     "@vue/compiler-sfc": "^3.3.4",
     "eslint": "^8.49.0",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "unplugin-vue-components": "^0.25.2",
     "unplugin-icons": "^0.17.0",
+    "unplugin-vue-components": "^0.25.2",
+    "vite": "^4.4.9",
     "vite-plugin-pwa": "^0.16.5",
     "vite-plugin-windicss": "^1.9.1",
     "vue-tsc": "^1.8.11",
     "windicss": "^3.5.6"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }
