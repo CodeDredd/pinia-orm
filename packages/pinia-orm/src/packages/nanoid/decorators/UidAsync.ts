@@ -3,7 +3,8 @@ import { UidCast } from '../casts/AsyncCast'
 import type { NanoidOptions } from '../../../../src/model/decorators/Contracts'
 
 /**
- * Create a cast for an attribute property decorator.
+ * Creates an uuid based on nanoid/async.
+ * @deprecated will be removed in v2 because nanoid v5 dropped it
  */
 export function Uid (options?: NanoidOptions): PropertyDecorator {
   return (target, propertyKey) => {

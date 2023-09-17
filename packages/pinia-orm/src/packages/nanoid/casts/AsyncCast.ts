@@ -3,6 +3,10 @@ import type { ModelFields } from '../../../../src/model/Model'
 import { CastAttribute } from '../../../../src/model/casts/CastAttribute'
 import type { NanoidOptions } from '../../../../src/model/decorators/Contracts'
 
+/**
+ * Create a cast nanoid/async.
+ * @deprecated will be removed in v2 because nanoid v5 dropped it
+ */
 export class UidCast extends CastAttribute {
   static parameters?: NanoidOptions
 
