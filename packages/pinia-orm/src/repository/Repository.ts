@@ -82,7 +82,10 @@ export class Repository<M extends Model = Model> {
     this.hydratedDataCache = hydratedDataCache as Map<string, M>
   }
 
-  static setModel(model: Model) {
+  /**
+   * Set the model
+   */
+  static setModel (model: Model) {
     this.useModel = model
     return this
   }
