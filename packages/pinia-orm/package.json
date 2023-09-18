@@ -26,16 +26,10 @@
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs"
     },
-    "./*": "./*",
-    "./decorators": {
-      "types": "./dist/decorators.d.ts",
-      "require": "./dist/decorators.cjs",
-      "import": "./dist/decorators.mjs"
-    },
-    "./casts": {
-      "types": "./dist/casts.d.ts",
-      "require": "./dist/casts.cjs",
-      "import": "./dist/casts.mjs"
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "require": "./dist/*.cjs",
+      "import": "./dist/*.mjs"
     }
   },
   "files": [

@@ -29,7 +29,7 @@ class Phone extends Model {
 
 ````ts
 import { Model } from 'pinia-orm'
-import { Attr, BelongsTo, Str } from 'pinia-orm/dist/decorators'
+import { Attr, BelongsTo, Str } from 'pinia-orm/decorators'
 import User from './User'
 
 class User extends Model {

@@ -9,7 +9,7 @@ description: 'The useGroupBy method groups the collections items by a given key.
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { useGroupBy } from 'pinia-orm/dist/helpers'
+import { useGroupBy } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()

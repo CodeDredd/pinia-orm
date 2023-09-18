@@ -9,7 +9,7 @@ description: 'Sorts the collection by a given key'
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { useSortBy } from 'pinia-orm/dist/helpers'
+import { useSortBy } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()

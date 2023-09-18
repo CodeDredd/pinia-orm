@@ -11,7 +11,7 @@ For Details what each function can do, look at the separate composable for it e.
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { useCollect } from 'pinia-orm/dist/helpers'
+import { useCollect } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()
