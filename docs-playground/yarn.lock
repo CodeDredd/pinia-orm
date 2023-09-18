@@ -5892,14 +5892,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia-orm@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "pinia-orm@npm:1.7.0"
+"pinia-orm@npm:^1.7.1":
+  version: 1.7.1
+  resolution: "pinia-orm@npm:1.7.1"
   dependencies:
     "@pinia-orm/normalizr": ">=1.7.0"
   peerDependencies:
     pinia: ^2.1.6
-  checksum: da2edb73f912a706d47d37c364c0654b5829209c74accb4ef5ccd5db77ec1f2be6c8e050bfdfa3f4d814823d5b6d3fce9392583daebcc2e88af3a87b5278ad56
+  checksum: eb2622b505779c000d676f1c0997c19df095a09d58e462b88c950a1630c26052efd1527af16edd367fef4a93f677f9c917352d4601653a860b03d0a9025d6952
   languageName: node
   linkType: hard
 
@@ -5948,7 +5948,7 @@ __metadata:
     monaco-editor: 0.43.0
     monaco-editor-core: ^0.43.0
     pinia: ^2.1.6
-    pinia-orm: ^1.7.0
+    pinia-orm: ^1.7.1
     splitpanes: ^3.1.5
     theme-vitesse: ^0.7.3
     typescript: ^5.2.2
