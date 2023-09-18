@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.7.0...pinia-orm@1.7.1) (2023-09-18)
+
+### Bug Fixes
+
+- **pinia-orm:** proper exports for collection and uid helpers ([#1681](https://github.com/CodeDredd/pinia-orm/issues/1681)) ([ab5e245](https://github.com/CodeDredd/pinia-orm/commit/ab5e2451420f884ce11f56ce2b6fe1fd796fa168))
+
 # [1.7.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.7...pinia-orm@1.7.0) (2023-09-17)
 
 ## [1.6.7](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.6...pinia-orm@1.6.7) (2023-03-28)
