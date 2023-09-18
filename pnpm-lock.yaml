@@ -111,7 +111,7 @@ importers:
         version: 2.0.0(typescript@5.2.2)
       vitest:
         specifier: ^0.34.4
-        version: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.0)
+        version: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.2)
       vue-demi:
         specifier: ^0.14.6
         version: 0.14.6(@vue/composition-api@1.7.2)(vue@3.3.4)
@@ -241,8 +241,8 @@ importers:
         specifier: ^8.49.0
         version: 8.49.0
       happy-dom:
-        specifier: ^12.1.0
-        version: 12.1.0
+        specifier: ^12.1.2
+        version: 12.1.2
       mkdist:
         specifier: ^1.3.0
         version: 1.3.0(typescript@5.2.2)
@@ -278,7 +278,7 @@ importers:
         version: 4.4.9(@types/node@18.17.17)
       vitest:
         specifier: ^0.34.4
-        version: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.0)
+        version: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.2)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -3107,7 +3107,7 @@ packages:
       std-env: 3.4.3
       test-exclude: 6.0.0
       v8-to-istanbul: 9.1.0
-      vitest: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.0)
+      vitest: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3154,7 +3154,7 @@ packages:
       pathe: 1.1.1
       picocolors: 1.0.0
       sirv: 2.0.3
-      vitest: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.0)
+      vitest: 0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.2)
     dev: true
 
   /@vitest/utils@0.34.4:
@@ -6372,8 +6372,8 @@ packages:
       uglify-js: 3.16.2
     dev: true
 
-  /happy-dom@12.1.0:
-    resolution: {integrity: sha512-RDmvvXemdhwA7iPKEYvg/LOAoA2jmc735Ar1ppZ3yXbBLxzCzaAjHUOwzV7hsSbh5wUpoezbGumcjm9sNNbWbw==}
+  /happy-dom@12.1.2:
+    resolution: {integrity: sha512-Ee0MdMXAMzfmZ4gLe33iKt8Rza5Fkyr+DxtHzCiBihTkI8JoX2XOfPdSsKDr0JAoMNYdMrFqIDYBoHq5DJqDXg==}
     dependencies:
       css.escape: 1.5.1
       entities: 4.5.0
@@ -11523,7 +11523,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.0):
+  /vitest@0.34.4(@vitest/ui@0.34.4)(happy-dom@12.1.2):
     resolution: {integrity: sha512-SE/laOsB6995QlbSE6BtkpXDeVNLJc1u2LHRG/OpnN4RsRzM3GQm4nm3PQCK5OBtrsUqnhzLdnT7se3aeNGdlw==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -11568,7 +11568,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 12.1.0
+      happy-dom: 12.1.2
       local-pkg: 0.4.3
       magic-string: 0.30.3
       pathe: 1.1.1
