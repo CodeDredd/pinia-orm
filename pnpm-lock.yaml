@@ -146,7 +146,7 @@ importers:
         specifier: ^3.7.3
         version: 3.7.3(rollup@3.28.1)
       pinia-orm:
-        specifier: '>=1.7.1'
+        specifier: '>=1.7.2'
         version: link:../pinia-orm
     devDependencies:
       '@nuxt/devtools':
