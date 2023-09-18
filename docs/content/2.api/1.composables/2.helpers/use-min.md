@@ -9,7 +9,7 @@ description: 'Get the min value of the specified filed.'
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { useMin } from 'pinia-orm/dist/helpers'
+import { useMin } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()

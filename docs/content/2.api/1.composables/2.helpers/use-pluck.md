@@ -9,7 +9,7 @@ description: 'The pluck method retrieves all of the values for a given key.'
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { usePluck } from 'pinia-orm/dist/helpers'
+import { usePluck } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()
