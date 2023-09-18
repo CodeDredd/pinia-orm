@@ -1,3 +1,9 @@
+## [1.7.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.7.1...pinia-orm@1.7.2) (2023-09-18)
+
+### Bug Fixes
+
+- Export for "dist" is broken ([a3c734e](https://github.com/CodeDredd/pinia-orm/commit/a3c734ee9eb29f8403b069a1b41fbc1a88f1721a))
+
 ## [1.7.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.7.0...pinia-orm@1.7.1) (2023-09-18)
 
 ### Bug Fixes
