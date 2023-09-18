@@ -26,6 +26,11 @@
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs"
     },
+    "./dist/*": {
+      "types": "./dist/*.d.ts",
+      "require": "./dist/*.cjs",
+      "import": "./dist/*.mjs"
+    },
     "./*": {
       "types": "./dist/*.d.ts",
       "require": "./dist/*.cjs",
