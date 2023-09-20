@@ -46,7 +46,7 @@
     "pinia-orm": ">=1.7.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.8.3",
+    "@nuxt/devtools": "^0.8.4",
     "@nuxt/module-builder": "^0.5.1",
     "@nuxt/schema": "^3.7.3",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
