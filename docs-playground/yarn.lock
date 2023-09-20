@@ -1695,13 +1695,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:^2.2.117":
-  version: 2.2.117
-  resolution: "@iconify/json@npm:2.2.117"
+"@iconify/json@npm:^2.2.118":
+  version: 2.2.118
+  resolution: "@iconify/json@npm:2.2.118"
   dependencies:
     "@iconify/types": "*"
     pathe: ^1.1.0
-  checksum: 0c6f5c0546565770b68d3c93281b49fc8e916f0123503f80c2bd77f2a566179945f4cdc77724b89cbfb8e51a1b324ba00537b6c306a473ba832a6a6a59fbf8b4
+  checksum: 9fdff3e6900f5b04903b361084d7ddeee3208c76704a9c969d6d0f97c654090c2de61c739adcf77069bc89bc833b4744f1352ddc99fab01b38506c63ea5e364b
   languageName: node
   linkType: hard
 
@@ -6033,7 +6033,7 @@ __metadata:
     "@antfu/eslint-config": ^0.43.0
     "@antfu/utils": ^0.7.6
     "@headlessui/vue": ^1.7.16
-    "@iconify/json": ^2.2.117
+    "@iconify/json": ^2.2.118
     "@types/file-saver": ^2.0.5
     "@types/node": ^18.17.18
     "@types/splitpanes": ^2.2.1
