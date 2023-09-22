@@ -1,0 +1,46 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  # 7 GiB by default on GitHub, setting to 6 GiB
+  NODE_OPTIONS: --max-old-space-size=6144
+
+permissions:
+  contents: read
+
+jobs:
+  release-pr:
+    permissions:
+      id-token: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - run: corepack enable
+      - uses: actions/setup-node@3.7.0
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Release Edge
+        if: |
+          github.event_name == 'push' &&
+          !contains(github.event.head_commit.message, '[skip-release]')
+        run: ./scripts/release-edge.sh pr-${{ github.event.issue.number }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
