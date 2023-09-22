@@ -3,7 +3,7 @@
 set -xe
 
 # Restore all git changes
-git restore -s@ -SW  -- packages examples
+git restore -s@ -SW  -- packages
 
 TAG=${1:-latest}
 
