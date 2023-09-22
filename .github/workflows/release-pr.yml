@@ -35,7 +35,8 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm build
+      - run: pnpm run build:stub
+      - run: pnpm run build:ci
 
       - name: Release Edge
         if: |
