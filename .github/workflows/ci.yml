@@ -10,7 +10,7 @@ on:
       - scripts
   pull_request:
     branches:
-      - master
+      - main
     paths-ignore:
       - docs/**
       - docs-playground/**
