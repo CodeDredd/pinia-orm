@@ -24,7 +24,7 @@ jobs:
       - run: corepack enable
 
       - name: Set node version to 18
-        uses: actions/setup-node@v3.7.0
+        uses: actions/setup-node@v3.8.1
         with:
           node-version: 18
           cache: "pnpm"
@@ -47,7 +47,7 @@ jobs:
       - run: corepack enable
 
       - name: Set node version to 18
-        uses: actions/setup-node@v3.7.0
+        uses: actions/setup-node@v3.8.1
         with:
           node-version: 18
           cache: "pnpm"
@@ -73,7 +73,7 @@ jobs:
       - run: corepack enable
 
       - name: Set node version to 18
-        uses: actions/setup-node@v3.7.0
+        uses: actions/setup-node@v3.8.1
         with:
           node-version: 18
           cache: "pnpm"
@@ -95,7 +95,7 @@ jobs:
       - run: corepack enable
 
       - name: Set node version to 18
-        uses: actions/setup-node@v3.7.0
+        uses: actions/setup-node@v3.8.1
         with:
           node-version: 18
           cache: "pnpm"
