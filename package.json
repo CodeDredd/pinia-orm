@@ -29,6 +29,7 @@
     "@types/lodash.kebabcase": "^4.1.7",
     "@types/node": "^18.17.18",
     "chalk": "^4.1.2",
+    "changelogen": "^0.5.5",
     "conventional-changelog-cli": "^4.1.0",
     "enquirer": "^2.4.1",
     "execa": "^8.0.1",
