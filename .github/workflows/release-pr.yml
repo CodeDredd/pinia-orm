@@ -35,10 +35,10 @@ jobs:
         run: pnpm install
 
       - name: Build Stub
-      - run: pnpm build:stub
+        run: pnpm build:stub
 
       - name: Build
-      - run: pnpm build:ci
+        run: pnpm build:ci
 
       - name: Release Edge
         if: |
