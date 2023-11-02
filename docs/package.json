@@ -18,7 +18,7 @@
   "devDependencies": {
     "@nuxt-themes/docus": "2.0.0-beta.13",
     "@nuxtjs/plausible": "^0.2.3",
-    "@nuxtjs/tailwindcss": "^6.8.1",
+    "@nuxtjs/tailwindcss": "^6.9.0",
     "@nuxtlabs/github-module": "^1.6.3",
     "nuxt": "3.7.3"
   },
