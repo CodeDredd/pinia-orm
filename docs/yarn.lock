@@ -1620,7 +1620,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.7.2, @nuxt/kit@npm:^3.4.2, @nuxt/kit@npm:^3.4.3, @nuxt/kit@npm:^3.5.3, @nuxt/kit@npm:^3.6.5, @nuxt/kit@npm:^3.7.0, @nuxt/kit@npm:^3.7.1, @nuxt/kit@npm:latest":
+"@nuxt/kit@npm:3.7.2, @nuxt/kit@npm:^3.4.2, @nuxt/kit@npm:^3.4.3, @nuxt/kit@npm:^3.5.3, @nuxt/kit@npm:^3.6.5, @nuxt/kit@npm:^3.7.0, @nuxt/kit@npm:latest":
   version: 3.7.2
   resolution: "@nuxt/kit@npm:3.7.2"
   dependencies:
@@ -1990,15 +1990,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/plausible@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@nuxtjs/plausible@npm:0.2.3"
+"@nuxtjs/plausible@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "@nuxtjs/plausible@npm:0.2.4"
   dependencies:
-    "@nuxt/kit": "npm:^3.7.1"
-    defu: "npm:^6.1.2"
+    "@nuxt/kit": "npm:^3.8.2"
+    defu: "npm:^6.1.3"
     pathe: "npm:^1.1.1"
     plausible-tracker: "npm:^0.3.8"
-  checksum: 8/e06ce9d5baa6d53e015a190d539be93239ef3dc078cf15b8c565d68b2f7af32a6c626bfd3696b78062d94582d033264fb474f721a7ff979a20791a8c1d186dd9
+  checksum: c34fbe2ddec13f2496779ed3e6d182fafa9b6454c4af10c30a974f4ef4cbef4a678d96b62a61f64193a8be62dd8540635dfa7d88f918c5104b94ce6ee13825e7
   languageName: node
   linkType: hard
 
@@ -2370,7 +2370,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@nuxt-themes/docus": "npm:2.0.0-beta.13"
-    "@nuxtjs/plausible": "npm:^0.2.3"
+    "@nuxtjs/plausible": "npm:^0.2.4"
     "@nuxtjs/tailwindcss": "npm:^6.10.1"
     "@nuxtlabs/github-module": "npm:^1.6.3"
     nuxt: "npm:3.7.3"
