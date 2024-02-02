@@ -1,4 +1,4 @@
-import { Vue2, isVue2  } from 'vue-demi'
+import { Vue2, isVue2 } from 'vue-demi'
 import type { Elements } from '../data/Data'
 import type { Query } from '../query/Query'
 import type { DataStore } from './useDataStore'
@@ -25,7 +25,7 @@ export function useStoreActions (query?: Query) {
     },
     update (this: DataStore, records: Elements, triggerQueryAction = true) {
       if (isVue2) {
-        Vue2.set(this, 'data', records);
+        Vue2.set(this, 'data', records)
       } else {
         Object.assign(this.data, records)
       }
@@ -41,9 +41,9 @@ export function useStoreActions (query?: Query) {
       if (triggerQueryAction && query) {
         query.newQuery(this.$id).newQuery(this.$id).destroy(ids)
       } else {
-        ids.forEach(id => {
+        ids.forEach((id) => {
           if (isVue2) {
-            Vue2.delete(this.data, id);
+            Vue2.delete(this.data, id)
           } else {
             delete this.data[id]
           }
@@ -57,9 +57,9 @@ export function useStoreActions (query?: Query) {
       if (triggerQueryAction && query) {
         query.whereId(ids).delete()
       } else {
-        ids.forEach(id => {
+        ids.forEach((id) => {
           if (isVue2) {
-            Vue2.delete(this.data, id);
+            Vue2.delete(this.data, id)
           } else {
             delete this.data[id]
           }
