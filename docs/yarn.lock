@@ -2047,9 +2047,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/tailwindcss@npm:^6.11.2":
-  version: 6.11.2
-  resolution: "@nuxtjs/tailwindcss@npm:6.11.2"
+"@nuxtjs/tailwindcss@npm:^6.11.3":
+  version: 6.11.3
+  resolution: "@nuxtjs/tailwindcss@npm:6.11.3"
   dependencies:
     "@nuxt/kit": "npm:^3.9.3"
     autoprefixer: "npm:^10.4.17"
@@ -2067,7 +2067,7 @@ __metadata:
     tailwind-config-viewer: "npm:^1.7.3"
     tailwindcss: "npm:~3.4.1"
     ufo: "npm:^1.3.2"
-  checksum: 10c0/2ca7515c47863464685cff04243897b3e2cf69473ca62067a2aeea6dd88e3fb01637b79db0beb6a8d9e560a89be14a78b891da2dcc1e18fa46dfc05c3e7e0d0e
+  checksum: 10c0/bb67913d3a465f74c5488aeb865335e1d256084a31e3cf34e0c4ecdd0fbc52ffe6d4dd1978da7b9389a07058b6f05ddd69640ae67d2681f159a558e77089bd54
   languageName: node
   linkType: hard
 
@@ -2412,7 +2412,7 @@ __metadata:
   dependencies:
     "@nuxt-themes/docus": "npm:2.0.0-beta.13"
     "@nuxtjs/plausible": "npm:^0.2.4"
-    "@nuxtjs/tailwindcss": "npm:^6.11.2"
+    "@nuxtjs/tailwindcss": "npm:^6.11.3"
     "@nuxtlabs/github-module": "npm:^1.6.3"
     nuxt: "npm:3.7.3"
   languageName: unknown
