@@ -1,4 +1,3 @@
-import { Vue2, isVue2 } from 'vue-demi'
 import type { Elements } from '../data/Data'
 import type { Query } from '../query/Query'
 import type { DataStore } from './useDataStore'
@@ -6,29 +5,17 @@ import type { DataStore } from './useDataStore'
 export function useStoreActions (query?: Query) {
   return {
     save (this: DataStore, records: Elements, triggerQueryAction = true) {
-      if (isVue2) {
-        Vue2.set(this, 'data', records)
-      } else {
-        Object.assign(this.data, records)
-      }
+      this.data = Object.assign({}, this.data, records)
 
       if (triggerQueryAction && query) { query.newQuery(this.$id).save(Object.values(records)) }
     },
     insert (this: DataStore, records: Elements, triggerQueryAction = true) {
-      if (isVue2) {
-        Vue2.set(this, 'data', records)
-      } else {
-        Object.assign(this.data, records)
-      }
+      this.data = Object.assign({}, this.data, records)
 
       if (triggerQueryAction && query) { query.newQuery(this.$id).insert(Object.values(records)) }
     },
     update (this: DataStore, records: Elements, triggerQueryAction = true) {
-      if (isVue2) {
-        Vue2.set(this, 'data', records)
-      } else {
-        Object.assign(this.data, records)
-      }
+      this.data = Object.assign({}, this.data, records)
 
       if (triggerQueryAction && query) { query.newQuery(this.$id).update(Object.values(records)) }
     },
@@ -42,11 +29,7 @@ export function useStoreActions (query?: Query) {
         query.newQuery(this.$id).newQuery(this.$id).destroy(ids)
       } else {
         ids.forEach((id) => {
-          if (isVue2) {
-            Vue2.delete(this.data, id)
-          } else {
-            delete this.data[id]
-          }
+          delete this.data[id]
         })
       }
     },
@@ -58,11 +41,7 @@ export function useStoreActions (query?: Query) {
         query.whereId(ids).delete()
       } else {
         ids.forEach((id) => {
-          if (isVue2) {
-            Vue2.delete(this.data, id)
-          } else {
-            delete this.data[id]
-          }
+          delete this.data[id]
         })
       }
     },
