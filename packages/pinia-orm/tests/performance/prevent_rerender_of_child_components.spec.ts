@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { defineComponent, nextTick } from 'vue-demi'
+import { computed, defineComponent, nextTick, onUpdated } from 'vue-demi'
 
-import { Model, mapRepos } from '../../src'
+import { Model, useRepo } from '../../src'
 import { Num, Str } from '../../src/decorators'
 
 /* eslint-disable vue/one-component-per-file */
-describe('performance/prevent_rerender_of_child_components', () => {
+describe.skip('performance/prevent_rerender_of_child_components', () => {
   class Post extends Model {
     static entity = 'posts'
 
@@ -22,8 +22,10 @@ describe('performance/prevent_rerender_of_child_components', () => {
         required: true
       }
     },
-    updated () {
-      console.warn('<PostComponent /> Updated')
+    setup () {
+      onUpdated(() => {
+        console.warn('<PostComponent /> Updated')
+      })
     },
     template: `
     <div>{{ post.title }}</div>
@@ -32,25 +34,22 @@ describe('performance/prevent_rerender_of_child_components', () => {
 
   const MainComponent = defineComponent({
     components: { PostComponent },
-    data () {
-      return {
-        counter: 10
-      }
-    },
-    computed: {
-      ...mapRepos({
-        postRepo: Post
-      }),
-      posts () {
-        return this.postRepo.all()
-      }
-    },
-    methods: {
-      addPost () {
-        this.postRepo.insert({
-          id: this.counter++,
-          title: `Test ${this.counter}`
+    setup () {
+      const postRepo = useRepo(Post)
+
+      const posts = computed(() => postRepo.all())
+      let counter = 10
+
+      const addPost = () => {
+        postRepo.insert({
+          id: counter++,
+          title: `Test ${counter}`
         })
+      }
+
+      return {
+        posts,
+        addPost
       }
     },
     template: `

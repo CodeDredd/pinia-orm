@@ -28,9 +28,11 @@ export function useStoreActions (query?: Query) {
       if (triggerQueryAction && query) {
         query.newQuery(this.$id).newQuery(this.$id).destroy(ids)
       } else {
-        ids.forEach((id) => {
-          delete this.data[id]
-        })
+        ids.forEach(id => delete this.data[id])
+        // Trigger Vue 2 reactivity
+        if (this.data.__ob__) {
+          this.data.__ob__.dep.notify()
+        }
       }
     },
     /**
@@ -40,9 +42,11 @@ export function useStoreActions (query?: Query) {
       if (triggerQueryAction && query) {
         query.whereId(ids).delete()
       } else {
-        ids.forEach((id) => {
-          delete this.data[id]
-        })
+        ids.forEach(id => delete this.data[id])
+        // Trigger Vue 2 reactivity
+        if (this.data.__ob__) {
+          this.data.__ob__.dep.notify()
+        }
       }
     },
     flush (this: DataStore, _records?: Elements, triggerQueryAction = true): void {
