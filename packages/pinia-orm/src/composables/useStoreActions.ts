@@ -30,6 +30,7 @@ export function useStoreActions (query?: Query) {
       } else {
         ids.forEach(id => delete this.data[id])
         // Trigger Vue 2 reactivity
+        /* v8 ignore next 3 */
         if (this.data.__ob__) {
           this.data.__ob__.dep.notify()
         }
@@ -44,6 +45,7 @@ export function useStoreActions (query?: Query) {
       } else {
         ids.forEach(id => delete this.data[id])
         // Trigger Vue 2 reactivity
+        /* v8 ignore next 3 */
         if (this.data.__ob__) {
           this.data.__ob__.dep.notify()
         }
