@@ -1,6 +1,6 @@
 import { createORM } from 'pinia-orm'
 import { setActivePinia } from 'pinia'
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin } from '#imports'
 import { ormOptions } from '#build/orm-options'
 
 export default defineNuxtPlugin((nuxtApp) => {
