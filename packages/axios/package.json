@@ -63,7 +63,7 @@
     "@vitest/coverage-v8": "^1.0.0",
     "axios": "^1.5.0",
     "axios-mock-adapter": "^1.22.0",
-    "eslint": "^8.49.0",
+    "eslint": "^9.0.0",
     "pinia-orm": "workspace:*",
     "pinia": "^2.1.6",
     "size-limit": "^11.0.0",
