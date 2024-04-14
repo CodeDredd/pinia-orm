@@ -1,4 +1,5 @@
 import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
+import { isArray } from '@/support/Utils'
 import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
@@ -76,7 +77,11 @@ export class HasMany extends Relation {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
-      const key = model[this.getKey(this.localKey)]
+      const key = this.getKey(
+        isArray(this.localKey) 
+          ? this.localKey.map(key => model[key]) 
+          : model[this.localKey]
+      )
 
       dictionary[key]
         ? model.$setRelation(relation, dictionary[key])
@@ -89,8 +94,12 @@ export class HasMany extends Relation {
    */
   protected buildDictionary (results: Collection): Dictionary {
     return this.mapToDictionary(results, (result) => {
-      const key = this.getKey(this.foreignKey)
-      return [result[key], result]
+      const key = this.getKey(
+        isArray(this.foreignKey)
+          ? this.foreignKey.map(key => result[key])
+          : result[this.foreignKey]
+      )
+      return [key, result]
     })
   }
 
