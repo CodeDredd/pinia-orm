@@ -1,10 +1,10 @@
 import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
-import { isArray } from '@/support/Utils'
 import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
 import type { Model, PrimaryKey } from '../../Model'
 import type { Dictionary } from './Relation'
+import { isArray } from '../../../support/Utils'
 import { Relation } from './Relation'
 
 export class HasMany extends Relation {
