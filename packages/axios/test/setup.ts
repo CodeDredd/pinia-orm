@@ -1,4 +1,4 @@
-import { createPinia, setActivePinia } from 'pinia'
+import { createPinia, getActivePinia, setActivePinia } from 'pinia'
 import { beforeAll, beforeEach } from 'vitest'
 import { Vue2, createApp, install, isVue2 } from 'vue-demi'
 import { Model, createORM, useRepo } from 'pinia-orm'
@@ -23,6 +23,7 @@ beforeEach(() => {
   pinia.use(piniaOrm)
   app.use(pinia)
   setActivePinia(pinia)
+  console.log('Pinia init')
   Model.clearBootedModels()
   useRepo(Model).hydratedDataCache.clear()
 })
