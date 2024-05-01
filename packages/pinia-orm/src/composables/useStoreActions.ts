@@ -5,17 +5,17 @@ import type { DataStore } from './useDataStore'
 export function useStoreActions (query?: Query) {
   return {
     save (this: DataStore, records: Elements, triggerQueryAction = true) {
-      Object.assign(this.data, records)
+      this.data = Object.assign({}, this.data, records)
 
       if (triggerQueryAction && query) { query.newQuery(this.$id).save(Object.values(records)) }
     },
     insert (this: DataStore, records: Elements, triggerQueryAction = true) {
-      Object.assign(this.data, records)
+      this.data = Object.assign({}, this.data, records)
 
       if (triggerQueryAction && query) { query.newQuery(this.$id).insert(Object.values(records)) }
     },
     update (this: DataStore, records: Elements, triggerQueryAction = true) {
-      Object.assign(this.data, records)
+      this.data = Object.assign({}, this.data, records)
 
       if (triggerQueryAction && query) { query.newQuery(this.$id).update(Object.values(records)) }
     },
@@ -27,7 +27,14 @@ export function useStoreActions (query?: Query) {
     destroy (this: DataStore, ids: (string | number)[], triggerQueryAction = true): void {
       if (triggerQueryAction && query) {
         query.newQuery(this.$id).newQuery(this.$id).destroy(ids)
-      } else { ids.forEach(id => delete this.data[id]) }
+      } else {
+        ids.forEach(id => delete this.data[id])
+        // Trigger Vue 2 reactivity
+        /* v8 ignore next 3 */
+        if (this.data.__ob__) {
+          this.data.__ob__.dep.notify()
+        }
+      }
     },
     /**
      * Commit `delete` change to the store.
@@ -35,7 +42,14 @@ export function useStoreActions (query?: Query) {
     delete (this: DataStore, ids: (string | number)[], triggerQueryAction = true): void {
       if (triggerQueryAction && query) {
         query.whereId(ids).delete()
-      } else { ids.forEach(id => delete this.data[id]) }
+      } else {
+        ids.forEach(id => delete this.data[id])
+        // Trigger Vue 2 reactivity
+        /* v8 ignore next 3 */
+        if (this.data.__ob__) {
+          this.data.__ob__.dep.notify()
+        }
+      }
     },
     flush (this: DataStore, _records?: Elements, triggerQueryAction = true): void {
       this.data = {}
