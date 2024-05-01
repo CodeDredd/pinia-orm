@@ -4,9 +4,19 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - docs/**
+      - docs-playground/**
+      - playgrounds/**
+      - scripts
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - docs/**
+      - docs-playground/**
+      - playgrounds/**
+      - scripts
 
 env:
   # 7 GiB by default on GitHub, setting to 6 GiB
