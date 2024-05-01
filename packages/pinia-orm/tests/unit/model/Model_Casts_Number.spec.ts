@@ -18,7 +18,7 @@ describe('unit/model/Model_Casts_Number', () => {
 
       static casts () {
         return {
-          count: NumberCast
+          count: NumberCast,
         }
       }
     }
@@ -73,7 +73,7 @@ describe('unit/model/Model_Casts_Number', () => {
 
       static casts () {
         return {
-          count: NumberCast
+          count: NumberCast,
         }
       }
     }
@@ -81,13 +81,13 @@ describe('unit/model/Model_Casts_Number', () => {
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
-      count: '444'
+      count: '444',
     })
 
     assertState({
       users: {
-        1: { id: 1, count: 444 }
-      }
+        1: { id: 1, count: 444 },
+      },
     })
 
     expect(userRepo.find(1)?.count).toBe(444)

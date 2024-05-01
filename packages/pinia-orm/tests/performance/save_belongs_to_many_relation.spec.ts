@@ -41,12 +41,12 @@ describe.skip('performance/save_belongs_to_many_relation.spec', () => {
       users.push({
         id: i,
         name: `Username ${i}`,
-        roles: [{ id: i, title: `Title ${i}` }]
+        roles: [{ id: i, title: `Title ${i}` }],
       })
       users.push({
         id: i + 1,
         name: `Username ${i}`,
-        roles: [{ id: i, title: `Title ${i}` }]
+        roles: [{ id: i, title: `Title ${i}` }],
       })
     }
 

@@ -27,7 +27,7 @@ export class CastAttribute {
     this.$self().attributes = attributes
     this.$parameters = {
       ...this.$parameters,
-      ...this.$self().parameters
+      ...this.$self().parameters,
     }
   }
 

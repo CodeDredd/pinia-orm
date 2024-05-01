@@ -6,7 +6,6 @@ import { computed, defineComponent, nextTick, onUpdated } from 'vue-demi'
 import { Model, useRepo } from '../../src'
 import { Num, Str } from '../../src/decorators'
 
-/* eslint-disable vue/one-component-per-file */
 describe.skip('performance/prevent_rerender_of_child_components', () => {
   class Post extends Model {
     static entity = 'posts'
@@ -19,8 +18,8 @@ describe.skip('performance/prevent_rerender_of_child_components', () => {
     props: {
       post: {
         type: Object,
-        required: true
-      }
+        required: true,
+      },
     },
     setup () {
       onUpdated(() => {
@@ -29,7 +28,7 @@ describe.skip('performance/prevent_rerender_of_child_components', () => {
     },
     template: `
     <div>{{ post.title }}</div>
-    `
+    `,
   })
 
   const MainComponent = defineComponent({
@@ -43,20 +42,20 @@ describe.skip('performance/prevent_rerender_of_child_components', () => {
       const addPost = () => {
         postRepo.insert({
           id: counter++,
-          title: `Test ${counter}`
+          title: `Test ${counter}`,
         })
       }
 
       return {
         posts,
-        addPost
+        addPost,
       }
     },
     template: `
     <div>
     <button @click="addPost" > Click me </button>
     <post-component v-for="post in posts" :post="post" :key="post.id" />
-    </div>`
+    </div>`,
   })
 
   it('it doesnt rerender child', async () => {
@@ -70,13 +69,13 @@ describe.skip('performance/prevent_rerender_of_child_components', () => {
             initialState: {
               posts: {
                 data: {
-                  1: { id: 1, title: 'Test 1' }
-                }
-              }
-            }
-          })
-        ]
-      }
+                  1: { id: 1, title: 'Test 1' },
+                },
+              },
+            },
+          }),
+        ],
+      },
     })
 
     const logger = vi.spyOn(console, 'warn')

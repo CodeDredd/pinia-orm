@@ -43,38 +43,38 @@ describe('feature/relations/morph_to_many_save', () => {
     userRepo.save([
       {
         id: 1,
-        tags: [{ id: 1, pivot: { level: 1 } }, { id: 2 }, { id: 4 }]
+        tags: [{ id: 1, pivot: { level: 1 } }, { id: 2 }, { id: 4 }],
       },
       {
         id: 2,
-        tags: [{ id: 1, pivot: { level: 2 } }]
-      }
+        tags: [{ id: 1, pivot: { level: 2 } }],
+      },
     ])
 
     useRepo(Video).save([
       {
         id: 1,
-        tags: [{ id: 1, pivot: { level: 4 } }, { id: 2 }]
+        tags: [{ id: 1, pivot: { level: 4 } }, { id: 2 }],
       },
       {
         id: 2,
-        tags: [{ id: 1, pivot: { level: 5 } }]
-      }
+        tags: [{ id: 1, pivot: { level: 5 } }],
+      },
     ])
 
     assertState({
       users: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       videos: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       tags: {
         1: { id: 1 },
         2: { id: 2 },
-        4: { id: 4 }
+        4: { id: 4 },
       },
       taggables: {
         '[1,1,"users"]': { tag_id: 1, taggable_id: 1, taggable_type: 'users', level: 1 },
@@ -83,8 +83,8 @@ describe('feature/relations/morph_to_many_save', () => {
         '[1,2,"users"]': { tag_id: 1, taggable_id: 2, taggable_type: 'users', level: 2 },
         '[1,1,"videos"]': { tag_id: 1, taggable_id: 1, taggable_type: 'videos', level: 4 },
         '[2,1,"videos"]': { tag_id: 2, taggable_id: 1, taggable_type: 'videos', level: null },
-        '[1,2,"videos"]': { tag_id: 1, taggable_id: 2, taggable_type: 'videos', level: 5 }
-      }
+        '[1,2,"videos"]': { tag_id: 1, taggable_id: 2, taggable_type: 'videos', level: 5 },
+      },
     })
   })
 
@@ -92,13 +92,13 @@ describe('feature/relations/morph_to_many_save', () => {
     const usersRepo = useRepo(User)
 
     usersRepo.save({
-      id: 1
+      id: 1,
     })
 
     assertState({
       users: {
-        1: { id: 1 }
-      }
+        1: { id: 1 },
+      },
     })
   })
 })

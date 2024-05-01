@@ -30,7 +30,7 @@ export class MorphMany extends Relation {
     related: Model,
     morphId: string,
     morphType: string,
-    localKey: string
+    localKey: string,
   ) {
     super(parent, related)
     this.morphId = morphId

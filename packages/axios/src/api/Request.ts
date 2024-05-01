@@ -1,6 +1,6 @@
 import type { AxiosInstance, AxiosResponse } from 'axios'
-import { Config } from '../types/config'
-import { AxiosRepository } from '../repository/AxiosRepository'
+import type { Config } from '../types/config'
+import type { AxiosRepository } from '../repository/AxiosRepository'
 import { Response } from './Response'
 
 export class Request {
@@ -13,7 +13,7 @@ export class Request {
    * The default config.
    */
   config: Config = {
-    save: true
+    save: true,
   }
 
   /**
@@ -36,7 +36,7 @@ export class Request {
   get axios (): AxiosInstance {
     if (!this.repository.axios) {
       throw new Error(
-        '[Pinia ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'
+        '[Pinia ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.',
       )
     }
 
@@ -133,7 +133,7 @@ export class Request {
       ...this.config,
       ...this.repository.globalApiConfig,
       ...this.repository.apiConfig,
-      ...config
+      ...config,
     }
   }
 
@@ -143,7 +143,7 @@ export class Request {
    */
   private async createResponse (
     axiosResponse: AxiosResponse,
-    config: Config
+    config: Config,
   ): Promise<Response> {
     const response = new Response(this.repository, config, axiosResponse)
 

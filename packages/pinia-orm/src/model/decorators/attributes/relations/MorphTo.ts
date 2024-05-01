@@ -8,13 +8,13 @@ export function MorphTo (
   related: () => typeof Model[],
   id: string,
   type: string,
-  ownerKey?: string
+  ownerKey?: string,
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
     self.setRegistry(propertyKey, () =>
-      self.morphTo(related(), id, type, ownerKey)
+      self.morphTo(related(), id, type, ownerKey),
     )
   }
 }

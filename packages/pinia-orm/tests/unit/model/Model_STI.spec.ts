@@ -16,14 +16,14 @@ describe('unit/model/Model_STI', () => {
       static fields () {
         return {
           id: this.attr(null),
-          type: this.attr('animal')
+          type: this.attr('animal'),
         }
       }
 
       static types () {
         return {
           animal: Animal,
-          dog: Dog
+          dog: Dog,
         }
       }
     }
@@ -37,7 +37,7 @@ describe('unit/model/Model_STI', () => {
         return {
           ...super.fields(),
           type: this.attr('dog'),
-          race: this.attr('terrier')
+          race: this.attr('terrier'),
         }
       }
     }
@@ -47,23 +47,23 @@ describe('unit/model/Model_STI', () => {
     animalsRepo.save([
       {
         id: 1,
-        type: 'animal'
+        type: 'animal',
       },
       {
         id: 2,
         type: 'dog',
-        race: 'Rattler'
+        race: 'Rattler',
       },
       {
         id: 3,
         type: 'cat',
-        race: 'red'
-      }
+        race: 'red',
+      },
     ])
 
     useRepo(Dog).save({
       id: 4,
-      race: 'Rattler'
+      race: 'Rattler',
     })
 
     assertState({
@@ -71,8 +71,8 @@ describe('unit/model/Model_STI', () => {
         1: { id: 1, type: 'animal' },
         2: { id: 2, type: 'dog', race: 'Rattler' },
         3: { id: 3, type: 'cat' },
-        4: { id: 4, type: 'dog', race: 'Rattler' }
-      }
+        4: { id: 4, type: 'dog', race: 'Rattler' },
+      },
     })
 
     expect(animalsRepo.find(1)).toBeInstanceOf(Animal)
@@ -92,7 +92,7 @@ describe('unit/model/Model_STI', () => {
       static types () {
         return {
           animal: Animal,
-          dog: Dog
+          dog: Dog,
         }
       }
     }
@@ -104,7 +104,7 @@ describe('unit/model/Model_STI', () => {
 
       static fields () {
         return {
-          ...super.schemas[super.entity]
+          ...super.schemas[super.entity],
         }
       }
 
@@ -117,20 +117,20 @@ describe('unit/model/Model_STI', () => {
     animalsRepo.save([
       {
         id: 1,
-        type: 'animal'
+        type: 'animal',
       },
       {
         id: 2,
         type: 'dog',
-        race: 'Rattler'
-      }
+        race: 'Rattler',
+      },
     ])
 
     assertState({
       animals: {
         1: { id: 1, type: 'animal' },
-        2: { id: 2, type: 'dog', race: 'Rattler' }
-      }
+        2: { id: 2, type: 'dog', race: 'Rattler' },
+      },
     })
 
     expect(animalsRepo.find(1)).toBeInstanceOf(Animal)
@@ -146,7 +146,7 @@ describe('unit/model/Model_STI', () => {
       static types () {
         return {
           0: AnonymousPost,
-          1: UserPost
+          1: UserPost,
         }
       }
 
@@ -158,7 +158,7 @@ describe('unit/model/Model_STI', () => {
           published: this.attr(false),
           type: this.attr(null),
           image_id: this.attr(null),
-          image: this.belongsTo(Image, 'image_id')
+          image: this.belongsTo(Image, 'image_id'),
         }
       }
     }
@@ -172,7 +172,7 @@ describe('unit/model/Model_STI', () => {
         return {
           ...super.fields(),
           user_id: this.attr(null),
-          author: this.belongsTo(User, 'user_id')
+          author: this.belongsTo(User, 'user_id'),
         }
       }
     }
@@ -184,7 +184,7 @@ describe('unit/model/Model_STI', () => {
         return {
           id: this.attr(null),
           title: this.attr(''),
-          url: this.attr('')
+          url: this.attr(''),
         }
       }
     }
@@ -196,7 +196,7 @@ describe('unit/model/Model_STI', () => {
         return {
           id: this.attr(null),
           name: this.attr(''),
-          email: this.attr('')
+          email: this.attr(''),
         }
       }
     }
@@ -210,8 +210,8 @@ describe('unit/model/Model_STI', () => {
         image: {
           id: 1,
           title: 'Some awesome image caption',
-          url: 'https://example.com/myawesomeimage.jpg'
-        }
+          url: 'https://example.com/myawesomeimage.jpg',
+        },
       },
       {
         id: 2,
@@ -221,14 +221,14 @@ describe('unit/model/Model_STI', () => {
         author: {
           id: 1,
           name: 'Johnny Appleseed',
-          email: 'johnny@apple.com'
+          email: 'johnny@apple.com',
         },
         image: {
           id: 2,
           title: 'Another awesome image caption',
-          url: 'https://example.com/mysecondawesomeimage.jpg'
-        }
-      }
+          url: 'https://example.com/mysecondawesomeimage.jpg',
+        },
+      },
     ])
 
     useRepo(AnonymousPost).save({
@@ -239,21 +239,21 @@ describe('unit/model/Model_STI', () => {
       image: {
         id: 1,
         title: 'Some awesome image caption',
-        url: 'https://example.com/myawesomeimage.jpg'
-      }
+        url: 'https://example.com/myawesomeimage.jpg',
+      },
     })
 
     useRepo(User).save([
       {
         id: 2,
         name: 'John Doe',
-        email: 'john@example.com'
+        email: 'john@example.com',
       },
       {
         id: 3,
         name: 'Alice Evens',
-        email: 'alice@evens.com'
-      }
+        email: 'alice@evens.com',
+      },
     ])
 
     expect(useRepo(AnonymousPost).withAll().find(2)).ownProperty('author')
@@ -267,14 +267,14 @@ describe('unit/model/Model_STI', () => {
       static types () {
         return {
           PERSON: Person,
-          ADULT: Adult
+          ADULT: Adult,
         }
       }
 
       static fields () {
         return {
           id: this.attr(null),
-          name: this.attr('')
+          name: this.attr(''),
         }
       }
     }
@@ -287,7 +287,7 @@ describe('unit/model/Model_STI', () => {
       static fields () {
         return {
           ...super.fields(),
-          job: this.attr('')
+          job: this.attr(''),
         }
       }
     }
@@ -296,14 +296,14 @@ describe('unit/model/Model_STI', () => {
 
     personRepo.save([
       { type: 'PERSON', id: 1, name: 'John Doe' },
-      { type: 'ADULT', id: 2, name: 'Jane Doe', job: 'Software Engineer' }
+      { type: 'ADULT', id: 2, name: 'Jane Doe', job: 'Software Engineer' },
     ])
 
     assertState({
       person: {
         1: { id: 1, type: 'PERSON', name: 'John Doe' },
-        2: { id: 2, type: 'ADULT', name: 'Jane Doe', job: 'Software Engineer' }
-      }
+        2: { id: 2, type: 'ADULT', name: 'Jane Doe', job: 'Software Engineer' },
+      },
     })
     const persons = useRepo(Person).query().all()
     expect(persons[0]).toBeInstanceOf(Person)

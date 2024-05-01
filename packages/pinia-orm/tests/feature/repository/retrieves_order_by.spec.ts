@@ -20,8 +20,8 @@ describe('feature/repository/retrieves_order_by', () => {
       users: {
         1: { id: 1, name: 'James', age: 40 },
         2: { id: 2, name: 'Andy', age: 30 },
-        3: { id: 3, name: 'David', age: 20 }
-      }
+        3: { id: 3, name: 'David', age: 20 },
+      },
     })
 
     const users = userRepo.orderBy('name').get()
@@ -29,7 +29,7 @@ describe('feature/repository/retrieves_order_by', () => {
     const expected = [
       { id: 2, name: 'Andy', age: 30 },
       { id: 3, name: 'David', age: 20 },
-      { id: 1, name: 'James', age: 40 }
+      { id: 1, name: 'James', age: 40 },
     ]
 
     expect(users).toHaveLength(3)
@@ -44,8 +44,8 @@ describe('feature/repository/retrieves_order_by', () => {
       users: {
         1: { id: 1, name: 'James', age: 40 },
         2: { id: 2, name: 'Andy', age: 30 },
-        3: { id: 3, name: 'David', age: 20 }
-      }
+        3: { id: 3, name: 'David', age: 20 },
+      },
     })
 
     const users = userRepo.orderBy('name', 'desc').get()
@@ -53,7 +53,7 @@ describe('feature/repository/retrieves_order_by', () => {
     const expected = [
       { id: 1, name: 'James', age: 40 },
       { id: 3, name: 'David', age: 20 },
-      { id: 2, name: 'Andy', age: 30 }
+      { id: 2, name: 'Andy', age: 30 },
     ]
 
     expect(users).toHaveLength(3)
@@ -70,8 +70,8 @@ describe('feature/repository/retrieves_order_by', () => {
         2: { id: 2, name: 'Andy', age: 30 },
         3: { id: 3, name: 'Andy', age: 20 },
         4: { id: 4, name: 'David', age: 20 },
-        5: { id: 5, name: 'David', age: 50 }
-      }
+        5: { id: 5, name: 'David', age: 50 },
+      },
     })
 
     const users = userRepo.orderBy('name', 'desc').orderBy('age').get()
@@ -81,7 +81,7 @@ describe('feature/repository/retrieves_order_by', () => {
       { id: 4, name: 'David', age: 20 },
       { id: 5, name: 'David', age: 50 },
       { id: 3, name: 'Andy', age: 20 },
-      { id: 2, name: 'Andy', age: 30 }
+      { id: 2, name: 'Andy', age: 30 },
     ]
 
     expect(users).toHaveLength(5)
@@ -96,8 +96,8 @@ describe('feature/repository/retrieves_order_by', () => {
       users: {
         1: { id: 1, name: 'James', age: 40 },
         2: { id: 2, name: 'Andy', age: 30 },
-        3: { id: 3, name: 'David', age: 20 }
-      }
+        3: { id: 3, name: 'David', age: 20 },
+      },
     })
 
     const users = userRepo.orderBy(user => user.age, 'desc').get()
@@ -105,7 +105,7 @@ describe('feature/repository/retrieves_order_by', () => {
     const expected = [
       { id: 1, name: 'James', age: 40 },
       { id: 2, name: 'Andy', age: 30 },
-      { id: 3, name: 'David', age: 20 }
+      { id: 3, name: 'David', age: 20 },
     ]
 
     expect(users).toHaveLength(3)

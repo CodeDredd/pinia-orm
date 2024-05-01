@@ -5,19 +5,19 @@ import { Database } from '../database/Database'
 import type { Constructor } from '../types'
 import { registerPlugins } from '../store/Plugins'
 
-export function useRepo<R extends Repository>(
+export function useRepo<R extends Repository> (
   repository: R | Constructor<R>,
   pinia?: Pinia,
 ): R
 
-export function useRepo<M extends Model>(
+export function useRepo<M extends Model> (
   model: Constructor<M>,
   pinia?: Pinia,
 ): Repository<M>
 
 export function useRepo (
   ModelOrRepository: any,
-  pinia?: Pinia
+  pinia?: Pinia,
 ) {
   const database = new Database()
 
@@ -32,7 +32,9 @@ export function useRepo (
     } else {
       repository.database.register(repository.getModel())
     }
-  } catch (e) {}
+  } catch (e) {
+    console.error('[Pinia ORM] Failed to register models', e)
+  }
 
   return registerPlugins(repository)
 }

@@ -46,7 +46,7 @@ export class BelongsToMany extends Relation {
     foreignPivotKey: string,
     relatedPivotKey: string,
     parentKey: string,
-    relatedKey: string
+    relatedKey: string,
   ) {
     super(parent, related)
 

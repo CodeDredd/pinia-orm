@@ -7,7 +7,7 @@ export default class Todo extends Model {
     return {
       id: this.uid(),
       text: this.string(''),
-      name: this.string('')
+      name: this.string(''),
     }
   }
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { Model, useRepo, definePiniaOrmPlugin } from '../../../src'
+import { Model, definePiniaOrmPlugin, useRepo } from '../../../src'
 import { Attr, Str } from '../../../src/decorators'
 import { createPiniaORM } from '../../helpers'
 

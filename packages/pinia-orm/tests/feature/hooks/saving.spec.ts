@@ -62,22 +62,22 @@ describe('feature/hooks/saving', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John', age: 30, postId: 1 }
+        1: { id: 1, name: 'John', age: 30, postId: 1 },
       },
       posts: {
-        1: { id: 1, title: 'News' }
-      }
+        1: { id: 1, title: 'News' },
+      },
     })
 
     useRepo(User).save({ id: 1, name: 'John Doe', age: 30, post: null })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John', age: 30, postId: null }
+        1: { id: 1, name: 'John', age: 30, postId: null },
       },
       posts: {
-        1: { id: 1, title: 'News' }
-      }
+        1: { id: 1, title: 'News' },
+      },
     })
   })
 
@@ -102,7 +102,7 @@ describe('feature/hooks/saving', () => {
     expect(savingMethod).toHaveBeenCalledOnce()
 
     assertState({
-      users: {}
+      users: {},
     })
   })
 

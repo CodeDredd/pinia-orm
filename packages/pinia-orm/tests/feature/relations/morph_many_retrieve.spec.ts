@@ -37,34 +37,34 @@ describe('feature/relations/morph_many_retrieve', () => {
     videos: { 1: { id: 1, link: '/video.mp4' } },
     posts: {
       1: { id: 1, title: 'Hello, world!' },
-      2: { id: 2, title: 'Hello, world! Again!' }
+      2: { id: 2, title: 'Hello, world! Again!' },
     },
     comments: {
       1: {
         id: 1,
         body: 'Cool Video!',
         commentableId: 1,
-        commentableType: 'videos'
+        commentableType: 'videos',
       },
       2: {
         id: 2,
         body: 'Cool Video Again!',
         commentableId: 1,
-        commentableType: 'videos'
+        commentableType: 'videos',
       },
       3: {
         id: 3,
         body: 'Cool Post!',
         commentableId: 1,
-        commentableType: 'posts'
+        commentableType: 'posts',
       },
       4: {
         id: 4,
         body: 'Cool Post 2!',
         commentableId: 2,
-        commentableType: 'posts'
-      }
-    }
+        commentableType: 'posts',
+      },
+    },
   }
 
   describe('when there are comments', () => {
@@ -84,15 +84,15 @@ describe('feature/relations/morph_many_retrieve', () => {
             id: 1,
             body: 'Cool Video!',
             commentableId: 1,
-            commentableType: 'videos'
+            commentableType: 'videos',
           },
           {
             id: 2,
             body: 'Cool Video Again!',
             commentableId: 1,
-            commentableType: 'videos'
-          }
-        ]
+            commentableType: 'videos',
+          },
+        ],
       })
     })
 
@@ -112,9 +112,9 @@ describe('feature/relations/morph_many_retrieve', () => {
             id: 3,
             body: 'Cool Post!',
             commentableId: 1,
-            commentableType: 'posts'
-          }
-        ]
+            commentableType: 'posts',
+          },
+        ],
       })
     })
   })
@@ -123,10 +123,10 @@ describe('feature/relations/morph_many_retrieve', () => {
     it('can eager load missing relation as empty array', () => {
       fillState({
         videos: {
-          1: { id: 1, link: '/video.mp4' }
+          1: { id: 1, link: '/video.mp4' },
         },
         posts: {},
-        comments: {}
+        comments: {},
       })
 
       const video = useRepo(Video).with('comments').first()!
@@ -135,7 +135,7 @@ describe('feature/relations/morph_many_retrieve', () => {
       assertModel(video, {
         id: 1,
         link: '/video.mp4',
-        comments: []
+        comments: [],
       })
     })
   })
@@ -143,27 +143,27 @@ describe('feature/relations/morph_many_retrieve', () => {
   it('can revive "morph many" relations', () => {
     fillState({
       videos: {
-        1: { id: 1, link: '/video.mp4' }
+        1: { id: 1, link: '/video.mp4' },
       },
       comments: {
         1: {
           id: 1,
           commentableId: 1,
           commentableType: 'videos',
-          body: 'Cool Video!'
+          body: 'Cool Video!',
         },
         2: {
           id: 2,
           commentableId: 1,
           commentableType: 'videos',
-          body: 'Cool Video Again!'
-        }
-      }
+          body: 'Cool Video Again!',
+        },
+      },
     })
 
     const schema = {
       id: '1',
-      comments: [{ id: 2 }, { id: 1 }]
+      comments: [{ id: 2 }, { id: 1 }],
     }
 
     const video = useRepo(Video).revive(schema)!

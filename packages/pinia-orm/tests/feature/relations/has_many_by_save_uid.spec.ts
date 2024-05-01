@@ -36,18 +36,18 @@ describe('feature/relations/has_many_by_insert_uid', () => {
       name: 'Cluster 01',
       nodes: [
         { id: 1, name: 'Node 01' },
-        { id: 2, name: 'Node 02' }
-      ]
+        { id: 2, name: 'Node 02' },
+      ],
     })
 
     assertState({
       nodes: {
         1: { id: 1, name: 'Node 01' },
-        2: { id: 2, name: 'Node 02' }
+        2: { id: 2, name: 'Node 02' },
       },
       clusters: {
-        uid1: { id: 'uid1', nodeIds: [1, 2], name: 'Cluster 01' }
-      }
+        uid1: { id: 'uid1', nodeIds: [1, 2], name: 'Cluster 01' },
+      },
     })
   })
 
@@ -76,17 +76,17 @@ describe('feature/relations/has_many_by_insert_uid', () => {
 
     clusterRepo.save({
       name: 'Cluster 01',
-      nodes: [{ name: 'Node 01' }, { name: 'Node 02' }]
+      nodes: [{ name: 'Node 01' }, { name: 'Node 02' }],
     })
 
     assertState({
       nodes: {
         uid2: { id: 'uid2', name: 'Node 01' },
-        uid3: { id: 'uid3', name: 'Node 02' }
+        uid3: { id: 'uid3', name: 'Node 02' },
       },
       clusters: {
-        uid1: { id: 'uid1', nodeIds: ['uid2', 'uid3'], name: 'Cluster 01' }
-      }
+        uid1: { id: 'uid1', nodeIds: ['uid2', 'uid3'], name: 'Cluster 01' },
+      },
     })
   })
 })

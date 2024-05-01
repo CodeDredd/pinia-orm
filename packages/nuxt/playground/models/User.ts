@@ -10,7 +10,7 @@ export default class User extends Model {
       name: this.string(''),
       first_name: this.string(''),
       last_name: this.string(''),
-      todos: this.hasMany(ToDo, 'user_id')
+      todos: this.hasMany(ToDo, 'user_id'),
     }
   }
 

@@ -10,7 +10,7 @@ describe('unit/model/Model', () => {
     @Attr() id!: number
 
     static piniaOptions = {
-      persist: true
+      persist: true,
     }
   }
 

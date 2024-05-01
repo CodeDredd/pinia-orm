@@ -10,13 +10,13 @@ export function BelongsToMany (
   foreignPivotKey: string,
   relatedPivotKey: string,
   parentKey?: string,
-  relatedKey?: string
+  relatedKey?: string,
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
     self.setRegistry(propertyKey, () =>
-      self.belongsToMany(related(), pivot(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey)
+      self.belongsToMany(related(), pivot(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey),
     )
   }
 }

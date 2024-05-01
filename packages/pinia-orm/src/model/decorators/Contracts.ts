@@ -5,7 +5,7 @@ export type PropertyDecorator = (target: Model, propertyKey: string) => void
 export type UidOptions = NanoidOptions | number
 
 export interface NanoidOptions {
-  alphabet?: string,
+  alphabet?: string
   size?: number
 }
 

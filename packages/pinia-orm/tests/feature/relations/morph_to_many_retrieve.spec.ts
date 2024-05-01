@@ -47,20 +47,20 @@ describe('feature/relations/morph_to_many_retrieve', () => {
       users: {
         1: { id: 1 },
         2: { id: 2 },
-        3: { id: 3 }
+        3: { id: 3 },
       },
       videos: {
-        3: { id: 3 }
+        3: { id: 3 },
       },
       tags: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       taggables: {
         '[1,1,"users"]': { tag_id: 1, taggable_id: 1, taggable_type: 'users', level: 1 },
         '[2,3,"videos"]': { tag_id: 2, taggable_id: 3, taggable_type: 'videos', level: 2 },
-        '[2,1,"users"]': { tag_id: 2, taggable_id: 1, taggable_type: 'users', level: null }
-      }
+        '[2,1,"users"]': { tag_id: 2, taggable_id: 1, taggable_type: 'users', level: null },
+      },
     })
 
     const user = userRepo.with('tags').find(1)
@@ -83,22 +83,22 @@ describe('feature/relations/morph_to_many_retrieve', () => {
       users: {
         1: { id: 1 },
         2: { id: 2 },
-        3: { id: 3 }
+        3: { id: 3 },
       },
       videos: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       tags: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       taggables: {
         '[1,1,"users"]': { tag_id: 1, taggable_id: 1, taggable_type: 'users', level: 1 },
         '[1,1,"videos"]': { tag_id: 1, taggable_id: 1, taggable_type: 'videos', level: 2 },
         '[2,1,"users"]': { tag_id: 2, taggable_id: 1, taggable_type: 'users', level: null },
-        '[2,2,"videos"]': { tag_id: 2, taggable_id: 2, taggable_type: 'videos', level: 3 }
-      }
+        '[2,2,"videos"]': { tag_id: 2, taggable_id: 2, taggable_type: 'videos', level: 3 },
+      },
     })
 
     const users = useRepo(User).with('tags').get()
@@ -139,7 +139,7 @@ describe('feature/relations/morph_to_many_retrieve', () => {
     assertModel(user, {
       id: 1,
       name: 'John Doe',
-      tags: []
+      tags: [],
     })
   })
 
@@ -148,21 +148,21 @@ describe('feature/relations/morph_to_many_retrieve', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', permissions: [] }
+        1: { id: 1, name: 'John Doe', permissions: [] },
       },
       tags: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       taggables: {
         '[1,1,"users"]': { tag_id: 1, taggable_id: 1, taggable_type: 'users', level: 1 },
-        '[2,1,"users"]': { tag_id: 2, taggable_id: 1, taggable_type: 'users', level: null }
-      }
+        '[2,1,"users"]': { tag_id: 2, taggable_id: 1, taggable_type: 'users', level: null },
+      },
     })
 
     const schema = {
       id: '1',
-      tags: [{ id: 2 }, { id: 1 }]
+      tags: [{ id: 2 }, { id: 1 }],
     }
 
     const user = usersRepo.revive(schema)!

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, it, beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, it } from 'vitest'
 import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 
@@ -14,7 +14,7 @@ describe('Feature - Request - Data Key', () => {
     static fields () {
       return {
         id: this.attr(null),
-        name: this.attr('')
+        name: this.attr(''),
       }
     }
   }
@@ -28,20 +28,20 @@ describe('Feature - Request - Data Key', () => {
 
   it('can specify which resource key to extract data from', async () => {
     mock.onGet('/users').reply(200, {
-      data: { id: 1, name: 'John Doe' }
+      data: { id: 1, name: 'John Doe' },
     })
 
     const userStore = useAxiosRepo(User)
 
     await userStore.api().request({
       url: '/users',
-      dataKey: 'data'
+      dataKey: 'data',
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 })

@@ -42,7 +42,7 @@ export class HasManyThrough extends Relation {
     firstKey: string,
     secondKey: string,
     localKey: string,
-    secondLocalKey: string
+    secondLocalKey: string,
   ) {
     super(parent, related)
     this.through = through

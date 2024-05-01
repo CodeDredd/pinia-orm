@@ -9,7 +9,7 @@ export default class EntitySchema {
       mergeStrategy = (entityA, entityB) => {
         return { ...entityA, ...entityB }
       },
-      processStrategy = input => ({ ...input })
+      processStrategy = input => ({ ...input }),
     } = options
 
     this._key = key
@@ -65,7 +65,7 @@ export default class EntitySchema {
           key,
           resolvedSchema,
           addEntity,
-          visitedEntities
+          visitedEntities,
         )
       }
     })

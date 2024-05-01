@@ -32,18 +32,18 @@ describe('feature/relations/has_many_by_save', () => {
       nodeIds: [1, 2],
       nodes: [
         { id: 1, name: 'Node 01' },
-        { id: 2, name: 'Node 02' }
-      ]
+        { id: 2, name: 'Node 02' },
+      ],
     })
 
     assertState({
       nodes: {
         1: { id: 1, name: 'Node 01' },
-        2: { id: 2, name: 'Node 02' }
+        2: { id: 2, name: 'Node 02' },
       },
       clusters: {
-        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' }
-      }
+        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' },
+      },
     })
   })
 
@@ -55,18 +55,18 @@ describe('feature/relations/has_many_by_save', () => {
       name: 'Cluster 01',
       nodes: [
         { id: 1, name: 'Node 01' },
-        { id: 2, name: 'Node 02' }
-      ]
+        { id: 2, name: 'Node 02' },
+      ],
     })
 
     assertState({
       nodes: {
         1: { id: 1, name: 'Node 01' },
-        2: { id: 2, name: 'Node 02' }
+        2: { id: 2, name: 'Node 02' },
       },
       clusters: {
-        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' }
-      }
+        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' },
+      },
     })
   })
 
@@ -79,18 +79,18 @@ describe('feature/relations/has_many_by_save', () => {
       nodeIds: [2],
       nodes: [
         { id: 1, name: 'Node 01' },
-        { id: 2, name: 'Node 02' }
-      ]
+        { id: 2, name: 'Node 02' },
+      ],
     })
 
     assertState({
       nodes: {
         1: { id: 1, name: 'Node 01' },
-        2: { id: 2, name: 'Node 02' }
+        2: { id: 2, name: 'Node 02' },
       },
       clusters: {
-        1: { id: 1, nodeIds: [2, 1], name: 'Cluster 01' }
-      }
+        1: { id: 1, nodeIds: [2, 1], name: 'Cluster 01' },
+      },
     })
   })
 
@@ -100,13 +100,13 @@ describe('feature/relations/has_many_by_save', () => {
     clusterRepo.save({
       id: 1,
       name: 'Cluster 01',
-      nodeIds: [1, 2]
+      nodeIds: [1, 2],
     })
 
     assertState({
       clusters: {
-        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' }
-      }
+        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' },
+      },
     })
   })
 })

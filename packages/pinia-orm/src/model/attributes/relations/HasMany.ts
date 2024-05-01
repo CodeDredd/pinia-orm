@@ -3,8 +3,8 @@ import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
 import type { Model, PrimaryKey } from '../../Model'
-import type { Dictionary } from './Relation'
 import { isArray } from '../../../support/Utils'
+import type { Dictionary } from './Relation'
 import { Relation } from './Relation'
 
 export class HasMany extends Relation {
@@ -25,7 +25,7 @@ export class HasMany extends Relation {
     parent: Model,
     related: Model,
     foreignKey: PrimaryKey,
-    localKey: PrimaryKey
+    localKey: PrimaryKey,
   ) {
     super(parent, related)
     this.foreignKey = foreignKey
@@ -55,7 +55,7 @@ export class HasMany extends Relation {
       this.localKey,
       (foreignKey, localKey) => {
         child[foreignKey] = record[localKey]
-      }
+      },
     )
   }
 
@@ -66,7 +66,7 @@ export class HasMany extends Relation {
     this.compositeKeyMapper(
       this.foreignKey,
       this.localKey,
-      (foreignKey, localKey) => query.whereIn(foreignKey, this.getKeys(models, localKey))
+      (foreignKey, localKey) => query.whereIn(foreignKey, this.getKeys(models, localKey)),
     )
   }
 
@@ -78,9 +78,9 @@ export class HasMany extends Relation {
 
     models.forEach((model) => {
       const key = this.getKey(
-        isArray(this.localKey) 
-          ? this.localKey.map(key => model[key]) 
-          : model[this.localKey]
+        isArray(this.localKey)
+          ? this.localKey.map(key => model[key])
+          : model[this.localKey],
       )
 
       dictionary[key]
@@ -97,7 +97,7 @@ export class HasMany extends Relation {
       const key = this.getKey(
         isArray(this.foreignKey)
           ? this.foreignKey.map(key => result[key])
-          : result[this.foreignKey]
+          : result[this.foreignKey],
       )
       return [key, result]
     })

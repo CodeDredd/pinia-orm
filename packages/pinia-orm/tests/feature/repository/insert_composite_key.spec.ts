@@ -20,14 +20,14 @@ describe('feature/repository/insert_composite_key', () => {
 
     userRepo.insert([
       { idA: 1, idB: 2, name: 'John Doe' },
-      { idA: 2, idB: 1, name: 'Jane Doe' }
+      { idA: 2, idB: 1, name: 'Jane Doe' },
     ])
 
     assertState({
       users: {
         '[1,2]': { idA: 1, idB: 2, name: 'John Doe' },
-        '[2,1]': { idA: 2, idB: 1, name: 'Jane Doe' }
-      }
+        '[2,1]': { idA: 2, idB: 1, name: 'Jane Doe' },
+      },
     })
   })
 

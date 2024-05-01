@@ -17,7 +17,7 @@ describe('unit/model/Model_Casts_String', () => {
 
       static casts () {
         return {
-          name: StringCast
+          name: StringCast,
         }
       }
     }
@@ -65,7 +65,7 @@ describe('unit/model/Model_Casts_String', () => {
 
       static casts () {
         return {
-          name: StringCast
+          name: StringCast,
         }
       }
     }
@@ -73,13 +73,13 @@ describe('unit/model/Model_Casts_String', () => {
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
-      name: 1234
+      name: 1234,
     })
 
     assertState({
       users: {
-        1: { id: 1, name: '1234' }
-      }
+        1: { id: 1, name: '1234' },
+      },
     })
 
     expect(userRepo.find(1)?.name).toBe('1234')

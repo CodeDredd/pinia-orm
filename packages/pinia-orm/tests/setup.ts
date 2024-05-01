@@ -6,22 +6,22 @@ import { Model, createORM, useRepo } from '../src'
 
 vi.mock('nanoid/non-secure', () => ({
   customAlphabet: vi.fn(),
-  nanoid: vi.fn()
+  nanoid: vi.fn(),
 }))
 
 vi.mock('nanoid', () => ({
   customAlphabet: vi.fn(),
-  nanoid: vi.fn()
+  nanoid: vi.fn(),
 }))
 
 vi.mock('nanoid/async', () => ({
   customAlphabet: vi.fn(),
-  nanoid: vi.fn()
+  nanoid: vi.fn(),
 }))
 
 vi.mock('uuid', () => ({
   v1: vi.fn(),
-  v4: vi.fn()
+  v4: vi.fn(),
 }))
 
 beforeAll(() => {

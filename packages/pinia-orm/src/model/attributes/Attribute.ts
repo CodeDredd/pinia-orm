@@ -30,5 +30,5 @@ export abstract class Attribute {
   /**
    * Make the value for the attribute.
    */
-  abstract make(value?: any): any
+  abstract make (value?: any): any
 }

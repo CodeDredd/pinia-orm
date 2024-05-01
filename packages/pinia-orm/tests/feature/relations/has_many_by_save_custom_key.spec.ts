@@ -37,18 +37,18 @@ describe('feature/relations/has_many_by_save_custom_key', () => {
       name: 'Cluster 01',
       nodes: [
         { id: 1, name: 'Node 01' },
-        { id: 2, name: 'Node 02' }
-      ]
+        { id: 2, name: 'Node 02' },
+      ],
     })
 
     assertState({
       nodes: {
         1: { id: 1, name: 'Node 01' },
-        2: { id: 2, name: 'Node 02' }
+        2: { id: 2, name: 'Node 02' },
       },
       clusters: {
-        1: { clusterId: 1, nodeIds: [1, 2], name: 'Cluster 01' }
-      }
+        1: { clusterId: 1, nodeIds: [1, 2], name: 'Cluster 01' },
+      },
     })
   })
 
@@ -79,18 +79,18 @@ describe('feature/relations/has_many_by_save_custom_key', () => {
       name: 'Cluster 01',
       nodes: [
         { id: 1, nodeId: 1, name: 'Node 01' },
-        { id: 2, nodeId: 2, name: 'Node 02' }
-      ]
+        { id: 2, nodeId: 2, name: 'Node 02' },
+      ],
     })
 
     assertState({
       nodes: {
         1: { id: 1, nodeId: 1, name: 'Node 01' },
-        2: { id: 2, nodeId: 2, name: 'Node 02' }
+        2: { id: 2, nodeId: 2, name: 'Node 02' },
       },
       clusters: {
-        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' }
-      }
+        1: { id: 1, nodeIds: [1, 2], name: 'Cluster 01' },
+      },
     })
   })
 })

@@ -7,6 +7,6 @@ export default defineBuildConfig({
   clean: true,
   externals: ['pinia-orm'],
   rollup: {
-    emitCJS: true
-  }
+    emitCJS: true,
+  },
 })

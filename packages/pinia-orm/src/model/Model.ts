@@ -179,7 +179,7 @@ export class Model {
 
     const registry = {
       ...this.fields(),
-      ...this.registries[this.entity]
+      ...this.registries[this.entity],
     }
 
     for (const key in registry) {
@@ -198,7 +198,7 @@ export class Model {
   static setRegistry<M extends typeof Model> (
     this: M,
     key: string,
-    attribute: () => Attribute
+    attribute: () => Attribute,
   ): M {
     if (!this.registries[this.entity]) { this.registries[this.entity] = {} }
 
@@ -213,7 +213,7 @@ export class Model {
   static setFieldDeleteMode<M extends typeof Model> (
     this: M,
     key: string,
-    mode: deleteModes
+    mode: deleteModes,
   ): M {
     this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
     this.fieldsOnDelete[this.entity][key] = mode
@@ -227,7 +227,7 @@ export class Model {
   static setMutator<M extends typeof Model> (
     this: M,
     key: string,
-    mutator: MutatorFunctions<any>
+    mutator: MutatorFunctions<any>,
   ): M {
     this.fieldMutators[key] = mutator
 
@@ -240,7 +240,7 @@ export class Model {
   static setCast<M extends typeof Model> (
     this: M,
     key: string,
-    to: typeof CastAttribute
+    to: typeof CastAttribute,
   ): M {
     this.fieldCasts[key] = to
 
@@ -252,7 +252,7 @@ export class Model {
    */
   static setHidden<M extends typeof Model> (
     this: M,
-    key: keyof ModelFields
+    key: keyof ModelFields,
   ): M {
     this.hidden.push(key)
 
@@ -335,7 +335,7 @@ export class Model {
   static hasOne (
     related: typeof Model,
     foreignKey: PrimaryKey,
-    localKey?: PrimaryKey
+    localKey?: PrimaryKey,
   ): HasOne {
     const model = this.newRawInstance()
 
@@ -350,7 +350,7 @@ export class Model {
   static belongsTo (
     related: typeof Model,
     foreignKey: PrimaryKey,
-    ownerKey?: PrimaryKey
+    ownerKey?: PrimaryKey,
   ): BelongsTo {
     const instance = related.newRawInstance()
 
@@ -368,7 +368,7 @@ export class Model {
     foreignPivotKey: string,
     relatedPivotKey: string,
     parentKey?: string,
-    relatedKey?: string
+    relatedKey?: string,
   ): BelongsToMany {
     const instance = related.newRawInstance()
     const model = this.newRawInstance()
@@ -386,7 +386,7 @@ export class Model {
       foreignPivotKey,
       relatedPivotKey,
       parentKey,
-      relatedKey
+      relatedKey,
     )
   }
 
@@ -400,7 +400,7 @@ export class Model {
     id: string,
     type: string,
     parentKey?: string,
-    relatedKey?: string
+    relatedKey?: string,
   ): MorphToMany {
     const instance = related.newRawInstance()
     const model = this.newRawInstance()
@@ -419,7 +419,7 @@ export class Model {
       id,
       type,
       parentKey,
-      relatedKey
+      relatedKey,
     )
   }
 
@@ -429,7 +429,7 @@ export class Model {
   static hasMany (
     related: typeof Model,
     foreignKey: PrimaryKey,
-    localKey?: PrimaryKey
+    localKey?: PrimaryKey,
   ): HasMany {
     const model = this.newRawInstance()
 
@@ -444,7 +444,7 @@ export class Model {
   static hasManyBy (
     related: typeof Model,
     foreignKey: string,
-    ownerKey?: string
+    ownerKey?: string,
   ): HasManyBy {
     const instance = related.newRawInstance()
 
@@ -462,7 +462,7 @@ export class Model {
     firstKey: string,
     secondKey: string,
     localKey?: string,
-    secondLocalKey?: string
+    secondLocalKey?: string,
   ): HasManyThrough {
     const model = this.newRawInstance()
     const throughModel = through.newRawInstance()
@@ -480,7 +480,7 @@ export class Model {
     related: typeof Model,
     id: string,
     type: string,
-    localKey?: string
+    localKey?: string,
   ): MorphOne {
     const model = this.newRawInstance()
 
@@ -496,7 +496,7 @@ export class Model {
     related: typeof Model[],
     id: string,
     type: string,
-    ownerKey = ''
+    ownerKey = '',
   ): MorphTo {
     const instance = this.newRawInstance()
     const relatedModels = related.map(model => model.newRawInstance())
@@ -511,7 +511,7 @@ export class Model {
     related: typeof Model,
     id: string,
     type: string,
-    localKey?: string
+    localKey?: string,
   ): MorphMany {
     const model = this.newRawInstance()
 
@@ -709,7 +709,7 @@ export class Model {
   $casts (): Casts {
     return {
       ...this.$getCasts(),
-      ...this.$self().fieldCasts
+      ...this.$self().fieldCasts,
     }
   }
 
@@ -722,7 +722,7 @@ export class Model {
 
     const modelConfig = {
       ...config.model,
-      ...this.$config()
+      ...this.$config(),
     }
     modelConfig.withMeta && (this.$self().schemas[this.$entity()][this.$self().metaKey] = this.$self().attr({}))
 
@@ -730,7 +730,7 @@ export class Model {
     const fillRelation = options.relations ?? true
     const mutators: Mutators = {
       ...this.$getMutators(),
-      ...this.$self().fieldMutators
+      ...this.$self().fieldMutators,
     }
 
     for (const key in fields) {
@@ -772,7 +772,7 @@ export class Model {
     if (action === 'save') {
       this[this.$self().metaKey] = {
         createdAt: timestamp,
-        updatedAt: timestamp
+        updatedAt: timestamp,
       }
     }
     if (action === 'update') { this[this.$self().metaKey].updatedAt = timestamp }
@@ -864,7 +864,7 @@ export class Model {
     assert(id !== null, [
       'The record is missing the primary key. If you want to persist record',
       'without the primary key, please define the primary key field with the',
-      '`uid` attribute.'
+      '`uid` attribute.',
     ])
 
     return this.$stringifyId(id)
@@ -886,7 +886,7 @@ export class Model {
     // an error here.
     assert(!this.$hasCompositeKey(), [
       'Please provide the local key for the relationship. The model with the',
-      'composite key can\'t infer its local key.'
+      'composite key can\'t infer its local key.',
     ])
 
     return this.$getKeyName() as string
@@ -903,7 +903,7 @@ export class Model {
     })
 
     assert(relation instanceof Relation, [
-      `Relationship [${name}] on model [${this.$entity()}] not found.`
+      `Relationship [${name}] on model [${this.$entity()}] not found.`,
     ])
 
     return relation
@@ -1011,8 +1011,7 @@ export class Model {
     if (typeof value === 'object') {
       // If the value is an object, check if it's an instance of Date and that it has
       // a time value with its getTime() method, and that its toISOString() method exists
-      if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === 'function') { return value.toISOString() }
-      else {
+      if (value instanceof Date && !Number.isNaN(value.getTime()) && typeof value.toISOString === 'function') { return value.toISOString() } else {
         // If it's not a Date object, serialize the object using the default method
         return this.serializeObject(value)
       }
@@ -1044,8 +1043,8 @@ export class Model {
   /**
    * Serialize the given relation to JSON.
    */
-  protected serializeRelation(relation: Item): Element | null
-  protected serializeRelation(relation: Collection): Element[]
+  protected serializeRelation (relation: Item): Element | null
+  protected serializeRelation (relation: Collection): Element[]
   protected serializeRelation (relation: any): any {
     if (relation === undefined) { return undefined }
 

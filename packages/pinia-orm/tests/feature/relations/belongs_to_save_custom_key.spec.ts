@@ -35,16 +35,16 @@ describe('feature/relations/belongs_to_save_custome_key', () => {
     postsRepo.save({
       id: 1,
       title: 'Title 01',
-      author: { userId: 1, name: 'John Doe' }
+      author: { userId: 1, name: 'John Doe' },
     })
 
     assertState({
       users: {
-        1: { userId: 1, name: 'John Doe' }
+        1: { userId: 1, name: 'John Doe' },
       },
       posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' }
-      }
+        1: { id: 1, userId: 1, title: 'Title 01' },
+      },
     })
   })
 
@@ -73,16 +73,16 @@ describe('feature/relations/belongs_to_save_custome_key', () => {
     postsRepo.save({
       id: 1,
       title: 'Title 01',
-      author: { id: 1, userId: 1, name: 'John Doe' }
+      author: { id: 1, userId: 1, name: 'John Doe' },
     })
 
     assertState({
       users: {
-        1: { id: 1, userId: 1, name: 'John Doe' }
+        1: { id: 1, userId: 1, name: 'John Doe' },
       },
       posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' }
-      }
+        1: { id: 1, userId: 1, title: 'Title 01' },
+      },
     })
   })
 })

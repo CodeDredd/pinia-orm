@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Model, useRepo } from '../../../src'
 import { Num, Str } from '../../../src/decorators'
 import {
-  fillState
+  fillState,
 } from '../../helpers'
 
 describe('feature/hooks/retrieved', () => {
@@ -28,8 +28,8 @@ describe('feature/hooks/retrieved', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 }
-      }
+        1: { id: 1, name: 'John Doe', age: 30 },
+      },
     })
 
     useRepo(User).where('id', 2).first()
@@ -55,8 +55,8 @@ describe('feature/hooks/retrieved', () => {
     fillState({
       users: {
         1: { id: 1, name: 'John Doe', age: 10 },
-        2: { id: 2, name: 'John Doe', age: 10 }
-      }
+        2: { id: 2, name: 'John Doe', age: 10 },
+      },
     })
 
     useRepo(User).all()
@@ -82,8 +82,8 @@ describe('feature/hooks/retrieved', () => {
     fillState({
       users: {
         1: { id: 1, name: 'John Doe', age: 10 },
-        2: { id: 2, name: 'John Doe', age: 10 }
-      }
+        2: { id: 2, name: 'John Doe', age: 10 },
+      },
     })
 
     useRepo(User).find(1)

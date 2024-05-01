@@ -24,7 +24,7 @@ export class HasOne extends Relation {
     parent: Model,
     related: Model,
     foreignKey: PrimaryKey,
-    localKey: PrimaryKey
+    localKey: PrimaryKey,
   ) {
     super(parent, related)
     this.foreignKey = foreignKey
@@ -54,7 +54,7 @@ export class HasOne extends Relation {
       this.localKey,
       (foreignKey, localKey) => {
         child[foreignKey] = record[localKey]
-      }
+      },
     )
   }
 
@@ -65,7 +65,7 @@ export class HasOne extends Relation {
     this.compositeKeyMapper(
       this.foreignKey,
       this.localKey,
-      (foreignKey, localKey) => query.whereIn(foreignKey, this.getKeys(models, localKey))
+      (foreignKey, localKey) => query.whereIn(foreignKey, this.getKeys(models, localKey)),
     )
   }
 

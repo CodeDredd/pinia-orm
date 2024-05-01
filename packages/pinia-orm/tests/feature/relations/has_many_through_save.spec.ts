@@ -39,18 +39,18 @@ describe('feature/relations/has_many_through_save', () => {
       id: 1,
       posts: [
         { id: 1, userId: 1, title: '100' },
-        { id: 2, userId: 1, title: '200' }
-      ]
+        { id: 2, userId: 1, title: '200' },
+      ],
     })
 
     assertState({
       countries: {
-        1: { id: 1 }
+        1: { id: 1 },
       },
       posts: {
         1: { id: 1, userId: 1, title: '100' },
-        2: { id: 2, userId: 1, title: '200' }
-      }
+        2: { id: 2, userId: 1, title: '200' },
+      },
     })
   })
 
@@ -58,13 +58,13 @@ describe('feature/relations/has_many_through_save', () => {
     const countryRepo = useRepo(Country)
 
     countryRepo.save({
-      id: 1
+      id: 1,
     })
 
     assertState({
       countries: {
-        1: { id: 1 }
-      }
+        1: { id: 1 },
+      },
     })
   })
 })

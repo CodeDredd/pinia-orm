@@ -69,7 +69,7 @@ export function orderBy<T extends Element> (
   collection: T[],
   iteratees: (((record: T) => any) | string)[],
   directions: string[],
-  flags: SortFlags = 'SORT_REGULAR'
+  flags: SortFlags = 'SORT_REGULAR',
 ): T[] {
   let index = -1
 
@@ -94,7 +94,7 @@ export function orderBy<T extends Element> (
  */
 function baseSortBy<T> (
   array: SortableArray<T>[],
-  comparer: (a: SortableArray<T>, B: SortableArray<T>) => number
+  comparer: (a: SortableArray<T>, B: SortableArray<T>) => number,
 ): T[] {
   let length = array.length
 
@@ -119,7 +119,7 @@ function compareMultiple<T> (
   object: SortableArray<T>,
   other: SortableArray<T>,
   directions: string[],
-  flags: SortFlags
+  flags: SortFlags,
 ): number {
   let index = -1
 
@@ -180,7 +180,7 @@ function compareAscending (value: any, other: any, flags: SortFlags): number {
  */
 export function groupBy<T extends Element> (
   collection: T[],
-  iteratee: (record: T) => string
+  iteratee: (record: T) => string,
 ): { [key: string]: T[] } {
   return collection.reduce((records: Record<string, any>, record) => {
     const key = iteratee(record)
@@ -197,7 +197,7 @@ export function groupBy<T extends Element> (
  * Asserts that the condition is truthy, throwing immediately if not.
  */
 export function throwError (
-  message: string[]
+  message: string[],
 ): void {
   throw new Error(['[Pinia ORM]'].concat(message).join(' '))
 }
@@ -207,7 +207,7 @@ export function throwError (
  */
 export function assert (
   condition: boolean,
-  message: string[]
+  message: string[],
 ): asserts condition {
   if (!condition) { throwError(message) }
 }
@@ -243,10 +243,11 @@ export function generateKey (key: string, params?: any): string {
 export function getValue (obj: Record<string, any>, keys: string | string[]): any {
   keys = (typeof keys === 'string') ? keys.split('.') : keys
   const key = keys.shift() as string
-  // eslint-disable-next-line no-prototype-builtins
-  if (obj && obj.hasOwnProperty(key) && keys.length === 0) { return obj[key] }
-  // eslint-disable-next-line no-prototype-builtins
-  else if (!obj || !obj.hasOwnProperty(key)) { return obj } else { return getValue(obj[key], keys) }
+
+  // eslint-disable-next-line @stylistic/brace-style
+  if (obj && Object.prototype.hasOwnProperty.call(obj, key) && keys.length === 0) { return obj[key] }
+
+  else if (!obj || !Object.prototype.hasOwnProperty.call(obj, key)) { return obj } else { return getValue(obj[key], keys) }
 }
 
 /**

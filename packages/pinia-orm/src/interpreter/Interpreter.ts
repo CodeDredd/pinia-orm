@@ -21,8 +21,8 @@ export class Interpreter {
   /**
    * Perform interpretation for the given data.
    */
-  process(data: Element): [Element, NormalizedData]
-  process(data: Element[]): [Element[], NormalizedData]
+  process (data: Element): [Element, NormalizedData]
+  process (data: Element[]): [Element[], NormalizedData]
   process (data: Element | Element[]): [Element | Element[], NormalizedData] {
     const normalizedData = this.normalize(data)
 

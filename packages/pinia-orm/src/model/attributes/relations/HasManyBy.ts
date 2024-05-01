@@ -28,7 +28,7 @@ export class HasManyBy extends Relation {
     parent: Model,
     child: Model,
     foreignKey: string,
-    ownerKey: string
+    ownerKey: string,
   ) {
     super(parent, child)
     this.foreignKey = foreignKey
@@ -75,7 +75,7 @@ export class HasManyBy extends Relation {
    */
   protected attachIfMissing (
     foreignKey: (string | number)[],
-    ownerKey: string | number
+    ownerKey: string | number,
   ): void {
     if (!foreignKey.includes(ownerKey)) { foreignKey.push(ownerKey) }
   }
@@ -105,7 +105,7 @@ export class HasManyBy extends Relation {
     models.forEach((model) => {
       const relatedModels = this.getRelatedModels(
         dictionary,
-        model[this.foreignKey]
+        model[this.foreignKey],
       )
 
       model.$setRelation(relation, relatedModels)
@@ -128,7 +128,7 @@ export class HasManyBy extends Relation {
    */
   protected getRelatedModels (
     dictionary: Record<string, Model>,
-    keys: (string | number)[]
+    keys: (string | number)[],
   ): Model[] {
     return keys.reduce<Model[]>((items, key) => {
       const item = dictionary[key]

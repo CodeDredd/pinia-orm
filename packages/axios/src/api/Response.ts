@@ -1,7 +1,7 @@
 import type { AxiosResponse } from 'axios'
-import { Element, Collection } from 'pinia-orm'
-import { Config, PersistMethods } from '../types/config'
-import { AxiosRepository } from '../repository/AxiosRepository'
+import type { Collection, Element } from 'pinia-orm'
+import type { Config, PersistMethods } from '../types/config'
+import type { AxiosRepository } from '../repository/AxiosRepository'
 
 export class Response {
   /**
@@ -49,7 +49,7 @@ export class Response {
         '[Pinia ORM Axios] The response data could not be saved to the store ' +
         'because it is not an object or an array. You might want to use ' +
         '`dataTransformer` option to handle non-array/object response ' +
-        'before saving it to the store.'
+        'before saving it to the store.',
       )
 
       return
@@ -61,7 +61,7 @@ export class Response {
       console.warn(
         '[Pinia ORM Axios] The "persistBy" option configured is not a ' +
         'recognized value. Response data will be persisted by the ' +
-        'default `save` method.'
+        'default `save` method.',
       )
 
       method = 'save'
@@ -80,7 +80,7 @@ export class Response {
   async delete (): Promise<void> {
     if (this.config.delete === undefined) {
       throw new Error(
-        '[Pinia ORM Axios] Could not delete records because the `delete` option is not set.'
+        '[Pinia ORM Axios] Could not delete records because the `delete` option is not set.',
       )
     }
 

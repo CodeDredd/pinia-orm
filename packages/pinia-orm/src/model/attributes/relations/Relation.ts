@@ -40,7 +40,7 @@ export abstract class Relation extends Attribute {
   /**
    * Get all related models for the relationship.
    */
-  abstract getRelateds(): Model[]
+  abstract getRelateds (): Model[]
 
   /**
    * Get the related model of the relation.
@@ -52,22 +52,22 @@ export abstract class Relation extends Attribute {
   /**
    * Define the normalizr schema for the relation.
    */
-  abstract define(schema: Schema): NormalizrSchema
+  abstract define (schema: Schema): NormalizrSchema
 
   /**
    * Attach the relational key to the given relation.
    */
-  abstract attach(record: Element, child: Element): void
+  abstract attach (record: Element, child: Element): void
 
   /**
    * Set the constraints for an eager loading relation.
    */
-  abstract addEagerConstraints(query: Query, models: Collection): void
+  abstract addEagerConstraints (query: Query, models: Collection): void
 
   /**
    * Match the eagerly loaded results to their parents.
    */
-  abstract match(relation: string, models: Collection, query: Query): void
+  abstract match (relation: string, models: Collection, query: Query): void
 
   /**
    * Get all of the primary keys for an array of models.
@@ -90,7 +90,7 @@ export abstract class Relation extends Attribute {
    */
   protected mapToDictionary (
     models: Collection,
-    callback: (model: Model) => [string, Model]
+    callback: (model: Model) => [string, Model],
   ): Dictionary {
     return models.reduce<Dictionary>((dictionary, model) => {
       const [key, value] = callback(model)
@@ -108,7 +108,7 @@ export abstract class Relation extends Attribute {
   protected compositeKeyMapper (
     foreignKey: PrimaryKey,
     localKey: PrimaryKey,
-    call: (foreignKey: string, localKey: string) => void
+    call: (foreignKey: string, localKey: string) => void,
   ): void {
     if (isArray(foreignKey) && isArray(localKey)) {
       foreignKey.forEach((key, index) => {
@@ -120,7 +120,7 @@ export abstract class Relation extends Attribute {
       throwError([
         'This relation cant be resolve. Either child or parent doesnt have different key types (composite)',
         JSON.stringify(foreignKey),
-        JSON.stringify(localKey)
+        JSON.stringify(localKey),
       ])
     }
   }

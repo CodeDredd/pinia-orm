@@ -55,6 +55,6 @@ export function useStoreActions (query?: Query) {
       this.data = {}
 
       if (triggerQueryAction && query) { query.newQuery(this.$id).flush() }
-    }
+    },
   }
 }

@@ -19,7 +19,6 @@ export function createState (entities: Entities, additionalStoreProperties = {})
 }
 
 export function fillState (entities: Entities): void {
-  // @ts-expect-error
   getActivePinia().state.value = createState(entities)
 }
 

@@ -1,4 +1,4 @@
-import { FilledInstallOptions, Model, Repository } from '../../src'
+import type { FilledInstallOptions, Model, Repository } from '../../src'
 import { config as globalConfig } from './Config'
 
 export interface PiniaOrmPluginContext {

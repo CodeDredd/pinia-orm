@@ -7,7 +7,7 @@ import {
   isArray,
   isEmpty,
   isFunction,
-  orderBy
+  orderBy,
 } from '../support/Utils'
 import type { Collection, Element, Elements, GroupedCollection, Item, NormalizedData } from '../data/Data'
 import type { Database } from '../database/Database'
@@ -33,7 +33,7 @@ import type {
   OrderDirection,
   Where,
   WherePrimaryClosure,
-  WhereSecondaryClosure
+  WhereSecondaryClosure,
 } from './Options'
 
 export class Query<M extends Model = Model> {
@@ -209,7 +209,7 @@ export class Query<M extends Model = Model> {
    */
   where (
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): this {
     this.wheres.push({ field, value, boolean: 'and' })
 
@@ -239,7 +239,7 @@ export class Query<M extends Model = Model> {
    */
   orWhere (
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): this {
     this.wheres.push({ field, value, boolean: 'or' })
 
@@ -381,7 +381,7 @@ export class Query<M extends Model = Model> {
     this.fromCache = true
     this.cacheConfig = {
       key,
-      params
+      params,
     }
 
     return this
@@ -395,7 +395,7 @@ export class Query<M extends Model = Model> {
       .filter(model => compareWithOperator(
         isArray(model[relation]) ? model[relation].length : model[relation] === null ? 0 : 1,
         typeof operator === 'number' ? operator : count ?? 1,
-        (typeof operator === 'number' || count === undefined) ? '>=' : operator
+        (typeof operator === 'number' || count === undefined) ? '>=' : operator,
       ))
       .map(model => model.$getIndexId())
 
@@ -414,11 +414,9 @@ export class Query<M extends Model = Model> {
 
     if (deduplicatedIds.size > 0) {
       deduplicatedIds.forEach((id) => {
-        if (data[id])
-        { collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' })) }
+        if (data[id]) { collection.push(this.hydrate(data[id], { visible: this.visible, hidden: this.hidden, operation: 'get' })) }
       })
-    }
-    else {
+    } else {
       Object.values(data)
         .forEach((value: any) => collection.push(this.hydrate(value, { visible: this.visible, hidden: this.hidden, operation: 'get' })))
     }
@@ -451,7 +449,7 @@ export class Query<M extends Model = Model> {
         skip: this.skip,
         take: this.take,
         hidden: this.hidden,
-        visible: this.visible
+        visible: this.visible,
       })
     const result = this.cache.get(key)
 
@@ -486,8 +484,8 @@ export class Query<M extends Model = Model> {
   /**
    * Find a model by its primary key.
    */
-  find(id: string | number): Item<M>
-  find(ids: (string | number)[]): Collection<M>
+  find (id: string | number): Item<M>
+  find (ids: (string | number)[]): Collection<M>
   find (ids: any): any {
     return this.whereId(ids)[isArray(ids) ? 'get' : 'first']()
   }
@@ -504,8 +502,7 @@ export class Query<M extends Model = Model> {
     if (whereIdsIndex > -1) {
       const whereIds = this.wheres[whereIdsIndex].value
       ids = ((isFunction(whereIds) ? [] : isArray(whereIds) ? whereIds : [whereIds]) || []).map(String) || []
-      if (ids.length > 0)
-      { this.wheres = [...this.wheres.slice(0, whereIdsIndex), ...this.wheres.slice(whereIdsIndex + 1)] }
+      if (ids.length > 0) { this.wheres = [...this.wheres.slice(0, whereIdsIndex), ...this.wheres.slice(whereIdsIndex + 1)] }
     }
 
     let models = this.storeFind(ids)
@@ -615,7 +612,7 @@ export class Query<M extends Model = Model> {
   protected eagerLoadRelation (
     models: Collection<M>,
     name: string,
-    constraints: EagerLoadConstraint
+    constraints: EagerLoadConstraint,
   ): void {
     // First we will "back up" the existing where conditions on the query so we can
     // add our eager constraints. Then we will merge the wheres that were on the
@@ -645,8 +642,8 @@ export class Query<M extends Model = Model> {
    * Retrieves the models from the store by following the given
    * normalized schema.
    */
-  revive(schema: Element[]): Collection<M>
-  revive(schema: Element): Item<M>
+  revive (schema: Element[]): Collection<M>
+  revive (schema: Element): Item<M>
   revive (schema: Element | Element[]): Item<M> | Collection<M> {
     return isArray(schema) ? this.reviveMany(schema) : this.reviveOne(schema)
   }
@@ -739,8 +736,8 @@ export class Query<M extends Model = Model> {
   /**
    * Save the given records to the store with data normalization.
    */
-  save(records: Element[]): M[]
-  save(record: Element): M
+  save (records: Element[]): M[]
+  save (record: Element): M
   save (records: Element | Element[]): M | M[] {
     let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
     const modelTypes = this.model.$types()
@@ -810,8 +807,8 @@ export class Query<M extends Model = Model> {
   /**
    * Insert the given record to the store.
    */
-  insert(records: Element[]): Collection<M>
-  insert(record: Element): M
+  insert (records: Element[]): Collection<M>
+  insert (record: Element): M
   insert (records: Element | Element[]): M | Collection<M> {
     const models = this.hydrate(records, { operation: 'set', action: 'insert' })
 
@@ -823,8 +820,8 @@ export class Query<M extends Model = Model> {
   /**
    * Insert the given records to the store by replacing any existing records.
    */
-  fresh(records: Element[]): Collection<M>
-  fresh(record: Element): M
+  fresh (records: Element[]): Collection<M>
+  fresh (record: Element): M
   fresh (records: Element | Element[]): M | Collection<M> {
     this.hydratedDataCache.clear()
     const models = this.hydrate(records, { action: 'update' })
@@ -857,8 +854,8 @@ export class Query<M extends Model = Model> {
   /**
    * Destroy the models for the given id.
    */
-  destroy(ids: (string | number)[]): Collection<M>
-  destroy(id: string | number): Item<M>
+  destroy (ids: (string | number)[]): Collection<M>
+  destroy (id: string | number): Item<M>
   destroy (ids: any): any {
     return isArray(ids) ? this.destroyMany(ids) : this.destroyOne(ids)
   }
@@ -985,8 +982,8 @@ export class Query<M extends Model = Model> {
   /**
    * Instantiate new models with the given record.
    */
-  protected hydrate(record: Element, options?: ModelOptions): M
-  protected hydrate(records: Element[], options?: ModelOptions): Collection<M>
+  protected hydrate (record: Element, options?: ModelOptions): M
+  protected hydrate (records: Element[], options?: ModelOptions): Collection<M>
   protected hydrate (records: Element | Element[], options?: ModelOptions): M | Collection<M> {
     return isArray(records)
       ? records.map(record => this.hydrate(record, options))

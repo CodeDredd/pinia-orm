@@ -30,8 +30,8 @@ describe('feature/helpers/helpers', () => {
       // @ts-expect-error wrong type error
       pinia,
       computed: mapRepos({
-        userRepo: User
-      })
+        userRepo: User,
+      }),
     })
 
     expect(vm.userRepo).toBeInstanceOf(Repository)
@@ -47,9 +47,9 @@ describe('feature/helpers/helpers', () => {
       pinia,
       computed: {
         ...mapRepos({
-          userRepo: UserRepository
-        })
-      }
+          userRepo: UserRepository,
+        }),
+      },
     })
 
     expect(vm.userRepo).toBeInstanceOf(Repository)
@@ -65,9 +65,9 @@ describe('feature/helpers/helpers', () => {
       pinia,
       computed: {
         ...mapRepos({
-          userRepo: User
-        })
-      }
+          userRepo: User,
+        }),
+      },
     })
 
     expect(vm.userRepo).toBeInstanceOf(Repository)

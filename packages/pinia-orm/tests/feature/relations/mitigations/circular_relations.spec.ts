@@ -14,18 +14,18 @@ describe('feature/relations/mitigations/circular_relations', () => {
         id: 2,
         userId: 1,
         user: {
-          id: 1
-        }
-      }
+          id: 1,
+        },
+      },
     })
 
     assertState({
       users: {
-        1: { id: 1 }
+        1: { id: 1 },
       },
       phones: {
-        2: { id: 2, userId: 1 }
-      }
+        2: { id: 2, userId: 1 },
+      },
     })
   })
 })

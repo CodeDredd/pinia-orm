@@ -32,7 +32,7 @@ describe.skip('performance/save_has_many_relation', () => {
       users.push({
         id: i,
         name: `Username ${i}`,
-        posts: [{ id: i, title: `Title ${i}` }]
+        posts: [{ id: i, title: `Title ${i}` }],
       })
     }
 

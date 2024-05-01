@@ -19,8 +19,8 @@ describe('feature/repository/insert', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 
@@ -29,14 +29,14 @@ describe('feature/repository/insert', () => {
 
     userRepo.insert([
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' }
+      { id: 2, name: 'Jane Doe' },
     ])
 
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 

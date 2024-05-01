@@ -1,5 +1,5 @@
-import type { InstallOptions as IOptions, FilledInstallOptions as FOptions, ModelConfigOptions as MCOptions } from 'pinia-orm'
-import { Config, InstallConfig } from './config'
+import type { FilledInstallOptions as FOptions, InstallOptions as IOptions, ModelConfigOptions as MCOptions } from 'pinia-orm'
+import type { Config, InstallConfig } from './config'
 
 declare module 'pinia-orm' {
   export type InstallOptions = IOptions & InstallConfig

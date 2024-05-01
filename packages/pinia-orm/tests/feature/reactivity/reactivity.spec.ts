@@ -23,13 +23,13 @@ describe('feature/reactivity/reactivity', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
 
     expect(allUsers.value).toEqual([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
   })
 
@@ -43,7 +43,7 @@ describe('feature/reactivity/reactivity', () => {
     userRepo.insert({ id: 1, name: 'John Doe' })
 
     expect(allUsers.value).toEqual([
-      { id: 1, name: 'John Doe' }
+      { id: 1, name: 'John Doe' },
     ])
   })
 
@@ -54,8 +54,8 @@ describe('feature/reactivity/reactivity', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     const allUsers = computed(() => userRepo.all())
@@ -63,7 +63,7 @@ describe('feature/reactivity/reactivity', () => {
     expect(allUsers.value).toEqual([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
 
     userRepo.where('name', 'Jane Doe').update({ name: 'Jane Doe Updated' })
@@ -71,7 +71,7 @@ describe('feature/reactivity/reactivity', () => {
     expect(allUsers.value).toEqual([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe Updated' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
   })
 
@@ -82,8 +82,8 @@ describe('feature/reactivity/reactivity', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     const allUsers = computed(() => userRepo.all())
@@ -91,13 +91,13 @@ describe('feature/reactivity/reactivity', () => {
     expect(allUsers.value).toEqual([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
 
     userRepo.destroy([2, 3])
 
     expect(allUsers.value).toEqual([
-      { id: 1, name: 'John Doe' }
+      { id: 1, name: 'John Doe' },
     ])
   })
 
@@ -108,8 +108,8 @@ describe('feature/reactivity/reactivity', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     const allUsers = computed(() => userRepo.all())
@@ -117,13 +117,13 @@ describe('feature/reactivity/reactivity', () => {
     expect(allUsers.value).toEqual([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
 
     userRepo.where('name', 'Jane Doe').orWhere('name', 'Johnny Doe').delete()
 
     expect(allUsers.value).toEqual([
-      { id: 1, name: 'John Doe' }
+      { id: 1, name: 'John Doe' },
     ])
   })
 })

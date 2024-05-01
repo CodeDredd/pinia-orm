@@ -6,12 +6,12 @@ export const CONFIG_DEFAULTS = {
     namespace: '',
     withMeta: false,
     hidden: ['_meta'],
-    visible: ['*']
+    visible: ['*'],
   },
   cache: {
     shared: true,
-    provider: WeakCache
-  }
+    provider: WeakCache,
+  },
 }
 
 export const config: FilledInstallOptions & { [key: string]: any } = { ...CONFIG_DEFAULTS }

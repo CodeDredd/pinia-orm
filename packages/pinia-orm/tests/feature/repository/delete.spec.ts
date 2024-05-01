@@ -18,7 +18,7 @@ describe('feature/repository/delete', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
 
     userRepo.where('name', 'Jane Doe').delete()
@@ -26,8 +26,8 @@ describe('feature/repository/delete', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
   })
 
@@ -37,15 +37,15 @@ describe('feature/repository/delete', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
 
     userRepo.where('name', 'Jane Doe').orWhere('name', 'Johnny Doe').delete()
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 
@@ -55,7 +55,7 @@ describe('feature/repository/delete', () => {
     userRepo.save([
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ])
 
     const users = userRepo.where('name', 'No match').delete()
@@ -66,8 +66,8 @@ describe('feature/repository/delete', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
   })
 })

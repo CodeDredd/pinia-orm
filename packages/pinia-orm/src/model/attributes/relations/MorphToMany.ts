@@ -52,7 +52,7 @@ export class MorphToMany extends Relation {
     morphId: string,
     morphType: string,
     parentKey: string,
-    relatedKey: string
+    relatedKey: string,
   ) {
     super(parent, related)
 

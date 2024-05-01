@@ -1,7 +1,8 @@
 import type { WeakCache } from '../cache/WeakCache'
 import type { Model } from '../model/Model'
 import { CONFIG_DEFAULTS, config } from './Config'
-import { PiniaOrmPlugin, plugins } from './Plugins'
+import type { PiniaOrmPlugin } from './Plugins'
+import { plugins } from './Plugins'
 
 export interface ModelConfigOptions {
   withMeta?: boolean
@@ -39,7 +40,7 @@ export function createORM (options?: InstallOptions) {
     use (plugin: PiniaOrmPlugin) {
       plugins.push(plugin)
       return this
-    }
+    },
   }
   return () => orm
 }

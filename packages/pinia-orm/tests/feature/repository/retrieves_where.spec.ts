@@ -20,15 +20,15 @@ describe('feature/repository/retrieves_where', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 30 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 }
-      }
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
     })
 
     const users = userRepo.where('age', 30).get()
 
     const expected = [
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'Jane Doe', age: 30 }
+      { id: 2, name: 'Jane Doe', age: 30 },
     ]
 
     expect(users).toHaveLength(2)
@@ -43,8 +43,8 @@ describe('feature/repository/retrieves_where', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 30 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 }
-      }
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
     })
 
     const users = userRepo.where('name', 'John Doe').where('age', 30).get()
@@ -63,15 +63,15 @@ describe('feature/repository/retrieves_where', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 30 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 }
-      }
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
     })
 
     const users = userRepo.where('age', (value: any) => value === 30).get()
 
     const expected = [
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'Jane Doe', age: 30 }
+      { id: 2, name: 'Jane Doe', age: 30 },
     ]
 
     expect(users).toHaveLength(2)
@@ -86,15 +86,15 @@ describe('feature/repository/retrieves_where', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 30 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 }
-      }
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
     })
 
     const users = userRepo.where(user => user.age === 30).get()
 
     const expected = [
       { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'Jane Doe', age: 30 }
+      { id: 2, name: 'Jane Doe', age: 30 },
     ]
 
     expect(users).toHaveLength(2)
@@ -111,15 +111,15 @@ describe('feature/repository/retrieves_where', () => {
       users: {
         1: { id: 1, name: 'John Doe', age: 40 },
         2: { id: 2, name: 'Jane Doe', age: 30 },
-        3: { id: 3, name: 'Johnny Doe', age: 20 }
-      }
+        3: { id: 3, name: 'Johnny Doe', age: 20 },
+      },
     })
 
     const users = userRepo.query().whereIn('age', ages).get()
 
     const expected = [
       { id: 1, name: 'John Doe', age: 40 },
-      { id: 2, name: 'Jane Doe', age: 30 }
+      { id: 2, name: 'Jane Doe', age: 30 },
     ]
 
     expect(users).toHaveLength(2)

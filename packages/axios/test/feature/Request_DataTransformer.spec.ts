@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, it, beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, it } from 'vitest'
 import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 
@@ -14,7 +14,7 @@ describe('Feature - Request - Data Transformer', () => {
     static fields () {
       return {
         id: this.attr(null),
-        name: this.attr('')
+        name: this.attr(''),
       }
     }
   }
@@ -28,20 +28,20 @@ describe('Feature - Request - Data Transformer', () => {
 
   it('can specify a callback to transform the response', async () => {
     mock.onGet('/users').reply(200, {
-      data: { id: 1, name: 'John Doe' }
+      data: { id: 1, name: 'John Doe' },
     })
 
     const userStore = useAxiosRepo(User)
 
     await userStore.api().request({
       url: '/users',
-      dataTransformer: ({ data }) => data.data
+      dataTransformer: ({ data }) => data.data,
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 })

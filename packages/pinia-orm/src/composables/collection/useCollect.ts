@@ -30,6 +30,6 @@ export function useCollect<M extends Model = Model> (models: Collection<M>): Use
     pluck: field => usePluck(models, field),
     groupBy: fields => useGroupBy(models, fields),
     sortBy: (sort, flags: SortFlags = 'SORT_REGULAR') => useSortBy(models, sort, flags),
-    keys: () => useKeys(models)
+    keys: () => useKeys(models),
   }
 }

@@ -21,8 +21,8 @@ describe('feature/repository/destroy_composite_key', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
-      }
+        3: { id: 3, name: 'Johnny Doe' },
+      },
     })
 
     expect(() => userRepo.destroy(2)).toThrow()

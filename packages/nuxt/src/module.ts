@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, addTemplate, isNuxt3, createResolver, addImports } from '@nuxt/kit'
+import { addImports, addPlugin, addTemplate, createResolver, defineNuxtModule, isNuxt3 } from '@nuxt/kit'
 import type { InstallOptions } from 'pinia-orm'
 import { CONFIG_DEFAULTS } from 'pinia-orm'
 
@@ -25,11 +25,11 @@ export interface PiniaOrmNuxtOptions extends InstallOptions {
 export default defineNuxtModule<PiniaOrmNuxtOptions>({
   meta: {
     name: 'pinia-orm',
-    configKey: 'piniaOrm'
+    configKey: 'piniaOrm',
   },
   defaults: {
     autoImports: [],
-    ...CONFIG_DEFAULTS
+    ...CONFIG_DEFAULTS,
   },
   setup (options, nuxt) {
     const resolver = createResolver(import.meta.url)
@@ -37,16 +37,15 @@ export default defineNuxtModule<PiniaOrmNuxtOptions>({
     // Transpile runtime
     nuxt.options.build.transpile.push(resolver.resolve('./runtime'))
 
-    // @ts-ignore
-    nuxt.hook('devtools:customTabs', (iframeTabs) => {
-      iframeTabs.push({
+    nuxt.hook('devtools:customTabs', (tabs) => {
+      tabs.push({
         name: 'pinia-orm',
         title: 'Pinia ORM',
         icon: 'https://pinia-orm.codedredd.de/logo.svg',
         view: {
           type: 'iframe',
-          src: 'https://pinia-orm.codedredd.de/api/composables/use-repo'
-        }
+          src: 'https://pinia-orm.codedredd.de/api/composables/use-repo',
+        },
       })
     })
 
@@ -61,11 +60,11 @@ export default defineNuxtModule<PiniaOrmNuxtOptions>({
         return `
 export const ormOptions = ${JSON.stringify(options, null, 2)}
         `
-      }
+      },
     })
 
     addPlugin(resolver.resolve('./runtime/plugin.vue' + (isNuxt3() ? '3' : '2')), {
-      append: true
+      append: true,
     })
 
     if (options.autoImports) {
@@ -75,10 +74,10 @@ export const ormOptions = ${JSON.stringify(options, null, 2)}
         ...options.autoImports.map(imports =>
           typeof imports === 'string'
             ? { from: 'pinia-orm', name: imports }
-            : { from: 'pinia-orm', name: imports[0], as: imports[1] }
-        )
+            : { from: 'pinia-orm', name: imports[0], as: imports[1] },
+        ),
       ]
       addImports(generateImports)
     }
-  }
+  },
 })

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, expect, it, beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 
@@ -14,7 +14,7 @@ describe('Feature - Request - Save', () => {
     static fields () {
       return {
         id: this.attr(null),
-        name: this.attr('')
+        name: this.attr(''),
       }
     }
   }
@@ -28,14 +28,14 @@ describe('Feature - Request - Save', () => {
 
   it('can prevent persisting response data to the store', async () => {
     mock.onGet('/users').reply(200, {
-      data: { id: 1, name: 'John Doe' }
+      data: { id: 1, name: 'John Doe' },
     })
 
     const userStore = useAxiosRepo(User)
 
     const result = await userStore.api().request({
       url: '/users',
-      save: false
+      save: false,
     })
 
     expect(result.entities).toBe(null)

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, it, beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, it } from 'vitest'
 import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 import type { Request, Response } from '../../src'
@@ -23,16 +23,16 @@ describe('Feature - Request - Actions', () => {
       static fields () {
         return {
           id: this.attr(null),
-          name: this.attr('')
+          name: this.attr(''),
         }
       }
 
       static config = {
         axiosApi: {
           actions: {
-            fetch: { method: 'get', url: '/users' }
-          }
-        }
+            fetch: { method: 'get', url: '/users' },
+          },
+        },
       }
     }
 
@@ -44,8 +44,8 @@ describe('Feature - Request - Actions', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John' }
-      }
+        1: { id: 1, name: 'John' },
+      },
     })
   })
 
@@ -56,7 +56,7 @@ describe('Feature - Request - Actions', () => {
       static fields () {
         return {
           id: this.attr(null),
-          name: this.attr('')
+          name: this.attr(''),
         }
       }
 
@@ -65,9 +65,9 @@ describe('Feature - Request - Actions', () => {
           actions: {
             fetch (this: Request, url: string): Promise<Response> {
               return this.get(url)
-            }
-          }
-        }
+            },
+          },
+        },
       }
     }
 
@@ -79,8 +79,8 @@ describe('Feature - Request - Actions', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John' }
-      }
+        1: { id: 1, name: 'John' },
+      },
     })
   })
 })

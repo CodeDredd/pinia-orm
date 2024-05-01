@@ -12,7 +12,7 @@ import type {
   OrderBy,
   OrderDirection,
   WherePrimaryClosure,
-  WhereSecondaryClosure
+  WhereSecondaryClosure,
 } from '../query/Options'
 import { useRepo } from '../composables/useRepo'
 import type { DataStoreState } from '../composables/useDataStore'
@@ -21,7 +21,7 @@ import { cache } from '../cache/SharedWeakCache'
 import { cache as hydratedDataCache } from '../cache/SharedHydratedDatakCache'
 import type { WeakCache } from '../cache/WeakCache'
 import { config as globalConfig } from '../store/Config'
-import { FilledInstallOptions } from '../store/Store'
+import type { FilledInstallOptions } from '../store/Store'
 
 export class Repository<M extends Model = Model> {
   [index: string]: any
@@ -102,7 +102,6 @@ export class Repository<M extends Model = Model> {
    */
   initialize (model?: ModelConstructor<M>): this {
     if (this.config.cache && this.config.cache !== true) {
-      // eslint-disable-next-line new-cap
       this.queryCache = (this.config.cache.shared ? cache : new this.config.cache.provider()) as WeakCache<string, M[]>
     }
 
@@ -142,7 +141,7 @@ export class Repository<M extends Model = Model> {
   getModel (): M {
     assert(!!this.model, [
       'The model is not registered. Please define the model to be used at',
-      '`use` property of the repository class.'
+      '`use` property of the repository class.',
     ])
 
     return this.model
@@ -183,7 +182,7 @@ export class Repository<M extends Model = Model> {
    */
   where (
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): Query<M> {
     return this.query().where(field, value)
   }
@@ -193,7 +192,7 @@ export class Repository<M extends Model = Model> {
    */
   orWhere (
     field: WherePrimaryClosure | string,
-    value?: WhereSecondaryClosure | any
+    value?: WhereSecondaryClosure | any,
   ): Query<M> {
     return this.query().orWhere(field, value)
   }
@@ -341,8 +340,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Find the model with the given id.
    */
-  find(id: string | number): Item<M>
-  find(ids: (string | number)[]): Collection<M>
+  find (id: string | number): Item<M>
+  find (ids: (string | number)[]): Collection<M>
   find (ids: any): Item<any> {
     return this.query().find(ids)
   }
@@ -351,8 +350,8 @@ export class Repository<M extends Model = Model> {
    * Retrieves the models from the store by following the given
    * normalized schema.
    */
-  revive(schema: Element[]): Collection<M>
-  revive(schema: Element): Item<M>
+  revive (schema: Element[]): Collection<M>
+  revive (schema: Element): Item<M>
   revive (schema: Element | Element[]): Item<M> | Collection<M> {
     return this.query().revive(schema)
   }
@@ -362,25 +361,25 @@ export class Repository<M extends Model = Model> {
    * store. It's pretty much the alternative to `new Model()`, but it injects
    * the store instance to support model instance methods in SSR environment.
    */
-  make(records: Element[]): M[]
-  make(record?: Element): M
+  make (records: Element[]): M[]
+  make (record?: Element): M
   make (records?: Element | Element[]): M | M[] {
     if (isArray(records)) {
       return records.map(record => this.getModel().$newInstance(record, {
-        relations: true
+        relations: true,
       }))
     }
 
     return this.getModel().$newInstance(records, {
-      relations: true
+      relations: true,
     })
   }
 
   /*
    * Save the given records to the store with data normalization.
    */
-  save(records: Element[]): M[]
-  save(record: Element): M
+  save (records: Element[]): M[]
+  save (record: Element): M
   public save (records: Element | Element[]): M | M[] {
     return this.query().save(records)
   }
@@ -395,8 +394,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Insert the given records to the store.
    */
-  insert(records: Element[]): Collection<M>
-  insert(record: Element): M
+  insert (records: Element[]): Collection<M>
+  insert (record: Element): M
   insert (records: Element | Element[]): M | Collection<M> {
     return this.query().insert(records)
   }
@@ -404,8 +403,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Insert the given records to the store by replacing any existing records.
    */
-  fresh(records: Element[]): Collection<M>
-  fresh(record: Element): M
+  fresh (records: Element[]): Collection<M>
+  fresh (record: Element): M
   fresh (records: Element | Element[]): M | Collection<M> {
     return this.query().fresh(records)
   }
@@ -413,8 +412,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Destroy the models for the given id.
    */
-  destroy(ids: (string | number)[]): Collection<M>
-  destroy(id: string | number): Item<M>
+  destroy (ids: (string | number)[]): Collection<M>
+  destroy (id: string | number): Item<M>
   destroy (ids: any): any {
     return this.query().destroy(ids)
   }

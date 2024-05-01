@@ -41,17 +41,17 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
       users: {
         1: { id: 1 },
         2: { id: 2 },
-        3: { id: 3 }
+        3: { id: 3 },
       },
       roles: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
         '[1,2]': { role_id: 1, user_id: 2, level: 2 },
-        '[2,1]': { role_id: 2, user_id: 1, level: null }
-      }
+        '[2,1]': { role_id: 2, user_id: 1, level: null },
+      },
     })
 
     const user = userRepo.with('roles').find(1)
@@ -74,17 +74,17 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
       users: {
         1: { id: 1 },
         2: { id: 2 },
-        3: { id: 3 }
+        3: { id: 3 },
       },
       roles: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
         '[1,2]': { role_id: 1, user_id: 2, level: 2 },
-        '[2,1]': { role_id: 2, user_id: 1, level: null }
-      }
+        '[2,1]': { role_id: 2, user_id: 1, level: null },
+      },
     })
 
     const users = useRepo(User).with('roles').get()
@@ -135,7 +135,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     assertModel(user, {
       id: 1,
       name: 'John Doe',
-      roles: []
+      roles: [],
     })
   })
 
@@ -144,21 +144,21 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
 
     fillState({
       users: {
-        1: { id: 1, name: 'John Doe', permissions: [] }
+        1: { id: 1, name: 'John Doe', permissions: [] },
       },
       roles: {
         1: { id: 1 },
-        2: { id: 2 }
+        2: { id: 2 },
       },
       roleUser: {
         '[1,1]': { role_id: 1, user_id: 1, level: 1 },
-        '[2,1]': { role_id: 2, user_id: 1, level: null }
-      }
+        '[2,1]': { role_id: 2, user_id: 1, level: null },
+      },
     })
 
     const schema = {
       id: '1',
-      roles: [{ id: 2 }, { id: 1 }]
+      roles: [{ id: 2 }, { id: 1 }],
     }
 
     const user = usersRepo.revive(schema)!

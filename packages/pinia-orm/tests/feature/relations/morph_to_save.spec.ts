@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, MorphTo, Num, Str } from '../../../src/decorators'
@@ -31,7 +31,7 @@ describe('feature/relations/morph_to_save', () => {
       url: '/profile.jpg',
       imageableId: 1,
       imageableType: 'users',
-      imageable: { id: 2, name: 'John Doe' }
+      imageable: { id: 2, name: 'John Doe' },
     })
 
     assertState({
@@ -41,9 +41,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: 2,
-          imageableType: 'users'
-        }
-      }
+          imageableType: 'users',
+        },
+      },
     })
   })
 
@@ -56,7 +56,7 @@ describe('feature/relations/morph_to_save', () => {
         url: '/profile.jpg',
         imageableId: 1,
         imageableType: 'users',
-        imageable: [{ id: 2, name: 'John Doe' }]
+        imageable: [{ id: 2, name: 'John Doe' }],
       })
     }).toThrowError('[Pinia ORM] You are passing a list to " images.imageable " which is a one to one Relation(MorphTo): [{"id":2,"name":"John Doe"}]')
   })
@@ -68,7 +68,7 @@ describe('feature/relations/morph_to_save', () => {
       id: 1,
       url: '/profile.jpg',
       imageableType: 'users',
-      imageable: { id: 2, name: 'John Doe' }
+      imageable: { id: 2, name: 'John Doe' },
     })
 
     assertState({
@@ -78,9 +78,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: 2,
-          imageableType: 'users'
-        }
-      }
+          imageableType: 'users',
+        },
+      },
     })
   })
 
@@ -89,7 +89,7 @@ describe('feature/relations/morph_to_save', () => {
 
     imagesRepo.save({
       id: 1,
-      url: '/profile.jpg'
+      url: '/profile.jpg',
     })
 
     assertState({
@@ -98,9 +98,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: null,
-          imageableType: null
-        }
-      }
+          imageableType: null,
+        },
+      },
     })
   })
 
@@ -110,7 +110,7 @@ describe('feature/relations/morph_to_save', () => {
     imagesRepo.save({
       id: 1,
       url: '/profile.jpg',
-      imageable: null
+      imageable: null,
     })
 
     assertState({
@@ -119,9 +119,9 @@ describe('feature/relations/morph_to_save', () => {
           id: 1,
           url: '/profile.jpg',
           imageableId: null,
-          imageableType: null
-        }
-      }
+          imageableType: null,
+        },
+      },
     })
   })
 })

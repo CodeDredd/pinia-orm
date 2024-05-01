@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, expect, it, beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 
@@ -14,7 +14,7 @@ describe('Feature - Request', () => {
     static fields () {
       return {
         id: this.attr(null),
-        name: this.attr('')
+        name: this.attr(''),
       }
     }
   }
@@ -29,7 +29,7 @@ describe('Feature - Request', () => {
   it('`get` can perform a get request', async () => {
     mock.onGet('/api/users').reply(200, [
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' }
+      { id: 2, name: 'Jane Doe' },
     ])
 
     const userStore = useAxiosRepo(User)
@@ -39,8 +39,8 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
@@ -48,8 +48,8 @@ describe('Feature - Request', () => {
     mock.onGet('/api/users').reply(200, {
       data: [
         { id: 1, name: 'John Doe' },
-        { id: 2, name: 'Jane Doe' }
-      ]
+        { id: 2, name: 'Jane Doe' },
+      ],
     })
 
     const userStore = useAxiosRepo(User)
@@ -59,15 +59,15 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
   it('`post` can perform a post request', async () => {
     mock.onPost('/api/users').reply(200, [
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' }
+      { id: 2, name: 'Jane Doe' },
     ])
 
     const userStore = useAxiosRepo(User)
@@ -77,8 +77,8 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
@@ -86,8 +86,8 @@ describe('Feature - Request', () => {
     mock.onPost('/api/users').reply(200, {
       data: [
         { id: 1, name: 'John Doe' },
-        { id: 2, name: 'Jane Doe' }
-      ]
+        { id: 2, name: 'Jane Doe' },
+      ],
     })
 
     const userStore = useAxiosRepo(User)
@@ -97,15 +97,15 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
   it('`put` can perform a put request', async () => {
     mock.onPut('/api/users').reply(200, [
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' }
+      { id: 2, name: 'Jane Doe' },
     ])
 
     const userStore = useAxiosRepo(User)
@@ -115,8 +115,8 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
@@ -124,8 +124,8 @@ describe('Feature - Request', () => {
     mock.onPut('/api/users').reply(200, {
       data: [
         { id: 1, name: 'John Doe' },
-        { id: 2, name: 'Jane Doe' }
-      ]
+        { id: 2, name: 'Jane Doe' },
+      ],
     })
 
     const userStore = useAxiosRepo(User)
@@ -135,15 +135,15 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
   it('`patch` can perform a patch request', async () => {
     mock.onPatch('/api/users').reply(200, [
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' }
+      { id: 2, name: 'Jane Doe' },
     ])
 
     const userStore = useAxiosRepo(User)
@@ -153,8 +153,8 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
@@ -162,8 +162,8 @@ describe('Feature - Request', () => {
     mock.onPatch('/api/users').reply(200, {
       data: [
         { id: 1, name: 'John Doe' },
-        { id: 2, name: 'Jane Doe' }
-      ]
+        { id: 2, name: 'Jane Doe' },
+      ],
     })
 
     const userStore = useAxiosRepo(User)
@@ -173,15 +173,15 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
   it('`delete` can perform a delete request', async () => {
     mock.onDelete('/api/users').reply(200, [
       { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Doe' }
+      { id: 2, name: 'Jane Doe' },
     ])
 
     const userStore = useAxiosRepo(User)
@@ -191,8 +191,8 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
@@ -200,8 +200,8 @@ describe('Feature - Request', () => {
     mock.onDelete('/api/users').reply(200, {
       data: [
         { id: 1, name: 'John Doe' },
-        { id: 2, name: 'Jane Doe' }
-      ]
+        { id: 2, name: 'Jane Doe' },
+      ],
     })
 
     const userStore = useAxiosRepo(User)
@@ -211,8 +211,8 @@ describe('Feature - Request', () => {
     assertState({
       users: {
         1: { id: 1, name: 'John Doe' },
-        2: { id: 2, name: 'Jane Doe' }
-      }
+        2: { id: 2, name: 'Jane Doe' },
+      },
     })
   })
 
@@ -224,7 +224,7 @@ describe('Feature - Request', () => {
       console.warn(axios)
     } catch (e) {
       expect(e.message).toBe(
-        '[Pinia ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.'
+        '[Pinia ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.',
       )
 
       return

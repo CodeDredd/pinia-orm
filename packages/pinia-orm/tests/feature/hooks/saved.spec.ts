@@ -48,8 +48,8 @@ describe('feature/hooks/saved', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe', age: 30 }
-      }
+        1: { id: 1, name: 'John Doe', age: 30 },
+      },
     })
   })
 
@@ -76,8 +76,8 @@ describe('feature/hooks/saved', () => {
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John', age: 0 }
-      }
+        uid1: { id: 'uid1', name: 'John', age: 0 },
+      },
     })
   })
 })

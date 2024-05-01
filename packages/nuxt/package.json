@@ -30,13 +30,13 @@
     "README.md"
   ],
   "scripts": {
-    "build": "nuxt-module-build",
+    "build": "nuxi build-module --stub . && nuxi build-module .",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/nuxt -r 1",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "lint": "nuxt-module-build --stub && nuxi prepare playground && eslint . --ext .ts",
-    "lint:fix": "eslint . --fix --ext .ts",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    "lint": "nuxi build-module --stub . && nuxi prepare playground && eslint . --cache",
+    "lint:fix": "eslint . --cache --fix",
+    "dev:prepare": "nuxi build-module --stub . && nuxi prepare playground"
   },
   "peerDependencies": {
     "@pinia/nuxt": "^0.4.11"
@@ -46,14 +46,15 @@
     "pinia-orm": ">=1.7.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.0.0",
-    "@nuxt/module-builder": "^0.5.1",
+    "@nuxt/devtools": "^1.2.0",
+    "@nuxt/eslint-config": "^0.3.10",
+    "@nuxt/module-builder": "^0.6.0",
     "@nuxt/schema": "^3.7.3",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@pinia/nuxt": "^0.4.11",
     "@types/prettier": "^3.0.0",
-    "eslint": "^9.0.0",
-    "nuxt": "^3.7.3",
+    "eslint": "^9.1.1",
+    "nuxt": "^3.11.2",
     "pinia": "^2.1.6",
     "prettier": "^3.0.3",
     "std-env": "^3.4.3",

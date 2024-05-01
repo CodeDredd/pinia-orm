@@ -101,7 +101,7 @@ export class Schema {
    */
   private idAttribute (
     model: Model,
-    parent: Model
+    parent: Model,
   ): Normalizr.StrategyFunction<string> {
     // We'll first check if the model contains any uid attributes. If so, we
     // generate the uids during the normalization process, so we'll keep that

@@ -44,8 +44,8 @@
     "size": "size-limit",
     "flow": "flow",
     "flow:ci": "flow check",
-    "lint": "eslint . --ext .js",
-    "lint:fix": "eslint . --fix --ext .js"
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --cache --fix"
   },
   "author": "Paul Armstrong",
   "contributors": [
@@ -54,9 +54,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@nuxt/eslint-config": "^0.3.10",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@size-limit/preset-small-lib": "^11.0.0",
-    "eslint": "^9.0.0",
+    "eslint": "^9.1.1",
     "immutable": "^4.3.4",
     "size-limit": "^11.0.0",
     "typescript": "^5.2.2",

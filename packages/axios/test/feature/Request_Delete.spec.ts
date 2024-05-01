@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, it, beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, it } from 'vitest'
 import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 
@@ -14,7 +14,7 @@ describe('Feature - Request - Delete', () => {
     static fields () {
       return {
         id: this.attr(null),
-        name: this.attr('')
+        name: this.attr(''),
       }
     }
   }
@@ -33,19 +33,19 @@ describe('Feature - Request - Delete', () => {
 
     userStore.save([
       { id: 1, name: 'John' },
-      { id: 2, name: 'Jane' }
+      { id: 2, name: 'Jane' },
     ])
 
     await userStore.api().request({
       method: 'delete',
       url: '/users/1',
-      delete: 1
+      delete: 1,
     })
 
     assertState({
       users: {
-        2: { id: 2, name: 'Jane' }
-      }
+        2: { id: 2, name: 'Jane' },
+      },
     })
   })
 })

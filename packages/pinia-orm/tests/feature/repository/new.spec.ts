@@ -24,8 +24,8 @@ describe('feature/repository/new', () => {
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe', age: 21, active: true }
-      }
+        uid1: { id: 'uid1', name: 'John Doe', age: 21, active: true },
+      },
     })
   })
 
@@ -53,8 +53,8 @@ describe('feature/repository/new', () => {
 
     assertState({
       users: {
-        uid1: { id: 'uid1', name: 'John Doe', items: '["t","s"]', age: 21, active: true }
-      }
+        uid1: { id: 'uid1', name: 'John Doe', items: '["t","s"]', age: 21, active: true },
+      },
     })
 
     expect(userRepo.hydratedDataCache.get('usersuid1')?.items).toBeInstanceOf(Array)

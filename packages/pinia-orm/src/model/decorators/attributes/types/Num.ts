@@ -6,7 +6,7 @@ import type { TypeDefault } from '../../../attributes/types/Type'
  */
 export function Num (
   value: TypeDefault<number>,
-  options: TypeOptions = {}
+  options: TypeOptions = {},
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()

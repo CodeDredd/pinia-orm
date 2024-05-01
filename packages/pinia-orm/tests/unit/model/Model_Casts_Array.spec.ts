@@ -18,7 +18,7 @@ describe('unit/model/Model_Casts_Array', () => {
 
       static casts () {
         return {
-          meta: ArrayCast
+          meta: ArrayCast,
         }
       }
     }
@@ -26,7 +26,7 @@ describe('unit/model/Model_Casts_Array', () => {
     expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { operation: 'get' }).meta).toStrictEqual({
       name: 'John',
       age: 30,
-      car: null
+      car: null,
     })
 
     expect(new User({ meta: false }, { operation: 'get' }).meta).toStrictEqual(false)
@@ -43,7 +43,7 @@ describe('unit/model/Model_Casts_Array', () => {
     expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { operation: 'get' }).meta).toStrictEqual({
       name: 'John',
       age: 30,
-      car: null
+      car: null,
     })
     expect(new User().meta).toMatchObject({})
   })
@@ -57,7 +57,7 @@ describe('unit/model/Model_Casts_Array', () => {
 
       static casts () {
         return {
-          meta: ArrayCast
+          meta: ArrayCast,
         }
       }
     }
@@ -68,20 +68,20 @@ describe('unit/model/Model_Casts_Array', () => {
       meta: {
         name: 'John',
         age: 30,
-        car: null
-      }
+        car: null,
+      },
     })
 
     assertState({
       users: {
-        1: { id: 1, meta: '{"name":"John","age":30,"car":null}' }
-      }
+        1: { id: 1, meta: '{"name":"John","age":30,"car":null}' },
+      },
     })
 
     expect(userRepo.find(1)?.meta).toStrictEqual({
       name: 'John',
       age: 30,
-      car: null
+      car: null,
     })
   })
 
@@ -94,7 +94,7 @@ describe('unit/model/Model_Casts_Array', () => {
 
       static casts () {
         return {
-          meta: ArrayCast
+          meta: ArrayCast,
         }
       }
     }
@@ -102,19 +102,19 @@ describe('unit/model/Model_Casts_Array', () => {
     const userRepo = useRepo(User)
     userRepo.cache()?.clear()
     userRepo.save({
-      id: 1
+      id: 1,
     })
 
     assertState({
       users: {
-        1: { id: 1, meta: '{"name":"Test","age":12,"car":null}' }
-      }
+        1: { id: 1, meta: '{"name":"Test","age":12,"car":null}' },
+      },
     })
 
     expect(userRepo.find(1)?.meta).toStrictEqual({
       name: 'Test',
       age: 12,
-      car: null
+      car: null,
     })
   })
 })

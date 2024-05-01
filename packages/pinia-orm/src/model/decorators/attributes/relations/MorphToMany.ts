@@ -11,13 +11,13 @@ export function MorphToMany (
   id: string,
   type: string,
   parentKey?: string,
-  relatedKey?: string
+  relatedKey?: string,
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
     self.setRegistry(propertyKey, () =>
-      self.morphToMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey)
+      self.morphToMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey),
     )
   }
 }

@@ -10,13 +10,13 @@ export function HasManyThrough (
   firstKey: string,
   secondKey: string,
   localKey?: string,
-  secondLocalKey?: string
+  secondLocalKey?: string,
 ): PropertyDecorator {
   return (target, propertyKey) => {
     const self = target.$self()
 
     self.setRegistry(propertyKey, () =>
-      self.hasManyThrough(related(), through(), firstKey, secondKey, localKey, secondLocalKey)
+      self.hasManyThrough(related(), through(), firstKey, secondKey, localKey, secondLocalKey),
     )
   }
 }

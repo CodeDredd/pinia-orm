@@ -6,7 +6,7 @@ export default defineConfig({
     externals: ['pinia-orm'],
     coverage: {
       enabled: true,
-      reporter: ['lcov', 'text', 'html']
-    }
-  }
+      reporter: ['lcov', 'text', 'html'],
+    },
+  },
 })

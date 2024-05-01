@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Model } from 'pinia-orm'
-import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { assertState } from '../helpers'
 import { useAxiosRepo } from '../../src'
 
@@ -14,7 +14,7 @@ describe('Feature - Response - Save', () => {
     static fields () {
       return {
         id: this.attr(null),
-        name: this.attr('')
+        name: this.attr(''),
       }
     }
   }
@@ -58,8 +58,8 @@ describe('Feature - Response - Save', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
-      }
+        1: { id: 1, name: 'John Doe' },
+      },
     })
   })
 

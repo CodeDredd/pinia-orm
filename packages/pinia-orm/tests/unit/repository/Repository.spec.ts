@@ -34,7 +34,7 @@ describe('unit/repository/Repository', () => {
 
     const user = userRepo.make({
       id: 1,
-      name: 'Jane Doe'
+      name: 'Jane Doe',
     })
 
     expect(user).toBeInstanceOf(User)
@@ -47,24 +47,24 @@ describe('unit/repository/Repository', () => {
     const users = userRepo.make([
       {
         id: 1,
-        name: 'Jane Doe'
+        name: 'Jane Doe',
       },
       {
         id: 2,
-        name: 'John Doe'
-      }
+        name: 'John Doe',
+      },
     ])
 
     assertInstanceOf(users, User)
     assertModels(users, [
       {
         id: 1,
-        name: 'Jane Doe'
+        name: 'Jane Doe',
       },
       {
         id: 2,
-        name: 'John Doe'
-      }
+        name: 'John Doe',
+      },
     ])
   })
 
@@ -138,7 +138,7 @@ describe('unit/repository/Repository', () => {
       // store, // store instance, same as `someStore`
       args, // array of parameters passed to the action
       after, // hook after the action returns or resolves
-      onError // hook if the action throws or rejects
+      onError, // hook if the action throws or rejects
     }) => {
       // a shared variable for this specific action call
       const startTime = Date.now()
@@ -151,14 +151,14 @@ describe('unit/repository/Repository', () => {
         console.log(
           `Finished "${name}" after ${
             Date.now() - startTime
-          }ms.\nResult: ${result}.`
+          }ms.\nResult: ${result}.`,
         )
       })
 
       // this will trigger if the action throws or returns a promise that rejects
       onError((error) => {
         console.warn(
-          `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`
+          `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`,
         )
       })
     })

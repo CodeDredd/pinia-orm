@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, BelongsTo, Str } from '../../../src/decorators'
@@ -30,16 +30,16 @@ describe('feature/relations/belongs_to_save', () => {
       id: 1,
       userId: 1,
       title: 'Title 01',
-      author: { id: 1, name: 'John Doe' }
+      author: { id: 1, name: 'John Doe' },
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' }
-      }
+        1: { id: 1, userId: 1, title: 'Title 01' },
+      },
     })
   })
 
@@ -49,16 +49,16 @@ describe('feature/relations/belongs_to_save', () => {
     postsRepo.save({
       id: 1,
       title: 'Title 01',
-      author: { id: 1, name: 'John Doe' }
+      author: { id: 1, name: 'John Doe' },
     })
 
     assertState({
       users: {
-        1: { id: 1, name: 'John Doe' }
+        1: { id: 1, name: 'John Doe' },
       },
       posts: {
-        1: { id: 1, userId: 1, title: 'Title 01' }
-      }
+        1: { id: 1, userId: 1, title: 'Title 01' },
+      },
     })
   })
 
@@ -69,7 +69,7 @@ describe('feature/relations/belongs_to_save', () => {
       postsRepo.save({
         id: 1,
         title: 'Title 01',
-        author: [{ id: 1, name: 'John Doe' }]
+        author: [{ id: 1, name: 'John Doe' }],
       })
     }).toThrowError('[Pinia ORM] You are passing a list to " posts.author " which is a one to one Relation(BelongsTo): [{"id":1,"name":"John Doe"}]')
   })
@@ -79,13 +79,13 @@ describe('feature/relations/belongs_to_save', () => {
 
     postsRepo.save({
       id: 1,
-      title: 'Title 01'
+      title: 'Title 01',
     })
 
     assertState({
       posts: {
-        1: { id: 1, userId: null, title: 'Title 01' }
-      }
+        1: { id: 1, userId: null, title: 'Title 01' },
+      },
     })
   })
 
@@ -95,13 +95,13 @@ describe('feature/relations/belongs_to_save', () => {
     postsRepo.save({
       id: 1,
       title: 'Title 01',
-      author: null
+      author: null,
     })
 
     assertState({
       posts: {
-        1: { id: 1, userId: null, title: 'Title 01' }
-      }
+        1: { id: 1, userId: null, title: 'Title 01' },
+      },
     })
   })
 })

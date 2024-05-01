@@ -46,7 +46,7 @@ export class MorphTo extends Relation {
     relatedModels: Model[],
     morphId: string,
     morphType: string,
-    ownerKey: string
+    ownerKey: string,
   ) {
     super(parent, parent)
 
@@ -143,7 +143,7 @@ export class MorphTo extends Relation {
    */
   protected buildDictionary (
     query: Query,
-    models: Collection
+    models: Collection,
   ): DictionaryByEntities {
     const keys = this.getKeysByEntity(models)
 
@@ -156,7 +156,7 @@ export class MorphTo extends Relation {
       // that corresponds with the type.
       assert(!!model, [
         `Trying to load "morph to" relation of \`${entity}\``,
-        'but the model could not be found.'
+        'but the model could not be found.',
       ])
 
       const ownerKey = (this.ownerKey || model.$getKeyName()) as string
@@ -172,7 +172,7 @@ export class MorphTo extends Relation {
 
           return dic
         },
-        {}
+        {},
       )
     }
 
@@ -183,7 +183,7 @@ export class MorphTo extends Relation {
    * Get the relation's primary keys grouped by its entity.
    */
   protected getKeysByEntity (
-    models: Collection
+    models: Collection,
   ): Record<string, (string | number)[]> {
     return models.reduce<Record<string, (string | number)[]>>((keys, model) => {
       const type = model[this.morphType]

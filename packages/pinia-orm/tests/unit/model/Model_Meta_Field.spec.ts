@@ -12,7 +12,7 @@ describe('unit/model/Model_Meta_Field', () => {
       static entity = 'users'
 
       static config = {
-        withMeta: true
+        withMeta: true,
       }
 
       @Str('') declare name: string
@@ -29,7 +29,7 @@ describe('unit/model/Model_Meta_Field', () => {
       static entity = 'users'
 
       static config = {
-        withMeta: true
+        withMeta: true,
       }
 
       @Attr(0) declare id: string
@@ -41,7 +41,7 @@ describe('unit/model/Model_Meta_Field', () => {
     userRepo.save({
       id: 1,
       name: 'John',
-      username: 'JD'
+      username: 'JD',
     })
 
     await new Promise(resolve => setTimeout(resolve, 1500))
@@ -49,7 +49,7 @@ describe('unit/model/Model_Meta_Field', () => {
     userRepo.save({
       id: 1,
       name: 'John2',
-      username: 'JD2'
+      username: 'JD2',
     })
 
     const user2 = userRepo.withMeta().find(1)

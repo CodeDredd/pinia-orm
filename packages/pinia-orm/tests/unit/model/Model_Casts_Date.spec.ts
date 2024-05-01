@@ -18,13 +18,13 @@ describe('unit/model/Model_Casts_Date', () => {
 
       static fields () {
         return {
-          updated: this.attr('')
+          updated: this.attr(''),
         }
       }
 
       static casts () {
         return {
-          updated: DateCast
+          updated: DateCast,
         }
       }
     }
@@ -77,7 +77,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
       static casts () {
         return {
-          updated: DateCast
+          updated: DateCast,
         }
       }
     }
@@ -85,13 +85,13 @@ describe('unit/model/Model_Casts_Date', () => {
     const userRepo = useRepo(User)
     userRepo.save({
       id: 1,
-      updated: new Date('2017-01-26')
+      updated: new Date('2017-01-26'),
     })
 
     assertState({
       users: {
-        1: { id: 1, updated: expectedISODate, createdAt: null, updatedAt: expectedIsoDate2.toISOString() }
-      }
+        1: { id: 1, updated: expectedISODate, createdAt: null, updatedAt: expectedIsoDate2.toISOString() },
+      },
     })
 
     expect(userRepo.find(1)?.updated.toISOString()).toBe(expectedISODate)

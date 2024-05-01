@@ -14,7 +14,7 @@ describe.skip('performance/save_has_many_relation', () => {
         title: this.string(''),
         description: this.string(''),
         done: this.boolean(false),
-        points: this.number(0)
+        points: this.number(0),
       }
     }
   }
@@ -42,7 +42,7 @@ describe.skip('performance/save_has_many_relation', () => {
         title: generateString(30),
         description: generateString(1000),
         done: false,
-        points: 13
+        points: 13,
       })
     }
 

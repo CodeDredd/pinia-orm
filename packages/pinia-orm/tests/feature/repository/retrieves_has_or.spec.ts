@@ -30,20 +30,20 @@ describe('feature/repository/retrieves_has_or', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
+        3: { id: 3, name: 'Johnny Doe' },
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },
         2: { id: 2, userId: 1, title: 'Title 02' },
-        3: { id: 3, userId: 2, title: 'Title 03' }
-      }
+        3: { id: 3, userId: 2, title: 'Title 03' },
+      },
     })
 
     const users = userRepo.orHas('posts', '=', 1).where('name', 'Johnny Doe').get()
 
     const expected = [
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ]
 
     expect(users).toHaveLength(2)
@@ -58,20 +58,20 @@ describe('feature/repository/retrieves_has_or', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
+        3: { id: 3, name: 'Johnny Doe' },
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 01' },
         2: { id: 2, userId: 1, title: 'Title 02' },
-        3: { id: 3, userId: 2, title: 'Title 03' }
-      }
+        3: { id: 3, userId: 2, title: 'Title 03' },
+      },
     })
 
     const users = userRepo.orDoesntHave('posts').where('name', 'Jane Doe').get()
 
     const expected = [
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ]
 
     expect(users).toHaveLength(2)
@@ -86,13 +86,13 @@ describe('feature/repository/retrieves_has_or', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
+        3: { id: 3, name: 'Johnny Doe' },
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 03' },
         2: { id: 2, userId: 1, title: 'Title 03' },
-        3: { id: 3, userId: 2, title: 'Title 03' }
-      }
+        3: { id: 3, userId: 2, title: 'Title 03' },
+      },
     })
 
     const users = userRepo
@@ -109,7 +109,7 @@ describe('feature/repository/retrieves_has_or', () => {
 
     const expected = [
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ]
 
     expect(users).toHaveLength(2)
@@ -125,13 +125,13 @@ describe('feature/repository/retrieves_has_or', () => {
       users: {
         1: { id: 1, name: 'John Doe' },
         2: { id: 2, name: 'Jane Doe' },
-        3: { id: 3, name: 'Johnny Doe' }
+        3: { id: 3, name: 'Johnny Doe' },
       },
       posts: {
         1: { id: 1, userId: 1, title: 'Title 03' },
         2: { id: 2, userId: 1, title: 'Title 03' },
-        3: { id: 3, userId: 2, title: 'Title 02' }
-      }
+        3: { id: 3, userId: 2, title: 'Title 02' },
+      },
     })
 
     const users = userRepo
@@ -148,7 +148,7 @@ describe('feature/repository/retrieves_has_or', () => {
 
     const expected = [
       { id: 2, name: 'Jane Doe' },
-      { id: 3, name: 'Johnny Doe' }
+      { id: 3, name: 'Johnny Doe' },
     ]
 
     expect(users).toHaveLength(2)

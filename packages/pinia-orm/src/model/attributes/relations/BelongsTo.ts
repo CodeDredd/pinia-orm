@@ -28,7 +28,7 @@ export class BelongsTo extends Relation {
     parent: Model,
     child: Model,
     foreignKey: PrimaryKey,
-    ownerKey: PrimaryKey
+    ownerKey: PrimaryKey,
   ) {
     super(parent, child)
     this.foreignKey = foreignKey
@@ -63,7 +63,7 @@ export class BelongsTo extends Relation {
       this.ownerKey,
       (foreignKey, ownerKey) => {
         record[foreignKey] = child[ownerKey]
-      }
+      },
     )
   }
 
@@ -74,7 +74,7 @@ export class BelongsTo extends Relation {
     this.compositeKeyMapper(
       this.foreignKey,
       this.ownerKey,
-      (foreignKey, ownerKey) => query.whereIn(ownerKey, this.getEagerModelKeys(models, foreignKey))
+      (foreignKey, ownerKey) => query.whereIn(ownerKey, this.getEagerModelKeys(models, foreignKey)),
     )
   }
 

@@ -16,7 +16,7 @@ describe('unit/model/Model_Casts_Custom', () => {
 
       static casts () {
         return {
-          name: CastAttribute
+          name: CastAttribute,
         }
       }
     }
@@ -42,7 +42,7 @@ describe('unit/model/Model_Casts_Custom', () => {
 
       static casts () {
         return {
-          name: CustomCast
+          name: CustomCast,
         }
       }
     }
@@ -75,7 +75,7 @@ describe('unit/model/Model_Casts_Custom', () => {
   it('should cast with parameter', () => {
     class CustomCast extends CastAttribute {
       static parameters = {
-        type: 'string'
+        type: 'string',
       }
 
       get (value?: any): any {
@@ -95,7 +95,7 @@ describe('unit/model/Model_Casts_Custom', () => {
 
       static casts () {
         return {
-          name: CustomCast.withParameters({ type: 'number' })
+          name: CustomCast.withParameters({ type: 'number' }),
         }
       }
     }
