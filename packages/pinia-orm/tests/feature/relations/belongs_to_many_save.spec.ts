@@ -96,4 +96,76 @@ describe('feature/relations/belongs_to_many_save', () => {
       },
     })
   })
+
+  it('can handle relations to itself', () => {
+    class ClientRetailer extends Model {
+      static entity = 'client_retailers'
+
+      static primaryKey = ['retailerId', 'supplierId']
+
+      static fields () {
+        return {
+          supplierId: this.number(null),
+          retailerId: this.number(null),
+          retailerCode: this.string(null),
+        }
+      }
+    }
+    class Client extends Model {
+      static entity = 'clients'
+
+      static fields () {
+        return {
+          id: this.number(0),
+          name: this.string(null),
+          retailers: this.belongsToMany(Client, ClientRetailer, 'supplierId', 'retailerId'),
+        }
+      }
+    }
+    const clientRepo = useRepo(Client)
+
+    clientRepo.save([
+      {
+        id: 1,
+        name: 'Client 1',
+        retailers: [
+          {
+            id: 16,
+            name: 'Client 16',
+            pivot: {
+              retailerCode: '555',
+            },
+          },
+          {
+            id: 18,
+            name: 'Client 18',
+            pivot: {
+              retailerCode: '666',
+            },
+          },
+        ],
+      },
+    ])
+
+    assertState({
+      client_retailers: {
+        '[16,1]': { retailerId: 16, supplierId: 1, retailerCode: '555' },
+        '[18,1]': { retailerId: 18, supplierId: 1, retailerCode: '666' },
+      },
+      clients: {
+        1: {
+          'id': 1,
+          'name': 'Client 1',
+        },
+        16: {
+          'id': 16,
+          'name': 'Client 16',
+        },
+        18: {
+          'id': 18,
+          'name': 'Client 18',
+        },
+      },
+    })
+  })
 })
