@@ -9,5 +9,5 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true,
   },
-  externals: ['axios', 'pinia-orm'],
+  externals: ['axios', 'pinia-orm', 'pinia'],
 })
