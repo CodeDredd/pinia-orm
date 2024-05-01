@@ -107,7 +107,7 @@ describe('feature/relations/belongs_to_many_save', () => {
         return {
           supplierId: this.number(null),
           retailerId: this.number(null),
-          retailerCode: this.string(null)
+          retailerCode: this.string(null),
         }
       }
     }
@@ -118,7 +118,7 @@ describe('feature/relations/belongs_to_many_save', () => {
         return {
           id: this.number(0),
           name: this.string(null),
-          retailers: this.belongsToMany(Client, ClientRetailer, 'supplierId', 'retailerId')
+          retailers: this.belongsToMany(Client, ClientRetailer, 'supplierId', 'retailerId'),
         }
       }
     }
@@ -133,18 +133,18 @@ describe('feature/relations/belongs_to_many_save', () => {
             id: 16,
             name: 'Client 16',
             pivot: {
-              retailerCode: '555'
-            }
+              retailerCode: '555',
+            },
           },
           {
             id: 18,
             name: 'Client 18',
             pivot: {
-              retailerCode: '666'
-            }
-          }
-        ]
-      }
+              retailerCode: '666',
+            },
+          },
+        ],
+      },
     ])
 
     assertState({
@@ -155,15 +155,15 @@ describe('feature/relations/belongs_to_many_save', () => {
       clients: {
         1: {
           'id': 1,
-          'name': 'Client 1'
+          'name': 'Client 1',
         },
         16: {
           'id': 16,
-          'name': 'Client 16'
+          'name': 'Client 16',
         },
         18: {
           'id': 18,
-          'name': 'Client 18'
+          'name': 'Client 18',
         },
       },
     })
