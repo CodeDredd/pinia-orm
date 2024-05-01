@@ -56,11 +56,11 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.10",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@size-limit/preset-small-lib": "^11.0.0",
+    "@size-limit/preset-small-lib": "^11.1.2",
     "eslint": "^9.1.1",
-    "immutable": "^4.3.4",
-    "size-limit": "^11.0.0",
-    "typescript": "^5.2.2",
+    "immutable": "^4.3.5",
+    "size-limit": "^11.1.2",
+    "typescript": "^5.4.5",
     "unbuild": "^2.0.0"
   },
   "size-limit": [

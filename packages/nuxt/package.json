@@ -39,28 +39,28 @@
     "dev:prepare": "nuxi build-module --stub . && nuxi prepare playground"
   },
   "peerDependencies": {
-    "@pinia/nuxt": "^0.4.11"
+    "@pinia/nuxt": "^0.5.1"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.7.3",
+    "@nuxt/kit": "^3.11.2",
     "pinia-orm": ">=1.7.2"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.2.0",
     "@nuxt/eslint-config": "^0.3.10",
     "@nuxt/module-builder": "^0.6.0",
-    "@nuxt/schema": "^3.7.3",
+    "@nuxt/schema": "^3.11.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@pinia/nuxt": "^0.4.11",
+    "@pinia/nuxt": "^0.5.1",
     "@types/prettier": "^3.0.0",
     "eslint": "^9.1.1",
     "nuxt": "^3.11.2",
-    "pinia": "^2.1.6",
-    "prettier": "^3.0.3",
-    "std-env": "^3.4.3",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0",
-    "vue": "^3.3.4"
+    "pinia": "^2.1.7",
+    "prettier": "^3.2.5",
+    "std-env": "^3.7.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10",
+    "vue": "^3.4.26"
   },
   "repository": {
     "type": "git",
