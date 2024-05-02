@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   update:
-    if: github.repository_owner == 'pinia-orm' && !contains(github.event.head_commit.message, 'v1.')
+    if: !contains(github.event.head_commit.message, 'v1.')
     runs-on: ubuntu-latest
 
     steps:

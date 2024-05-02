@@ -11,6 +11,7 @@ on:
   pull_request:
     branches:
       - main
+      - "!v[0-9]*"
     paths-ignore:
       - docs/**
       - docs-playground/**
