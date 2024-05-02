@@ -240,7 +240,7 @@ export function generateKey (key: string, params?: any): string {
 /**
  * Get a value based on a dot-notation key.
  */
-export function getValue (obj: Record<string, any>, keys: string | string[], ifNotFoundReturnObject: true): any {
+export function getValue (obj: Record<string, any>, keys: string | string[], ifNotFoundReturnObject = true): any {
   keys = (typeof keys === 'string') ? keys.split('.') : keys
   const key = keys.shift() as string
   // eslint-disable-next-line @stylistic/brace-style
