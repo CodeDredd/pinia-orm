@@ -68,8 +68,8 @@ importers:
         specifier: ^7.6.0
         version: 7.6.0
       sponsorkit:
-        specifier: ^0.12.1
-        version: 0.12.1
+        specifier: ^0.12.2
+        version: 0.12.2
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -6315,8 +6315,8 @@ packages:
   splitpanes@3.1.5:
     resolution: {integrity: sha512-r3Mq2ITFQ5a2VXLOy4/Sb2Ptp7OfEO8YIbhVJqJXoFc9hc5nTXXkCvtVDjIGbvC0vdE7tse+xTM9BMjsszP6bw==}
 
-  sponsorkit@0.12.1:
-    resolution: {integrity: sha512-jE5jlr4PcQnZ/+nW1p5qXJzNxd7F42/Nb2MZpIsrGCmRzU5M9mHffS7zQm5cmZCZBDX6G/ub2pAKGKFFkZc/GQ==}
+  sponsorkit@0.12.2:
+    resolution: {integrity: sha512-lMt3NWuePAul2hvC96gj9KGnOciNo2GSpP0ohGj9ozrGZuTkNUPhrqXYmxggXZnxXJuJE6KFB2H2WlGrGoELjA==}
     hasBin: true
 
   ssri@10.0.1:
@@ -14409,7 +14409,7 @@ snapshots:
 
   splitpanes@3.1.5: {}
 
-  sponsorkit@0.12.1:
+  sponsorkit@0.12.2:
     dependencies:
       consola: 3.2.3
       d3-hierarchy: 3.1.2
