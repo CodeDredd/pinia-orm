@@ -75,7 +75,7 @@ export function orderBy<T extends Element> (
 
   const result = collection.map<SortableArray<T>>((value) => {
     const criteria = iteratees.map((iteratee) => {
-      return typeof iteratee === 'function' ? iteratee(value) : value[iteratee]
+      return typeof iteratee === 'function' ? iteratee(value) : getValue(value, iteratee, false)
     })
 
     return { criteria, index: ++index, value }
@@ -240,14 +240,13 @@ export function generateKey (key: string, params?: any): string {
 /**
  * Get a value based on a dot-notation key.
  */
-export function getValue (obj: Record<string, any>, keys: string | string[]): any {
+export function getValue (obj: Record<string, any>, keys: string | string[], ifNotFoundReturnObject = true): any {
   keys = (typeof keys === 'string') ? keys.split('.') : keys
   const key = keys.shift() as string
-
   // eslint-disable-next-line @stylistic/brace-style
   if (obj && Object.prototype.hasOwnProperty.call(obj, key) && keys.length === 0) { return obj[key] }
 
-  else if (!obj || !Object.prototype.hasOwnProperty.call(obj, key)) { return obj } else { return getValue(obj[key], keys) }
+  else if (!obj || !Object.prototype.hasOwnProperty.call(obj, key)) { return ifNotFoundReturnObject ? obj : undefined } else { return getValue(obj[key], keys) }
 }
 
 /**

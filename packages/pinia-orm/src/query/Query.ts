@@ -463,9 +463,18 @@ export class Query<M extends Model = Model> {
   private internalGet (triggerHook: boolean): Collection<M> | GroupedCollection<M> {
     if (this.model.$entity() !== this.model.$baseEntity()) { this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make()) }
 
-    const models = this.select()
+    let models = this.select()
+
+    if (!this.orders) {
+      models = this.filterLimit(models)
+    }
 
     if (!isEmpty(models)) { this.eagerLoadRelations(models) }
+
+    if (this.orders) {
+      models = this.filterOrder(models)
+      models = this.filterLimit(models)
+    }
 
     if (triggerHook) { models.forEach(model => model.$self().retrieved(model)) }
 
@@ -508,8 +517,6 @@ export class Query<M extends Model = Model> {
     let models = this.storeFind(ids)
 
     models = this.filterWhere(models)
-    models = this.filterOrder(models)
-    models = this.filterLimit(models)
 
     this.wheres = originalWheres
 
