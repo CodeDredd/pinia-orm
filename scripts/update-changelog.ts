@@ -39,7 +39,6 @@ async function main () {
   const contributors = await getContributors()
 
   console.info('New Version ', newVersion)
-  console.info('Current PR ', currentPR)
 
   const releaseNotes = [
     currentPR?.body.replace(/## 👉 Changelog[\s\S]*$/, '') || `> ${newVersion} is the next ${bumpType} release.\n>\n> **Timetable**: to be announced.`,
