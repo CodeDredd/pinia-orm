@@ -35,8 +35,11 @@ async function main () {
   }
 
   // Get the current PR for this release, if it exists
-  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=nuxt:v${newVersion}`)
+  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=pinia-orm:v${newVersion}`)
   const contributors = await getContributors()
+
+  console.info('New Version ', newVersion)
+  console.info('Current PR ', currentPR)
 
   const releaseNotes = [
     currentPR?.body.replace(/## 👉 Changelog[\s\S]*$/, '') || `> ${newVersion} is the next ${bumpType} release.\n>\n> **Timetable**: to be announced.`,
