@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
-    "pinia-orm": ">=1.7.2"
+    "pinia-orm": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.2.0",
