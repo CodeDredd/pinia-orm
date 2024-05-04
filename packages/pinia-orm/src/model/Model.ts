@@ -737,7 +737,7 @@ export class Model {
       if (operation === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options as Required<ModelOptions>)) { continue }
 
       const attr = fields[key]
-      let value = attributes[key]
+      const value = attributes[key]
 
       if (attr instanceof Relation && !fillRelation) { continue }
 
@@ -754,15 +754,15 @@ export class Model {
         Object.defineProperty(this, '_' + key, {
           configurable: true,
           writable: true,
-          enumerable: false
+          enumerable: false,
         })
 
         Object.defineProperty(this, key, {
           configurable: true,
           enumerable: true,
-          get() {
+          get () {
             let scopeValue = this['_' + key]
-            if (scopeValue === undefined) return keyValue
+            if (scopeValue === undefined) { return keyValue }
             if (operation === 'set') { return scopeValue }
             if (mutator) {
               scopeValue = typeof mutator === 'function'
@@ -774,9 +774,9 @@ export class Model {
             }
             return scopeValue
           },
-          set(value) {
+          set (value) {
             this['_' + key] = value
-          }
+          },
         })
       }
 
