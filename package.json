@@ -30,7 +30,7 @@
     "@types/node": "^20.12.8",
     "chalk": "^4.1.2",
     "changelogen": "^0.5.5",
-    "conventional-changelog-cli": "^4.1.0",
+    "conventional-changelog-cli": "^5.0.0",
     "enquirer": "^2.4.1",
     "execa": "^8.0.1",
     "expect": "^29.7.0",
