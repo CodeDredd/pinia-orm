@@ -1,8 +1,12 @@
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, Mutate } from '../../../src/decorators'
 import { assertState } from '../../helpers'
+
+beforeEach(() => {
+  Model.clearRegistries()
+})
 
 describe('unit/model/Model_Mutators', () => {
   it('should mutate data if mutators are present', () => {
@@ -95,7 +99,7 @@ describe('unit/model/Model_Mutators', () => {
         return {
           name: {
             set: (value: any) => { return value.toUpperCase() },
-            get: (value: any) => value.toLowerCase(),
+            get: (value: any) => { return value.toLowerCase() },
           },
         }
       }
