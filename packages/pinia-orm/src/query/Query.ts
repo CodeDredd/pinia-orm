@@ -794,14 +794,14 @@ export class Query<M extends Model = Model> {
         ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
         : this.hydrate(record, { operation: 'set', action: 'save' })
 
-      const isSaving = model.$self().saving(model, record)
-      const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
+      const isSaving = model.$self().saving(model, existing ?? {})
+      const isUpdatingOrCreating = existing ? model.$self().updating(model, existing ?? {}) : model.$self().creating(model, existing ?? {})
       if (isSaving === false || isUpdatingOrCreating === false) { continue }
 
       if (model.$isDirty()) { model = this.hydrate(model.$getAttributes(), { operation: 'set', action: existing ? 'update' : 'save' }) }
 
-      afterSavingHooks.push(() => model.$self().saved(model, record))
-      afterSavingHooks.push(() => existing ? model.$self().updated(model, record) : model.$self().created(model, record))
+      afterSavingHooks.push(() => model.$self().saved(model, existing ?? {}))
+      afterSavingHooks.push(() => existing ? model.$self().updated(model, existing ?? {}) : model.$self().created(model, existing ?? {}))
       newData[id] = model.$getAttributes()
       if (Object.values(model.$types()).length > 0 && !newData[id][model.$typeKey()]) { newData[id][model.$typeKey()] = record[model.$typeKey()] }
     }
