@@ -4,7 +4,7 @@ import { Model, useRepo } from '../../src'
 import { Attr, BelongsToMany, Num, Str } from '../../src/decorators'
 
 /* eslint-disable no-console */
-describe.skip('performance/save_belongs_to_many_relation.spec', () => {
+describe('performance/save_belongs_to_many_relation.spec', () => {
   class Role extends Model {
     static entity = 'roles'
 

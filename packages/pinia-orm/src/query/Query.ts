@@ -1022,7 +1022,7 @@ export class Query<M extends Model = Model> {
       !this.getNewHydrated &&
       options?.operation !== 'set' &&
       savedHydratedModel
-    ) { return savedHydratedModel }
+    ) { return savedHydratedModel.$fill(record, options) }
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
     const getNewInsance = (newOptions?: ModelOptions) => (modelByType ? modelByType.newRawInstance() as M : this.model)
