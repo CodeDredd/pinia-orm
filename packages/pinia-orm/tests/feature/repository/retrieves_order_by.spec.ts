@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
-import { Attr, BelongsToMany, Num, Str } from '../../../src/decorators'
+import { Attr, BelongsToMany, Cast, Num, Str } from '../../../src/decorators'
 import { assertInstanceOf, assertModels, fillState } from '../../helpers'
 import { useSortBy } from '@/composables/collection/useSortBy'
+import { DateCast } from '@/model/casts/DateCast'
 
 describe('feature/repository/retrieves_order_by', () => {
   class User extends Model {
@@ -178,6 +179,40 @@ describe('feature/repository/retrieves_order_by', () => {
       ],
       },
       { id: 3, name: 'David', roles: [] },
+    ]
+
+    expect(users).toHaveLength(3)
+    assertInstanceOf(users, User)
+    assertModels(users, expected)
+  })
+
+  it('can sort records by Date using the `orderBy` modifier', () => {
+    Model.clearRegistries()
+    class User extends Model {
+      static entity = 'users'
+
+      @Attr() id!: any
+      @Str('') name!: string
+      @Num(0) age!: number
+      @Cast(() => DateCast) @Attr(null) declare createdAt: Date
+    }
+
+    const userRepo = useRepo(User)
+
+    fillState({
+      users: {
+        1: { id: 1, name: 'James', age: 40, createdAt: new Date ('2023-01-26').toISOString() },
+        2: { id: 2, name: 'Andy', age: 30, createdAt: new Date ('2023-01-25').toISOString() },
+        3: { id: 3, name: 'David', age: 20, createdAt: new Date ('2023-03-26').toISOString() },
+      },
+    })
+
+    const users = userRepo.orderBy('createdAt').get()
+
+    const expected = [
+      { id: 2, name: 'Andy', age: 30, createdAt: new Date ('2023-01-25').toISOString() },
+      { id: 1, name: 'James', age: 40, createdAt: new Date ('2023-01-26').toISOString() },
+      { id: 3, name: 'David', age: 20, createdAt: new Date ('2023-03-26').toISOString() },
     ]
 
     expect(users).toHaveLength(3)
