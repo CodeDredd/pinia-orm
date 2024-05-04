@@ -767,7 +767,7 @@ export class Model {
             if (mutator) {
               scopeValue = typeof mutator === 'function'
                 ? mutator(scopeValue)
-                : mutator.get(scopeValue)
+                : typeof mutator.get === 'function' ? mutator.get(scopeValue) : scopeValue
             }
             if (cast) {
               scopeValue = cast.get(scopeValue)
