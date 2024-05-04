@@ -1016,20 +1016,22 @@ export class Query<M extends Model = Model> {
    */
   protected getHydratedModel (record: Element, options?: ModelOptions): M {
     const id = this.model.$getKey(record, true)
-    const savedHydratedModel = id && this.hydratedDataCache.get(this.model.$entity() + id)
+    const savedHydratedModel = id && options?.operation !== 'set' && this.hydratedDataCache.get(this.model.$entity() + id)
 
     if (
       !this.getNewHydrated &&
       options?.operation !== 'set' &&
       savedHydratedModel
-    ) { return savedHydratedModel.$fill(record, options) }
+    ) { return savedHydratedModel }
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
     const getNewInsance = (newOptions?: ModelOptions) => (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}), ...newOptions })
     const hydratedModel = getNewInsance()
 
-    if (id && ((!this.getNewHydrated && options?.operation !== 'set') || options?.action === 'update')) { this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel) }
+    if (id && !this.getNewHydrated && options?.operation !== 'set') { this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel) }
+
+    if (id && options?.action === 'update') { this.hydratedDataCache.set(this.model.$entity() + id, getNewInsance({ operation: 'get' })) }
 
     return hydratedModel
   }
