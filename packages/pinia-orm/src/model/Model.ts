@@ -1,4 +1,4 @@
-import { assert, equals, isArray, isNullish, throwError } from '../support/Utils'
+import { assert, equals, isArray, isDate, isNullish, throwError } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { MutatorFunctions, Mutators } from '../types'
 import type { ModelConfigOptions } from '../store/Store'
@@ -1034,7 +1034,7 @@ export class Model {
     if (typeof value === 'object') {
       // If the value is an object, check if it's an instance of Date and that it has
       // a time value with its getTime() method, and that its toISOString() method exists
-      if (value instanceof Date && !Number.isNaN(value.getTime()) && typeof value.toISOString === 'function') { return value.toISOString() } else {
+      if (isDate(value)) { return value.toISOString() } else {
         // If it's not a Date object, serialize the object using the default method
         return this.serializeObject(value)
       }

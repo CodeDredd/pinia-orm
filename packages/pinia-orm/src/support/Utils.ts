@@ -31,6 +31,13 @@ export function isNullish (value: any): value is undefined | null {
 }
 
 /**
+ * Check if the given value is a Date object.
+ */
+export function isDate (value: any): value is Date {
+  return value instanceof Date && !Number.isNaN(value.getTime()) && typeof value.toISOString === 'function'
+}
+
+/**
  * Check if the given value is the type of array.
  */
 export function isArray (value: any): value is any[] {
@@ -75,7 +82,9 @@ export function orderBy<T extends Element> (
 
   const result = collection.map<SortableArray<T>>((value) => {
     const criteria = iteratees.map((iteratee) => {
-      return typeof iteratee === 'function' ? iteratee(value) : getValue(value, iteratee, false)
+      if (typeof iteratee === 'function') { return iteratee(value) }
+      const newValue = getValue(value, iteratee, false)
+      return isDate(newValue) ? new Date(newValue).getTime() : newValue
     })
 
     return { criteria, index: ++index, value }
