@@ -1029,9 +1029,7 @@ export class Query<M extends Model = Model> {
       .$newInstance(record, { relations: false, ...(options || {}), ...newOptions })
     const hydratedModel = getNewInsance()
 
-    if (id && !this.getNewHydrated && options?.operation !== 'set') { this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel) }
-
-    if (id && options?.action === 'update') { this.hydratedDataCache.set(this.model.$entity() + id, getNewInsance({ operation: 'get' })) }
+    if (id && ((!this.getNewHydrated && options?.operation !== 'set') || options?.action === 'update')) { this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel) }
 
     return hydratedModel
   }
