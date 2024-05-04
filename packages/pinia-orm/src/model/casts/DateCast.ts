@@ -17,9 +17,11 @@ export class DateCast extends CastAttribute {
    * Make the value for the attribute.
    */
 
-  set (value: string | Date | null): string | null {
+  set (value: string | number | Date | null): string | null {
     if (value === null) { return null }
 
-    return ((typeof value === 'string') ? new Date(Date.parse(value)) : value).toISOString()
+    if (typeof value === 'number') { return new Date(value).toISOString() }
+    if (typeof value === 'string') { return new Date(Date.parse(value)).toISOString() }
+    return value.toISOString()
   }
 }

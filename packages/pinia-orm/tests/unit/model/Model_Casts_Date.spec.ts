@@ -59,6 +59,19 @@ describe('unit/model/Model_Casts_Date', () => {
     expect(new User({ updated: null }, { operation: 'set' }).updated).toBe(null)
   })
 
+  it('should allow cast with number', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Cast(() => DateCast)
+      @Attr('test')
+      declare updated: Date
+    }
+
+    expect(new User({ updated: 1714849419 }, { operation: 'get' }).updated).toStrictEqual(new Date(1714849419))
+    expect(new User({ updated: 1214849419 }, { operation: 'set' }).updated).toBe(new Date(1214849419).toISOString())
+  })
+
   it('should cast before saved into store', () => {
     const expectedIsoDate2 = new Date('2023-01-26')
 
