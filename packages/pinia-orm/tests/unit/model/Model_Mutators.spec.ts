@@ -95,6 +95,7 @@ describe('unit/model/Model_Mutators', () => {
         return {
           name: {
             set: (value: any) => { return value.toUpperCase() },
+            get: (value: any) => value.toLowerCase(),
           },
         }
       }
@@ -112,13 +113,19 @@ describe('unit/model/Model_Mutators', () => {
       },
     })
 
-    expect(userRepo.find(1)?.name).toBe('JOHN DOE')
+    expect(userRepo.find(1)?.name).toBe('john doe')
 
     userRepo.save({
       id: 1,
       name: 'Jane Doe',
     })
 
-    expect(userRepo.find(1)?.name).toBe('JANE DOE')
+    assertState({
+      users: {
+        1: { id: 1, name: 'JANE DOE' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('jane doe')
   })
 })

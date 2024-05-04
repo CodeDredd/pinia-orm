@@ -4,7 +4,7 @@ import { ref } from 'vue-demi'
 import { Model, useRepo } from '../../src'
 
 /* eslint-disable no-console */
-describe.skip('performance/save_has_many_relation', () => {
+describe('performance/save_has_many_relation', () => {
   class Todo extends Model {
     static entity = 'todos'
 
