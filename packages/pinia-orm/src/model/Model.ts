@@ -737,48 +737,25 @@ export class Model {
       if (operation === 'get' && !this.isFieldVisible(key, this.$hidden(), this.$visible(), options as Required<ModelOptions>)) { continue }
 
       const attr = fields[key]
-      const value = attributes[key]
+      let value = attributes[key]
 
       if (attr instanceof Relation && !fillRelation) { continue }
 
       const mutator = mutators?.[key]
       const cast = this.$casts()[key]?.newRawInstance(fields)
+      if (mutator && operation === 'get') {
+        value = typeof mutator === 'function'
+          ? mutator(value)
+          : typeof mutator.get === 'function' ? mutator.get(value) : value
+      }
+
+      if (cast && operation === 'get') { value = cast.get(value) }
 
       let keyValue = this.$fillField(key, attr, value)
 
       if (mutator && typeof mutator !== 'function' && operation === 'set' && mutator.set) { keyValue = mutator.set(keyValue) }
 
       if (cast && operation === 'set') { keyValue = cast.set(keyValue) }
-
-      if (cast || mutator) {
-        Object.defineProperty(this, '_' + key, {
-          configurable: true,
-          writable: true,
-          enumerable: false,
-        })
-
-        Object.defineProperty(this, key, {
-          configurable: true,
-          enumerable: true,
-          get () {
-            let scopeValue = this['_' + key]
-            if (scopeValue === undefined) { return keyValue }
-            if (operation === 'set') { return scopeValue }
-            if (mutator) {
-              scopeValue = typeof mutator === 'function'
-                ? mutator(scopeValue)
-                : typeof mutator.get === 'function' ? mutator.get(scopeValue) : scopeValue
-            }
-            if (cast) {
-              scopeValue = cast.get(scopeValue)
-            }
-            return scopeValue
-          },
-          set (value) {
-            this['_' + key] = value
-          },
-        })
-      }
 
       this[key] = this[key] ?? keyValue
     }
