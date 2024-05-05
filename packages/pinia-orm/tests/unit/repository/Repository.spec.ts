@@ -107,7 +107,7 @@ describe('unit/repository/Repository', () => {
     expect(userRepo.hydratedDataCache.size).toBe(1)
 
     userRepo.piniaStore().update({ 1: { id: 1, name: 'John 2' } })
-    expect(userRepo.hydratedDataCache.size).toBe(1)
+    expect(userRepo.hydratedDataCache.size).toBe(0)
 
     userRepo.piniaStore().insert({ 2: { id: 2, name: 'John 3' } })
     userRepo.piniaStore().insert({ 3: { id: 3, name: 'John 4' } })

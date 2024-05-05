@@ -970,7 +970,8 @@ export class Query<M extends Model = Model> {
       const isDeleting = currentModel.$self().deleting(currentModel)
 
       if (isDeleting === false) { notDeletableIds.push(currentModel.$getIndexId()) } else {
-        this.hydratedDataCache.delete(this.model.$entity() + currentModel.$getIndexId())
+        this.hydratedDataCache.delete('set' + this.model.$entity() + currentModel.$getIndexId())
+        this.hydratedDataCache.delete('get' + this.model.$entity() + currentModel.$getIndexId())
         afterHooks.push(() => currentModel.$self().deleted(currentModel))
         this.checkAndDeleteRelations(currentModel)
       }
@@ -1015,12 +1016,17 @@ export class Query<M extends Model = Model> {
    * an update event trigger in vue if the object is used.
    */
   protected getHydratedModel (record: Element, options?: ModelOptions): M {
-    const id = this.model.$getKey(record, true)
-    const savedHydratedModel = id && options?.operation !== 'set' && this.hydratedDataCache.get(this.model.$entity() + id)
+    const id = this.model.$entity() + this.model.$getKey(record, true)
+    const operationId = options?.operation + id
+    let savedHydratedModel = this.hydratedDataCache.get(operationId)
+
+    if (options?.action === 'update') {
+      this.hydratedDataCache.delete('get' + id)
+      savedHydratedModel = undefined
+    }
 
     if (
       !this.getNewHydrated &&
-      options?.operation !== 'set' &&
       savedHydratedModel
     ) { return savedHydratedModel }
 
@@ -1029,9 +1035,7 @@ export class Query<M extends Model = Model> {
       .$newInstance(record, { relations: false, ...(options || {}), ...newOptions })
     const hydratedModel = getNewInsance()
 
-    if (id && !this.getNewHydrated && options?.operation !== 'set') { this.hydratedDataCache.set(this.model.$entity() + id, hydratedModel) }
-
-    if (id && options?.action === 'update') { this.hydratedDataCache.set(this.model.$entity() + id, getNewInsance({ operation: 'get' })) }
+    if (isEmpty(this.eagerLoad) && options?.operation !== 'set') { this.hydratedDataCache.set(operationId, hydratedModel) }
 
     return hydratedModel
   }

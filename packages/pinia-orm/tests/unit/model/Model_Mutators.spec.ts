@@ -131,5 +131,59 @@ describe('unit/model/Model_Mutators', () => {
     })
 
     expect(userRepo.find(1)?.name).toBe('jane doe')
+
+    userRepo.where('id', 1).update({ name: 'Stefan Raab' })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'STEFAN RAAB' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('stefan raab')
+  })
+
+  it('should mutate data in the store with set', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Attr(0) id!: number
+      @Attr('') name!: string
+
+      static mutators () {
+        return {
+          name: {
+            set: (value: any) => { return value + ' (modified)' },
+          },
+        }
+      }
+    }
+
+    const userRepo = useRepo(User)
+    userRepo.save({
+      id: 1,
+      name: 'test',
+    })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'test (modified)' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('test (modified)')
+
+    userRepo.save({
+      id: 1,
+      name: 'jane',
+    })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'jane (modified)' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('jane (modified)')
   })
 })
