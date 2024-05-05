@@ -10,7 +10,7 @@ export class Database {
   /**
    * Register the given model.
    */
-  register<M extends Model>(model: M): void {
+  register<M extends Model> (model: M): void {
     const entity = model.$entity()
 
     if (!this.models[entity]) {
@@ -23,7 +23,7 @@ export class Database {
   /**
    * Register all related models.
    */
-  private registerRelatedModels<M extends Model>(model: M): void {
+  private registerRelatedModels<M extends Model> (model: M): void {
     const fields = model.$fields()
 
     for (const name in fields) {
@@ -40,7 +40,7 @@ export class Database {
   /**
    * Get a model by the specified entity name.
    */
-  getModel<M extends Model>(name: string): M {
+  getModel<M extends Model> (name: string): M {
     return this.models[name] as M
   }
 }

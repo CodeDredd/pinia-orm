@@ -38,7 +38,7 @@ describe('feature/helpers/helpers', () => {
     expect(vm.userRepo.getModel()).toBeInstanceOf(User)
   })
 
-  it('can map repositories from abstract repositories in Vue components', async () => {
+  it('can map repositories from abstract repositories in Vue components', () => {
     const pinia = createPinia()
     pinia.use(createORM())
 
@@ -56,7 +56,7 @@ describe('feature/helpers/helpers', () => {
     expect(vm.userRepo.getModel()).toBeInstanceOf(User)
   })
 
-  it('can map repositories in Vue components using spread syntax', async () => {
+  it('can map repositories in Vue components using spread syntax', () => {
     const pinia = createPinia()
     pinia.use(createORM())
 

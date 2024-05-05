@@ -12,7 +12,7 @@ describe('unit/packages/nanoid/uid', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Uid()
+      @Uid({ alphabet: 'abcde', size: 5 })
         id!: string
     }
 
@@ -25,15 +25,15 @@ describe('unit/packages/nanoid/uid', () => {
     class User extends Model {
       static entity = 'users'
 
-      static fields() {
+      static fields () {
         return {
-          id: this.uid(),
+          id: this.uid()
         }
       }
 
-      static casts() {
+      static casts () {
         return {
-          id: UidCast,
+          id: UidCast
         }
       }
     }

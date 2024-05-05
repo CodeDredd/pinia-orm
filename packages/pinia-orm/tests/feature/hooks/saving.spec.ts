@@ -14,7 +14,7 @@ describe('feature/hooks/saving', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static saving(model: Model) {
+      static saving (model: Model) {
         model.name = 'John'
       }
     }
@@ -38,12 +38,11 @@ describe('feature/hooks/saving', () => {
       @Num(0) declare age: number
       @BelongsTo(() => Post, 'postId') declare post: User | null
 
-      static saving(model: Model, record?: Element) {
-        model.name = 'John'
+      static saving (model: Model, record?: Element) {
+        expect(model.name).not.toBe(record.name)
         const fields = model.$fields()
         for (const name in fields) {
-          if (fields[name] instanceof BelongsToClass && record && record[name] === null)
-            model[(fields[name] as BelongsToClass).foreignKey] = null
+          if (fields[name] instanceof BelongsToClass && record && record.name === 'John Doe') { model[(fields[name] as BelongsToClass).foreignKey] = null }
         }
       }
     }
@@ -63,14 +62,14 @@ describe('feature/hooks/saving', () => {
 
     assertState({
       users: {
-        1: { id: 1, name: 'John', age: 30, postId: 1 },
+        1: { id: 1, name: 'John Doe', age: 30, postId: 1 },
       },
       posts: {
         1: { id: 1, title: 'News' },
       },
     })
 
-    useRepo(User).save({ id: 1, name: 'John Doe', age: 30, post: null })
+    useRepo(User).save({ id: 1, name: 'John', age: 30, post: null })
 
     assertState({
       users: {
@@ -90,7 +89,7 @@ describe('feature/hooks/saving', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static saving(model: Model) {
+      static saving (model: Model) {
         model.name = 'John'
         return false
       }
@@ -115,7 +114,7 @@ describe('feature/hooks/saving', () => {
       @Str('') declare name: string
       @Num(0) declare age: number
 
-      static saving(model: Model) {
+      static saving (model: Model) {
         model.name = 'John'
         return false
       }

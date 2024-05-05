@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { MorphOne, Num, Str } from '../../../src/decorators'
@@ -51,6 +51,23 @@ describe('feature/relations/morph_one_save', () => {
         },
       },
     })
+  })
+
+  it('throws a error if a list is passed to the relation', () => {
+    const usersRepo = useRepo(User)
+
+    expect(() => {
+      usersRepo.save({
+        id: 1,
+        name: 'John Doe',
+        image: [{
+          id: 1,
+          url: '/profile.jpg',
+          imageableId: 1,
+          imageableType: 'users',
+        }],
+      })
+    }).toThrowError('[Pinia ORM] You are passing a list to " users.image " which is a one to one Relation(MorphOne): [{"id":1,"url":"/profile.jpg","imageableId":1,"imageableType":"users"}]')
   })
 
   it('generates missing parent id', () => {

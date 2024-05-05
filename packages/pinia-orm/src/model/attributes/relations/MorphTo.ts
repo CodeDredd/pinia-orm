@@ -41,7 +41,7 @@ export class MorphTo extends Relation {
   /**
    * Create a new morph-to relation instance.
    */
-  constructor(
+  constructor (
     parent: Model,
     relatedModels: Model[],
     morphId: string,
@@ -61,7 +61,7 @@ export class MorphTo extends Relation {
   /**
    * Create a dictionary of relations keyed by their entity.
    */
-  protected createRelatedTypes(models: Model[]): Record<string, Model> {
+  protected createRelatedTypes (models: Model[]): Record<string, Model> {
     return models.reduce<Record<string, Model>>((types, model) => {
       types[model.$entity()] = model
 
@@ -72,21 +72,21 @@ export class MorphTo extends Relation {
   /**
    * Get the type field name.
    */
-  getType(): string {
+  getType (): string {
     return this.morphType
   }
 
   /**
    * Get all related models for the relationship.
    */
-  getRelateds(): Model[] {
+  getRelateds (): Model[] {
     return this.relatedModels
   }
 
   /**
    * Define the normalizr schema for the relation.
    */
-  define(schema: Schema): NormalizrSchema {
+  define (schema: Schema): NormalizrSchema {
     return schema.union(this.relatedModels, (value, parent, _key) => {
       // Assign missing parent id since the child model is not related back
       // and `attach` will not be called.
@@ -104,18 +104,18 @@ export class MorphTo extends Relation {
    * Attach the relational key to the given record. Since morph-to relationship
    * doesn't have any foreign key, it would do nothing.
    */
-  attach(_record: Element, _child: Element): void {}
+  attach (_record: Element, _child: Element): void {}
 
   /**
    * Add eager constraints. Since we do not know the related model ahead of time,
    * we cannot add any eager constraints.
    */
-  addEagerConstraints(_query: Query, _models: Collection): void {}
+  addEagerConstraints (_query: Query, _models: Collection): void {}
 
   /**
    * Find and attach related children to their respective parents.
    */
-  match(relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection, query: Query): void {
     // Create dictionary that contains relationships.
     const dictionary = this.buildDictionary(query, models)
 
@@ -132,9 +132,8 @@ export class MorphTo extends Relation {
   /**
    * Make a related model.
    */
-  make(element?: Element, type?: string): Model | null {
-    if (!element || !type)
-      return null
+  make (element?: Element, type?: string): Model | null {
+    if (!element || !type) { return null }
 
     return this.relatedTypes[type].$newInstance(element)
   }
@@ -142,7 +141,7 @@ export class MorphTo extends Relation {
   /**
    * Build model dictionary keyed by the owner key for each entity.
    */
-  protected buildDictionary(
+  protected buildDictionary (
     query: Query,
     models: Collection,
   ): DictionaryByEntities {
@@ -183,7 +182,7 @@ export class MorphTo extends Relation {
   /**
    * Get the relation's primary keys grouped by its entity.
    */
-  protected getKeysByEntity(
+  protected getKeysByEntity (
     models: Collection,
   ): Record<string, (string | number)[]> {
     return models.reduce<Record<string, (string | number)[]>>((keys, model) => {
@@ -191,8 +190,7 @@ export class MorphTo extends Relation {
       const id = model[this.morphId]
 
       if (id !== null && this.relatedTypes[type] !== undefined) {
-        if (!keys[type])
-          keys[type] = []
+        if (!keys[type]) { keys[type] = [] }
 
         keys[type].push(id)
       }

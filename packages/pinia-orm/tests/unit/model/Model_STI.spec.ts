@@ -13,14 +13,14 @@ describe('unit/model/Model_STI', () => {
     class Animal extends Model {
       static entity = 'animals'
 
-      static fields() {
+      static fields () {
         return {
           id: this.attr(null),
           type: this.attr('animal'),
         }
       }
 
-      static types() {
+      static types () {
         return {
           animal: Animal,
           dog: Dog,
@@ -33,7 +33,7 @@ describe('unit/model/Model_STI', () => {
 
       static baseEntity = 'animals'
 
-      static fields() {
+      static fields () {
         return {
           ...super.fields(),
           type: this.attr('dog'),
@@ -89,7 +89,7 @@ describe('unit/model/Model_STI', () => {
       @Attr(null) id!: number | null
       @Attr('animal') type!: string
 
-      static types() {
+      static types () {
         return {
           animal: Animal,
           dog: Dog,
@@ -102,7 +102,7 @@ describe('unit/model/Model_STI', () => {
 
       static baseEntity = 'animals'
 
-      static fields() {
+      static fields () {
         return {
           ...super.schemas[super.entity],
         }
@@ -143,14 +143,14 @@ describe('unit/model/Model_STI', () => {
 
       static typeKey = 'type'
 
-      static types() {
+      static types () {
         return {
           0: AnonymousPost,
           1: UserPost,
         }
       }
 
-      static fields() {
+      static fields () {
         return {
           id: this.attr(null),
           title: this.attr(''),
@@ -168,7 +168,7 @@ describe('unit/model/Model_STI', () => {
 
       static baseEntity = 'anonymousPosts'
 
-      static fields() {
+      static fields () {
         return {
           ...super.fields(),
           user_id: this.attr(null),
@@ -180,7 +180,7 @@ describe('unit/model/Model_STI', () => {
     class Image extends Model {
       static entity = 'images'
 
-      static fields() {
+      static fields () {
         return {
           id: this.attr(null),
           title: this.attr(''),
@@ -192,7 +192,7 @@ describe('unit/model/Model_STI', () => {
     class User extends Model {
       static entity = 'users'
 
-      static fields() {
+      static fields () {
         return {
           id: this.attr(null),
           name: this.attr(''),
@@ -264,14 +264,14 @@ describe('unit/model/Model_STI', () => {
     class Person extends Model {
       static entity = 'person'
 
-      static types() {
+      static types () {
         return {
           PERSON: Person,
           ADULT: Adult,
         }
       }
 
-      static fields() {
+      static fields () {
         return {
           id: this.attr(null),
           name: this.attr(''),
@@ -284,7 +284,7 @@ describe('unit/model/Model_STI', () => {
 
       static baseEntity = 'person'
 
-      static fields() {
+      static fields () {
         return {
           ...super.fields(),
           job: this.attr(''),
@@ -305,7 +305,7 @@ describe('unit/model/Model_STI', () => {
         2: { id: 2, type: 'ADULT', name: 'Jane Doe', job: 'Software Engineer' },
       },
     })
-    const persons = useRepo(Person).all()
+    const persons = useRepo(Person).query().all()
     expect(persons[0]).toBeInstanceOf(Person)
     expect(persons[0]).not.toHaveProperty('type')
     expect(persons[1]).toBeInstanceOf(Adult)

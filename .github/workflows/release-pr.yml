@@ -1,0 +1,62 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - docs/**
+      - docs-playground/**
+      - playgrounds/**
+      - scripts
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - docs/**
+      - docs-playground/**
+      - playgrounds/**
+      - scripts
+
+env:
+  # 7 GiB by default on GitHub, setting to 6 GiB
+  NODE_OPTIONS: --max-old-space-size=6144
+
+permissions:
+  contents: read
+
+jobs:
+  release-pr:
+    permissions:
+      id-token: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: corepack enable
+      - uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Stub
+        run: pnpm build:stub
+
+      - name: Build
+        run: pnpm build:ci
+
+      - name: Release Edge
+        if: |
+          github.event_name == 'push' &&
+          !contains(github.event.head_commit.message, '[skip-release]')
+        run: ./scripts/release-edge.sh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true

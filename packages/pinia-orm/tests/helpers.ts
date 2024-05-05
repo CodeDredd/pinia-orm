@@ -7,7 +7,7 @@ import type { Mock } from 'vitest'
 import { expect, vi } from 'vitest'
 
 import { createApp } from 'vue-demi'
-import type { Collection, Elements, InstallOptions, Model } from '../src'
+import type { Collection, Elements, InstallOptions, Model, PiniaOrmPlugin } from '../src'
 import * as Utils from '../src/support/Utils'
 import { createORM } from '../src'
 
@@ -15,20 +15,23 @@ interface Entities {
   [name: string]: Elements
 }
 
-export function createPiniaORM(options?: InstallOptions) {
+export function createPiniaORM (options?: InstallOptions, plugins?: PiniaOrmPlugin[]) {
   const app = createApp({})
   const pinia = createPinia()
-  pinia.use(createORM(options))
+  const piniaOrm = createORM(options)
+  if (plugins) {
+    plugins.forEach(plugin => piniaOrm().use(plugin))
+  }
+  pinia.use(piniaOrm)
   app.use(pinia)
   setActivePinia(pinia)
 }
 
-export function createState(entities: Entities, additionalStoreProperties = {}): any {
+export function createState (entities: Entities, additionalStoreProperties = {}): any {
   const state = {} as any
 
   for (const entity in entities) {
-    if (!state[entity])
-      state[entity] = { data: {}, ...additionalStoreProperties }
+    if (!state[entity]) { state[entity] = { data: {}, ...additionalStoreProperties } }
 
     state[entity].data = entities[entity]
   }
@@ -36,24 +39,22 @@ export function createState(entities: Entities, additionalStoreProperties = {}):
   return state
 }
 
-export function fillState(entities: Entities): void {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+export function fillState (entities: Entities): void {
   getActivePinia().state.value = createState(entities)
 }
 
-export function assertState(entities: Entities, additionalStoreProperties?: Record<string, any>): void {
+export function assertState (entities: Entities, additionalStoreProperties?: Record<string, any>): void {
   expect(getActivePinia()?.state.value).toEqual(createState(entities, additionalStoreProperties))
 }
 
-export function assertModel<M extends Model>(
+export function assertModel<M extends Model> (
   model: M,
   record: Element | any,
 ): void {
   expect(model.$toJson()).toEqual(record)
 }
 
-export function assertModels<M extends Model>(
+export function assertModels<M extends Model> (
   models: Collection<M>,
   record: Element[] | any[],
 ): void {
@@ -62,7 +63,7 @@ export function assertModels<M extends Model>(
   })
 }
 
-export function assertInstanceOf(
+export function assertInstanceOf (
   collection: Collection<any>,
   model: typeof Model,
 ): void {
@@ -71,27 +72,27 @@ export function assertInstanceOf(
   })
 }
 
-export function mockUid(ids: any[]): void {
+export function mockUid (ids: any[]): void {
   const spy = vi.spyOn(Utils, 'generateId')
   ids.forEach(id => spy.mockImplementationOnce(() => id))
 }
 
-export function mockNanoId(ids: any[]): void {
+export function mockNanoId (ids: any[]): void {
   ids.forEach(id => (nanoid as Mock).mockImplementationOnce(() => id))
 }
 
-export function mockNanoIdNS(ids: any[]): void {
+export function mockNanoIdNS (ids: any[]): void {
   ids.forEach(id => (nanoidNS as Mock).mockImplementationOnce(() => id))
 }
 
-export function mockNanoIdAsync(ids: any[]): void {
+export function mockNanoIdAsync (ids: any[]): void {
   ids.forEach(id => (nanoidAsync as Mock).mockImplementationOnce(() => id))
 }
 
-export function mockUuidV1(ids: any[]): void {
+export function mockUuidV1 (ids: any[]): void {
   ids.forEach(id => (v1 as Mock).mockImplementationOnce(() => id))
 }
 
-export function mockUuidV4(ids: any[]): void {
+export function mockUuidV4 (ids: any[]): void {
   ids.forEach(id => (v4 as Mock).mockImplementationOnce(() => id))
 }

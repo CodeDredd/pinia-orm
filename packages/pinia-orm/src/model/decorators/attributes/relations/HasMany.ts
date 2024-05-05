@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a has-many attribute property decorator.
  */
-export function HasMany(
+export function HasMany (
   related: () => typeof Model,
   foreignKey: PrimaryKey,
   localKey?: PrimaryKey,

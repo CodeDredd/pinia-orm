@@ -20,10 +20,13 @@ import { useRepo } from '../composables/useRepo'
 import type { DataStoreState } from '../composables/useDataStore'
 import { useDataStore } from '../composables/useDataStore'
 import { cache } from '../cache/SharedWeakCache'
+import { cache as hydratedDataCache } from '../cache/SharedHydratedDatakCache'
 import type { WeakCache } from '../cache/WeakCache'
-import { config } from '../store/Config'
+import { config as globalConfig } from '../store/Config'
+import type { FilledInstallOptions } from '../store/Store'
 
 export class Repository<M extends Model = Model> {
+  [index: string]: any
   /**
    * A special flag to indicate if this is the repository class or not. It's
    * used when retrieving repository instance from `store.$repo()` method to
@@ -62,21 +65,47 @@ export class Repository<M extends Model = Model> {
   use?: typeof Model
 
   /**
+   * The model object to be used for the custom repository.
+   */
+  static useModel?: Model
+
+  /**
+   * Global config
+   */
+  config: FilledInstallOptions & { [key: string]: any }
+
+  /**
    * Create a new Repository instance.
    */
-  constructor(database: Database, pinia?: Pinia) {
+  constructor (database: Database, pinia?: Pinia) {
+    this.config = globalConfig
     this.database = database
     this.pinia = pinia
-    this.hydratedDataCache = new Map<string, M>()
+    this.hydratedDataCache = hydratedDataCache as Map<string, M>
+  }
+
+  /**
+   * Set the model
+   */
+  static setModel (model: Model) {
+    this.useModel = model
+    return this
+  }
+
+  /**
+   * Set the global config
+   */
+  setConfig (config: FilledInstallOptions) {
+    this.config = config
   }
 
   /**
    * Initialize the repository by setting the model instance.
    */
-  initialize(model?: ModelConstructor<M>): this {
-    if (config.cache && config.cache !== true)
-      // eslint-disable-next-line new-cap
-      this.queryCache = (config.cache.shared ? cache : new config.cache.provider()) as WeakCache<string, M[]>
+  initialize (model?: ModelConstructor<M>): this {
+    if (this.config.cache && this.config.cache !== true) {
+      this.queryCache = (this.config.cache.shared ? cache : new this.config.cache.provider()) as WeakCache<string, M[]>
+    }
 
     // If there's a model passed in, just use that and return immediately.
     if (model) {
@@ -88,7 +117,8 @@ export class Repository<M extends Model = Model> {
     // passed repository to the `store.$repo` method instead of a model.
     // In this case, we'll check if the user has set model to the `use`
     // property and instantiate that.
-    if (this.use) {
+    if (this.use || this.$self().useModel) {
+      this.use = (this.use ?? this.$self().useModel) as typeof Model
       this.model = this.use.newRawInstance() as M
       return this
     }
@@ -99,11 +129,18 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Get the constructor for this model.
+   */
+  $self (): typeof Repository {
+    return this.constructor as typeof Repository
+  }
+
+  /**
    * Get the model instance. If the model is not registered to the repository,
    * it will throw an error. It happens when users use a custom repository
    * without setting `use` property.
    */
-  getModel(): M {
+  getModel (): M {
     assert(!!this.model, [
       'The model is not registered. Please define the model to be used at',
       '`use` property of the repository class.',
@@ -115,8 +152,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Returns the pinia store used with this model
    */
-  piniaStore<S extends DataStoreState = DataStoreState>() {
-    return useDataStore<S>(this.model.$entity(), this.model.$piniaOptions())(this.pinia)
+  piniaStore<S extends DataStoreState = DataStoreState> () {
+    return useDataStore<S>(this.model.$storeName(), this.model.$piniaOptions(), this.query())(this.pinia)
   }
 
   /**
@@ -124,21 +161,21 @@ export class Repository<M extends Model = Model> {
    */
   repo<M extends Model>(model: Constructor<M>): Repository<M>
   repo<R extends Repository<any>>(repository: Constructor<R>): R
-  repo(modelOrRepository: any): any {
+  repo (modelOrRepository: any): any {
     return useRepo(modelOrRepository)
   }
 
   /**
    * Create a new Query instance.
    */
-  query(): Query<M> {
+  query (): Query<M> {
     return new Query(this.database, this.getModel(), this.queryCache, this.hydratedDataCache, this.pinia)
   }
 
   /**
    * Create a new Query instance.
    */
-  cache(): WeakCache<string, M[]> | undefined {
+  cache (): WeakCache<string, M[]> | undefined {
     return this.queryCache
   }
 
@@ -179,28 +216,28 @@ export class Repository<M extends Model = Model> {
   /**
    * Add a "has" clause to the query.
    */
-  has(relation: string, operator?: string | number, count?: number): Query<M> {
+  has (relation: string, operator?: string | number, count?: number): Query<M> {
     return this.query().has(relation, operator, count)
   }
 
   /**
    * Add an "or has" clause to the query.
    */
-  orHas(relation: string, operator?: string | number, count?: number): Query<M> {
+  orHas (relation: string, operator?: string | number, count?: number): Query<M> {
     return this.query().orHas(relation, operator, count)
   }
 
   /**
    * Add a "doesn't have" clause to the query.
    */
-  doesntHave(relation: string): Query<M> {
+  doesntHave (relation: string): Query<M> {
     return this.query().doesntHave(relation)
   }
 
   /**
    * Add a "doesn't have" clause to the query.
    */
-  orDoesntHave(relation: string): Query<M> {
+  orDoesntHave (relation: string): Query<M> {
     return this.query().orDoesntHave(relation)
   }
 
@@ -221,49 +258,49 @@ export class Repository<M extends Model = Model> {
   /**
    * Make meta field visible
    */
-  withMeta(): Query<M> {
+  withMeta (): Query<M> {
     return this.query().withMeta()
   }
 
   /**
    * Make hidden fields visible
    */
-  makeVisible(fields: string[]): Query<M> {
+  makeVisible (fields: string[]): Query<M> {
     return this.query().makeVisible(fields)
   }
 
   /**
    * Make visible fields hidden
    */
-  makeHidden(fields: string[]): Query<M> {
+  makeHidden (fields: string[]): Query<M> {
     return this.query().makeHidden(fields)
   }
 
   /**
    * Add a "group by" clause to the query.
    */
-  groupBy(...fields: GroupByFields): Query<M> {
+  groupBy (...fields: GroupByFields): Query<M> {
     return this.query().groupBy(...fields)
   }
 
   /**
    * Add an "order by" clause to the query.
    */
-  orderBy(field: OrderBy, direction?: OrderDirection): Query<M> {
+  orderBy (field: OrderBy, direction?: OrderDirection): Query<M> {
     return this.query().orderBy(field, direction)
   }
 
   /**
    * Set the "limit" value of the query.
    */
-  limit(value: number): Query<M> {
+  limit (value: number): Query<M> {
     return this.query().limit(value)
   }
 
   /**
    * Set the "offset" value of the query.
    */
-  offset(value: number): Query<M> {
+  offset (value: number): Query<M> {
     return this.query().offset(value)
   }
 
@@ -284,30 +321,30 @@ export class Repository<M extends Model = Model> {
   /**
    * Set to eager load all top-level relationships. Constraint is set for all relationships.
    */
-  withAllRecursive(depth?: number): Query<M> {
+  withAllRecursive (depth?: number): Query<M> {
     return this.query().withAllRecursive(depth)
   }
 
   /**
    * Define to use the cache for a query
    */
-  useCache(key?: string, params?: Record<string, any>): Query<M> {
+  useCache (key?: string, params?: Record<string, any>): Query<M> {
     return this.query().useCache(key, params)
   }
 
   /**
    * Get all models from the store.
    */
-  all(): Collection<M> {
+  all (): Collection<M> {
     return this.query().get()
   }
 
   /**
    * Find the model with the given id.
    */
-  find(id: string | number): Item<M>
-  find(ids: (string | number)[]): Collection<M>
-  find(ids: any): Item<any> {
+  find (id: string | number): Item<M>
+  find (ids: (string | number)[]): Collection<M>
+  find (ids: any): Item<any> {
     return this.query().find(ids)
   }
 
@@ -315,9 +352,9 @@ export class Repository<M extends Model = Model> {
    * Retrieves the models from the store by following the given
    * normalized schema.
    */
-  revive(schema: Element[]): Collection<M>
-  revive(schema: Element): Item<M>
-  revive(schema: Element | Element[]): Item<M> | Collection<M> {
+  revive (schema: Element[]): Collection<M>
+  revive (schema: Element): Item<M>
+  revive (schema: Element | Element[]): Item<M> | Collection<M> {
     return this.query().revive(schema)
   }
 
@@ -326,9 +363,9 @@ export class Repository<M extends Model = Model> {
    * store. It's pretty much the alternative to `new Model()`, but it injects
    * the store instance to support model instance methods in SSR environment.
    */
-  make(records: Element[]): M[]
-  make(record?: Element): M
-  make(records?: Element | Element[]): M | M[] {
+  make (records: Element[]): M[]
+  make (record?: Element): M
+  make (records?: Element | Element[]): M | M[] {
     if (isArray(records)) {
       return records.map(record => this.getModel().$newInstance(record, {
         relations: true,
@@ -343,50 +380,50 @@ export class Repository<M extends Model = Model> {
   /*
    * Save the given records to the store with data normalization.
    */
-  save(records: Element[]): M[]
-  save(record: Element): M
-  public save(records: Element | Element[]): M | M[] {
+  save (records: Element[]): M[]
+  save (record: Element): M
+  public save (records: Element | Element[]): M | M[] {
     return this.query().save(records)
   }
 
   /**
    * Create and persist model with default values.
    */
-  new(): M | null {
-    return this.query().new()
+  new (persist = true): M | null {
+    return this.query().new(persist)
   }
 
   /**
    * Insert the given records to the store.
    */
-  insert(records: Element[]): Collection<M>
-  insert(record: Element): M
-  insert(records: Element | Element[]): M | Collection<M> {
+  insert (records: Element[]): Collection<M>
+  insert (record: Element): M
+  insert (records: Element | Element[]): M | Collection<M> {
     return this.query().insert(records)
   }
 
   /**
    * Insert the given records to the store by replacing any existing records.
    */
-  fresh(records: Element[]): Collection<M>
-  fresh(record: Element): M
-  fresh(records: Element | Element[]): M | Collection<M> {
+  fresh (records: Element[]): Collection<M>
+  fresh (record: Element): M
+  fresh (records: Element | Element[]): M | Collection<M> {
     return this.query().fresh(records)
   }
 
   /**
    * Destroy the models for the given id.
    */
-  destroy(ids: (string | number)[]): Collection<M>
-  destroy(id: string | number): Item<M>
-  destroy(ids: any): any {
+  destroy (ids: (string | number)[]): Collection<M>
+  destroy (id: string | number): Item<M>
+  destroy (ids: any): any {
     return this.query().destroy(ids)
   }
 
   /**
    * Delete all records in the store.
    */
-  flush(): M[] {
+  flush (): M[] {
     return this.query().flush()
   }
 }

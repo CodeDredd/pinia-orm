@@ -13,7 +13,7 @@ describe('feature/hooks/created', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static created(model: Model) {
+      static created (model: User) {
         model.name = 'John'
       }
     }
@@ -35,7 +35,7 @@ describe('feature/hooks/created', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static created(model: Model) {
+      static created (model: User) {
         model.name = 'John'
       }
     }
@@ -69,7 +69,7 @@ describe('feature/hooks/created', () => {
       @Str('') declare name: string
       @Num(0) declare age: number
 
-      static created(model: Model) {
+      static created (model: Model) {
         model.name = 'John'
       }
     }

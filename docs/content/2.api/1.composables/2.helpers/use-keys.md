@@ -9,7 +9,7 @@ description: 'The keys method returns all of the collections primary keys'
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { useKeys } from 'pinia-orm/dist/helpers'
+import { useKeys } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()

@@ -1,8 +1,12 @@
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, Mutate } from '../../../src/decorators'
 import { assertState } from '../../helpers'
+
+beforeEach(() => {
+  Model.clearRegistries()
+})
 
 describe('unit/model/Model_Mutators', () => {
   it('should mutate data if mutators are present', () => {
@@ -11,9 +15,9 @@ describe('unit/model/Model_Mutators', () => {
 
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
-          name(value: any) {
+          name (value: any) {
             return value.toUpperCase()
           },
         }
@@ -41,7 +45,7 @@ describe('unit/model/Model_Mutators', () => {
 
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
           name: {
             get: (value: any) => value.toUpperCase(),
@@ -60,7 +64,7 @@ describe('unit/model/Model_Mutators', () => {
       @Attr(0) id!: number
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
           name: {
             get: (value: any) => value.toUpperCase(),
@@ -91,10 +95,11 @@ describe('unit/model/Model_Mutators', () => {
       @Attr(0) id!: number
       @Attr('') name!: string
 
-      static mutators() {
+      static mutators () {
         return {
           name: {
-            set: (value: any) => value.toUpperCase(),
+            set: (value: any) => { return value.toUpperCase() },
+            get: (value: any) => { return value.toLowerCase() },
           },
         }
       }
@@ -112,6 +117,73 @@ describe('unit/model/Model_Mutators', () => {
       },
     })
 
-    expect(userRepo.find(1)?.name).toBe('JOHN DOE')
+    expect(userRepo.find(1)?.name).toBe('john doe')
+
+    userRepo.save({
+      id: 1,
+      name: 'Jane Doe',
+    })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'JANE DOE' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('jane doe')
+
+    userRepo.where('id', 1).update({ name: 'Stefan Raab' })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'STEFAN RAAB' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('stefan raab')
+  })
+
+  it('should mutate data in the store with set', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Attr(0) id!: number
+      @Attr('') name!: string
+
+      static mutators () {
+        return {
+          name: {
+            set: (value: any) => { return value + ' (modified)' },
+          },
+        }
+      }
+    }
+
+    const userRepo = useRepo(User)
+    userRepo.save({
+      id: 1,
+      name: 'test',
+    })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'test (modified)' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('test (modified)')
+
+    userRepo.save({
+      id: 1,
+      name: 'jane',
+    })
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'jane (modified)' },
+      },
+    })
+
+    expect(userRepo.find(1)?.name).toBe('jane (modified)')
   })
 })

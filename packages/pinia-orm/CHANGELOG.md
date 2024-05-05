@@ -1,3 +1,58 @@
+## [1.7.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.7.1...pinia-orm@1.7.2) (2023-09-18)
+
+### Bug Fixes
+
+- Export for "dist" is broken ([a3c734e](https://github.com/CodeDredd/pinia-orm/commit/a3c734ee9eb29f8403b069a1b41fbc1a88f1721a))
+
+## [1.7.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.7.0...pinia-orm@1.7.1) (2023-09-18)
+
+### Bug Fixes
+
+- **pinia-orm:** proper exports for collection and uid helpers ([#1681](https://github.com/CodeDredd/pinia-orm/issues/1681)) ([ab5e245](https://github.com/CodeDredd/pinia-orm/commit/ab5e2451420f884ce11f56ce2b6fe1fd796fa168))
+
+# [1.7.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.7...pinia-orm@1.7.0) (2023-09-17)
+
+## [1.6.7](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.6...pinia-orm@1.6.7) (2023-03-28)
+
+### Bug Fixes
+
+- **pinia-orm:** build broken cause of missing files ([ecaed0f](https://github.com/CodeDredd/pinia-orm/commit/ecaed0f0464fa7b0ebc596ebc568f2abe563c4fe))
+
+## [1.6.6](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.5...pinia-orm@1.6.6) (2023-03-28)
+
+## [1.6.5](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.4...pinia-orm@1.6.5) (2023-03-27)
+
+### Bug Fixes
+
+- **pinia-orm:** `$refresh()` is not working ([#1125](https://github.com/CodeDredd/pinia-orm/issues/1125)) ([7cf0d6e](https://github.com/CodeDredd/pinia-orm/commit/7cf0d6ebffb21009192bde6e3b1b40a311700915)), closes [#1124](https://github.com/CodeDredd/pinia-orm/issues/1124)
+- **pinia-orm:** Improve Date serialization in Model class ([#1121](https://github.com/CodeDredd/pinia-orm/issues/1121)) ([84aeb72](https://github.com/CodeDredd/pinia-orm/commit/84aeb72f9739f634aac8b71a2c80708526711825))
+
+## [1.6.4](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.3...pinia-orm@1.6.4) (2023-03-24)
+
+### Bug Fixes
+
+- **pinia-orm:** DateCast still causing unexpected result ([519681c](https://github.com/CodeDredd/pinia-orm/commit/519681c258885110478191e9bfd3a9dfb016d670))
+
+## [1.6.3](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.2...pinia-orm@1.6.3) (2023-03-24)
+
+### Bug Fixes
+
+- **pinia-orm:** DateCast with null causes type error with empty object ([2caa97a](https://github.com/CodeDredd/pinia-orm/commit/2caa97a63be98ecc1f0ce863a5ad529bda4e3cf3))
+
+## [1.6.2](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.1...pinia-orm@1.6.2) (2023-03-24)
+
+### Bug Fixes
+
+- **pinia-orm:** Hooks should update cache & hydration ([#1113](https://github.com/CodeDredd/pinia-orm/issues/1113)) ([a9fd092](https://github.com/CodeDredd/pinia-orm/commit/a9fd09263d5e57cd5c549db8dbadc8503d866d3b))
+
+## [1.6.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.6.0...pinia-orm@1.6.1) (2023-03-22)
+
+### Features
+
+- **pinia-orm:** Add the option for new not to persist the model ([#1107](https://github.com/CodeDredd/pinia-orm/issues/1107)) ([dc3e13e](https://github.com/CodeDredd/pinia-orm/commit/dc3e13e53399c71ca1d77db1ea2ece5accc3a955))
+
+# [1.6.0](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.5.1...pinia-orm@1.6.0) (2023-03-22)
+
 ## [1.5.1](https://github.com/CodeDredd/pinia-orm/compare/pinia-orm@1.5.0...pinia-orm@1.5.1) (2023-01-24)
 
 ### Performance Improvements

@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, HasOne, Str } from '../../../src/decorators'
@@ -44,6 +44,22 @@ describe('feature/relations/has_one_save', () => {
         1: { id: 1, userId: 1, number: '123-4567-8912' },
       },
     })
+  })
+
+  it('throws a error if a list is passed to the relation', () => {
+    const usersRepo = useRepo(User)
+
+    expect(() => {
+      usersRepo.save({
+        id: 1,
+        name: 'John Doe',
+        phone: [{
+          id: 1,
+          userId: 1,
+          number: '123-4567-8912',
+        }],
+      })
+    }).toThrowError('[Pinia ORM] You are passing a list to " users.phone " which is a one to one Relation(HasOne): [{"id":1,"userId":1,"number":"123-4567-8912"}]')
   })
 
   it('generates missing foreign key', () => {

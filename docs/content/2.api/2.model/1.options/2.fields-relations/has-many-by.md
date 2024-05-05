@@ -29,7 +29,7 @@ class Post extends Model {
 
 ````ts
 import { Model } from 'pinia-orm'
-import { Attr, HasManyBy, Str } from 'pinia-orm/dist/decorators'
+import { Attr, HasManyBy, Str } from 'pinia-orm/decorators'
 import Comment from './Comment'
 
 class Post extends Model {

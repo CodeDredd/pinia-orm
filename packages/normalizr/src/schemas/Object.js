@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const normalize = (schema, input, parent, key, visit, addEntity, visitedEntities) => {
   const object = { ...input }
   Object.keys(schema).forEach((key) => {

@@ -15,7 +15,7 @@ describe('unit/model/Model_Casts_String', () => {
 
       @Str('') name!: string
 
-      static casts() {
+      static casts () {
         return {
           name: StringCast,
         }
@@ -63,7 +63,7 @@ describe('unit/model/Model_Casts_String', () => {
       @Attr(0) id!: number
       @Attr('') name!: string
 
-      static casts() {
+      static casts () {
         return {
           name: StringCast,
         }

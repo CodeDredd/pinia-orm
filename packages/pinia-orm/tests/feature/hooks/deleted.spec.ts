@@ -16,7 +16,7 @@ describe('feature/hooks/deleted', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static deleted(model: Model) {
+      static deleted (model: Model) {
         model.name = 'John'
       }
     }
@@ -48,7 +48,7 @@ describe('feature/hooks/deleted', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static deleted() {
+      static deleted () {
         // Doing deleted stuff
       }
     }
@@ -79,7 +79,7 @@ describe('feature/hooks/deleted', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static deleted() {
+      static deleted () {
         // Doing deleted stuff
       }
     }

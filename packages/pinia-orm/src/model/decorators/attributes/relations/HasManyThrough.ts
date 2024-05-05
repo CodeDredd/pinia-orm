@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a has-many attribute property decorator.
  */
-export function HasManyThrough(
+export function HasManyThrough (
   related: () => typeof Model,
   through: () => typeof Model,
   firstKey: string,

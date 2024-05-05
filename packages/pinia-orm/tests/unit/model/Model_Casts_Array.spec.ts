@@ -16,7 +16,7 @@ describe('unit/model/Model_Casts_Array', () => {
       @Attr(0) declare id: number
       @Attr('{}') declare meta: Record<string, any>
 
-      static casts() {
+      static casts () {
         return {
           meta: ArrayCast,
         }
@@ -55,7 +55,7 @@ describe('unit/model/Model_Casts_Array', () => {
       @Attr(0) declare id: number
       @Attr({}) declare meta: Record<string, any>
 
-      static casts() {
+      static casts () {
         return {
           meta: ArrayCast,
         }
@@ -81,6 +81,39 @@ describe('unit/model/Model_Casts_Array', () => {
     expect(userRepo.find(1)?.meta).toStrictEqual({
       name: 'John',
       age: 30,
+      car: null,
+    })
+  })
+
+  it('should cast with object as default', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Attr(0) declare id: number
+      @Attr({ name: 'Test', age: 12, car: null }) declare meta: Record<string, any>
+
+      static casts () {
+        return {
+          meta: ArrayCast,
+        }
+      }
+    }
+
+    const userRepo = useRepo(User)
+    userRepo.cache()?.clear()
+    userRepo.save({
+      id: 1,
+    })
+
+    assertState({
+      users: {
+        1: { id: 1, meta: '{"name":"Test","age":12,"car":null}' },
+      },
+    })
+
+    expect(userRepo.find(1)?.meta).toStrictEqual({
+      name: 'Test',
+      age: 12,
       car: null,
     })
   })

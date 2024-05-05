@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { Model, useRepo } from '../../src'
 import { Attr, BelongsToMany, Num, Str } from '../../src/decorators'
 
+/* eslint-disable no-console */
 describe('performance/save_belongs_to_many_relation.spec', () => {
   class Role extends Model {
     static entity = 'roles'
@@ -28,7 +29,7 @@ describe('performance/save_belongs_to_many_relation.spec', () => {
     @Str('') name!: string
 
     @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-    roles!: Role
+      roles!: Role
   }
 
   it('saves data with bleongs to many relation within decent time', () => {

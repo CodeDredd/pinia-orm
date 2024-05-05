@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a morph-one attribute property decorator.
  */
-export function MorphOne(
+export function MorphOne (
   related: () => typeof Model,
   id: string,
   type: string,

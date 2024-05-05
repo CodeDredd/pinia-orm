@@ -21,7 +21,7 @@ describe('performance/prevent_rerender_of_child_components', () => {
         required: true,
       },
     },
-    setup() {
+    setup () {
       onUpdated(() => {
         console.warn('<PostComponent /> Updated')
       })
@@ -33,7 +33,7 @@ describe('performance/prevent_rerender_of_child_components', () => {
 
   const MainComponent = defineComponent({
     components: { PostComponent },
-    setup() {
+    setup () {
       const postRepo = useRepo(Post)
 
       const posts = computed(() => postRepo.all())

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, HasOne, Num, Str } from '../../../src/decorators'
@@ -23,13 +23,17 @@ describe('unit/composables/Collect', () => {
     @Str('') declare title: string
   }
 
-  const userCollection = useCollect(useRepo(User).make([
-    { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
-    { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
-    { id: 3, name: 'David', age: 20 },
-    { id: 4, name: 'john', age: 20 },
-    { id: 5, name: 'Zod', age: 20 },
-  ]))
+  let userCollection: ReturnType<typeof useCollect<User>>
+
+  beforeEach(() => {
+    userCollection = useCollect(useRepo(User).make([
+      { id: 1, name: 'James', age: 40, post: { id: 1, title: 'Title1' } },
+      { id: 2, name: 'James', age: 30, post: { id: 2, title: 'Title2' } },
+      { id: 3, name: 'David', age: 20 },
+      { id: 4, name: 'john', age: 20 },
+      { id: 5, name: 'Zod', age: 20 },
+    ]))
+  })
 
   it('can group records using the "groupBy" modifier', () => {
     const expected = {

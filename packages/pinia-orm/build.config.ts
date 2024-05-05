@@ -1,5 +1,5 @@
 // build.config.ts
-import fs from 'fs'
+// import fs from 'node:fs'
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
@@ -22,14 +22,13 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true,
   },
-  hooks: {
-    'build:done': (ctx) => {
-      ctx.buildEntries.filter(entry => entry.path.includes('.cjs') && !entry.path.includes('shared')).forEach((entry) => {
-        fs.rename(`${ctx.options.outDir}/${entry.path}`, `${ctx.options.outDir}/${entry.path}`.replace('cjs', 'js'), (err) => {
-          if (err)
-            console.log(`ERROR: ${err}`)
-        })
-      })
-    },
-  },
+  // hooks: {
+  //   'build:done': (ctx) => {
+  //     ctx.buildEntries.filter(entry => entry.path.includes('.cjs') && !entry.path.includes('shared')).forEach((entry) => {
+  //       fs.rename(`${ctx.options.outDir}/${entry.path}`, `${ctx.options.outDir}/${entry.path}`.replace('cjs', 'js'), (err) => {
+  //         if (err) { console.error(`ERROR: ${err}`) }
+  //       })
+  //     })
+  //   }
+  // }
 })

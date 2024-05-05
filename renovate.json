@@ -1,7 +1,7 @@
 {
   "extends": [
     "config:base",
-    ":prHourlyLimit4",
+    "group:allNonMajor",
     ":semanticCommitTypeAll(chore)"
   ],
   "meteor": {
@@ -13,23 +13,31 @@
   },
   "ignoreDeps": ["vue2", "chalk", "nuxt3", "nuxt"],
   "ignorePaths": ["**/playgrounds/**"],
-  "automerge": true,
   "packageRules": [
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "matchFiles": ["packages/pinia-orm/package.json", "packages/nuxt/package.json"],
+      "matchFiles": ["packages/pinia-orm/package.json", "packages/nuxt/package.json", "packages/axios/package.json", "packages/normalizr/package.json"],
       "excludePackageNames": ["vue2"],
       "matchUpdateTypes": [
         "minor",
-        "patch"
+        "patch",
+        "pin",
+        "digest"
       ],
       "lockFileMaintenance": {
         "enabled": true,
         "extends": [
           "schedule:weekly"
         ]
-      }
+      },
+      "automerge": true,
+      "automergeSchedule": [
+        "after 1am and before 2am"
+      ],
+      "schedule": [
+        "after 2am and before 3am"
+      ]
     },
     {
       "groupName": "Docs dependencies",
@@ -37,7 +45,16 @@
       "excludePackageNames": ["@vercel/nft"],
       "matchUpdateTypes": [
         "minor",
-        "patch"
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true,
+      "automergeSchedule": [
+        "after 1am and before 2am"
+      ],
+      "schedule": [
+        "after 2am and before 3am"
       ]
     }
   ]

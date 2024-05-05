@@ -1,4 +1,0 @@
-dist/*
-node_modules/*
-examples/*/node_modules/*
-coverage/*

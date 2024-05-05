@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a belongs-to attribute property decorator.
  */
-export function BelongsTo(
+export function BelongsTo (
   related: () => typeof Model,
   foreignKey: PrimaryKey,
   ownerKey?: PrimaryKey,

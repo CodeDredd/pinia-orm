@@ -3,6 +3,7 @@ import type { Schema } from '../../../schema/Schema'
 import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
 import type { Model, PrimaryKey } from '../../Model'
+import { isArray } from '../../../support/Utils'
 import type { Dictionary } from './Relation'
 import { Relation } from './Relation'
 
@@ -20,7 +21,7 @@ export class HasMany extends Relation {
   /**
    * Create a new has-many relation instance.
    */
-  constructor(
+  constructor (
     parent: Model,
     related: Model,
     foreignKey: PrimaryKey,
@@ -34,32 +35,34 @@ export class HasMany extends Relation {
   /**
    * Get all related models for the relationship.
    */
-  getRelateds(): Model[] {
+  getRelateds (): Model[] {
     return [this.related]
   }
 
   /**
    * Define the normalizr schema for the relation.
    */
-  define(schema: Schema): NormalizrSchema {
+  define (schema: Schema): NormalizrSchema {
     return schema.many(this.related, this.parent)
   }
 
   /**
    * Attach the relational key to the given relation.
    */
-  attach(record: Element, child: Element): void {
+  attach (record: Element, child: Element): void {
     this.compositeKeyMapper(
       this.foreignKey,
       this.localKey,
-      (foreignKey, localKey) => child[foreignKey] = record[localKey],
+      (foreignKey, localKey) => {
+        child[foreignKey] = record[localKey]
+      },
     )
   }
 
   /**
    * Set the constraints for an eager load of the relation.
    */
-  addEagerConstraints(query: Query, models: Collection): void {
+  addEagerConstraints (query: Query, models: Collection): void {
     this.compositeKeyMapper(
       this.foreignKey,
       this.localKey,
@@ -70,11 +73,15 @@ export class HasMany extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match(relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
-      const key = model[this.getKey(this.localKey)]
+      const key = this.getKey(
+        isArray(this.localKey)
+          ? this.localKey.map(key => model[key])
+          : model[this.localKey],
+      )
 
       dictionary[key]
         ? model.$setRelation(relation, dictionary[key])
@@ -85,17 +92,21 @@ export class HasMany extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary(results: Collection): Dictionary {
+  protected buildDictionary (results: Collection): Dictionary {
     return this.mapToDictionary(results, (result) => {
-      const key = this.getKey(this.foreignKey)
-      return [result[key], result]
+      const key = this.getKey(
+        isArray(this.foreignKey)
+          ? this.foreignKey.map(key => result[key])
+          : result[this.foreignKey],
+      )
+      return [key, result]
     })
   }
 
   /**
    * Make related models.
    */
-  make(elements?: Element[]): Model[] {
+  make (elements?: Element[]): Model[] {
     return elements
       ? elements.map(element => this.related.$newInstance(element))
       : []

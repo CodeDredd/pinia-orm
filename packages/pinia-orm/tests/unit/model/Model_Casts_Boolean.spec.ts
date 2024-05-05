@@ -15,7 +15,7 @@ describe('unit/model/Model_Casts_Boolean', () => {
 
       @Bool(false) isPublished!: boolean
 
-      static casts() {
+      static casts () {
         return {
           isPublished: BooleanCast,
         }
@@ -67,7 +67,7 @@ describe('unit/model/Model_Casts_Boolean', () => {
       @Attr(0) id!: number
       @Bool(false) isPublished!: boolean
 
-      static casts() {
+      static casts () {
         return {
           isPublished: BooleanCast,
         }

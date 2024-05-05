@@ -7,15 +7,30 @@ import {
   HasManyBy,
   HasManyThrough, HasOne,
   MorphMany,
-  MorphOne, MorphTo, Num, Str,
+  MorphOne, MorphTo, MorphToMany, Num, Str,
 } from '../../../src/decorators'
 
 describe('unit/model/Model_Relations', () => {
   class Phone extends Model {
     static entity = 'phones'
 
-    @Attr() id!: number
-    @Attr() userId!: number
+    @Attr() declare id: number
+    @Attr() declare userId: number
+  }
+
+  class Tag extends Model {
+    static entity = 'tags'
+
+    @Attr() declare id: number
+  }
+  class Taggable extends Model {
+    static entity = 'taggables'
+
+    static primaryKey = ['tagId', 'commentableId', 'commentableType']
+
+    @Attr('') declare tagId: number
+    @Attr(null) declare taggableId: number | null
+    @Attr(null) declare taggableType: string | null
   }
 
   class Country extends Model {
@@ -88,6 +103,8 @@ describe('unit/model/Model_Relations', () => {
       image!: Image | null
 
     @BelongsToMany(() => Role, () => RoleUser, 'userId', 'roleId') declare roles: Role[]
+
+    @MorphToMany(() => Tag, () => Taggable, 'tagId', 'taggableId', 'taggableType') declare tags: Tag[]
 
     @MorphMany(() => Comment, 'commentableId', 'commentableType') declare comments: Comment[]
   }
@@ -233,5 +250,19 @@ describe('unit/model/Model_Relations', () => {
 
     expect(image.imageable!).toBeInstanceOf(User)
     expect(image.imageable!.id).toBe(2)
+  })
+
+  it('fills "morph to many" relation', () => {
+    const userRepo = useRepo(User)
+
+    const user = userRepo.make({
+      id: 1,
+      tags: [{ id: 2 }, { id: 3 }],
+    })
+
+    expect(user.tags[0]).toBeInstanceOf(Tag)
+    expect(user.tags[1]).toBeInstanceOf(Tag)
+    expect(user.tags[0].id).toBe(2)
+    expect(user.tags[1].id).toBe(3)
   })
 })

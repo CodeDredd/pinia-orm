@@ -16,7 +16,7 @@ describe('feature/hooks/updated', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static updated(model: Model) {
+      static updated (model: Model) {
         model.name = 'John'
       }
     }
@@ -48,7 +48,7 @@ describe('feature/hooks/updated', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static updated() {
+      static updated () {
         // Doing updated stuff
       }
     }

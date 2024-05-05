@@ -10,7 +10,8 @@ on:
       - scripts
   pull_request:
     branches:
-      - master
+      - main
+      - "!v[0-9]*"
     paths-ignore:
       - docs/**
       - docs-playground/**
@@ -20,18 +21,21 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+      - run: corepack enable
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 18
+          cache: "pnpm"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
 
-      - name: Set node version to 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-
       - run: pnpm i
 
+      - run: pnpm run build:stub
       - run: pnpm run build:ci
 
       - name: Run unit tests
@@ -40,25 +44,25 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+      - run: corepack enable
 
       - name: Set node version to 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4.0.2
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
 
+      - run: pnpm run build:stub
       - run: pnpm run build:ci
 
       - name: Run test coverage
         run: pnpm run test:coverage
 
       - name: Publish coverage
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./packages
@@ -66,17 +70,19 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+      - run: corepack enable
 
       - name: Set node version to 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4.0.2
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
+
+      - run: pnpm run build:stub
+      - run: pnpm run build:ci
 
       - name: Run eslint
         run: pnpm run lint
@@ -86,16 +92,16 @@ jobs:
     env:
       CI_JOB_NUMBER: 1
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+      - run: corepack enable
 
       - name: Set node version to 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4.0.2
         with:
-          node-version: 18.x
+          node-version: 18
+          cache: "pnpm"
 
       - run: pnpm i
+      - run: pnpm run build:stub
       - run: pnpm run build:ci
       - run: pnpm run size

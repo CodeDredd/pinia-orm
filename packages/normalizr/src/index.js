@@ -29,7 +29,7 @@ const addEntities = entities => (schema, processedEntity, value, parent, key) =>
 export const schema = {
   Array: ArraySchema,
   Entity: EntitySchema,
-  Union: UnionSchema
+  Union: UnionSchema,
 }
 
 export const normalize = (input, schema) => {
@@ -37,7 +37,7 @@ export const normalize = (input, schema) => {
     throw new Error(
       `Unexpected input given to normalize. Expected type to be "object", found "${
         input === null ? 'null' : typeof input
-      }".`
+      }".`,
     )
   }
 

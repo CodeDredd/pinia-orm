@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a belongs-to-many attribute property decorator.
  */
-export function BelongsToMany(
+export function BelongsToMany (
   related: () => typeof Model,
   pivot: () => typeof Model,
   foreignPivotKey: string,

@@ -9,7 +9,7 @@ description: 'Get the max value of the specified filed.'
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { useMax } from 'pinia-orm/dist/helpers'
+import { useMax } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()

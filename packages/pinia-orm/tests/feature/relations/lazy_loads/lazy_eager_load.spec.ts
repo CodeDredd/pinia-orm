@@ -23,7 +23,7 @@ describe('feature/relations/lazy_loads/lazy_eager_load', () => {
       posts!: Post[]
   }
 
-  it('can lazy eager load relations', async () => {
+  it('can lazy eager load relations', () => {
     const usersRepo = useRepo(User)
     const postsRepo = useRepo(Post)
 

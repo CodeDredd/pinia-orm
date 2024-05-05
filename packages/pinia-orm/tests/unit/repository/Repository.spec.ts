@@ -4,6 +4,7 @@ import { Model, Repository, useRepo } from '../../../src'
 import { Attr, Str } from '../../../src/decorators'
 import { assertInstanceOf, assertModel, assertModels } from '../../helpers'
 
+/* eslint-disable no-console */
 describe('unit/repository/Repository', () => {
   class User extends Model {
     static entity = 'users'
@@ -87,6 +88,47 @@ describe('unit/repository/Repository', () => {
     expect(postRepo.getModel()).toBeInstanceOf(Post)
   })
 
+  it('can create a new repository from the custom repository without use defined', () => {
+    class PostRepository extends Repository<Post> {
+    }
+
+    const userRepo = useRepo(User)
+
+    const postRepo = userRepo.repo(PostRepository.setModel(Post))
+
+    expect(postRepo.getModel()).toBeInstanceOf(Post)
+  })
+
+  it('can trigger cache & hook from the pinia store action', () => {
+    const userRepo = useRepo(User)
+    expect(userRepo.hydratedDataCache.size).toBe(0)
+
+    userRepo.piniaStore().save({ 1: { id: 1, name: 'John' } })
+    expect(userRepo.hydratedDataCache.size).toBe(1)
+
+    userRepo.piniaStore().update({ 1: { id: 1, name: 'John 2' } })
+    expect(userRepo.hydratedDataCache.size).toBe(0)
+
+    userRepo.piniaStore().insert({ 2: { id: 2, name: 'John 3' } })
+    userRepo.piniaStore().insert({ 3: { id: 3, name: 'John 4' } })
+    expect(userRepo.all().length).toBe(3)
+    expect(userRepo.hydratedDataCache.size).toBe(3)
+
+    userRepo.piniaStore().delete([2])
+    expect(userRepo.all().length).toBe(2)
+    expect(userRepo.hydratedDataCache.size).toBe(2)
+
+    userRepo.piniaStore().destroy([1])
+    expect(userRepo.all().length).toBe(1)
+    expect(userRepo.hydratedDataCache.size).toBe(1)
+
+    userRepo.piniaStore().fresh({ 1: { id: 1, name: 'John' }, 2: { id: 2, name: 'John 2' } })
+    expect(userRepo.hydratedDataCache.size).toBe(2)
+
+    userRepo.piniaStore().flush()
+    expect(userRepo.hydratedDataCache.size).toBe(0)
+  })
+
   it('can access the pinia store', () => {
     const logger = vi.spyOn(console, 'log')
 
@@ -115,7 +157,6 @@ describe('unit/repository/Repository', () => {
 
       // this will trigger if the action throws or returns a promise that rejects
       onError((error) => {
-        // eslint-disable-next-line no-console
         console.warn(
           `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`,
         )

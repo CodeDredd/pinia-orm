@@ -1,3 +1,23 @@
+# [1.7.0](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.7...@pinia-orm/nuxt@1.7.0) (2023-09-17)
+
+## [1.6.7](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.6...@pinia-orm/nuxt@1.6.7) (2023-03-28)
+
+### Bug Fixes
+
+- **pinia-orm:** build broken cause of missing files ([ecaed0f](https://github.com/CodeDredd/pinia-orm/commit/ecaed0f0464fa7b0ebc596ebc568f2abe563c4fe))
+
+## [1.6.6](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.5...@pinia-orm/nuxt@1.6.6) (2023-03-28)
+
+### Bug Fixes
+
+- **nuxt:** Nuxt 3 throws error on build & dev ([#1136](https://github.com/CodeDredd/pinia-orm/issues/1136)) ([12e3ea3](https://github.com/CodeDredd/pinia-orm/commit/12e3ea392816b0e7bbbe790e405623467e4c6480)), closes [#1135](https://github.com/CodeDredd/pinia-orm/issues/1135)
+
+## [1.6.5](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.3...@pinia-orm/nuxt@1.6.5) (2023-03-27)
+
+## [1.6.3](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.6.0...@pinia-orm/nuxt@1.6.3) (2023-03-24)
+
+# [1.6.0](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.1.7...@pinia-orm/nuxt@1.6.0) (2023-03-22)
+
 ## [1.1.7](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.1.6...@pinia-orm/nuxt@1.1.7) (2023-01-24)
 
 ## [1.1.6](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/nuxt@1.1.5...@pinia-orm/nuxt@1.1.6) (2022-12-22)

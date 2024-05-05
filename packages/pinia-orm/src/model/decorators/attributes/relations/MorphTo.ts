@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a morph-to attribute property decorator.
  */
-export function MorphTo(
+export function MorphTo (
   related: () => typeof Model[],
   id: string,
   type: string,

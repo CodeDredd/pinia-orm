@@ -1,0 +1,83 @@
+{
+  "name": "@pinia-orm/axios",
+  "version": "1.8.0",
+  "description": "Axios plugin for pinia-orm",
+  "bugs": {
+    "url": "https://github.com/CodeDredd/pinia-orm/issues"
+  },
+  "homepage": "https://github.com/CodeDredd/pinia-orm",
+  "repository": {
+    "url": "https://github.com/CodeDredd/pinia-orm.git",
+    "type": "git"
+  },
+  "keywords": [
+    "axios",
+    "pinia-orm",
+    "api"
+  ],
+  "files": [
+    "dist/",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "type": "module",
+  "funding": "https://github.com/sponsors/codedredd",
+  "jsdelivr": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "unbuild",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/axios -r 1",
+    "size": "size-limit",
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --cache --fix",
+    "test:ui": "vue-demi-switch 3 && vitest --ui --api 9527",
+    "test:watch": "vue-demi-switch 3 && vitest --watch",
+    "test:2": "vue-demi-switch 2 vue2 && vitest --run",
+    "test:3": "vue-demi-switch 3 && vitest --run",
+    "test": "pnpm run test:3"
+  },
+  "author": {
+    "name": "Gregor Becker",
+    "email": "gregor@codedredd.de"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "axios": ">=1.6.8",
+    "pinia-orm": ">=1.7.2",
+    "pinia": ">=2.1.7"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.3.10",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@size-limit/preset-small-lib": "^11.1.2",
+    "@vitest/coverage-v8": "^1.6.0",
+    "axios": "^1.6.8",
+    "axios-mock-adapter": "^1.22.0",
+    "eslint": "^9.2.0",
+    "pinia": "^2.1.7",
+    "pinia-orm": "workspace:*",
+    "size-limit": "^11.1.2",
+    "typescript": "^5.4.5",
+    "unbuild": "^2.0.0",
+    "vitest": "^1.6.0",
+    "vue-demi": "^0.14.7"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.mjs",
+      "limit": "2 kB"
+    }
+  ]
+}

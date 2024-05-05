@@ -16,7 +16,7 @@ describe('unit/model/Model_Casts_Number', () => {
 
       @Num(0) count!: number
 
-      static casts() {
+      static casts () {
         return {
           count: NumberCast,
         }
@@ -57,7 +57,7 @@ describe('unit/model/Model_Casts_Number', () => {
     expect(new User({ operation: 'get' }).count).toBe(null)
     expect(new User({ count: null }, { operation: 'get' }).count).toBe(null)
     expect(warningSpy).toHaveBeenNthCalledWith(1, warningMessage)
-    expect(new User({ count: 'value' }, { operation: 'get' }).count).toBe(NaN)
+    expect(new User({ count: 'value' }, { operation: 'get' }).count).toBe(Number.NaN)
     expect(new User({ count: 1 }, { operation: 'get' }).count).toBe(1)
     expect(new User({ count: true }, { operation: 'get' }).count).toBe(1)
     expect(new User({ count: {} }, { operation: 'get' }).count).toBe(0)
@@ -71,7 +71,7 @@ describe('unit/model/Model_Casts_Number', () => {
       @Attr(0) id!: number
       @Num(0) count!: number
 
-      static casts() {
+      static casts () {
         return {
           count: NumberCast,
         }

@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
@@ -13,9 +13,11 @@ export default defineConfig({
     setupFiles: ['./tests/setup.ts'],
     // silent: true,
     coverage: {
-      reporter: ['lcov', 'text'],
+      enabled: true,
+      reporter: ['lcov', 'text', 'html'],
       include: ['src/**/*.ts'],
-      exclude: ['src/index.ts', 'src/index.cjs.ts'],
+      exclude: ['src/index.ts', 'src/cache/*'],
     },
   },
+  enabled: true,
 })

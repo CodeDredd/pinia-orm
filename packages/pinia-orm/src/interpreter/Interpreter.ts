@@ -14,16 +14,16 @@ export class Interpreter {
   /**
    * Create a new Interpreter instance.
    */
-  constructor(model: Model) {
+  constructor (model: Model) {
     this.model = model
   }
 
   /**
    * Perform interpretation for the given data.
    */
-  process(data: Element): [Element, NormalizedData]
-  process(data: Element[]): [Element[], NormalizedData]
-  process(data: Element | Element[]): [Element | Element[], NormalizedData] {
+  process (data: Element): [Element, NormalizedData]
+  process (data: Element[]): [Element[], NormalizedData]
+  process (data: Element | Element[]): [Element | Element[], NormalizedData] {
     const normalizedData = this.normalize(data)
 
     return [data, normalizedData]
@@ -32,7 +32,7 @@ export class Interpreter {
   /**
    * Normalize the given data.
    */
-  private normalize(data: Element | Element[]): NormalizedData {
+  private normalize (data: Element | Element[]): NormalizedData {
     const schema = isArray(data) ? [this.getSchema()] : this.getSchema()
 
     return normalize(data, schema).entities as NormalizedData
@@ -41,7 +41,7 @@ export class Interpreter {
   /**
    * Get the schema from the database.
    */
-  private getSchema(): Normalizr.Entity {
+  private getSchema (): Normalizr.Entity {
     return new Schema(this.model).one()
   }
 }

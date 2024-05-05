@@ -9,7 +9,7 @@ description: 'Get the sum value of the specified filed.'
 
 ````ts
 import { useRepo } from 'pinia-orm'
-import { useSum } from 'pinia-orm/dist/helpers'
+import { useSum } from 'pinia-orm/helpers'
 import User from './models/User'
 
 const users = useRepo(User).all()

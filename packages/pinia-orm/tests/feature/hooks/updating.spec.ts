@@ -16,7 +16,7 @@ describe('feature/hooks/updating', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static updating(model: Model) {
+      static updating (model: Model) {
         model.name = 'John'
       }
     }
@@ -48,7 +48,7 @@ describe('feature/hooks/updating', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static updating(model: Model) {
+      static updating (model: Model) {
         model.name = 'John'
       }
     }
@@ -91,7 +91,7 @@ describe('feature/hooks/updating', () => {
       @Str('') name!: string
       @Num(0) age!: number
 
-      static updating(model: Model) {
+      static updating (model: Model) {
         model.name = 'John'
         return false
       }

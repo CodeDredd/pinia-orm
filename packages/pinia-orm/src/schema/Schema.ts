@@ -1,6 +1,6 @@
 import type { Schema as NormalizrSchema } from '@pinia-orm/normalizr'
 import { schema as Normalizr } from '@pinia-orm/normalizr'
-import { isArray, isNullish } from '../support/Utils'
+import { isArray, isNullish, throwError } from '../support/Utils'
 import { Uid } from '../model/attributes/types/Uid'
 import { Relation } from '../model/attributes/relations/Relation'
 import type { Model } from '../model/Model'
@@ -21,21 +21,20 @@ export class Schema {
   /**
    * Create a new Schema instance.
    */
-  constructor(model: Model) {
+  constructor (model: Model) {
     this.model = model
   }
 
   /**
    * Create a single schema.
    */
-  one(model?: Model, parent?: Model): Normalizr.Entity {
+  one (model?: Model, parent?: Model): Normalizr.Entity {
     model = model || this.model
     parent = parent || this.model
 
     const entity = `${model.$entity()}${parent.$entity()}`
 
-    if (this.schemas[entity])
-      return this.schemas[entity]
+    if (this.schemas[entity]) { return this.schemas[entity] }
 
     const schema = this.newEntity(model, parent)
 
@@ -51,14 +50,14 @@ export class Schema {
   /**
    * Create an array schema for the given model.
    */
-  many(model: Model, parent?: Model): Normalizr.Array {
+  many (model: Model, parent?: Model): Normalizr.Array {
     return new Normalizr.Array(this.one(model, parent))
   }
 
   /**
    * Create an union schema for the given models.
    */
-  union(models: Model[], callback: Normalizr.SchemaFunction): Normalizr.Union {
+  union (models: Model[], callback: Normalizr.SchemaFunction): Normalizr.Union {
     const schemas = models.reduce<Schemas>((schemas, model) => {
       schemas[model.$entity()] = this.one(model)
 
@@ -71,7 +70,7 @@ export class Schema {
   /**
    * Create a new normalizr entity.
    */
-  private newEntity(model: Model, parent: Model): Normalizr.Entity {
+  private newEntity (model: Model, parent: Model): Normalizr.Entity {
     const entity = model.$entity()
     const idAttribute = this.idAttribute(model, parent)
 
@@ -100,7 +99,7 @@ export class Schema {
    * are trying to "update" records or "inserting" new records at this stage.
    * Something to consider for future revisions.
    */
-  private idAttribute(
+  private idAttribute (
     model: Model,
     parent: Model,
   ): Normalizr.StrategyFunction<string> {
@@ -114,14 +113,17 @@ export class Schema {
       // If the `key` is not `null`, that means this record is a nested
       // relationship of the parent model. In this case, we'll attach any
       // missing foreign keys to the record first.
-      if (key !== null)
-        (parent.$fields()[key] as Relation).attach(parentRecord, record)
+      if (key !== null) { (parent.$fields()[key] as Relation)?.attach(parentRecord, record) }
 
       // Next, we'll generate any missing primary key fields defined as
       // uid field.
       for (const key in uidFields) {
-        if (isNullish(record[key]))
-          record[key] = uidFields[key].setKey(key).make(record[key])
+        if (isNullish(record[key])) { record[key] = uidFields[key].setKey(key).make(record[key]) }
+      }
+
+      // Check if a list is passed to a one to one relation and throws a error if so
+      if (['BelongsTo', 'HasOne', 'MorphOne', 'MorphTo'].includes(parent.$fields()[key]?.constructor.name ?? '') && isArray(parentRecord[key])) {
+        throwError(['You are passing a list to "', `${parent.$entity()}.${key}`, `" which is a one to one Relation(${parent.$fields()[key]?.constructor.name}):`, JSON.stringify(parentRecord[key])])
       }
 
       // Finally, obtain the index id, attach it to the current record at the
@@ -137,7 +139,7 @@ export class Schema {
   /**
    * Get all primary keys defined by the Uid attribute for the given model.
    */
-  private getUidPrimaryKeyPairs(model: Model): Record<string, Uid> {
+  private getUidPrimaryKeyPairs (model: Model): Record<string, Uid> {
     const fields = model.$fields()
     const key = model.$getKeyName()
     const keys = isArray(key) ? key : [key]
@@ -147,8 +149,7 @@ export class Schema {
     keys.forEach((k) => {
       const attr = fields[k]
 
-      if (attr instanceof Uid)
-        attributes[k] = attr
+      if (attr instanceof Uid) { attributes[k] = attr }
     })
 
     return attributes
@@ -157,15 +158,14 @@ export class Schema {
   /**
    * Create a definition for the given model.
    */
-  private definition(model: Model): NormalizrSchema {
+  private definition (model: Model): NormalizrSchema {
     const fields = model.$fields()
     const definition: NormalizrSchema = {}
 
     for (const key in fields) {
       const field = fields[key]
 
-      if (field instanceof Relation)
-        definition[key] = field.define(this)
+      if (field instanceof Relation) { definition[key] = field.define(this) }
     }
 
     return definition

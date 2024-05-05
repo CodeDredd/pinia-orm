@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a has-many-by attribute property decorator.
  */
-export function HasManyBy(
+export function HasManyBy (
   related: () => typeof Model,
   foreignKey: string,
   ownerKey?: string,

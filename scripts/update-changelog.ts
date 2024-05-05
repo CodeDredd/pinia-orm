@@ -1,0 +1,86 @@
+import { execSync } from 'node:child_process'
+import { $fetch } from 'ofetch'
+import { inc } from 'semver'
+import { generateMarkDown, getCurrentGitBranch, loadChangelogConfig } from 'changelogen'
+import { consola } from 'consola'
+import { determineBumpType, getContributors, getLatestCommits, loadWorkspace } from './_utils'
+
+async function main () {
+  const releaseBranch = await getCurrentGitBranch()
+  const workspace = await loadWorkspace(process.cwd())
+  const config = await loadChangelogConfig(process.cwd(), {})
+
+  const commits = await getLatestCommits().then(commits => commits.filter(
+    c => config.types[c.type] && !(c.type === 'chore' && c.scope === 'deps' && !c.isBreaking),
+  ))
+  const bumpType = await determineBumpType()
+
+  const newVersion = inc(workspace.find('pinia-orm').data.version, bumpType || 'patch')
+  const changelog = await generateMarkDown(commits, config)
+
+  // Create and push a branch with bumped versions if it has not already been created
+  const branchExists = execSync(`git ls-remote --heads origin v${newVersion}`).toString().trim().length > 0
+  if (!branchExists) {
+    execSync('git config --global user.email "gregor@codedredd.de"')
+    execSync('git config --global user.name "Gregor Becker"')
+    execSync(`git checkout -b v${newVersion}`)
+
+    for (const pkg of workspace.packages.filter(p => !p.data.private)) {
+      workspace.setVersion(pkg.data.name, newVersion!)
+    }
+    await workspace.save()
+
+    execSync(`git commit -am v${newVersion}`)
+    execSync(`git push -u origin v${newVersion}`)
+  }
+
+  // Get the current PR for this release, if it exists
+  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)
+  const contributors = await getContributors()
+
+  console.info('New Version ', newVersion)
+
+  const releaseNotes = [
+    currentPR?.body.replace(/## 👉 Changelog[\s\S]*$/, '') || `> ${newVersion} is the next ${bumpType} release.\n>\n> **Timetable**: to be announced.`,
+    '## 👉 Changelog',
+    changelog
+      .replace(/^## v.*?\n/, '')
+      .replace(`...${releaseBranch}`, `...v${newVersion}`)
+      .replace(/### ❤️ Contributors[\s\S]*$/, ''),
+    '### ❤️ Contributors',
+    contributors.map(c => `- ${c.name} (@${c.username})`).join('\n'),
+  ].join('\n')
+
+  // Create a PR with release notes if none exists
+  if (!currentPR) {
+    return await $fetch('https://api.github.com/repos/CodeDredd/pinia-orm/pulls', {
+      method: 'POST',
+      headers: {
+        Authorization: `token ${process.env.GITHUB_TOKEN}`,
+      },
+      body: {
+        title: `v${newVersion}`,
+        head: `v${newVersion}`,
+        base: releaseBranch,
+        body: releaseNotes,
+        draft: true,
+      },
+    })
+  }
+
+  // Update release notes if the pull request does exist
+  await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls/${currentPR.number}`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `token ${process.env.GITHUB_TOKEN}`,
+    },
+    body: {
+      body: releaseNotes,
+    },
+  })
+}
+
+main().catch((err) => {
+  consola.error(err)
+  process.exit(1)
+})

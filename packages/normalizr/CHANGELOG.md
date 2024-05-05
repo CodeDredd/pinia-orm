@@ -1,3 +1,7 @@
+# [1.7.0](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/normalizr@1.6.0...@pinia-orm/normalizr@1.7.0) (2023-09-17)
+
+# [1.6.0](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/normalizr@1.1.0...@pinia-orm/normalizr@1.6.0) (2023-03-22)
+
 # [1.1.0](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/normalizr@1.0.6...@pinia-orm/normalizr@1.1.0) (2023-01-24)
 
 ## [1.0.6](https://github.com/CodeDredd/pinia-orm/compare/@pinia-orm/normalizr@1.0.5...@pinia-orm/normalizr@1.0.6) (2022-12-22)

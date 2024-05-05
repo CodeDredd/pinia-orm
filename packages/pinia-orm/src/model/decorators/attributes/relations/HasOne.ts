@@ -4,7 +4,7 @@ import type { PropertyDecorator } from '../../Contracts'
 /**
  * Create a has-one attribute property decorator.
  */
-export function HasOne(
+export function HasOne (
   related: () => typeof Model,
   foreignKey: PrimaryKey,
   localKey?: PrimaryKey,

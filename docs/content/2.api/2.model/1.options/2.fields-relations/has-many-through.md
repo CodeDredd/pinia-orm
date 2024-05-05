@@ -49,7 +49,7 @@ class Post extends Model {
 
 ````ts
 import { Model } from 'pinia-orm'
-import { Attr, HasManyThrough, Str } from 'pinia-orm/dist/decorators'
+import { Attr, HasManyThrough, Str } from 'pinia-orm/decorators'
 
 class Country extends Model {
   static entity = 'countries'

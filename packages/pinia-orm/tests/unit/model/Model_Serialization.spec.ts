@@ -9,7 +9,7 @@ describe('unit/model/Model_Serialization', () => {
 
     @Attr() id!: number
     @Attr() arr!: []
-    @Attr() obj!: {}
+    @Attr() obj!: Record<string, any>
   }
 
   it('can serialize the model', () => {

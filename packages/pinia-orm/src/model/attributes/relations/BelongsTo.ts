@@ -24,7 +24,7 @@ export class BelongsTo extends Relation {
   /**
    * Create a new belongs-to relation instance.
    */
-  constructor(
+  constructor (
     parent: Model,
     child: Model,
     foreignKey: PrimaryKey,
@@ -43,32 +43,34 @@ export class BelongsTo extends Relation {
   /**
    * Get all related models for the relationship.
    */
-  getRelateds(): Model[] {
+  getRelateds (): Model[] {
     return [this.child]
   }
 
   /**
    * Define the normalizr schema for the relation.
    */
-  define(schema: Schema): NormalizrSchema {
+  define (schema: Schema): NormalizrSchema {
     return schema.one(this.child, this.parent)
   }
 
   /**
    * Attach the relational key to the given relation.
    */
-  attach(record: Element, child: Element): void {
+  attach (record: Element, child: Element): void {
     this.compositeKeyMapper(
       this.foreignKey,
       this.ownerKey,
-      (foreignKey, ownerKey) => record[foreignKey] = child[ownerKey],
+      (foreignKey, ownerKey) => {
+        record[foreignKey] = child[ownerKey]
+      },
     )
   }
 
   /**
    * Set the constraints for an eager load of the relation.
    */
-  addEagerConstraints(query: Query, models: Collection): void {
+  addEagerConstraints (query: Query, models: Collection): void {
     this.compositeKeyMapper(
       this.foreignKey,
       this.ownerKey,
@@ -79,10 +81,9 @@ export class BelongsTo extends Relation {
   /**
    * Gather the keys from a collection of related models.
    */
-  protected getEagerModelKeys(models: Collection, foreignKey: string): (string | number)[] {
+  protected getEagerModelKeys (models: Collection, foreignKey: string): (string | number)[] {
     return models.reduce<(string | number)[]>((keys, model) => {
-      if (model[foreignKey] !== null)
-        keys.push(model[foreignKey])
+      if (model[foreignKey] !== null) { keys.push(model[foreignKey]) }
 
       return keys
     }, [])
@@ -91,7 +92,7 @@ export class BelongsTo extends Relation {
   /**
    * Match the eagerly loaded results to their respective parents.
    */
-  match(relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection, query: Query): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
@@ -106,7 +107,7 @@ export class BelongsTo extends Relation {
   /**
    * Build model dictionary keyed by relation's parent key.
    */
-  protected buildDictionary(models: Collection): Record<string, Model> {
+  protected buildDictionary (models: Collection): Record<string, Model> {
     return models.reduce<Record<string, Model>>((dictionary, model) => {
       dictionary[model[this.getKey(this.ownerKey)]] = model
 
@@ -117,7 +118,7 @@ export class BelongsTo extends Relation {
   /**
    * Make a related model.
    */
-  make(element?: Element): Model | null {
+  make (element?: Element): Model | null {
     return element ? this.child.$newInstance(element) : null
   }
 }
