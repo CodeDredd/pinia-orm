@@ -500,7 +500,7 @@ export class Query<M extends Model = Model> {
 
     let models = this.select()
 
-    if (!this.orders.length > 0) {
+    if (this.orders.length === 0) {
       models = this.filterLimit(models)
     }
 
