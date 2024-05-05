@@ -136,7 +136,7 @@ describe('feature/repository/retrieves_where', () => {
     assertInstanceOf(users2, User)
     assertModels(users2, expected2)
 
-    const users3 = userRepo.orWhereIn('name', ['John Doe']).orWhereNotIn('age', ages).get()
+    const users3 = userRepo.orWhereIn('name', new Set(['John Doe'])).orWhereNotIn('age', ages).get()
 
     const expected3 = [
       { id: 1, name: 'John Doe', age: 40 },
