@@ -5,6 +5,6 @@ import { AxiosRepository } from '../repository/AxiosRepository'
 
 export function useAxiosRepo<M extends Model> (model: M) {
   const pinia = getActivePinia()
-  AxiosRepository.useModel = model
-  return useRepo(AxiosRepository, pinia)
+  AxiosRepository.useModel = model as unknown as typeof Model
+  return useRepo(AxiosRepository<Model>, pinia)
 }
