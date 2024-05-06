@@ -82,6 +82,19 @@ export class Repository<M extends Model = Model> {
     this.database = database
     this.pinia = pinia
     this.hydratedDataCache = hydratedDataCache as Map<string, M>
+    return new Proxy(this, {
+      get (repository, field) {
+        if (typeof field === 'symbol') { return }
+        if (field in repository) { return repository[field] } // normal case
+        if (field === 'use' || field === 'model' || field === 'queryCache') { return }
+
+        return function (...args: any) {
+          // This function will be executed when property is accessed as a function
+          // @ts-expect-error Query has index signature
+          return repository.query()[field](...args)
+        }
+      },
+    })
   }
 
   /**
@@ -337,15 +350,6 @@ export class Repository<M extends Model = Model> {
    */
   all (): Collection<M> {
     return this.query().get()
-  }
-
-  /**
-   * Find the model with the given id.
-   */
-  find (id: string | number): Item<M>
-  find (ids: (string | number)[]): Collection<M>
-  find (ids: any): Item<any> {
-    return this.query().find(ids)
   }
 
   /**

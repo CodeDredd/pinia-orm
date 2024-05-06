@@ -225,10 +225,31 @@ export class Query<M extends Model = Model> {
    */
   whereIn<T extends NonMethodKeys<M>>(field: T | string & {}, values: any[] | Set<any>): this {
     if (values instanceof Set) { values = Array.from(values) }
+    return this.where(field, values)
+  }
 
-    this.wheres.push({ field, value: values, boolean: 'and' })
+  /**
+   * Add a "where not in" clause to the query.
+   */
+  whereNotIn (field: string, values: any[] | Set<any>): this {
+    if (values instanceof Set) { values = Array.from(values) }
+    return this.where(query => !values.includes(query[field]))
+  }
 
-    return this
+  /**
+   * Add a "where not in" clause to the query.
+   */
+  orWhereIn (field: string, values: any[] | Set<any>): this {
+    if (values instanceof Set) { values = Array.from(values) }
+    return this.orWhere(field, values)
+  }
+
+  /**
+   * Add a "where not in" clause to the query.
+   */
+  orWhereNotIn (field: string, values: any[] | Set<any>): this {
+    if (values instanceof Set) { values = Array.from(values) }
+    return this.orWhere(query => !values.includes(query[field]))
   }
 
   /**
@@ -248,6 +269,20 @@ export class Query<M extends Model = Model> {
     this.wheres.push({ field, value, boolean: 'or' })
 
     return this
+  }
+
+  /**
+   * Add a "whereNULL" clause to the query.
+   */
+  whereNull (field: string): this {
+    return this.where(field, null)
+  }
+
+  /**
+   * Add a "whereNotNULL" clause to the query.
+   */
+  whereNotNull (field: string): this {
+    return this.where(query => query[field] != null)
   }
 
   /**
@@ -474,13 +509,13 @@ export class Query<M extends Model = Model> {
 
     let models = this.select()
 
-    if (!this.orders) {
+    if (this.orders.length === 0) {
       models = this.filterLimit(models)
     }
 
     if (!isEmpty(models)) { this.eagerLoadRelations(models) }
 
-    if (this.orders) {
+    if (this.orders.length > 0) {
       models = this.filterOrder(models)
       models = this.filterLimit(models)
     }
