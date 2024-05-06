@@ -1940,13 +1940,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/json@npm:^2.2.206":
-  version: 2.2.206
-  resolution: "@iconify/json@npm:2.2.206"
+"@iconify/json@npm:^2.2.207":
+  version: 2.2.207
+  resolution: "@iconify/json@npm:2.2.207"
   dependencies:
     "@iconify/types": "npm:*"
     pathe: "npm:^1.1.2"
-  checksum: 10c0/dc8a13ddaba63b3f010803638602dda09362cbbed05893e1f584f5b511634783461bdba21f2d5645ccb03b132164de84baebdcb20bb775297988631a3960f0b4
+  checksum: 10c0/cd97bcc88f9933418c8d562be9bdc9c9305126d06622542a43c132aad1ed041b3141c81203430e029c97c7250779c8fee3ecddc981097247d481b00c5f3e898d
   languageName: node
   linkType: hard
 
@@ -2514,12 +2514,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.8":
-  version: 20.12.8
-  resolution: "@types/node@npm:20.12.8"
+"@types/node@npm:^20.12.9":
+  version: 20.12.9
+  resolution: "@types/node@npm:20.12.9"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/840002d20654e38a9af8cdffa215598fdb28ac4f96c5701ed672ec365ed6ccc66da299edddaa409baf13cd71bbf1128901f633b5e44e070fc236e26415805b78
+  checksum: 10c0/410da89226b425fa24fe497fbffb90a79ce63461ff0e0361414de567dc80b8c9b5a0e5803983bb62e2c7757b0769bf49498d3578e61f677590124491cdaf1d7a
   languageName: node
   linkType: hard
 
@@ -6775,9 +6775,9 @@ __metadata:
     "@antfu/eslint-config": "npm:^2.16.1"
     "@antfu/utils": "npm:^0.7.7"
     "@headlessui/vue": "npm:^1.7.21"
-    "@iconify/json": "npm:^2.2.206"
+    "@iconify/json": "npm:^2.2.207"
     "@types/file-saver": "npm:^2.0.7"
-    "@types/node": "npm:^20.12.8"
+    "@types/node": "npm:^20.12.9"
     "@types/splitpanes": "npm:^2.2.6"
     "@vitejs/plugin-vue": "npm:^5.0.4"
     "@vue/compiler-sfc": "npm:^3.4.26"
