@@ -505,7 +505,10 @@ export class Query<M extends Model = Model> {
   }
 
   private internalGet (triggerHook: boolean): Collection<M> | GroupedCollection<M> {
-    if (this.model.$entity() !== this.model.$baseEntity()) { this.where(this.model.$typeKey(), this.model.$fields()[this.model.$typeKey()].make()) }
+    if (this.model.$entity() !== this.model.$baseEntity() || this.model.$namespace() !== this.model.$baseNamespace()) {
+      const typeKeyValue = this.model.$fields()[this.model.$typeKey()].make() ?? this.model.$entity()
+      this.where(this.model.$typeKey(), typeKeyValue)
+    }
 
     let models = this.select()
 
