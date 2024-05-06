@@ -19,11 +19,11 @@ declare module '../repository/Repository' {
      */
     whereNotIn (field: string, values: any[] | Set<any>): Query<M>
     /**
-     * Add a where clause where field is null
+     * Add a where clause to get all results where `field` is null
      */
     whereNull (field: string): Query<M>
     /**
-     * Add a where clause where field is not null
+     * Add a where clause to get all results where `field` is not null
      */
     whereNotNull (field: string): Query<M>
     /**
