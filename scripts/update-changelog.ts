@@ -51,6 +51,8 @@ async function main () {
     contributors.map(c => `- ${c.name} (@${c.username})`).join('\n'),
   ].join('\n')
 
+  console.info('Release notes', releaseNotes)
+
   // Create a PR with release notes if none exists
   if (!currentPR) {
     return await $fetch('https://api.github.com/repos/CodeDredd/pinia-orm/pulls', {
@@ -69,7 +71,7 @@ async function main () {
   }
 
   // Update release notes if the pull request does exist
-  await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls/${currentPR.number}`, {
+  const githubResponse = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls/${currentPR.number}`, {
     method: 'PATCH',
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`,
@@ -78,6 +80,8 @@ async function main () {
       body: releaseNotes,
     },
   })
+
+  console.info('GitHub Response pushing ', currentPR.number, ' : ', githubResponse)
 }
 
 main().catch((err) => {
