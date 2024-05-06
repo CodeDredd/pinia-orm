@@ -96,6 +96,10 @@ describe('unit/repository/Repository', () => {
 
     const postRepo = userRepo.repo(PostRepository.setModel(Post))
 
+    const symbol = Symbol('test')
+
+    expect(userRepo[symbol]).toBe(undefined)
+
     expect(postRepo.getModel()).toBeInstanceOf(Post)
   })
 
