@@ -77,6 +77,11 @@ export class Model {
   static baseEntity: string
 
   /**
+   * The reference to the base namespace if the class extends a base with a different namespace.
+   */
+  static baseNamespace: string
+
+  /**
    * Define a namespace if you have multiple equal entity names.
    * Resulting in "{namespace}/{entity}"
    */
@@ -174,25 +179,34 @@ export class Model {
     return {}
   }
 
+  static usedNamespace (): string {
+    return this.namespace ?? config.model.namespace
+  }
+
+  static modelEntity (): string {
+    return (this.usedNamespace() ? this.usedNamespace() + '/' : '') + this.entity
+  }
+
   /**
    * Build the schema by evaluating fields and registry.
    */
   protected static initializeSchema (): void {
-    this.schemas[this.entity] = {}
-    this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
+    const entity = this.modelEntity()
+    this.schemas[entity] = {}
+    this.fieldsOnDelete[entity] = this.fieldsOnDelete[entity] ?? {}
 
     const registry = {
       ...this.fields(),
-      ...this.registries[this.entity],
+      ...this.registries[entity],
     }
 
     for (const key in registry) {
       const attribute = registry[key]
 
-      this.schemas[this.entity][key] =
+      this.schemas[entity][key] =
         typeof attribute === 'function' ? attribute() : attribute
 
-      if (this.fieldsOnDelete[this.entity][key]) { this.schemas[this.entity][key] = (this.schemas[this.entity][key] as Relation).onDelete(this.fieldsOnDelete[this.entity][key]) }
+      if (this.fieldsOnDelete[entity][key]) { this.schemas[entity][key] = (this.schemas[entity][key] as Relation).onDelete(this.fieldsOnDelete[entity][key]) }
     }
   }
 
@@ -204,9 +218,9 @@ export class Model {
     key: string,
     attribute: () => Attribute,
   ): M {
-    if (!this.registries[this.entity]) { this.registries[this.entity] = {} }
+    if (!this.registries[this.modelEntity()]) { this.registries[this.modelEntity()] = {} }
 
-    this.registries[this.entity][key] = attribute
+    this.registries[this.modelEntity()][key] = attribute
 
     return this
   }
@@ -219,8 +233,8 @@ export class Model {
     key: string,
     mode: deleteModes,
   ): M {
-    this.fieldsOnDelete[this.entity] = this.fieldsOnDelete[this.entity] ?? {}
-    this.fieldsOnDelete[this.entity][key] = mode
+    this.fieldsOnDelete[this.modelEntity()] = this.fieldsOnDelete[this.modelEntity()] ?? {}
+    this.fieldsOnDelete[this.modelEntity()][key] = mode
 
     return this
   }
@@ -615,7 +629,7 @@ export class Model {
    * Get the namespace.
    */
   $namespace (): String {
-    return this.$self().namespace ?? config.model.namespace
+    return this.$self().usedNamespace()
   }
 
   /**
@@ -630,6 +644,20 @@ export class Model {
    */
   $baseEntity (): string {
     return this.$self().baseEntity ?? this.$entity()
+  }
+
+  /**
+   * Get the base namespace for this model.
+   */
+  $baseNamespace (): string {
+    return this.$self().baseNamespace ?? this.$namespace()
+  }
+
+  /**
+   * Get the model entity for this model.
+   */
+  $modelEntity (): string {
+    return this.$self().modelEntity()
   }
 
   /**
@@ -664,7 +692,7 @@ export class Model {
    * Get the model fields for this model.
    */
   $fields (): ModelFields {
-    return this.$self().schemas[this.$entity()]
+    return this.$self().schemas[this.$modelEntity()]
   }
 
   /**
@@ -696,8 +724,8 @@ export class Model {
    * Bootstrap this model.
    */
   protected $boot (): void {
-    if (!this.$self().booted[this.$entity()]) {
-      this.$self().booted[this.$entity()] = true
+    if (!this.$self().booted[this.$modelEntity()]) {
+      this.$self().booted[this.$modelEntity()] = true
 
       this.$initializeSchema()
     }
