@@ -62,7 +62,7 @@ export class MorphOne extends Relation {
   /**
    * Set the constraints for an eager load of the relation.
    */
-  addEagerConstraints (query: Query, models: Collection): void {
+  addEagerConstraints (query: Query<any>, models: Collection<any>): void {
     query
       .where(this.morphType, this.parent.$entity())
       .whereIn(this.morphId, this.getKeys(models, this.localKey))
@@ -71,7 +71,7 @@ export class MorphOne extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match (relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection<any>, query: Query<any>): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
@@ -86,7 +86,7 @@ export class MorphOne extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary (models: Collection): Record<string, Model> {
+  protected buildDictionary (models: Collection<any>): Record<string, Model> {
     return models.reduce<Record<string, Model>>((dictionary, model) => {
       dictionary[model[this.morphId]] = model
 

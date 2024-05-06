@@ -120,8 +120,8 @@ export class MorphTo extends Relation {
     const dictionary = this.buildDictionary(query, models)
 
     models.forEach((model) => {
-      const type = model[this.morphType]
-      const id = model[this.morphId]
+      const type = model[this.morphType as keyof Model] as string
+      const id = model[this.morphId as keyof Model] as number
 
       const related = dictionary[type]?.[id] ?? null
 
@@ -142,8 +142,8 @@ export class MorphTo extends Relation {
    * Build model dictionary keyed by the owner key for each entity.
    */
   protected buildDictionary (
-    query: Query,
-    models: Collection,
+    query: Query<any>,
+    models: Collection<any>,
   ): DictionaryByEntities {
     const keys = this.getKeysByEntity(models)
 
@@ -183,7 +183,7 @@ export class MorphTo extends Relation {
    * Get the relation's primary keys grouped by its entity.
    */
   protected getKeysByEntity (
-    models: Collection,
+    models: Collection<any>,
   ): Record<string, (string | number)[]> {
     return models.reduce<Record<string, (string | number)[]>>((keys, model) => {
       const type = model[this.morphType]

@@ -80,7 +80,7 @@ export class HasManyThrough extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match (relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection<any>, query: Query<any>): void {
     const throughModels = query
       .newQuery(this.through.$entity())
       .where(this.firstKey, this.getKeys(models, this.localKey))
@@ -103,9 +103,9 @@ export class HasManyThrough extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary (throughResults: Collection, results: Collection): Dictionary {
+  protected buildDictionary (throughResults: Collection<any>, results: Collection<any>): Dictionary {
     return this.mapToDictionary(throughResults, (throughResult) => {
-      return [throughResult[this.firstKey], results[throughResult[this.secondLocalKey]]]
+      return [throughResult[this.firstKey as keyof Model] as string, results[throughResult[this.secondLocalKey as keyof Model] as number]]
     })
   }
 

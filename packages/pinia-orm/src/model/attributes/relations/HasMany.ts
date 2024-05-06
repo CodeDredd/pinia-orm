@@ -73,7 +73,7 @@ export class HasMany extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match (relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection<any>, query: Query<any>): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
@@ -92,12 +92,12 @@ export class HasMany extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary (results: Collection): Dictionary {
+  protected buildDictionary (results: Collection<any>): Dictionary {
     return this.mapToDictionary(results, (result) => {
       const key = this.getKey(
         isArray(this.foreignKey)
-          ? this.foreignKey.map(key => result[key])
-          : result[this.foreignKey],
+          ? this.foreignKey.map(key => result[key as keyof Model]) as PrimaryKey
+          : result[this.foreignKey as keyof Model] as PrimaryKey,
       )
       return [key, result]
     })

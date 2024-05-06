@@ -127,7 +127,7 @@ export class Query<M extends Model = Model> {
    */
   newQuery (model: string): Query<M> {
     this.getNewHydrated = true
-    return new Query(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
+    return new Query<M>(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
   }
 
   /**
@@ -151,8 +151,8 @@ export class Query<M extends Model = Model> {
   /**
    * Create a new query instance from the given relation.
    */
-  newQueryForRelation (relation: Relation): Query {
-    return new Query(this.database, relation.getRelated(), this.cache, new Map<string, M>(), this.pinia)
+  newQueryForRelation (relation: Relation): Query<M> {
+    return new Query<M>(this.database, relation.getRelated() as M, this.cache, new Map<string, M>(), this.pinia)
   }
 
   /**
@@ -234,7 +234,7 @@ export class Query<M extends Model = Model> {
   /**
    * Add a where clause on the primary key to the query.
    */
-  whereId(ids: string | number | (string | number)[]): this {
+  whereId (ids: string | number | (string | number)[]): this {
     return this.where(this.model.$getKeyName(), ids)
   }
 
@@ -267,28 +267,28 @@ export class Query<M extends Model = Model> {
   /**
    * Add a "has" clause to the query.
    */
-  has(relation: string, operator?: string | number, count?: number): this {
+  has (relation: string, operator?: string | number, count?: number): this {
     return this.where(this.getFieldWhereForRelations(relation, () => { }, operator, count))
   }
 
   /**
    * Add an "or has" clause to the query.
    */
-  orHas(relation: string, operator?: string | number, count?: number): this {
+  orHas (relation: string, operator?: string | number, count?: number): this {
     return this.orWhere(this.getFieldWhereForRelations(relation, () => { }, operator, count))
   }
 
   /**
    * Add a "doesn't have" clause to the query.
    */
-  doesntHave(relation: string): this {
+  doesntHave (relation: string): this {
     return this.where(this.getFieldWhereForRelations(relation, () => { }, '=', 0))
   }
 
   /**
    * Add a "doesn't have" clause to the query.
    */
-  orDoesntHave(relation: string): this {
+  orDoesntHave (relation: string): this {
     return this.orWhere(this.getFieldWhereForRelations(relation, () => { }, '=', 0))
   }
 
@@ -349,7 +349,8 @@ export class Query<M extends Model = Model> {
    */
   with<T extends WithKeys<M>>(name: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): this {
     this.getNewHydrated = true
-    this.eagerLoad[name as string] = callback
+    // @ts-expect-error name type can be used
+    this.eagerLoad[name] = callback
 
     return this
   }
@@ -357,7 +358,7 @@ export class Query<M extends Model = Model> {
   /**
    * Set to eager load all top-level relationships. Constraint is set for all relationships.
    */
-  withAll(callback: EagerLoadConstraint<any> = () => { }): this {
+  withAll (callback: EagerLoadConstraint<any> = () => { }): this {
     let fields: ModelFields = this.model.$fields()
     const typeModels = Object.values(this.model.$types())
     typeModels.forEach((typeModel) => {
@@ -395,7 +396,7 @@ export class Query<M extends Model = Model> {
    * Get where closure for relations
    */
   protected getFieldWhereForRelations<T extends WithKeys<M>>(relation: T | (string & {}), callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): WherePrimaryClosure<M> {
-    const modelIdsByRelation = this.newQuery<M>(this.model.$entity()).with(relation, callback).get(false)
+    const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get(false)
       .filter((model) => {
         const modelRelation = model[relation as T]
 
@@ -545,7 +546,7 @@ export class Query<M extends Model = Model> {
   /**
    * Get comparator for the where clause.
    */
-  protected getWhereComparator (): (model: any) => boolean {
+  protected getWhereComparator (): (model: M) => boolean {
     const { and, or } = groupBy(this.wheres, where => where.boolean)
 
     return (model) => {
@@ -564,11 +565,11 @@ export class Query<M extends Model = Model> {
   protected whereComparator (model: M, where: Where<M>): boolean {
     if (isFunction(where.field)) { return where.field(model) }
 
-    if (isArray(where.value)) { return where.value.includes(model[where.field as string]) }
+    if (isArray(where.value)) { return where.value.includes(model[where.field as keyof M]) }
 
-    if (isFunction(where.value)) { return where.value(model[where.field as string]) }
+    if (isFunction(where.value)) { return where.value(model[where.field as keyof M]) }
 
-    return model[where.field as string] === where.value
+    return model[where.field as keyof M] === where.value
   }
 
   /**
@@ -587,12 +588,12 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered group conditions.
    */
   protected filterGroup (models: Collection<M>): Record<string, Collection<M>> {
-    const grouped: Record<string, Collection<M>> = {}
+    const grouped: Record<string, Collection<M>> | M[keyof M] = {}
     const fields = this.groups.map(group => group.field)
 
     models.forEach((model) => {
-      const key = fields.length === 1 ? model[fields[0]] : `[${fields.map(field => model[field]).toString()}]`
-      grouped[key] = (grouped[key] || []).concat(model)
+      const key = fields.length === 1 ? model[fields[0] as keyof M] : `[${fields.map(field => model[field as keyof M]).toString()}]`
+      grouped[key as string] = (grouped[key as string] || []).concat(model)
     })
 
     return grouped
@@ -618,7 +619,8 @@ export class Query<M extends Model = Model> {
    * Eager load the relationships for the models.
    */
   protected eagerLoadRelations (models: Collection<M>): void {
-    for (const name in this.eagerLoad) { this.eagerLoadRelation(models, name, this.eagerLoad[name]) }
+    // @ts-expect-error ToDo fix eagerLoad type
+    for (const name in this.eagerLoad) { this.eagerLoadRelation(models, name, this.eagerLoad[name as string]) }
   }
 
   /**
@@ -712,15 +714,15 @@ export class Query<M extends Model = Model> {
       // Inverse polymorphic relations have the same parent and child model
       // so we need to query using the type stored in the parent model.
       if (attr instanceof MorphTo) {
-        const relatedType = model[attr.getType()]
+        const relatedType = model[attr.getType() as keyof M]
 
-        // @ts- expect-error Don't know why its necessary yet
+        // @ts-expect-error Don't know why its necessary yet
         model[key] = this.newQuery(relatedType).reviveOne(relatedSchema)
 
         continue
       }
 
-      // @ts- expect-error Don't know why its necessary yet
+      // @ts-expect-error Don't know why its necessary yet
       model[key] = isArray(relatedSchema)
         ? this.newQueryForRelation(attr).reviveMany(relatedSchema)
         : this.newQueryForRelation(attr).reviveOne(relatedSchema)
@@ -933,15 +935,16 @@ export class Query<M extends Model = Model> {
     const fields = model.$fields()
     for (const name in fields) {
       const relation = fields[name] as Relation
-      if (fields[name] instanceof Relation && relation.onDeleteMode && model[name]) {
-        const models = isArray(model[name]) ? model[name] : [model[name]]
-        const relationIds = models.map((relation: M) => {
+      if (fields[name] instanceof Relation && relation.onDeleteMode && model[name as keyof M]) {
+        // @ts-expect-error keyof M only causes models not to bey array... dont know why
+        const models = isArray(model[name as keyof M]) ? model[name] : [model[name]]
+        const relationIds = models.map((relation: Model) => {
           return relation.$getKey(undefined, true)
         })
         const record: Record<string, any> = {}
 
         if (relation instanceof BelongsToMany) {
-          this.newQuery(relation.pivot.$entity()).where(relation.foreignPivotKey, model[model.$getLocalKey()]).delete()
+          this.newQuery(relation.pivot.$entity()).where(relation.foreignPivotKey, model[model.$getLocalKey() as string extends keyof M ? keyof M & string : never]).delete()
           continue
         }
 

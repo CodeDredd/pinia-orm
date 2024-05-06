@@ -62,18 +62,18 @@ export abstract class Relation extends Attribute {
   /**
    * Set the constraints for an eager loading relation.
    */
-  abstract addEagerConstraints (query: Query, models: Collection): void
+  abstract addEagerConstraints (query: Query<any>, models: Collection): void
 
   /**
    * Match the eagerly loaded results to their parents.
    */
-  abstract match (relation: string, models: Collection, query: Query): void
+  abstract match (relation: string, models: Collection, query: Query<any>): void
 
   /**
    * Get all of the primary keys for an array of models.
    */
-  protected getKeys (models: Collection, key: string): (string | number)[] {
-    return models.map(model => model[key])
+  protected getKeys <M extends Model = Model>(models: Collection<any>, key: string): (string | number)[] {
+    return models.map(model => model[key as keyof M])
   }
 
   /**
@@ -89,7 +89,7 @@ export abstract class Relation extends Attribute {
    * Run a dictionary map over the items.
    */
   protected mapToDictionary (
-    models: Collection,
+    models: Collection<any>,
     callback: (model: Model) => [string, Model],
   ): Dictionary {
     return models.reduce<Dictionary>((dictionary, model) => {

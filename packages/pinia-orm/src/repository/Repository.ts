@@ -67,7 +67,7 @@ export class Repository<M extends Model = Model> {
   /**
    * The model object to be used for the custom repository.
    */
-  static useModel?: Model
+  static useModel?: typeof Model
 
   /**
    * Global config
@@ -87,7 +87,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Set the model
    */
-  static setModel (model: Model) {
+  static setModel (model: typeof Model) {
     this.useModel = model
     return this
   }
@@ -314,7 +314,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Set to eager load all top-level relationships. Constraint is set for all relationships.
    */
-  withAll(callback?: EagerLoadConstraint<M>): Query<M> {
+  withAll (callback?: EagerLoadConstraint<M>): Query<M> {
     return this.query().withAll(callback)
   }
 

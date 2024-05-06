@@ -72,7 +72,7 @@ export class HasOne extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match (relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection<any>, query: Query<any>): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
@@ -87,9 +87,9 @@ export class HasOne extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary (results: Collection): Dictionary {
+  protected buildDictionary (results: Collection<any>): Dictionary {
     return this.mapToDictionary(results, (result) => {
-      return [result[this.getKey(this.foreignKey)], result]
+      return [result[this.getKey(this.foreignKey) as keyof Model] as string, result]
     })
   }
 

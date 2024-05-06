@@ -63,7 +63,7 @@ export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[
 
 export class Model {
   // [s: keyof ModelFields]: any
-  pivot: undefined | unknown
+  pivot?: any
 
   declare _meta: undefined | MetaValues
   /**
@@ -761,7 +761,7 @@ export class Model {
 
       if (cast && operation === 'set') { keyValue = cast.set(keyValue) }
 
-      this[key] = this[key] ?? keyValue
+      this[key as keyof this] = this[key as keyof this] ?? keyValue
     }
 
     operation === 'set' && (this.$self().original[this.$getKey(this, true) as string] = this.$getAttributes())
@@ -774,12 +774,14 @@ export class Model {
   protected $fillMeta (action = 'save') {
     const timestamp = Math.floor(Date.now() / 1000)
     if (action === 'save') {
-      this[this.$self().metaKey] = {
+      // @ts-expect-error Setting an object
+      this[this.$self().metaKey as keyof this] = {
         createdAt: timestamp,
         updatedAt: timestamp,
       }
     }
-    if (action === 'update') { this[this.$self().metaKey].updatedAt = timestamp }
+    // @ts-expect-error Setting an object
+    if (action === 'update') { this[this.$self().metaKey as keyof this].updatedAt = timestamp }
   }
 
   /**
@@ -788,11 +790,11 @@ export class Model {
   protected $fillField (key: string, attr: Attribute, value: any): any {
     if (value !== undefined) {
       return attr instanceof MorphTo
-        ? attr.setKey(key).make(value, this[attr.getType()])
+        ? attr.setKey(key).make(value, this[attr.getType() as keyof this] as string)
         : attr.setKey(key).make(value)
     }
 
-    if (this[key] === undefined) { return attr.setKey(key).make() }
+    if (this[key as keyof this] === undefined) { return attr.setKey(key).make() }
   }
 
   protected isFieldVisible (key: string, modelHidden: string[], modelVisible: string[], options: ModelOptions): boolean {
@@ -839,7 +841,7 @@ export class Model {
   /**
    * Get the composite key values for the given model as an array of ids.
    */
-  protected $getCompositeKey(record: Element): (string | number)[] | null {
+  protected $getCompositeKey (record: Element): (string | number)[] | null {
     let ids = [] as (string | number)[] | null;
     (this.$getKeyName() as string[]).every((key) => {
       const id = record[key]
@@ -920,7 +922,8 @@ export class Model {
       this.pivot = model
       return this
     }
-    if (this.$fields()[relation]) { this[relation] = model }
+    // @ts-expect-error Setting model as field
+    if (this.$fields()[relation]) { this[relation as keyof this] = model }
 
     return this
   }
@@ -952,7 +955,7 @@ export class Model {
   $refresh (): this {
     if (this.$isDirty()) {
       Object.entries(this.$getOriginal()).forEach((entry) => {
-        this[entry[0]] = entry[1]
+        this[entry[0] as keyof this] = entry[1]
       })
     }
     return this
@@ -965,7 +968,7 @@ export class Model {
     const original = this.$getOriginal()
     if ($attribute) {
       if (!Object.keys(original).includes($attribute)) { throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"']) }
-      return !equals(this[$attribute], original[$attribute])
+      return !equals(this[$attribute as keyof this], original[$attribute])
     }
 
     return !equals(original, this.$getAttributes())
@@ -990,14 +993,14 @@ export class Model {
 
     for (const key in fields) {
       const attr = fields[key]
-      const value = model[key]
+      const value = model[key as keyof Model]
 
       if (!(attr instanceof Relation)) {
         record[key] = this.serializeValue(value)
         continue
       }
 
-      if (withRelation) { record[key] = this.serializeRelation(value) }
+      if (withRelation) { record[key] = this.serializeRelation(value as any) }
     }
 
     return record

@@ -21,7 +21,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     @BelongsToMany(() => User, () => RoleUser, 'role_id', 'user_id')
       users!: User[]
 
-    pivot!: RoleUser
+    declare pivot: RoleUser
   }
 
   class RoleUser extends Model {

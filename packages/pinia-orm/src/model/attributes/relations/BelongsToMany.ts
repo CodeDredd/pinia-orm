@@ -93,7 +93,7 @@ export class BelongsToMany extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match (relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection<any>, query: Query<any>): void {
     const relatedModels = query.get(false)
     const pivotModels = query
       .newQuery(this.pivot.$entity())
