@@ -311,4 +311,82 @@ describe('unit/model/Model_STI', () => {
     expect(persons[1]).toBeInstanceOf(Adult)
     expect(persons[1]).not.toHaveProperty('type')
   })
+
+  it('retrieves Data from child model without default type prop', () => {
+    class Personne extends Model {
+      static entity = 'Personne'
+      static primaryKey = '@id'
+      static typeKey = '@type'
+
+      static types () {
+        return {
+          Personne,
+          PersonneMorale,
+          PersonnePhysique,
+        }
+      }
+
+      static fields () {
+        return {
+          '@id': this.string(),
+          '@type': this.string(),
+          'id': this.number(),
+        }
+      }
+    }
+
+    class PersonnePhysique extends Personne {
+      static entity = 'PersonnePhysique'
+      static baseEntity = 'Personne'
+
+      static fields () {
+        return {
+          ...super.fields(),
+          prenom: this.string(),
+          nom: this.string(),
+        }
+      }
+    }
+
+    class PersonneMorale extends Personne {
+      static entity = 'PersonneMorale'
+      static baseEntity = 'Personne'
+
+      static fields () {
+        return {
+          ...super.fields(),
+          enseigne: this.string(),
+          raisonSociale: this.string(),
+          libelle: this.string(),
+        }
+      }
+    }
+
+    const personneMorale = {
+      '@id': '/api/personne_morales/1',
+      '@type': 'PersonneMorale',
+      'id': 1,
+      'enseigne': 'Business',
+      'raisonSociale': 'Super',
+    }
+
+    const personnePhysique = {
+      '@id': '/api/personne_physiques/1',
+      '@type': 'PersonnePhysique',
+      'id': 2,
+      'prenom': 'John',
+      'nom': 'Doe',
+    }
+
+    const personneMoraleRepo = useRepo(PersonneMorale)
+    const personnePhysiqueRepo = useRepo(PersonnePhysique)
+    const personneRepo = useRepo(Personne)
+
+    personneMoraleRepo.save(personneMorale)
+    personnePhysiqueRepo.save(personnePhysique)
+
+    expect(personnePhysiqueRepo.all().length).toBe(1)
+    expect(personneMoraleRepo.all().length).toBe(1)
+    expect(personneRepo.all().length).toBe(2)
+  })
 })
