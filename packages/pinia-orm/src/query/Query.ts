@@ -213,7 +213,7 @@ export class Query<M extends Model = Model> {
    */
   where<T extends WherePrimaryClosure<M> | NonMethodKeys<M> | string[] | (string & {})>(
     field: T,
-    value?: T extends string[] ? string | number | (string | number)[] : WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never],
+    value?: T extends string[] ? string | number | (string | number)[] : WhereSecondaryClosure<M[T extends keyof M ? T : never]> | M[T extends keyof M ? T : never] | null,
   ): this {
     this.wheres.push({ field, value, boolean: 'and' })
 
@@ -225,7 +225,7 @@ export class Query<M extends Model = Model> {
    */
   whereIn<T extends NonMethodKeys<M>>(field: T | string & {}, values: any[] | Set<any>): this {
     if (values instanceof Set) { values = Array.from(values) }
-    return this.where(field, values)
+    return this.where(field, values as any)
   }
 
   /**
@@ -233,7 +233,7 @@ export class Query<M extends Model = Model> {
    */
   whereNotIn (field: string, values: any[] | Set<any>): this {
     if (values instanceof Set) { values = Array.from(values) }
-    return this.where(query => !values.includes(query[field]))
+    return this.where(query => !values.includes(query[field as keyof Model]))
   }
 
   /**
@@ -241,7 +241,7 @@ export class Query<M extends Model = Model> {
    */
   orWhereIn (field: string, values: any[] | Set<any>): this {
     if (values instanceof Set) { values = Array.from(values) }
-    return this.orWhere(field, values)
+    return this.orWhere(field, values as any)
   }
 
   /**
@@ -249,7 +249,7 @@ export class Query<M extends Model = Model> {
    */
   orWhereNotIn (field: string, values: any[] | Set<any>): this {
     if (values instanceof Set) { values = Array.from(values) }
-    return this.orWhere(query => !values.includes(query[field]))
+    return this.orWhere(query => !values.includes(query[field as keyof Model]))
   }
 
   /**
@@ -282,7 +282,7 @@ export class Query<M extends Model = Model> {
    * Add a "whereNotNULL" clause to the query.
    */
   whereNotNull (field: string): this {
-    return this.where(query => query[field] != null)
+    return this.where(query => query[field as keyof Model] != null)
   }
 
   /**
