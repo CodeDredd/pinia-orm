@@ -90,7 +90,7 @@ export class HasManyBy extends Relation {
   /**
    * Gather the keys from a collection of related models.
    */
-  protected getEagerModelKeys (models: Collection): (string | number)[] {
+  protected getEagerModelKeys (models: Collection<any>): (string | number)[] {
     return models.reduce<(string | number)[]>((keys, model) => {
       return [...keys, ...model[this.foreignKey]]
     }, [])
@@ -99,7 +99,7 @@ export class HasManyBy extends Relation {
   /**
    * Match the eagerly loaded results to their parents.
    */
-  match (relation: string, models: Collection, query: Query): void {
+  match (relation: string, models: Collection<any>, query: Query<any>): void {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
@@ -115,7 +115,7 @@ export class HasManyBy extends Relation {
   /**
    * Build model dictionary keyed by the relation's foreign key.
    */
-  protected buildDictionary (models: Collection): Record<string, Model> {
+  protected buildDictionary (models: Collection<any>): Record<string, Model> {
     return models.reduce<Record<string, Model>>((dictionary, model) => {
       dictionary[model[this.ownerKey]] = model
 
