@@ -1,5 +1,5 @@
+import type { Model, WithKeys } from '../model/Model'
 import type { Query } from './Query'
-import type { Model, WithKeys } from '@/model/Model'
 
 export interface Where<T = Model> {
   field: WherePrimaryClosure<T> | NonMethodKeys<T> | string | string[]

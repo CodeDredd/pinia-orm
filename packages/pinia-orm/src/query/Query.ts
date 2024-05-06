@@ -611,8 +611,6 @@ export class Query<M extends Model = Model> {
    * Filter the given collection by the registered order conditions.
    */
   protected filterOrder (models: Collection<M>): Collection<M> {
-    if (this.orders.length === 0) { return models }
-
     const fields = this.orders.map(order => order.field)
     const directions = this.orders.map(order => order.direction)
 
@@ -793,7 +791,7 @@ export class Query<M extends Model = Model> {
   save (records: Element | Element[]): M | M[] {
     let processedData: [Element | Element[], NormalizedData] = this.newInterpreter().process(records)
     const modelTypes = this.model.$types()
-    const isChildEntity = this.model.$baseEntity() !== this.model.$entity()
+    const isChildEntity = this.model.$baseEntity() !== this.model.$entity() || this.model.$baseNamespace() !== this.model.$namespace()
 
     if (Object.values(modelTypes).length > 0 || isChildEntity) {
       const modelTypesKeys = Object.keys(modelTypes)
@@ -809,7 +807,7 @@ export class Query<M extends Model = Model> {
       })
       for (const entry in recordsByTypes) {
         const typeModel = modelTypes[entry]
-        if (typeModel.entity === this.model.$entity()) { processedData = this.newInterpreter().process(recordsByTypes[entry]) } else { this.newQueryWithConstraints(typeModel.entity).save(recordsByTypes[entry]) }
+        if (typeModel.modelEntity() === this.model.$modelEntity()) { processedData = this.newInterpreter().process(recordsByTypes[entry]) } else { this.newQueryWithConstraints(typeModel.modelEntity()).save(recordsByTypes[entry]) }
       }
     }
 

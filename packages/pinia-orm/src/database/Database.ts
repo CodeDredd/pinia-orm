@@ -11,7 +11,7 @@ export class Database {
    * Register the given model.
    */
   register<M extends Model> (model: M): void {
-    const entity = model.$entity()
+    const entity = model.$self().modelEntity()
 
     if (!this.models[entity]) {
       this.models[entity] = model

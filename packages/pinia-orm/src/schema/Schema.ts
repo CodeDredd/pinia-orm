@@ -32,7 +32,7 @@ export class Schema {
     model = model || this.model
     parent = parent || this.model
 
-    const entity = `${model.$entity()}${parent.$entity()}`
+    const entity = `${model.$self().modelEntity()}${parent.$self().modelEntity()}`
 
     if (this.schemas[entity]) { return this.schemas[entity] }
 
@@ -59,7 +59,7 @@ export class Schema {
    */
   union (models: Model[], callback: Normalizr.SchemaFunction): Normalizr.Union {
     const schemas = models.reduce<Schemas>((schemas, model) => {
-      schemas[model.$entity()] = this.one(model)
+      schemas[model.$self().modelEntity()] = this.one(model)
 
       return schemas
     }, {})
@@ -71,7 +71,7 @@ export class Schema {
    * Create a new normalizr entity.
    */
   private newEntity (model: Model, parent: Model): Normalizr.Entity {
-    const entity = model.$entity()
+    const entity = model.$self().modelEntity()
     const idAttribute = this.idAttribute(model, parent)
 
     return new Normalizr.Entity(entity, {}, { idAttribute })
@@ -123,7 +123,7 @@ export class Schema {
 
       // Check if a list is passed to a one to one relation and throws a error if so
       if (['BelongsTo', 'HasOne', 'MorphOne', 'MorphTo'].includes(parent.$fields()[key]?.constructor.name ?? '') && isArray(parentRecord[key])) {
-        throwError(['You are passing a list to "', `${parent.$entity()}.${key}`, `" which is a one to one Relation(${parent.$fields()[key]?.constructor.name}):`, JSON.stringify(parentRecord[key])])
+        throwError(['You are passing a list to "', `${parent.$modelEntity()}.${key}`, `" which is a one to one Relation(${parent.$fields()[key]?.constructor.name}):`, JSON.stringify(parentRecord[key])])
       }
 
       // Finally, obtain the index id, attach it to the current record at the

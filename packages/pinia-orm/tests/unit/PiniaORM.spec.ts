@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Model, useRepo } from '../../src'
-import { Attr, Str } from '../../src/decorators'
+import { Attr, BelongsTo, Num, Str } from '../../src/decorators'
 import { createPiniaORM } from '../helpers'
 import { WeakCache } from '../../src/cache/WeakCache'
 
@@ -134,5 +134,45 @@ describe('unit/PiniaORM', () => {
     })
 
     expect(user.$storeName()).toBe('otherOrm/users')
+  })
+
+  it('make is using the correct namespace', () => {
+    class User2 extends Model {
+      static entity = 'users'
+
+      static namespace = 'orm'
+
+      @Attr(0) declare id: number
+      @Str('') declare prename: string
+      @Num('') declare age: number
+    }
+
+    class User extends Model {
+      static entity = 'users'
+
+      static namespace = 'otherOrm'
+
+      @Attr(0) declare id: number
+      @Str('') declare name: string
+      @Str('') declare username: string
+      @Attr() declare user_id: number
+      @BelongsTo(() => User2, 'user_id') user: User2
+    }
+    createPiniaORM({ model: { namespace: 'orm' } })
+
+    const userRepo = useRepo(User)
+    const user = userRepo.make({
+      id: 1,
+      name: 'John',
+      username: 'JD',
+      user: {
+        prename: 'John Doe',
+        age: 30,
+      },
+    })
+
+    expect(user.$storeName()).toBe('otherOrm/users')
+    expect(user.user.$storeName()).toBe('orm/users')
+    expect(user.user.username).toBe(undefined)
   })
 })
