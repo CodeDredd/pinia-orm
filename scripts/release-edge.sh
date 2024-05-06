@@ -20,9 +20,6 @@ fi
 
 # Release packages
 for p in packages/* ; do
-  if [[ $p == "packages/nuxt" ]] ; then
-    continue
-  fi
   pushd $p
   echo "Publishing $p"
   cp ../../LICENSE .
