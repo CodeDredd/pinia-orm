@@ -1,4 +1,4 @@
-import type { Element, Model } from 'pinia-orm'
+import type { Element } from 'pinia-orm'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 export type PersistMethods = 'save' | 'insert'
@@ -14,7 +14,12 @@ export interface Config extends AxiosRequestConfig {
   save?: boolean
   persistBy?: PersistMethods
   persistOptions?: PersistOptions
-  delete?: string | number | ((model: Model) => boolean)
+  /**
+   * This tells the api to delete the record from the store after the call is finished.
+   *
+   *  It needs the `primaryKey` value (ID) of the entity as argument.
+   */
+  delete?: string | number
   actions?: {
     [name: string]: any
   }
