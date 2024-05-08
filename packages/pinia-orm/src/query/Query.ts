@@ -837,17 +837,17 @@ export class Query<M extends Model = Model> {
       const record = elements[id]
       const existing = currentData[id]
       let model = existing
-        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
+        ? Object.assign(this.hydrate(existing, { operation: 'set', action: 'update' }), record)
         : this.hydrate(record, { operation: 'set', action: 'save' })
 
-      const isSaving = model.$self().saving(model, existing ?? {})
-      const isUpdatingOrCreating = existing ? model.$self().updating(model, existing ?? {}) : model.$self().creating(model, existing ?? {})
+      const isSaving = model.$self().saving(model, record)
+      const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
       if (isSaving === false || isUpdatingOrCreating === false) { continue }
 
       if (model.$isDirty()) { model = this.hydrate(model.$getAttributes(), { operation: 'set', action: existing ? 'update' : 'save' }) }
 
-      afterSavingHooks.push(() => model.$self().saved(model, existing ?? {}))
-      afterSavingHooks.push(() => existing ? model.$self().updated(model, existing ?? {}) : model.$self().created(model, existing ?? {}))
+      afterSavingHooks.push(() => model.$self().saved(model, record))
+      afterSavingHooks.push(() => existing ? model.$self().updated(model, record) : model.$self().created(model, record))
       newData[id] = model.$getAttributes()
       if (Object.values(model.$types()).length > 0 && !newData[id][model.$typeKey()]) { newData[id][model.$typeKey()] = record[model.$typeKey()] }
     }
@@ -893,9 +893,11 @@ export class Query<M extends Model = Model> {
     if (isEmpty(models)) { return [] }
 
     const newModels = models.map((model) => {
-      const newModel = this.hydrate({ ...model.$getAttributes(), ...record }, { action: 'update', operation: 'set' })
-      if (model.$self().updating(model, record) === false) { return model }
-      newModel.$self().updated(newModel)
+      const oldModelUpdate = Object.assign(this.hydrate(model.$getAttributes(), { action: 'update', operation: 'set' }), record)
+      if (model.$self().updating(oldModelUpdate, record) === false) { return model }
+
+      const newModel = oldModelUpdate.$isDirty() ? this.hydrate({ ...model.$getAttributes(), ...record }, { action: 'update', operation: 'set' }) : oldModelUpdate
+      newModel.$self().updated(newModel, record)
       return newModel
     })
 

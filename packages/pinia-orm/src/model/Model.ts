@@ -799,7 +799,7 @@ export class Model {
     return this
   }
 
-  protected $fillMeta (action = 'save') {
+  public $fillMeta (action = 'save') {
     const timestamp = Math.floor(Date.now() / 1000)
     if (action === 'save') {
       // @ts-expect-error Setting an object

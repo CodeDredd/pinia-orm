@@ -46,14 +46,32 @@ describe('performance/prevent_rerender_of_child_components', () => {
         })
       }
 
+      const updatePost = () => {
+        postRepo.where('id', 1).update({
+          id: 1,
+          title: `Test 1001`,
+        })
+      }
+
+      const savePost = () => {
+        postRepo.save({
+          id: 1,
+          title: `Test 1111`,
+        })
+      }
+
       return {
         posts,
         addPost,
+        updatePost,
+        savePost,
       }
     },
     template: `
     <div>
-    <button @click="addPost" > Click me </button>
+    <button id='insert' @click="addPost" > Click me </button>
+    <button id='update' @click="updatePost" > Update 1 </button>
+    <button id='save' @click="savePost" > Update 2 </button>
     <post-component v-for="post in posts" :post="post" :key="post.id" />
     </div>`,
   })
@@ -80,11 +98,11 @@ describe('performance/prevent_rerender_of_child_components', () => {
 
     const logger = vi.spyOn(console, 'warn')
 
-    await wrapper.find('button').trigger('click')
+    await wrapper.find('button#insert').trigger('click')
     await nextTick()
-    await wrapper.find('button').trigger('click')
+    await wrapper.find('button#insert').trigger('click')
     await nextTick()
-    await wrapper.find('button').trigger('click')
+    await wrapper.find('button#insert').trigger('click')
     await nextTick()
 
     expect(wrapper.html()).toContain('Test 1')
@@ -93,5 +111,11 @@ describe('performance/prevent_rerender_of_child_components', () => {
     expect(wrapper.html()).toContain('Test 13')
 
     expect(logger).not.toBeCalled()
+
+    await wrapper.find('button#update').trigger('click')
+    await nextTick()
+
+    await wrapper.find('button#save').trigger('click')
+    await nextTick()
   })
 })

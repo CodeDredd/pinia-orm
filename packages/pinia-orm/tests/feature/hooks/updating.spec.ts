@@ -49,6 +49,7 @@ describe('feature/hooks/updating', () => {
       @Num(0) age!: number
 
       static updating (model: Model) {
+        expect(model.$isDirty()).toBe(true)
         model.name = 'John'
       }
     }
@@ -83,7 +84,7 @@ describe('feature/hooks/updating', () => {
     })
   })
 
-  it('is stopping record to be saved', () => {
+  it('is not dirty if same value is set', () => {
     class User extends Model {
       static entity = 'users'
 
@@ -92,7 +93,40 @@ describe('feature/hooks/updating', () => {
       @Num(0) age!: number
 
       static updating (model: Model) {
+        expect(model.$isDirty()).toBe(false)
         model.name = 'John'
+      }
+    }
+
+    const updatingMethod = vi.spyOn(User, 'updating')
+
+    fillState({
+      users: {
+        1: { id: 1, name: 'John Doe', age: 10 },
+        2: { id: 2, name: 'John Doe', age: 10 },
+      },
+    })
+    useRepo(User).where('id', 1).update({ age: 10 })
+
+    expect(updatingMethod).toHaveBeenCalledTimes(1)
+
+    assertState({
+      users: {
+        1: { id: 1, name: 'John Doe', age: 10 },
+        2: { id: 2, name: 'John Doe', age: 10 },
+      },
+    })
+  })
+
+  it('is stopping record to be saved', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Num(0) id!: number
+      @Str('') name!: string
+      @Num(0) age!: number
+
+      static updating () {
         return false
       }
     }
@@ -108,6 +142,10 @@ describe('feature/hooks/updating', () => {
     useRepo(User).save({ id: 1, name: 'John Doe', age: 30 })
 
     expect(updatingMethod).toHaveBeenCalledOnce()
+
+    useRepo(User).where('id', 1).update({ name: 'John Doe', age: 30 })
+
+    expect(updatingMethod).toHaveBeenCalled(2)
 
     assertState({
       users: {

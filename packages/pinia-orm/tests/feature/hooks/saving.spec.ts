@@ -1,6 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import type { Element } from '../../../src'
 import { BelongsTo as BelongsToClass, Model, useRepo } from '../../../src'
 import { Attr, BelongsTo, Num, Str, Uid } from '../../../src/decorators'
 import { assertState, mockUid } from '../../helpers'
@@ -38,11 +37,10 @@ describe('feature/hooks/saving', () => {
       @Num(0) declare age: number
       @BelongsTo(() => Post, 'postId') declare post: User | null
 
-      static saving (model: Model, record?: Element) {
-        expect(model.name).not.toBe(record.name)
+      static saving (model: User) {
         const fields = model.$fields()
         for (const name in fields) {
-          if (fields[name] instanceof BelongsToClass && record && record.name === 'John Doe') { model[(fields[name] as BelongsToClass).foreignKey] = null }
+          if (fields[name] instanceof BelongsToClass && model.name === 'John') { model[(fields[name] as BelongsToClass).foreignKey] = null }
         }
       }
     }
