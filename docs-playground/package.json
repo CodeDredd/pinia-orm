@@ -14,12 +14,12 @@
     "enableNonBrowserBranches": true
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.7",
+    "@antfu/utils": "^0.7.8",
     "@headlessui/vue": "^1.7.21",
     "@types/splitpanes": "^2.2.6",
-    "@vue/runtime-core": "^3.4.26",
-    "@vue/runtime-dom": "^3.4.26",
-    "@vue/shared": "^3.4.26",
+    "@vue/runtime-core": "^3.4.27",
+    "@vue/runtime-dom": "^3.4.27",
+    "@vue/shared": "^3.4.27",
     "@vueuse/core": "10.9.0",
     "@vueuse/integrations": "^10.9.0",
     "@vueuse/shared": "10.9.0",
@@ -33,15 +33,15 @@
     "splitpanes": "^3.1.5",
     "theme-vitesse": "^0.7.9",
     "vscode-html-languageservice": "^5.2.0",
-    "vue": "^3.4.26"
+    "vue": "^3.4.27"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.16.1",
+    "@antfu/eslint-config": "^2.16.3",
     "@iconify/json": "^2.2.207",
     "@types/file-saver": "^2.0.7",
-    "@types/node": "^20.12.9",
+    "@types/node": "^20.12.10",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vue/compiler-sfc": "^3.4.26",
+    "@vue/compiler-sfc": "^3.4.27",
     "eslint": "^9.2.0",
     "typescript": "^5.4.5",
     "unplugin-icons": "^0.19.0",
