@@ -3,7 +3,7 @@
 set -e
 
 # Restore all git changes
-git restore -s@ -SW  -- packages examples
+git restore -s@ -SW  -- packages
 
 # Build all once to ensure things are nice
 pnpm build
@@ -14,7 +14,6 @@ for PKG in packages/* ; do
   TAG="latest"
   echo "⚡ Publishing $PKG with tag $TAG"
   cp ../../LICENSE .
-  cp ../../README.md .
   pnpm publish --access public --no-git-checks --tag $TAG
   popd > /dev/null
 done
