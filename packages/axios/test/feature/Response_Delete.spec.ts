@@ -55,7 +55,7 @@ describe('Feature - Response - Save', () => {
 
     try {
       await response.delete()
-    } catch (e) {
+    } catch (e: any) {
       expect(e.message).toBe(
         '[Pinia ORM Axios] Could not delete records because the `delete` option is not set.',
       )
