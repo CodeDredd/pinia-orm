@@ -35,7 +35,7 @@ async function main () {
   }
 
   // Get the current PR for this release, if it exists
-  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)
+  const currentPR = (await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)).find(pull => pull.title === newVersion)
   const contributors = await getContributors()
 
   console.info('New Version ', newVersion)
