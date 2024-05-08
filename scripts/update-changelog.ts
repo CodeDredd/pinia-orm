@@ -35,9 +35,11 @@ async function main () {
   }
 
   // Get the current PR for this release, if it exists
-  const currentPR = (await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)).find(pull => pull.title === newVersion)
+  const currentPRFetch = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)
+  const currentPR = currentPRFetch.data.find(pull => pull.title === newVersion)
   const contributors = await getContributors()
 
+  console.log('CurrentPR', currentPR)
   console.info('New Version ', newVersion)
 
   const releaseNotes = [
@@ -50,8 +52,6 @@ async function main () {
     '### ❤️ Contributors',
     contributors.map(c => `- ${c.name} (@${c.username})`).join('\n'),
   ].join('\n')
-
-  console.info('Release notes', releaseNotes)
 
   // Create a PR with release notes if none exists
   if (!currentPR) {
