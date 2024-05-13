@@ -5,7 +5,7 @@ import { Database } from '../database/Database'
 import type { Constructor } from '../types'
 import { registerPlugins } from '../store/Plugins'
 
-export function useRepo<R extends Repository> (
+export function useRepo<R extends Repository<any>> (
   repository: R | Constructor<R>,
   pinia?: Pinia,
 ): R
