@@ -109,7 +109,7 @@ export class BelongsToMany extends Relation {
 
         if (!pivot) { return }
 
-        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson())
+        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
         relatedModelCopy.$setRelation('pivot', pivot)
         relationResults.push(relatedModelCopy)
       })
