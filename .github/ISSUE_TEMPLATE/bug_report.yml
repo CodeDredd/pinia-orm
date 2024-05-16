@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Please use a template below to create a minimal reproduction
-        👉 https://pinia-orm-play.codedredd.de/ (pinia-orm playground, pick this if you are not using nuxt) 
+        👉 https://pinia-orm-play.codedredd.de/ (pinia-orm playground, pick this if you are not using nuxt)
         👉 https://stackblitz.com/github/nuxt/starter/tree/v3-stackblitzk (basic nuxt on stackblitz)
         👉 https://codesandbox.io/s/github/nuxt/starter/tree/v3-codesandbox (basic nuxt on codesandbox)
   - type: textarea
@@ -16,7 +16,7 @@ body:
       description: Put *playground* when in the playground. Otherwise you could use `npx nuxi info` for nuxt to fill this section.
       placeholder: Environment
     validations:
-      required: false 
+      required: false
   - type: textarea
     id: reproduction
     attributes:
@@ -44,4 +44,4 @@ body:
       label: Logs
       description: |
         Optional if provided reproduction. Please try not to insert an image but copy paste the log text.
-      render: shell
+      render: shell-script
