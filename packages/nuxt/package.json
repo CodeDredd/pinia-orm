@@ -46,8 +46,8 @@
     "pinia-orm": "workspace:*"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.2.0",
-    "@nuxt/eslint-config": "^0.3.10",
+    "@nuxt/devtools": "^1.3.1",
+    "@nuxt/eslint-config": "^0.3.12",
     "@nuxt/module-builder": "^0.6.0",
     "@nuxt/schema": "^3.11.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
