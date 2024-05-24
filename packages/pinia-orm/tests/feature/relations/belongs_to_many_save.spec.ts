@@ -119,7 +119,7 @@ describe('feature/relations/belongs_to_many_save', () => {
           id: this.number(0),
           name: this.string(null),
           retailers: this.belongsToMany(Client, ClientRetailer, 'supplierId', 'retailerId'),
-          suppliers: this.belongsToMany(Client, ClientRetailer,  'retailerId', 'supplierId'),
+          suppliers: this.belongsToMany(Client, ClientRetailer, 'retailerId', 'supplierId'),
         }
       }
     }
@@ -128,76 +128,76 @@ describe('feature/relations/belongs_to_many_save', () => {
     clientRepo.save([
       {
         id: 1,
-        name: "Client 1",
+        name: 'Client 1',
         retailers: [
           {
             id: 4,
             pivot: {
-              retailerCode: '401'
-            }
+              retailerCode: '401',
+            },
           },
           {
             id: 5,
             pivot: {
-              retailerCode: '501'
-            }
-          }
-        ]
+              retailerCode: '501',
+            },
+          },
+        ],
       },
       {
         id: 2,
-        name: "Client 2",
+        name: 'Client 2',
         retailers: [
           {
             id: 3,
             pivot: {
-              retailerCode: '302'
-            }
+              retailerCode: '302',
+            },
           },
           {
             id: 5,
             pivot: {
-              retailerCode: '502'
-            }
-          }
-        ]
+              retailerCode: '502',
+            },
+          },
+        ],
       },
       {
         id: 3,
-        name: "Client 3"
+        name: 'Client 3',
       },
       {
         id: 4,
-        name: "Client 4",
+        name: 'Client 4',
         retailers: [
           {
             id: 1,
             pivot: {
-              retailerCode: '104'
-            }
+              retailerCode: '104',
+            },
           },
           {
             id: 5,
             pivot: {
-              retailerCode: '504'
-            }
-          }
-        ]
+              retailerCode: '504',
+            },
+          },
+        ],
       },
       {
         id: 5,
-        name: "Client 5"
+        name: 'Client 5',
       },
     ])
 
     assertState({
       client_retailers: {
-        "[1,4]": { "supplierId": 4, "retailerId": 1, "retailerCode": "104" },
-        "[3,2]": { "supplierId": 2, "retailerId": 3, "retailerCode": "302" },
-        "[5,2]": { "supplierId": 2, "retailerId": 5, "retailerCode": "502" },
-        "[4,1]": { "supplierId": 1, "retailerId": 4, "retailerCode": "401" },
-        "[5,4]": { "supplierId": 4, "retailerId": 5, "retailerCode": "504" },
-        "[5,1]": { "supplierId": 1, "retailerId": 5, "retailerCode": "501" },
+        '[1,4]': { 'supplierId': 4, 'retailerId': 1, 'retailerCode': '104' },
+        '[3,2]': { 'supplierId': 2, 'retailerId': 3, 'retailerCode': '302' },
+        '[5,2]': { 'supplierId': 2, 'retailerId': 5, 'retailerCode': '502' },
+        '[4,1]': { 'supplierId': 1, 'retailerId': 4, 'retailerCode': '401' },
+        '[5,4]': { 'supplierId': 4, 'retailerId': 5, 'retailerCode': '504' },
+        '[5,1]': { 'supplierId': 1, 'retailerId': 5, 'retailerCode': '501' },
 
       },
       clients: {

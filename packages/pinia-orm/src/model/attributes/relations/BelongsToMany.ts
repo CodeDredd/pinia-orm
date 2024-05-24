@@ -80,6 +80,7 @@ export class BelongsToMany extends Relation {
     pivot[this.relatedPivotKey] = child[this.relatedKey]
     child[`pivot_${this.relatedPivotKey}_${this.pivot.$entity()}`] = pivot
   }
+
   /**
    * Convert given value to the appropriate value for the attribute.
    */
