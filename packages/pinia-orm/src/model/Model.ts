@@ -395,7 +395,7 @@ export class Model {
     parentKey = parentKey ?? model.$getLocalKey()
     relatedKey = relatedKey ?? instance.$getLocalKey()
 
-    this.schemas[related.entity][`pivot_${pivotInstance.$entity()}`] = new HasOne(instance, pivotInstance, relatedPivotKey, relatedKey)
+    this.schemas[related.entity][`pivot_${relatedPivotKey}_${pivotInstance.$entity()}`] = new HasOne(instance, pivotInstance, relatedPivotKey, relatedKey)
 
     return new BelongsToMany(
       model,
@@ -427,7 +427,7 @@ export class Model {
     parentKey = parentKey ?? model.$getLocalKey()
     relatedKey = relatedKey ?? instance.$getLocalKey()
 
-    this.schemas[related.entity][`pivot_${pivotInstance.$entity()}`] = new MorphOne(instance, pivotInstance, relatedId, model.$entity(), relatedKey)
+    this.schemas[related.entity][`pivot_${relatedId}_${pivotInstance.$entity()}`] = new MorphOne(instance, pivotInstance, relatedId, model.$entity(), relatedKey)
 
     return new MorphToMany(
       model,

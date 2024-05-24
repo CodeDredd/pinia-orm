@@ -86,7 +86,7 @@ export class MorphToMany extends Relation {
     pivot[this.morphId] = record[this.parentKey]
     pivot[this.morphType] = this.parent.$entity()
     pivot[this.relatedId] = child[this.relatedKey]
-    child[`pivot_${this.pivot.$entity()}`] = pivot
+    child[`pivot_${this.relatedId}_${this.pivot.$entity()}`] = pivot
   }
 
   /**
