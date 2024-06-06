@@ -837,7 +837,7 @@ export class Query<M extends Model = Model> {
       const record = elements[id]
       const existing = currentData[id]
       let model = existing
-        ? Object.assign(this.hydrate(existing, { operation: 'set', action: 'update' }), record)
+        ? this.hydrate({ ...existing, ...record }, { operation: 'set', action: 'update' })
         : this.hydrate(record, { operation: 'set', action: 'save' })
 
       const isSaving = model.$self().saving(model, record)
