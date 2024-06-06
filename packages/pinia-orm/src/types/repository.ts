@@ -31,6 +31,5 @@ declare module '../repository/Repository' {
      */
     find (id: string | number): Item<M>
     find (ids: (string | number)[]): Collection<M>
-    find (ids: any): Item<any>
   }
 }
