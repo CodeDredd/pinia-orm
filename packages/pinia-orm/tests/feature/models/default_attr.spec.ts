@@ -13,7 +13,7 @@ describe('feature/model/default_attr', () => {
           str: this.string(''),
           num: this.number(0),
           bool: this.boolean(false),
-          parameters: this.attr({}),
+          parameters: this.attr(() => ({})),
         }
       }
 
@@ -21,9 +21,10 @@ describe('feature/model/default_attr', () => {
       str!: string
       num!: number
       bool!: boolean
-      parameters!: any;
+      parameters!: any
     }
 
+    console.log('New User 1')
     const user = new User({
       str: 'string',
       num: 1,
@@ -39,8 +40,7 @@ describe('feature/model/default_attr', () => {
     expect(user.bool).toBe(true)
     expect(user.parameters).toEqual({ a: 1 })
 
-
-
+    console.log('New User 2')
     const user2 = new User({
       str: 'string',
       num: 1,
