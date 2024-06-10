@@ -40,7 +40,6 @@ describe('feature/model/default_attr', () => {
     expect(user.bool).toBe(true)
     expect(user.parameters).toEqual({ a: 1 })
 
-    console.log('New User 2')
     const user2 = new User({
       str: 'string',
       num: 1,
@@ -51,7 +50,6 @@ describe('feature/model/default_attr', () => {
     expect(user2.str).toBe('string')
     expect(user2.num).toBe(1)
     expect(user2.bool).toBe(true)
-    // The default value should not be modified
     expect(user2.parameters).toEqual({})
   })
 })

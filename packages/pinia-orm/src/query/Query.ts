@@ -803,7 +803,7 @@ export class Query<M extends Model = Model> {
 
       records.forEach((record: Element) => {
         const recordType = (modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) || isChildEntity)
-          ? record[this.model.$typeKey()] ?? (this.model.$fields()[this.model.$typeKey()] as Type).value
+          ? record[this.model.$typeKey()] ?? (this.model.$fields()[this.model.$typeKey()] as Type).defaultValue
           : modelTypesKeys[0]
         if (!recordsByTypes[recordType]) { recordsByTypes[recordType] = [] }
         recordsByTypes[recordType].push(record)
