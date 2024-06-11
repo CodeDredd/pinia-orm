@@ -5,9 +5,9 @@ export type TypeDefault<T> = T | null | (() => T | null)
 
 export abstract class Type extends Attribute {
   /**
-   * The default value for the attribute.
+   * The raw default value for the attribute (can be a function).
    */
-  value: any
+  rawDefaultValue: any
 
   /**
    * Whether the attribute accepts `null` value or not.
@@ -17,9 +17,16 @@ export abstract class Type extends Attribute {
   /**
    * Create a new Type attribute instance.
    */
-  constructor (model: Model, value: TypeDefault<any> = null) {
+  constructor (model: Model, defaultValue: TypeDefault<any> = null) {
     super(model)
-    this.value = typeof value === 'function' ? value() : value
+    this.rawDefaultValue = defaultValue
+  }
+
+  /**
+   * The computed default value of the attribute.
+   */
+  get defaultValue (): any {
+    return typeof this.rawDefaultValue === 'function' ? this.rawDefaultValue() : this.rawDefaultValue
   }
 
   /**
@@ -31,7 +38,7 @@ export abstract class Type extends Attribute {
   }
 
   protected makeReturn<T> (type: 'boolean' | 'number' | 'string', value: any): T {
-    if (value === undefined) { return this.value }
+    if (value === undefined) { return this.defaultValue }
 
     if (value === null) {
       if (!this.isNullable) { this.throwWarning(['is set as non nullable!']) }
