@@ -54,25 +54,25 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "axios": ">=1.6.8",
-    "pinia-orm": ">=1.9.0",
+    "axios": ">=1.7.2",
+    "pinia-orm": ">=1.9.1",
     "pinia": ">=2.1.7"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.3.12",
+    "@nuxt/eslint-config": "^0.3.13",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@size-limit/preset-small-lib": "^11.1.4",
     "@vitest/coverage-v8": "^1.6.0",
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
     "axios-mock-adapter": "^1.22.0",
-    "eslint": "^9.2.0",
+    "eslint": "^9.5.0",
     "pinia": "^2.1.7",
     "pinia-orm": "workspace:*",
     "size-limit": "^11.1.4",
     "typescript": "^5.4.5",
     "unbuild": "^2.0.0",
     "vitest": "^1.6.0",
-    "vue-demi": "^0.14.7"
+    "vue-demi": "^0.14.8"
   },
   "size-limit": [
     {
