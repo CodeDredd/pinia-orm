@@ -1066,12 +1066,10 @@ export class Model {
   /**
    * Serialize the given object to JSON.
    */
-  protected serializeObject (value: {
-    [index: string]: number | string
-  }): object {
+  protected serializeObject (value: any): object {
     const obj: { [index: string]: number | string } = {}
 
-    if (typeof value.serialize === 'function') {
+    if (value.serialize && typeof value.serialize === 'function') {
       return value.serialize(value)
     }
 
