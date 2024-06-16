@@ -787,7 +787,9 @@ export class Model {
 
       if (mutator && typeof mutator !== 'function' && operation === 'set' && mutator.set) { keyValue = mutator.set(keyValue) }
 
-      if (cast && operation === 'set') { keyValue = cast.set(keyValue) }
+      if (cast && operation === 'set') {
+        keyValue = options.action === 'update' ? cast.get(keyValue) : cast.set(keyValue)
+      }
 
       this[key as keyof this] = this[key as keyof this] ?? keyValue
     }
@@ -1069,7 +1071,13 @@ export class Model {
   }): object {
     const obj: { [index: string]: number | string } = {}
 
-    for (const key in value) { obj[key] = this.serializeValue(value[key]) }
+    if (typeof value.serialize === 'function') {
+      return value.serialize(value)
+    }
+
+    for (const key in value) {
+      obj[key] = this.serializeValue(value[key])
+    }
 
     return obj
   }
