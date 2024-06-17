@@ -803,7 +803,7 @@ export class Query<M extends Model = Model> {
 
       records.forEach((record: Element) => {
         const recordType = (modelTypesKeys.includes(`${record[this.model.$typeKey()]}`) || isChildEntity)
-          ? record[this.model.$typeKey()] ?? (this.model.$fields()[this.model.$typeKey()] as Type).value
+          ? record[this.model.$typeKey()] ?? (this.model.$fields()[this.model.$typeKey()] as Type).defaultValue
           : modelTypesKeys[0]
         if (!recordsByTypes[recordType]) { recordsByTypes[recordType] = [] }
         recordsByTypes[recordType].push(record)
@@ -836,15 +836,14 @@ export class Query<M extends Model = Model> {
     for (const id in elements) {
       const record = elements[id]
       const existing = currentData[id]
-      let model = existing
+      let model: M = existing
         ? Object.assign(this.hydrate(existing, { operation: 'set', action: 'update' }), record)
         : this.hydrate(record, { operation: 'set', action: 'save' })
-
       const isSaving = model.$self().saving(model, record)
       const isUpdatingOrCreating = existing ? model.$self().updating(model, record) : model.$self().creating(model, record)
       if (isSaving === false || isUpdatingOrCreating === false) { continue }
 
-      if (model.$isDirty()) { model = this.hydrate(model.$getAttributes(), { operation: 'set', action: existing ? 'update' : 'save' }) }
+      if (model.$isDirty()) { model = this.hydrate(model.$getAttributes(), { operation: 'set', action: 'update' }) }
 
       afterSavingHooks.push(() => model.$self().saved(model, record))
       afterSavingHooks.push(() => existing ? model.$self().updated(model, record) : model.$self().created(model, record))
