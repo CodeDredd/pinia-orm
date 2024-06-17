@@ -57,6 +57,7 @@ export interface Repository<M extends Model = Model> {
   find (ids: (string | number)[]): Collection<M>
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class Repository<M extends Model = Model> {
   [index: string]: any
   /**
