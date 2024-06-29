@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Model, useRepo } from '../../src'
-import { Attr, BelongsTo, Num, Str } from '../../src/decorators'
+import { Attr, BelongsTo, BelongsToMany, Num, Str } from '../../src/decorators'
 import { createPiniaORM } from '../helpers'
 import { WeakCache } from '../../src/cache/WeakCache'
 
@@ -174,5 +174,64 @@ describe('unit/PiniaORM', () => {
     expect(user.$storeName()).toBe('otherOrm/users')
     expect(user.user.$storeName()).toBe('orm/users')
     expect(user.user.username).toBe(undefined)
+  })
+
+  it('saves correctly with belongsToMany with namespace', () => {
+    class BaseModel extends Model {
+      static entity: string
+      static namespace: string = 'orm'
+    }
+
+    class User extends BaseModel {
+      @Attr()
+      declare id: number
+
+      @Str(null)
+      declare name: string
+
+      @BelongsToMany(() => Role, () => UserRole, 'user_id', 'role_id')
+      declare roles: Role[] | null
+
+      static entity: string = 'users'
+    }
+
+    class Role extends BaseModel {
+      @Attr()
+      declare id: number
+
+      @Str(null)
+      declare name: string
+
+      static entity: string = 'roles'
+    }
+
+    class UserRole extends BaseModel {
+      @Attr()
+      declare user_id: number
+
+      @Attr()
+      declare role_id: number
+
+      static entity = 'user_roles'
+      static primaryKey = ['user_id', 'role_id']
+    }
+
+    createPiniaORM({ model: { namespace: 'orm' } })
+
+    const userData = new User({
+      id: 1,
+      name: 'Foo',
+      roles: [
+        { id: 1, name: 'Reader' },
+        { id: 2, name: 'Editor' },
+      ],
+    })
+
+    const userRepo = useRepo(User)
+    userRepo.save(userData)
+
+    const user = userRepo.with('roles').find(1)
+
+    expect(user?.roles?.length).toBe(2)
   })
 })

@@ -104,7 +104,7 @@ export class MorphToMany extends Relation {
   match (relation: string, models: Collection<any>, query: Query<any>): void {
     const relatedModels = query.get(false)
     const pivotModels = query
-      .newQuery(this.pivot.$entity())
+      .newQuery(this.pivot.$modelEntity())
       .whereIn(this.relatedId, this.getKeys(relatedModels, this.relatedKey))
       .whereIn(this.morphId, this.getKeys(models, this.parentKey))
       .groupBy(this.morphId, this.relatedId, this.morphType)
