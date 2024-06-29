@@ -96,7 +96,7 @@ export class BelongsToMany extends Relation {
   match (relation: string, models: Collection<any>, query: Query<any>): void {
     const relatedModels = query.get(false)
     const pivotModels = query
-      .newQuery(this.pivot.$entity())
+      .newQuery(this.pivot.$modelEntity())
       .whereIn(this.relatedPivotKey, this.getKeys(relatedModels, this.relatedKey))
       .whereIn(this.foreignPivotKey, this.getKeys(models, this.parentKey))
       .groupBy(this.foreignPivotKey, this.relatedPivotKey)
