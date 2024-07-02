@@ -65,11 +65,11 @@
     "@vitest/coverage-v8": "^1.6.0",
     "axios": "^1.7.2",
     "axios-mock-adapter": "^1.22.0",
-    "eslint": "^9.5.0",
+    "eslint": "^9.6.0",
     "pinia": "^2.1.7",
     "pinia-orm": "workspace:*",
     "size-limit": "^11.1.4",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.3",
     "unbuild": "^2.0.0",
     "vitest": "^1.6.0",
     "vue-demi": "^0.14.8"
