@@ -41,7 +41,7 @@
     "p-series": "^3.0.0",
     "pascalcase": "^2.0.0",
     "prettier": "^3.3.2",
-    "rimraf": "^5.0.7",
+    "rimraf": "^6.0.1",
     "semver": "^7.6.2",
     "sponsorkit": "^0.14.6",
     "typescript": "^5.5.3",
