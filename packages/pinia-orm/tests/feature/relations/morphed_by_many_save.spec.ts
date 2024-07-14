@@ -80,17 +80,17 @@ describe('feature/relations/morphed_by_many_save', () => {
     })
   })
 
-  // it('can insert a record with missing relational key', () => {
-  //   const usersRepo = useRepo(User)
-  //
-  //   usersRepo.save({
-  //     id: 1,
-  //   })
-  //
-  //   assertState({
-  //     users: {
-  //       1: { id: 1 },
-  //     },
-  //   })
-  // })
+  it('can insert a record with missing relational key', () => {
+    const tagRepo = useRepo(Tag)
+
+    tagRepo.save({
+      id: 1,
+    })
+
+    assertState({
+      tags: {
+        1: { id: 1 },
+      },
+    })
+  })
 })
