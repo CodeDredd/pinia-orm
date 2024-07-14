@@ -1,6 +1,6 @@
 ---
 title: 'morphedByMany()'
-description: 'Makes a "morphed by many" relation of the property. It's the inverse of `morphToMany`'
+description: 'Makes a "morphed by many" relation of the property. Its the inverse of `morphToMany`'
 ---
 
 # `morphedByMany`
