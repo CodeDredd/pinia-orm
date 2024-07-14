@@ -24,6 +24,7 @@ import type { TypeDefault } from './attributes/types/Type'
 import { HasManyThrough } from './attributes/relations/HasManyThrough'
 import { MorphToMany } from './attributes/relations/MorphToMany'
 import type { UidOptions } from './decorators/Contracts'
+import { MorphedByMany } from '@/model/attributes/relations/MorphedByMany'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -430,6 +431,39 @@ export class Model {
     this.schemas[related.modelEntity()][`pivot_${relatedId}_${pivotInstance.$entity()}`] = new MorphOne(instance, pivotInstance, relatedId, model.$entity(), relatedKey)
 
     return new MorphToMany(
+      model,
+      instance,
+      pivotInstance,
+      relatedId,
+      id,
+      type,
+      parentKey,
+      relatedKey,
+    )
+  }
+
+  /**
+   * Create a new MorphedByMany relation instance.
+   */
+  static morphedByMany (
+    related: typeof Model,
+    pivot: typeof Model,
+    relatedId: string,
+    id: string,
+    type: string,
+    parentKey?: string,
+    relatedKey?: string,
+  ): MorphToMany {
+    const instance = related.newRawInstance()
+    const model = this.newRawInstance()
+    const pivotInstance = pivot.newRawInstance()
+
+    parentKey = parentKey ?? model.$getLocalKey()
+    relatedKey = relatedKey ?? instance.$getLocalKey()
+
+    this.schemas[related.modelEntity()][`pivot_${relatedId}_${pivotInstance.$entity()}`] = new MorphOne(model, pivotInstance, id, type, relatedKey)
+
+    return new MorphedByMany(
       model,
       instance,
       pivotInstance,
