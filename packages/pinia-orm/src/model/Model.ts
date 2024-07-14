@@ -24,7 +24,7 @@ import type { TypeDefault } from './attributes/types/Type'
 import { HasManyThrough } from './attributes/relations/HasManyThrough'
 import { MorphToMany } from './attributes/relations/MorphToMany'
 import type { UidOptions } from './decorators/Contracts'
-import { MorphedByMany } from '@/model/attributes/relations/MorphedByMany'
+import { MorphedByMany } from './attributes/relations/MorphedByMany'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
