@@ -7,7 +7,7 @@ import {
   HasManyBy,
   HasManyThrough, HasOne,
   MorphMany,
-  MorphOne, MorphTo, MorphToMany, Num, Str,
+  MorphOne, MorphTo, MorphToMany, MorphedByMany, Num, Str,
 } from '../../../src/decorators'
 
 describe('unit/model/Model_Relations', () => {
@@ -21,12 +21,15 @@ describe('unit/model/Model_Relations', () => {
   class Tag extends Model {
     static entity = 'tags'
 
+    @MorphedByMany(() => User, () => Taggable, 'tagId', 'taggableId', 'taggableType')
+    declare users: User[]
+
     @Attr() declare id: number
   }
   class Taggable extends Model {
     static entity = 'taggables'
 
-    static primaryKey = ['tagId', 'commentableId', 'commentableType']
+    static primaryKey = ['tagId', 'taggableId', 'taggableType']
 
     @Attr('') declare tagId: number
     @Attr(null) declare taggableId: number | null
@@ -264,5 +267,19 @@ describe('unit/model/Model_Relations', () => {
     expect(user.tags[1]).toBeInstanceOf(Tag)
     expect(user.tags[0].id).toBe(2)
     expect(user.tags[1].id).toBe(3)
+  })
+
+  it('fills "morphed by many" relation', () => {
+    const tagRepo = useRepo(Tag)
+
+    const user = tagRepo.make({
+      id: 1,
+      users: [{ id: 2 }, { id: 3 }],
+    })
+
+    expect(user.users[0]).toBeInstanceOf(User)
+    expect(user.users[1]).toBeInstanceOf(User)
+    expect(user.users[0].id).toBe(2)
+    expect(user.users[1].id).toBe(3)
   })
 })
