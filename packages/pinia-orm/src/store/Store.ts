@@ -20,6 +20,7 @@ export interface CacheConfigOptions {
 export interface InstallOptions {
   model?: ModelConfigOptions
   cache?: CacheConfigOptions | boolean
+  plugins?: PiniaOrmPlugin[]
 }
 
 export interface FilledInstallOptions {
@@ -37,13 +38,9 @@ export interface CreatePiniaOrm {
 export function createORM (options?: InstallOptions): PiniaPlugin {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
   config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
-  const orm = () => {
-    function use (plugin: PiniaOrmPlugin) {
-      plugins.push(plugin)
-    }
-    return {
-      use,
-    }
+
+  if (options?.plugins) {
+    options.plugins.forEach(plugin => plugins.push(plugin))
   }
-  return orm
+  return () => {}
 }

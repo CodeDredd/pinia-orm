@@ -385,6 +385,9 @@ importers:
 
   playgrounds/nuxt3:
     dependencies:
+      axios:
+        specifier: ^1.7.2
+        version: 1.7.2
       nanoid:
         specifier: ^4.0.0
         version: 4.0.2
@@ -392,9 +395,12 @@ importers:
         specifier: ^8.3.2
         version: 8.3.2
     devDependencies:
+      '@pinia-orm/axios':
+        specifier: workspace:*
+        version: link:../../packages/axios
       '@pinia-orm/nuxt':
-        specifier: ^1.7.0
-        version: 1.7.0(@pinia/nuxt@0.5.1(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(magicast@0.3.4)(rollup@4.14.0)(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))(magicast@0.3.4)(pinia@2.1.7(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))(rollup@4.14.0)
+        specifier: workspace:*
+        version: link:../../packages/nuxt
       '@pinia/nuxt':
         specifier: ^0.5.1
         version: 0.5.1(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(magicast@0.3.4)(rollup@4.14.0)(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3))
@@ -13996,17 +14002,6 @@ snapshots:
       - rollup
       - supports-color
 
-  '@pinia-orm/nuxt@1.7.0(@pinia/nuxt@0.5.1(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(magicast@0.3.4)(rollup@4.14.0)(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))(magicast@0.3.4)(pinia@2.1.7(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))(rollup@4.14.0)':
-    dependencies:
-      '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.14.0)
-      '@pinia/nuxt': 0.5.1(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(magicast@0.3.4)(rollup@4.14.0)(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3))
-      pinia-orm: 1.7.2(pinia@2.1.7(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
-    transitivePeerDependencies:
-      - magicast
-      - pinia
-      - rollup
-      - supports-color
-
   '@pinia/nuxt@0.2.1(@vue/composition-api@1.7.2(vue@2.7.16))(pinia@2.1.7(@vue/composition-api@1.7.2(vue@2.7.16))(typescript@4.2.4)(vue@2.7.16))(vue@2.7.16)':
     dependencies:
       pinia: 2.1.7(@vue/composition-api@1.7.2(vue@2.7.16))(typescript@4.2.4)(vue@2.7.16)
@@ -20929,11 +20924,6 @@ snapshots:
     dependencies:
       '@pinia-orm/normalizr': 1.9.1
       pinia: 2.1.7(@vue/composition-api@1.7.2(vue@2.7.16))(typescript@4.2.4)(vue@2.7.16)
-
-  pinia-orm@1.7.2(pinia@2.1.7(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3))):
-    dependencies:
-      '@pinia-orm/normalizr': 1.9.1
-      pinia: 2.1.7(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3))
 
   pinia@2.1.7(@vue/composition-api@1.7.2(vue@2.7.16))(typescript@4.2.4)(vue@2.7.16):
     dependencies:
