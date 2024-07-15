@@ -1,4 +1,4 @@
-import { defineConfig, presets } from 'sponsorkit'
+import { defineConfig, tierPresets } from 'sponsorkit'
 
 export default defineConfig({
   // Providers configs
@@ -76,7 +76,7 @@ export default defineConfig({
     {
       title: 'Past Sponsors',
       monthlyDollars: -1,
-      preset: presets.xs,
+      preset: tierPresets.xs,
       // to insert custom elements after the tier block
       composeAfter: (composer, _tierSponsors, _config) => {
         composer.addSpan(10)
@@ -86,22 +86,22 @@ export default defineConfig({
     {
       title: 'Backers',
       monthlyDollars: 0,
-      preset: presets.base,
+      preset: tierPresets.base,
     },
     {
       title: 'Bronze Sponsors',
       monthlyDollars: 5,
-      preset: presets.base,
+      preset: tierPresets.base,
     },
     {
       title: 'Silver Sponsors',
       monthlyDollars: 16,
-      preset: presets.medium,
+      preset: tierPresets.medium,
     },
     {
       title: 'Gold Sponsors',
       monthlyDollars: 100,
-      preset: presets.xl,
+      preset: tierPresets.xl,
     },
   ],
 })
