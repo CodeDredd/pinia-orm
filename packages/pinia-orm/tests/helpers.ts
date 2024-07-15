@@ -18,10 +18,7 @@ interface Entities {
 export function createPiniaORM (options?: InstallOptions, plugins?: PiniaOrmPlugin[]) {
   const app = createApp({})
   const pinia = createPinia()
-  const piniaOrm = createORM(options)
-  if (plugins) {
-    plugins.forEach(plugin => piniaOrm().use(plugin))
-  }
+  const piniaOrm = createORM({ ...options, plugins })
   pinia.use(piniaOrm)
   app.use(pinia)
   setActivePinia(pinia)
