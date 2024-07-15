@@ -8,13 +8,15 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@pinia-orm/nuxt": "^1.7.0",
+    "@pinia-orm/axios": "workspace:*",
+    "@pinia-orm/nuxt": "workspace:*",
     "@pinia/nuxt": "^0.5.1",
     "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
     "pinia-orm": "workspace:*"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "nanoid": "^4.0.0",
     "uuid": "^8.3.2"
   }

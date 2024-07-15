@@ -16,10 +16,13 @@ beforeAll(() => {
 beforeEach(() => {
   const app = createApp({})
   const pinia = createPinia()
-  const piniaOrm = createORM()
-  piniaOrm().use(createPiniaOrmAxios({
-    axios,
-  }))
+  const piniaOrm = createORM({
+    plugins: [
+      createPiniaOrmAxios({
+        axios,
+      }),
+    ],
+  })
   pinia.use(piniaOrm)
   app.use(pinia)
   setActivePinia(pinia)
