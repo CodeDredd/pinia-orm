@@ -34,6 +34,7 @@ export class Request {
    * Get the axios client.
    */
   get axios (): AxiosInstance {
+    this.repository.axios = this.repository.axios ?? this.repository.config.axiosApi.axios
     if (!this.repository.axios) {
       throw new Error(
         '[Pinia ORM Axios] The axios instance is not registered. Please register the axios instance to the repository.',
