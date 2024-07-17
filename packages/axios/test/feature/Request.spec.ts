@@ -218,6 +218,7 @@ describe('Feature - Request', () => {
 
   it('throws error if `axios` is not set', () => {
     const userStore = useAxiosRepo(User).setAxios(null)
+    userStore.config.axiosApi.axios = null
 
     try {
       const axios = userStore.api().axios
