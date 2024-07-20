@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, BelongsTo, Str } from '../../../src/decorators'
+import { getActivePinia } from 'pinia'
 
 describe('feature/relations/belongs_to_retrieve_composite', () => {
   Model.clearRegistries()
@@ -46,6 +47,34 @@ describe('feature/relations/belongs_to_retrieve_composite', () => {
       title: 'Title 01',
       author: { id: 1, secondId: 1, name: 'John Doe' },
     })
+  })
+
+  it('can eager load belongs to relation for many', () => {
+    const userRepo = useRepo(User)
+    const postsRepo = useRepo(Post)
+
+    userRepo.save({ id: 1, secondId: 1, name: 'John Doe' })
+    userRepo.save({ id: 1, secondId: 2, name: 'Jane Doe' })
+    postsRepo.save({ id: 1, userId: 1, userSecondId: 1, title: 'Title 01' })
+    postsRepo.save({ id: 2, userId: 1, userSecondId: 2, title: 'Title 02' })
+
+    console.log(getActivePinia().state.value)
+
+    const posts = postsRepo.with('author').orderBy('id').get()
+
+    expect(posts).toEqual([{
+      id: 1,
+      userId: 1,
+      userSecondId: 1,
+      title: 'Title 01',
+      author: { id: 1, secondId: 1, name: 'John Doe' },
+      }, {
+      id: 2,
+        userId: 1,
+        userSecondId: 2,
+        title: 'Title 02',
+        author: { id: 1, secondId: 2, name: 'Jane Doe' },
+    }])
   })
 
   it('can eager load missing relation as `null`', () => {

@@ -4,6 +4,7 @@ import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
 import type { Model, PrimaryKey } from '../../Model'
 import { Relation } from './Relation'
+import { isArray } from '@/support/Utils'
 
 export class BelongsTo extends Relation {
   /**
@@ -96,8 +97,7 @@ export class BelongsTo extends Relation {
     const dictionary = this.buildDictionary(query.get(false))
 
     models.forEach((model) => {
-      const key = model[this.getKey(this.foreignKey)]
-
+      const key = this.getResolvedKey(model, this.foreignKey)
       dictionary[key]
         ? model.$setRelation(relation, dictionary[key])
         : model.$setRelation(relation, null)
@@ -109,7 +109,7 @@ export class BelongsTo extends Relation {
    */
   protected buildDictionary (models: Collection<any>): Record<string, Model> {
     return models.reduce<Record<string, Model>>((dictionary, model) => {
-      dictionary[model[this.getKey(this.ownerKey)]] = model
+      dictionary[this.getResolvedKey(model, this.ownerKey)] = model
 
       return dictionary
     }, {})
