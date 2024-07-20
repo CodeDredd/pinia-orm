@@ -65,12 +65,12 @@ describe('feature/relations/belongs_to_retrieve_composite', () => {
       userSecondId: 1,
       title: 'Title 01',
       author: { id: 1, secondId: 1, name: 'John Doe' },
-      }, {
+    }, {
       id: 2,
-        userId: 1,
-        userSecondId: 2,
-        title: 'Title 02',
-        author: { id: 1, secondId: 2, name: 'Jane Doe' },
+      userId: 1,
+      userSecondId: 2,
+      title: 'Title 02',
+      author: { id: 1, secondId: 2, name: 'Jane Doe' },
     }])
   })
 

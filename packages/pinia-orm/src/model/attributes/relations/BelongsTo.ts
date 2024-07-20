@@ -4,7 +4,6 @@ import type { Collection, Element } from '../../../data/Data'
 import type { Query } from '../../../query/Query'
 import type { Model, PrimaryKey } from '../../Model'
 import { Relation } from './Relation'
-import { isArray } from '@/support/Utils'
 
 export class BelongsTo extends Relation {
   /**
