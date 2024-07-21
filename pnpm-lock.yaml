@@ -207,8 +207,8 @@ importers:
   packages/pinia-orm:
     dependencies:
       '@pinia-orm/normalizr':
-        specifier: '>=1.9.1'
-        version: 1.9.1
+        specifier: workspace:*
+        version: link:../normalizr
     devDependencies:
       '@nuxt/eslint-config':
         specifier: ^0.3.13
