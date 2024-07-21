@@ -126,13 +126,6 @@ export abstract class Relation extends Attribute {
   }
 
   /**
-   * Generate the index key defined by the primary key or keys (composite)
-   */
-  protected getKey (key: PrimaryKey): string {
-    return isArray(key) ? `[${key.join(',')}]` : key
-  }
-
-  /**
    * Get the index key defined by the primary key or keys (composite)
    */
   protected getResolvedKey (model: Model, key: PrimaryKey): string {
