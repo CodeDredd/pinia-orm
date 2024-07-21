@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { ref } from 'vue-demi'
 import { Model, useRepo } from '../../src'
 import { Attr, BelongsTo, BelongsToMany, Num, Str } from '../../src/decorators'
 import { createPiniaORM } from '../helpers'
@@ -112,6 +113,31 @@ describe('unit/PiniaORM', () => {
     })
 
     expect(user.$storeName()).toBe('orm/users')
+  })
+
+  it('can use pinia setupStore', () => {
+    createPiniaORM({ pinia: { storeType: 'setupStore' } })
+    Model.clearRegistries()
+
+    class User extends Model {
+      static entity = 'users'
+
+      static piniaOptions = {
+        newData: ref('1'),
+      }
+
+      static piniaExtend = {
+        persist: true,
+      }
+
+      @Attr(0) declare id: number
+      @Str('') declare name: string
+      @Str('') declare username: string
+    }
+
+    const userRepo = useRepo(User)
+
+    expect(userRepo.piniaStore().newData).toBe('1')
   })
 
   it('can overwrite namespace for a model', () => {

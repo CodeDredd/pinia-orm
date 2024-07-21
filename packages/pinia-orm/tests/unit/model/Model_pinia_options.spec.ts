@@ -12,12 +12,16 @@ describe('unit/model/Model', () => {
     static piniaOptions = {
       persist: true,
     }
+
+    static piniaExtend = {
+      persist: true,
+    }
   }
 
   it('uses the pinia options in the store', () => {
     const user = new User({ id: 1, name: 'John Doe' })
-    user.$piniaOptions()
 
     expect(user.$piniaOptions()).toEqual({ persist: true })
+    expect(user.$piniaExtend()).toEqual({ persist: true })
   })
 })

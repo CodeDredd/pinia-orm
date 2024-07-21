@@ -58,3 +58,5 @@ export function useStoreActions (query?: Query) {
     },
   }
 }
+
+export type StoreActions = 'insert' | 'flush' | 'delete' | 'update' | 'destroy' | 'save' | 'fresh'

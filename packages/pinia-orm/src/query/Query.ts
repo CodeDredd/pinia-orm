@@ -23,6 +23,7 @@ import type { HasMany } from '../model/attributes/relations/HasMany'
 import type { MorphMany } from '../model/attributes/relations/MorphMany'
 import type { Type } from '../model/attributes/types/Type'
 import { BelongsToMany } from '../model/attributes/relations/BelongsToMany'
+import type { StoreActions } from '../composables/useStoreActions'
 import type {
   EagerLoad,
   EagerLoadConstraint,
@@ -165,14 +166,14 @@ export class Query<M extends Model = Model> {
   /**
    * Commit a store action and get the data
    */
-  protected commit (name: string, payload?: any) {
-    const store = useDataStore(this.model.$storeName(), this.model.$piniaOptions(), this)(this.pinia)
+  protected commit (name: StoreActions | 'all' | 'get', payload?: any) {
+    const store = useDataStore(this.model.$storeName(), this.model.$piniaOptions(), this.model.$piniaExtend(), this)(this.pinia)
 
     if (import.meta.hot) {
       import.meta.hot.accept(acceptHMRUpdate(store as DataStore, import.meta.hot))
     }
 
-    if (name && typeof store[name] === 'function') { store[name](payload, false) }
+    if (name && name !== 'all' && name !== 'get' && typeof store[name] === 'function') { store[name](payload, false) }
 
     if (this.cache && ['get', 'all', 'insert', 'flush', 'delete', 'update', 'destroy'].includes(name)) { this.cache.clear() }
 
