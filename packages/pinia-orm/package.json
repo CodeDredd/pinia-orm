@@ -59,7 +59,7 @@
     "pinia": "^2.1.7"
   },
   "dependencies": {
-    "@pinia-orm/normalizr": ">=1.9.1"
+    "@pinia-orm/normalizr": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.13",

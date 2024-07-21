@@ -9,7 +9,7 @@
     "module": "esnext",
     "allowJs": false,
     "isolatedModules": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "noUnusedParameters": true,
