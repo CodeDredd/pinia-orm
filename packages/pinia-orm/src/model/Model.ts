@@ -63,9 +63,6 @@ export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[
 // export type WithKeys<T> = { [P in keyof T]: T[P] extends Model[] ? P : never }[keyof T];
 
 export class Model {
-  // [s: keyof ModelFields]: any
-  pivot?: any
-
   declare _meta: undefined | MetaValues
   /**
    * The name of the model.
@@ -981,13 +978,9 @@ export class Model {
   /**
    * Set the given relationship on the model.
    */
-  $setRelation (relation: string, model: Model | Model[] | null): this {
-    if (relation.includes('pivot')) {
-      this.pivot = model
-      return this
-    }
+  $setRelation (relation: string, model: Model | Model[] | null, isPivot = false): this {
     // @ts-expect-error Setting model as field
-    if (this.$fields()[relation]) { this[relation as keyof this] = model }
+    if (this.$fields()[relation] || isPivot) { this[relation as keyof this] = model }
 
     return this
   }
