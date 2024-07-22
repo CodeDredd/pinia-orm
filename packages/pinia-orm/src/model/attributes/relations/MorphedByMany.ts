@@ -111,17 +111,13 @@ export class MorphedByMany extends Relation {
       .get<'group'>()
 
     models.forEach((parentModel) => {
-      const relationResults: Model[] = []
       const resultModelIds = this.getKeys(pivotModels[`[${parentModel[this.parentKey]},${this.related.$entity()}]`] ?? [], this.morphId)
       const relatedModelsFiltered = relatedModels.filter(filterdModel => resultModelIds.includes(filterdModel[this.relatedKey]))
 
-      relatedModelsFiltered.forEach((relatedModel) => {
-        const pivot = (pivotModels[`[${parentModel[this.parentKey]},${this.related.$entity()}]`] ?? []).find(pivotModel => pivotModel[this.morphId] === relatedModel[this.relatedKey]) ?? null
-        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
-        if (pivot) { relatedModelCopy.$setRelation(this.pivotKey, pivot, true) }
-        relationResults.push(relatedModelCopy)
-      })
-      parentModel.$setRelation(relation, relationResults)
+      const pivot = (pivotModels[`[${parentModel[this.parentKey]},${this.related.$entity()}]`] ?? [])?.[0] ?? null
+      if (pivot) { parentModel.$setRelation(this.pivotKey, pivot, true) }
+
+      parentModel.$setRelation(relation, relatedModelsFiltered)
     })
   }
 

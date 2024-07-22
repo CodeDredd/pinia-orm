@@ -10,7 +10,7 @@ describe('feature/relations/morph_to_many_retrieve', () => {
 
     @Attr() id!: number
     @Str('') name!: string
-    @MorphToMany(() => Tag, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
+    @MorphToMany(() => Tag, { as: 'userPivot', model: () => Taggable }, 'tag_id', 'taggable_id', 'taggable_type')
     declare tags: Tag[]
   }
 
@@ -28,6 +28,7 @@ describe('feature/relations/morph_to_many_retrieve', () => {
 
     @Attr() declare id: number
     declare pivot: Taggable
+    declare userPivot: Taggable
   }
 
   class Taggable extends Model {
@@ -70,7 +71,7 @@ describe('feature/relations/morph_to_many_retrieve', () => {
     assertInstanceOf(user!.tags, Tag)
 
     expect(user?.tags.length).toBe(2)
-    expect(user?.tags[0].pivot.level).toBe(1)
+    expect(user?.tags[0].userPivot.level).toBe(1)
     expect(video?.tags.length).toBe(1)
     expect(video?.tags[0].pivot.level).toBe(2)
 
@@ -105,13 +106,13 @@ describe('feature/relations/morph_to_many_retrieve', () => {
 
     expect(users[0].id).toBe(1)
     expect(users[0].tags[0].id).toBe(1)
-    expect(users[0].tags[0].pivot.tag_id).toBe(1)
-    expect(users[0].tags[0].pivot.taggable_id).toBe(1)
-    expect(users[0].tags[0].pivot.level).toBe(1)
+    expect(users[0].tags[0].userPivot.tag_id).toBe(1)
+    expect(users[0].tags[0].userPivot.taggable_id).toBe(1)
+    expect(users[0].tags[0].userPivot.level).toBe(1)
     expect(users[0].tags[1].id).toBe(2)
-    expect(users[0].tags[1].pivot.tag_id).toBe(2)
-    expect(users[0].tags[1].pivot.taggable_id).toBe(1)
-    expect(users[0].tags[1].pivot.level).toBe(null)
+    expect(users[0].tags[1].userPivot.tag_id).toBe(2)
+    expect(users[0].tags[1].userPivot.taggable_id).toBe(1)
+    expect(users[0].tags[1].userPivot.level).toBe(null)
 
     const videos = useRepo(Video).with('tags').get()
 
