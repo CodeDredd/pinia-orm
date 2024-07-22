@@ -6,7 +6,10 @@ import type { PropertyDecorator } from '../../Contracts'
  */
 export function MorphedByMany (
   related: () => typeof Model,
-  pivot: () => typeof Model,
+  pivot: (() => typeof Model) | {
+    as: string
+    model: () => typeof Model
+  },
   relatedId: string,
   id: string,
   type: string,
@@ -16,8 +19,10 @@ export function MorphedByMany (
   return (target, propertyKey) => {
     const self = target.$self()
 
-    self.setRegistry(propertyKey, () =>
-      self.morphedByMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey),
-    )
+    self.setRegistry(propertyKey, () => {
+      if (typeof pivot === 'function') { return self.morphedByMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey) }
+
+      return self.morphedByMany(related(), pivot.model(), relatedId, id, type, parentKey, relatedKey).as(pivot.as)
+    })
   }
 }

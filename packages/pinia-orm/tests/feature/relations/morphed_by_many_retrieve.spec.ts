@@ -21,13 +21,14 @@ describe('feature/relations/morphed_by_many_retrieve', () => {
     static entity = 'tags'
 
     @Attr() declare id: number
-    @MorphedByMany(() => User, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
+    @MorphedByMany(() => User, { as: 'userPivot', model: () => Taggable }, 'tag_id', 'taggable_id', 'taggable_type')
     declare users: User[]
 
     @MorphedByMany(() => Video, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
     declare videos: Video[]
 
     declare pivot: Taggable
+    declare userPivot: Taggable
   }
 
   class Taggable extends Model {
@@ -70,9 +71,9 @@ describe('feature/relations/morphed_by_many_retrieve', () => {
     assertInstanceOf(tag!.users, User)
 
     expect(tag?.users.length).toBe(1)
-    expect(tag?.users[0].pivot.level).toBe(1)
+    expect(tag?.userPivot.level).toBe(1)
     expect(tag2?.videos.length).toBe(1)
-    expect(tag2?.videos[0].pivot.level).toBe(2)
+    expect(tag2?.pivot.level).toBe(2)
   })
 
   it('can eager load missing relation as empty array', () => {

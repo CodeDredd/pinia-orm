@@ -37,6 +37,8 @@ class User extends Model {
   
   @Attr(null) declare id: number | null
   @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id') declare roles: Role[]
+  // or if you have other pivot key
+  // @BelongsToMany(() => Role, { as: 'userPivot', model: () => RoleUser }, 'user_id', 'role_id')
 }
 ````
 
@@ -45,7 +47,10 @@ class User extends Model {
 ````ts
 function belongsToMany(
   related: typeof Model,
-  pivot: typeof Model,
+  pivot: (() => typeof Model) | {
+    as: string
+    model: () => typeof Model
+  },
   foreignPivotKey: string,
   relatedPivotKey: string,
   parentKey?: string,
