@@ -82,7 +82,7 @@ export class MorphToMany extends Relation {
    * Attach the parent type and id to the given relation.
    */
   attach (record: Element, child: Element): void {
-    const pivot = child.pivot ?? {}
+    const pivot = child[this.pivotKey] ?? {}
     pivot[this.morphId] = record[this.parentKey]
     pivot[this.morphType] = this.parent.$entity()
     pivot[this.relatedId] = child[this.relatedKey]
@@ -116,7 +116,7 @@ export class MorphToMany extends Relation {
         const pivot = pivotModels[`[${parentModel[this.parentKey]},${relatedModel[this.relatedKey]},${this.parent.$entity()}]`]?.[0] ?? null
 
         const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
-        relatedModelCopy.$setRelation('pivot', pivot)
+        relatedModelCopy.$setRelation(this.pivotKey, pivot, true)
 
         if (pivot) { relationResults.push(relatedModelCopy) }
       })
@@ -128,4 +128,13 @@ export class MorphToMany extends Relation {
    * Set the constraints for the related relation.
    */
   addEagerConstraints (_query: Query, _collection: Collection): void {}
+
+  /**
+   * Specify the custom pivot accessor to use for the relationship.
+   */
+  as (accessor: string): this {
+    this.pivotKey = accessor
+
+    return this
+  }
 }

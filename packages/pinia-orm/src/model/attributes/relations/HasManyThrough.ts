@@ -105,7 +105,7 @@ export class HasManyThrough extends Relation {
    */
   protected buildDictionary (throughResults: Collection<any>, results: Collection<any>): Dictionary {
     return this.mapToDictionary(throughResults, (throughResult) => {
-      return [throughResult[this.firstKey as keyof Model] as string, results[throughResult[this.secondLocalKey as keyof Model] as number]]
+      return [throughResult[this.firstKey as keyof Model] as unknown as string, results[throughResult[this.secondLocalKey as keyof Model] as unknown as number]]
     })
   }
 

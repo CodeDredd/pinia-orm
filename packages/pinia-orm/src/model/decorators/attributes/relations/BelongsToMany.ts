@@ -6,7 +6,10 @@ import type { PropertyDecorator } from '../../Contracts'
  */
 export function BelongsToMany (
   related: () => typeof Model,
-  pivot: () => typeof Model,
+  pivot: (() => typeof Model) | {
+    as: string
+    model: () => typeof Model
+  },
   foreignPivotKey: string,
   relatedPivotKey: string,
   parentKey?: string,
@@ -15,8 +18,11 @@ export function BelongsToMany (
   return (target, propertyKey) => {
     const self = target.$self()
 
-    self.setRegistry(propertyKey, () =>
-      self.belongsToMany(related(), pivot(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey),
+    self.setRegistry(propertyKey, () => {
+      if (typeof pivot === 'function') { return self.belongsToMany(related(), pivot(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey) }
+
+      return self.belongsToMany(related(), pivot.model(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey).as(pivot.as)
+    },
     )
   }
 }

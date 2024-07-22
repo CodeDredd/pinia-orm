@@ -10,8 +10,10 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
 
     @Attr() id!: number
     @Str('') name!: string
-    @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
+    @BelongsToMany(() => Role, { as: 'userPivot', model: () => RoleUser }, 'user_id', 'role_id')
       roles!: Role[]
+
+    declare pivot: RoleUser
   }
 
   class Role extends Model {
@@ -21,7 +23,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     @BelongsToMany(() => User, () => RoleUser, 'role_id', 'user_id')
       users!: User[]
 
-    declare pivot: RoleUser
+    declare userPivot: RoleUser
   }
 
   class RoleUser extends Model {
@@ -61,9 +63,9 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     assertInstanceOf(user!.roles, Role)
 
     expect(user?.roles.length).toBe(2)
-    expect(user?.roles[0].pivot.level).toBe(1)
+    expect(user?.roles[0].userPivot.level).toBe(1)
     expect(user2?.roles.length).toBe(1)
-    expect(user2?.roles[0].pivot.level).toBe(2)
+    expect(user2?.roles[0].userPivot.level).toBe(2)
 
     const userWithoutRoles = userRepo.with('roles').find(3)
     expect(userWithoutRoles?.roles.length).toBe(0)
@@ -91,18 +93,18 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
 
     expect(users[0].id).toBe(1)
     expect(users[0].roles[0].id).toBe(1)
-    expect(users[0].roles[0].pivot.role_id).toBe(1)
-    expect(users[0].roles[0].pivot.user_id).toBe(1)
-    expect(users[0].roles[0].pivot.level).toBe(1)
+    expect(users[0].roles[0].userPivot.role_id).toBe(1)
+    expect(users[0].roles[0].userPivot.user_id).toBe(1)
+    expect(users[0].roles[0].userPivot.level).toBe(1)
     expect(users[0].roles[1].id).toBe(2)
-    expect(users[0].roles[1].pivot.role_id).toBe(2)
-    expect(users[0].roles[1].pivot.user_id).toBe(1)
-    expect(users[0].roles[1].pivot.level).toBe(null)
+    expect(users[0].roles[1].userPivot.role_id).toBe(2)
+    expect(users[0].roles[1].userPivot.user_id).toBe(1)
+    expect(users[0].roles[1].userPivot.level).toBe(null)
     expect(users[1].id).toBe(2)
     expect(users[1].roles[0].id).toBe(1)
-    expect(users[1].roles[0].pivot.role_id).toBe(1)
-    expect(users[1].roles[0].pivot.user_id).toBe(2)
-    expect(users[1].roles[0].pivot.level).toBe(2)
+    expect(users[1].roles[0].userPivot.role_id).toBe(1)
+    expect(users[1].roles[0].userPivot.user_id).toBe(2)
+    expect(users[1].roles[0].userPivot.level).toBe(2)
 
     const roles = useRepo(Role).with('users').get()
 

@@ -120,8 +120,8 @@ export class MorphTo extends Relation {
     const dictionary = this.buildDictionary(query, models)
 
     models.forEach((model) => {
-      const type = model[this.morphType as keyof Model] as string
-      const id = model[this.morphId as keyof Model] as number
+      const type = model[this.morphType as keyof Model] as unknown as string
+      const id = model[this.morphId as keyof Model] as unknown as number
 
       const related = dictionary[type]?.[id] ?? null
 

@@ -75,7 +75,7 @@ export class BelongsToMany extends Relation {
    * Attach the parent type and id to the given relation.
    */
   attach (record: Element, child: Element): void {
-    const pivot = child.pivot ?? {}
+    const pivot = child[this.pivotKey] ?? {}
     pivot[this.foreignPivotKey] = record[this.parentKey]
     pivot[this.relatedPivotKey] = child[this.relatedKey]
     child[`pivot_${this.relatedPivotKey}_${this.pivot.$entity()}`] = pivot
@@ -110,7 +110,7 @@ export class BelongsToMany extends Relation {
         if (!pivot) { return }
 
         const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
-        relatedModelCopy.$setRelation('pivot', pivot)
+        relatedModelCopy.$setRelation(this.pivotKey, pivot, true)
         relationResults.push(relatedModelCopy)
       })
       parentModel.$setRelation(relation, relationResults)
@@ -122,4 +122,13 @@ export class BelongsToMany extends Relation {
    * Set the constraints for the related relation.
    */
   addEagerConstraints (_query: Query, _collection: Collection): void {}
+
+  /**
+   * Specify the custom pivot accessor to use for the relationship.
+   */
+  as (accessor: string): this {
+    this.pivotKey = accessor
+
+    return this
+  }
 }
