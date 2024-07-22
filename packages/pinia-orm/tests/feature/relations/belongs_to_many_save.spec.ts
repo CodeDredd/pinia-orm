@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { Model, useRepo } from '../../../src'
 import { Attr, BelongsToMany, Num } from '../../../src/decorators'
 import { assertState } from '../../helpers'
@@ -189,6 +189,10 @@ describe('feature/relations/belongs_to_many_save', () => {
         name: 'Client 5',
       },
     ])
+
+    const client = clientRepo.withAll().first()
+
+    expect(client.pivot).toBe(undefined)
 
     assertState({
       client_retailers: {

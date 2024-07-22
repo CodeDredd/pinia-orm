@@ -114,6 +114,7 @@ export class BelongsToMany extends Relation {
         relationResults.push(relatedModelCopy)
       })
       parentModel.$setRelation(relation, relationResults)
+      if (parentModel[this.pivotKey]) { parentModel.$setRelation(this.pivotKey, undefined) }
     })
   }
 
