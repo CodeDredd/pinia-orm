@@ -170,12 +170,12 @@ describe('feature/repository/retrieves_order_by', () => {
 
     const expected = [
       { id: 1, name: 'James', roles: [
-        { id: 2, users: [], pivot_role_id_roleUser: null },
-        { id: 1, users: [], pivot_role_id_roleUser: null },
+        { id: 2, users: [] },
+        { id: 1, users: [] },
       ],
       },
       { id: 2, name: 'Andy', roles: [
-        { id: 1, users: [], pivot_role_id_roleUser: null },
+        { id: 1, users: [] },
       ],
       },
       { id: 3, name: 'David', roles: [] },
