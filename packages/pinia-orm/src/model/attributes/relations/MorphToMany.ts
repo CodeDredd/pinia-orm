@@ -115,10 +115,12 @@ export class MorphToMany extends Relation {
       relatedModels.forEach((relatedModel) => {
         const pivot = pivotModels[`[${parentModel[this.parentKey]},${relatedModel[this.relatedKey]},${this.parent.$entity()}]`]?.[0] ?? null
 
-        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
-        relatedModelCopy.$setRelation(this.pivotKey, pivot, true)
+        if (!pivot) { return }
 
-        if (pivot) { relationResults.push(relatedModelCopy) }
+        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
+        delete relatedModelCopy[`pivot_${this.relatedId}_${this.pivot.$entity()}`]
+        relatedModelCopy.$setRelation(this.pivotKey, pivot, true)
+        relationResults.push(relatedModelCopy)
       })
       parentModel.$setRelation(relation, relationResults)
     })

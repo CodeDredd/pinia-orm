@@ -110,6 +110,7 @@ export class BelongsToMany extends Relation {
         if (!pivot) { return }
 
         const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
+        delete relatedModelCopy[`pivot_${this.relatedPivotKey}_${this.pivot.$entity()}`]
         relatedModelCopy.$setRelation(this.pivotKey, pivot, true)
         relationResults.push(relatedModelCopy)
       })
