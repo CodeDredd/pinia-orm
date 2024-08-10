@@ -17,10 +17,10 @@
   },
   "devDependencies": {
     "@nuxt-themes/docus": "2.0.0-beta.13",
-    "@nuxtjs/plausible": "^1.0.0",
+    "@nuxtjs/plausible": "^1.0.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@nuxtlabs/github-module": "^1.6.3",
     "nuxt": "3.7.3"
   },
-  "packageManager": "yarn@4.3.1"
+  "packageManager": "yarn@4.4.0"
 }
