@@ -64,7 +64,7 @@
     "@size-limit/preset-small-lib": "^11.1.4",
     "@vitest/coverage-v8": "^2.0.4",
     "axios": "^1.7.2",
-    "axios-mock-adapter": "^1.22.0",
+    "axios-mock-adapter": "^2.0.0",
     "eslint": "^9.6.0",
     "pinia": "^2.1.7",
     "pinia-orm": "workspace:*",
