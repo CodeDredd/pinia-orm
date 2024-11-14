@@ -123,7 +123,7 @@ export class Model {
   /**
    * Original model data.
    */
-  protected static original: Record<string, any> = {}
+  protected static original: Record<string, Record<string, Element>> = {}
 
   /**
    * The schema for the model. It contains the result of the `fields`
@@ -825,7 +825,9 @@ export class Model {
       this[key as keyof this] = this[key as keyof this] ?? keyValue
     }
 
-    operation === 'set' && (this.$self().original[this.$getKey(this, true) as string] = this.$getAttributes())
+    operation === 'set' && (
+      (this.$self().original[this.$modelEntity()] ??= {})[this.$getKey(this, true) as string] = this.$getAttributes()
+    )
 
     modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
@@ -1003,7 +1005,7 @@ export class Model {
    * Get the original values of the model instance
    */
   $getOriginal (): Element {
-    return this.$self().original[this.$getKey(this, true) as string]
+    return (this.$self().original[this.$modelEntity()] ??= {})[this.$getKey(this, true) as string]
   }
 
   /**
