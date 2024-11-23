@@ -137,8 +137,8 @@ importers:
         specifier: ^9.6.0
         version: 9.6.0
       immutable:
-        specifier: ^4.3.6
-        version: 4.3.6
+        specifier: ^5.0.3
+        version: 5.0.3
       size-limit:
         specifier: ^11.1.4
         version: 11.1.4
@@ -6540,8 +6540,8 @@ packages:
   image-meta@0.2.0:
     resolution: {integrity: sha512-ZBGjl0ZMEMeOC3Ns0wUF/5UdUmr3qQhBSCniT0LxOgGGIRHiNFOkMtIHB7EOznRU47V2AxPgiVP+s+0/UCU0Hg==}
 
-  immutable@4.3.6:
-    resolution: {integrity: sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==}
+  immutable@5.0.3:
+    resolution: {integrity: sha512-P8IdPQHq3lA1xVeBRi5VPqUm5HDgKnx0Ru51wZz5mjxHr5n3RWhjIpOFU7ybkUxfB+5IToy+OLaHYDBIWsv+uw==}
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -13870,12 +13870,12 @@ snapshots:
 
   '@nuxtjs/eslint-config-typescript@12.1.0(eslint@9.6.0)(typescript@5.5.3)':
     dependencies:
-      '@nuxtjs/eslint-config': 12.0.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0)
+      '@nuxtjs/eslint-config': 12.0.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1)(eslint@9.6.0))(eslint@9.6.0)
       '@typescript-eslint/eslint-plugin': 6.5.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0)(typescript@5.5.3)
       '@typescript-eslint/parser': 6.5.0(eslint@9.6.0)(typescript@5.5.3)
       eslint: 9.6.0
       eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0)
       eslint-plugin-vue: 9.17.0(eslint@9.6.0)
     transitivePeerDependencies:
       - eslint-import-resolver-node
@@ -13899,11 +13899,11 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@nuxtjs/eslint-config@12.0.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0)':
+  '@nuxtjs/eslint-config@12.0.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1)(eslint@9.6.0))(eslint@9.6.0)':
     dependencies:
       eslint: 9.6.0
-      eslint-config-standard: 17.0.0(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0))(eslint-plugin-n@15.7.0(eslint@9.6.0))(eslint-plugin-promise@6.1.1(eslint@9.6.0))(eslint@9.6.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0)
+      eslint-config-standard: 17.0.0(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0))(eslint-plugin-n@15.7.0(eslint@9.6.0))(eslint-plugin-promise@6.1.1(eslint@9.6.0))(eslint@9.6.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0)
       eslint-plugin-n: 15.7.0(eslint@9.6.0)
       eslint-plugin-node: 11.1.0(eslint@9.6.0)
       eslint-plugin-promise: 6.1.1(eslint@9.6.0)
@@ -17574,10 +17574,10 @@ snapshots:
       eslint-plugin-n: 15.7.0(eslint@8.57.0)
       eslint-plugin-promise: 6.1.1(eslint@8.57.0)
 
-  eslint-config-standard@17.0.0(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0))(eslint-plugin-n@15.7.0(eslint@9.6.0))(eslint-plugin-promise@6.1.1(eslint@9.6.0))(eslint@9.6.0):
+  eslint-config-standard@17.0.0(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0))(eslint-plugin-n@15.7.0(eslint@9.6.0))(eslint-plugin-promise@6.1.1(eslint@9.6.0))(eslint@9.6.0):
     dependencies:
       eslint: 9.6.0
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0)
       eslint-plugin-n: 15.7.0(eslint@9.6.0)
       eslint-plugin-promise: 6.1.1(eslint@9.6.0)
 
@@ -17620,7 +17620,7 @@ snapshots:
       enhanced-resolve: 5.15.0
       eslint: 9.6.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.0
       is-core-module: 2.13.0
@@ -17719,7 +17719,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0))(eslint@9.6.0))(eslint@9.6.0):
+  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@9.6.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.0)(eslint@9.6.0):
     dependencies:
       array-includes: 3.1.6
       array.prototype.findlastindex: 1.2.2
@@ -19046,7 +19046,7 @@ snapshots:
 
   image-meta@0.2.0: {}
 
-  immutable@4.3.6: {}
+  immutable@5.0.3: {}
 
   import-fresh@3.3.0:
     dependencies:
