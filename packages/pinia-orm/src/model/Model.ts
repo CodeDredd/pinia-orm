@@ -144,6 +144,8 @@ export class Model {
    */
   protected static piniaOptions = {}
 
+  protected static piniaExtend = {}
+
   /**
    * The mutators for the model.
    */
@@ -710,6 +712,13 @@ export class Model {
    */
   $piniaOptions () {
     return this.$self().piniaOptions
+  }
+
+  /**
+   * Get the extended functionality.
+   */
+  $piniaExtend () {
+    return this.$self().piniaExtend
   }
 
   /**

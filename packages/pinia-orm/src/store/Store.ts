@@ -17,15 +17,21 @@ export interface CacheConfigOptions {
   provider?: typeof WeakCache<string, Model[]>
 }
 
+export interface PiniaConfigOptions {
+  storeType?: 'optionStore' | 'setupStore' | string
+}
+
 export interface InstallOptions {
   model?: ModelConfigOptions
   cache?: CacheConfigOptions | boolean
+  pinia?: PiniaConfigOptions
   plugins?: PiniaOrmPlugin[]
 }
 
 export interface FilledInstallOptions {
   model: Required<ModelConfigOptions>
   cache: Required<CacheConfigOptions | boolean>
+  pinia: Required<PiniaConfigOptions>
 }
 
 export interface CreatePiniaOrm {
@@ -38,6 +44,7 @@ export interface CreatePiniaOrm {
 export function createORM (options?: InstallOptions): PiniaPlugin {
   config.model = { ...CONFIG_DEFAULTS.model, ...options?.model }
   config.cache = options?.cache === false ? false : { ...CONFIG_DEFAULTS.cache, ...(options?.cache !== true && options?.cache) }
+  config.pinia = { ...CONFIG_DEFAULTS.pinia, ...options?.pinia }
 
   if (options?.plugins) {
     options.plugins.forEach(plugin => plugins.push(plugin))
