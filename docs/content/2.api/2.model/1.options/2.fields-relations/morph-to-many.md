@@ -47,7 +47,10 @@ class User extends Model {
 ````ts
 function morphToMany(
   related: typeof Model,
-  pivot: typeof Model,
+  pivot: (() => typeof Model) | {
+    as: string
+    model: () => typeof Model
+  },
   relatedId: string,
   id: string,
   type: string,

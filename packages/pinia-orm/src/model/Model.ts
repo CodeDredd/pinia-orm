@@ -63,9 +63,6 @@ export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[
 // export type WithKeys<T> = { [P in keyof T]: T[P] extends Model[] ? P : never }[keyof T];
 
 export class Model {
-  // [s: keyof ModelFields]: any
-  pivot?: any
-
   declare _meta: undefined | MetaValues
   /**
    * The name of the model.
@@ -126,7 +123,7 @@ export class Model {
   /**
    * Original model data.
    */
-  protected static original: Record<string, any> = {}
+  protected static original: Record<string, Record<string, Element>> = {}
 
   /**
    * The schema for the model. It contains the result of the `fields`
@@ -837,7 +834,9 @@ export class Model {
       this[key as keyof this] = this[key as keyof this] ?? keyValue
     }
 
-    operation === 'set' && (this.$self().original[this.$getKey(this, true) as string] = this.$getAttributes())
+    operation === 'set' && (
+      (this.$self().original[this.$modelEntity()] ??= {})[this.$getKey(this, true) as string] = this.$getAttributes()
+    )
 
     modelConfig.withMeta && operation === 'set' && this.$fillMeta(options.action)
 
@@ -990,13 +989,9 @@ export class Model {
   /**
    * Set the given relationship on the model.
    */
-  $setRelation (relation: string, model: Model | Model[] | null): this {
-    if (relation.includes('pivot')) {
-      this.pivot = model
-      return this
-    }
+  $setRelation (relation: string, model: Model | Model[] | null, isPivot = false): this {
     // @ts-expect-error Setting model as field
-    if (this.$fields()[relation]) { this[relation as keyof this] = model }
+    if (this.$fields()[relation] || isPivot) { this[relation as keyof this] = model }
 
     return this
   }
@@ -1019,7 +1014,7 @@ export class Model {
    * Get the original values of the model instance
    */
   $getOriginal (): Element {
-    return this.$self().original[this.$getKey(this, true) as string]
+    return (this.$self().original[this.$modelEntity()] ??= {})[this.$getKey(this, true) as string]
   }
 
   /**

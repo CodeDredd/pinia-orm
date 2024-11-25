@@ -59,7 +59,7 @@
     "pinia": "^2.1.7"
   },
   "dependencies": {
-    "@pinia-orm/normalizr": ">=1.9.1"
+    "@pinia-orm/normalizr": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.13",
@@ -69,15 +69,15 @@
     "@types/node": "^20.14.9",
     "@types/prettier": "^3.0.0",
     "@types/uuid": "^10.0.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "@vitest/coverage-v8": "^1.6.0",
-    "@vitest/ui": "^1.6.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vitest/coverage-v8": "^2.0.4",
+    "@vitest/ui": "^2.0.4",
     "@vue/composition-api": "^1.7.2",
     "@vue/test-utils": "^2.4.6",
     "c8": "^10.1.2",
     "core-js": "^3.37.1",
     "eslint": "^9.6.0",
-    "happy-dom": "^14.12.3",
+    "happy-dom": "^15.7.4",
     "mkdist": "^1.5.3",
     "nanoid": "4.0.2",
     "pinia": "^2.1.7",
@@ -89,7 +89,7 @@
     "unbuild": "^2.0.0",
     "uuid": "^10.0.0",
     "vite": "^5.3.3",
-    "vitest": "^1.6.0",
+    "vitest": "^2.0.4",
     "vue": "^3.4.31",
     "vue-demi": "^0.14.8",
     "vue2": "npm:vue@^2.7.3"

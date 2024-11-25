@@ -82,7 +82,7 @@ export class MorphedByMany extends Relation {
    * Attach the parent type and id to the given relation.
    */
   attach (record: Element, child: Element): void {
-    const pivot = record.pivot ?? {}
+    const pivot = record[this.pivotKey] ?? {}
     pivot[this.morphId] = child[this.relatedKey]
     pivot[this.morphType] = this.related.$entity()
     pivot[this.relatedId] = record[this.parentKey]
@@ -111,17 +111,13 @@ export class MorphedByMany extends Relation {
       .get<'group'>()
 
     models.forEach((parentModel) => {
-      const relationResults: Model[] = []
       const resultModelIds = this.getKeys(pivotModels[`[${parentModel[this.parentKey]},${this.related.$entity()}]`] ?? [], this.morphId)
       const relatedModelsFiltered = relatedModels.filter(filterdModel => resultModelIds.includes(filterdModel[this.relatedKey]))
 
-      relatedModelsFiltered.forEach((relatedModel) => {
-        const pivot = (pivotModels[`[${parentModel[this.parentKey]},${this.related.$entity()}]`] ?? []).find(pivotModel => pivotModel[this.morphId] === relatedModel[this.relatedKey]) ?? null
-        const relatedModelCopy = relatedModel.$newInstance(relatedModel.$toJson(), { operation: undefined })
-        if (pivot) { relatedModelCopy.$setRelation('pivot', pivot) }
-        relationResults.push(relatedModelCopy)
-      })
-      parentModel.$setRelation(relation, relationResults)
+      const pivot = (pivotModels[`[${parentModel[this.parentKey]},${this.related.$entity()}]`] ?? [])?.[0] ?? null
+      if (pivot) { parentModel.$setRelation(this.pivotKey, pivot, true) }
+
+      parentModel.$setRelation(relation, relatedModelsFiltered)
     })
   }
 
@@ -129,4 +125,13 @@ export class MorphedByMany extends Relation {
    * Set the constraints for the related relation.
    */
   addEagerConstraints (_query: Query, _collection: Collection<any>): void {}
+
+  /**
+   * Specify the custom pivot accessor to use for the relationship.
+   */
+  as (accessor: string): this {
+    this.pivotKey = accessor
+
+    return this
+  }
 }

@@ -88,7 +88,7 @@ export class MorphMany extends Relation {
    */
   protected buildDictionary (results: Collection<any>): Dictionary {
     return this.mapToDictionary(results, (result) => {
-      return [result[this.morphId as keyof Model] as string, result]
+      return [result[this.morphId as keyof Model] as unknown as string, result]
     })
   }
 
