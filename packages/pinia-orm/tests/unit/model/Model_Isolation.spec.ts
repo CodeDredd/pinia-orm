@@ -54,12 +54,12 @@ describe('unit/model/ModelIsolation', () => {
   it('handles multiple instances of different models with same ids', () => {
     const users = [
       new User({ id: 1, name: 'John' }),
-      new User({ id: 2, name: 'Jane' })
+      new User({ id: 2, name: 'Jane' }),
     ]
-    
+
     const posts = [
       new Post({ id: 1, title: 'First' }),
-      new Post({ id: 2, title: 'Second' })
+      new Post({ id: 2, title: 'Second' }),
     ]
 
     users.forEach(u => u.name = `Updated ${u.name}`)
