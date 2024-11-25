@@ -43,10 +43,10 @@ export class WeakCache<K, V extends object> implements Map<K, V> {
   }
 
   forEach (cb: (value: V, key: K, map: Map<K, V>) => void): void {
-    for (const [key, value] of this) { cb(value, key, this) }
+    for (const [key, value] of this) { cb(value, key, this as unknown as Map<K, V>) }
   }
 
-  * [Symbol.iterator] (): IterableIterator<[K, V]> {
+  * [Symbol.iterator] (): MapIterator<[K, V]> {
     for (const [key, weakRef] of this.#map) {
       const ref = weakRef.deref()
 
@@ -59,15 +59,15 @@ export class WeakCache<K, V extends object> implements Map<K, V> {
     }
   }
 
-  * entries (): IterableIterator<[K, V]> {
+  * entries (): MapIterator<[K, V]> {
     for (const [key, value] of this) { yield [key, value] }
   }
 
-  * keys (): IterableIterator<K> {
+  * keys (): MapIterator<K> {
     for (const [key] of this) { yield key }
   }
 
-  * values (): IterableIterator<V> {
+  * values (): MapIterator<V> {
     for (const [, value] of this) { yield value }
   }
 }
