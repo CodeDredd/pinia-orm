@@ -227,7 +227,7 @@ export function generateId (size: number, alphabet: string) {
   let i = size
   while (i--) {
     // `| 0` is more compact and faster than `Math.floor()`.
-    id += alphabet[(Math.random() * 64) | 0]
+    id += alphabet[(Math.random() * alphabet.length) | 0]
   }
   return id
 }
