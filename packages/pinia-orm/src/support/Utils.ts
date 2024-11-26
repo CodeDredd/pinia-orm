@@ -83,7 +83,7 @@ export function orderBy<T extends Element> (
   const result = collection.map<SortableArray<T>>((value) => {
     const criteria = iteratees.map((iteratee) => {
       if (typeof iteratee === 'function') { return iteratee(value) }
-      if (!iteratee.includes('.') && !isDate(value[iteratee])) { return value[iteratee]}
+      if (!iteratee.includes('.') && !isDate(value[iteratee])) { return value[iteratee] }
       const newValue = getValue(value, iteratee, false)
       return isDate(newValue) ? new Date(newValue).getTime() : newValue
     })
