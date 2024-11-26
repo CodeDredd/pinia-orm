@@ -18,6 +18,18 @@ describe('unit/model/Model_Attrs_UID', () => {
     expect(new User().id).toBe('uid1')
   })
 
+  it('creates a random Uid with correct alphabet usage', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Uid({ alphabet: '123456789', size: 5 })
+      id!: string
+    }
+
+    expect(new User().id.length).toBe(5)
+    expect(typeof Number(new User().id)).toBe('number')
+  })
+
   it('creates a random Uid with options', () => {
     class User extends Model {
       static entity = 'users'
