@@ -30,7 +30,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "nuxi build-module --stub . && nuxi build-module .",
+    "build": "nuxi build-module --stub . && nuxi prepare playground && nuxi build-module .",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path . -l @pinia-orm/nuxt -r 1",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
