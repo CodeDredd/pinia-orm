@@ -24,10 +24,10 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - run: corepack enable
 
-      - name: Set node version to 18
+      - name: Set node version to 20
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 18
+          node-version: 20
           cache: "pnpm"
 
       - name: Install pnpm
@@ -47,10 +47,10 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - run: corepack enable
 
-      - name: Set node version to 18
+      - name: Set node version to 20
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 18
+          node-version: 20
           cache: "pnpm"
 
       - run: pnpm i
@@ -73,10 +73,10 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - run: corepack enable
 
-      - name: Set node version to 18
+      - name: Set node version to 20
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 18
+          node-version: 20
           cache: "pnpm"
 
       - run: pnpm i
@@ -95,10 +95,10 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - run: corepack enable
 
-      - name: Set node version to 18
+      - name: Set node version to 20
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 18
+          node-version: 20
           cache: "pnpm"
 
       - run: pnpm i
