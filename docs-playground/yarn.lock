@@ -2223,10 +2223,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pinia-orm/normalizr@npm:>=1.9.1":
-  version: 1.9.2
-  resolution: "@pinia-orm/normalizr@npm:1.9.2"
-  checksum: 10c0/42e61a372ab8a4adf49c6968c5c7631697f79526c0c5a59e2a496a40ef7bf46b1c3b7267d42d116a7dc8cbb4220b145c429b218c3fd70bd4272e5f0ddce118d6
+"@pinia-orm/normalizr@npm:1.10.0":
+  version: 1.10.0
+  resolution: "@pinia-orm/normalizr@npm:1.10.0"
+  checksum: 10c0/557c018be0597768f6386450bf87d0f1db6a714af1e3370fe9daaf74a274d1cc6ea3e0d4330ef5e6acca24336e66ab99bac0aafeaa3ed64551aa084102add025
   languageName: node
   linkType: hard
 
@@ -2947,10 +2947,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/devtools-api@npm:^6.5.0":
-  version: 6.5.0
-  resolution: "@vue/devtools-api@npm:6.5.0"
-  checksum: 10c0/6dab27d6ed880de0cd94549ba16ba4e85eb273f12ea2ba5cf66ed87e3f616242339d787e52360bf54bb7b360eb481c9b814f13ec08120e630e90adf5da2d7ff9
+"@vue/devtools-api@npm:^6.6.3":
+  version: 6.6.4
+  resolution: "@vue/devtools-api@npm:6.6.4"
+  checksum: 10c0/0a993ae23618166e1bee5a7c14cebd8312752b93c143cbdd48fb2d0f7ade070d0e6baf757cd920d4681fef8f9acf29515162160f38cc7410f9a684d2df21b6de
   languageName: node
   linkType: hard
 
@@ -7164,33 +7164,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia-orm@npm:^1.9.1":
-  version: 1.9.2
-  resolution: "pinia-orm@npm:1.9.2"
+"pinia-orm@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "pinia-orm@npm:1.10.0"
   dependencies:
-    "@pinia-orm/normalizr": "npm:>=1.9.1"
+    "@pinia-orm/normalizr": "npm:1.10.0"
   peerDependencies:
     pinia: ^2.1.7
-  checksum: 10c0/f8bcf802625589c570dbc8edf332825430ef77f6d39ffa9e26636075fe73b200803c540e4f6ca5ebae280d571327eb8c5f285b2c4d81256d46909c1ea5101e1e
+  checksum: 10c0/db8df1f5ed97ad89457f475fdd04879e1a31de31d88d8376742ca644b1b3fc925902ea07df7f165e754ac54dfdf1be7ed8ae44fac842526014ea57f4b2e93460
   languageName: node
   linkType: hard
 
-"pinia@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "pinia@npm:2.1.7"
+"pinia@npm:^2.2.7":
+  version: 2.2.7
+  resolution: "pinia@npm:2.2.7"
   dependencies:
-    "@vue/devtools-api": "npm:^6.5.0"
-    vue-demi: "npm:>=0.14.5"
+    "@vue/devtools-api": "npm:^6.6.3"
+    vue-demi: "npm:^0.14.10"
   peerDependencies:
     "@vue/composition-api": ^1.4.0
     typescript: ">=4.4.4"
-    vue: ^2.6.14 || ^3.3.0
+    vue: ^2.6.14 || ^3.5.11
   peerDependenciesMeta:
     "@vue/composition-api":
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/f4380a4db04b5b8565ed8a6843821d91f8f650d79dd9f0094005248bd963521b8a73419032fda76541e59b895b0e7852e67ca9d0408162cc391ce5a1bcbda445
+  checksum: 10c0/06946e95084f67290d34edc8b5c84a892f8b221063a1321189b70e670fca707950e3aceb5bb21e3af841531b15d65915115cce0c4a7836803ad96c0a9f858bde
   languageName: node
   linkType: hard
 
@@ -7252,8 +7252,8 @@ __metadata:
     lz-string: "npm:^1.5.0"
     monaco-editor: "npm:0.50.0"
     monaco-editor-core: "npm:^0.50.0"
-    pinia: "npm:^2.1.7"
-    pinia-orm: "npm:^1.9.1"
+    pinia: "npm:^2.2.7"
+    pinia-orm: "npm:^1.10.0"
     splitpanes: "npm:^3.1.5"
     theme-vitesse: "npm:^0.8.0"
     typescript: "npm:^5.5.3"
@@ -8889,7 +8889,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-demi@npm:>=0.14.10":
+"vue-demi@npm:>=0.14.10, vue-demi@npm:^0.14.10":
   version: 0.14.10
   resolution: "vue-demi@npm:0.14.10"
   peerDependencies:
@@ -8902,22 +8902,6 @@ __metadata:
     vue-demi-fix: bin/vue-demi-fix.js
     vue-demi-switch: bin/vue-demi-switch.js
   checksum: 10c0/a9ed8712fa36d01bc13c39757f95f30cebf42d557b99e94bff86d8660c81f2911b41220f7affc023d1ffcc19e13999e4a83019991e264787cca2c616e83aea48
-  languageName: node
-  linkType: hard
-
-"vue-demi@npm:>=0.14.5":
-  version: 0.14.5
-  resolution: "vue-demi@npm:0.14.5"
-  peerDependencies:
-    "@vue/composition-api": ^1.0.0-rc.1
-    vue: ^3.0.0-0 || ^2.6.0
-  peerDependenciesMeta:
-    "@vue/composition-api":
-      optional: true
-  bin:
-    vue-demi-fix: bin/vue-demi-fix.js
-    vue-demi-switch: bin/vue-demi-switch.js
-  checksum: 10c0/303d6e12faf2f28d32c39bdd79e97efaa85d006583c45fe2f2e241770c5211a7db0b8560a0c27e27043bc65708ebf1292bdbe7a2664a22c9e176b59c42cbf7b6
   languageName: node
   linkType: hard
 
