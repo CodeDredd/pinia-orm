@@ -59,7 +59,8 @@
     "pinia": "^2.1.7"
   },
   "dependencies": {
-    "@pinia-orm/normalizr": "workspace:*"
+    "@pinia-orm/normalizr": "workspace:*",
+    "vue-demi": "^0.14.10"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.13",
@@ -91,7 +92,6 @@
     "vite": "^5.3.3",
     "vitest": "^2.0.4",
     "vue": "^3.4.31",
-    "vue-demi": "^0.14.8",
     "vue2": "npm:vue@^2.7.3"
   },
   "size-limit": [
