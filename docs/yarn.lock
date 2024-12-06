@@ -971,10 +971,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@barbapapazes/plausible-tracker@npm:^0.5.3":
-  version: 0.5.3
-  resolution: "@barbapapazes/plausible-tracker@npm:0.5.3"
-  checksum: 10c0/f2b9366970ea884956aed8623d1b25da362ac9b0fc41dcb969037263d44e809217898998855065e5699dff8bbc7419fabba6c518be2201390fd47059c41a5ea0
+"@barbapapazes/plausible-tracker@npm:^0.5.6":
+  version: 0.5.6
+  resolution: "@barbapapazes/plausible-tracker@npm:0.5.6"
+  checksum: 10c0/aa237d0671f7ce29cfa77da1513501717710127ecaacc1c471ca30aa72f678c529055cfe0a87fe19e41abea69b2852a9f5e34454777c942ee165258cbe82f953
   languageName: node
   linkType: hard
 
@@ -2104,7 +2104,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:^3.14.159":
+"@nuxt/kit@npm:^3.14.1592":
   version: 3.14.1592
   resolution: "@nuxt/kit@npm:3.14.1592"
   dependencies:
@@ -2446,14 +2446,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/plausible@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@nuxtjs/plausible@npm:1.1.1"
+"@nuxtjs/plausible@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@nuxtjs/plausible@npm:1.2.0"
   dependencies:
-    "@barbapapazes/plausible-tracker": "npm:^0.5.3"
-    "@nuxt/kit": "npm:^3.14.159"
+    "@barbapapazes/plausible-tracker": "npm:^0.5.6"
+    "@nuxt/kit": "npm:^3.14.1592"
     defu: "npm:^6.1.4"
-  checksum: 10c0/387d63196f9e24c87fceb02274f819391cda8c2758da1d24de07917e28cc84588d5c0242c8cbc4b6ab958e5a75c53b9b7d3185de977114804125cf7ef12cd468
+    ufo: "npm:^1.5.4"
+  checksum: 10c0/e812f4379f5daa1c48d7b6943f12873c8fceeae203062b474faa654e270a4228d23ca67e31257d2932e77ba6b7ecb70bcca060fcd6f6789077aecd3be8c39996
   languageName: node
   linkType: hard
 
@@ -2818,7 +2819,7 @@ __metadata:
   resolution: "@pinia-orm/docs@workspace:."
   dependencies:
     "@nuxt-themes/docus": "npm:2.0.0-beta.13"
-    "@nuxtjs/plausible": "npm:^1.1.1"
+    "@nuxtjs/plausible": "npm:^1.2.0"
     "@nuxtjs/tailwindcss": "npm:^6.12.2"
     "@nuxtlabs/github-module": "npm:^1.6.3"
     nuxt: "npm:3.7.3"
