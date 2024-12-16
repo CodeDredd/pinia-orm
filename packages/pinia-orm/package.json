@@ -79,7 +79,7 @@
     "core-js": "^3.37.1",
     "eslint": "^9.6.0",
     "happy-dom": "^15.7.4",
-    "mkdist": "^1.5.3",
+    "mkdist": "^2.1.0",
     "nanoid": "4.0.2",
     "pinia": "^2.1.7",
     "prettier": "^3.3.2",
