@@ -70,7 +70,7 @@
     "pinia-orm": "workspace:*",
     "size-limit": "^11.1.4",
     "typescript": "^5.5.3",
-    "unbuild": "^2.0.0",
+    "unbuild": "^3.1.0",
     "vitest": "^2.0.4",
     "vue-demi": "^0.14.8"
   },
