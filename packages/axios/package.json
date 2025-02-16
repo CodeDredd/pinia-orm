@@ -42,10 +42,9 @@
     "size": "size-limit",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --cache --fix",
-    "test:ui": "vue-demi-switch 3 && vitest --ui --api 9527",
-    "test:watch": "vue-demi-switch 3 && vitest --watch",
-    "test:2": "vue-demi-switch 2 vue2 && vitest --run",
-    "test:3": "vue-demi-switch 3 && vitest --run",
+    "test:ui": "vitest --ui --api 9527",
+    "test:watch": "vitest --watch",
+    "test:3": "vitest --run",
     "test": "pnpm run test:3"
   },
   "author": {
@@ -72,7 +71,7 @@
     "typescript": "^5.5.3",
     "unbuild": "^3.1.0",
     "vitest": "^3.0.5",
-    "vue-demi": "^0.14.8"
+    "vue": "^3.5.13"
   },
   "size-limit": [
     {

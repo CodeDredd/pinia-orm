@@ -1,6 +1,6 @@
 import type { DefineSetupStoreOptions, DefineStoreOptionsBase } from 'pinia'
 import { defineStore } from 'pinia'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import type { Query } from '../'
 import { config } from '../'
 import { useStoreActions } from './useStoreActions'

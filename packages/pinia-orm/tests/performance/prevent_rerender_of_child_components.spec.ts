@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { computed, defineComponent, nextTick, onUpdated } from 'vue-demi'
+import { computed, defineComponent, nextTick, onUpdated } from 'vue'
 
 import { Model, useRepo } from '../../src'
 import { Num, Str } from '../../src/decorators'

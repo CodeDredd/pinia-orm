@@ -6,7 +6,7 @@ import { v1, v4 } from 'uuid'
 import type { Mock } from 'vitest'
 import { expect, vi } from 'vitest'
 
-import { createApp } from 'vue-demi'
+import { createApp } from 'vue'
 import type { Collection, Elements, InstallOptions, Model, PiniaOrmPlugin } from '../src'
 import * as Utils from '../src/support/Utils'
 import { createORM } from '../src'

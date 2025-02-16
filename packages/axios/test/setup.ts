@@ -1,17 +1,9 @@
 import { createPinia, setActivePinia } from 'pinia'
-import { beforeAll, beforeEach } from 'vitest'
-import { Vue2, createApp, install, isVue2 } from 'vue-demi'
+import { beforeEach } from 'vitest'
+import { createApp } from 'vue'
 import { Model, createORM, useRepo } from 'pinia-orm'
 import axios from 'axios'
 import { createPiniaOrmAxios } from '../src'
-
-beforeAll(() => {
-  if (isVue2) {
-    Vue2.config.productionTip = false
-    Vue2.config.devtools = false
-    install(Vue2)
-  }
-})
 
 beforeEach(() => {
   const app = createApp({})

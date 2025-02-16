@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { computed } from 'vue-demi'
+import { computed } from 'vue'
 
 import { Model, useRepo } from '../../../src'
 import { Attr, Str } from '../../../src/decorators'
