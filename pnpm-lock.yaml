@@ -160,7 +160,7 @@ importers:
     devDependencies:
       '@nuxt/devtools':
         specifier: ^1.3.9
-        version: 1.3.9(rollup@4.34.7)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))
+        version: 1.3.9(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       '@nuxt/eslint-config':
         specifier: ^0.3.13
         version: 0.3.13(eslint@9.6.0)(typescript@5.5.3)
@@ -184,7 +184,7 @@ importers:
         version: 9.6.0
       nuxt:
         specifier: ^3.11.2
-        version: 3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(eslint@9.6.0)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.5.3)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.5.3))
+        version: 3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(eslint@9.6.0)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.5.3)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))(vue-tsc@2.0.26(typescript@5.5.3))
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.5.3)))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3))
@@ -198,8 +198,8 @@ importers:
         specifier: ^5.5.3
         version: 5.5.3
       vite:
-        specifier: ^5.3.3
-        version: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+        specifier: ^6.1.0
+        version: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
       vue:
         specifier: ^3.4.31
         version: 3.4.31(typescript@5.5.3)
@@ -292,8 +292,8 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0
       vite:
-        specifier: ^5.3.3
-        version: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+        specifier: ^6.1.0
+        version: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
       vitest:
         specifier: ^3.0.5
         version: 3.0.5(@types/node@22.10.5)(@vitest/ui@3.0.5)(happy-dom@16.0.1)(terser@5.19.3)
@@ -372,7 +372,7 @@ importers:
         version: 9.25.0(eslint@8.57.0)
       nuxt-windicss:
         specifier: ^2.4.2
-        version: 2.6.1(magicast@0.3.5)(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
+        version: 2.6.1(magicast@0.3.5)(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       postcss:
         specifier: ^8.4.14
         version: 8.4.38
@@ -406,7 +406,7 @@ importers:
         version: 0.5.1(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.7.2)))(magicast@0.3.5)(rollup@4.34.7)(typescript@5.7.2)(vue@3.4.31(typescript@5.7.2))
       nuxt:
         specifier: ^3.11.2
-        version: 3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.7.2)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.7.2))
+        version: 3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.7.2)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))(vue-tsc@2.0.26(typescript@5.7.2))
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(@vue/composition-api@1.7.2(vue@3.4.31(typescript@5.7.2)))(typescript@5.7.2)(vue@3.4.31(typescript@5.7.2))
@@ -11363,6 +11363,46 @@ packages:
       terser:
         optional: true
 
+  vite@6.1.0:
+    resolution: {integrity: sha512-RjjMipCKVoR4hVfPY6GQTgveinjNuyLw+qruksLDvA5ktI1150VmcMBKmQaEWJhg/j6Uaf6dNCNA0AfdzUb/hQ==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      jiti: '>=1.21.0'
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      sass-embedded: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      jiti:
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+
   vitest@3.0.5:
     resolution: {integrity: sha512-4dof+HvqONw9bvsYxtkfUp2uHsTN9bV2CZIi1pWgoFpL1Lld8LA1ka9q/ONSsoScAKG7NVGf2stJTI7XRkXb2Q==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
@@ -14195,23 +14235,12 @@ snapshots:
 
   '@nuxt/devalue@2.0.2': {}
 
-  '@nuxt/devtools-kit@1.3.9(magicast@0.3.4)(rollup@4.34.7)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))':
+  '@nuxt/devtools-kit@1.3.9(magicast@0.3.4)(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))':
     dependencies:
       '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.34.7)
       '@nuxt/schema': 3.12.3(rollup@4.34.7)
       execa: 7.2.0
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
-    transitivePeerDependencies:
-      - magicast
-      - rollup
-      - supports-color
-
-  '@nuxt/devtools-kit@1.3.9(magicast@0.3.4)(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))':
-    dependencies:
-      '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.34.7)
-      '@nuxt/schema': 3.12.3(rollup@4.34.7)
-      execa: 7.2.0
-      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
+      vite: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
     transitivePeerDependencies:
       - magicast
       - rollup
@@ -14230,13 +14259,13 @@ snapshots:
       rc9: 2.1.2
       semver: 7.6.2
 
-  '@nuxt/devtools@1.3.9(rollup@4.34.7)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))':
+  '@nuxt/devtools@1.3.9(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))':
     dependencies:
       '@antfu/utils': 0.7.10
-      '@nuxt/devtools-kit': 1.3.9(magicast@0.3.4)(rollup@4.34.7)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))
+      '@nuxt/devtools-kit': 1.3.9(magicast@0.3.4)(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       '@nuxt/devtools-wizard': 1.3.9
       '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.34.7)
-      '@vue/devtools-core': 7.3.3(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))
+      '@vue/devtools-core': 7.3.3(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       '@vue/devtools-kit': 7.3.3
       birpc: 0.2.17
       consola: 3.2.3
@@ -14265,55 +14294,9 @@ snapshots:
       simple-git: 3.25.0
       sirv: 2.0.4
       unimport: 3.7.2(rollup@4.34.7)
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
-      vite-plugin-inspect: 0.8.4(@nuxt/kit@3.12.3(magicast@0.3.4)(rollup@4.34.7))(rollup@4.34.7)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))
-      vite-plugin-vue-inspector: 5.1.2(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))
-      which: 3.0.1
-      ws: 8.18.0
-    transitivePeerDependencies:
-      - bufferutil
-      - rollup
-      - supports-color
-      - utf-8-validate
-
-  '@nuxt/devtools@1.3.9(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))':
-    dependencies:
-      '@antfu/utils': 0.7.10
-      '@nuxt/devtools-kit': 1.3.9(magicast@0.3.4)(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
-      '@nuxt/devtools-wizard': 1.3.9
-      '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.34.7)
-      '@vue/devtools-core': 7.3.3(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
-      '@vue/devtools-kit': 7.3.3
-      birpc: 0.2.17
-      consola: 3.2.3
-      cronstrue: 2.50.0
-      destr: 2.0.3
-      error-stack-parser-es: 0.1.4
-      execa: 7.2.0
-      fast-glob: 3.3.2
-      fast-npm-meta: 0.1.1
-      flatted: 3.3.1
-      get-port-please: 3.1.2
-      hookable: 5.5.3
-      image-meta: 0.2.0
-      is-installed-globally: 1.0.0
-      launch-editor: 2.8.0
-      local-pkg: 0.5.0
-      magicast: 0.3.4
-      nypm: 0.3.9
-      ohash: 1.1.3
-      pathe: 1.1.2
-      perfect-debounce: 1.0.0
-      pkg-types: 1.1.3
-      rc9: 2.1.2
-      scule: 1.3.0
-      semver: 7.6.2
-      simple-git: 3.25.0
-      sirv: 2.0.4
-      unimport: 3.7.2(rollup@4.34.7)
-      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
-      vite-plugin-inspect: 0.8.4(@nuxt/kit@3.12.3(magicast@0.3.4)(rollup@4.34.7))(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
-      vite-plugin-vue-inspector: 5.1.2(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
+      vite: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
+      vite-plugin-inspect: 0.8.4(@nuxt/kit@3.12.3(magicast@0.3.4)(rollup@4.34.7))(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
+      vite-plugin-vue-inspector: 5.1.2(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       which: 3.0.1
       ws: 8.18.0
     transitivePeerDependencies:
@@ -14720,8 +14703,8 @@ snapshots:
     dependencies:
       '@nuxt/kit': 3.11.2(magicast@0.3.5)(rollup@4.34.7)
       '@rollup/plugin-replace': 5.0.5(rollup@4.34.7)
-      '@vitejs/plugin-vue': 5.0.5(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.5.3))
-      '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.5.3))
+      '@vitejs/plugin-vue': 5.0.5(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.5.3))
+      '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.5.3))
       autoprefixer: 10.4.19(postcss@8.5.2)
       clear: 0.1.0
       consola: 3.2.3
@@ -14748,9 +14731,9 @@ snapshots:
       ufo: 1.5.4
       unenv: 1.9.0
       unplugin: 1.10.1
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
       vite-node: 1.5.3(@types/node@22.10.5)(terser@5.19.3)
-      vite-plugin-checker: 0.6.4(eslint@9.6.0)(optionator@0.9.3)(typescript@5.5.3)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.5.3))
+      vite-plugin-checker: 0.6.4(eslint@9.6.0)(optionator@0.9.3)(typescript@5.5.3)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.5.3))
       vue: 3.4.31(typescript@5.5.3)
       vue-bundle-renderer: 2.0.0
     transitivePeerDependencies:
@@ -14779,8 +14762,8 @@ snapshots:
     dependencies:
       '@nuxt/kit': 3.11.2(magicast@0.3.5)(rollup@4.34.7)
       '@rollup/plugin-replace': 5.0.5(rollup@4.34.7)
-      '@vitejs/plugin-vue': 5.0.5(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))
-      '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))
+      '@vitejs/plugin-vue': 5.0.5(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))
+      '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))
       autoprefixer: 10.4.19(postcss@8.5.2)
       clear: 0.1.0
       consola: 3.2.3
@@ -14807,9 +14790,9 @@ snapshots:
       ufo: 1.5.4
       unenv: 1.9.0
       unplugin: 1.10.1
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
       vite-node: 1.5.3(@types/node@22.10.5)(terser@5.19.3)
-      vite-plugin-checker: 0.6.4(optionator@0.9.3)(typescript@5.7.2)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.7.2))
+      vite-plugin-checker: 0.6.4(optionator@0.9.3)(typescript@5.7.2)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.7.2))
       vue: 3.4.31(typescript@5.7.2)
       vue-bundle-renderer: 2.0.0
     transitivePeerDependencies:
@@ -16432,22 +16415,22 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vitejs/plugin-vue-jsx@3.1.0(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.5.3))':
+  '@vitejs/plugin-vue-jsx@3.1.0(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.5.3))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/plugin-transform-typescript': 7.24.5(@babel/core@7.24.5)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.24.5)
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
       vue: 3.4.31(typescript@5.5.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue-jsx@3.1.0(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))':
+  '@vitejs/plugin-vue-jsx@3.1.0(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/plugin-transform-typescript': 7.24.5(@babel/core@7.24.5)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.24.5)
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
       vue: 3.4.31(typescript@5.7.2)
     transitivePeerDependencies:
       - supports-color
@@ -16457,9 +16440,14 @@ snapshots:
       vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
       vue: 3.4.31(typescript@5.5.3)
 
-  '@vitejs/plugin-vue@5.0.5(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))':
+  '@vitejs/plugin-vue@5.0.5(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.5.3))':
     dependencies:
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
+      vue: 3.4.31(typescript@5.5.3)
+
+  '@vitejs/plugin-vue@5.0.5(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue@3.4.31(typescript@5.7.2))':
+    dependencies:
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
       vue: 3.4.31(typescript@5.7.2)
 
   '@vitest/coverage-v8@3.0.5(vitest@3.0.5(@types/node@22.10.5)(@vitest/ui@3.0.5)(happy-dom@16.0.1)(terser@5.19.3))':
@@ -16800,25 +16788,14 @@ snapshots:
 
   '@vue/devtools-api@6.6.1': {}
 
-  '@vue/devtools-core@7.3.3(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))':
+  '@vue/devtools-core@7.3.3(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))':
     dependencies:
       '@vue/devtools-kit': 7.3.3
       '@vue/devtools-shared': 7.3.5
       mitt: 3.0.1
       nanoid: 3.3.7
       pathe: 1.1.2
-      vite-hot-client: 0.2.3(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))
-    transitivePeerDependencies:
-      - vite
-
-  '@vue/devtools-core@7.3.3(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))':
-    dependencies:
-      '@vue/devtools-kit': 7.3.3
-      '@vue/devtools-shared': 7.3.5
-      mitt: 3.0.1
-      nanoid: 3.3.7
-      pathe: 1.1.2
-      vite-hot-client: 0.2.3(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
+      vite-hot-client: 0.2.3(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
     transitivePeerDependencies:
       - vite
 
@@ -18353,9 +18330,9 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.1.0
 
-  css-declaration-sorter@6.4.1(postcss@8.4.38):
+  css-declaration-sorter@6.4.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   css-declaration-sorter@7.2.0(postcss@8.4.38):
     dependencies:
@@ -18378,13 +18355,13 @@ snapshots:
 
   css-loader@5.2.7(webpack@4.47.0):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.38)
+      icss-utils: 5.1.0(postcss@8.5.2)
       loader-utils: 2.0.4
-      postcss: 8.4.38
-      postcss-modules-extract-imports: 3.1.0(postcss@8.4.38)
-      postcss-modules-local-by-default: 4.0.5(postcss@8.4.38)
-      postcss-modules-scope: 3.2.0(postcss@8.4.38)
-      postcss-modules-values: 4.0.0(postcss@8.4.38)
+      postcss: 8.5.2
+      postcss-modules-extract-imports: 3.1.0(postcss@8.5.2)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.5.2)
+      postcss-modules-scope: 3.2.0(postcss@8.5.2)
+      postcss-modules-values: 4.0.0(postcss@8.5.2)
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.6.2
@@ -18431,38 +18408,38 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cssnano-preset-default@5.2.14(postcss@8.4.38):
+  cssnano-preset-default@5.2.14(postcss@8.5.2):
     dependencies:
-      css-declaration-sorter: 6.4.1(postcss@8.4.38)
-      cssnano-utils: 3.1.0(postcss@8.4.38)
-      postcss: 8.4.38
-      postcss-calc: 8.2.4(postcss@8.4.38)
-      postcss-colormin: 5.3.1(postcss@8.4.38)
-      postcss-convert-values: 5.1.3(postcss@8.4.38)
-      postcss-discard-comments: 5.1.2(postcss@8.4.38)
-      postcss-discard-duplicates: 5.1.0(postcss@8.4.38)
-      postcss-discard-empty: 5.1.1(postcss@8.4.38)
-      postcss-discard-overridden: 5.1.0(postcss@8.4.38)
-      postcss-merge-longhand: 5.1.7(postcss@8.4.38)
-      postcss-merge-rules: 5.1.4(postcss@8.4.38)
-      postcss-minify-font-values: 5.1.0(postcss@8.4.38)
-      postcss-minify-gradients: 5.1.1(postcss@8.4.38)
-      postcss-minify-params: 5.1.4(postcss@8.4.38)
-      postcss-minify-selectors: 5.2.1(postcss@8.4.38)
-      postcss-normalize-charset: 5.1.0(postcss@8.4.38)
-      postcss-normalize-display-values: 5.1.0(postcss@8.4.38)
-      postcss-normalize-positions: 5.1.1(postcss@8.4.38)
-      postcss-normalize-repeat-style: 5.1.1(postcss@8.4.38)
-      postcss-normalize-string: 5.1.0(postcss@8.4.38)
-      postcss-normalize-timing-functions: 5.1.0(postcss@8.4.38)
-      postcss-normalize-unicode: 5.1.1(postcss@8.4.38)
-      postcss-normalize-url: 5.1.0(postcss@8.4.38)
-      postcss-normalize-whitespace: 5.1.1(postcss@8.4.38)
-      postcss-ordered-values: 5.1.3(postcss@8.4.38)
-      postcss-reduce-initial: 5.1.2(postcss@8.4.38)
-      postcss-reduce-transforms: 5.1.0(postcss@8.4.38)
-      postcss-svgo: 5.1.0(postcss@8.4.38)
-      postcss-unique-selectors: 5.1.1(postcss@8.4.38)
+      css-declaration-sorter: 6.4.1(postcss@8.5.2)
+      cssnano-utils: 3.1.0(postcss@8.5.2)
+      postcss: 8.5.2
+      postcss-calc: 8.2.4(postcss@8.5.2)
+      postcss-colormin: 5.3.1(postcss@8.5.2)
+      postcss-convert-values: 5.1.3(postcss@8.5.2)
+      postcss-discard-comments: 5.1.2(postcss@8.5.2)
+      postcss-discard-duplicates: 5.1.0(postcss@8.5.2)
+      postcss-discard-empty: 5.1.1(postcss@8.5.2)
+      postcss-discard-overridden: 5.1.0(postcss@8.5.2)
+      postcss-merge-longhand: 5.1.7(postcss@8.5.2)
+      postcss-merge-rules: 5.1.4(postcss@8.5.2)
+      postcss-minify-font-values: 5.1.0(postcss@8.5.2)
+      postcss-minify-gradients: 5.1.1(postcss@8.5.2)
+      postcss-minify-params: 5.1.4(postcss@8.5.2)
+      postcss-minify-selectors: 5.2.1(postcss@8.5.2)
+      postcss-normalize-charset: 5.1.0(postcss@8.5.2)
+      postcss-normalize-display-values: 5.1.0(postcss@8.5.2)
+      postcss-normalize-positions: 5.1.1(postcss@8.5.2)
+      postcss-normalize-repeat-style: 5.1.1(postcss@8.5.2)
+      postcss-normalize-string: 5.1.0(postcss@8.5.2)
+      postcss-normalize-timing-functions: 5.1.0(postcss@8.5.2)
+      postcss-normalize-unicode: 5.1.1(postcss@8.5.2)
+      postcss-normalize-url: 5.1.0(postcss@8.5.2)
+      postcss-normalize-whitespace: 5.1.1(postcss@8.5.2)
+      postcss-ordered-values: 5.1.3(postcss@8.5.2)
+      postcss-reduce-initial: 5.1.2(postcss@8.5.2)
+      postcss-reduce-transforms: 5.1.0(postcss@8.5.2)
+      postcss-svgo: 5.1.0(postcss@8.5.2)
+      postcss-unique-selectors: 5.1.1(postcss@8.5.2)
 
   cssnano-preset-default@6.1.2(postcss@8.4.38):
     dependencies:
@@ -18566,9 +18543,9 @@ snapshots:
       postcss-svgo: 7.0.1(postcss@8.4.49)
       postcss-unique-selectors: 7.0.3(postcss@8.4.49)
 
-  cssnano-utils@3.1.0(postcss@8.4.38):
+  cssnano-utils@3.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   cssnano-utils@4.0.2(postcss@8.4.38):
     dependencies:
@@ -18582,11 +18559,11 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
-  cssnano@5.1.15(postcss@8.4.38):
+  cssnano@5.1.15(postcss@8.5.2):
     dependencies:
-      cssnano-preset-default: 5.2.14(postcss@8.4.38)
+      cssnano-preset-default: 5.2.14(postcss@8.5.2)
       lilconfig: 2.1.0
-      postcss: 8.4.38
+      postcss: 8.5.2
       yaml: 1.10.2
 
   cssnano@6.1.2(postcss@8.4.38):
@@ -20806,9 +20783,9 @@ snapshots:
       safer-buffer: 2.1.2
     optional: true
 
-  icss-utils@5.1.0(postcss@8.4.38):
+  icss-utils@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   ieee754@1.2.1: {}
 
@@ -22253,7 +22230,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  nuxt-windicss@2.6.1(magicast@0.3.5)(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3)):
+  nuxt-windicss@2.6.1(magicast@0.3.5)(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)):
     dependencies:
       '@nuxt/kit': 3.4.0(magicast@0.3.5)(rollup@4.34.7)
       '@windicss/config': 1.9.3
@@ -22266,7 +22243,7 @@ snapshots:
       pathe: 1.1.2
       read-cache: 1.0.0
       sirv: 2.0.4
-      vite-plugin-windicss: 1.9.3(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
+      vite-plugin-windicss: 1.9.3(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       windicss: 3.5.6
       windicss-analysis: 0.3.5
       windicss-webpack-plugin: 1.8.0
@@ -22361,10 +22338,10 @@ snapshots:
       - webpack-command
       - whiskers
 
-  nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(eslint@9.6.0)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.5.3)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.5.3)):
+  nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(eslint@9.6.0)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.5.3)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))(vue-tsc@2.0.26(typescript@5.5.3)):
     dependencies:
       '@nuxt/devalue': 2.0.2
-      '@nuxt/devtools': 1.3.9(rollup@4.34.7)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))
+      '@nuxt/devtools': 1.3.9(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       '@nuxt/kit': 3.11.2(magicast@0.3.5)(rollup@4.34.7)
       '@nuxt/schema': 3.11.2(rollup@4.34.7)
       '@nuxt/telemetry': 2.5.4(magicast@0.3.5)(rollup@4.34.7)
@@ -22464,10 +22441,10 @@ snapshots:
       - vue-tsc
       - xml2js
 
-  nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.7.2)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.7.2)):
+  nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@22.10.5)(encoding@0.1.13)(ioredis@5.3.2)(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.7)(terser@5.19.3)(typescript@5.7.2)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))(vue-tsc@2.0.26(typescript@5.7.2)):
     dependencies:
       '@nuxt/devalue': 2.0.2
-      '@nuxt/devtools': 1.3.9(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))
+      '@nuxt/devtools': 1.3.9(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5))
       '@nuxt/kit': 3.11.2(magicast@0.3.5)(rollup@4.34.7)
       '@nuxt/schema': 3.11.2(rollup@4.34.7)
       '@nuxt/telemetry': 2.5.4(magicast@0.3.5)(rollup@4.34.7)
@@ -22718,9 +22695,9 @@ snapshots:
 
   optimize-css-assets-webpack-plugin@6.0.1(webpack@4.47.0):
     dependencies:
-      cssnano: 5.1.15(postcss@8.4.38)
+      cssnano: 5.1.15(postcss@8.5.2)
       last-call-webpack-plugin: 3.0.0
-      postcss: 8.4.38
+      postcss: 8.5.2
       webpack: 4.47.0
 
   optionator@0.9.3:
@@ -23064,9 +23041,9 @@ snapshots:
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
-  postcss-calc@8.2.4(postcss@8.4.38):
+  postcss-calc@8.2.4(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-selector-parser: 6.1.0
       postcss-value-parser: 4.2.0
 
@@ -23108,12 +23085,12 @@ snapshots:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
-  postcss-colormin@5.3.1(postcss@8.4.38):
+  postcss-colormin@5.3.1(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.3
       caniuse-api: 3.0.0
       colord: 2.9.3
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-colormin@6.1.0(postcss@8.4.38):
@@ -23140,10 +23117,10 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-convert-values@5.1.3(postcss@8.4.38):
+  postcss-convert-values@5.1.3(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.3
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-convert-values@6.1.0(postcss@8.4.38):
@@ -23194,9 +23171,9 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.1.0
 
-  postcss-discard-comments@5.1.2(postcss@8.4.38):
+  postcss-discard-comments@5.1.2(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   postcss-discard-comments@6.0.2(postcss@8.4.38):
     dependencies:
@@ -23211,9 +23188,9 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  postcss-discard-duplicates@5.1.0(postcss@8.4.38):
+  postcss-discard-duplicates@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   postcss-discard-duplicates@6.0.3(postcss@8.4.38):
     dependencies:
@@ -23227,9 +23204,9 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
-  postcss-discard-empty@5.1.1(postcss@8.4.38):
+  postcss-discard-empty@5.1.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   postcss-discard-empty@6.0.3(postcss@8.4.38):
     dependencies:
@@ -23243,9 +23220,9 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
-  postcss-discard-overridden@5.1.0(postcss@8.4.38):
+  postcss-discard-overridden@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   postcss-discard-overridden@6.0.2(postcss@8.4.38):
     dependencies:
@@ -23332,11 +23309,11 @@ snapshots:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
-  postcss-merge-longhand@5.1.7(postcss@8.4.38):
+  postcss-merge-longhand@5.1.7(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
-      stylehacks: 5.1.1(postcss@8.4.38)
+      stylehacks: 5.1.1(postcss@8.5.2)
 
   postcss-merge-longhand@6.0.5(postcss@8.4.38):
     dependencies:
@@ -23356,12 +23333,12 @@ snapshots:
       postcss-value-parser: 4.2.0
       stylehacks: 7.0.4(postcss@8.4.49)
 
-  postcss-merge-rules@5.1.4(postcss@8.4.38):
+  postcss-merge-rules@5.1.4(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.3
       caniuse-api: 3.0.0
-      cssnano-utils: 3.1.0(postcss@8.4.38)
-      postcss: 8.4.38
+      cssnano-utils: 3.1.0(postcss@8.5.2)
+      postcss: 8.5.2
       postcss-selector-parser: 6.1.0
 
   postcss-merge-rules@6.1.1(postcss@8.4.38):
@@ -23388,9 +23365,9 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  postcss-minify-font-values@5.1.0(postcss@8.4.38):
+  postcss-minify-font-values@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-minify-font-values@6.1.0(postcss@8.4.38):
@@ -23408,11 +23385,11 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-minify-gradients@5.1.1(postcss@8.4.38):
+  postcss-minify-gradients@5.1.1(postcss@8.5.2):
     dependencies:
       colord: 2.9.3
-      cssnano-utils: 3.1.0(postcss@8.4.38)
-      postcss: 8.4.38
+      cssnano-utils: 3.1.0(postcss@8.5.2)
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-minify-gradients@6.0.3(postcss@8.4.38):
@@ -23436,11 +23413,11 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-minify-params@5.1.4(postcss@8.4.38):
+  postcss-minify-params@5.1.4(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.3
-      cssnano-utils: 3.1.0(postcss@8.4.38)
-      postcss: 8.4.38
+      cssnano-utils: 3.1.0(postcss@8.5.2)
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-minify-params@6.1.0(postcss@8.4.38):
@@ -23464,9 +23441,9 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-minify-selectors@5.2.1(postcss@8.4.38):
+  postcss-minify-selectors@5.2.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-selector-parser: 6.1.0
 
   postcss-minify-selectors@6.0.4(postcss@8.4.38):
@@ -23485,26 +23462,26 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.4.38):
+  postcss-modules-extract-imports@3.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
-  postcss-modules-local-by-default@4.0.5(postcss@8.4.38):
+  postcss-modules-local-by-default@4.0.5(postcss@8.5.2):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.38)
-      postcss: 8.4.38
+      icss-utils: 5.1.0(postcss@8.5.2)
+      postcss: 8.5.2
       postcss-selector-parser: 6.1.0
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.0(postcss@8.4.38):
+  postcss-modules-scope@3.2.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-selector-parser: 6.1.0
 
-  postcss-modules-values@4.0.0(postcss@8.4.38):
+  postcss-modules-values@4.0.0(postcss@8.5.2):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.38)
-      postcss: 8.4.38
+      icss-utils: 5.1.0(postcss@8.5.2)
+      postcss: 8.5.2
 
   postcss-nested@7.0.2(postcss@8.4.49):
     dependencies:
@@ -23518,9 +23495,9 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.1.0
 
-  postcss-normalize-charset@5.1.0(postcss@8.4.38):
+  postcss-normalize-charset@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   postcss-normalize-charset@6.0.2(postcss@8.4.38):
     dependencies:
@@ -23534,9 +23511,9 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
-  postcss-normalize-display-values@5.1.0(postcss@8.4.38):
+  postcss-normalize-display-values@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-display-values@6.0.2(postcss@8.4.38):
@@ -23554,9 +23531,9 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-positions@5.1.1(postcss@8.4.38):
+  postcss-normalize-positions@5.1.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-positions@6.0.2(postcss@8.4.38):
@@ -23574,9 +23551,9 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-repeat-style@5.1.1(postcss@8.4.38):
+  postcss-normalize-repeat-style@5.1.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-repeat-style@6.0.2(postcss@8.4.38):
@@ -23594,9 +23571,9 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-string@5.1.0(postcss@8.4.38):
+  postcss-normalize-string@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-string@6.0.2(postcss@8.4.38):
@@ -23614,9 +23591,9 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-timing-functions@5.1.0(postcss@8.4.38):
+  postcss-normalize-timing-functions@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-timing-functions@6.0.2(postcss@8.4.38):
@@ -23634,10 +23611,10 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-unicode@5.1.1(postcss@8.4.38):
+  postcss-normalize-unicode@5.1.1(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.3
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-unicode@6.1.0(postcss@8.4.38):
@@ -23658,10 +23635,10 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-url@5.1.0(postcss@8.4.38):
+  postcss-normalize-url@5.1.0(postcss@8.5.2):
     dependencies:
       normalize-url: 6.1.0
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-url@6.0.2(postcss@8.4.38):
@@ -23679,9 +23656,9 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-whitespace@5.1.1(postcss@8.4.38):
+  postcss-normalize-whitespace@5.1.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-normalize-whitespace@6.0.2(postcss@8.4.38):
@@ -23703,10 +23680,10 @@ snapshots:
     dependencies:
       postcss: 8.4.38
 
-  postcss-ordered-values@5.1.3(postcss@8.4.38):
+  postcss-ordered-values@5.1.3(postcss@8.5.2):
     dependencies:
-      cssnano-utils: 3.1.0(postcss@8.4.38)
-      postcss: 8.4.38
+      cssnano-utils: 3.1.0(postcss@8.5.2)
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-ordered-values@6.0.2(postcss@8.4.38):
@@ -23810,11 +23787,11 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.1.0
 
-  postcss-reduce-initial@5.1.2(postcss@8.4.38):
+  postcss-reduce-initial@5.1.2(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.3
       caniuse-api: 3.0.0
-      postcss: 8.4.38
+      postcss: 8.5.2
 
   postcss-reduce-initial@6.1.0(postcss@8.4.38):
     dependencies:
@@ -23834,9 +23811,9 @@ snapshots:
       caniuse-api: 3.0.0
       postcss: 8.4.49
 
-  postcss-reduce-transforms@5.1.0(postcss@8.4.38):
+  postcss-reduce-transforms@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
   postcss-reduce-transforms@6.0.2(postcss@8.4.38):
@@ -23888,9 +23865,9 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  postcss-svgo@5.1.0(postcss@8.4.38):
+  postcss-svgo@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-value-parser: 4.2.0
       svgo: 2.8.0
 
@@ -23912,9 +23889,9 @@ snapshots:
       postcss-value-parser: 4.2.0
       svgo: 3.3.2
 
-  postcss-unique-selectors@5.1.1(postcss@8.4.38):
+  postcss-unique-selectors@5.1.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-selector-parser: 6.1.0
 
   postcss-unique-selectors@6.0.4(postcss@8.4.38):
@@ -25071,10 +25048,10 @@ snapshots:
       tslib: 2.6.2
       webpack: 4.47.0
 
-  stylehacks@5.1.1(postcss@8.4.38):
+  stylehacks@5.1.1(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.3
-      postcss: 8.4.38
+      postcss: 8.5.2
       postcss-selector-parser: 6.1.0
 
   stylehacks@6.1.1(postcss@8.4.38):
@@ -25943,13 +25920,9 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-hot-client@0.2.3(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3)):
+  vite-hot-client@0.2.3(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)):
     dependencies:
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
-
-  vite-hot-client@0.2.3(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3)):
-    dependencies:
-      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
+      vite: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
 
   vite-node@1.5.3(@types/node@22.10.5)(terser@5.19.3):
     dependencies:
@@ -25957,7 +25930,7 @@ snapshots:
       debug: 4.4.0
       pathe: 1.1.2
       picocolors: 1.1.1
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -25987,7 +25960,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-checker@0.6.4(eslint@9.6.0)(optionator@0.9.3)(typescript@5.5.3)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.5.3)):
+  vite-plugin-checker@0.6.4(eslint@9.6.0)(optionator@0.9.3)(typescript@5.5.3)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.5.3)):
     dependencies:
       '@babel/code-frame': 7.24.2
       ansi-escapes: 4.3.2
@@ -26000,7 +25973,7 @@ snapshots:
       semver: 7.6.2
       strip-ansi: 6.0.1
       tiny-invariant: 1.2.0
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.5
@@ -26011,7 +25984,7 @@ snapshots:
       typescript: 5.5.3
       vue-tsc: 2.0.26(typescript@5.5.3)
 
-  vite-plugin-checker@0.6.4(optionator@0.9.3)(typescript@5.7.2)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.7.2)):
+  vite-plugin-checker@0.6.4(optionator@0.9.3)(typescript@5.7.2)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3))(vue-tsc@2.0.26(typescript@5.7.2)):
     dependencies:
       '@babel/code-frame': 7.24.2
       ansi-escapes: 4.3.2
@@ -26024,7 +25997,7 @@ snapshots:
       semver: 7.6.2
       strip-ansi: 6.0.1
       tiny-invariant: 1.2.0
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.5
@@ -26034,7 +26007,7 @@ snapshots:
       typescript: 5.7.2
       vue-tsc: 2.0.26(typescript@5.7.2)
 
-  vite-plugin-inspect@0.8.4(@nuxt/kit@3.12.3(magicast@0.3.4)(rollup@4.34.7))(rollup@4.34.7)(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3)):
+  vite-plugin-inspect@0.8.4(@nuxt/kit@3.12.3(magicast@0.3.4)(rollup@4.34.7))(rollup@4.34.7)(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)):
     dependencies:
       '@antfu/utils': 0.7.10
       '@rollup/pluginutils': 5.1.0(rollup@4.34.7)
@@ -26045,32 +26018,14 @@ snapshots:
       perfect-debounce: 1.0.0
       picocolors: 1.0.1
       sirv: 2.0.4
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
     optionalDependencies:
       '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.34.7)
     transitivePeerDependencies:
       - rollup
       - supports-color
 
-  vite-plugin-inspect@0.8.4(@nuxt/kit@3.12.3(magicast@0.3.4)(rollup@4.34.7))(rollup@4.34.7)(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3)):
-    dependencies:
-      '@antfu/utils': 0.7.10
-      '@rollup/pluginutils': 5.1.0(rollup@4.34.7)
-      debug: 4.3.5
-      error-stack-parser-es: 0.1.4
-      fs-extra: 11.2.0
-      open: 10.1.0
-      perfect-debounce: 1.0.0
-      picocolors: 1.0.1
-      sirv: 2.0.4
-      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
-    optionalDependencies:
-      '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.34.7)
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-
-  vite-plugin-vue-inspector@5.1.2(vite@5.4.12(@types/node@22.10.5)(terser@5.19.3)):
+  vite-plugin-vue-inspector@5.1.2(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)):
     dependencies:
       '@babel/core': 7.24.5
       '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
@@ -26081,31 +26036,16 @@ snapshots:
       '@vue/compiler-dom': 3.4.29
       kolorist: 1.8.0
       magic-string: 0.30.10
-      vite: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
+      vite: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-vue-inspector@5.1.2(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3)):
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
-      '@babel/plugin-syntax-import-attributes': 7.24.1(@babel/core@7.24.5)
-      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.24.5)
-      '@babel/plugin-transform-typescript': 7.24.5(@babel/core@7.24.5)
-      '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.24.5)
-      '@vue/compiler-dom': 3.4.29
-      kolorist: 1.8.0
-      magic-string: 0.30.10
-      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
-    transitivePeerDependencies:
-      - supports-color
-
-  vite-plugin-windicss@1.9.3(vite@5.4.14(@types/node@22.10.5)(terser@5.19.3)):
+  vite-plugin-windicss@1.9.3(vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)):
     dependencies:
       '@windicss/plugin-utils': 1.9.3
       debug: 4.3.5
       kolorist: 1.8.0
-      vite: 5.4.14(@types/node@22.10.5)(terser@5.19.3)
+      vite: 6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5)
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
@@ -26129,6 +26069,19 @@ snapshots:
       '@types/node': 22.10.5
       fsevents: 2.3.3
       terser: 5.19.3
+
+  vite@6.1.0(@types/node@22.10.5)(jiti@2.4.2)(terser@5.19.3)(tsx@4.16.2)(yaml@2.4.5):
+    dependencies:
+      esbuild: 0.24.2
+      postcss: 8.5.2
+      rollup: 4.34.7
+    optionalDependencies:
+      '@types/node': 22.10.5
+      fsevents: 2.3.3
+      jiti: 2.4.2
+      terser: 5.19.3
+      tsx: 4.16.2
+      yaml: 2.4.5
 
   vitest@3.0.5(@types/node@22.10.5)(@vitest/ui@3.0.5)(happy-dom@16.0.1)(terser@5.19.3):
     dependencies:
