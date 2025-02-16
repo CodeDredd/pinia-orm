@@ -38,7 +38,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: npm i -g --force corepack && corepack enable
-      - uses: actions/setup-node@v4.0.2
+      - uses: actions/setup-node@v4.2.0
         with:
           node-version: 20
           cache: "pnpm"
