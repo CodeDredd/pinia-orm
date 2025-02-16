@@ -5,6 +5,8 @@ import { generateMarkDown, getCurrentGitBranch, loadChangelogConfig } from 'chan
 import { consola } from 'consola'
 import { determineBumpType, getContributors, getLatestCommits, getLatestReleasedTag, getLatestTag, getPreviousReleasedCommits, loadWorkspace } from './_utils'
 
+const handleSeparateBranch = true
+
 async function main () {
   const releaseBranch = await getCurrentGitBranch()
   const workspace = await loadWorkspace(process.cwd())
@@ -13,7 +15,7 @@ async function main () {
   const prevMessages = new Set(handleSeparateBranch ? await getPreviousReleasedCommits().then(r => r.map(c => c.message)) : [])
 
   const commits = await getLatestCommits().then(commits => commits.filter(
-    c => config.types[c.type] && !(c.type === 'chore' && c.scope === 'deps' && !c.isBreaking),
+    c => config.types[c.type] && !(c.type === 'chore' && c.scope === 'deps') && !prevMessages.has(c.message),
   ))
   const bumpType = await determineBumpType() || 'patch'
 
