@@ -3,19 +3,21 @@ import { $fetch } from 'ofetch'
 import { inc } from 'semver'
 import { generateMarkDown, getCurrentGitBranch, loadChangelogConfig } from 'changelogen'
 import { consola } from 'consola'
-import { determineBumpType, getContributors, getLatestCommits, loadWorkspace } from './_utils'
+import { determineBumpType, getContributors, getLatestCommits, getLatestReleasedTag, getLatestTag, getPreviousReleasedCommits, loadWorkspace } from './_utils'
 
 async function main () {
   const releaseBranch = await getCurrentGitBranch()
   const workspace = await loadWorkspace(process.cwd())
   const config = await loadChangelogConfig(process.cwd(), {})
 
+  const prevMessages = new Set(handleSeparateBranch ? await getPreviousReleasedCommits().then(r => r.map(c => c.message)) : [])
+
   const commits = await getLatestCommits().then(commits => commits.filter(
     c => config.types[c.type] && !(c.type === 'chore' && c.scope === 'deps' && !c.isBreaking),
   ))
-  const bumpType = await determineBumpType()
+  const bumpType = await determineBumpType() || 'patch'
 
-  const newVersion = inc(workspace.find('pinia-orm').data.version, bumpType || 'patch')
+  const newVersion = inc(workspace.find('pinia-orm').data.version, bumpType)
   const changelog = await generateMarkDown(commits, config)
 
   // Create and push a branch with bumped versions if it has not already been created
@@ -35,8 +37,11 @@ async function main () {
   }
 
   // Get the current PR for this release, if it exists
-  const currentPR = (await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)).find(pull => pull.title === `v${newVersion}`)
+  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)
   const contributors = await getContributors()
+
+  const latestTag = await getLatestTag()
+  const previousReleasedTag = handleSeparateBranch ? await getLatestReleasedTag() : latestTag
 
   console.log('CurrentPR', currentPR)
   console.info('New Version ', newVersion)
@@ -45,9 +50,11 @@ async function main () {
     currentPR?.body.replace(/## 👉 Changelog[\s\S]*$/, '') || `> ${newVersion} is the next ${bumpType} release.\n>\n> **Timetable**: to be announced.`,
     '## 👉 Changelog',
     changelog
-      .replace(/^## v.*?\n/, '')
+      .replace(/^## v.*\n/, '')
       .replace(`...${releaseBranch}`, `...v${newVersion}`)
-      .replace(/### ❤️ Contributors[\s\S]*$/, ''),
+      .replace(/### ❤️ Contributors[\s\S]*$/, '')
+      .replace(/[\n\r]+/g, '\n')
+      .replace(latestTag, previousReleasedTag),
     '### ❤️ Contributors',
     contributors.map(c => `- ${c.name} (@${c.username})`).join('\n'),
   ].join('\n')

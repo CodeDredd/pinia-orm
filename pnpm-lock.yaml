@@ -70,6 +70,9 @@ importers:
       sponsorkit:
         specifier: ^0.14.7
         version: 0.14.7
+      tinyglobby:
+        specifier: ^0.2.10
+        version: 0.2.10
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
