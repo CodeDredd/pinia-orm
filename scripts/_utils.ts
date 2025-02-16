@@ -138,9 +138,9 @@ export async function getContributors () {
   const rawCommits = await getGitDiff(latestTag)
   for (const commit of rawCommits) {
     if (emails.has(commit.author.email) || commit.author.name === 'renovate[bot]') { continue }
-    const { author } = await $fetch<{ author: { login: string, email: string } }>(`https://api.github.com/repos/nuxt/nuxt/commits/${commit.shortHash}`, {
+    const { author } = await $fetch<{ author: { login: string, email: string } }>(`https://api.github.com/repos/CodeDredd/pinia-orm/commits/${commit.shortHash}`, {
       headers: {
-        'User-Agent': 'nuxt/nuxt',
+        'User-Agent': 'CodeDredd/pinia-orm',
         'Accept': 'application/vnd.github.v3+json',
         'Authorization': `token ${process.env.GITHUB_TOKEN}`,
       },
