@@ -1,7 +1,6 @@
 import { createPinia, getActivePinia, setActivePinia } from 'pinia'
 import { nanoid } from 'nanoid'
 import { nanoid as nanoidNS } from 'nanoid/non-secure'
-import { nanoid as nanoidAsync } from 'nanoid/async'
 import { v1, v4 } from 'uuid'
 import type { Mock } from 'vitest'
 import { expect, vi } from 'vitest'
@@ -80,10 +79,6 @@ export function mockNanoId (ids: any[]): void {
 
 export function mockNanoIdNS (ids: any[]): void {
   ids.forEach(id => (nanoidNS as Mock).mockImplementationOnce(() => id))
-}
-
-export function mockNanoIdAsync (ids: any[]): void {
-  ids.forEach(id => (nanoidAsync as Mock).mockImplementationOnce(() => id))
 }
 
 export function mockUuidV1 (ids: any[]): void {
