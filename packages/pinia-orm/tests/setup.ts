@@ -14,11 +14,6 @@ vi.mock('nanoid', () => ({
   nanoid: vi.fn(),
 }))
 
-vi.mock('nanoid/async', () => ({
-  customAlphabet: vi.fn(),
-  nanoid: vi.fn(),
-}))
-
 vi.mock('uuid', () => ({
   v1: vi.fn(),
   v4: vi.fn(),
