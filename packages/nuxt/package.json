@@ -39,7 +39,7 @@
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground"
   },
   "peerDependencies": {
-    "@pinia/nuxt": "^0.5.1"
+    "@pinia/nuxt": "<=0.9.0"
   },
   "dependencies": {
     "@nuxt/kit": "^3.12.3",
