@@ -11,7 +11,7 @@ permissions: {}
 
 jobs:
   release:
-    if: github.repository == 'CodeDredd/pinia-orm' && startsWith(github.event.head_commit.message, 'v1.')
+    if: github.repository == 'CodeDredd/pinia-orm' && startsWith(github.event.head_commit.message, 'v2.')
     permissions:
       id-token: write
     runs-on: ubuntu-latest
