@@ -1,7 +1,7 @@
 {
   "name": "@pinia-orm/nuxt",
   "description": "Nuxt module for pinia-orm",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "license": "MIT",
   "author": {
     "name": "Gregor Becker",
