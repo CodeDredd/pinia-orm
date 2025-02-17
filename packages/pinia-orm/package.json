@@ -77,7 +77,7 @@
     "eslint": "^9.6.0",
     "happy-dom": "^16.0.1",
     "mkdist": "^2.1.0",
-    "nanoid": "5.0.9",
+    "nanoid": "^5.1.0",
     "pinia": "^3.0.1",
     "prettier": "^3.3.2",
     "size-limit": "^11.1.4",

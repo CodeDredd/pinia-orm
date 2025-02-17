@@ -10,7 +10,6 @@ export default defineBuildConfig({
     'src/casts',
     'src/helpers',
     { input: 'src/packages/nanoid/index', name: 'nanoid/index' },
-    { input: 'src/packages/nanoid/async', name: 'nanoid/async' },
     { input: 'src/packages/nanoid/non-secure', name: 'nanoid/non-secure' },
     { input: 'src/packages/uuid/v1', name: 'uuid/v1' },
     { input: 'src/packages/uuid/v4', name: 'uuid/v4' },
@@ -18,7 +17,7 @@ export default defineBuildConfig({
   declaration: true,
   failOnWarn: false,
   clean: true,
-  externals: ['@/composables', 'nanoid', 'uuid', 'nanoid/async', 'nanoid/non-secure', 'pinia', 'vue', '@vue/composition-api'],
+  externals: ['@/composables', 'nanoid', 'uuid', 'nanoid/non-secure', 'pinia', 'vue', '@vue/composition-api'],
   rollup: {
     emitCJS: true,
   },
