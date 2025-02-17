@@ -112,7 +112,7 @@ export async function getLatestTag () {
 }
 
 export async function getLatestReleasedTag () {
-  const latestReleasedTag = await exec('git', ['tag', '-l']).then(r => r.stdout.trim().split('\n').filter(t => /v1\.\d+\.\d+/.test(t)).sort(compare)).then(r => r.pop()!.trim())
+  const latestReleasedTag = await exec('git', ['tag', '-l']).then(r => r.stdout.trim().split('\n').filter(t => /v2\.\d+\.\d+/.test(t)).sort(compare)).then(r => r.pop()!.trim())
   return latestReleasedTag
 }
 
