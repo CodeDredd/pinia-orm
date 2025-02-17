@@ -10,7 +10,7 @@ on:
       - scripts
   pull_request:
     branches:
-      - main
+      - 1.x
       - "!v[0-9]*"
     paths-ignore:
       - docs/**
