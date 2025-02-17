@@ -1,4 +1,4 @@
-import { addImports, addPlugin, addTemplate, createResolver, defineNuxtModule, isNuxt3 } from '@nuxt/kit'
+import { addImports, addPlugin, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import type { InstallOptions } from 'pinia-orm'
 import { CONFIG_DEFAULTS } from 'pinia-orm'
 
@@ -63,7 +63,7 @@ export const ormOptions = ${JSON.stringify(options, null, 2)}
       },
     })
 
-    addPlugin(resolver.resolve('./runtime/plugin.vue' + (isNuxt3() ? '3' : '2')), {
+    addPlugin(resolver.resolve('./runtime/plugin.vue'), {
       append: true,
     })
 
