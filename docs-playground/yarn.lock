@@ -159,6 +159,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@antfu/utils@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "@antfu/utils@npm:9.1.0"
+  checksum: 10c0/40f0399c7e80e2252b821da79a790c39270aa31897ad42f1649b5d48dbfb54c3440cd4947cba1ecf7fe726e24cef3806a9ca7c0c59fcef8f0b51225e2dd5aea0
+  languageName: node
+  linkType: hard
+
 "@apideck/better-ajv-errors@npm:^0.3.1":
   version: 0.3.6
   resolution: "@apideck/better-ajv-errors@npm:0.3.6"
@@ -7533,7 +7540,7 @@ __metadata:
   resolution: "playground.vueuse.org@workspace:."
   dependencies:
     "@antfu/eslint-config": "npm:^4.2.1"
-    "@antfu/utils": "npm:^0.7.10"
+    "@antfu/utils": "npm:^9.1.0"
     "@headlessui/vue": "npm:^1.7.22"
     "@iconify/json": "npm:^2.2.225"
     "@types/file-saver": "npm:^2.0.7"
