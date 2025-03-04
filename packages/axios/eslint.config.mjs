@@ -34,6 +34,7 @@ export default createConfigForNuxt({
       ],
       '@typescript-eslint/no-dynamic-delete': 'off',
       '@typescript-eslint/no-useless-constructor': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {

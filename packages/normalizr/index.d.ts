@@ -53,7 +53,7 @@ export interface SchemaObject<T> {
   [key: string]: SchemaValue<T>
 }
 
-export interface SchemaArray<T> extends Array<Schema<T>> {}
+export type SchemaArray<T> = Array<Schema<T>>
 
 export type NormalizedSchema<E, R> = { entities: E, result: R }
 

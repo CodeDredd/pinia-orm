@@ -9,7 +9,7 @@ describe('unit/model/Model_Attrs_Boolean', () => {
       static entity = 'users'
 
       @Bool(true)
-        bool!: number
+      bool!: number
     }
 
     expect(new User({}).bool).toBe(true)
@@ -27,7 +27,7 @@ describe('unit/model/Model_Attrs_Boolean', () => {
       static entity = 'users'
 
       @Bool(null, { notNullable: true })
-        bool!: boolean | null
+      bool!: boolean | null
     }
 
     const logger = vi.spyOn(console, 'warn')

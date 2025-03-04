@@ -25,7 +25,7 @@ describe('feature/relations/belongs_to_save_uid', () => {
       @Str('') title!: string
 
       @BelongsTo(() => User, 'userId')
-        author!: User | null
+      author!: User | null
     }
 
     mockUid(['uid1'])
@@ -63,7 +63,7 @@ describe('feature/relations/belongs_to_save_uid', () => {
       @Str('') title!: string
 
       @BelongsTo(() => User, 'userId')
-        author!: User | null
+      author!: User | null
     }
 
     mockUid(['uid1', 'uid2'])

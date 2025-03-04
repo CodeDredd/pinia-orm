@@ -11,7 +11,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
     @Attr() id!: number
     @Str('') name!: string
     @BelongsToMany(() => Role, { as: 'userPivot', model: () => RoleUser }, 'user_id', 'role_id')
-      roles!: Role[]
+    roles!: Role[]
 
     declare pivot: RoleUser
   }
@@ -21,7 +21,7 @@ describe('feature/relations/belongs_to_many_retrieve', () => {
 
     @Attr() id!: number
     @BelongsToMany(() => User, () => RoleUser, 'role_id', 'user_id')
-      users!: User[]
+    users!: User[]
 
     declare userPivot: RoleUser
   }

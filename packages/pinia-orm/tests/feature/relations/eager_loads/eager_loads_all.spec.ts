@@ -28,10 +28,10 @@ describe('feature/relations/eager_loads_all', () => {
     @Str('') title!: string
 
     @BelongsTo(() => User, 'userId')
-      author!: User | null
+    author!: User | null
 
     @HasMany(() => Comment, 'postId')
-      comments!: Comment[]
+    comments!: Comment[]
   }
 
   it('eager loads all top level relations', () => {

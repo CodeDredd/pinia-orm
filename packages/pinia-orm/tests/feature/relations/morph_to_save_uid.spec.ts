@@ -25,7 +25,7 @@ describe('feature/relations/morph_to_save_uid', () => {
       @Attr() imageableId!: number
       @Attr() imageableType!: string
       @MorphTo(() => [User], 'imageableId', 'imageableType')
-        imageable!: User | null
+      imageable!: User | null
     }
 
     mockUid(['uid1'])
@@ -68,7 +68,7 @@ describe('feature/relations/morph_to_save_uid', () => {
       @Attr() imageableId!: string
       @Attr() imageableType!: string
       @MorphTo(() => [User], 'imageableId', 'imageableType')
-        imageable!: User | null
+      imageable!: User | null
     }
 
     mockUid(['uid1', 'uid2'])

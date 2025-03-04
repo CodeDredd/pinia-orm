@@ -19,7 +19,7 @@ describe('feature/relations/nested/nested_relations', () => {
     @Str('') name!: string
 
     @HasMany(() => Follower, 'userId')
-      followers!: Follower[]
+    followers!: Follower[]
   }
 
   class Post extends Model {
@@ -30,7 +30,7 @@ describe('feature/relations/nested/nested_relations', () => {
     @Str('') title!: string
 
     @BelongsTo(() => User, 'userId')
-      author!: User | null
+    author!: User | null
   }
 
   it('inserts a nested relations with missing foreign key', () => {

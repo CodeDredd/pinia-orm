@@ -28,7 +28,7 @@ describe('feature/relations/morph_many_save_custom_key', () => {
       @Str('') link!: string
 
       @MorphMany(() => Comment, 'commentableId', 'commentableType')
-        comments!: Comment[]
+      comments!: Comment[]
     }
 
     useRepo(Video).save({
@@ -84,7 +84,7 @@ describe('feature/relations/morph_many_save_custom_key', () => {
         'commentableType',
         'morphableId',
       )
-        comments!: Comment[]
+      comments!: Comment[]
     }
 
     useRepo(Video).save({

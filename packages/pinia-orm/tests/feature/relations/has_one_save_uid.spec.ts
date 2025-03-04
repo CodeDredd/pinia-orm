@@ -25,7 +25,7 @@ describe('feature/relations/has_one_save_uid', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-        phone!: Phone | null
+      phone!: Phone | null
     }
 
     mockUid(['uid1'])
@@ -66,7 +66,7 @@ describe('feature/relations/has_one_save_uid', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-        phone!: Phone | null
+      phone!: Phone | null
     }
 
     mockUid(['uid1', 'uid2'])
@@ -107,7 +107,7 @@ describe('feature/relations/has_one_save_uid', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-        phone!: Phone | null
+      phone!: Phone | null
     }
 
     mockUid(['uid1', 'uid2'])

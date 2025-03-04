@@ -20,7 +20,7 @@ describe('feature/relations/belongs_to_save', () => {
     @Str('') title!: string
 
     @BelongsTo(() => User, 'userId')
-      author!: User | null
+    author!: User | null
   }
 
   it('inserts a record to the store with "belongs to" relation', () => {

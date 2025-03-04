@@ -9,7 +9,7 @@ describe('unit/model/Model_Attrs_Number', () => {
       static entity = 'users'
 
       @Num(0)
-        num!: number
+      num!: number
     }
 
     expect(new User({}).num).toBe(0)
@@ -25,7 +25,7 @@ describe('unit/model/Model_Attrs_Number', () => {
       static entity = 'users'
 
       @Num(null, { notNullable: true })
-        num!: number | null
+      num!: number | null
     }
 
     const logger = vi.spyOn(console, 'warn')

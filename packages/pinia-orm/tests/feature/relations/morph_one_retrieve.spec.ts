@@ -21,7 +21,7 @@ describe('feature/relations/morph_one_retrieve', () => {
     @Str('') name!: string
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-      image!: Image | null
+    image!: Image | null
   }
 
   class Post extends Model {
@@ -30,7 +30,7 @@ describe('feature/relations/morph_one_retrieve', () => {
     @Num(0) id!: number
     @Str('') title!: string
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-      image!: Image | null
+    image!: Image | null
   }
 
   const ENTITIES = {

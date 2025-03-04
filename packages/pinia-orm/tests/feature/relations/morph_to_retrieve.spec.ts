@@ -27,7 +27,7 @@ describe('feature/relations/morph_to_retrieve', () => {
     @Attr() imageableId!: number
     @Attr() imageableType!: string
     @MorphTo(() => [User, Post], 'imageableId', 'imageableType')
-      imageable!: User | Post | null
+    imageable!: User | Post | null
   }
 
   const MORPH_TO_ENTITIES = {

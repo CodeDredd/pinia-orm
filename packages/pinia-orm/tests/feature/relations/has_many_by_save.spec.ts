@@ -20,7 +20,7 @@ describe('feature/relations/has_many_by_save', () => {
     @Str('') name!: string
 
     @HasManyBy(() => Node, 'nodeIds')
-      nodes!: Node[]
+    nodes!: Node[]
   }
 
   it('inserts a record to the store with "has many by" relation', () => {

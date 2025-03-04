@@ -27,7 +27,7 @@ describe('feature/relations/has_many_save_custom_key', () => {
       @Str('') name!: string
 
       @HasMany(() => Post, 'userId')
-        posts!: Post[]
+      posts!: Post[]
     }
 
     const usersRepo = useRepo(User)
@@ -61,7 +61,7 @@ describe('feature/relations/has_many_save_custom_key', () => {
       @Str('') name!: string
 
       @HasMany(() => Post, 'userId', 'userId')
-        posts!: Post[]
+      posts!: Post[]
     }
 
     class Post extends Model {

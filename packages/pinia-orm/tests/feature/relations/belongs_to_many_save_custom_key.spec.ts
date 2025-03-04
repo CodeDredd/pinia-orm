@@ -17,7 +17,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
 
       @Num(0) belongsToManyId!: number
       @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-        permissions!: Role
+      permissions!: Role
     }
 
     class Role extends Model {
@@ -148,7 +148,7 @@ describe('feature/relations/belongs_to_many_save_custom_key', () => {
 
       @Num(0) belongsToManyId!: number
       @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-        permissions!: Role
+      permissions!: Role
     }
 
     class Role extends Model {

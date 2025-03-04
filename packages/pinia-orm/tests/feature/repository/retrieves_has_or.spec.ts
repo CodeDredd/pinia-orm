@@ -20,7 +20,7 @@ describe('feature/repository/retrieves_has_or', () => {
     @Str('') name!: string
 
     @HasMany(() => Post, 'userId')
-      posts!: Post[]
+    posts!: Post[]
   }
 
   it('can filter by "or has" clause', () => {

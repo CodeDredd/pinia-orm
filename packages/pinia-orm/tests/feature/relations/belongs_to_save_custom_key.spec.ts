@@ -27,7 +27,7 @@ describe('feature/relations/belongs_to_save_custome_key', () => {
       @Str('') title!: string
 
       @BelongsTo(() => User, 'userId')
-        author!: User | null
+      author!: User | null
     }
 
     const postsRepo = useRepo(Post)
@@ -65,7 +65,7 @@ describe('feature/relations/belongs_to_save_custome_key', () => {
       @Str('') title!: string
 
       @BelongsTo(() => User, 'userId', 'userId')
-        author!: User | null
+      author!: User | null
     }
 
     const postsRepo = useRepo(Post)

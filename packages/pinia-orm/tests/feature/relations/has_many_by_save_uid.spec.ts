@@ -25,7 +25,7 @@ describe('feature/relations/has_many_by_insert_uid', () => {
       @Str('') name!: string
 
       @HasManyBy(() => Node, 'nodeIds')
-        nodes!: Node[]
+      nodes!: Node[]
     }
 
     mockUid(['uid1'])
@@ -67,7 +67,7 @@ describe('feature/relations/has_many_by_insert_uid', () => {
       @Str('') name!: string
 
       @HasManyBy(() => Node, 'nodeIds')
-        nodes!: Node[]
+      nodes!: Node[]
     }
 
     mockUid(['uid1', 'uid2', 'uid3'])

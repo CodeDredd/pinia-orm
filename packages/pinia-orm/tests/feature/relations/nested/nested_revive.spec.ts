@@ -10,7 +10,7 @@ describe('feature/relations/nested/nested_revive', () => {
     @Attr() id!: number
 
     @HasMany(() => Post, 'userId')
-      posts!: Post[]
+    posts!: Post[]
   }
 
   class Comment extends Model {
@@ -21,7 +21,7 @@ describe('feature/relations/nested/nested_revive', () => {
     @Attr() userId!: number
 
     @BelongsTo(() => User, 'userId')
-      author!: User | null
+    author!: User | null
   }
 
   class Post extends Model {
@@ -31,10 +31,10 @@ describe('feature/relations/nested/nested_revive', () => {
     @Attr() userId!: number | null
 
     @BelongsTo(() => User, 'userId')
-      author!: User | null
+    author!: User | null
 
     @HasMany(() => Comment, 'postId')
-      comments!: Comment[]
+    comments!: Comment[]
   }
 
   it('can revive a complex nested schema', () => {

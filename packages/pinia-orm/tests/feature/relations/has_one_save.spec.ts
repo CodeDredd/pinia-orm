@@ -20,7 +20,7 @@ describe('feature/relations/has_one_save', () => {
     @Str('') name!: string
 
     @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+    phone!: Phone | null
   }
 
   it('inserts a record to the store with "has one" relation', () => {

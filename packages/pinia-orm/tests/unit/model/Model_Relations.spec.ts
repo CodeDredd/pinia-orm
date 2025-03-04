@@ -91,19 +91,19 @@ describe('unit/model/Model_Relations', () => {
     @Attr() nameIds!: number[]
 
     @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+    phone!: Phone | null
 
     @BelongsTo(() => Country, 'countryId')
-      country!: Country | null
+    country!: Country | null
 
     @HasMany(() => Post, 'userId')
-      posts!: Post[]
+    posts!: Post[]
 
     @HasManyBy(() => Name, 'nameIds')
-      names!: Name[]
+    names!: Name[]
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-      image!: Image | null
+    image!: Image | null
 
     @BelongsToMany(() => Role, () => RoleUser, 'userId', 'roleId') declare roles: Role[]
 
@@ -120,7 +120,7 @@ describe('unit/model/Model_Relations', () => {
     @Attr() imageableType!: string
 
     @MorphTo(() => [User], 'imageableId', 'imageableType')
-      imageable!: User | null
+    imageable!: User | null
   }
 
   it('fills "has one" relation', () => {

@@ -31,7 +31,7 @@ describe('unit/model/Model_Casts_Boolean', () => {
 
       @Cast(() => BooleanCast)
       @Bool(true)
-        isPublished!: boolean
+      isPublished!: boolean
     }
 
     expect(new User({ isPublished: true }, { operation: 'get' }).isPublished).toBe(true)
@@ -50,7 +50,7 @@ describe('unit/model/Model_Casts_Boolean', () => {
 
       @Cast(() => BooleanCast)
       @Bool(null, { notNullable: true })
-        isPublished!: boolean | null
+      isPublished!: boolean | null
     }
 
     expect(new User({ operation: 'get' }).isPublished).toBe(null)

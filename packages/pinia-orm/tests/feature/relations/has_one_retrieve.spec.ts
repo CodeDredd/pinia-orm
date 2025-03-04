@@ -20,7 +20,7 @@ describe('feature/relations/has_one_retrieve', () => {
     @Str('') name!: string
 
     @HasOne(() => Phone, 'userId')
-      phone!: Phone | null
+    phone!: Phone | null
   }
 
   it('can eager load has one relation', () => {

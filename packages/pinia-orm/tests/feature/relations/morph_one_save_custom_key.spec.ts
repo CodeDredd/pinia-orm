@@ -28,7 +28,7 @@ describe('feature/relations/morph_one_save_custom_key', () => {
       @Str('') name!: string
 
       @MorphOne(() => Image, 'imageableId', 'imageableType')
-        image!: Image | null
+      image!: Image | null
     }
 
     const usersRepo = useRepo(User)
@@ -76,7 +76,7 @@ describe('feature/relations/morph_one_save_custom_key', () => {
       @Str('') name!: string
 
       @MorphOne(() => Image, 'imageableId', 'imageableType', 'userId')
-        image!: Image | null
+      image!: Image | null
     }
 
     const usersRepo = useRepo(User)

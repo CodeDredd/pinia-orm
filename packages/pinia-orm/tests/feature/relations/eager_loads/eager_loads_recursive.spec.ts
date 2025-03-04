@@ -12,7 +12,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     @Str('') name!: string
 
     @HasOne(() => Phone, 'userId')
-      phone!: Phone
+    phone!: Phone
   }
 
   class Phone extends Model {
@@ -23,7 +23,7 @@ describe('feature/relations/eager_loads_recursive', () => {
     @Str('') number!: string
 
     @BelongsTo(() => User, 'userId')
-      user!: User
+    user!: User
   }
 
   it('eager loads all relations recursively', () => {

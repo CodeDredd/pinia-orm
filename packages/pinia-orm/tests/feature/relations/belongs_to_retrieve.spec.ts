@@ -19,7 +19,7 @@ describe('feature/relations/belongs_to_retrieve', () => {
     @Str('') title!: string
 
     @BelongsTo(() => User, 'userId')
-      author!: User | null
+    author!: User | null
   }
 
   it('can eager load belongs to relation', () => {

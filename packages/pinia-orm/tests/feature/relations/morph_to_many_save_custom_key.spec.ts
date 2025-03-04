@@ -150,7 +150,7 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
 
       @Num(0) belongsToManyId!: number
       @MorphToMany(() => Role, () => Roleable, 'roleId', 'rolableId', 'rolableType')
-        permissions!: Role
+      permissions!: Role
     }
 
     class Role extends Model {

@@ -33,7 +33,7 @@ describe('unit/model/Model_Mutators', () => {
 
       @Mutate((value: any) => value.toUpperCase())
       @Attr('')
-        name!: string
+      name!: string
     }
 
     expect(new User({ name: 'john doe' }, { operation: 'get' }).name).toBe('JOHN DOE')
@@ -307,7 +307,6 @@ describe('unit/model/Model_Mutators', () => {
       },
     })
 
-    console.log('calling with request')
     const result = userRepo.with('permissions').first()
 
     expect(result?.permissions[0].name).toBe('color')

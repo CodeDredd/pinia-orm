@@ -661,7 +661,7 @@ export class Model {
   /**
    * Get the namespace.
    */
-  $namespace (): String {
+  $namespace (): string {
     return this.$self().usedNamespace()
   }
 
@@ -1032,7 +1032,7 @@ export class Model {
   /**
    * Checks if attributes were changed
    */
-  $isDirty ($attribute?: keyof ModelFields): Boolean {
+  $isDirty ($attribute?: keyof ModelFields): boolean {
     const original = this.$getOriginal()
     if ($attribute) {
       if (!Object.keys(original).includes($attribute)) { throwError(['The property"', $attribute, '"does not exit in the model "', this.$entity(), '"']) }

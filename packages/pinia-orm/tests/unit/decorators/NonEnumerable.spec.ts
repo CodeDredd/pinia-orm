@@ -7,7 +7,7 @@ describe('unit/decorators/NonEnumerable', () => {
     visible: string
 
     @NonEnumerable
-      hidden: string
+    hidden: string
 
     constructor () {
       this.hidden = 'i am hidden'

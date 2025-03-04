@@ -32,7 +32,7 @@ describe('unit/model/Model_Casts_Number', () => {
 
       @Cast(() => NumberCast)
       @Num(0)
-        count!: number
+      count!: number
     }
 
     expect(new User({ count: true }, { operation: 'get' }).count).toBe(1)
@@ -51,7 +51,7 @@ describe('unit/model/Model_Casts_Number', () => {
 
       @Cast(() => NumberCast)
       @Num(null, { notNullable: true })
-        count!: number | null
+      count!: number | null
     }
 
     expect(new User({ operation: 'get' }).count).toBe(null)

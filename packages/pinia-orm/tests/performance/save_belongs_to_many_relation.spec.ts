@@ -29,7 +29,7 @@ describe('performance/save_belongs_to_many_relation.spec', () => {
     @Str('') name!: string
 
     @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-      roles!: Role
+    roles!: Role
   }
 
   it('saves data with bleongs to many relation within decent time', () => {

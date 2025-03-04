@@ -20,7 +20,7 @@ describe('feature/relations/lazy_loads/lazy_eager_load', () => {
     @Str('') name!: string
 
     @HasMany(() => Post, 'userId')
-      posts!: Post[]
+    posts!: Post[]
   }
 
   it('can lazy eager load relations', () => {

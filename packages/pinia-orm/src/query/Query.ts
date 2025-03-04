@@ -93,7 +93,7 @@ export class Query<M extends Model = Model> {
   /**
    * The relationships that should be eager loaded.
    */
-  protected eagerLoad: EagerLoad<M> | {} = {}
+  protected eagerLoad: EagerLoad<M> | object = {}
 
   /**
    * The pinia store.
@@ -487,15 +487,15 @@ export class Query<M extends Model = Model> {
     const key = this.cacheConfig.key
       ? this.cacheConfig.key + JSON.stringify(this.cacheConfig.params)
       : generateKey(this.model.$entity(), {
-        where: this.wheres,
-        groups: this.groups,
-        orders: this.orders,
-        eagerLoads: this.eagerLoad,
-        skip: this.skip,
-        take: this.take,
-        hidden: this.hidden,
-        visible: this.visible,
-      })
+          where: this.wheres,
+          groups: this.groups,
+          orders: this.orders,
+          eagerLoads: this.eagerLoad,
+          skip: this.skip,
+          take: this.take,
+          hidden: this.hidden,
+          visible: this.visible,
+        })
     const result = this.cache.get(key)
 
     if (result) { return result }

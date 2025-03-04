@@ -20,7 +20,7 @@ describe('feature/relations/has_many_save', () => {
     @Str('') name!: string
 
     @HasMany(() => Post, 'userId')
-      posts!: Post[]
+    posts!: Post[]
   }
 
   it('saves a model to the store with "has many" relation', () => {

@@ -10,7 +10,7 @@ describe('unit/model/Model_Attrs_UID', () => {
       static entity = 'users'
 
       @Uid({ alphabet: 'abcde', size: 5 })
-        id!: string
+      id!: string
     }
 
     mockUid(['uid1'])
@@ -35,7 +35,7 @@ describe('unit/model/Model_Attrs_UID', () => {
       static entity = 'users'
 
       @Uid(5)
-        id!: string
+      id!: string
     }
 
     mockUid(['uid2'])

@@ -21,7 +21,7 @@ describe('feature/relations/morph_many_save', () => {
     @Str('') link!: string
 
     @MorphMany(() => Comment, 'commentableId', 'commentableType')
-      comments!: Comment[]
+    comments!: Comment[]
   }
 
   it('saves a model to the store with "morph many" relation', () => {

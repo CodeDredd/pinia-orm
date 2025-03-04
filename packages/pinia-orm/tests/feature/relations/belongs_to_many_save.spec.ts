@@ -9,10 +9,10 @@ describe('feature/relations/belongs_to_many_save', () => {
 
     @Num(0) id!: number
     @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-      roles!: Role
+    roles!: Role
 
     @BelongsToMany(() => Role, () => SuperRoleUser, 'user_id', 'role_id')
-      superRoles!: Role
+    superRoles!: Role
   }
 
   class Role extends Model {

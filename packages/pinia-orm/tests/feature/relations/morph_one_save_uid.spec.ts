@@ -26,7 +26,7 @@ describe('feature/relations/morph_one_save_uid', () => {
       @Str('') name!: string
 
       @MorphOne(() => Image, 'imageableId', 'imageableType')
-        image!: Image | null
+      image!: Image | null
     }
 
     mockUid(['uid1'])
@@ -74,7 +74,7 @@ describe('feature/relations/morph_one_save_uid', () => {
       @Str('') name!: string
 
       @MorphOne(() => Image, 'imageableId', 'imageableType')
-        image!: Image | null
+      image!: Image | null
     }
 
     mockUid(['uid1', 'uid2'])
@@ -120,7 +120,7 @@ describe('feature/relations/morph_one_save_uid', () => {
       @Str('') name!: string
 
       @MorphOne(() => Image, 'imageableId', 'imageableType')
-        image!: Image | null
+      image!: Image | null
     }
 
     mockUid(['uid1', 'uid2'])

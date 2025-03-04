@@ -21,7 +21,7 @@ describe('feature/relations/morph_many_retrieve', () => {
     @Str('') link!: string
 
     @MorphMany(() => Comment, 'commentableId', 'commentableType')
-      comments!: Comment[]
+    comments!: Comment[]
   }
 
   class Post extends Model {
@@ -30,7 +30,7 @@ describe('feature/relations/morph_many_retrieve', () => {
     @Num(0) id!: number
     @Str('') title!: string
     @MorphMany(() => Comment, 'commentableId', 'commentableType')
-      comments!: Comment[]
+    comments!: Comment[]
   }
 
   const ENTITIES = {

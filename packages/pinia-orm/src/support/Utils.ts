@@ -47,6 +47,7 @@ export function isArray (value: any): value is any[] {
 /**
  * Check if the given value is the type of array.
  */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export function isFunction (value: any): value is Function {
   return typeof value === 'function'
 }
@@ -262,7 +263,7 @@ export function getValue (obj: Record<string, any>, keys: string | string[], ifN
 /**
  * Compare two objects deep.
  */
-export function equals (a: any, b: any): Boolean {
+export function equals (a: any, b: any): boolean {
   if (a === b) { return true }
   if (a instanceof Date && b instanceof Date) { return a.getTime() === b.getTime() }
   if (!a || !b || (typeof a !== 'object' && typeof b !== 'object')) { return a === b }

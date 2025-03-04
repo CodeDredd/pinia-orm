@@ -24,7 +24,6 @@ describe('feature/model/default_attr', () => {
       parameters!: any
     }
 
-    console.log('New User 1')
     const user = new User({
       str: 'string',
       num: 1,

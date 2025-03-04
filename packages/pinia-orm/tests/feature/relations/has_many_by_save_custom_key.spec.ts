@@ -27,7 +27,7 @@ describe('feature/relations/has_many_by_save_custom_key', () => {
       @Str('') name!: string
 
       @HasManyBy(() => Node, 'nodeIds')
-        nodes!: Node[]
+      nodes!: Node[]
     }
 
     const clusterRepo = useRepo(Cluster)
@@ -69,7 +69,7 @@ describe('feature/relations/has_many_by_save_custom_key', () => {
       @Str('') name!: string
 
       @HasManyBy(() => Node, 'nodeIds', 'nodeId')
-        nodes!: Node[]
+      nodes!: Node[]
     }
 
     const clusterRepo = useRepo(Cluster)

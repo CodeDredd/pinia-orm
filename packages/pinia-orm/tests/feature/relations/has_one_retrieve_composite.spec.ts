@@ -24,7 +24,7 @@ describe('feature/relations/has_one_retrieve_composite', () => {
     @Str('') declare name: string
 
     @HasOne(() => Phone, ['userId', 'userSecondId'])
-      phone!: Phone | null
+    phone!: Phone | null
   }
 
   it('can eager load has one relation', () => {

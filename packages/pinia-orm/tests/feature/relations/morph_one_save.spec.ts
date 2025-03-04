@@ -21,7 +21,7 @@ describe('feature/relations/morph_one_save', () => {
     @Str('') name!: string
 
     @MorphOne(() => Image, 'imageableId', 'imageableType')
-      image!: Image | null
+    image!: Image | null
   }
 
   it('inserts a record to the store with "morph one" relation', () => {

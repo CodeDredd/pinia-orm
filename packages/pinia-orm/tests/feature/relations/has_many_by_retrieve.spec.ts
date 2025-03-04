@@ -20,7 +20,7 @@ describe('feature/relations/has_many_by_retrieve', () => {
     @Str('') name!: string
 
     @HasManyBy(() => Node, 'nodeIds')
-      nodes!: Node[]
+    nodes!: Node[]
   }
 
   it('can eager load has many by relation', () => {

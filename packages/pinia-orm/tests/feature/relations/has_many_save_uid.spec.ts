@@ -25,7 +25,7 @@ describe('feature/relations/has_many_insert_uid', () => {
       @Str('') name!: string
 
       @HasMany(() => Post, 'userId')
-        posts!: Post[]
+      posts!: Post[]
     }
 
     mockUid(['uid1'])
@@ -67,7 +67,7 @@ describe('feature/relations/has_many_insert_uid', () => {
       @Str('') name!: string
 
       @HasMany(() => Post, 'userId')
-        posts!: Post[]
+      posts!: Post[]
     }
 
     mockUid(['uid1', 'uid2', 'uid3'])

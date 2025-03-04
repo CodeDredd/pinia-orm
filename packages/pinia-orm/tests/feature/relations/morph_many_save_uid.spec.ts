@@ -26,7 +26,7 @@ describe('feature/relations/morph_many_save_uid', () => {
       @Str('') link!: string
 
       @MorphMany(() => Comment, 'commentableId', 'commentableType')
-        comments!: Comment[]
+      comments!: Comment[]
     }
 
     mockUid(['uid1'])
@@ -77,7 +77,7 @@ describe('feature/relations/morph_many_save_uid', () => {
       @Str('') link!: string
 
       @MorphMany(() => Comment, 'commentableId', 'commentableType')
-        comments!: Comment[]
+      comments!: Comment[]
     }
 
     mockUid(['uid1', 'uid2', 'uid3'])

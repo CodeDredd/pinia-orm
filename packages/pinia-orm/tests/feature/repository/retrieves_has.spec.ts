@@ -28,10 +28,10 @@ describe('feature/repository/retrieves_has', () => {
     @Str('') name!: string
 
     @HasMany(() => Post, 'userId')
-      posts!: Post[]
+    posts!: Post[]
 
     @HasOne(() => ExtraPost, 'userId')
-      post!: ExtraPost
+    post!: ExtraPost
   }
 
   it('can filter the query by the has clause', () => {

@@ -20,7 +20,7 @@ describe('feature/relations/morph_to_save', () => {
     @Attr() imageableId!: number
     @Attr() imageableType!: string
     @MorphTo(() => [User], 'imageableId', 'imageableType')
-      imageable!: User | null
+    imageable!: User | null
   }
 
   it('inserts a record to the store with "morph to" relation', () => {

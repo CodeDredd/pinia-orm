@@ -20,7 +20,7 @@ describe('feature/relations/has_many_retrieve', () => {
     @Str('') name!: string
 
     @HasMany(() => Post, 'userId')
-      posts!: Post[]
+    posts!: Post[]
   }
 
   it('can eager load has many relation', () => {

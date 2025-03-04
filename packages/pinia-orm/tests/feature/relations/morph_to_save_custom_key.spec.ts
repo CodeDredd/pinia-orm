@@ -27,7 +27,7 @@ describe('feature/relations/morph_to_save_custom_key', () => {
       @Attr() imageableId!: number
       @Attr() imageableType!: string
       @MorphTo(() => [User], 'imageableId', 'imageableType')
-        imageable!: User | null
+      imageable!: User | null
     }
 
     const imagesRepo = useRepo(Image)
@@ -69,7 +69,7 @@ describe('feature/relations/morph_to_save_custom_key', () => {
       @Attr() imageableId!: number
       @Attr() imageableType!: string
       @MorphTo(() => [User], 'imageableId', 'imageableType', 'imageableId')
-        imageable!: User | null
+      imageable!: User | null
     }
 
     const imagesRepo = useRepo(Image)

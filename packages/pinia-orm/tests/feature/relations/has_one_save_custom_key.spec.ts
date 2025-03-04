@@ -27,7 +27,7 @@ describe('feature/relations/has_one_save_custom_key', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId')
-        phone!: Phone | null
+      phone!: Phone | null
     }
 
     const usersRepo = useRepo(User)
@@ -60,7 +60,7 @@ describe('feature/relations/has_one_save_custom_key', () => {
       @Str('') name!: string
 
       @HasOne(() => Phone, 'userId', 'userId')
-        phone!: Phone | null
+      phone!: Phone | null
     }
 
     class Phone extends Model {
