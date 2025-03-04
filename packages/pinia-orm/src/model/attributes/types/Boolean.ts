@@ -1,6 +1,7 @@
 import type { Model } from '../../Model'
 import type { TypeDefault } from './Type'
 import { Type } from './Type'
+import { BooleanCast } from '../../casts/BooleanCast'
 
 export class Boolean extends Type {
   /**
@@ -14,6 +15,7 @@ export class Boolean extends Type {
    * Make the value for the attribute.
    */
   make (value: any): boolean | null {
-    return this.makeReturn<boolean | null>('boolean', value)
+    const booleanCast = new BooleanCast(value)
+    return booleanCast.get(this.makeReturn<boolean | null>('boolean', value))
   }
 }
