@@ -1,7 +1,7 @@
 import type { Model } from '../../Model'
+import { BooleanCast } from '../../casts/BooleanCast'
 import type { TypeDefault } from './Type'
 import { Type } from './Type'
-import { BooleanCast } from '../../casts/BooleanCast'
 
 export class Boolean extends Type {
   /**
