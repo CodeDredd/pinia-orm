@@ -265,8 +265,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(typescript@5.8.2)(vue-tsc@2.0.26(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
       uuid:
-        specifier: ^10.0.0
-        version: 10.0.0
+        specifier: ^11.0.5
+        version: 11.0.5
       vite:
         specifier: ^5.3.3
         version: 5.4.12(@types/node@22.10.5)(terser@5.19.3)
@@ -11472,8 +11472,8 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
-  uuid@10.0.0:
-    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+  uuid@11.0.5:
+    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
     hasBin: true
 
   uuid@8.3.2:
@@ -26374,7 +26374,7 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  uuid@10.0.0: {}
+  uuid@11.0.5: {}
 
   uuid@8.3.2: {}
 
