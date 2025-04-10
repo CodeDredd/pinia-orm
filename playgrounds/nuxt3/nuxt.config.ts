@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-orm/nuxt'
   ],
+
   vite: {
     esbuild: {
       tsconfigRaw: {
@@ -11,5 +12,7 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
+
+  compatibilityDate: '2025-04-10'
 })

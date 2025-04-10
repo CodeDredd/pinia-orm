@@ -10,9 +10,9 @@
   "devDependencies": {
     "@pinia-orm/axios": "workspace:*",
     "@pinia-orm/nuxt": "workspace:*",
-    "@pinia/nuxt": "^0.5.1",
-    "nuxt": "^3.11.2",
-    "pinia": "^2.1.7",
+    "@pinia/nuxt": "^0.11.0",
+    "nuxt": "^3.16.2",
+    "pinia": "^3.0.2",
     "pinia-orm": "workspace:*"
   },
   "dependencies": {
