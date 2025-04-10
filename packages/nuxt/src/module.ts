@@ -63,7 +63,7 @@ export const ormOptions = ${JSON.stringify(options, null, 2)}
       },
     })
 
-    addPlugin(resolver.resolve('./runtime/plugin.vue'), {
+    addPlugin(resolver.resolve('./runtime/plugin'), {
       append: true,
     })
 
