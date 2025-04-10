@@ -1,6 +1,6 @@
 {
   "name": "@pinia-orm/axios",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Axios plugin for pinia-orm",
   "bugs": {
     "url": "https://github.com/CodeDredd/pinia-orm/issues"
