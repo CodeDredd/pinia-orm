@@ -54,7 +54,7 @@
     "test": "vitest --run"
   },
   "peerDependencies": {
-    "pinia": "^3.0.1"
+    "pinia": ">=3.0.0"
   },
   "dependencies": {
     "@pinia-orm/normalizr": "workspace:*"
