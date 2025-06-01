@@ -95,7 +95,7 @@ export class HasManyThrough extends Relation {
       const key = model[this.localKey]
 
       dictionary[key]
-        ? model.$setRelation(relation, dictionary[key][0])
+        ? model.$setRelation(relation, dictionary[key].flat().filter(item => item !== undefined))
         : model.$setRelation(relation, [])
     })
   }
