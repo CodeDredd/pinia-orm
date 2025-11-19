@@ -53,7 +53,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "axios": ">=1.8.4",
+    "axios": ">=1.13.2",
     "pinia-orm": ">=1.9.1 || >=2.0.0-alpha",
     "pinia": ">=3.0.0"
   },
