@@ -106,6 +106,8 @@ export class Query<M extends Model = Model> {
 
   protected getNewHydrated = false
 
+  protected hydrationKey?: string
+
   /**
    * Hydrated models. They are stored to prevent rerendering of child components.
    */
@@ -114,13 +116,14 @@ export class Query<M extends Model = Model> {
   /**
    * Create a new query instance.
    */
-  constructor (database: Database, model: M, cache: WeakCache<string, Collection<M> | GroupedCollection<M>> | undefined, hydratedData: Map<string, M>, pinia?: Pinia) {
+  constructor (database: Database, model: M, cache: WeakCache<string, Collection<M> | GroupedCollection<M>> | undefined, hydratedData: Map<string, M>, pinia?: Pinia, hydrationKey?: string) {
     this.database = database
     this.model = model
     this.pinia = pinia
     this.cache = cache
     this.hydratedDataCache = hydratedData
     this.getNewHydrated = false
+    this.hydrationKey = hydrationKey
   }
 
   /**
@@ -128,14 +131,14 @@ export class Query<M extends Model = Model> {
    */
   newQuery (model: string): Query<M> {
     this.getNewHydrated = true
-    return new Query<M>(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
+    return new Query<M>(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia, this.hydrationKey)
   }
 
   /**
    * Create a new query instance with constraints for the given model.
    */
   newQueryWithConstraints (model: string): Query<M> {
-    const newQuery = new Query<M>(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia)
+    const newQuery = new Query<M>(this.database, this.database.getModel(model), this.cache, this.hydratedDataCache, this.pinia, this.hydrationKey)
 
     // Copy query constraints
     newQuery.eagerLoad = { ...this.eagerLoad }
@@ -153,7 +156,7 @@ export class Query<M extends Model = Model> {
    * Create a new query instance from the given relation.
    */
   newQueryForRelation (relation: Relation): Query<M> {
-    return new Query<M>(this.database, relation.getRelated() as M, this.cache, new Map<string, M>(), this.pinia)
+    return new Query<M>(this.database, relation.getRelated() as M, this.cache, new Map<string, M>(), this.pinia, this.hydrationKey)
   }
 
   /**
@@ -482,20 +485,12 @@ export class Query<M extends Model = Model> {
    */
   get<T extends 'group' | 'collection' = 'collection'>(triggerHook?: boolean): T extends 'group' ? GroupedCollection<M> : Collection<M>
   get (triggerHook = true): Collection<M> | GroupedCollection<M> {
+    this.hydrationKey = this.hydrationKey ?? this.generateHydrationKey()
     if (!this.fromCache || !this.cache) { return this.internalGet(triggerHook) }
 
     const key = this.cacheConfig.key
       ? this.cacheConfig.key + JSON.stringify(this.cacheConfig.params)
-      : generateKey(this.model.$entity(), {
-          where: this.wheres,
-          groups: this.groups,
-          orders: this.orders,
-          eagerLoads: this.eagerLoad,
-          skip: this.skip,
-          take: this.take,
-          hidden: this.hidden,
-          visible: this.visible,
-        })
+      : this.hydrationKey
     const result = this.cache.get(key)
 
     if (result) { return result }
@@ -580,6 +575,19 @@ export class Query<M extends Model = Model> {
     const comparator = this.getWhereComparator()
 
     return models.filter(model => comparator(model))
+  }
+
+  protected generateHydrationKey (): string {
+    return generateKey(this.model.$entity(), {
+      where: this.wheres,
+      groups: this.groups,
+      orders: this.orders,
+      eagerLoads: this.eagerLoad,
+      skip: this.skip,
+      take: this.take,
+      hidden: this.hidden,
+      visible: this.visible,
+    })
   }
 
   /**
@@ -1019,8 +1027,7 @@ export class Query<M extends Model = Model> {
       const isDeleting = currentModel.$self().deleting(currentModel)
 
       if (isDeleting === false) { notDeletableIds.push(currentModel.$getIndexId()) } else {
-        this.hydratedDataCache.delete('set' + this.model.$entity() + currentModel.$getIndexId())
-        this.hydratedDataCache.delete('get' + this.model.$entity() + currentModel.$getIndexId())
+        this.hydratedDataCache.delete(this.model.$entity() + currentModel.$getIndexId())
         afterHooks.push(() => currentModel.$self().deleted(currentModel))
         this.checkAndDeleteRelations(currentModel)
       }
@@ -1066,11 +1073,11 @@ export class Query<M extends Model = Model> {
    */
   protected getHydratedModel (record: Element, options?: ModelOptions): M {
     const id = this.model.$entity() + this.model.$getKey(record, true)
-    const operationId = options?.operation + id
+    const operationId = id
     let savedHydratedModel = this.hydratedDataCache.get(operationId)
 
-    if (options?.action === 'update') {
-      this.hydratedDataCache.delete('get' + id)
+    if (options?.action === 'update' || this.hydrationKey === undefined) {
+      this.hydratedDataCache.delete(id)
       savedHydratedModel = undefined
     }
 
@@ -1081,10 +1088,12 @@ export class Query<M extends Model = Model> {
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
     const getNewInsance = (newOptions?: ModelOptions) => (modelByType ? modelByType.newRawInstance() as M : this.model)
-      .$newInstance(record, { relations: false, ...(options || {}), ...newOptions })
+      .$newInstance(record, { ...(options || {}), ...newOptions, relations: false })
     const hydratedModel = getNewInsance()
 
-    if (isEmpty(this.eagerLoad) && options?.operation !== 'set') { this.hydratedDataCache.set(operationId, hydratedModel) }
+    if (isEmpty(this.eagerLoad) && options?.operation !== 'set' && this.hydrationKey !== undefined) {
+      this.hydratedDataCache.set(operationId, hydratedModel)
+    }
 
     return hydratedModel
   }

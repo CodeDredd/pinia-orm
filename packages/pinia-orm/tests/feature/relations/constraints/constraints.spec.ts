@@ -120,4 +120,37 @@ describe('feature/relations/constraints/constraints', () => {
     expect(users[1].phone!.type!.id).toBe(2)
     expect(users[2].phone!.type).toBe(null)
   })
+
+  it('loads with and without relations correctly', () => {
+    const usersRepo = useRepo(User)
+    const phonesRepo = useRepo(Phone)
+    const typesRepo = useRepo(Type)
+    usersRepo.cache()?.clear()
+
+    usersRepo.save([
+      { id: 1, name: 'John Doe', roles: [{ id: 1, pivot: { level: 1 }, phone: { id: 4, number: '999' } }, { id: 2 }, { id: 4 }] },
+      { id: 2, name: 'John Doe', roles: [{ id: 1, pivot: { level: 2 } }] },
+      { id: 3, name: 'Johnny Doe' },
+    ])
+
+    phonesRepo.save([
+      { id: 1, userId: 1, number: '123' },
+      { id: 2, userId: 2, number: '345' },
+      { id: 3, userId: 3, number: '789' },
+    ])
+    typesRepo.save([
+      { id: 1, phoneId: 1, name: 'iPhone' },
+      { id: 2, phoneId: 2, name: 'Android' },
+    ])
+
+    const users2 = usersRepo.get()
+    const users = usersRepo
+      .with('roles', (query) => {
+        query.with('phone')
+      })
+      .get()
+
+    expect(users[0].roles.length).toBe(3)
+    expect(users2[0].roles).toBe(undefined)
+  })
 })
