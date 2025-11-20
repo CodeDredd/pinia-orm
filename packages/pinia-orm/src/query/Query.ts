@@ -1088,7 +1088,7 @@ export class Query<M extends Model = Model> {
 
     const modelByType = this.model.$types()[record[this.model.$typeKey()]]
     const getNewInsance = (newOptions?: ModelOptions) => (modelByType ? modelByType.newRawInstance() as M : this.model)
-      .$newInstance(record, { ...(options || {}), ...newOptions, relations: false })
+      .$newInstance(record, { relations: false, ...(options || {}), ...newOptions })
     const hydratedModel = getNewInsance()
 
     if (isEmpty(this.eagerLoad) && options?.operation !== 'set' && this.hydrationKey !== undefined) {
