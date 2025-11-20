@@ -44,7 +44,7 @@ describe('unit/model/Model_Meta_Field', () => {
       username: 'JD',
     })
 
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise(resolve => setTimeout(resolve, 2000))
 
     userRepo.save({
       id: 1,

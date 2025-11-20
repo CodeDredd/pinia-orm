@@ -49,7 +49,7 @@ describe('feature/hooks/creating', () => {
       { id: 2, name: 'John Doe 2', age: 40 },
     ])
 
-    expect(useRepo(User).hydratedDataCache.size).toBe(2)
+    expect(useRepo(User).hydratedDataCache.size).toBe(0)
     expect(creatingMethod).toHaveBeenCalledTimes(2)
     expect(updatingMethod).toHaveBeenCalledTimes(0)
     expect(savingMethod).toHaveBeenCalledTimes(2)
