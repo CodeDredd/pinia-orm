@@ -880,14 +880,38 @@ export class Query<M extends Model = Model> {
 
   /**
    * Insert the given records to the store by replacing any existing records.
+   * The `saving`/`creating` and `saved`/`created` lifecycle hooks are fired
+   * for every record unless `raw` is set to `true`. Records for which a
+   * before hook returns `false` are not persisted.
    */
-  fresh (records: Element[]): Collection<M>
-  fresh (record: Element): M
-  fresh (records: Element | Element[]): M | Collection<M> {
+  fresh (records: Element[], options?: { raw?: boolean }): Collection<M>
+  fresh (record: Element, options?: { raw?: boolean }): M
+  fresh (records: Element | Element[], options: { raw?: boolean } = {}): M | Collection<M> {
     this.hydratedDataCache.clear()
     const models = this.hydrate(records, { action: 'update' })
+    const modelArray = isArray(models) ? models : [models]
+    const recordArray = isArray(records) ? records : [records]
 
-    this.commit('fresh', this.compile(models))
+    let persistableModels = modelArray
+    const afterHooks: (() => void)[] = []
+
+    if (!options.raw) {
+      persistableModels = modelArray.filter((model, index) => {
+        const record = recordArray[index]
+        const isSaving = model.$self().saving(model, record)
+        const isCreating = model.$self().creating(model, record)
+        if (isSaving === false || isCreating === false) { return false }
+
+        afterHooks.push(() => {
+          model.$self().saved(model, record)
+          model.$self().created(model, record)
+        })
+        return true
+      })
+    }
+
+    this.commit('fresh', this.compile(persistableModels))
+    afterHooks.forEach(hook => hook())
 
     return models
   }
