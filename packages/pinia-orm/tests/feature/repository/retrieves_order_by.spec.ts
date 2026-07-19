@@ -115,6 +115,34 @@ describe('feature/repository/retrieves_order_by', () => {
     assertModels(users, expected)
   })
 
+  it('can sort records locale aware with a collator', () => {
+    const userRepo = useRepo(User)
+
+    fillState({
+      users: {
+        1: { id: 1, name: 'T', age: 40 },
+        2: { id: 2, name: 'A', age: 30 },
+        3: { id: 3, name: 'Š', age: 20 },
+        4: { id: 4, name: 'U', age: 20 },
+        5: { id: 5, name: 'B', age: 50 },
+      },
+    })
+
+    const users = userRepo.orderBy('name', 'asc', new Intl.Collator('lt')).get()
+
+    const expected = [
+      { id: 2, name: 'A', age: 30 },
+      { id: 5, name: 'B', age: 50 },
+      { id: 3, name: 'Š', age: 20 },
+      { id: 1, name: 'T', age: 40 },
+      { id: 4, name: 'U', age: 20 },
+    ]
+
+    expect(users).toHaveLength(5)
+    assertInstanceOf(users, User)
+    assertModels(users, expected)
+  })
+
   it('can sort nested records by pivot', () => {
     Model.clearRegistries()
     class User extends Model {

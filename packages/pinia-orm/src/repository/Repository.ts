@@ -1,6 +1,7 @@
 import type { Pinia } from 'pinia'
 import type { Constructor } from '../types'
 import { assert, isArray } from '../support/Utils'
+import type { SortComparator } from '../support/Utils'
 import type { Collection, Element, Item } from '../data/Data'
 import type { Database } from '../database/Database'
 import type { Model, WithKeys } from '../model/Model'
@@ -332,8 +333,8 @@ export class Repository<M extends Model = Model> {
   /**
    * Add an "order by" clause to the query.
    */
-  orderBy (field: OrderBy, direction?: OrderDirection): Query<M> {
-    return this.query().orderBy(field, direction)
+  orderBy (field: OrderBy, direction?: OrderDirection, flags?: SortComparator): Query<M> {
+    return this.query().orderBy(field, direction, flags)
   }
 
   /**

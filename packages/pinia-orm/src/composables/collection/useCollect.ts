@@ -1,5 +1,5 @@
 import type { Collection, Model } from '../../../src'
-import type { SortFlags } from '../../support/Utils'
+import type { SortComparator } from '../../support/Utils'
 import { useSum } from './useSum'
 import { useMax } from './useMax'
 import { useMin } from './useMin'
@@ -15,7 +15,7 @@ export interface UseCollect<M extends Model = Model> {
   max: (field: string) => number
   pluck: (field: string) => any[]
   groupBy: (fields: string[] | string) => Record<string, Collection<M>>
-  sortBy: (sort: sorting<M>, flags?: SortFlags) => M[]
+  sortBy: (sort: sorting<M>, flags?: SortComparator) => M[]
   keys: () => string[]
 }
 
@@ -29,7 +29,7 @@ export function useCollect<M extends Model = Model> (models: Collection<M>): Use
     max: field => useMax(models, field),
     pluck: field => usePluck(models, field),
     groupBy: fields => useGroupBy(models, fields),
-    sortBy: (sort, flags: SortFlags = 'SORT_REGULAR') => useSortBy(models, sort, flags),
+    sortBy: (sort, flags: SortComparator = 'SORT_REGULAR') => useSortBy(models, sort, flags),
     keys: () => useKeys(models),
   }
 }

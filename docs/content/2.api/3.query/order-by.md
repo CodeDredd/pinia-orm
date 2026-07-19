@@ -24,10 +24,21 @@ useRepo(User)
 
 // Sort user name by its third character.
 useRepo(User).orderBy(user => user.name[2]).get()
+
+// Sort user names case insensitive.
+useRepo(User).orderBy('name', 'asc', 'SORT_FLAG_CASE').get()
+
+// Sort user names locale aware with an Intl.Collator,
+// e.g. for Lithuanian: A, B, Š, T, U instead of A, B, T, U, Š.
+useRepo(User).orderBy('name', 'asc', new Intl.Collator('lt')).get()
 ````
+
+The optional third argument accepts either one of the sort flags (`'SORT_REGULAR'`, `'SORT_FLAG_CASE'`) or any [`Intl.Collator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator) instance. A collator is used to compare string values, which enables locale aware sorting as well as options like numeric ordering (`new Intl.Collator(undefined, { numeric: true })`).
 
 ## Typescript Declarations
 
 ````ts
-function orderBy(field: OrderBy, direction: OrderDirection = 'asc'): Query
+function orderBy(field: OrderBy, direction: OrderDirection = 'asc', flags: SortComparator = 'SORT_REGULAR'): Query
+
+type SortComparator = 'SORT_REGULAR' | 'SORT_FLAG_CASE' | Intl.Collator
 ````
