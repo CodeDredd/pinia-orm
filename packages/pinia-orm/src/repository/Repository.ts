@@ -404,12 +404,13 @@ export class Repository<M extends Model = Model> {
   make (record?: Element): M
   make (records?: Element | Element[]): M | M[] {
     if (isArray(records)) {
-      return records.map(record => this.getModel().$newInstance(record, {
-        relations: true,
-      }))
+      return records.map(record => this.make(record))
     }
 
-    return this.getModel().$newInstance(records, {
+    const model = this.getModel()
+    const typeModel = records ? model.$getDiscriminatedModel(records) : undefined
+
+    return (typeModel ? typeModel.newRawInstance() as M : model).$newInstance(records, {
       relations: true,
     })
   }

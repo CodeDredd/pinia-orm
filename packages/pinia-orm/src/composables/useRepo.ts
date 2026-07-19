@@ -26,9 +26,20 @@ export function useRepo (
     : new Repository(database, pinia).initialize(ModelOrRepository)
 
   try {
-    const typeModels = Object.values(repository.getModel().$types())
-    if (typeModels.length > 0) {
-      typeModels.forEach(typeModel => repository.database.register(typeModel.newRawInstance()))
+    const registerTypeModels = (model: Model, registered: Set<string>) => {
+      Object.values(model.$types()).forEach((typeModel) => {
+        if (registered.has(typeModel.modelEntity())) { return }
+
+        registered.add(typeModel.modelEntity())
+        const instance = typeModel.newRawInstance()
+        repository.database.register(instance)
+        // Also register nested discriminated models (e.g. Document -> File -> Video).
+        registerTypeModels(instance, registered)
+      })
+    }
+
+    if (Object.values(repository.getModel().$types()).length > 0) {
+      registerTypeModels(repository.getModel(), new Set())
     } else {
       repository.database.register(repository.getModel())
     }
