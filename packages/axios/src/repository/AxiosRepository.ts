@@ -1,20 +1,32 @@
-import type { Database, Model } from 'pinia-orm'
-import type { Pinia } from 'pinia'
-import { Repository, config } from 'pinia-orm'
+import type { Model } from 'pinia-orm'
+import { Repository } from 'pinia-orm'
 import type { AxiosInstance } from 'axios'
 import { useAxiosApi } from '../index'
 import type { Config, GlobalConfig } from '../types/config'
 
 export class AxiosRepository<M extends Model = Model> extends Repository<M> {
-  axios: AxiosInstance
-  globalApiConfig: GlobalConfig
-  apiConfig: Config
+  apiConfig: Config = {}
 
-  constructor (database: Database, pinia?: Pinia) {
-    super(database, pinia)
-    this.axios = config?.axiosApi?.axios || null
-    this.globalApiConfig = config?.axiosApi || {}
-    this.apiConfig = {}
+  protected axiosInstance: AxiosInstance | null = null
+
+  /**
+   * The axios instance from the plugin config, unless an instance was set
+   * explicitly via `setAxios`. The plugin config is resolved lazily because
+   * plugins are registered after the repository has been constructed.
+   */
+  get axios (): AxiosInstance | null {
+    return this.axiosInstance ?? this.globalApiConfig.axios ?? null
+  }
+
+  set axios (axios: AxiosInstance | null) {
+    this.axiosInstance = axios
+  }
+
+  /**
+   * The global plugin config passed to `createPiniaOrmAxios`.
+   */
+  get globalApiConfig (): GlobalConfig {
+    return this.config.axiosApi ?? {}
   }
 
   api () {
