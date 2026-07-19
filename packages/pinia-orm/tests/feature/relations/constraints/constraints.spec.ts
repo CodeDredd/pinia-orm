@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { Model, useRepo } from '../../../../src'
-import { Attr, BelongsToMany, HasOne, Num, Str } from '../../../../src/decorators'
+import { Attr, BelongsToMany, HasMany, HasOne, Num, Str } from '../../../../src/decorators'
 
 describe('feature/relations/constraints/constraints', () => {
   class Type extends Model {
@@ -152,5 +152,40 @@ describe('feature/relations/constraints/constraints', () => {
 
     expect(users[0].roles.length).toBe(3)
     expect(users2[0].roles).toBe(undefined)
+  })
+
+  it('can add constraints to a relationship declared as optional', () => {
+    class Comment extends Model {
+      static entity = 'comments'
+
+      @Attr() declare id: number
+      @Attr() declare postId: number
+      @Str('') declare body: string
+    }
+
+    class Post extends Model {
+      static entity = 'posts'
+
+      @Attr() declare id: number
+      @Str('') declare title: string
+
+      @HasMany(() => Comment, 'postId')
+      declare comments?: Comment[]
+    }
+
+    const postsRepo = useRepo(Post)
+
+    postsRepo.save([
+      { id: 1, title: 'A', comments: [{ id: 1, body: 'first' }, { id: 2, body: 'second' }] },
+    ])
+
+    const post = postsRepo
+      .with('comments', (query) => {
+        query.where('body', 'second')
+      })
+      .first()
+
+    expect(post?.comments?.length).toBe(1)
+    expect(post?.comments?.[0].body).toBe('second')
   })
 })

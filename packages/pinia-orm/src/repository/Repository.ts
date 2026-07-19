@@ -248,14 +248,14 @@ export class Repository<M extends Model = Model> {
   /**
    * Add a "where has" clause to the query.
    */
-  whereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): Query<M> {
+  whereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): Query<M> {
     return this.query().whereHas<T>(relation, callback, operator, count)
   }
 
   /**
    * Add an "or where has" clause to the query.
    */
-  orWhereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): Query<M> {
+  orWhereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): Query<M> {
     return this.query().orWhereHas(relation, callback, operator, count)
   }
 
@@ -290,14 +290,14 @@ export class Repository<M extends Model = Model> {
   /**
    * Add a "where doesn't have" clause to the query.
    */
-  whereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): Query<M> {
+  whereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): Query<M> {
     return this.query().whereDoesntHave(relation, callback)
   }
 
   /**
    * Add an "or where doesn't have" clause to the query.
    */
-  orWhereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): Query<M> {
+  orWhereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): Query<M> {
     return this.query().orWhereDoesntHave(relation, callback)
   }
 
@@ -353,7 +353,7 @@ export class Repository<M extends Model = Model> {
   /**
    * Set the relationships that should be eager loaded.
    */
-  with<T extends WithKeys<M>>(name: string & {} | T, callback?: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : never): Query<M> {
+  with<T extends WithKeys<M>>(name: string & {} | T, callback?: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : never): Query<M> {
     return this.query().with(name, callback)
   }
 

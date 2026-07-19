@@ -59,8 +59,7 @@ export interface InheritanceTypes {
   [key: string]: typeof Model
 }
 
-export type WithKeys<T> = { [P in keyof T]: T[P] extends (Model | null) | Model[] ? P & string : never }[keyof T]
-// export type WithKeys<T> = { [P in keyof T]: T[P] extends Model[] ? P : never }[keyof T];
+export type WithKeys<T> = { [P in keyof T]-?: NonNullable<T[P]> extends Model | Model[] ? P & string : never }[keyof T]
 
 export class Model {
   declare _meta: undefined | MetaValues
