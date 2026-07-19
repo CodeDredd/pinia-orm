@@ -292,14 +292,14 @@ export class Query<M extends Model = Model> {
   /**
    * Add a "where has" clause to the query.
    */
-  whereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): this {
+  whereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): this {
     return this.where(this.getFieldWhereForRelations(relation, callback, operator, count))
   }
 
   /**
    * Add an "or where has" clause to the query.
    */
-  orWhereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): this {
+  orWhereHas<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): this {
     return this.orWhere(this.getFieldWhereForRelations(relation, callback, operator, count))
   }
 
@@ -334,14 +334,14 @@ export class Query<M extends Model = Model> {
   /**
    * Add a "where doesn't have" clause to the query.
    */
-  whereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): this {
+  whereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): this {
     return this.where(this.getFieldWhereForRelations(relation, callback, '=', 0))
   }
 
   /**
    * Add an "or where doesn't have" clause to the query.
    */
-  orWhereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): this {
+  orWhereDoesntHave<T extends WithKeys<M>>(relation: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): this {
     return this.orWhere(this.getFieldWhereForRelations(relation, callback, '=', 0))
   }
 
@@ -386,7 +386,7 @@ export class Query<M extends Model = Model> {
   /**
    * Set the relationships that should be eager loaded.
    */
-  with<T extends WithKeys<M>>(name: T | string & {}, callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): this {
+  with<T extends WithKeys<M>>(name: T | string & {}, callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }): this {
     this.getNewHydrated = true
     // @ts-expect-error name type can be used
     this.eagerLoad[name] = callback
@@ -434,7 +434,7 @@ export class Query<M extends Model = Model> {
   /**
    * Get where closure for relations
    */
-  protected getFieldWhereForRelations<T extends WithKeys<M>>(relation: T | (string & {}), callback: M[T] extends Model | Model[] | null ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): WherePrimaryClosure<M> {
+  protected getFieldWhereForRelations<T extends WithKeys<M>>(relation: T | (string & {}), callback: M[T] extends Model | Model[] | null | undefined ? EagerLoadConstraint<GetElementType<NonNullable<M[T]>>> : () => void = () => { }, operator?: string | number, count?: number): WherePrimaryClosure<M> {
     const modelIdsByRelation = this.newQuery(this.model.$entity()).with(relation, callback).get(false)
       .filter((model) => {
         const modelRelation = model[relation as T]
