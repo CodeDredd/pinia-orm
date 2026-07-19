@@ -1,7 +1,7 @@
 import type { Element } from 'pinia-orm'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
-export type PersistMethods = 'save' | 'insert'
+export type PersistMethods = 'save' | 'insert' | 'fresh'
 
 export type PersistOptions = { [P in PersistMethods]?: string[] }
 
