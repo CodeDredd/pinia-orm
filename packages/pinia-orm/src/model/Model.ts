@@ -826,11 +826,18 @@ export class Model {
 
       if (cast && operation === 'get') { value = cast.get(value) }
 
+      // Apply the cast before the field is filled so the type check
+      // validates the casted value instead of the raw input.
+      if (cast && operation === 'set' && value !== undefined) {
+        value = options.action === 'update' ? cast.get(value) : cast.set(value)
+      }
+
       let keyValue = this.$fillField(key, attr, value)
 
       if (mutator && typeof mutator !== 'function' && operation === 'set' && mutator.set) { keyValue = mutator.set(keyValue) }
 
-      if (cast && operation === 'set') {
+      // Values filled by the attribute default still need to pass the cast.
+      if (cast && operation === 'set' && value === undefined) {
         keyValue = options.action === 'update' ? cast.get(keyValue) : cast.set(keyValue)
       }
 
