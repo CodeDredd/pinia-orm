@@ -147,14 +147,14 @@ export class Model {
   protected static piniaExtend = {}
 
   /**
-   * The mutators for the model.
+   * The mutators for the model, keyed by entity.
    */
-  protected static fieldMutators: Mutators = {}
+  protected static fieldMutators: Record<string, Mutators> = {}
 
   /**
-   * The casts for the model.
+   * The casts for the model, keyed by entity.
    */
-  protected static fieldCasts: Record<string, any> = {}
+  protected static fieldCasts: Record<string, Casts> = {}
 
   /**
    * The array of booted models.
@@ -247,7 +247,8 @@ export class Model {
     key: string,
     mutator: MutatorFunctions<any>,
   ): M {
-    this.fieldMutators[key] = mutator
+    this.fieldMutators[this.modelEntity()] = this.fieldMutators[this.modelEntity()] ?? {}
+    this.fieldMutators[this.modelEntity()][key] = mutator
 
     return this
   }
@@ -260,7 +261,8 @@ export class Model {
     key: string,
     to: typeof CastAttribute,
   ): M {
-    this.fieldCasts[key] = to
+    this.fieldCasts[this.modelEntity()] = this.fieldCasts[this.modelEntity()] ?? {}
+    this.fieldCasts[this.modelEntity()][key] = to
 
     return this
   }
@@ -272,6 +274,7 @@ export class Model {
     this: M,
     key: keyof ModelFields,
   ): M {
+    if (!Object.prototype.hasOwnProperty.call(this, 'hidden')) { this.hidden = [...this.hidden] }
     this.hidden.push(key)
 
     return this
@@ -781,7 +784,7 @@ export class Model {
   $casts (): Casts {
     return {
       ...this.$getCasts(),
-      ...this.$self().fieldCasts,
+      ...this.$self().fieldCasts[this.$modelEntity()],
     }
   }
 
@@ -802,7 +805,7 @@ export class Model {
     const fillRelation = options.relations ?? true
     const mutators: Mutators = {
       ...this.$getMutators(),
-      ...this.$self().fieldMutators,
+      ...this.$self().fieldMutators[this.$modelEntity()],
     }
 
     for (const key in fields) {

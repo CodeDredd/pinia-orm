@@ -36,6 +36,28 @@ describe('unit/model/Model_Hidden_Field', () => {
     expect(user.username).toBe(undefined)
   })
 
+  it('should only hide the field on the entity using the decorator', () => {
+    class User extends Model {
+      static entity = 'users'
+
+      @Str('') declare name: string
+      @Hidden() @Str('') declare username: string
+    }
+
+    class Account extends Model {
+      static entity = 'accounts'
+
+      @Str('') declare name: string
+      @Str('') declare username: string
+    }
+
+    const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
+    const account = new Account({ name: 'Test', username: 'John' }, { operation: 'get' })
+
+    expect(user.username).toBe(undefined)
+    expect(account.username).toBe('John')
+  })
+
   it('should hide the field with "visible"', () => {
     class User extends Model {
       static entity = 'users'
