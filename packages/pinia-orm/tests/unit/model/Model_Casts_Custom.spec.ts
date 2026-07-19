@@ -72,6 +72,30 @@ describe('unit/model/Model_Casts_Custom', () => {
     expect(new User().name).toBe('string test')
   })
 
+  it('should keep decorator casts of same named fields separate between entities', () => {
+    class UpperCast extends CastAttribute {
+      get (value?: any): any {
+        return typeof value === 'string' ? value.toUpperCase() : value
+      }
+    }
+
+    class User extends Model {
+      static entity = 'users'
+
+      @Cast(() => UpperCast)
+      @Attr('') name!: string
+    }
+
+    class Group extends Model {
+      static entity = 'groups'
+
+      @Attr('') name!: string
+    }
+
+    expect(new User({ name: 'John' }, { operation: 'get' }).name).toBe('JOHN')
+    expect(new Group({ name: 'John' }, { operation: 'get' }).name).toBe('John')
+  })
+
   it('should cast with parameter', () => {
     class CustomCast extends CastAttribute {
       static parameters = {
