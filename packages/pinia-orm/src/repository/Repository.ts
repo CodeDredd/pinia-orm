@@ -424,6 +424,41 @@ export class Repository<M extends Model = Model> {
   }
 
   /**
+   * Get the first record matching the given attributes or persist a new
+   * record made from the merged attributes and values.
+   */
+  firstOrCreate (attributes: Element, values: Element = {}): M {
+    const record = this.matching(attributes)
+
+    return record ?? this.save({ ...attributes, ...values })
+  }
+
+  /**
+   * Update the first record matching the given attributes with the given
+   * values or persist a new record made from the merged attributes and values.
+   */
+  updateOrCreate (attributes: Element, values: Element = {}): M {
+    const record = this.matching(attributes)
+
+    if (!record) { return this.save({ ...attributes, ...values }) }
+
+    const primaryKey = this.getModel().$primaryKey()
+    const keyValues = (isArray(primaryKey) ? primaryKey : [primaryKey]).reduce<Element>((keys, key) => {
+      keys[key] = record[key as keyof M] as any
+      return keys
+    }, {})
+
+    return this.save({ ...keyValues, ...values })
+  }
+
+  /**
+   * Get the first record matching the given attributes.
+   */
+  protected matching (attributes: Element): Item<M> {
+    return this.query().where((model: M) => Object.entries(attributes).every(([field, value]) => model[field as keyof M] === value)).first()
+  }
+
+  /**
    * Create and persist model with default values.
    */
   new (persist = true): M | null {
