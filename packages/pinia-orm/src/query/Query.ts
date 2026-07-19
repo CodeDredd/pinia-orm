@@ -1,6 +1,7 @@
 import type { Pinia } from 'pinia'
 import { acceptHMRUpdate } from 'pinia'
 import {
+  compareLike,
   compareWithOperator,
   generateKey,
   groupBy,
@@ -287,6 +288,21 @@ export class Query<M extends Model = Model> {
    */
   whereNotNull (field: string): this {
     return this.where(query => query[field as keyof Model] != null)
+  }
+
+  /**
+   * Add a "where like" clause to the query. The value may contain `%` as
+   * a wildcard for any number of characters and `_` for a single character.
+   */
+  whereLike (field: string, value: string | number, caseSensitive = false): this {
+    return this.where(query => compareLike(query[field as keyof Model], value, caseSensitive))
+  }
+
+  /**
+   * Add an "or where like" clause to the query.
+   */
+  orWhereLike (field: string, value: string | number, caseSensitive = false): this {
+    return this.orWhere(query => compareLike(query[field as keyof Model], value, caseSensitive))
   }
 
   /**
