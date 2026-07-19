@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { WeakCache } from '../../../src/cache/WeakCache'
 
@@ -71,5 +71,18 @@ describe('unit/support/Weakcache', () => {
   it('can clear all', () => {
     cache.clear()
     expect(cache.size).toEqual(0)
+  })
+
+  it('falls back to strong references when WeakRef is not available', () => {
+    vi.stubGlobal('WeakRef', undefined)
+
+    const fallbackCache = new WeakCache()
+    fallbackCache.set('key1', data)
+
+    expect(fallbackCache.get('key1')).toEqual(data)
+    expect(fallbackCache.has('key1')).toBeTruthy()
+    expect([...fallbackCache.values()]).toEqual([data])
+
+    vi.unstubAllGlobals()
   })
 })
