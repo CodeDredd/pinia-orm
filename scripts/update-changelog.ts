@@ -41,7 +41,11 @@ async function main () {
   // Get the current PR for this release, if it exists. The `head` filter
   // needs the `owner:` prefix — without it GitHub ignores the filter and
   // returns the newest open PR, whose body would then be overwritten.
-  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=CodeDredd:v${newVersion}&state=open`)
+  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=CodeDredd:v${newVersion}&state=open`, {
+    headers: {
+      Authorization: `token ${process.env.GITHUB_TOKEN}`,
+    },
+  })
 
   if (currentPR && currentPR.head?.ref !== `v${newVersion}`) {
     consola.error(`Found PR #${currentPR.number} but its head is not v${newVersion}. Aborting to avoid overwriting an unrelated PR.`)
