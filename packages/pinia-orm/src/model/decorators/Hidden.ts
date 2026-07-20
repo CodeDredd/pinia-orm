@@ -1,11 +1,11 @@
-import type { PropertyDecorator } from './Contracts'
+import type { FieldDecorator } from './Metadata'
+import { HIDDEN, createRegistrationDecorator, ownMetadataRecord } from './Metadata'
 
 /**
- * Create an Mutate attribute property decorator.
+ * Create a hidden attribute property decorator.
  */
-export function Hidden (): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-    self.setHidden(propertyKey)
-  }
+export function Hidden (): FieldDecorator {
+  return createRegistrationDecorator((context) => {
+    ownMetadataRecord<true>(context.metadata, HIDDEN)[String(context.name)] = true
+  })
 }

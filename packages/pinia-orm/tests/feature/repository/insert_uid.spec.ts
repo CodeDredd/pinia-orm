@@ -8,8 +8,8 @@ describe('feature/repository/insert_uid', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Uid() declare id: string | null
-    @Str('') declare name: string
+    @Uid() id!: string | null
+    @Str('') name!: string
   }
 
   it('generates a unique id for a `uid` attribute', () => {

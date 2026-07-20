@@ -11,9 +11,9 @@ description: 'Get the serialized model attributes.'
 class User extends Model {
   static entity = 'users'
 
-  @Attr('') declare id: number
-  @Str('') declare name: string
-  @HasMany(() => Post, 'userId') declare posts: Post[]
+  @Attr('') id!: number
+  @Str('') name!: string
+  @HasMany(() => Post, 'userId') posts!: Post[]
 }
 
 const user = new User({ id: 1, name: 'John Doe', posts: [{ id: 1, title: 'Merry Christmas' }] })

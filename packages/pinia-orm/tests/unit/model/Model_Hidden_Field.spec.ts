@@ -14,8 +14,8 @@ describe('unit/model/Model_Hidden_Field', () => {
 
       static hidden = ['username']
 
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Str('') name!: string
+      @Str('') username!: string
     }
     const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
 
@@ -27,8 +27,8 @@ describe('unit/model/Model_Hidden_Field', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Str('') declare name: string
-      @Hidden() @Str('') declare username: string
+      @Str('') name!: string
+      @Hidden() @Str('') username!: string
     }
     const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
 
@@ -40,15 +40,15 @@ describe('unit/model/Model_Hidden_Field', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Str('') declare name: string
-      @Hidden() @Str('') declare username: string
+      @Str('') name!: string
+      @Hidden() @Str('') username!: string
     }
 
     class Account extends Model {
       static entity = 'accounts'
 
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Str('') name!: string
+      @Str('') username!: string
     }
 
     const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
@@ -64,8 +64,8 @@ describe('unit/model/Model_Hidden_Field', () => {
 
       static visible = ['username']
 
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Str('') name!: string
+      @Str('') username!: string
     }
     const user = new User({ name: 'Test', username: 'John' }, { operation: 'get' })
 
@@ -79,9 +79,9 @@ describe('unit/model/Model_Hidden_Field', () => {
 
       static hidden = ['username']
 
-      @Attr(0) declare id: string
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Attr(0) id!: string
+      @Str('') name!: string
+      @Str('') username!: string
     }
 
     const userRepo = useRepo(User)

@@ -7,31 +7,31 @@ describe('feature/relations/constraints/constraints', () => {
   class Type extends Model {
     static entity = 'types'
 
-    @Attr() declare id: number
-    @Attr() declare phoneId: number
-    @Str('') declare name: string
+    @Attr() id!: number
+    @Attr() phoneId!: number
+    @Str('') name!: string
   }
 
   class Phone extends Model {
     static entity = 'phones'
 
-    @Attr() declare id: number
-    @Attr() declare userId: number
-    @Attr() declare roleId: number
-    @Str('') declare number: string
+    @Attr() id!: number
+    @Attr() userId!: number
+    @Attr() roleId!: number
+    @Str('') number!: string
 
     @HasOne(() => Type, 'phoneId')
-    declare type: Type | null
+    type!: Type | null
   }
 
   class Role extends Model {
     static entity = 'roles'
 
-    @Num(0) declare id: number
+    @Num(0) id!: number
     declare pivot: RoleUser
 
     @HasOne(() => Phone, 'roleId')
-    declare phone: Phone | null
+    phone!: Phone | null
   }
 
   class RoleUser extends Model {
@@ -39,22 +39,22 @@ describe('feature/relations/constraints/constraints', () => {
 
     static primaryKey = ['role_id', 'user_id']
 
-    @Attr(null) declare role_id: number | null
-    @Attr(null) declare user_id: number | null
-    @Attr(null) declare level: number | null
+    @Attr(null) role_id!: number | null
+    @Attr(null) user_id!: number | null
+    @Attr(null) level!: number | null
   }
 
   class User extends Model {
     static entity = 'users'
 
-    @Attr() declare id: number
-    @Str('') declare name: string
+    @Attr() id!: number
+    @Str('') name!: string
 
     @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
-    declare roles: Role[]
+    roles!: Role[]
 
     @HasOne(() => Phone, 'userId')
-    declare phone: Phone | null
+    phone!: Phone | null
   }
 
   it('can add constraints to the relationship query', () => {
@@ -158,19 +158,19 @@ describe('feature/relations/constraints/constraints', () => {
     class Comment extends Model {
       static entity = 'comments'
 
-      @Attr() declare id: number
-      @Attr() declare postId: number
-      @Str('') declare body: string
+      @Attr() id!: number
+      @Attr() postId!: number
+      @Str('') body!: string
     }
 
     class Post extends Model {
       static entity = 'posts'
 
-      @Attr() declare id: number
-      @Str('') declare title: string
+      @Attr() id!: number
+      @Str('') title!: string
 
       @HasMany(() => Comment, 'postId')
-      declare comments?: Comment[]
+      comments?: Comment[]
     }
 
     const postsRepo = useRepo(Post)

@@ -34,9 +34,9 @@ import Image from './Image'
 class User extends Model {
   static entity = 'users'
   
-  @Attr(null) declare id: number | null
-  @Str('') declare name: string
-  @MorphOne(() => Image, 'imageableId', 'imageableType') declare image: Image
+  @Attr(null) id!: number | null
+  @Str('') name!: string
+  @MorphOne(() => Image, 'imageableId', 'imageableType') image!: Image
 }
 ````
 

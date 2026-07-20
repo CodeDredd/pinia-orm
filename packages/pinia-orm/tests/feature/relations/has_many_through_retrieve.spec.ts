@@ -8,25 +8,25 @@ describe('feature/relations/has_many_through_retrieve', () => {
   class Country extends Model {
     static entity = 'countries'
 
-    @Attr() declare id: number
+    @Attr() id!: number
     @HasManyThrough(() => Post, () => User, 'countryId', 'userId')
-    declare posts: Post[]
+    posts!: Post[]
   }
 
   class Post extends Model {
     static entity = 'posts'
 
-    @Attr() declare id: number
-    @Attr() declare userId: number
-    @Str('') declare title: string
+    @Attr() id!: number
+    @Attr() userId!: number
+    @Str('') title!: string
   }
 
   class User extends Model {
     static entity = 'users'
 
-    @Attr() declare id: number
-    @Attr() declare countryId: number
-    @Str('') declare name: string
+    @Attr() id!: number
+    @Attr() countryId!: number
+    @Str('') name!: string
   }
 
   it('can eager load has many relation', () => {
@@ -120,14 +120,18 @@ describe('feature/relations/has_many_through_retrieve', () => {
     // Extend the Country model with a direct relationship to users to manifest the difference
     class ExtendedCountry extends Country {
       @HasMany(() => User, 'countryId')
-      declare users: User[]
+      users!: User[]
     }
 
     // Extend the User model with a direct relationship to posts to manifest the difference
     class ExtendedUser extends User {
       @HasMany(() => Post, 'userId')
-      declare posts: Post[]
+      posts!: Post[]
     }
+
+    // Register the extended user model first so the 'users' schema is
+    // built from it and includes the posts relation.
+    useRepo(ExtendedUser)
 
     const countryRepo = useRepo(ExtendedCountry)
 
@@ -153,9 +157,6 @@ describe('feature/relations/has_many_through_retrieve', () => {
         5: { id: 5, userId: 3, title: 'Title 05' },
       },
     })
-
-    // Register the extended user model to make posts accessible
-    useRepo(ExtendedUser)
 
     // Retrieve country with all related data
     const country = countryRepo.withAllRecursive().first()!

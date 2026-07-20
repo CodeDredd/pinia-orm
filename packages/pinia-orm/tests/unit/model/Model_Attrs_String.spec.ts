@@ -41,7 +41,7 @@ describe('unit/model/Model_Attrs_String', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Str(() => 'Test') declare str: string
+      @Str(() => 'Test') str!: string
     }
 
     expect(new User({}).str).toBe('Test')

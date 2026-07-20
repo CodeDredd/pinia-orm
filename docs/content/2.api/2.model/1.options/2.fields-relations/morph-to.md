@@ -42,11 +42,11 @@ import Post from './Post'
 class User extends Model {
   static entity = 'users'
   
-  @Num(0) declare id: number
-  @Str('') declare url: string
-  @Num(0) declare imageableId: number
-  @Str('') declare imageableType: string
-  @MorphTo(() => [User, Post], 'imageableId', 'imageableType') declare imageable: Post[] | User[]
+  @Num(0) id!: number
+  @Str('') url!: string
+  @Num(0) imageableId!: number
+  @Str('') imageableType!: string
+  @MorphTo(() => [User, Post], 'imageableId', 'imageableType') imageable!: Post[] | User[]
 }
 ````
 

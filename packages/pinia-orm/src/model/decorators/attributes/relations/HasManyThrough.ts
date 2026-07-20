@@ -1,5 +1,6 @@
 import type { Model } from '../../../Model'
-import type { PropertyDecorator } from '../../Contracts'
+import type { FieldDecorator } from '../../Metadata'
+import { createFieldDecorator } from '../../Metadata'
 
 /**
  * Create a has-many attribute property decorator.
@@ -11,12 +12,6 @@ export function HasManyThrough (
   secondKey: string,
   localKey?: string,
   secondLocalKey?: string,
-): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-
-    self.setRegistry(propertyKey, () =>
-      self.hasManyThrough(related(), through(), firstKey, secondKey, localKey, secondLocalKey),
-    )
-  }
+): FieldDecorator {
+  return createFieldDecorator(model => model.hasManyThrough(related(), through(), firstKey, secondKey, localKey, secondLocalKey))
 }

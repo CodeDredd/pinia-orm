@@ -7,7 +7,7 @@ describe('unit/decorators/NonEnumerable', () => {
     visible: string
 
     @NonEnumerable
-    hidden: string
+    accessor hidden: string
 
     constructor () {
       this.hidden = 'i am hidden'
@@ -22,11 +22,14 @@ describe('unit/decorators/NonEnumerable', () => {
     expect(cls.propertyIsEnumerable('hidden')).toBe(false)
   })
 
-  it('should appear in own property detection', () => {
+  it('should still be readable and writable', () => {
     const cls = new StdClass()
 
-    expect(Object.getOwnPropertyNames(cls)).toContain('hidden')
-    expect(Object.prototype.hasOwnProperty.call(cls, 'hidden')).toBe(true)
+    expect(cls.hidden).toBe('i am hidden')
+
+    cls.hidden = 'changed'
+
+    expect(cls.hidden).toBe('changed')
   })
 
   it('should not appear during property enumeration', () => {
@@ -34,8 +37,15 @@ describe('unit/decorators/NonEnumerable', () => {
 
     expect(Object.keys(cls)).not.toContain('hidden')
     expect(Object.values(cls)).not.toContain('i am hidden')
-    expect(Object.entries(cls)).toEqual([['visible', 'i am visible']])
+    expect(JSON.parse(JSON.stringify(cls))).toEqual({ visible: 'i am visible' })
 
     for (const prop in cls) { expect(prop).not.toBe('hidden') }
+  })
+
+  it('throws when used without the accessor keyword', () => {
+    expect(() => {
+      // Simulate a field usage of the decorator.
+      (NonEnumerable as any)(undefined, { kind: 'field', name: 'hidden' })
+    }).toThrowError('accessor')
   })
 })

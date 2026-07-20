@@ -26,16 +26,16 @@ describe('unit/packages/uuid/uid_v4', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Uid() declare id: string
-      @Str('') declare name: string
-      @HasMany(() => Todo, 'userId') declare todos: Todo[]
+      @Uid() id!: string
+      @Str('') name!: string
+      @HasMany(() => Todo, 'userId') todos!: Todo[]
     }
 
     class Todo extends Model {
       static entity = 'todos'
 
-      @Uid() declare id: string
-      @Attr(null) declare userId: string
+      @Uid() id!: string
+      @Attr(null) userId!: string
     }
 
     mockUuidV4(['uid23'])

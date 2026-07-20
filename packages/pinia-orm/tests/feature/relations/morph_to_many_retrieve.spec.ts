@@ -11,7 +11,7 @@ describe('feature/relations/morph_to_many_retrieve', () => {
     @Attr() id!: number
     @Str('') name!: string
     @MorphToMany(() => Tag, { as: 'userPivot', model: () => Taggable }, 'tag_id', 'taggable_id', 'taggable_type')
-    declare tags: Tag[]
+    tags!: Tag[]
   }
 
   class Video extends Model {
@@ -20,13 +20,13 @@ describe('feature/relations/morph_to_many_retrieve', () => {
     @Attr() id!: number
     @Str('') name!: string
     @MorphToMany(() => Tag, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
-    declare tags: Tag[]
+    tags!: Tag[]
   }
 
   class Tag extends Model {
     static entity = 'tags'
 
-    @Attr() declare id: number
+    @Attr() id!: number
     declare pivot: Taggable
     declare userPivot: Taggable
   }
@@ -34,10 +34,10 @@ describe('feature/relations/morph_to_many_retrieve', () => {
   class Taggable extends Model {
     static entity = 'taggables'
     static primaryKey = ['tag_id', 'taggable_id', 'taggable_type']
-    @Attr() declare tag_id: number
-    @Attr() declare taggable_id: number
-    @Str('') declare taggable_type: string
-    @Attr() declare level: number
+    @Attr() tag_id!: number
+    @Attr() taggable_id!: number
+    @Str('') taggable_type!: string
+    @Attr() level!: number
   }
 
   it('can eager load morph to many relation', () => {

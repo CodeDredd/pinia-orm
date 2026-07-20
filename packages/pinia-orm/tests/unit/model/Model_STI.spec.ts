@@ -108,7 +108,7 @@ describe('unit/model/Model_STI', () => {
         }
       }
 
-      @Attr('dog') declare type
+      @Attr('dog') type = 'dog'
       @Attr('terrier') race!: string
     }
 

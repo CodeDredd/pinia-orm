@@ -15,8 +15,8 @@ describe('unit/model/Model_Meta_Field', () => {
         withMeta: true,
       }
 
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Str('') name!: string
+      @Str('') username!: string
     }
     const user = new User({ name: 'Test', username: 'John' }, { operation: 'set', action: 'save' })
 
@@ -32,9 +32,9 @@ describe('unit/model/Model_Meta_Field', () => {
         withMeta: true,
       }
 
-      @Attr(0) declare id: string
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Attr(0) id!: string
+      @Str('') name!: string
+      @Str('') username!: string
     }
 
     const userRepo = useRepo(User)

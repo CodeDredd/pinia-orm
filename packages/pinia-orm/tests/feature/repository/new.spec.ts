@@ -33,12 +33,12 @@ describe('feature/repository/new', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Uid() declare id: string
+      @Uid() id!: string
 
-      @Cast(() => ArrayCast) @Attr('{}') declare items: string[]
-      @Str('John Doe') declare name: string
-      @Num(21) declare age: number
-      @Bool(true) declare active: boolean
+      @Cast(() => ArrayCast) @Attr('{}') items!: string[]
+      @Str('John Doe') name!: string
+      @Num(21) age!: number
+      @Bool(true) active!: boolean
 
       static creating (model: User) {
         model.items = ['t', 's']

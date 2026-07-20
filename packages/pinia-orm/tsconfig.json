@@ -10,8 +10,6 @@
     "allowJs": false,
     "isolatedModules": true,
     "moduleResolution": "bundler",
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,

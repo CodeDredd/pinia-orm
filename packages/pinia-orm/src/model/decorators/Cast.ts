@@ -1,12 +1,12 @@
 import type { CastAttribute } from '../casts/CastAttribute'
-import type { PropertyDecorator } from './Contracts'
+import type { FieldDecorator } from './Metadata'
+import { CASTS, createRegistrationDecorator, ownMetadataRecord } from './Metadata'
 
 /**
  * Create a cast for an attribute property decorator.
  */
-export function Cast (to: (() => typeof CastAttribute)): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-    self.setCast(propertyKey, to())
-  }
+export function Cast (to: (() => typeof CastAttribute)): FieldDecorator {
+  return createRegistrationDecorator((context) => {
+    ownMetadataRecord<typeof CastAttribute>(context.metadata, CASTS)[String(context.name)] = to()
+  })
 }

@@ -107,8 +107,8 @@ describe('feature/repository/retrieves_find', () => {
     class UserComposite extends Model {
       static entity = 'user_composites'
       static primaryKey = ['id', 'secondId']
-      @Attr(null) declare id: number
-      @Attr(null) declare secondId: number
+      @Attr(null) id!: number
+      @Attr(null) secondId!: number
     }
 
     const userRepo = useRepo(UserComposite)

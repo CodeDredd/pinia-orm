@@ -11,8 +11,8 @@ description: 'Checks if attributes were changed'
 class User extends Model {
   static entity = 'users'
 
-  @Attr('') declare id: number
-  @Str('') declare name: string
+  @Attr('') id!: number
+  @Str('') name!: string
 }
 
 const user = new User({ id: 1, name: 'John Doe' })

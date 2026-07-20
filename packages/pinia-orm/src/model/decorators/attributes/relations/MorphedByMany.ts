@@ -1,8 +1,9 @@
 import type { Model } from '../../../Model'
-import type { PropertyDecorator } from '../../Contracts'
+import type { FieldDecorator } from '../../Metadata'
+import { createFieldDecorator } from '../../Metadata'
 
 /**
- * Create a morph-to-many attribute property decorator.
+ * Create a morphed-by-many attribute property decorator.
  */
 export function MorphedByMany (
   related: () => typeof Model,
@@ -15,14 +16,10 @@ export function MorphedByMany (
   type: string,
   parentKey?: string,
   relatedKey?: string,
-): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
+): FieldDecorator {
+  return createFieldDecorator((model) => {
+    if (typeof pivot === 'function') { return model.morphedByMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey) }
 
-    self.setRegistry(propertyKey, () => {
-      if (typeof pivot === 'function') { return self.morphedByMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey) }
-
-      return self.morphedByMany(related(), pivot.model(), relatedId, id, type, parentKey, relatedKey).as(pivot.as)
-    })
-  }
+    return model.morphedByMany(related(), pivot.model(), relatedId, id, type, parentKey, relatedKey).as(pivot.as)
+  })
 }

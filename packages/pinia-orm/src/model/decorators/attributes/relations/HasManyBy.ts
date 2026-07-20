@@ -1,5 +1,6 @@
 import type { Model } from '../../../Model'
-import type { PropertyDecorator } from '../../Contracts'
+import type { FieldDecorator } from '../../Metadata'
+import { createFieldDecorator } from '../../Metadata'
 
 /**
  * Create a has-many-by attribute property decorator.
@@ -8,12 +9,6 @@ export function HasManyBy (
   related: () => typeof Model,
   foreignKey: string,
   ownerKey?: string,
-): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-
-    self.setRegistry(propertyKey, () =>
-      self.hasManyBy(related(), foreignKey, ownerKey),
-    )
-  }
+): FieldDecorator {
+  return createFieldDecorator(model => model.hasManyBy(related(), foreignKey, ownerKey))
 }
