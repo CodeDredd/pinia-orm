@@ -10,14 +10,14 @@
   "devDependencies": {
     "@pinia-orm/axios": "workspace:*",
     "@pinia-orm/nuxt": "workspace:*",
-    "@pinia/nuxt": "^0.11.0",
-    "nuxt": "^3.16.2",
-    "pinia": "^3.0.2",
+    "@pinia/nuxt": "^1.0.1",
+    "nuxt": "^4.5.0",
+    "pinia": "^4.0.2",
     "pinia-orm": "workspace:*"
   },
   "dependencies": {
     "axios": "^1.7.2",
-    "nanoid": "^4.0.0",
-    "uuid": "^8.3.2"
+    "nanoid": "^5.1.0",
+    "uuid": "^11.1.1"
   }
 }
