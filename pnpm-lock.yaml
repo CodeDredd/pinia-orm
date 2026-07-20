@@ -34,6 +34,7 @@ overrides:
   '@babel/core@7': '>=7.29.7'
   form-data@4: '>=4.0.6'
   '@eslint/plugin-kit': '>=0.3.4'
+  yaml@2: '>=2.8.3'
 
 packageExtensionsChecksum: bdd1ed61473b1fb17a04a8d5b6d8a239
 
@@ -7666,7 +7667,7 @@ packages:
       sugarss: '*'
       terser: ^5.16.0
       tsx: ^4.8.1
-      yaml: ^2.4.2
+      yaml: '>=2.8.3'
     peerDependenciesMeta:
       '@types/node':
         optional: true
@@ -7706,7 +7707,7 @@ packages:
       sugarss: ^5.0.0
       terser: ^5.16.0
       tsx: ^4.8.1
-      yaml: ^2.4.2
+      yaml: '>=2.8.3'
     peerDependenciesMeta:
       '@types/node':
         optional: true
@@ -7747,7 +7748,7 @@ packages:
       sugarss: ^5.0.0
       terser: ^5.16.0
       tsx: ^4.8.1
-      yaml: ^2.4.2
+      yaml: '>=2.8.3'
     peerDependenciesMeta:
       '@types/node':
         optional: true
@@ -8003,19 +8004,6 @@ packages:
   yallist@5.0.0:
     resolution: {integrity: sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw==}
     engines: {node: '>=18'}
-
-  yaml@2.3.1:
-    resolution: {integrity: sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==}
-    engines: {node: '>= 14'}
-
-  yaml@2.3.4:
-    resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
-    engines: {node: '>= 14'}
-
-  yaml@2.4.5:
-    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
-    engines: {node: '>= 14'}
-    hasBin: true
 
   yaml@2.9.0:
     resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
@@ -11448,7 +11436,7 @@ snapshots:
       scule: 1.0.0
       semver: 7.6.2
       std-env: 3.7.0
-      yaml: 2.3.1
+      yaml: 2.9.0
     transitivePeerDependencies:
       - supports-color
 
@@ -13363,7 +13351,7 @@ snapshots:
       micromatch: 4.0.7
       pidtree: 0.6.0
       string-argv: 0.3.2
-      yaml: 2.4.5
+      yaml: 2.9.0
     transitivePeerDependencies:
       - supports-color
 
@@ -14618,7 +14606,7 @@ snapshots:
   postcss-load-config@4.0.1(postcss@8.5.20):
     dependencies:
       lilconfig: 2.1.0
-      yaml: 2.3.4
+      yaml: 2.9.0
     optionalDependencies:
       postcss: 8.5.20
 
@@ -16707,12 +16695,6 @@ snapshots:
   yallist@4.0.0: {}
 
   yallist@5.0.0: {}
-
-  yaml@2.3.1: {}
-
-  yaml@2.3.4: {}
-
-  yaml@2.4.5: {}
 
   yaml@2.9.0: {}
 
