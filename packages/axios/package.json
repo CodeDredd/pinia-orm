@@ -58,12 +58,12 @@
     "pinia-orm": ">=1.9.1 || >=2.0.0-alpha"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^1.1.0",
+    "@nuxt/eslint-config": "^1.16.0",
     "@size-limit/preset-small-lib": "^11.1.4",
     "@vitest/coverage-v8": "^3.2.7",
     "axios": "^1.18.1",
     "axios-mock-adapter": "^2.0.0",
-    "eslint": "^9.21.0",
+    "eslint": "^9.39.5",
     "pinia": "^4.0.2",
     "pinia-orm": "workspace:*",
     "size-limit": "^11.1.4",

@@ -59,5 +59,5 @@ export type NormalizedSchema<E, R> = { entities: E, result: R }
 
 export function normalize<T = any, E = { [key: string]: { [key: string]: T } | undefined }, R = any> (
   data: any,
-  schema: Schema<T>
+  schema: Schema<T>,
 ): NormalizedSchema<E, R>
