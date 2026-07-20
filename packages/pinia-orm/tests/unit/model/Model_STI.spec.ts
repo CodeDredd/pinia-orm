@@ -389,4 +389,99 @@ describe('unit/model/Model_STI', () => {
     expect(personneMoraleRepo.all().length).toBe(1)
     expect(personneRepo.all().length).toBe(2)
   })
+
+  it('hydrates recursively discriminated models to the most specific type', () => {
+    class Animal extends Model {
+      static entity = 'animals'
+
+      static fields () {
+        return {
+          id: this.attr(null),
+          type: this.attr('animal'),
+        }
+      }
+
+      static types () {
+        return {
+          animal: Animal,
+          dog: Dog,
+        }
+      }
+    }
+
+    class Dog extends Animal {
+      static entity = 'dogs'
+
+      static baseEntity = 'animals'
+
+      static typeKey = 'race'
+
+      static fields () {
+        return {
+          ...super.fields(),
+          type: this.attr('dog'),
+          race: this.attr('labrador'),
+        }
+      }
+
+      static types () {
+        return {
+          labrador: Dog,
+          terrier: Terrier,
+        }
+      }
+    }
+
+    class Terrier extends Dog {
+      static entity = 'terriers'
+
+      static baseEntity = 'animals'
+
+      static fields () {
+        return {
+          ...super.fields(),
+          race: this.attr('terrier'),
+          speed: this.attr(0),
+        }
+      }
+    }
+
+    const animalsRepo = useRepo(Animal)
+
+    const terrier = animalsRepo.make({
+      id: 1,
+      type: 'dog',
+      race: 'terrier',
+      speed: 42,
+    })
+
+    expect(terrier).toBeInstanceOf(Terrier)
+    expect((terrier as Terrier).speed).toBe(42)
+
+    const labrador = animalsRepo.make({
+      id: 2,
+      type: 'dog',
+      race: 'labrador',
+    })
+
+    expect(labrador).toBeInstanceOf(Dog)
+    expect(labrador).not.toBeInstanceOf(Terrier)
+
+    const animal = animalsRepo.make({
+      id: 3,
+      type: 'animal',
+    })
+
+    expect(animal).toBeInstanceOf(Animal)
+    expect(animal).not.toBeInstanceOf(Dog)
+
+    animalsRepo.save({
+      id: 4,
+      type: 'dog',
+      race: 'terrier',
+      speed: 10,
+    })
+
+    expect(animalsRepo.find(4)).toBeInstanceOf(Terrier)
+  })
 })

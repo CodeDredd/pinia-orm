@@ -710,6 +710,30 @@ export class Model {
   }
 
   /**
+   * Resolve the most specific discriminated model for the given record by
+   * walking nested type keys (e.g. Document -> File -> Video).
+   */
+  $getDiscriminatedModel (record: Element): typeof Model | undefined {
+    let modelByType = this.$types()[record[this.$typeKey()]]
+
+    if (!modelByType) { return undefined }
+
+    const visited = new Set<typeof Model>([modelByType])
+
+    while (true) {
+      const instance = modelByType.newRawInstance()
+      const nextModel = instance.$types()[record[instance.$typeKey()]]
+
+      if (!nextModel || visited.has(nextModel)) { break }
+
+      visited.add(nextModel)
+      modelByType = nextModel
+    }
+
+    return modelByType
+  }
+
+  /**
    * Get the pinia options for this model.
    */
   $piniaOptions () {

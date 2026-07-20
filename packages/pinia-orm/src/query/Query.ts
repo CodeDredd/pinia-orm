@@ -1128,7 +1128,7 @@ export class Query<M extends Model = Model> {
       savedHydratedModel
     ) { return savedHydratedModel }
 
-    const modelByType = this.model.$types()[record[this.model.$typeKey()]]
+    const modelByType = this.model.$getDiscriminatedModel(record)
     const getNewInsance = (newOptions?: ModelOptions) => (modelByType ? modelByType.newRawInstance() as M : this.model)
       .$newInstance(record, { relations: false, ...(options || {}), ...newOptions })
     const hydratedModel = getNewInsance()
