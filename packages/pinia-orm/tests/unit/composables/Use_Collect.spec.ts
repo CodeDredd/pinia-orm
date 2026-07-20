@@ -8,19 +8,19 @@ describe('unit/composables/Collect', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Attr() declare id: number
-    @Str('') declare name: string
-    @Num(0) declare age: number
+    @Attr() id!: number
+    @Str('') name!: string
+    @Num(0) age!: number
 
-    @HasOne(() => Post, 'userId') declare post: Post
+    @HasOne(() => Post, 'userId') post!: Post
   }
 
   class Post extends Model {
     static entity = 'posts'
 
-    @Num(0) declare id: number
-    @Num(0) declare userId: number
-    @Str('') declare title: string
+    @Num(0) id!: number
+    @Num(0) userId!: number
+    @Str('') title!: string
   }
 
   let userCollection: ReturnType<typeof useCollect<User>>

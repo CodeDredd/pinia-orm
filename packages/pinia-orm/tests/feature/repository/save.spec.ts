@@ -15,9 +15,9 @@ describe('feature/repository/save', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Num(0) declare id: number
-    @Str('') declare name: string
-    @Num(0) declare age: number
+    @Num(0) id!: number
+    @Str('') name!: string
+    @Num(0) age!: number
 
     static piniaOptions = {
       state: () => ({

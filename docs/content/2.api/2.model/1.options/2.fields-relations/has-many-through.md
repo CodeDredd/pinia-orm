@@ -54,25 +54,25 @@ import { Attr, HasManyThrough, Str } from 'pinia-orm/decorators'
 class Country extends Model {
   static entity = 'countries'
 
-  @Attr() declare id: number
+  @Attr() id!: number
   @HasManyThrough(() => Post, () => User, 'countryId', 'userId')
-  declare posts: Post[]
+  posts!: Post[]
 }
 
 class Post extends Model {
   static entity = 'posts'
 
-  @Attr() declare id: number
-  @Attr() declare userId: number
-  @Str('') declare title: string
+  @Attr() id!: number
+  @Attr() userId!: number
+  @Str('') title!: string
 }
 
 class User extends Model {
   static entity = 'users'
 
-  @Attr() declare id: number
-  @Attr() declare countryId: number
-  @Str('') declare name: string
+  @Attr() id!: number
+  @Attr() countryId!: number
+  @Str('') name!: string
 }
 ````
 

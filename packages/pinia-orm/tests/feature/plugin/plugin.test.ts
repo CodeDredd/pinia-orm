@@ -7,9 +7,9 @@ describe('feature/plugin/plugin', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Attr(0) declare id: number
-    @Str('') declare name: string
-    @Str('') declare username: string
+    @Attr(0) id!: number
+    @Str('') name!: string
+    @Str('') username!: string
   }
 
   it('can add extra config to the configuration', () => {

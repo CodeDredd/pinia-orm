@@ -8,10 +8,10 @@ describe('feature/relations/has_one_retrieve_composite', () => {
   class Phone extends Model {
     static entity = 'phones'
 
-    @Attr() declare id: number
-    @Attr() declare userId: number
-    @Attr() declare userSecondId: number
-    @Str('') declare number: string
+    @Attr() id!: number
+    @Attr() userId!: number
+    @Attr() userSecondId!: number
+    @Str('') number!: string
   }
 
   class User extends Model {
@@ -19,9 +19,9 @@ describe('feature/relations/has_one_retrieve_composite', () => {
 
     static primaryKey = ['id', 'secondId']
 
-    @Attr() declare id: number
-    @Attr() declare secondId: number
-    @Str('') declare name: string
+    @Attr() id!: number
+    @Attr() secondId!: number
+    @Str('') name!: string
 
     @HasOne(() => Phone, ['userId', 'userSecondId'])
     phone!: Phone | null

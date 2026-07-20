@@ -22,5 +22,8 @@
     "@nuxtlabs/github-module": "^1.6.3",
     "nuxt": "3.7.3"
   },
-  "packageManager": "yarn@4.5.3"
+  "packageManager": "yarn@4.5.3",
+  "resolutions": {
+    "nuxt-component-meta": "0.18.0"
+  }
 }

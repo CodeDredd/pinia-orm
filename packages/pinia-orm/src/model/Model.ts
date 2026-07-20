@@ -25,6 +25,8 @@ import { HasManyThrough } from './attributes/relations/HasManyThrough'
 import { MorphToMany } from './attributes/relations/MorphToMany'
 import type { UidOptions } from './decorators/Contracts'
 import { MorphedByMany } from './attributes/relations/MorphedByMany'
+import type { ModelMetadata } from './decorators/Metadata'
+import { CASTS, FIELDS, FIELDS_ON_DELETE, HIDDEN, MUTATORS } from './decorators/Metadata'
 
 export type ModelFields = Record<string, Attribute>
 export type ModelSchemas = Record<string, ModelFields>
@@ -187,17 +189,45 @@ export class Model {
   }
 
   /**
-   * Build the schema by evaluating fields and registry.
+   * Get the decorator metadata of this model class. Metadata objects
+   * inherit from the parent class metadata, so decorated fields of base
+   * classes are visible on derived classes as well.
+   */
+  protected static decoratorMetadata (): ModelMetadata {
+    return (this as any)[(Symbol as any).metadata] ?? {}
+  }
+
+  /**
+   * Register mutators, casts, hidden fields and delete modes collected by
+   * the property decorators.
+   */
+  protected static applyDecoratorMetadata (): void {
+    const metadata = this.decoratorMetadata()
+
+    for (const key in metadata[MUTATORS]) { this.setMutator(key, metadata[MUTATORS]![key]) }
+    for (const key in metadata[CASTS]) { this.setCast(key, metadata[CASTS]![key]) }
+    for (const key in metadata[HIDDEN]) { this.setHidden(key) }
+    for (const key in metadata[FIELDS_ON_DELETE]) { this.setFieldDeleteMode(key, metadata[FIELDS_ON_DELETE]![key]) }
+  }
+
+  /**
+   * Build the schema by evaluating fields, decorated fields and registry.
    */
   protected static initializeSchema (): void {
     const entity = this.modelEntity()
     this.schemas[entity] = {}
     this.fieldsOnDelete[entity] = this.fieldsOnDelete[entity] ?? {}
 
-    const registry = {
+    this.applyDecoratorMetadata()
+
+    const metadataFields = this.decoratorMetadata()[FIELDS] ?? {}
+    const registry: Record<string, Attribute | (() => Attribute)> = {
       ...this.fields(),
-      ...this.registries[entity],
     }
+
+    for (const key in metadataFields) { registry[key] = metadataFields[key](this) }
+
+    Object.assign(registry, this.registries[entity])
 
     for (const key in registry) {
       const attribute = registry[key]
@@ -274,7 +304,7 @@ export class Model {
     key: keyof ModelFields,
   ): M {
     if (!Object.prototype.hasOwnProperty.call(this, 'hidden')) { this.hidden = [...this.hidden] }
-    this.hidden.push(key)
+    if (!this.hidden.includes(key)) { this.hidden.push(key) }
 
     return this
   }

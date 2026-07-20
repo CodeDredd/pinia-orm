@@ -68,5 +68,8 @@
       "path": "dist/index.mjs",
       "limit": "2 kB"
     }
-  ]
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  }
 }

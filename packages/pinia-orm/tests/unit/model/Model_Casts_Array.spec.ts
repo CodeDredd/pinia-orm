@@ -13,8 +13,8 @@ describe('unit/model/Model_Casts_Array', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr(0) declare id: number
-      @Attr('{}') declare meta: Record<string, any>
+      @Attr(0) id!: number
+      @Attr('{}') meta!: Record<string, any>
 
       static casts () {
         return {
@@ -36,8 +36,8 @@ describe('unit/model/Model_Casts_Array', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr(0) declare id: number
-      @Cast(() => ArrayCast) @Attr('{}') declare meta: Record<string, any>
+      @Attr(0) id!: number
+      @Cast(() => ArrayCast) @Attr('{}') meta!: Record<string, any>
     }
 
     expect(new User({ meta: '{"name":"John", "age":30, "car":null}' }, { operation: 'get' }).meta).toStrictEqual({
@@ -52,8 +52,8 @@ describe('unit/model/Model_Casts_Array', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr(0) declare id: number
-      @Attr({}) declare meta: Record<string, any>
+      @Attr(0) id!: number
+      @Attr({}) meta!: Record<string, any>
 
       static casts () {
         return {
@@ -89,8 +89,8 @@ describe('unit/model/Model_Casts_Array', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr(0) declare id: number
-      @Attr({ name: 'Test', age: 12, car: null }) declare meta: Record<string, any>
+      @Attr(0) id!: number
+      @Attr({ name: 'Test', age: 12, car: null }) meta!: Record<string, any>
 
       static casts () {
         return {

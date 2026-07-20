@@ -1,5 +1,6 @@
 import type { Model } from '../../../Model'
-import type { PropertyDecorator } from '../../Contracts'
+import type { FieldDecorator } from '../../Metadata'
+import { createFieldDecorator } from '../../Metadata'
 
 /**
  * Create a belongs-to-many attribute property decorator.
@@ -14,15 +15,10 @@ export function BelongsToMany (
   relatedPivotKey: string,
   parentKey?: string,
   relatedKey?: string,
-): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
+): FieldDecorator {
+  return createFieldDecorator((model) => {
+    if (typeof pivot === 'function') { return model.belongsToMany(related(), pivot(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey) }
 
-    self.setRegistry(propertyKey, () => {
-      if (typeof pivot === 'function') { return self.belongsToMany(related(), pivot(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey) }
-
-      return self.belongsToMany(related(), pivot.model(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey).as(pivot.as)
-    },
-    )
-  }
+    return model.belongsToMany(related(), pivot.model(), foreignPivotKey, relatedPivotKey, parentKey, relatedKey).as(pivot.as)
+  })
 }

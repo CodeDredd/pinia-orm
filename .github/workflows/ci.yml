@@ -24,10 +24,10 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - run: npm i -g --force corepack && corepack enable
 
-      - name: Set node version to 20
+      - name: Set node version to 22
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 20
+          node-version: 22
           cache: "pnpm"
 
       - name: Install pnpm
@@ -47,10 +47,10 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - run: npm i -g --force corepack && corepack enable
 
-      - name: Set node version to 20
+      - name: Set node version to 22
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 20
+          node-version: 22
           cache: "pnpm"
 
       - run: pnpm i
@@ -73,10 +73,10 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - run: npm i -g --force corepack && corepack enable
 
-      - name: Set node version to 20
+      - name: Set node version to 22
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 20
+          node-version: 22
           cache: "pnpm"
 
       - run: pnpm i
@@ -95,10 +95,10 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - run: npm i -g --force corepack && corepack enable
 
-      - name: Set node version to 20
+      - name: Set node version to 22
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 20
+          node-version: 22
           cache: "pnpm"
 
       - run: pnpm i

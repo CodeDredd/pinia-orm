@@ -239,9 +239,9 @@ describe('unit/model/Model_Mutators', () => {
     class Post extends Model {
       static entity = 'posts'
 
-      @Num(0) declare id: number
-      @Num(0) declare userId: number
-      @Str('') declare title: string
+      @Num(0) id!: number
+      @Num(0) userId!: number
+      @Str('') title!: string
 
       static mutators () {
         return {
@@ -256,11 +256,11 @@ describe('unit/model/Model_Mutators', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Num(0) declare id: number
-      @Str('') declare name: string
+      @Num(0) id!: number
+      @Str('') name!: string
 
       @HasMany(() => Post, 'userId')
-      declare posts: Post[]
+      posts!: Post[]
     }
 
     const userRepo = useRepo(User)

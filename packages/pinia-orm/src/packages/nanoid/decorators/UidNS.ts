@@ -1,14 +1,15 @@
-import type { PropertyDecorator } from '../../../../src/decorators'
-import { UidCast } from '../casts/NonSecureCast'
 import type { NanoidOptions } from '../../../../src/model/decorators/Contracts'
+import type { FieldDecorator } from '../../../../src/model/decorators/Metadata'
+import { CASTS, createFieldDecorator, ownMetadataRecord } from '../../../../src/model/decorators/Metadata'
+import type { CastAttribute } from '../../../../src/model/casts/CastAttribute'
+import { UidCast } from '../casts/NonSecureCast'
 
 /**
- * Create a cast for an attribute property decorator.
+ * Create a nanoid uid attribute property decorator.
  */
-export function Uid (options?: NanoidOptions): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-    self.setCast(propertyKey, UidCast.withParameters(options))
-    self.setRegistry(propertyKey, () => self.uid())
+export function Uid (options?: NanoidOptions): FieldDecorator {
+  return (_value, context) => {
+    ownMetadataRecord<typeof CastAttribute>(context.metadata, CASTS)[String(context.name)] = UidCast.withParameters(options)
+    return createFieldDecorator(model => model.uid())(_value, context)
   }
 }

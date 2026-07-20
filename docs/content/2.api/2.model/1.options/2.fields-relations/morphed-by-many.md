@@ -38,11 +38,11 @@ import Taggable from './models/taggable'
 class Tag extends Model {
   static entity = 'tags'
 
-  @Attr() declare id: number
+  @Attr() id!: number
   @MorphedByMany(() => User, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
-  declare users: User[]
+  users!: User[]
   @MorphedByMany(() => Video, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
-  declare videos: Video[]
+  videos!: Video[]
   declare pivot: Taggable
 }
 ````

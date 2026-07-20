@@ -1,6 +1,4 @@
-import type { Model } from '../Model'
-
-export type PropertyDecorator = (target: Model, propertyKey: string) => void
+export type { FieldDecorator } from './Metadata'
 
 export type UidOptions = NanoidOptions | number
 

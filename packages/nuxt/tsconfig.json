@@ -1,6 +1,3 @@
 {
-  "compilerOptions": {
-      "experimentalDecorators": true
-  },
-  "extends": "./playground/.nuxt/tsconfig.json"
+    "extends": "./playground/.nuxt/tsconfig.json"
 }

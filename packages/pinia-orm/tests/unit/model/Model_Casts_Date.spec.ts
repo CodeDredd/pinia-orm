@@ -40,7 +40,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
       @Cast(() => DateCast)
       @Attr('test')
-      declare updated: Date
+      updated!: Date
     }
 
     expect(new User({ updated: '2017-01-26' }, { operation: 'get' }).updated.toISOString()).toBe(expectedISODate)
@@ -52,7 +52,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
       @Cast(() => DateCast)
       @Attr('test')
-      declare updated: Date
+      updated!: Date
     }
 
     expect(new User({ updated: null }, { operation: 'get' }).updated).toBe(null)
@@ -65,7 +65,7 @@ describe('unit/model/Model_Casts_Date', () => {
 
       @Cast(() => DateCast)
       @Attr('test')
-      declare updated: Date
+      updated!: Date
     }
 
     expect(new User({ updated: 1714849419 }, { operation: 'get' }).updated).toStrictEqual(new Date(1714849419))
@@ -78,11 +78,11 @@ describe('unit/model/Model_Casts_Date', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Attr(0) declare id: number
-      @Attr('') declare updated: Date
+      @Attr(0) id!: number
+      @Attr('') updated!: Date
 
-      @Cast(() => DateCast) @Attr(null) declare createdAt: Date
-      @Cast(() => DateCast) @Attr(null) declare updatedAt: Date
+      @Cast(() => DateCast) @Attr(null) createdAt!: Date
+      @Cast(() => DateCast) @Attr(null) updatedAt!: Date
 
       static saving (model: Model) {
         model.updatedAt = expectedIsoDate2

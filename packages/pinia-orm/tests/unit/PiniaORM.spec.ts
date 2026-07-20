@@ -9,9 +9,9 @@ describe('unit/PiniaORM', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Attr(0) declare id: number
-    @Str('') declare name: string
-    @Str('') declare username: string
+    @Attr(0) id!: number
+    @Str('') name!: string
+    @Str('') username!: string
   }
 
   it('pass config "model.withMeta"', () => {
@@ -130,9 +130,9 @@ describe('unit/PiniaORM', () => {
         persist: true,
       }
 
-      @Attr(0) declare id: number
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Attr(0) id!: number
+      @Str('') name!: string
+      @Str('') username!: string
     }
 
     const userRepo = useRepo(User)
@@ -146,9 +146,9 @@ describe('unit/PiniaORM', () => {
 
       static namespace = 'otherOrm'
 
-      @Attr(0) declare id: number
-      @Str('') declare name: string
-      @Str('') declare username: string
+      @Attr(0) id!: number
+      @Str('') name!: string
+      @Str('') username!: string
     }
     createPiniaORM({ model: { namespace: 'orm' } })
 
@@ -168,9 +168,9 @@ describe('unit/PiniaORM', () => {
 
       static namespace = 'orm'
 
-      @Attr(0) declare id: number
-      @Str('') declare prename: string
-      @Num('') declare age: number
+      @Attr(0) id!: number
+      @Str('') prename!: string
+      @Num('') age!: number
     }
 
     class User extends Model {
@@ -178,10 +178,10 @@ describe('unit/PiniaORM', () => {
 
       static namespace = 'otherOrm'
 
-      @Attr(0) declare id: number
-      @Str('') declare name: string
-      @Str('') declare username: string
-      @Attr() declare user_id: number
+      @Attr(0) id!: number
+      @Str('') name!: string
+      @Str('') username!: string
+      @Attr() user_id!: number
       @BelongsTo(() => User2, 'user_id') user: User2
     }
     createPiniaORM({ model: { namespace: 'orm' } })
@@ -210,33 +210,33 @@ describe('unit/PiniaORM', () => {
 
     class User extends BaseModel {
       @Attr()
-      declare id: number
+      id!: number
 
       @Str(null)
-      declare name: string
+      name!: string
 
       @BelongsToMany(() => Role, () => UserRole, 'user_id', 'role_id')
-      declare roles: Role[] | null
+      roles!: Role[] | null
 
       static entity: string = 'users'
     }
 
     class Role extends BaseModel {
       @Attr()
-      declare id: number
+      id!: number
 
       @Str(null)
-      declare name: string
+      name!: string
 
       static entity: string = 'roles'
     }
 
     class UserRole extends BaseModel {
       @Attr()
-      declare user_id: number
+      user_id!: number
 
       @Attr()
-      declare role_id: number
+      role_id!: number
 
       static entity = 'user_roles'
       static primaryKey = ['user_id', 'role_id']

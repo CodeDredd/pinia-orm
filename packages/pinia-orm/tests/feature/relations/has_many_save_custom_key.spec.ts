@@ -99,22 +99,22 @@ describe('feature/relations/has_many_save_custom_key', () => {
     class Post extends Model {
       static entity = 'posts'
 
-      @Attr() declare id: number
-      @Attr() declare userId: number
-      @Attr() declare userSecondId: number
-      @Str('') declare title: string
+      @Attr() id!: number
+      @Attr() userId!: number
+      @Attr() userSecondId!: number
+      @Str('') title!: string
     }
 
     class User extends Model {
       static entity = 'users'
       static primaryKey = ['id', 'secondId']
 
-      @Attr() declare id: number
-      @Attr() declare secondId: number
-      @Str('') declare name: string
+      @Attr() id!: number
+      @Attr() secondId!: number
+      @Str('') name!: string
 
       @HasMany(() => Post, ['userId', 'userSecondId'], 'id')
-      declare posts: Post[]
+      posts!: Post[]
     }
 
     const usersRepo = useRepo(User)

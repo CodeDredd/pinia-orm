@@ -32,9 +32,9 @@ import { Bool, Num } from 'pinia-orm/decorators'
 class User extends Model {
   static entity = 'users'
   
-  @Num(0) declare id: number
-  @Bool(false) declare published: boolean
-  @Bool(() => false) declare released: boolean
+  @Num(0) id!: number
+  @Bool(false) published!: boolean
+  @Bool(() => false) released!: boolean
 }
 ````
 
