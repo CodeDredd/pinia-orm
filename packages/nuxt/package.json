@@ -67,5 +67,8 @@
   "bugs": {
     "url": "https://github.com/CodeDredd/pinia-orm/issues"
   },
-  "homepage": "https://github.com/CodeDredd/pinia-orm/tree/v2/packages/nuxt#readme"
+  "homepage": "https://github.com/CodeDredd/pinia-orm/tree/v2/packages/nuxt#readme",
+  "engines": {
+    "node": ">=22.12.0"
+  }
 }
