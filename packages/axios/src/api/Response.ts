@@ -135,6 +135,6 @@ export class Response {
    * Pinia ORM persist methods.
    */
   protected validatePersistAction (action: string): action is PersistMethods {
-    return ['save', 'insert'].includes(action)
+    return ['save', 'insert', 'fresh'].includes(action)
   }
 }
