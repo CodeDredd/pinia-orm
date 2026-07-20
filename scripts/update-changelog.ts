@@ -38,8 +38,15 @@ async function main () {
     execSync(`git push -u origin v${newVersion}`)
   }
 
-  // Get the current PR for this release, if it exists
-  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=v${newVersion}`)
+  // Get the current PR for this release, if it exists. The `head` filter
+  // needs the `owner:` prefix — without it GitHub ignores the filter and
+  // returns the newest open PR, whose body would then be overwritten.
+  const [currentPR] = await $fetch(`https://api.github.com/repos/CodeDredd/pinia-orm/pulls?head=CodeDredd:v${newVersion}&state=open`)
+
+  if (currentPR && currentPR.head?.ref !== `v${newVersion}`) {
+    consola.error(`Found PR #${currentPR.number} but its head is not v${newVersion}. Aborting to avoid overwriting an unrelated PR.`)
+    process.exit(1)
+  }
   const contributors = await getContributors()
 
   const latestTag = await getLatestTag()
