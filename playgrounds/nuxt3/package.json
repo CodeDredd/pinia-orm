@@ -16,8 +16,8 @@
     "pinia-orm": "workspace:*"
   },
   "dependencies": {
-    "axios": "^1.7.2",
-    "nanoid": "^5.1.0",
+    "axios": "^1.18.1",
+    "nanoid": "^5.1.16",
     "uuid": "^11.1.1"
   }
 }

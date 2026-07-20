@@ -58,7 +58,7 @@
     "@nuxt/eslint-config": "^1.1.0",
     "@size-limit/preset-small-lib": "^11.1.4",
     "eslint": "^9.21.0",
-    "immutable": "^5.0.3",
+    "immutable": "^5.1.9",
     "size-limit": "^11.1.4",
     "typescript": "^5.8.2",
     "unbuild": "^3.1.0"
