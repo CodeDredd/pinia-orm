@@ -487,10 +487,10 @@ export class Repository<M extends Model = Model> {
   /**
    * Insert the given records to the store by replacing any existing records.
    */
-  fresh (records: Element[]): Collection<M>
-  fresh (record: Element): M
-  fresh (records: Element | Element[]): M | Collection<M> {
-    return this.query().fresh(records)
+  fresh (records: Element[], options?: { raw?: boolean }): Collection<M>
+  fresh (record: Element, options?: { raw?: boolean }): M
+  fresh (records: Element | Element[], options?: { raw?: boolean }): M | Collection<M> {
+    return this.query().fresh(records, options)
   }
 
   /**
