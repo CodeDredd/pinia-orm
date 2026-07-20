@@ -1,4 +1,9 @@
 export default defineAppConfig({
+  versions: [
+    // `current` marks the version served by this deployment.
+    { label: '2.x', href: 'https://pinia-orm.codedredd.de', current: true },
+    { label: '1.x', href: 'https://v1.pinia-orm.codedredd.de' },
+  ],
   docus: {
     title: 'Pinia ORM',
     description: 'The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store.',
