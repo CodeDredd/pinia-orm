@@ -61,7 +61,7 @@
     "@pinia-orm/normalizr": "workspace:*"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^1.1.0",
+    "@nuxt/eslint-config": "^1.16.0",
     "@pinia/testing": "^2.0.1",
     "@size-limit/preset-small-lib": "^11.1.4",
     "@types/node": "^22.10.5",
@@ -73,7 +73,7 @@
     "@vue/test-utils": "^2.4.6",
     "c8": "^10.1.2",
     "core-js": "^3.37.1",
-    "eslint": "^9.21.0",
+    "eslint": "^9.39.5",
     "happy-dom": "^20.11.0",
     "mkdist": "^2.1.0",
     "nanoid": "^5.1.16",
