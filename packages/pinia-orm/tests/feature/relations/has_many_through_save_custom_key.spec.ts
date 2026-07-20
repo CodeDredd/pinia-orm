@@ -15,25 +15,25 @@ describe('feature/relations/has_many_save_custom_key', () => {
 
       static primaryKey = 'countryId'
 
-      @Attr() declare countryId: number
+      @Attr() countryId!: number
       @HasManyThrough(() => Post, () => User, 'countryId', 'userId', 'countryId')
-      declare posts: Post[]
+      posts!: Post[]
     }
 
     class Post extends Model {
       static entity = 'posts'
 
-      @Attr() declare id: number
-      @Attr() declare userId: number
-      @Str('') declare title: string
+      @Attr() id!: number
+      @Attr() userId!: number
+      @Str('') title!: string
     }
 
     class User extends Model {
       static entity = 'users'
 
-      @Attr() declare id: number
-      @Attr() declare countryId: number
-      @Str('') declare name: string
+      @Attr() id!: number
+      @Attr() countryId!: number
+      @Str('') name!: string
     }
 
     const countryRepo = useRepo(Country)
@@ -63,9 +63,9 @@ describe('feature/relations/has_many_save_custom_key', () => {
 
       static primaryKey = 'countryId'
 
-      @Attr() declare countryId: number
+      @Attr() countryId!: number
       @HasManyThrough(() => Post, () => User, 'countryId', 'userId', 'countryId', 'postId')
-      declare posts: Post[]
+      posts!: Post[]
     }
 
     class Post extends Model {
@@ -73,17 +73,17 @@ describe('feature/relations/has_many_save_custom_key', () => {
 
       static primaryKey = 'postId'
 
-      @Attr() declare postId: number
-      @Attr() declare userId: number
-      @Str('') declare title: string
+      @Attr() postId!: number
+      @Attr() userId!: number
+      @Str('') title!: string
     }
 
     class User extends Model {
       static entity = 'users'
 
-      @Attr() declare id: number
-      @Attr() declare countryId: number
-      @Str('') declare name: string
+      @Attr() id!: number
+      @Attr() countryId!: number
+      @Str('') name!: string
     }
 
     const countryRepo = useRepo(Country)

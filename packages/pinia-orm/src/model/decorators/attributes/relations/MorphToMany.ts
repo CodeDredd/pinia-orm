@@ -1,5 +1,6 @@
 import type { Model } from '../../../Model'
-import type { PropertyDecorator } from '../../Contracts'
+import type { FieldDecorator } from '../../Metadata'
+import { createFieldDecorator } from '../../Metadata'
 
 /**
  * Create a morph-to-many attribute property decorator.
@@ -15,14 +16,10 @@ export function MorphToMany (
   type: string,
   parentKey?: string,
   relatedKey?: string,
-): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
+): FieldDecorator {
+  return createFieldDecorator((model) => {
+    if (typeof pivot === 'function') { return model.morphToMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey) }
 
-    self.setRegistry(propertyKey, () => {
-      if (typeof pivot === 'function') { return self.morphToMany(related(), pivot(), relatedId, id, type, parentKey, relatedKey) }
-
-      return self.morphToMany(related(), pivot.model(), relatedId, id, type, parentKey, relatedKey).as(pivot.as)
-    })
-  }
+    return model.morphToMany(related(), pivot.model(), relatedId, id, type, parentKey, relatedKey).as(pivot.as)
+  })
 }

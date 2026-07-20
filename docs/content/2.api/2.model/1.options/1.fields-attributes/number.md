@@ -31,8 +31,8 @@ import { Num } from 'pinia-orm/decorators'
 class User extends Model {
   static entity = 'users'
   
-  @Num(0) declare id: number
-  @Num(() => 0) declare extraId: number
+  @Num(0) id!: number
+  @Num(() => 0) extraId!: number
 }
 ````
 

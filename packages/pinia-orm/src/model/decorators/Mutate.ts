@@ -1,12 +1,12 @@
-import type { Mutator } from '../../types'
-import type { PropertyDecorator } from './Contracts'
+import type { Mutator, MutatorFunctions } from '../../types'
+import type { FieldDecorator } from './Metadata'
+import { MUTATORS, createRegistrationDecorator, ownMetadataRecord } from './Metadata'
 
 /**
- * Create an Mutate attribute property decorator.
+ * Create a Mutate attribute property decorator.
  */
-export function Mutate (get?: Mutator<any>, set?: Mutator<any>): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-    self.setMutator(propertyKey, { get, set })
-  }
+export function Mutate (get?: Mutator<any>, set?: Mutator<any>): FieldDecorator {
+  return createRegistrationDecorator((context) => {
+    ownMetadataRecord<MutatorFunctions<any>>(context.metadata, MUTATORS)[String(context.name)] = { get, set }
+  })
 }

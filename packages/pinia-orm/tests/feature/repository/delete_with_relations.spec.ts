@@ -14,35 +14,35 @@ describe('feature/repository/delete_with_relations', () => {
     class SuperImage extends Model {
       static entity = 'superImages'
 
-      @Num(0) declare id: number
-      @Num(0) declare postId: number
-      @Str('') declare title: string
+      @Num(0) id!: number
+      @Num(0) postId!: number
+      @Str('') title!: string
     }
 
     class Image extends Model {
       static entity = 'images'
 
-      @Num(0) declare id: number
-      @Num(0) declare postId: number
-      @Str('') declare title: string
+      @Num(0) id!: number
+      @Num(0) postId!: number
+      @Str('') title!: string
     }
     class Comment extends Model {
       static entity = 'comments'
 
       static primaryKey = ['id', 'comment_id']
 
-      @Num(0) declare id: number
-      @Num(0) declare comment_id: number
-      @Num(0) declare postId: number
-      @Str('') declare title: string
+      @Num(0) id!: number
+      @Num(0) comment_id!: number
+      @Num(0) postId!: number
+      @Str('') title!: string
     }
 
     class ExtraComment extends Model {
       static entity = 'extraComments'
 
-      @Num(0) declare id: number
-      @Num(0) declare postId: number
-      @Str('') declare title: string
+      @Num(0) id!: number
+      @Num(0) postId!: number
+      @Str('') title!: string
     }
 
     class Post extends Model {
@@ -54,27 +54,27 @@ describe('feature/repository/delete_with_relations', () => {
         }
       }
 
-      @Num(0) declare id: number
-      @Num(0) declare userId: number
-      @Str('') declare title: string
+      @Num(0) id!: number
+      @Num(0) userId!: number
+      @Str('') title!: string
 
       @HasMany(() => Comment, 'postId')
       @OnDelete('cascade')
-      declare comments: Comment[]
+      comments!: Comment[]
 
       @HasOne(() => SuperImage, 'postId')
       @OnDelete('set null')
-      declare specialImage: SuperImage | null
+      specialImage!: SuperImage | null
 
       @HasMany(() => Image, 'postId')
-      declare images: Image[]
+      images!: Image[]
     }
 
     class Role extends Model {
       static entity = 'roles'
 
-      @Num(0) declare id: number
-      @Str('') declare posts: string
+      @Num(0) id!: number
+      @Str('') posts!: string
       declare pivot: RoleUser
     }
 
@@ -96,11 +96,11 @@ describe('feature/repository/delete_with_relations', () => {
 
       @BelongsToMany(() => Role, () => RoleUser, 'user_id', 'role_id')
       @OnDelete('cascade')
-      declare roles: Role[]
+      roles!: Role[]
 
       @HasMany(() => Post, 'userId')
       @OnDelete('cascade')
-      declare posts: Post[]
+      posts!: Post[]
     }
 
     const usersRepo = useRepo(User)
@@ -208,7 +208,7 @@ describe('feature/repository/delete_with_relations', () => {
 
       @MorphMany(() => Comment, 'commentableId', 'commentableType')
       @OnDelete('set null')
-      declare comments: Comment[]
+      comments!: Comment[]
     }
 
     const videoRepo = useRepo(Video)

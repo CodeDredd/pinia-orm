@@ -31,11 +31,11 @@ describe('feature/hooks/saving', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Num(0) declare id: number
-      @Attr() declare postId: number | null
-      @Str('') declare name: string
-      @Num(0) declare age: number
-      @BelongsTo(() => Post, 'postId') declare post: User | null
+      @Num(0) id!: number
+      @Attr() postId!: number | null
+      @Str('') name!: string
+      @Num(0) age!: number
+      @BelongsTo(() => Post, 'postId') post!: User | null
 
       static saving (model: User) {
         const fields = model.$fields()
@@ -108,9 +108,9 @@ describe('feature/hooks/saving', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Uid() declare id: string
-      @Str('') declare name: string
-      @Num(0) declare age: number
+      @Uid() id!: string
+      @Str('') name!: string
+      @Num(0) age!: number
 
       static saving (model: Model) {
         model.name = 'John'

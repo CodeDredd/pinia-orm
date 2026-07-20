@@ -16,10 +16,10 @@ describe('unit/model/Model_Fields', () => {
         }
       }
 
-      id!: any
-      str!: string
-      num!: number
-      bool!: boolean
+      declare id: any
+      declare str: string
+      declare num: number
+      declare bool: boolean
     }
 
     const user = new User({

@@ -14,26 +14,26 @@ describe('unit/model/Model_Relations', () => {
   class Phone extends Model {
     static entity = 'phones'
 
-    @Attr() declare id: number
-    @Attr() declare userId: number
+    @Attr() id!: number
+    @Attr() userId!: number
   }
 
   class Tag extends Model {
     static entity = 'tags'
 
     @MorphedByMany(() => User, () => Taggable, 'tagId', 'taggableId', 'taggableType')
-    declare users: User[]
+    users!: User[]
 
-    @Attr() declare id: number
+    @Attr() id!: number
   }
   class Taggable extends Model {
     static entity = 'taggables'
 
     static primaryKey = ['tagId', 'taggableId', 'taggableType']
 
-    @Attr('') declare tagId: number
-    @Attr(null) declare taggableId: number | null
-    @Attr(null) declare taggableType: string | null
+    @Attr('') tagId!: number
+    @Attr(null) taggableId!: number | null
+    @Attr(null) taggableType!: string | null
   }
 
   class Country extends Model {
@@ -41,13 +41,13 @@ describe('unit/model/Model_Relations', () => {
 
     @Attr() id!: number
     @HasManyThrough(() => Post, () => User, 'countryId', 'userId')
-    declare posts: Post[]
+    posts!: Post[]
   }
 
   class Role extends Model {
     static entity = 'roles'
 
-    @Num(0) declare id: number
+    @Num(0) id!: number
     declare pivot: RoleUser
   }
 
@@ -56,9 +56,9 @@ describe('unit/model/Model_Relations', () => {
 
     static primaryKey = ['roleIid', 'userId']
 
-    @Attr(null) declare roleIid: number | null
-    @Attr(null) declare userId: number | null
-    @Attr(null) declare level: number | null
+    @Attr(null) roleIid!: number | null
+    @Attr(null) userId!: number | null
+    @Attr(null) level!: number | null
   }
 
   class Comment extends Model {
@@ -105,11 +105,11 @@ describe('unit/model/Model_Relations', () => {
     @MorphOne(() => Image, 'imageableId', 'imageableType')
     image!: Image | null
 
-    @BelongsToMany(() => Role, () => RoleUser, 'userId', 'roleId') declare roles: Role[]
+    @BelongsToMany(() => Role, () => RoleUser, 'userId', 'roleId') roles!: Role[]
 
-    @MorphToMany(() => Tag, () => Taggable, 'tagId', 'taggableId', 'taggableType') declare tags: Tag[]
+    @MorphToMany(() => Tag, () => Taggable, 'tagId', 'taggableId', 'taggableType') tags!: Tag[]
 
-    @MorphMany(() => Comment, 'commentableId', 'commentableType') declare comments: Comment[]
+    @MorphMany(() => Comment, 'commentableId', 'commentableType') comments!: Comment[]
   }
 
   class Image extends Model {

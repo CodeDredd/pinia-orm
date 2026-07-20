@@ -5,14 +5,14 @@ import { Attr } from '../../../src/decorators'
 describe('unit/model/ModelIsolation', () => {
   class User extends Model {
     static entity = 'users'
-    @Attr() declare id: number
-    @Attr() declare name: string
+    @Attr() id!: number
+    @Attr() name!: string
   }
 
   class Post extends Model {
     static entity = 'posts'
-    @Attr() declare id: number
-    @Attr() declare title: string
+    @Attr() id!: number
+    @Attr() title!: string
   }
 
   it('maintains separate original states for different model types with same id', () => {

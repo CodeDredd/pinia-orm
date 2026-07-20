@@ -7,23 +7,23 @@ describe('feature/relations/morph_to_many_save', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Attr() declare id: number
+    @Attr() id!: number
     @MorphToMany(() => Tag, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
-    declare tags: Tag[]
+    tags!: Tag[]
   }
 
   class Video extends Model {
     static entity = 'videos'
 
-    @Attr() declare id: number
+    @Attr() id!: number
     @MorphToMany(() => Tag, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
-    declare tags: Tag[]
+    tags!: Tag[]
   }
 
   class Tag extends Model {
     static entity = 'tags'
 
-    @Attr() declare id: number
+    @Attr() id!: number
     declare pivot: Taggable
   }
 
@@ -31,10 +31,10 @@ describe('feature/relations/morph_to_many_save', () => {
     static entity = 'taggables'
     static primaryKey = ['tag_id', 'taggable_id', 'taggable_type']
 
-    @Attr() declare tag_id: number
-    @Attr() declare taggable_id: number
-    @Str('') declare taggable_type: string
-    @Attr() declare level: number
+    @Attr() tag_id!: number
+    @Attr() taggable_id!: number
+    @Str('') taggable_type!: string
+    @Attr() level!: number
   }
 
   it('saves a model to the store with "morph to many" relation', () => {

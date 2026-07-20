@@ -57,9 +57,9 @@ describe('feature/hooks/saved', () => {
     class User extends Model {
       static entity = 'users'
 
-      @Uid() declare id: string
-      @Str('') declare name: string
-      @Num(0) declare age: number
+      @Uid() id!: string
+      @Str('') name!: string
+      @Num(0) age!: number
 
       static saved (model: Model) {
         model.name = 'John'

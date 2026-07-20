@@ -1,5 +1,6 @@
 import type { Model } from '../../../Model'
-import type { PropertyDecorator } from '../../Contracts'
+import type { FieldDecorator } from '../../Metadata'
+import { createFieldDecorator } from '../../Metadata'
 
 /**
  * Create a morph-one attribute property decorator.
@@ -9,12 +10,6 @@ export function MorphOne (
   id: string,
   type: string,
   localKey?: string,
-): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-
-    self.setRegistry(propertyKey, () =>
-      self.morphOne(related(), id, type, localKey),
-    )
-  }
+): FieldDecorator {
+  return createFieldDecorator(model => model.morphOne(related(), id, type, localKey))
 }

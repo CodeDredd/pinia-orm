@@ -8,24 +8,24 @@ describe('feature/relations/morphed_by_many_retrieve', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Attr() declare id: number
+    @Attr() id!: number
   }
 
   class Video extends Model {
     static entity = 'videos'
 
-    @Attr() declare id: number
+    @Attr() id!: number
   }
 
   class Tag extends Model {
     static entity = 'tags'
 
-    @Attr() declare id: number
+    @Attr() id!: number
     @MorphedByMany(() => User, { as: 'userPivot', model: () => Taggable }, 'tag_id', 'taggable_id', 'taggable_type')
-    declare users: User[]
+    users!: User[]
 
     @MorphedByMany(() => Video, () => Taggable, 'tag_id', 'taggable_id', 'taggable_type')
-    declare videos: Video[]
+    videos!: Video[]
 
     declare pivot: Taggable
     declare userPivot: Taggable
@@ -35,10 +35,10 @@ describe('feature/relations/morphed_by_many_retrieve', () => {
     static entity = 'taggables'
     static primaryKey = ['tag_id', 'taggable_id', 'taggable_type']
 
-    @Attr() declare tag_id: number
-    @Attr() declare taggable_id: number
-    @Str('') declare taggable_type: string
-    @Attr() declare level: number
+    @Attr() tag_id!: number
+    @Attr() taggable_id!: number
+    @Str('') taggable_type!: string
+    @Attr() level!: number
   }
 
   it('can eager load morphed by many relation', () => {

@@ -8,7 +8,7 @@ describe('performance/save_belongs_to_many_relation.spec', () => {
   class Role extends Model {
     static entity = 'roles'
 
-    @Num(0) declare id: number
+    @Num(0) id!: number
     declare pivot: RoleUser
   }
 

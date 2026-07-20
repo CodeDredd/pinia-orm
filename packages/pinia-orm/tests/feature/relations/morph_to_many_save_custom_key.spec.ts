@@ -15,15 +15,15 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
 
       static primaryKey = 'morphToManyId'
 
-      @Num(0) declare morphToManyId: number
+      @Num(0) morphToManyId!: number
       @MorphToMany(() => Role, () => Roleable, 'roleId', 'rolableId', 'rolableType')
-      declare permissions: Role[]
+      permissions!: Role[]
     }
 
     class Role extends Model {
       static entity = 'roles'
 
-      @Num(0) declare id: number
+      @Num(0) id!: number
     }
 
     class Roleable extends Model {
@@ -31,10 +31,10 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
 
       static primaryKey = ['roleId', 'rolableId', 'rolableType']
 
-      @Attr(null) declare roleId: number | null
-      @Attr(null) declare rolableId: number | null
-      @Str('') declare rolableType: number | null
-      @Attr(null) declare level: number | null
+      @Attr(null) roleId!: number | null
+      @Attr(null) rolableId!: number | null
+      @Str('') rolableType!: number | null
+      @Attr(null) level!: number | null
     }
 
     useRepo(User).save([
@@ -166,10 +166,10 @@ describe('feature/relations/morph_to_many_save_custom_key', () => {
 
       static primaryKey = ['roleId', 'rolableId', 'rolableType']
 
-      @Attr(null) declare roleId: number | null
-      @Attr(null) declare rolableId: number | null
-      @Str('') declare rolableType: number | null
-      @Attr(null) declare level: number | null
+      @Attr(null) roleId!: number | null
+      @Attr(null) rolableId!: number | null
+      @Str('') rolableType!: number | null
+      @Attr(null) level!: number | null
     }
 
     useRepo(User).save([

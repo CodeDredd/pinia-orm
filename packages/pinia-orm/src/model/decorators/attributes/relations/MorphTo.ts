@@ -1,5 +1,6 @@
 import type { Model } from '../../../Model'
-import type { PropertyDecorator } from '../../Contracts'
+import type { FieldDecorator } from '../../Metadata'
+import { createFieldDecorator } from '../../Metadata'
 
 /**
  * Create a morph-to attribute property decorator.
@@ -9,12 +10,6 @@ export function MorphTo (
   id: string,
   type: string,
   ownerKey?: string,
-): PropertyDecorator {
-  return (target, propertyKey) => {
-    const self = target.$self()
-
-    self.setRegistry(propertyKey, () =>
-      self.morphTo(related(), id, type, ownerKey),
-    )
-  }
+): FieldDecorator {
+  return createFieldDecorator(model => model.morphTo(related(), id, type, ownerKey))
 }

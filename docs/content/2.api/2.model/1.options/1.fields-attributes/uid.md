@@ -30,7 +30,7 @@ import { Uid } from 'pinia-orm/decorators'
 class User extends Model {
   static entity = 'users'
   
-  @Uid() declare id: string
+  @Uid() id!: string
 }
 ````
 

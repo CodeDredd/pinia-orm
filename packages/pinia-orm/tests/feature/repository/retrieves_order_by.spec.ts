@@ -222,7 +222,7 @@ describe('feature/repository/retrieves_order_by', () => {
       @Attr() id!: any
       @Str('') name!: string
       @Num(0) age!: number
-      @Cast(() => DateCast) @Attr(null) declare createdAt: Date
+      @Cast(() => DateCast) @Attr(null) createdAt!: Date
     }
 
     const userRepo = useRepo(User)

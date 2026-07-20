@@ -4,15 +4,6 @@ export default defineNuxtConfig({
     '@pinia-orm/nuxt'
   ],
 
-  vite: {
-    esbuild: {
-      tsconfigRaw: {
-        compilerOptions: {
-          experimentalDecorators: true,
-        }
-      }
-    }
-  },
 
   compatibilityDate: '2025-04-10'
 })

@@ -36,9 +36,9 @@ import Imageable from './Image'
 class User extends Model {
   static entity = 'users'
   
-  @Attr(null) declare id: number | null
-  @Str('') declare name: string
-  @MorphToMany(() => Image, () => Imageable, 'imageId', 'imageableId', 'imageableType') declare images: Image[]
+  @Attr(null) id!: number | null
+  @Str('') name!: string
+  @MorphToMany(() => Image, () => Imageable, 'imageId', 'imageableId', 'imageableType') images!: Image[]
 }
 ````
 

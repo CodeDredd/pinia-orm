@@ -8,8 +8,8 @@ describe('unit/model/Model', () => {
   class User extends Model {
     static entity = 'users'
 
-    @Attr() declare id: number
-    @Attr() declare lastName: string
+    @Attr() id!: number
+    @Attr() lastName!: string
   }
 
   it('ignores unkown field when filling the model', () => {
