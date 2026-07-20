@@ -54,7 +54,8 @@
     "test": "vitest --run"
   },
   "peerDependencies": {
-    "pinia": ">=3.0.0"
+    "pinia": ">=3.0.0",
+    "vue": ">=3.4.0"
   },
   "dependencies": {
     "@pinia-orm/normalizr": "workspace:*"
@@ -91,7 +92,7 @@
   "size-limit": [
     {
       "path": "dist/index.mjs",
-      "limit": "16.5 kB"
+      "limit": "12 kB"
     },
     {
       "path": "dist/decorators.mjs",
