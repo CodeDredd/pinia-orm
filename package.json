@@ -73,6 +73,11 @@
       "allowedVersions": {
         "vue": "3"
       }
+    },
+    "overrides": {
+      "handlebars": ">=4.7.9",
+      "shell-quote": ">=1.8.4",
+      "simple-git": ">=3.32.3"
     }
   }
 }

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pinia-orm/axios": "workspace:*",
-    "axios": "^1.7.2",
+    "axios": "^1.18.1",
     "pinia": "^2.1.7",
     "pinia-orm": "workspace:*",
     "vue": "^3.4.29",
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1",
+    "vite": "^5.4.21",
     "vue-tsc": "^2.0.21"
   }
 }
