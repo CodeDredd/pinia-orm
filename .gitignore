@@ -65,3 +65,4 @@ Temporary Items
 .build-*
 .env
 .netlify
+docs/public/sponsorkit/.cache.json

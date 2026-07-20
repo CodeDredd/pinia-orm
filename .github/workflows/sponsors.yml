@@ -34,7 +34,7 @@ jobs:
         run: |
           git config user.email "gregor@codedredd.de"
           git config user.name "Gregor Becker"
-          git add docs/public/sponsorkit
+          git add docs/public/sponsorkit/sponsors.svg docs/public/sponsorkit/sponsors.png docs/public/sponsorkit/sponsors.json
           git diff --cached --quiet && echo "no changes" && exit 0
           git commit -m "chore: update sponsors [skip-release]"
           git push
