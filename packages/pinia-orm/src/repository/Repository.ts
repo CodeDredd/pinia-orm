@@ -52,6 +52,15 @@ export interface Repository<M extends Model = Model> {
    */
   whereNotNull (field: string): Query<M>
   /**
+   * Add a where clause where `field` matches a SQL LIKE style pattern.
+   * `%` matches any number of characters, `_` a single character.
+   */
+  whereLike (field: string, value: string | number, caseSensitive?: boolean): Query<M>
+  /**
+   * Add an "or where like" clause to the query.
+   */
+  orWhereLike (field: string, value: string | number, caseSensitive?: boolean): Query<M>
+  /**
    * Find the model with the given id.
    */
   find (id: string | number): Item<M>

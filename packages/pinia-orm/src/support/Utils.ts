@@ -33,6 +33,21 @@ export function isNullish (value: any): value is undefined | null {
 }
 
 /**
+ * Compare a value against a SQL LIKE style pattern where `%` matches any
+ * sequence of characters and `_` matches a single character.
+ */
+export function compareLike (value: any, pattern: string | number, caseSensitive = false): boolean {
+  if (isNullish(value)) { return false }
+
+  const source = String(pattern)
+    .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    .replace(/%/g, '[\\s\\S]*')
+    .replace(/_/g, '[\\s\\S]')
+
+  return new RegExp(`^${source}$`, caseSensitive ? '' : 'i').test(String(value))
+}
+
+/**
  * Check if the given value is a Date object.
  */
 export function isDate (value: any): value is Date {
