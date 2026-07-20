@@ -1,10 +1,10 @@
 import { v4 } from 'uuid'
-import type { V4Options } from 'uuid'
+import type { Version4Options } from 'uuid'
 import type { ModelFields } from '../../../../src/model/Model'
 import { CastAttribute } from '../../../../src/model/casts/CastAttribute'
 
 export class UidCast extends CastAttribute {
-  static parameters?: V4Options
+  static parameters?: Version4Options
 
   /**
    * Create a new String attribute instance.
@@ -13,7 +13,7 @@ export class UidCast extends CastAttribute {
     super(attributes)
   }
 
-  static withParameters (parameters?: V4Options): typeof CastAttribute {
+  static withParameters (parameters?: Version4Options): typeof CastAttribute {
     this.parameters = parameters
     return this
   }
