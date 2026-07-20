@@ -98,4 +98,30 @@ describe('unit/support/Utils_Order_by', () => {
 
     expect(orderBy(collection, [v => v.id], ['asc'])).toEqual(expected)
   })
+
+  it('can order collection with a collator', () => {
+    const collection = [{ name: 'T' }, { name: 'Š' }, { name: 'A' }]
+
+    const expected = [{ name: 'A' }, { name: 'Š' }, { name: 'T' }]
+
+    expect(orderBy(collection, ['name'], ['asc'], new Intl.Collator('lt'))).toEqual(expected)
+  })
+
+  it('can order collection with different flags per field', () => {
+    const collection = [
+      { name: 'T', group: 'b' },
+      { name: 'Š', group: 'B' },
+      { name: 'A', group: 'B' },
+      { name: 'B', group: 'a' },
+    ]
+
+    const expected = [
+      { name: 'B', group: 'a' },
+      { name: 'A', group: 'B' },
+      { name: 'Š', group: 'B' },
+      { name: 'T', group: 'b' },
+    ]
+
+    expect(orderBy(collection, ['group', 'name'], ['asc', 'asc'], ['SORT_FLAG_CASE', new Intl.Collator('lt')])).toEqual(expected)
+  })
 })

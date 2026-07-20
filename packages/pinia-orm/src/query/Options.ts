@@ -1,4 +1,5 @@
 import type { Model, WithKeys } from '../model/Model'
+import type { SortComparator } from '../support/Utils'
 import type { Query } from './Query'
 
 export interface Where<T = Model> {
@@ -23,6 +24,7 @@ export interface WhereGroup {
 export interface Order {
   field: OrderBy
   direction: OrderDirection
+  flags?: SortComparator
 }
 
 export interface Group {

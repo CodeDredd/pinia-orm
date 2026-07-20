@@ -8,6 +8,8 @@ interface SortableArray<T> {
 
 export type SortFlags = 'SORT_REGULAR' | 'SORT_FLAG_CASE'
 
+export type SortComparator = SortFlags | Intl.Collator
+
 /**
  * Compare two values with custom string operator
  */
@@ -77,7 +79,7 @@ export function orderBy<T extends Element> (
   collection: T[],
   iteratees: (((record: T) => any) | string)[],
   directions: string[],
-  flags: SortFlags = 'SORT_REGULAR',
+  flags: SortComparator | SortComparator[] = 'SORT_REGULAR',
 ): T[] {
   let index = -1
 
@@ -130,7 +132,7 @@ function compareMultiple<T> (
   object: SortableArray<T>,
   other: SortableArray<T>,
   directions: string[],
-  flags: SortFlags,
+  flags: SortComparator | SortComparator[],
 ): number {
   let index = -1
 
@@ -139,7 +141,7 @@ function compareMultiple<T> (
   const length = objCriteria.length
 
   while (++index < length) {
-    const result = compareAscending(objCriteria[index], othCriteria[index], flags)
+    const result = compareAscending(objCriteria[index], othCriteria[index], isArray(flags) ? flags[index] ?? 'SORT_REGULAR' : flags)
 
     if (result) {
       const direction = directions[index]
@@ -153,8 +155,13 @@ function compareMultiple<T> (
 /**
  * Compares values to sort them in ascending order.
  */
-function compareAscending (value: any, other: any, flags: SortFlags): number {
+function compareAscending (value: any, other: any, flags: SortComparator): number {
   if (value !== other) {
+    if (typeof flags === 'object' && typeof value === 'string' && typeof other === 'string') {
+      const result = flags.compare(value, other)
+      return result > 0 ? 1 : result < 0 ? -1 : 0
+    }
+
     const valIsDefined = value !== undefined
     const valIsNull = value === null
     const valIsReflexive = value === value

@@ -20,6 +20,9 @@ useSortBy(users, 'name')
 // sort by the `name` attribute case insensitive
 useSortBy(users, 'name', 'SORT_FLAG_CASE')
 
+// sort by the `name` attribute locale aware
+useSortBy(users, 'name', new Intl.Collator('lt'))
+
 // sorts the collection by 'name' descending and then by 'lastname' ascending
 useSortBy(users, [
     ['name', 'desc'],
@@ -36,6 +39,7 @@ useSortBy(users, (model) => model.age)
 ````ts
 export type sorting<T> = ((record: T) => any) | string | [string, 'asc' | 'desc'][]
 export type SortFlags = 'SORT_REGULAR' | 'SORT_FLAG_CASE'
+export type SortComparator = SortFlags | Intl.Collator
 
-export function useSortBy<T>(collection: T[], sort: sorting<T>, flags?: SortFlags): T[]
+export function useSortBy<T>(collection: T[], sort: sorting<T>, flags?: SortComparator): T[]
 ````

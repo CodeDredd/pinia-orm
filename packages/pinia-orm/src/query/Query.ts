@@ -9,6 +9,7 @@ import {
   isFunction,
   orderBy,
 } from '../support/Utils'
+import type { SortComparator } from '../support/Utils'
 import type { Collection, Element, Elements, GroupedCollection, Item, NormalizedData } from '../data/Data'
 import type { Database } from '../database/Database'
 import { Relation } from '../model/attributes/relations/Relation'
@@ -359,8 +360,8 @@ export class Query<M extends Model = Model> {
   /**
    * Add an "order by" clause to the query.
    */
-  orderBy (field: OrderBy, direction: OrderDirection = 'asc'): this {
-    this.orders.push({ field, direction })
+  orderBy (field: OrderBy, direction: OrderDirection = 'asc', flags: SortComparator = 'SORT_REGULAR'): this {
+    this.orders.push({ field, direction, flags })
 
     return this
   }
@@ -625,8 +626,9 @@ export class Query<M extends Model = Model> {
   protected filterOrder (models: Collection<M>): Collection<M> {
     const fields = this.orders.map(order => order.field)
     const directions = this.orders.map(order => order.direction)
+    const flags = this.orders.map(order => order.flags ?? 'SORT_REGULAR')
 
-    return orderBy(models, fields, directions)
+    return orderBy(models, fields, directions, flags)
   }
 
   /**
