@@ -1,0 +1,40 @@
+name: sponsors
+
+on:
+  workflow_dispatch:
+  schedule:
+    # first day of every month
+    - cron: '0 6 1 * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.repository == 'CodeDredd/pinia-orm'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - run: npm i -g --force corepack && corepack enable
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate sponsor images
+        run: pnpm sponsor
+        env:
+          SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
+          SPONSORKIT_GITHUB_LOGIN: codedredd
+
+      - name: Commit updated sponsor images
+        run: |
+          git config user.email "gregor@codedredd.de"
+          git config user.name "Gregor Becker"
+          git add docs/public/sponsorkit
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "chore: update sponsors [skip-release]"
+          git push

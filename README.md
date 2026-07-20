@@ -8,41 +8,67 @@
 
 # Welcome to pinia-orm
 
-> Intuitive, type safe and flexible ORM for Pinia based on [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
+> The intuitive, type safe and flexible ORM for [Pinia](https://pinia.vuejs.org) — normalize relational data in your stores and query it like with an ORM.
 
 - [✨ &nbsp;Release Notes](https://pinia-orm.codedredd.de/changelog)
 - [📖 &nbsp;Documentation](https://pinia-orm.codedredd.de)
 - [👾 &nbsp;Playground](https://pinia-orm-play.codedredd.de)
 
-## Migration from vuex-orm
+## Features
 
-You want to migrate from vuex to pinia and with it vuex-orm to pinia-orm but you don't know yet?
-Well maybe this table will help you to decide. This comparison is just about facts and current state.
+- Laravel-style query builder — `where`, `whereLike`, `whereHas`, `orderBy` (incl. `Intl.Collator`), `groupBy`, aggregates, `updateOrCreate` / `firstOrCreate` and more
+- All the relations: `hasOne`, `hasMany`, `belongsTo`, `belongsToMany`, `hasManyThrough`, `morphOne`, `morphTo`, `morphMany`, `morphToMany`, `morphedByMany`
+- Standard [ECMAScript decorators](https://pinia-orm.codedredd.de/guide/getting-started/typescript) for type safe model definitions
+- Single Table Inheritance with nested discriminators, lifecycle hooks, mutators, casts, hidden fields and query caching
+- First class [Nuxt module](https://pinia-orm.codedredd.de/guide/nuxt/setup) (Nuxt 3 & 4) and an [axios plugin](https://pinia-orm.codedredd.de/plugins/axios/guide/setup)
 
-| Features                                                               | pinia-orm@v1.4.0                                           | @vuex-orm/core@0.36.4                                             | @vuex-orm/core@1.0.0-draft.16                                             |
-|------------------------------------------------------------------------|------------------------------------------------------------| ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Bundle Size (Min + GZIP)                                               | [9.9 KB](https://bundlephobia.com/package/pinia-orm@1.4.0) | [16.7 KB](https://bundlephobia.com/package/@vuex-orm/core@0.36.4) | [12.6 KB](https://bundlephobia.com/package/@vuex-orm/core@1.0.0-draft.16) |
-| Relations (hasMany, belongsTo, morphOne, hasManyBy, hasOne, morphTo)   | ✅                                                          | ✅                                                                | ✅                                                                        |
-| Relations (morphMany, belongsToMany, hasManyThrough)                   | ✅                                                          | ✅                                                                | ❌                                                                        |
-| Relations (morphToMany, morphedByMany)                                 | ❌                                                          | ✅                                                                | ❌                                                                        |
-| Mutators                                                               | ✅                                                          | ✅                                                                | ❌                                                                        |
-| Casts                                                                  | ✅                                                          | ❌                                                                | ❌                                                                        |
-| Decorators                                                             | ✅                                                          | ❌                                                                | ✅                                                                        |
-| Single Table Inheritance                                               | ✅                                                          | ✅                                                                | ❌                                                                        |
-| Lifecycle Hooks                                                        | ✅                                                          | ✅                                                                | ❌                                                                        |
-| Aggregates                                                             | ✅                                                          | ✅                                                                | ❌                                                                        |
-| Query (orHas, doesntHave, orDoesntHave, whereHas, orWhereHas, groupBy) | ✅                                                          | ❌                                                                | ❌                                                                        |
-| Collection Helpers                                                     | ✅                                                          | (✅) can use pinia-orm helpers too                                | (✅) can use pinia-orm helpers too                                        |
-| Hidden Fields                                                          | ✅                                                          | ❌                                                                | ❌                                                                        |
-| Metadata field                                                         | ✅                                                          | ❌                                                                | ❌                                                                        |
-| Caching of queries with gc                                             | ✅                                                          | (✅) with plugin                                                  | ❌                                                                        |
+## Quick start
 
-If you decide to migrate then there are some breaking changes. A guide how to migrate will be written.
-Small overview:
+```bash
+npm install pinia pinia-orm
+```
 
-- Fields are by default `null`
-- Renamed some functions aligning more with laravel naming
-- Code is based on `vuex-orm-next` and not on `vuex-orm` !
+```ts
+import { createPinia } from 'pinia'
+import { createORM } from 'pinia-orm'
+
+const pinia = createPinia().use(createORM())
+```
+
+```ts
+import { Model, useRepo } from 'pinia-orm'
+import { Attr, HasMany, Str, Uid } from 'pinia-orm/decorators'
+
+class Todo extends Model {
+  static entity = 'todos'
+
+  @Uid() id!: string
+  @Str('') text!: string
+  @Attr(null) userId!: string | null
+}
+
+class User extends Model {
+  static entity = 'users'
+
+  @Uid() id!: string
+  @Str('') name!: string
+  @HasMany(() => Todo, 'userId') todos!: Todo[]
+}
+
+const userRepo = useRepo(User)
+
+userRepo.save({ id: '1', name: 'John', todos: [{ text: 'Read the docs' }] })
+const usersWithTodos = userRepo.with('todos').get()
+```
+
+Read the [documentation](https://pinia-orm.codedredd.de) for the full guide, or check the [comparison with vuex-orm](https://pinia-orm.codedredd.de/guide/getting-started/what-is-pinia-orm#comparison-with-vuex-orm) and the [migration guide](https://pinia-orm.codedredd.de/guide/getting-started/migration-guide) if you're upgrading.
+
+## Requirements
+
+| pinia-orm | pinia   | Node     | TypeScript |
+|-----------|---------|----------|------------|
+| 2.x       | >= 3    | >= 22.12 | >= 5.2     |
+| 1.x       | 2.x     | >= 14    | >= 4.x     |
 
 ## Help me keep working on this project 💚
 
@@ -60,10 +86,10 @@ Small overview:
 ## 💻 Development
 
 - Clone this repository
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
+- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
 - Install dependencies using `pnpm install`
-- Build normalizr package: `pnpm build`
-- Run interactive tests using `cd packages/pinia-orm && pnpm test:ui`
+- Build the packages once with `pnpm build:stub && pnpm build:ci`
+- Run tests using `pnpm test` (or `cd packages/pinia-orm && pnpm test:ui` for the interactive UI)
 
 ## Credits
 
@@ -80,7 +106,7 @@ Small overview:
 
 Made with ❤️
 
-Published under [MIT License](./LICENCE).
+Published under [MIT License](./LICENSE).
 
 <!-- Badges -->
 
