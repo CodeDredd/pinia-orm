@@ -8,6 +8,8 @@
     "enabled": false
   },
   "rangeStrategy": "bump",
+  "automerge": true,
+  "platformAutomerge": false,
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
@@ -31,10 +33,6 @@
           "schedule:weekly"
         ]
       },
-      "automerge": true,
-      "automergeSchedule": [
-        "after 1am and before 2am"
-      ],
       "schedule": [
         "after 2am and before 3am"
       ]
@@ -49,13 +47,14 @@
         "pin",
         "digest"
       ],
-      "automerge": true,
-      "automergeSchedule": [
-        "after 1am and before 2am"
-      ],
       "schedule": [
         "after 2am and before 3am"
       ]
+    },
+    {
+      "description": "Major updates need a manual review",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ]
 }
