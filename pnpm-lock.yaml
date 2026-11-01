@@ -299,8 +299,8 @@ importers:
         specifier: ^11.0.5
         version: 11.1.1
       vite:
-        specifier: ^6.4.3
-        version: 6.4.3(@types/node@22.10.5)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
+        specifier: ^8.0.0
+        version: 8.1.5(@types/node@22.10.5)(esbuild@0.21.5)(jiti@2.7.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
       vitest:
         specifier: ^3.2.7
         version: 3.2.7(@types/node@22.10.5)(@vitest/ui@3.2.7)(happy-dom@20.11.0)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
@@ -6033,10 +6033,6 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  picomatch@2.3.2:
-    resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
-    engines: {node: '>=8.6'}
-
   picomatch@4.0.5:
     resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
     engines: {node: '>=12'}
@@ -7789,46 +7785,6 @@ packages:
       sugarss:
         optional: true
       terser:
-        optional: true
-
-  vite@6.4.3:
-    resolution: {integrity: sha512-NTKlcQjlAK7MlQoyb6LgaqHc8sso/pVyUJYWMws3jg21uTJw/LddqIFPcPqP6PzpgbIcZyKI85sFE4HBrQDA8A==}
-    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
-      jiti: '>=1.21.0'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.16.0
-      tsx: ^4.8.1
-      yaml: '>=2.8.3'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      jiti:
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-      tsx:
-        optional: true
-      yaml:
         optional: true
 
   vite@7.3.6:
@@ -11069,7 +11025,7 @@ snapshots:
       '@vue/shared': 3.5.40
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.19
+      postcss: 8.5.20
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.4.31':
@@ -13728,7 +13684,7 @@ snapshots:
   micromatch@4.0.5:
     dependencies:
       braces: 3.0.3
-      picomatch: 2.3.2
+      picomatch: 4.0.5
 
   micromatch@4.0.7:
     dependencies:
@@ -14637,8 +14593,6 @@ snapshots:
   picocolors@1.1.0: {}
 
   picocolors@1.1.1: {}
-
-  picomatch@2.3.2: {}
 
   picomatch@4.0.5: {}
 
@@ -16390,16 +16344,15 @@ snapshots:
     dependencies:
       vite: 8.1.5(@types/node@20.19.25)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
 
-  vite-node@3.2.4(@types/node@20.19.25)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0):
+  vite-node@3.2.4(@types/node@20.19.25)(lightningcss@1.33.0)(terser@5.19.3):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.3.6(@types/node@20.19.25)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
+      vite: 5.4.21(@types/node@20.19.25)(lightningcss@1.33.0)(terser@5.19.3)
     transitivePeerDependencies:
       - '@types/node'
-      - jiti
       - less
       - lightningcss
       - sass
@@ -16408,19 +16361,16 @@ snapshots:
       - sugarss
       - supports-color
       - terser
-      - tsx
-      - yaml
 
-  vite-node@3.2.4(@types/node@22.10.5)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0):
+  vite-node@3.2.4(@types/node@22.10.5)(lightningcss@1.33.0)(terser@5.19.3):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.3.6(@types/node@22.10.5)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
+      vite: 5.4.21(@types/node@22.10.5)(lightningcss@1.33.0)(terser@5.19.3)
     transitivePeerDependencies:
       - '@types/node'
-      - jiti
       - less
       - lightningcss
       - sass
@@ -16429,8 +16379,6 @@ snapshots:
       - sugarss
       - supports-color
       - terser
-      - tsx
-      - yaml
 
   vite-node@6.0.0(@types/node@20.19.25)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0):
     dependencies:
@@ -16522,6 +16470,17 @@ snapshots:
       vite: 8.1.5(@types/node@20.19.25)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
       vue: 3.5.40(typescript@5.8.2)
 
+  vite@5.4.21(@types/node@20.19.25)(lightningcss@1.33.0)(terser@5.19.3):
+    dependencies:
+      esbuild: 0.21.5
+      postcss: 8.5.20
+      rollup: 4.62.2
+    optionalDependencies:
+      '@types/node': 20.19.25
+      fsevents: 2.3.3
+      lightningcss: 1.33.0
+      terser: 5.19.3
+
   vite@5.4.21(@types/node@22.10.5)(lightningcss@1.33.0)(terser@5.19.3):
     dependencies:
       esbuild: 0.21.5
@@ -16532,23 +16491,6 @@ snapshots:
       fsevents: 2.3.3
       lightningcss: 1.33.0
       terser: 5.19.3
-
-  vite@6.4.3(@types/node@22.10.5)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0):
-    dependencies:
-      esbuild: 0.25.12
-      fdir: 6.5.0(picomatch@4.0.5)
-      picomatch: 4.0.5
-      postcss: 8.5.20
-      rollup: 4.62.2
-      tinyglobby: 0.2.17
-    optionalDependencies:
-      '@types/node': 22.10.5
-      fsevents: 2.3.3
-      jiti: 2.7.0
-      lightningcss: 1.33.0
-      terser: 5.19.3
-      tsx: 4.16.2
-      yaml: 2.9.0
 
   vite@7.3.6(@types/node@20.19.25)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0):
     dependencies:
@@ -16588,12 +16530,28 @@ snapshots:
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.5
-      postcss: 8.5.19
+      postcss: 8.5.20
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 20.19.25
       esbuild: 0.28.1
+      fsevents: 2.3.3
+      jiti: 2.7.0
+      terser: 5.19.3
+      tsx: 4.16.2
+      yaml: 2.9.0
+
+  vite@8.1.5(@types/node@22.10.5)(esbuild@0.21.5)(jiti@2.7.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0):
+    dependencies:
+      lightningcss: 1.33.0
+      picomatch: 4.0.5
+      postcss: 8.5.20
+      rolldown: 1.1.5
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      '@types/node': 22.10.5
+      esbuild: 0.21.5
       fsevents: 2.3.3
       jiti: 2.7.0
       terser: 5.19.3
@@ -16623,7 +16581,7 @@ snapshots:
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
       vite: 7.3.6(@types/node@20.19.25)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
-      vite-node: 3.2.4(@types/node@20.19.25)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
+      vite-node: 3.2.4(@types/node@20.19.25)(lightningcss@1.33.0)(terser@5.19.3)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 20.19.25
@@ -16666,7 +16624,7 @@ snapshots:
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
       vite: 7.3.6(@types/node@22.10.5)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
-      vite-node: 3.2.4(@types/node@22.10.5)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.19.3)(tsx@4.16.2)(yaml@2.9.0)
+      vite-node: 3.2.4(@types/node@22.10.5)(lightningcss@1.33.0)(terser@5.19.3)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.10.5
