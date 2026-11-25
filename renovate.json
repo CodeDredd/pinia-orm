@@ -10,6 +10,9 @@
   "rangeStrategy": "bump",
   "automerge": true,
   "platformAutomerge": false,
+  "vulnerabilityAlerts": {
+    "groupName": "security updates"
+  },
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
