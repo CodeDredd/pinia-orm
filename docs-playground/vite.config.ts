@@ -13,12 +13,16 @@ const prefix = 'monaco-editor/esm/vs'
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          htmlWorker: ['./src/monaco/languages/html/html.worker'],
-          tsWorker: [`${prefix}/language/typescript/ts.worker`],
-          editorWorker: [`${prefix}/editor/editor.worker`],
+        // Rolldown (Vite 8) only supports the function form of manualChunks
+        manualChunks(id) {
+          if (id.includes('/src/monaco/languages/html/html.worker'))
+            return 'htmlWorker'
+          if (id.includes(`${prefix}/language/typescript/ts.worker`))
+            return 'tsWorker'
+          if (id.includes(`${prefix}/editor/editor.worker`))
+            return 'editorWorker'
         },
       },
     },
